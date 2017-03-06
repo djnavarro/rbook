@@ -1,0 +1,316 @@
+% !TEX root = ../pdf/lsr.tex
+% [There are multiple lsr.tex files, but the one in ../pdf is the usual one]
+
+\documentclass[a4paper,twoside,10pt,openright]{book}
+
+% packages...
+\usepackage{epsfig}
+\usepackage{boxedminipage}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{bm}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{alltt}
+\usepackage[cmbtt]{bold-extra}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{multirow} 
+\usepackage{morefloats}
+\usepackage{dialogue}
+
+% indexing package
+%\usepackage{makeidx}
+%\makeindex
+%\newcommand{\ifn}[1]{\protect{#1}()@\protect\rtext{\protect{#1}()}}
+%\newcommand{\ir}[1]{\protect{#1}@\protect\rtext{\protect{#1}}}
+%\newcommand{\ir}[1]{#1@\rtext{\protect{#1}}}
+%\usepackage{multind}
+%\makeindex{R}
+%\makeindex{ideas}
+
+% provides url and URL commands (apparently has some nice interactions with
+% hyperref for producing clickable links in pdf)
+\usepackage{url}
+
+% necessary on Windows/MiKTeX to stop pdfTeX whining about EPS files 
+% (TeXShop on Mac seems to use the shell escape trick to convert on 
+% the fly)
+\usepackage{epstopdf}    
+
+% set margins 
+% ... A4: 297 x 210 mm
+% ... cengage: 276mm x 210mm
+% ... need extra: 1cm either side from the top and bottom?
+
+\usepackage[left=2.5cm, right=2.5cm,top=4cm, bottom=4cm]{geometry}
+%\usepackage[left=2.5cm, right=2.5cm,top=3cm, bottom=3cm]{geometry}
+
+%\usepackage{fancybox}
+
+
+
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+
+
+\usepackage{mathabx} % provides the \bigoasterisk symbol
+
+
+% -- comment out for the HARDCOPY version ---
+% Need to  have everything loaded BEFORE hyperref, except for apacite,
+% which needs to be loaded afterwards. 
+\usepackage[pagebackref=true]{hyperref} % urls...
+\hypersetup{colorlinks=true,
+    citecolor={red},
+    urlcolor={red},
+    linkcolor={red},
+	pdftitle={Learning Statistics with R},
+	pdfauthor={Daniel Navarro},
+}
+%% http://health.webdev.adelaide.edu.au/psychology/ccs/docs/lsr/lsr.pdf#nameddest=chapter.17
+
+
+% referencing
+\usepackage{apacite}
+
+
+%%%%%%%%%%%%%%%% define commands etc %%%%%%%%%%%%
+
+% how are file names formatted?
+\newcommand{\filename}[1]{\texttt{#1}}
+
+% indicator that this is an advanced section
+%\newcommand{\advanced}{$\bigoasterisk$}
+\newcommand{\advanced}{}
+
+\usepackage{manfnt}
+%\newcommand{\advanced}{\protect\raisebox{9pt}{\small\dbend}}
+
+% handy shortcuts
+\newcommand{\given}{\,|\,} 
+\newcommand{\panel}[1]{#1}  
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\R}{\textsf{R}}
+
+% what colour is the margin text?
+%\definecolor{margintextcolour}{rgb}{.5,0,.5}
+\definecolor{margintextcolour}{rgb}{.5,.5,.5}
+
+% R code colours (outside of the rblock environments)
+\definecolor{Rtextmar}{rgb}{.4,.4,.4}    % Rtext colour for margins
+
+% define R code colours in the rblock environments
+\definecolor{Rbarcol}{gray}{1.0}          % sidebar: was 0.8
+
+% --- SOFTCOPY version ---
+\definecolor{Rtextcol}{rgb}{0,0,0.5}    % Rtext colour in main text
+\definecolor{Rboxcol}{rgb}{0.4,0.4,0.5}   % default Rblock colour (R output)
+\definecolor{usercommand}{rgb}{0,0,.5}     % user command colour
+\definecolor{Rscriptcol}{rgb}{.2,.2,.5} % R code colours inside scripts
+
+
+%% --- HARDCOPY version ---
+%\definecolor{Rboxcol}{rgb}{0.5,0.5,0.5}   % default Rblock colour (R output)
+%\definecolor{usercommand}{rgb}{0,0,0}     % user command colour
+%\definecolor{Rtextcol}{rgb}{0,0,0}    % Rtext colour
+%\definecolor{Rscriptcol}{rgb}{.5,.5,.5} % R code colours inside scripts
+
+
+% command to invoke user command formatting
+\newcommand{\usr}[1]{\textcolor{usercommand}{#1}}
+\newcommand{\plusorminus}{$\pm$}
+
+% command to invoke help file code formatting
+\newcommand{\helpcode}[1]{\texttt{\textcolor{black}{#1}}}
+
+% define the "standard" rblock environment with
+% no escape characters
+\DefineVerbatimEnvironment{rblock}{Verbatim}{
+    fontfamily=tt,
+    frame=leftline,
+    framesep=5mm,
+    framerule=.25mm,
+    formatcom=\color{Rboxcol},
+    xleftmargin=2mm,
+    xrightmargin=5mm,
+    fontsize=\small,
+    rulecolor=\color{Rbarcol}
+}
+
+% modified rblock that allows code insertion, using 
+% @ as the escape character, and { and } as the block
+% definition characters 
+\DefineVerbatimEnvironment{rblock1}{Verbatim}{
+    fontfamily=tt,
+    frame=leftline,
+    framesep=5mm,
+    framerule=.25mm,
+    formatcom=\color{Rboxcol},
+    xleftmargin=2mm,
+    xrightmargin=5mm,
+    fontsize=\small,
+    rulecolor=\color{Rbarcol},
+    commandchars=\@\{\}
+}
+
+% modified rblock that allows code insertion, using 
+% # as the escape character, and [ and ] as the block
+% definition characters 
+\DefineVerbatimEnvironment{rblock2}{Verbatim}{
+    fontfamily=tt,
+    frame=leftline,
+    framesep=5mm,
+    framerule=.25mm,
+    formatcom=\color{Rboxcol},
+    xleftmargin=2mm,
+    xrightmargin=5mm,
+    fontsize=\small,
+    rulecolor=\color{Rbarcol},
+    commandchars=\#[]
+}
+
+% modified rblock that allows code insertion, using 
+% # as the escape character, and @ and @ as the block
+% definition characters 
+\DefineVerbatimEnvironment{rblock3}{Verbatim}{
+    fontfamily=tt,
+    frame=leftline,
+    framesep=5mm,
+    framerule=.25mm,
+    formatcom=\color{Rboxcol},
+    xleftmargin=2mm,
+    xrightmargin=5mm,
+    fontsize=\small,
+    rulecolor=\color{Rbarcol},
+    commandchars=\@QW
+}
+
+	
+% verbatim environment(s) for help documentation
+\DefineVerbatimEnvironment{rhelp}{Verbatim}{
+    fontfamily=helvetica,
+    frame=leftline,
+    framesep=5mm,
+    framerule=.25mm,
+    formatcom=\color{Rboxcol},
+    xleftmargin=2mm,
+    xrightmargin=5mm,
+    fontsize=\small,
+    rulecolor=\color{Rbarcol},
+}
+\DefineVerbatimEnvironment{rhelp1}{Verbatim}{
+    fontfamily=helvetica,
+    frame=leftline,
+    framesep=5mm,
+    framerule=.25mm,
+    formatcom=\color{Rboxcol},
+    xleftmargin=2mm,
+    xrightmargin=5mm,
+    fontsize=\small,
+    rulecolor=\color{Rbarcol},
+    commandchars=\@\{\}
+}
+\DefineVerbatimEnvironment{rhelp2}{Verbatim}{
+    fontfamily=tt,
+    frame=leftline,
+    framesep=5mm,
+    framerule=.25mm,
+    formatcom=\color{black},
+    xleftmargin=2mm,
+    xrightmargin=5mm,
+    fontsize=\small,
+    rulecolor=\color{Rbarcol}
+}
+
+% script environment 
+\DefineVerbatimEnvironment{script}{Verbatim}{
+    fontfamily=tt,
+    frame=leftline,
+    framesep=5mm,
+    framerule=.25mm,
+    numbers = left,
+    formatcom=\color{Rscriptcol},
+    xleftmargin=2mm,
+    xrightmargin=5mm,
+    fontsize=\small,
+    rulecolor=\color{Rbarcol},
+    commandchars=\@\|\_
+}
+
+% function for naming scripts
+%\newcommand{\scriptname}[1]{\vspace*{6pt}\\ \small\texttt{ \# "#1.R"  \# }\vspace*{-3pt}}
+\newcommand{\scriptname}[1]{\vspace*{6pt} \small\underline{\texttt{#1}}\vspace*{-3pt}}
+\newcommand{\cmt}[1]{\textcolor{Rboxcol}{#1}} % script commment command
+
+
+% define the rtext and rtextsmall commands. the small
+% version is for use in margin paragraphs, so the font
+% colour changes accordingly
+\newcommand{\rtext}[1]
+    {\texttt{\small\textcolor{Rtextcol}{#1}}}
+    
+\newcommand{\rtextoutput}[1]
+    {\texttt{\small\textcolor{Rboxcol}{#1}}}
+      
+\newcommand{\rtextsmall}[1]
+    {\texttt{\scriptsize\textcolor{Rtextmar}{#1}}}
+
+% define rtextverb and rtextsmallverb
+\CustomVerbatimCommand{\rtextverb}{Verb}{
+	 fontsize = \small,
+     fontfamily=tt,
+     formatcom=\color{Rtextcol}
+}
+
+\CustomVerbatimCommand{\rtextsmallverb}{Verb}{
+     fontfamily=tt,
+     formatcom=\color{Rtextmar},
+     fontsize=\scriptsize
+}
+
+% stop LaTeX from screwing the spacing
+\raggedbottom
+
+% define a \TODO command 
+\newcommand{\TODO}{{\bf \{TODO\} }}
+
+% define a command for the spacing between table caption and
+% the actual table
+\newcommand{\tabcapsep}{\vspace*{6pt}}
+
+% command for standard errors
+\newcommand{\SE}[1]{\mbox{\textsc{se}}(#1)}
+
+% formatting for maths in footnotes...
+\definecolor{bmgreycol}{gray}{.2}  
+\newcommand{\bmgrey}[1]{\textcolor{bmgreycol}{\bm{#1}}}
+\newcommand{\fngrey}[1]{\textcolor{bmgreycol}{#1}}
+\newcommand{\FOOTNOTE}[1]{\footnote{\protect\fngrey{#1}}}
+
+% formatting for matrix transpose
+\newcommand{\T}{\prime}
+
+% formatting line under figs
+\newcommand{\dotrule}[1]{%
+   \parbox[t]{#1}{\dotfill}}
+\newcommand{\HR}{\vspace*{3pt}  \dotrule{1.0\textwidth}}
+
+% --- SOFTCOPY version ---
+\definecolor{keytermcol}{rgb}{.6,0,.8} % soft copy
+\newcommand{\keyterm}[1]{{\bf \textcolor{keytermcol}{#1}}}
+
+% --- HARDCOPY version ---
+%\definecolor{keytermcol}{rgb}{0,0,0} % printed version
+%\newcommand{\keyterm}[1]{\underline{\bf \textcolor{keytermcol}{#1}}}
+
+% suppress footnote breakgin
+\interfootnotelinepenalty=10000

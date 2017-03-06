@@ -1,0 +1,43 @@
+% !TEX root = ../pdf/lsr.tex
+% [There are multiple lsr.tex files, but the one in ../pdf is the usual one]
+
+
+% alter the heading details for toc
+\renewcommand{\contentsname}{Table of Contents}
+
+
+% alter the spacing for section level entries:
+%%%% \@dottedtocline{<seclevel>}{<indent>}{<numwidth>}
+%\@dottedtocline{\l@section}{1.5em}{3.2em}
+%%% \cftsecnumwidth{3.2em}
+
+
+% define chapter heading style for the toc
+\titleformat{\chapter}
+{\normalfont\vspace*{-2cm}}
+{
+\filright
+\footnotesize
+}
+{10pt}
+{\vspace*{-1cm}\Large\bfseries\filcenter}
+
+
+% redefine spacing in the table of contents so that "10.10" fits
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{2.8em}}
+%\renewcommand*\l@chapter{\@dottedtocline{0}{0em}{3em}}
+\makeatother
+
+
+
+% make the table of contents
+\setcounter{tocdepth}{1} % section depth
+\tableofcontents %%% see if this fixes things!!!!
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{roman}
+\pagestyle{plain}
+\setcounter{page}{9}
