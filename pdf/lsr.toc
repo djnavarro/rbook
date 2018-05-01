@@ -5,7 +5,7 @@
 \contentsline {subsection}{\numberline {1.1.1}The curse of belief bias}{4}{subsection.1.1.1}
 \contentsline {section}{\numberline {1.2}The cautionary tale of Simpson's paradox}{6}{section.1.2}
 \contentsline {section}{\numberline {1.3}Statistics in psychology}{8}{section.1.3}
-\contentsline {section}{\numberline {1.4}Statistics in everyday life}{9}{section.1.4}
+\contentsline {section}{\numberline {1.4}Statistics in everyday life}{10}{section.1.4}
 \contentsline {section}{\numberline {1.5}There's more to research methods than statistics}{10}{section.1.5}
 \contentsline {chapter}{\numberline {2}A brief introduction to research design}{11}{chapter.2}
 \contentsline {section}{\numberline {2.1}Introduction to psychological measurement\nobreakspace {}}{11}{section.2.1}
@@ -16,19 +16,19 @@
 \contentsline {subsection}{\numberline {2.2.2}Ordinal scale}{15}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Interval scale}{16}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}Ratio scale}{16}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Continuous versus discrete variables\nobreakspace {}}{16}{subsection.2.2.5}
-\contentsline {subsection}{\numberline {2.2.6}Some complexities}{17}{subsection.2.2.6}
-\contentsline {section}{\numberline {2.3}Assessing the reliability of a measurement\nobreakspace {}}{18}{section.2.3}
-\contentsline {section}{\numberline {2.4}The ``role'' of variables: predictors and outcomes }{19}{section.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Continuous versus discrete variables\nobreakspace {}}{17}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Some complexities}{18}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Assessing the reliability of a measurement\nobreakspace {}}{19}{section.2.3}
+\contentsline {section}{\numberline {2.4}The ``role'' of variables: predictors and outcomes }{20}{section.2.4}
 \contentsline {section}{\numberline {2.5}Experimental and non-experimental research\nobreakspace {}}{20}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Experimental research}{20}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.1}Experimental research}{21}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}Non-experimental research}{21}{subsection.2.5.2}
 \contentsline {section}{\numberline {2.6}Assessing the validity of a study\nobreakspace {}}{22}{section.2.6}
 \contentsline {subsection}{\numberline {2.6.1}Internal validity}{22}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}External validity}{23}{subsection.2.6.2}
-\contentsline {subsection}{\numberline {2.6.3}Construct validity}{23}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.3}Construct validity}{24}{subsection.2.6.3}
 \contentsline {subsection}{\numberline {2.6.4}Face validity}{24}{subsection.2.6.4}
-\contentsline {subsection}{\numberline {2.6.5}Ecological validity}{24}{subsection.2.6.5}
+\contentsline {subsection}{\numberline {2.6.5}Ecological validity}{25}{subsection.2.6.5}
 \contentsline {section}{\numberline {2.7}Confounds, artifacts and other threats to validity}{25}{section.2.7}
 \contentsline {subsection}{\numberline {2.7.1}History effects}{26}{subsection.2.7.1}
 \contentsline {subsection}{\numberline {2.7.2}Maturation effects}{26}{subsection.2.7.2}
@@ -36,10 +36,10 @@
 \contentsline {subsection}{\numberline {2.7.4}Selection bias}{27}{subsection.2.7.4}
 \contentsline {subsection}{\numberline {2.7.5}Differential attrition}{27}{subsection.2.7.5}
 \contentsline {subsection}{\numberline {2.7.6}Non-response bias}{28}{subsection.2.7.6}
-\contentsline {subsection}{\numberline {2.7.7}Regression to the mean}{28}{subsection.2.7.7}
+\contentsline {subsection}{\numberline {2.7.7}Regression to the mean}{29}{subsection.2.7.7}
 \contentsline {subsection}{\numberline {2.7.8}Experimenter bias}{29}{subsection.2.7.8}
 \contentsline {subsection}{\numberline {2.7.9}Demand effects and reactivity}{30}{subsection.2.7.9}
-\contentsline {subsection}{\numberline {2.7.10}Placebo effects}{30}{subsection.2.7.10}
+\contentsline {subsection}{\numberline {2.7.10}Placebo effects}{31}{subsection.2.7.10}
 \contentsline {subsection}{\numberline {2.7.11}Situation, measurement and subpopulation effects}{31}{subsection.2.7.11}
 \contentsline {subsection}{\numberline {2.7.12}Fraud, deception and self-deception}{31}{subsection.2.7.12}
 \contentsline {section}{\numberline {2.8}Summary}{33}{section.2.8}
