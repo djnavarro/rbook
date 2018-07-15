@@ -274,10 +274,6 @@ So that's what we mean by the "path" to a file. The next concept to grasp is the
 The fact that we can imagine that the program is "in" a particular directory means that we can talk about moving *from* our current location *to* a new one. What that means is that we might want to specify a new location in relation to our current location. To do so, we need to introduce two new conventions. Regardless of what operating system you're using, we use . to refer to the current working directory, and .. to refer to the directory above it. This allows us to specify a path to a new location in relation to our current location, as the following examples illustrate. Let's assume that I'm using my Windows computer, and my working directory is `C:\Users\danRbook`). The table below shows several addresses in relation to my current one:
 
 
-
-
-
-
 ```{r echo=FALSE}
 knitr::kable(rbind(
                   c("C:\\\\Users\\\\dan" , ".."),

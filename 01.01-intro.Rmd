@@ -1,12 +1,12 @@
-# (PART) Background {-} 
-
 # Why do we learn statistics?
 
->*"Thou shalt not answer questionnaires \
-Or quizzes upon World Affairs, \
-\hspace*{.5cm}    Nor with compliance \
-Take any test. Thou shalt not sit  \
-With statisticians nor commit"* \
+>*"Thou shalt not answer questionnaires 
+>Or quizzes upon World Affairs, 
+>
+>Nor with compliance 
+>Take any test. Thou shalt not sit  
+>With statisticians nor commit"*
+>
 >- W.H. Auden^[The quote comes from Auden's 1946 poem *Under Which Lyre: A Reactionary Tract for the Times*, delivered as part of a commencement address at Harvard University. The history of the poem is kind of interesting: http://harvardmagazine.com/2007/11/a-poets-warning.html]
 
 ## On the psychology of statistics{#whywhywhy}
