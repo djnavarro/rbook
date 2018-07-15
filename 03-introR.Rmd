@@ -249,7 +249,7 @@ Okay, now that we've discussed some of the tedious details associated with typin
 
 So, now that we have the terminology, let's learn how to perform some arithmetic operations in R. To that end, Table \@ref(tab:arithmetic1} lists the operators that correspond to the basic arithmetic we learned in primary school: addition, subtraction, multiplication and division. 
 
-```{r arithmetic1 echo=FALSE}
+```{r arithmetic1, echo=FALSE}
 knitr::kable(rbind(
               c("addition", "`+`", "10 + 2", 12),
               c("subtraction", "`-`", "9 - 3", 6),
@@ -780,7 +780,7 @@ knitr::kable(rbind(
 
 We're not quite done yet. There are three more logical operations that are worth knowing about, listed in Table \@ref(tab:logicals2). 
 
-```{r logicals2 echo=FALSE}
+```{r logicals2, echo=FALSE}
 
 knitr::kable(rbind(
                     c("not", "!", "!(1==1)", "`FALSE`"),
