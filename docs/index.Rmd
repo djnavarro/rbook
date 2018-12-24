@@ -22,6 +22,13 @@ The book is also associated with the `lsr` package, available on CRAN and github
 
 The decision to release the book under a Creative Commons licence reflects the fact that I've found very little time to update the book myself, and I feel a little bad about that. There have been a few people who have asked about adapting the book or using it in teaching, and I've invariably said "yes, please do!" so it seems like a sensible thing to do is throw it open for anyone to adapt it if they would like to. Like most people writing open textbooks, I chose a BY-SA licence. As per the licence "This means that this book can be reused, remixed, retained, revised and redistributed (including commercially) as long as appropriate credit is given to the authors. If you remix, or modify the original version of this open textbook, you must redistribute all versions of this open textbook under the same license - CC BY-SA."
 
+There are a few projects that I'm aware of that adapt or extend LSR in different directions:
+
+- Matt Crump's lovely book-in-progress, <a href="https://crumplab.github.io/statistics/">Answering questions with data</a>, uses some content from LSR
+- David Foxcroft has produced a neat adaptation, [Learning Statistics with Jamovi]("https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
+- My own adaptation is a work in progress, [R for Psychological Science](https://compcogscisydney.org/psyr/)
+
+
 The table of contents is listed below:
 
 ### I. Background
