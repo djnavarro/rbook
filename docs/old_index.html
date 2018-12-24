@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115940772-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115940772-1');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- add the twitter card and open graph tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@djnavarro">
+    <meta property="og:url" content="http://compcogscisydney.org/learning-statistics-with-r/">
+    <meta property="og:title" content="Learning Statistics with R">
+    <meta property="og:description" content="Danielle Navarro's lecture notes on introductory statistics for undergraduate psychology students">
+    <meta property="og:image" content="http://compcogscisydney.org/img/teaching-lsr-700x350.png">
+
+
+    <title>UNSW Computational Cognitive Science</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/modern-business.css" rel="stylesheet">
+    <link href="../css/ccss-style.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+     <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="../">UNSW CompCogSci</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../projects/">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../publications/">Publications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../teaching/">Teaching</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../other/">Other</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Jumbotron banner at the top of the page-->
+    <div class="jumbotron jumbotron-fluid ccss-banner">
+        <h1 class="mt-4 mb-3 text-white text-center ccss-bannertext">Learning Statistics with R</h1>
+    </div>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <br>
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../">Home</a></li>
+          <li class="breadcrumb-item"><a href="../teaching/">Teaching</a></li>
+          <li class="breadcrumb-item active">LSR Book</li>
+      </ol>
+
+      <!-- two column row -->
+      <div class="row">
+      <div class="col-md-6">
+      <p>
+Back in the grimdark pre-Snapchat era of humanity (i.e. early 2011), I started teaching an introductory statistics class for psychology students offered at the University of Adelaide, using the R statistical package as the primary tool. I wrote my own lecture notes for the class, which have now expanded to the point of effectively being a book.
+    <br><br>
+The book is freely available, and as of the current update (version 0.6) it is released under a creative commons licence (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)
+      </p>
+
+<p class="text-center">
+<a class="btn btn-primary" href="../lsr/lsr-0.6.pdf">LSR version 0.6
+  <span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+<a class="btn btn-primary" href="../lsr/data.zip">Data sets
+  <span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+<a class="btn btn-primary" href="https://github.com/djnavarro/rbook">Source files
+  <span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+
+</p>
+        </div>
+
+        <div class="col-md-6">
+          <a href="../lsr/lsr-0.5.2.pdf">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="../img/teaching-lsr-700x350.png" alt="">
+          </a>
+        </div>
+      </div>
+      <!-- /.row -->
+
+<br>
+
+<p>
+The book is associated with the <a href="https://github.com/djnavarro/lsr">lsr package</a>, available on CRAN and github. The package is probably okay for many introductory teaching purposes, but I should note that this package isn't being actively updated, and I would strongly recommend taking care if you are thinking of using it in real world data analysis.
+</p>
+<p>
+The decision to release the book under a Creative Commons licence reflects the fact that I've found very little time to update the book myself, and I feel a little bad about that. There have been a few people who have asked about adapting the book or using it in teaching, and I've invariably said "yes, please do!" so it seems like a sensible thing to do is throw it open for anyone to adapt it if they would like to. Like most people writing open textbooks, I chose a BY-SA licence. As per the licence "This means that this book can be reused, remixed, retained, revised and redistributed (including commercially) as long as appropriate credit is given to the authors. If you remix, or modify the original version of this open textbook, you must redistribute all versions of this open textbook under the same license - CC BY-SA."
+</p>
+<p>
+There are a few projects that I'm aware of that adapt or extend LSR in different directions:
+</p>
+<ul>
+    <li>Matt Crump's lovely book-in-progress <a href="https://crumplab.github.io/statistics/">Answering questions with data</a> adapts some of the content from LSR</li>
+    <li>David Foxcroft is working on a neat adaptation, <a href="https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi">Learning statistics with jamovi</a></li>
+    <li>For my own part, I've been going in a different direction again, focusing on developing an <a href="../psyr/">R for psychological science</a> resource</li>
+</ul>
+<p>If I hear of any others I'd love to link to them here!</p>
+
+        
+<br>
+
+<h2>Table of Contents</h2>
+
+<h3>I. Background</h3><hr>
+        <ul>
+<li><b>Chapter 1: Why do we learn statistics?</b> Psychology and statistics. Statistics in everyday life. Some examples where intuition is misleading, and statistics is critical.</li>
+<li><b>Chapter 2: A brief introduction to research design.</b> Basics of psychological measurement. Reliability and validity of a measurement. Experimental and non-experimental design. Predictors versus outcomes.</li>
+        </ul>
+        <br>
+<h3>II. An introduction to R</h3><hr>
+        <ul>
+<li><b>Chapter 3: Getting started with R.</b> Getting R and Rstudio. Typing commands at the console. Simple calculations. Using functions. Introduction to variables. Numeric, character and logical data. Storing multiple values asa vector.</li>
+<li><b>Chapter 4: Additional R concepts.</b> Installing and loading packages. The workspace. Navigating the file system. More complicated data structures: factors, data frames, lists and formulas. A brief discussion of generic functions.</li>
+        </ul>
+<br>
+<h3>III. Working with data</h3><hr>
+        <ul>
+<li><b>Chapter 5: Descriptive statistics.</b> Mean, median and mode. Range, interquartile range and standard deviations. Skew and kurtosis. Standard scores. Correlations. Tools for computing these things in R. Brief comments missing data.</li>
+<li><b>Chapter 6: Drawing graphs.</b> Discussion of R graphics. Histograms. Stem and leaf plots. Boxplots. Scatterplots. Bar graphs.</li>
+<li><b>Chapter 7: Pragmatic matters.</b> Tabulating data. Transforming a variable. Subsetting vectors and data frames. Sorting, transposing and merging data. Reshaping a data frame. Basics of text processing. Reading unusual data files. Basics of variable coercion. Even more data structures. Other miscellaneous topics, including floating point arithmetic.</li>
+<li><b>Chapter 8: Basic programming.</b> Scripts. Loops. Conditionals. Writing functions. Implicit loops.</li>
+</ul>
+           <br>
+<h3>IV. Statistical theory</h3><hr>
+        <ul>
+<li><b>Prelude.</b> The riddle of induction, and why statisticians make assumptions.</li>
+<li><b>Chapter 9: Introduction to probability.</b> Probability versus statistics. Basics of probability theory. Common distributions: normal, binomial, t, chi-square, F. Bayesian versus frequentist probability.</li>
+<li><b>Chapter 10: Estimating unknown quantities from a sample.</b> Sampling from populations. Estimating population means and standard deviations. Sampling distributions. The central limit theorem. Confidence intervals.</li>
+<li><b>Chapter 11: Hypothesis testing.</b> Research hypotheses versus statistical hypotheses. Null versus alternative hypotheses. Type I and Type II errors. Sampling distributions for test statistics. Hypothesis testing as decision making. p-values. Reporting the results of a test. Effect size and power. Controversies and traps in hypothesis testing.</li>
+            </ul>
+<br>
+<h3>V. Statistical tools</h3><hr>
+            <ul>
+<li><b>Chapter 12: Categorical data analysis.</b> Chi-square goodness of fit test. Chi-square test of independence. Yate's continuity correction. Effect size with <li>Cramer's V. Assumptions of the tests. Other tests: Fisher exact test and McNemar's test.</li>
+<li><b>Chapter 13: Comparing two means.</b> One sample z-test. One sample t-test. Student's independent sample t-test. Welch's independent samples t-test. Paired sample t-test. Effect size with Cohen's d. Checking the normality assumption. Wilcoxon tests for non-normal data.</li>
+<li><b>Chapter 14: Comparing several means (one-way ANOVA).</b> Introduction to one-way ANOVA. Doing it in R. Effect size with eta-squared. Simple corrections for multiple comparisons (post hoc tests). Assumptions of one-way ANOVA. Checking homogeneity of variance using Levene tests. Avoiding the homogeneity of variance assumption. Checking and avoiding the normality assumption. Relationship between ANOVA and t-tests.</li>
+<li><b>Chapter 15: Linear regression.</b> Introduction to regression. Estimation by least squares. Multiple regression models. Measuring the fit of a regression model. Hypothesis tests for regression models. Standardised regression coefficient. Assumptions of regression models. Basic regression diagnostics. Model selection methods for regression.</li>
+<li><b>Chapter 16: Factorial ANOVA.</b> Factorial ANOVA without interactions. Factorial ANOVA with interactions. Effect sizes, estimated marginal means, confidence intervals for effects. Assumption checking. F-tests as model selection. Interpreting ANOVA as a linear model. Specifying contrasts. Post hoc testing via Tukey's HSD. Factorial ANOVA with unbalanced data (Type I, III and III sums of squares)</li>
+</ul>
+        <br>
+    <h3>VI. Other topics</h3><hr>
+                <ul>
+<li><b>Chapter 17: Bayesian statistics.</b> Introduction to Bayesian inference. Bayesian analysis of contingency tables. Bayesian t-tests, ANOVAs and regressions.</li>
+<li><b>Chapter 18: Epilogue.</b> Comments on the content missing from this book. Advantages to using R.</li>
+<li><b>References.</b> Massively incomplete reference list.    </li>
+        </ul>
+
+        <br>
+
+    <h3>Additional resources</h3>
+    <hr>
+<p>Strictly speaking the book isn't linked to any particular lecture slides or exercises. However, I have on occasions run some brief one-day workshops at a few places, and it tends to loosely follow the book. The workshop consists of three parts, an introduction to the basic mechanics of R, followed by a fairly rapid overview of some core statistical tools in R, and some extra bits and pieces at the end:
+    </p>
+<ul>
+    <li>Slides:  [<a href="../lsr/slides-1.1_gettingStarted.pdf">1.1</a>, <a href="../lsr/slides-1.2_variablesWorkspace.pdf">1.2</a>, <a href="../lsr/slides-1.3_loadSaveMove.pdf">1.3</a>] [<a href="../lsr/slides-2.1_descriptiveStatistics.pdf">2.1</a>, <a href="../lsr/slides-2.2_drawingGraphs.pdf">2.2</a>, <a href="../lsr/slides-2.3_simpleInferential.pdf">2.3</a>, <a href="../lsr/slides-2.4_linearModels.pdf">2.4</a>, <a href="../lsr/slides-2.5_dataMunging.pdf">2.5</a>] [<a href="../lsr/slides-3.1_extraStats.pdf">3.1</a>, <a href="../lsr/slides-3.2_extraR.pdf">3.2</a>]</li>
+<li>Exercises: [<a href="../lsr/exercises-1.1.html">1.1</a>, <a href="../lsr/exercises-1.2.html">1.2</a>, <a href="../lsr/exercises-1.3.html">1.3</a>] [<a href="../lsr/exercises-2.1.html">2.1</a>, <a href="../lsr/exercises-2.2.html">2.2</a>, <a href="../lsr/exercises-2.3.html">2.3</a>, <a href="../lsr/exercises-2.4.html">2.4</a>, <a href="../lsr/exercises-2.5.html">2.5</a>]</li>
+    <li>Solutions: [<a href="../lsr/solutions-1.1.html">1.1</a>, <a href="../lsr/solutions-1.2.html">1.2</a>, <a href="../lsr/solutions-1.3.html">1.3</a>] [<a href="../lsr/solutions-2.1.html">2.1</a>, <a href="../lsr/solutions-2.2.html">2.2</a>, <a href="../lsr/solutions-2.3.html">2.3</a>, <a href="../lsr/solutions-2.4.html">2.4</a>, <a href="../lsr/solutions-2.5.html">2.5</a>]</li>
+<li>Datasets: [<a href="../lsr/workshop-data.zip">all</a>]</li>
+</ul>
+
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5">
+      <div class="container">
+        <p class="m-0 text-center">&copy; UNSW Computational Cognitive Science 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
