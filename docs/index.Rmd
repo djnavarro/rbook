@@ -2,6 +2,8 @@
 title: '<div class="jumbotron"><h1 class="title toc-ignore display-3" align="center">Learning Statistics with R</h1><p class="lead" align="center">Danielle Navarro</p></div>'
 output:
   html_document:
+    includes:
+      in_header: header.html    
     theme: flatly
     highlight: textmate
     css: mystyle.css
