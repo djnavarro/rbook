@@ -42,7 +42,7 @@
 <meta name="twitter:creator" content="@djnavarro">
 <meta property="og:url" content="https://learningstatisticswithr.com">
 <meta property="og:title" content="Learning Statistics with R">
-<meta property="og:image" content="http://learningstatisticswithr.com/lsr-cover-cropped.png">
+<meta property="og:image" content="http://learningstatisticswithr.com/images/jasmine-faint.png">
 
 <!-- ###### end inserted header ##### -->
 
@@ -162,30 +162,33 @@ by Danielle Navarro <a href="https://twitter.com/djnavarro"><i class="fab fa-twi
 <li><a href="./data.zip">Data sets</a></li>
 <li><a href="https://github.com/djnavarro/rbook">Source on GitHub</a></li>
 </ul>
-<p>The book is also associated with the <code>lsr</code> package, available on CRAN and GitHub. The package is probably okay for many introductory teaching purposes, but I should note that this package hassn’t been updated for a while, and I would recommend taking care if you are using it in real world data analysis. (There’s one known issue that I’ve been meaning to fix: the <code>etaSquared</code> function can return absurd results for unbalanced designs.)</p>
-<p>The decision to release the book under a Creative Commons licence reflects the fact that I’ve found very little time to update the book myself, and I feel a little bad about that. There have been a few people who have asked about adapting the book or using it in teaching, and I’ve invariably said “yes, please do!” so it seems like a sensible thing to do is throw it open for anyone to adapt it if they would like to. Like most people writing open textbooks, I chose a BY-SA licence. As per the licence “this book can be reused, remixed, retained, revised and redistributed (including commercially) as long as appropriate credit is given to the authors. If you remix, or modify the original version of this open textbook, you must redistribute all versions of this open textbook under the same license - CC BY-SA.”</p>
+<p>The book is associated with the <code>lsr</code> package on CRAN and GitHub. The package is probably okay for many introductory teaching purposes, but some care is required. The package does have some limitations (e.g., the <code>etaSquared</code> function does strange things for unbalanced ANOVA designs), but I haven’t updated it in a while because I’ve decided to spend some time learning more about package development before tackling this.</p>
+<p>The decision to release the book under a Creative Commons licence reflects the fact that - much like the package - I’ve found very little time to update the book myself, and I feel a little bad about that. There have been a number of people who have asked about adapting the book or using it in teaching, and I’ve invariably said “yes, please do!” so it seems like a sensible thing to do is throw it open for anyone to adapt it if they would like to. Like most people writing open textbooks, I chose a BY-SA licence. As per the licence “this book can be reused, remixed, retained, revised and redistributed (including commercially) as long as appropriate credit is given to the authors. If you remix, or modify the original version of this open textbook, you must redistribute all versions of this open textbook under the same license - CC BY-SA.”</p>
 <p>There are a few projects that I’m aware of that adapt or extend some of the content from LSR</p>
 <ul>
-<li>Matt Crump’s lovely book-in-progress, <a href="https://crumplab.github.io/statistics/">Answering questions with data</a></li>
+<li>Matt Crump has a lovely book-in-progress that uses some LSR content, <a href="https://crumplab.github.io/statistics/">Answering Questions with Data</a></li>
 <li>David Foxcroft has produced a neat adaptation, <a href="%22https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi">Learning Statistics with Jamovi</a></li>
-<li>My own approach to adapting LSR is the work in progress, <a href="https://psyr.org/">R for Psychological Science</a></li>
+<li>My own approach to adapting LSR is another work-in-progress, <a href="https://psyr.org/">R for Psychological Science</a></li>
 </ul>
-<div id="i.-background" class="section level3">
-<h3>I. Background</h3>
+<p>If you know of any other projects using LSR, please let me know. I’d love to list them here!</p>
+<div id="table-of-contents" class="section level3">
+<h3>Table of Contents</h3>
+<div id="i.-background" class="section level4">
+<h4>I. Background</h4>
 <ul>
 <li><strong>Chapter 1: Why do we learn statistics?</strong> Psychology and statistics. Statistics in everyday life. Some examples where intuition is misleading, and statistics is critical.</li>
 <li><strong>Chapter 2: A brief introduction to research design.</strong> Basics of psychological measurement. Reliability and validity of a measurement. Experimental and non-experimental design. Predictors versus outcomes.</li>
 </ul>
 </div>
-<div id="ii.-an-introduction-to-r" class="section level3">
-<h3>II. An introduction to R</h3>
+<div id="ii.-an-introduction-to-r" class="section level4">
+<h4>II. An introduction to R</h4>
 <ul>
 <li><strong>Chapter 3: Getting started with R.</strong> Getting R and Rstudio. Typing commands at the console. Simple calculations. Using functions. Introduction to variables. Numeric, character and logical data. Storing multiple values as a vector.</li>
 <li><strong>Chapter 4: Additional R concepts.</strong> Installing and loading packages. The workspace. Navigating the file system. More complicated data structures: factors, data frames, lists and formulas. A brief discussion of generic functions.</li>
 </ul>
 </div>
-<div id="iii.-working-with-data" class="section level3">
-<h3>III. Working with data</h3>
+<div id="iii.-working-with-data" class="section level4">
+<h4>III. Working with data</h4>
 <ul>
 <li><strong>Chapter 5: Descriptive statistics.</strong> Mean, median and mode. Range, interquartile range and standard deviations. Skew and kurtosis. Standard scores. Correlations. Tools for computing these things in R. Brief comments missing data.</li>
 <li><strong>Chapter 6: Drawing graphs.</strong> Discussion of R graphics. Histograms. Stem and leaf plots. Boxplots. Scatterplots. Bar graphs.</li>
@@ -193,8 +196,8 @@ by Danielle Navarro <a href="https://twitter.com/djnavarro"><i class="fab fa-twi
 <li><strong>Chapter 8: Basic programming.</strong> Scripts. Loops. Conditionals. Writing functions. Implicit loops.</li>
 </ul>
 </div>
-<div id="iv.-statistical-theory" class="section level3">
-<h3>IV. Statistical theory</h3>
+<div id="iv.-statistical-theory" class="section level4">
+<h4>IV. Statistical theory</h4>
 <ul>
 <li><strong>Prelude.</strong> The riddle of induction, and why statisticians make assumptions.</li>
 <li><strong>Chapter 9: Introduction to probability.</strong> Probability versus statistics. Basics of probability theory. Common distributions: normal, binomial, t, chi-square, F. Bayesian versus frequentist probability.</li>
@@ -202,8 +205,8 @@ by Danielle Navarro <a href="https://twitter.com/djnavarro"><i class="fab fa-twi
 <li><strong>Chapter 11: Hypothesis testing.</strong> Research hypotheses versus statistical hypotheses. Null versus alternative hypotheses. Type I and Type II errors. Sampling distributions for test statistics. Hypothesis testing as decision making. p-values. Reporting the results of a test. Effect size and power. Controversies and traps in hypothesis testing.</li>
 </ul>
 </div>
-<div id="v.-statistical-tools" class="section level3">
-<h3>V. Statistical tools</h3>
+<div id="v.-statistical-tools" class="section level4">
+<h4>V. Statistical tools</h4>
 <ul>
 <li><strong>Chapter 12: Categorical data analysis.</strong> Chi-square goodness of fit test. Chi-square test of independence. Yate’s continuity correction. Effect size with Cramer’s V. Assumptions of the tests. Other tests: Fisher exact test and McNemar’s test.</li>
 <li><strong>Chapter 13: Comparing two means.</strong> One sample z-test. One sample t-test. Student’s independent sample t-test. Welch’s independent samples t-test. Paired sample t-test. Effect size with Cohen’s d. Checking the normality assumption. Wilcoxon tests for non-normal data.</li>
@@ -212,18 +215,19 @@ by Danielle Navarro <a href="https://twitter.com/djnavarro"><i class="fab fa-twi
 <li><strong>Chapter 16: Factorial ANOVA.</strong> Factorial ANOVA without interactions. Factorial ANOVA with interactions. Effect sizes, estimated marginal means, confidence intervals for effects. Assumption checking. F-tests as model selection. Interpreting ANOVA as a linear model. Specifying contrasts. Post hoc testing via Tukey’s HSD. Factorial ANOVA with unbalanced data (Type I, III and III sums of squares)</li>
 </ul>
 </div>
-<div id="vi.-other-topics" class="section level3">
-<h3>VI. Other topics</h3>
+<div id="vi.-other-topics" class="section level4">
+<h4>VI. Other topics</h4>
 <ul>
 <li><strong>Chapter 17: Bayesian statistics.</strong> Introduction to Bayesian inference. Bayesian analysis of contingency tables. Bayesian t-tests, ANOVAs and regressions.</li>
 <li><strong>Chapter 18: Epilogue.</strong> Comments on the content missing from this book. Advantages to using R.</li>
-<li><strong>References.</strong> Massively incomplete reference list.</li>
+<li><strong>References.</strong> An incomplete reference list.</li>
 </ul>
 <br>
 <center>
 —-    <a href="https://twitter.com/djnavarro"><i class="fab fa-twitter"></i></a>   <a href="https://compcogscisydney.org"><i class="fas fa-home"></i></a>   <a href="https://github.com/djnavarro"><i class="fab fa-github"></i></a>   <a href="mailto:d.navarro@unsw.edu.au"><i class="fas fa-paper-plane"></i></a>    —-
 </center>
 <p><br> <br></p>
+</div>
 </div>
 
 
