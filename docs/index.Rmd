@@ -21,7 +21,7 @@ Back in the grimdark pre-Snapchat era of humanity (i.e. early 2011), I started t
 - [Data sets](./data.zip)
 - [Source on GitHub](https://github.com/djnavarro/rbook)
 
-The book is also associated with the `lsr` package, available on CRAN and github. The package is probably okay for many introductory teaching purposes, but I should note that this package isn't being actively updated, and I would strongly recommend taking care if you are thinking of using it in real world data analysis. (There's one known bug that I've been meaning to fix: the `etaSquared` function returns absurd results for unbalanced designs)
+The book is also associated with the `lsr` package, available on CRAN and GitHub. The package is probably okay for many introductory teaching purposes, but I should note that this package hassn't been updated for a while, and I would recommend taking care if you are using it in real world data analysis. (There's one known issue that I've been meaning to fix: the `etaSquared` function can return absurd results for unbalanced designs.)
 
 The decision to release the book under a Creative Commons licence reflects the fact that I've found very little time to update the book myself, and I feel a little bad about that. There have been a few people who have asked about adapting the book or using it in teaching, and I've invariably said "yes, please do!" so it seems like a sensible thing to do is throw it open for anyone to adapt it if they would like to. Like most people writing open textbooks, I chose a BY-SA licence. As per the licence "this book can be reused, remixed, retained, revised and redistributed (including commercially) as long as appropriate credit is given to the authors. If you remix, or modify the original version of this open textbook, you must redistribute all versions of this open textbook under the same license - CC BY-SA."
 
@@ -29,7 +29,7 @@ There are a few projects that I'm aware of that adapt or extend some of the cont
 
 - Matt Crump's lovely book-in-progress, <a href="https://crumplab.github.io/statistics/">Answering questions with data</a>
 - David Foxcroft has produced a neat adaptation, [Learning Statistics with Jamovi]("https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
-- My own adaptation is a work in progress, [R for Psychological Science](https://compcogscisydney.org/psyr/)
+- My own approach to adapting LSR is the work in progress, [R for Psychological Science](https://psyr.org/)
 
 
 ### I. Background

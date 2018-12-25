@@ -25,5 +25,9 @@ blockquote{
   border: 0;
   border-radius: 5px;
 }
-
+.jumbotron{
+ background-image: url("jasmine-flat.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+}
 
