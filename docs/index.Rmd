@@ -27,8 +27,9 @@ The decision to release the book under a Creative Commons licence reflects the f
 
 There are a few projects that I'm aware of that adapt or extend some of the content from LSR
 
+- Emily Kothe has a fantastic [conversion to bookdown](https://bookdown.org/ekothe/navarro2/) and tidyverse in progress
 - Matt Crump has a lovely book-in-progress that uses some LSR content, [Answering Questions with Data](https://crumplab.github.io/statistics/)
-- David Foxcroft has produced a neat adaptation, [Learning Statistics with Jamovi]("https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
+- David Foxcroft has produced a really slick adaptation to jamovi, [Learning Statistics with Jamovi]("https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
 - My own approach to adapting LSR is another work-in-progress, [R for Psychological Science](https://psyr.org/)
 
 If you know of any other projects using LSR, please let me know. I'd love to list them here! 
