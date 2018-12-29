@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Descriptive statistics{#descriptives}
 
 Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what **_descriptive statistics_** (as opposed to inferential statistics) is all about. In fact, to many people the term "statistics" is synonymous with descriptive statistics. It is this topic that we'll consider in this chapter, but before going into any details, let's take a moment to get a sense of why we need descriptive statistics. To do this, let's load the `aflsmall.Rdata` file, and use the `who()` function in the `lsr` package to see what variables are stored in the file:
@@ -352,7 +357,7 @@ knitr::kable(rbind(c("",1 , 56 , 19.4  , 376.36),
                    c("",3 , 56 , 19.4  , 376.36),
                    c("",4 , 8 , -28.6  , 817.96),
                    c("",5 , 32 , -4.6  , 21.16)),
-caption = 'Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it\'s important to be familiar with them at the outset. There are others as well, which I\'ll discuss in Chapter \\@ref(datahandling)',col.names = c("Notation [English]", 
+caption = 'Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it\'s important to be familiar with them at the outset.',col.names = c("Notation [English]", 
                                                        "$i$ [which game]",
                                                        "$X_i$ [value]",
                                                        "$X_i - \\bar{X}$ [deviation from mean]",
@@ -622,7 +627,7 @@ kurtosi( x = afl.margins )
 we discover that the AFL winning margins data are just pointy enough.
 
 
-## Getting an overall summary of a variable {#summary}
+## Getting an overall summary of a variable{#summary}
 
 Up to this point in the chapter I've explained several different summary statistics that are commonly used when analysing data, along with specific functions that you can use in R to calculate each one. However, it's kind of annoying to have to separately calculate means, medians, standard deviations, skews etc. Wouldn't it be nice if R had some helpful functions that would do all these tedious calculations at once? Something like `summary()` or `describe()`, perhaps? Why yes, yes it would. So much so that both of these functions exist. The `summary()` function is in the `base` package, so it comes with every installation of R. The `describe()` function is part of the `psych` package, which we loaded earlier in the chapter.
 
@@ -1046,25 +1051,36 @@ oneCorPlot(X1,Y1,xlab="X1",ylab="Y1")
 
 ```
 
-More recently, @matejka2017 demonstated the ability to create drastically different datasets with the same correlation between X-Y as well as the same means and standard deviations.
-
-```{r data_dino, fig.caption="Another way of visualising this is this gif. All graphs show data with the same means, standard deviations, and correlation", echo=FALSE}
-knitr::include_graphics("./img/descriptives/data_dino.gif")
-```
-
 The lesson here, which so very many people seem to forget in real life is "*always graph your raw data*". This will be the focus of Chapter \@ref(graphics).
 
 
 ### Spearman's rank correlations
 
-\begin{figure}[t]
-\begin{center}
-\epsfig{file=../img/descriptives/ordinalRelationship.eps,clip=true,width=9cm}
-\end{center}
-\caption{The relationship between hours worked and grade received, for a toy data set consisting of only 10 students (each circle corresponds to one student). The dashed line through the middle shows the linear relationship between the two variables. This produces a strong Pearson correlation of $r = .91$. However, the interesting thing to note here is that there's actually a perfect monotonic relationship between the two variables: in this toy example at least, increasing the hours worked always increases the grade received, as illustrated by the solid line. This is reflected in a Spearman correlation of $\rho = 1$. With such a small data set, however, it's an open question as to which version better describes the actual relationship involved. }
-\HR
-{#fig:rankcorrpic}
-\end{figure}
+```{r rankcorrpic, fig.cap="The relationship between hours worked and grade received, for a toy data set consisting of only 10 students (each circle corresponds to one student). The dashed line through the middle shows the linear relationship between the two variables. This produces a strong Pearson correlation of $r = .91$. However, the interesting thing to note here is that there's actually a perfect monotonic relationship between the two variables: in this toy example at least, increasing the hours worked always increases the grade received, as illustrated by the solid line. This is reflected in a Spearman correlation of $rho = 1$. With such a small data set, however, it's an open question as to which version better describes the actual relationship involved. ", echo=FALSE}
+
+describeImg <- list()
+emphCol <- rgb(0,0,1)
+emphColLight <- rgb(.5,.5,1)
+emphGrey <- grey(.5)
+
+eps <- TRUE
+colour <- TRUE
+width <- 7
+	height <- 6
+	
+	# load data
+	load("./data/effort.Rdata")
+	require(lsr)
+	effort <- sortFrame(effort,hours)
+
+	# draw the plot
+	plot(effort$hours,effort$grade,type="b",col=ifelse(colour,emphCol,"black"),
+		xlab="Hours Worked",ylab="Grade Received",xlim=c(0,80),ylim=c(0,100),
+		pch=19,lwd=3)
+	abline(coef=lm(grade~hours,effort)$coef,lty=2)
+	
+
+```
 
 The Pearson correlation coefficient is useful for a lot of things, but it does have shortcomings. One issue in particular stands out: what it actually measures is the strength of the *linear* relationship between two variables. In other words, what it gives you is a measure of the extent to which the data all tend to fall on a single, perfectly straight line. Often, this is a pretty good approximation to what we mean when we say "relationship", and so the Pearson correlation is a good thing to calculation. Sometimes, it isn't. 
 
@@ -1106,21 +1122,20 @@ How should we address this? Actually, it's really easy: if we're looking for ord
 
 Okay, so let's have a look at our students when we rank them from worst to best in terms of effort and reward: 
 
-\begin{center}
-\begin{tabular}{c|cc}
-& rank (hours worked) & rank (grade received) \\ \hline
-student    1 &   1 &   1 $
-student  2  & 10   &10 $
-student   3 &   6  &  6 $
-student    4 &   2 &   2 $
-student    5 &   3 &   3 $
-student   6  &  5  &  5 $
-student   7  &  4  &  4 $
-student   8  &  8  &  8 $
-student  9   & 7  &  7 $
-student   10  &  9&    9
-\end{tabular}
-\end{center}
+
+| | rank (hours worked) | rank (grade received) |
+|-|---------------------|-----------------------|
+|student | 1 |   1 |   1 |
+|student | 2  | 10   |10 |
+|student | 3 |   6  |  6 |
+|student | 4 |   2 |   2 |
+|student | 5 |   3 |   3 |
+|student | 6  |  5  |  5 |
+|student | 7  |  4  |  4 |
+|student | 8  |  8  |  8 |
+|student | 9   | 7  |  7 |
+|student | 10  |  9|    9
+
 Hm. These are *identical*. The student who put in the most effort got the best grade, the student with the least effort got the worst grade, etc. We can get R to construct these rankings using the `rank()` function, like this:
 ```
 > hours.rank <- rank( effort$hours )   # rank students by hours worked
@@ -1215,7 +1230,7 @@ day.type      .      .     .      .       .      .        .
 Obviously, there's no new functionality in the `correlate()` function, and any advanced R user would be perfectly capable of using the `cor()` function to get these numbers out. But if you're not yet comfortable with extracting a subset of a data frame, the `correlate()` function is for you.
 
 
-## Handling missing values {#missing}
+## Handling missing values{#missing}
 
 There's one last topic that I want to discuss briefly in this chapter, and that's the issue of **_missing data_**. Real data sets very frequently turn out to have missing values: perhaps someone forgot to fill in a particular survey question, for instance. Missing data can be the source of a lot of tricky issues, most of which I'm going to gloss over. However, at a minimum, you need to understand the basics of handling missing data in R. 
 
@@ -1327,7 +1342,7 @@ Calculating some basic descriptive statistics is one of the very first things yo
 
 
 - *Measures of central tendency*. Broadly speaking, central tendency measures tell you where the data are. There's three measures that are typically reported in the literature: the mean, median and mode. (Section \@ref(centraltendency))
-- *Measures of variability*. In contrast, measures of variability tell you about how "spread out" the data are. The key measures are: range, standard deviation, interquartile reange (Section@refsec:var)
+- *Measures of variability*. In contrast, measures of variability tell you about how "spread out" the data are. The key measures are: range, standard deviation, interquartile reange (Section \@ref(var))
 - *Getting summaries of variables in R*. Since this book focuses on doing data analysis in R, we spent a bit of time talking about how descriptive statistics are computed in R. (Section \ref{sec:summary} and \@ref(groupdescriptives))
 - *Standard scores*. The $z$-score is a slightly unusual beast. It's not quite a descriptive statistic, and not quite an inference. We talked about it in Section \@ref(zscore). Make sure you understand that section: it'll come up again later. 
 - *Correlations*. Want to know how strong the relationship is between two variables? Calculate a correlation. (Section \@ref(correl))

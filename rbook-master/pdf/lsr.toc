@@ -1,0 +1,568 @@
+\contentsline {chapter}{Preface}{ix}{chapter*.1}
+\contentsline {part}{I\hspace {1em}Background}{1}{part.1}
+\contentsline {chapter}{\numberline {1}Why do we learn statistics?\nobreakspace {}}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}On the psychology of statistics\nobreakspace {}}{3}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}The curse of belief bias}{4}{subsection.1.1.1}
+\contentsline {section}{\numberline {1.2}The cautionary tale of Simpson's paradox}{6}{section.1.2}
+\contentsline {section}{\numberline {1.3}Statistics in psychology}{8}{section.1.3}
+\contentsline {section}{\numberline {1.4}Statistics in everyday life}{10}{section.1.4}
+\contentsline {section}{\numberline {1.5}There's more to research methods than statistics}{10}{section.1.5}
+\contentsline {chapter}{\numberline {2}A brief introduction to research design}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction to psychological measurement\nobreakspace {}}{11}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Some thoughts about psychological measurement}{11}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Operationalisation: defining your measurement}{13}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Scales of measurement}{14}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Nominal scale}{14}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Ordinal scale}{15}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Interval scale}{16}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Ratio scale}{16}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Continuous versus discrete variables\nobreakspace {}}{17}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Some complexities}{18}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Assessing the reliability of a measurement\nobreakspace {}}{19}{section.2.3}
+\contentsline {section}{\numberline {2.4}The ``role'' of variables: predictors and outcomes }{20}{section.2.4}
+\contentsline {section}{\numberline {2.5}Experimental and non-experimental research\nobreakspace {}}{20}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Experimental research}{21}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Non-experimental research}{21}{subsection.2.5.2}
+\contentsline {section}{\numberline {2.6}Assessing the validity of a study\nobreakspace {}}{22}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Internal validity}{22}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}External validity}{23}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}Construct validity}{24}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.4}Face validity}{24}{subsection.2.6.4}
+\contentsline {subsection}{\numberline {2.6.5}Ecological validity}{25}{subsection.2.6.5}
+\contentsline {section}{\numberline {2.7}Confounds, artifacts and other threats to validity}{25}{section.2.7}
+\contentsline {subsection}{\numberline {2.7.1}History effects}{26}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.2}Maturation effects}{26}{subsection.2.7.2}
+\contentsline {subsection}{\numberline {2.7.3}Repeated testing effects}{27}{subsection.2.7.3}
+\contentsline {subsection}{\numberline {2.7.4}Selection bias}{27}{subsection.2.7.4}
+\contentsline {subsection}{\numberline {2.7.5}Differential attrition}{27}{subsection.2.7.5}
+\contentsline {subsection}{\numberline {2.7.6}Non-response bias}{28}{subsection.2.7.6}
+\contentsline {subsection}{\numberline {2.7.7}Regression to the mean}{29}{subsection.2.7.7}
+\contentsline {subsection}{\numberline {2.7.8}Experimenter bias}{29}{subsection.2.7.8}
+\contentsline {subsection}{\numberline {2.7.9}Demand effects and reactivity}{30}{subsection.2.7.9}
+\contentsline {subsection}{\numberline {2.7.10}Placebo effects}{31}{subsection.2.7.10}
+\contentsline {subsection}{\numberline {2.7.11}Situation, measurement and subpopulation effects}{31}{subsection.2.7.11}
+\contentsline {subsection}{\numberline {2.7.12}Fraud, deception and self-deception}{31}{subsection.2.7.12}
+\contentsline {section}{\numberline {2.8}Summary}{33}{section.2.8}
+\contentsline {part}{II\hspace {1em}An introduction to \textsf {R}}{35}{part.2}
+\contentsline {chapter}{\numberline {3}Getting started with \textsf {R}\nobreakspace {}}{37}{chapter.3}
+\contentsline {section}{\numberline {3.1}Installing \textsf {R}\nobreakspace {}}{38}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Installing \textsf {R}\ on a Windows computer}{39}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Installing \textsf {R}\ on a Mac}{39}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Installing \textsf {R}\ on a Linux computer}{39}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Downloading and installing Rstudio}{39}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.5}Starting up \textsf {R}\nobreakspace {}}{40}{subsection.3.1.5}
+\contentsline {section}{\numberline {3.2}Typing commands at the \textsf {R}\ console}{42}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Be very careful to avoid typos}{42}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}\textsf {R}\ is (a bit) flexible with spacing}{43}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}\textsf {R}\ can sometimes tell that you're not finished yet (but not often)}{44}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Doing simple calculations with \textsf {R}\nobreakspace {}}{46}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Adding, subtracting, multiplying and dividing}{46}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Taking powers}{46}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Doing calculations in the right order}{47}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Storing a number as a variable\nobreakspace {}}{48}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Variable assignment using \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}<-}} and \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}->}}}{48}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Doing calculations using variables}{49}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Rules and conventions for naming variables}{50}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Using functions to do calculations}{51}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Function arguments, their names and their defaults\nobreakspace {}}{53}{subsection.3.5.1}
+\contentsline {section}{\numberline {3.6}Letting Rstudio help you with your commands}{54}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Autocomplete using ``tab''}{55}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Browsing your command history}{56}{subsection.3.6.2}
+\contentsline {section}{\numberline {3.7}Storing many numbers as a vector\nobreakspace {}}{57}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Creating a vector}{57}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}A handy digression}{58}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}Getting information out of vectors}{58}{subsection.3.7.3}
+\contentsline {subsection}{\numberline {3.7.4}Altering the elements of a vector}{59}{subsection.3.7.4}
+\contentsline {subsection}{\numberline {3.7.5}Useful things to know about vectors\nobreakspace {}}{59}{subsection.3.7.5}
+\contentsline {section}{\numberline {3.8}Storing text data}{60}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Working with text\nobreakspace {}}{61}{subsection.3.8.1}
+\contentsline {section}{\numberline {3.9}Storing ``true or false'' data}{61}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Assessing mathematical truths}{61}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Logical operations}{62}{subsection.3.9.2}
+\contentsline {subsection}{\numberline {3.9.3}Storing and using logical data}{64}{subsection.3.9.3}
+\contentsline {subsection}{\numberline {3.9.4}Vectors of logicals}{65}{subsection.3.9.4}
+\contentsline {subsection}{\numberline {3.9.5}Applying logical operation to text\nobreakspace {}}{66}{subsection.3.9.5}
+\contentsline {section}{\numberline {3.10}Indexing vectors\nobreakspace {}}{66}{section.3.10}
+\contentsline {subsection}{\numberline {3.10.1}Extracting multiple elements}{66}{subsection.3.10.1}
+\contentsline {subsection}{\numberline {3.10.2}Logical indexing}{67}{subsection.3.10.2}
+\contentsline {section}{\numberline {3.11}Quitting \textsf {R}}{69}{section.3.11}
+\contentsline {section}{\numberline {3.12}Summary}{70}{section.3.12}
+\contentsline {chapter}{\numberline {4}Additional \textsf {R}\ concepts\nobreakspace {}}{73}{chapter.4}
+\contentsline {section}{\numberline {4.1}Using comments\nobreakspace {}}{73}{section.4.1}
+\contentsline {section}{\numberline {4.2}Installing and loading packages\nobreakspace {}}{74}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}The package panel in Rstudio}{74}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Loading a package}{75}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Unloading a package}{76}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}A few extra comments}{77}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Downloading new packages}{78}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.6}Updating \textsf {R}\ and \textsf {R}\ packages}{78}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.7}What packages does this book use?}{79}{subsection.4.2.7}
+\contentsline {section}{\numberline {4.3}Managing the workspace}{80}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Listing the contents of the workspace}{80}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Removing variables from the workspace}{82}{subsection.4.3.2}
+\contentsline {section}{\numberline {4.4}Navigating the file system}{83}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}The file system itself\nobreakspace {}}{83}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Navigating the file system using the \textsf {R}\ console\nobreakspace {}}{84}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Why do the Windows paths use the wrong slash?}{85}{subsection.4.4.3}
+\contentsline {subsection}{\numberline {4.4.4}Navigating the file system using the Rstudio file panel}{86}{subsection.4.4.4}
+\contentsline {section}{\numberline {4.5}Loading and saving data}{87}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Loading workspace files using \textsf {R}}{87}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Loading workspace files using Rstudio}{88}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}Importing data from CSV files using \textsf {R}}{88}{subsection.4.5.3}
+\contentsline {subsection}{\numberline {4.5.4}Importing data from CSV files using Rstudio}{90}{subsection.4.5.4}
+\contentsline {subsection}{\numberline {4.5.5}Saving a workspace file using \textsf {R}}{91}{subsection.4.5.5}
+\contentsline {subsection}{\numberline {4.5.6}Saving a workspace file using Rstudio}{92}{subsection.4.5.6}
+\contentsline {subsection}{\numberline {4.5.7}Other things you might want to save}{93}{subsection.4.5.7}
+\contentsline {section}{\numberline {4.6}Useful things to know about variables\nobreakspace {}}{93}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Special values}{94}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Assigning names to vector elements\nobreakspace {}}{94}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Variable classes}{95}{subsection.4.6.3}
+\contentsline {section}{\numberline {4.7}Factors}{97}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Introducing factors}{98}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.2}Labelling the factor levels}{98}{subsection.4.7.2}
+\contentsline {subsection}{\numberline {4.7.3}Moving on...}{99}{subsection.4.7.3}
+\contentsline {section}{\numberline {4.8}Data frames}{100}{section.4.8}
+\contentsline {subsection}{\numberline {4.8.1}Introducing data frames}{100}{subsection.4.8.1}
+\contentsline {subsection}{\numberline {4.8.2}Pulling out the contents of the data frame using \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}\$}}}{101}{subsection.4.8.2}
+\contentsline {subsection}{\numberline {4.8.3}Getting information about a data frame}{101}{subsection.4.8.3}
+\contentsline {subsection}{\numberline {4.8.4}Looking for more on data frames?}{102}{subsection.4.8.4}
+\contentsline {section}{\numberline {4.9}Lists\nobreakspace {}}{102}{section.4.9}
+\contentsline {section}{\numberline {4.10}Formulas}{103}{section.4.10}
+\contentsline {section}{\numberline {4.11}Generic functions\nobreakspace {}}{104}{section.4.11}
+\contentsline {section}{\numberline {4.12}Getting help\nobreakspace {}}{105}{section.4.12}
+\contentsline {subsection}{\numberline {4.12.1}How to read the help documentation}{105}{subsection.4.12.1}
+\contentsline {subsection}{\numberline {4.12.2}Other resources}{108}{subsection.4.12.2}
+\contentsline {section}{\numberline {4.13}Summary}{109}{section.4.13}
+\contentsline {part}{III\hspace {1em}Working with data}{111}{part.3}
+\contentsline {chapter}{\numberline {5}Descriptive statistics}{113}{chapter.5}
+\contentsline {section}{\numberline {5.1}Measures of central tendency\nobreakspace {}}{114}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}The mean}{114}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Calculating the mean in \textsf {R}}{116}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}The median}{117}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Mean or median? What's the difference?}{118}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}A real life example\nobreakspace {}}{119}{subsection.5.1.5}
+\contentsline {subsection}{\numberline {5.1.6}Trimmed mean}{120}{subsection.5.1.6}
+\contentsline {subsection}{\numberline {5.1.7}Mode}{121}{subsection.5.1.7}
+\contentsline {section}{\numberline {5.2}Measures of variability}{123}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Range}{123}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Interquartile range}{123}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Mean absolute deviation\nobreakspace {}}{124}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Variance}{125}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Standard deviation}{128}{subsection.5.2.5}
+\contentsline {subsection}{\numberline {5.2.6}Median absolute deviation }{129}{subsection.5.2.6}
+\contentsline {subsection}{\numberline {5.2.7}Which measure to use?}{130}{subsection.5.2.7}
+\contentsline {section}{\numberline {5.3}Skew and kurtosis }{131}{section.5.3}
+\contentsline {section}{\numberline {5.4}Getting an overall summary of a variable\nobreakspace {}}{133}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}``Summarising'' a variable}{133}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}``Summarising'' a data frame}{134}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}``Describing'' a data frame}{135}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Descriptive statistics separately for each group\nobreakspace {}}{136}{section.5.5}
+\contentsline {section}{\numberline {5.6}Standard scores\nobreakspace {}}{138}{section.5.6}
+\contentsline {section}{\numberline {5.7}Correlations}{139}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}The data}{140}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}The strength and direction of a relationship}{141}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.7.3}The correlation coefficient}{142}{subsection.5.7.3}
+\contentsline {subsection}{\numberline {5.7.4}Calculating correlations in \textsf {R}}{143}{subsection.5.7.4}
+\contentsline {subsection}{\numberline {5.7.5}Interpreting a correlation\nobreakspace {}}{145}{subsection.5.7.5}
+\contentsline {subsection}{\numberline {5.7.6}Spearman's rank correlations}{146}{subsection.5.7.6}
+\contentsline {subsection}{\numberline {5.7.7}The \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}correlate()}} function}{149}{subsection.5.7.7}
+\contentsline {section}{\numberline {5.8}Handling missing values\nobreakspace {}}{151}{section.5.8}
+\contentsline {subsection}{\numberline {5.8.1}The single variable case}{151}{subsection.5.8.1}
+\contentsline {subsection}{\numberline {5.8.2}Missing values in pairwise calculations}{152}{subsection.5.8.2}
+\contentsline {section}{\numberline {5.9}Summary}{154}{section.5.9}
+\contentsline {subsection}{\numberline {5.9.1}Epilogue: Good descriptive statistics are descriptive!}{155}{subsection.5.9.1}
+\contentsline {chapter}{\numberline {6}Drawing graphs}{157}{chapter.6}
+\contentsline {section}{\numberline {6.1}An overview of \textsf {R}\ graphics}{158}{section.6.1}
+\contentsline {section}{\numberline {6.2}An introduction to plotting\nobreakspace {}}{160}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}A tedious digression}{160}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Customising the title and the axis labels\nobreakspace {}}{162}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Changing the plot type}{164}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Changing other features of the plot}{166}{subsection.6.2.4}
+\contentsline {subsection}{\numberline {6.2.5}Changing the appearance of the axes}{167}{subsection.6.2.5}
+\contentsline {subsection}{\numberline {6.2.6}Don't panic}{170}{subsection.6.2.6}
+\contentsline {section}{\numberline {6.3}Histograms}{170}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Visual style of your histogram}{173}{subsection.6.3.1}
+\contentsline {section}{\numberline {6.4}Stem and leaf plots\nobreakspace {}}{173}{section.6.4}
+\contentsline {section}{\numberline {6.5}Boxplots\nobreakspace {}}{175}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Visual style of your boxplot}{176}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Using box plots to detect outliers\nobreakspace {}}{179}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}Drawing multiple boxplots\nobreakspace {}}{181}{subsection.6.5.3}
+\contentsline {section}{\numberline {6.6}Scatterplots}{183}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}More elaborate options}{186}{subsection.6.6.1}
+\contentsline {section}{\numberline {6.7}Bar graphs}{187}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Changing global settings using \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}par()}}}{190}{subsection.6.7.1}
+\contentsline {section}{\numberline {6.8}Saving image files using \textsf {R}\ and Rstudio\nobreakspace {}}{191}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}The ugly details }{192}{subsection.6.8.1}
+\contentsline {section}{\numberline {6.9}Summary}{193}{section.6.9}
+\contentsline {chapter}{\numberline {7}Pragmatic matters\nobreakspace {}}{195}{chapter.7}
+\contentsline {section}{\numberline {7.1}Tabulating and cross-tabulating data}{196}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Creating tables from vectors}{196}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Creating tables from data frames}{197}{subsection.7.1.2}
+\contentsline {subsection}{\numberline {7.1.3}Converting a table of counts to a table of proportions}{198}{subsection.7.1.3}
+\contentsline {subsection}{\numberline {7.1.4}Low level tabulation}{199}{subsection.7.1.4}
+\contentsline {section}{\numberline {7.2}Transforming and recoding a variable\nobreakspace {}}{199}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Creating a transformed variable}{199}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Cutting a numeric variable into categories}{201}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}A few more mathematical functions and operations\nobreakspace {}}{203}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Rounding a number}{204}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Modulus and integer division}{205}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Logarithms and exponentials}{206}{subsection.7.3.3}
+\contentsline {section}{\numberline {7.4}Extracting a subset of a vector\nobreakspace {}}{207}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Refresher}{208}{subsection.7.4.1}
+\contentsline {subsection}{\numberline {7.4.2}Using \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}\%in\%}} to match multiple cases}{208}{subsection.7.4.2}
+\contentsline {subsection}{\numberline {7.4.3}Using negative indices to drop elements}{208}{subsection.7.4.3}
+\contentsline {subsection}{\numberline {7.4.4}Splitting a vector by group}{209}{subsection.7.4.4}
+\contentsline {section}{\numberline {7.5}Extracting a subset of a data frame\nobreakspace {}}{210}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Using the \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}subset()}} function}{211}{subsection.7.5.1}
+\contentsline {subsection}{\numberline {7.5.2}Using square brackets: I. Rows and columns}{212}{subsection.7.5.2}
+\contentsline {subsection}{\numberline {7.5.3}Using square brackets: II. Some elaborations}{214}{subsection.7.5.3}
+\contentsline {subsection}{\numberline {7.5.4}Using square brackets: III. Understanding ``dropping''\nobreakspace {}}{215}{subsection.7.5.4}
+\contentsline {subsection}{\numberline {7.5.5}Using square brackets: IV. Columns only}{216}{subsection.7.5.5}
+\contentsline {section}{\numberline {7.6}Sorting, flipping and merging data\nobreakspace {}}{218}{section.7.6}
+\contentsline {subsection}{\numberline {7.6.1}Sorting a numeric or character vector}{218}{subsection.7.6.1}
+\contentsline {subsection}{\numberline {7.6.2}Sorting a factor}{219}{subsection.7.6.2}
+\contentsline {subsection}{\numberline {7.6.3}Sorting a data frame\nobreakspace {}}{219}{subsection.7.6.3}
+\contentsline {subsection}{\numberline {7.6.4}Binding vectors together}{220}{subsection.7.6.4}
+\contentsline {subsection}{\numberline {7.6.5}Binding multiple copies of the same vector together}{221}{subsection.7.6.5}
+\contentsline {subsection}{\numberline {7.6.6}Transposing a matrix or data frame}{222}{subsection.7.6.6}
+\contentsline {section}{\numberline {7.7}Reshaping a data frame}{224}{section.7.7}
+\contentsline {subsection}{\numberline {7.7.1}Long form and wide form data}{224}{subsection.7.7.1}
+\contentsline {subsection}{\numberline {7.7.2}Reshaping data using \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}wideToLong()}}}{225}{subsection.7.7.2}
+\contentsline {subsection}{\numberline {7.7.3}Reshaping data using \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}longToWide()}}}{226}{subsection.7.7.3}
+\contentsline {subsection}{\numberline {7.7.4}Reshaping with multiple within-subject factors}{227}{subsection.7.7.4}
+\contentsline {subsection}{\numberline {7.7.5}What other options are there?}{228}{subsection.7.7.5}
+\contentsline {section}{\numberline {7.8}Working with text\nobreakspace {}}{229}{section.7.8}
+\contentsline {subsection}{\numberline {7.8.1}Shortening a string}{229}{subsection.7.8.1}
+\contentsline {subsection}{\numberline {7.8.2}Pasting strings together}{230}{subsection.7.8.2}
+\contentsline {subsection}{\numberline {7.8.3}Splitting strings}{231}{subsection.7.8.3}
+\contentsline {subsection}{\numberline {7.8.4}Making simple conversions}{232}{subsection.7.8.4}
+\contentsline {subsection}{\numberline {7.8.5}Applying logical operations to text\nobreakspace {}}{232}{subsection.7.8.5}
+\contentsline {subsection}{\numberline {7.8.6}Concatenating and printing with \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}cat()}}}{233}{subsection.7.8.6}
+\contentsline {subsection}{\numberline {7.8.7}Using escape characters in text\nobreakspace {}}{234}{subsection.7.8.7}
+\contentsline {subsection}{\numberline {7.8.8}Matching and substituting text}{236}{subsection.7.8.8}
+\contentsline {subsection}{\numberline {7.8.9}Regular expressions (not really)\nobreakspace {}}{237}{subsection.7.8.9}
+\contentsline {section}{\numberline {7.9}Reading unusual data files\nobreakspace {}}{237}{section.7.9}
+\contentsline {subsection}{\numberline {7.9.1}Loading data from text files}{238}{subsection.7.9.1}
+\contentsline {subsection}{\numberline {7.9.2}Loading data from SPSS (and other statistics packages)}{239}{subsection.7.9.2}
+\contentsline {subsection}{\numberline {7.9.3}Loading Excel files}{240}{subsection.7.9.3}
+\contentsline {subsection}{\numberline {7.9.4}Loading Matlab (\& Octave) files}{240}{subsection.7.9.4}
+\contentsline {subsection}{\numberline {7.9.5}Saving other kinds of data}{241}{subsection.7.9.5}
+\contentsline {subsection}{\numberline {7.9.6}Are we done yet?}{241}{subsection.7.9.6}
+\contentsline {section}{\numberline {7.10}Coercing data from one class to another}{241}{section.7.10}
+\contentsline {section}{\numberline {7.11}Other useful data structures\nobreakspace {}}{242}{section.7.11}
+\contentsline {subsection}{\numberline {7.11.1}Matrices\nobreakspace {} (and arrays)}{242}{subsection.7.11.1}
+\contentsline {subsection}{\numberline {7.11.2}Ordered factors\nobreakspace {}}{245}{subsection.7.11.2}
+\contentsline {subsection}{\numberline {7.11.3}Dates and times }{246}{subsection.7.11.3}
+\contentsline {section}{\numberline {7.12}Miscellaneous topics\nobreakspace {}}{247}{section.7.12}
+\contentsline {subsection}{\numberline {7.12.1}The problems with floating point arithmetic}{248}{subsection.7.12.1}
+\contentsline {subsection}{\numberline {7.12.2}The recycling rule\nobreakspace {}}{249}{subsection.7.12.2}
+\contentsline {subsection}{\numberline {7.12.3}An introduction to environments\nobreakspace {}}{250}{subsection.7.12.3}
+\contentsline {subsection}{\numberline {7.12.4}Attaching a data frame}{251}{subsection.7.12.4}
+\contentsline {section}{\numberline {7.13}Summary}{252}{section.7.13}
+\contentsline {chapter}{\numberline {8}Basic programming\nobreakspace {}}{253}{chapter.8}
+\contentsline {section}{\numberline {8.1}Scripts}{253}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Why use scripts?}{254}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Our first script}{255}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Using Rstudio to write scripts}{256}{subsection.8.1.3}
+\contentsline {subsection}{\numberline {8.1.4}Commenting your script}{258}{subsection.8.1.4}
+\contentsline {subsection}{\numberline {8.1.5}Differences between scripts and the command line}{259}{subsection.8.1.5}
+\contentsline {subsection}{\numberline {8.1.6}Done!}{259}{subsection.8.1.6}
+\contentsline {section}{\numberline {8.2}Loops}{259}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}The \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}while}} loop}{259}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}The \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}for}} loop\nobreakspace {}}{260}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}A more realistic example of a loop}{261}{subsection.8.2.3}
+\contentsline {section}{\numberline {8.3}Conditional statements}{263}{section.8.3}
+\contentsline {section}{\numberline {8.4}Writing functions}{264}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Function arguments revisited\nobreakspace {}}{265}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}There's more to functions than this}{266}{subsection.8.4.2}
+\contentsline {section}{\numberline {8.5}Implicit loops}{267}{section.8.5}
+\contentsline {section}{\numberline {8.6}Summary}{268}{section.8.6}
+\contentsline {part}{IV\hspace {1em}Statistical theory}{269}{part.4}
+\contentsline {chapter}{\numberline {9}Introduction to probability}{275}{chapter.9}
+\contentsline {section}{\numberline {9.1}How are probability and statistics different?\nobreakspace {}}{276}{section.9.1}
+\contentsline {section}{\numberline {9.2}What does probability mean?}{277}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}The frequentist view}{277}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}The Bayesian view}{280}{subsection.9.2.2}
+\contentsline {subsection}{\numberline {9.2.3}What's the difference? And who is right?}{280}{subsection.9.2.3}
+\contentsline {section}{\numberline {9.3}Basic probability theory\nobreakspace {}}{281}{section.9.3}
+\contentsline {subsection}{\numberline {9.3.1}Introducing probability distributions}{281}{subsection.9.3.1}
+\contentsline {section}{\numberline {9.4}The binomial distribution}{283}{section.9.4}
+\contentsline {subsection}{\numberline {9.4.1}Introducing the binomial}{283}{subsection.9.4.1}
+\contentsline {subsection}{\numberline {9.4.2}Working with the binomial distribution in \textsf {R}}{284}{subsection.9.4.2}
+\contentsline {section}{\numberline {9.5}The normal distribution}{289}{section.9.5}
+\contentsline {subsection}{\numberline {9.5.1}Probability density\nobreakspace {} }{291}{subsection.9.5.1}
+\contentsline {section}{\numberline {9.6}Other useful distributions\nobreakspace {}}{294}{section.9.6}
+\contentsline {section}{\numberline {9.7}Summary}{298}{section.9.7}
+\contentsline {chapter}{\numberline {10}Estimating unknown quantities from a sample}{301}{chapter.10}
+\contentsline {section}{\numberline {10.1}Samples, populations and sampling\nobreakspace {}}{301}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Defining a population\nobreakspace {}}{302}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}Simple random samples}{302}{subsection.10.1.2}
+\contentsline {subsection}{\numberline {10.1.3}Most samples are not simple random samples}{304}{subsection.10.1.3}
+\contentsline {subsection}{\numberline {10.1.4}How much does it matter if you don't have a simple random sample?}{305}{subsection.10.1.4}
+\contentsline {subsection}{\numberline {10.1.5}Population parameters and sample statistics}{306}{subsection.10.1.5}
+\contentsline {section}{\numberline {10.2}The law of large numbers\nobreakspace {}}{308}{section.10.2}
+\contentsline {section}{\numberline {10.3}Sampling distributions and the central limit theorem\nobreakspace {}}{309}{section.10.3}
+\contentsline {subsection}{\numberline {10.3.1}Sampling distribution of the mean\nobreakspace {}}{309}{subsection.10.3.1}
+\contentsline {subsection}{\numberline {10.3.2}Sampling distributions exist for any sample statistic!}{310}{subsection.10.3.2}
+\contentsline {subsection}{\numberline {10.3.3}The central limit theorem\nobreakspace {}}{312}{subsection.10.3.3}
+\contentsline {section}{\numberline {10.4}Estimating population parameters\nobreakspace {}}{315}{section.10.4}
+\contentsline {subsection}{\numberline {10.4.1}Estimating the population mean}{315}{subsection.10.4.1}
+\contentsline {subsection}{\numberline {10.4.2}Estimating the population standard deviation}{316}{subsection.10.4.2}
+\contentsline {section}{\numberline {10.5}Estimating a confidence interval}{320}{section.10.5}
+\contentsline {subsection}{\numberline {10.5.1}A slight mistake in the formula}{321}{subsection.10.5.1}
+\contentsline {subsection}{\numberline {10.5.2}Interpreting a confidence interval}{321}{subsection.10.5.2}
+\contentsline {subsection}{\numberline {10.5.3}Calculating confidence intervals in \textsf {R}}{322}{subsection.10.5.3}
+\contentsline {subsection}{\numberline {10.5.4}Plotting confidence intervals in \textsf {R}}{324}{subsection.10.5.4}
+\contentsline {section}{\numberline {10.6}Summary}{326}{section.10.6}
+\contentsline {chapter}{\numberline {11}Hypothesis testing}{327}{chapter.11}
+\contentsline {section}{\numberline {11.1}A menagerie of hypotheses\nobreakspace {}}{327}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Research hypotheses versus statistical hypotheses}{328}{subsection.11.1.1}
+\contentsline {subsection}{\numberline {11.1.2}Null hypotheses and alternative hypotheses}{330}{subsection.11.1.2}
+\contentsline {section}{\numberline {11.2}Two types of errors\nobreakspace {}}{330}{section.11.2}
+\contentsline {section}{\numberline {11.3}Test statistics and sampling distributions\nobreakspace {}}{332}{section.11.3}
+\contentsline {section}{\numberline {11.4}Making decisions\nobreakspace {}}{333}{section.11.4}
+\contentsline {subsection}{\numberline {11.4.1}Critical regions and critical values}{333}{subsection.11.4.1}
+\contentsline {subsection}{\numberline {11.4.2}A note on statistical ``significance''}{335}{subsection.11.4.2}
+\contentsline {subsection}{\numberline {11.4.3}The difference between one sided and two sided tests}{335}{subsection.11.4.3}
+\contentsline {section}{\numberline {11.5}The $p$ value of a test}{336}{section.11.5}
+\contentsline {subsection}{\numberline {11.5.1}A softer view of decision making}{336}{subsection.11.5.1}
+\contentsline {subsection}{\numberline {11.5.2}The probability of extreme data}{337}{subsection.11.5.2}
+\contentsline {subsection}{\numberline {11.5.3}A common mistake}{337}{subsection.11.5.3}
+\contentsline {section}{\numberline {11.6}Reporting the results of a hypothesis test\nobreakspace {}}{338}{section.11.6}
+\contentsline {subsection}{\numberline {11.6.1}The issue}{338}{subsection.11.6.1}
+\contentsline {subsection}{\numberline {11.6.2}Two proposed solutions}{339}{subsection.11.6.2}
+\contentsline {section}{\numberline {11.7}Running the hypothesis test in practice}{340}{section.11.7}
+\contentsline {section}{\numberline {11.8}Effect size, sample size and power }{341}{section.11.8}
+\contentsline {subsection}{\numberline {11.8.1}The power function}{341}{subsection.11.8.1}
+\contentsline {subsection}{\numberline {11.8.2}Effect size}{342}{subsection.11.8.2}
+\contentsline {subsection}{\numberline {11.8.3}Increasing the power of your study}{344}{subsection.11.8.3}
+\contentsline {section}{\numberline {11.9}Some issues to consider\nobreakspace {}}{346}{section.11.9}
+\contentsline {subsection}{\numberline {11.9.1}Neyman versus Fisher}{346}{subsection.11.9.1}
+\contentsline {subsection}{\numberline {11.9.2}Bayesians versus frequentists}{347}{subsection.11.9.2}
+\contentsline {subsection}{\numberline {11.9.3}Traps}{347}{subsection.11.9.3}
+\contentsline {section}{\numberline {11.10}Summary}{348}{section.11.10}
+\contentsline {part}{V\hspace {1em}Statistical tools}{349}{part.5}
+\contentsline {chapter}{\numberline {12}Categorical data analysis}{351}{chapter.12}
+\contentsline {section}{\numberline {12.1}The $\chi ^2$ goodness-of-fit test\nobreakspace {}}{351}{section.12.1}
+\contentsline {subsection}{\numberline {12.1.1}The cards data}{351}{subsection.12.1.1}
+\contentsline {subsection}{\numberline {12.1.2}The null hypothesis and the alternative hypothesis}{353}{subsection.12.1.2}
+\contentsline {subsection}{\numberline {12.1.3}The ``goodness of fit'' test statistic}{354}{subsection.12.1.3}
+\contentsline {subsection}{\numberline {12.1.4}The sampling distribution of the GOF statistic }{355}{subsection.12.1.4}
+\contentsline {subsection}{\numberline {12.1.5}Degrees of freedom}{356}{subsection.12.1.5}
+\contentsline {subsection}{\numberline {12.1.6}Testing the null hypothesis}{357}{subsection.12.1.6}
+\contentsline {subsection}{\numberline {12.1.7}Doing the test in \textsf {R}\nobreakspace {}}{359}{subsection.12.1.7}
+\contentsline {subsection}{\numberline {12.1.8}Specifying a different null hypothesis}{360}{subsection.12.1.8}
+\contentsline {subsection}{\numberline {12.1.9}How to report the results of the test\nobreakspace {}}{361}{subsection.12.1.9}
+\contentsline {subsection}{\numberline {12.1.10}A comment on statistical notation }{362}{subsection.12.1.10}
+\contentsline {section}{\numberline {12.2}The $\chi ^2$ test of independence (or association)}{363}{section.12.2}
+\contentsline {subsection}{\numberline {12.2.1}Constructing our hypothesis test}{365}{subsection.12.2.1}
+\contentsline {subsection}{\numberline {12.2.2}Doing the test in \textsf {R}\nobreakspace {}}{367}{subsection.12.2.2}
+\contentsline {subsection}{\numberline {12.2.3}Postscript}{369}{subsection.12.2.3}
+\contentsline {section}{\numberline {12.3}The continuity correction\nobreakspace {}}{369}{section.12.3}
+\contentsline {section}{\numberline {12.4}Effect size\nobreakspace {}}{370}{section.12.4}
+\contentsline {section}{\numberline {12.5}Assumptions of the test(s)\nobreakspace {}}{371}{section.12.5}
+\contentsline {section}{\numberline {12.6}The most typical way to do chi-square tests in \textsf {R}}{371}{section.12.6}
+\contentsline {section}{\numberline {12.7}The Fisher exact test\nobreakspace {}}{373}{section.12.7}
+\contentsline {section}{\numberline {12.8}The McNemar test}{375}{section.12.8}
+\contentsline {subsection}{\numberline {12.8.1}Doing the McNemar test in \textsf {R}}{376}{subsection.12.8.1}
+\contentsline {section}{\numberline {12.9}What's the difference between McNemar and independence?}{377}{section.12.9}
+\contentsline {section}{\numberline {12.10}Summary}{378}{section.12.10}
+\contentsline {chapter}{\numberline {13}Comparing two means }{379}{chapter.13}
+\contentsline {section}{\numberline {13.1}The one-sample $z$-test}{379}{section.13.1}
+\contentsline {subsection}{\numberline {13.1.1}The inference problem that the test addresses}{380}{subsection.13.1.1}
+\contentsline {subsection}{\numberline {13.1.2}Constructing the hypothesis test}{380}{subsection.13.1.2}
+\contentsline {subsection}{\numberline {13.1.3}A worked example using \textsf {R}}{383}{subsection.13.1.3}
+\contentsline {subsection}{\numberline {13.1.4}Assumptions of the $z$-test\nobreakspace {}}{385}{subsection.13.1.4}
+\contentsline {section}{\numberline {13.2}The one-sample $t$-test\nobreakspace {}}{385}{section.13.2}
+\contentsline {subsection}{\numberline {13.2.1}Introducing the $t$-test}{386}{subsection.13.2.1}
+\contentsline {subsection}{\numberline {13.2.2}Doing the test in \textsf {R}}{387}{subsection.13.2.2}
+\contentsline {subsection}{\numberline {13.2.3}Assumptions of the one sample $t$-test\nobreakspace {}}{389}{subsection.13.2.3}
+\contentsline {section}{\numberline {13.3}The independent samples $t$-test (Student test)\nobreakspace {}}{389}{section.13.3}
+\contentsline {subsection}{\numberline {13.3.1}The data}{390}{subsection.13.3.1}
+\contentsline {subsection}{\numberline {13.3.2}Introducing the test}{390}{subsection.13.3.2}
+\contentsline {subsection}{\numberline {13.3.3}A ``pooled estimate'' of the standard deviation}{392}{subsection.13.3.3}
+\contentsline {subsection}{\numberline {13.3.4}The same pooled estimate, described differently}{393}{subsection.13.3.4}
+\contentsline {subsection}{\numberline {13.3.5}Completing the test}{394}{subsection.13.3.5}
+\contentsline {subsection}{\numberline {13.3.6}Doing the test in \textsf {R}}{394}{subsection.13.3.6}
+\contentsline {subsection}{\numberline {13.3.7}Positive and negative $t$ values}{396}{subsection.13.3.7}
+\contentsline {subsection}{\numberline {13.3.8}Assumptions of the test\nobreakspace {}}{397}{subsection.13.3.8}
+\contentsline {section}{\numberline {13.4}The independent samples $t$-test (Welch test)\nobreakspace {}}{398}{section.13.4}
+\contentsline {subsection}{\numberline {13.4.1}Doing the test in \textsf {R}}{399}{subsection.13.4.1}
+\contentsline {subsection}{\numberline {13.4.2}Assumptions of the test}{400}{subsection.13.4.2}
+\contentsline {section}{\numberline {13.5}The paired-samples $t$-test\nobreakspace {}}{400}{section.13.5}
+\contentsline {subsection}{\numberline {13.5.1}The data}{401}{subsection.13.5.1}
+\contentsline {subsection}{\numberline {13.5.2}What is the paired samples $t$-test?}{403}{subsection.13.5.2}
+\contentsline {subsection}{\numberline {13.5.3}Doing the test in \textsf {R}, part 1}{404}{subsection.13.5.3}
+\contentsline {subsection}{\numberline {13.5.4}Doing the test in \textsf {R}, part 2}{405}{subsection.13.5.4}
+\contentsline {section}{\numberline {13.6}One sided tests}{408}{section.13.6}
+\contentsline {section}{\numberline {13.7}Using the t.test() function}{410}{section.13.7}
+\contentsline {section}{\numberline {13.8}Effect size\nobreakspace {}}{412}{section.13.8}
+\contentsline {subsection}{\numberline {13.8.1}Cohen's $d$ from one sample}{413}{subsection.13.8.1}
+\contentsline {subsection}{\numberline {13.8.2}Cohen's $d$ from a Student $t$ test}{414}{subsection.13.8.2}
+\contentsline {subsection}{\numberline {13.8.3}Cohen's $d$ from a Welch test}{414}{subsection.13.8.3}
+\contentsline {subsection}{\numberline {13.8.4}Cohen's $d$ from a paired-samples test}{415}{subsection.13.8.4}
+\contentsline {section}{\numberline {13.9}Checking the normality of a sample}{416}{section.13.9}
+\contentsline {subsection}{\numberline {13.9.1}QQ plots}{416}{subsection.13.9.1}
+\contentsline {subsection}{\numberline {13.9.2}Shapiro-Wilk tests}{417}{subsection.13.9.2}
+\contentsline {section}{\numberline {13.10}Testing non-normal data with Wilcoxon tests}{420}{section.13.10}
+\contentsline {subsection}{\numberline {13.10.1}Two sample Wilcoxon test}{420}{subsection.13.10.1}
+\contentsline {subsection}{\numberline {13.10.2}One sample Wilcoxon test}{421}{subsection.13.10.2}
+\contentsline {section}{\numberline {13.11}Summary}{422}{section.13.11}
+\contentsline {chapter}{\numberline {14}Comparing several means (one-way ANOVA)}{425}{chapter.14}
+\contentsline {section}{\numberline {14.1}An illustrative data set\nobreakspace {}}{425}{section.14.1}
+\contentsline {section}{\numberline {14.2}How ANOVA works }{427}{section.14.2}
+\contentsline {subsection}{\numberline {14.2.1}Two formulas for the variance of $Y$}{428}{subsection.14.2.1}
+\contentsline {subsection}{\numberline {14.2.2}From variances to sums of squares}{429}{subsection.14.2.2}
+\contentsline {subsection}{\numberline {14.2.3}From sums of squares to the $F$-test}{431}{subsection.14.2.3}
+\contentsline {subsection}{\numberline {14.2.4}The model for the data and the meaning of $F$ }{432}{subsection.14.2.4}
+\contentsline {subsection}{\numberline {14.2.5}A worked example }{433}{subsection.14.2.5}
+\contentsline {section}{\numberline {14.3}Running an ANOVA in \textsf {R}}{437}{section.14.3}
+\contentsline {subsection}{\numberline {14.3.1}Using the \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}aov()}} function to specify your ANOVA}{438}{subsection.14.3.1}
+\contentsline {subsection}{\numberline {14.3.2}Understanding what the \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}aov()}} function produces }{438}{subsection.14.3.2}
+\contentsline {subsection}{\numberline {14.3.3}Running the hypothesis tests for the ANOVA}{439}{subsection.14.3.3}
+\contentsline {section}{\numberline {14.4}Effect size}{440}{section.14.4}
+\contentsline {section}{\numberline {14.5}Multiple comparisons and post hoc tests\nobreakspace {}}{441}{section.14.5}
+\contentsline {subsection}{\numberline {14.5.1}Running ``pairwise'' $t$-tests}{442}{subsection.14.5.1}
+\contentsline {subsection}{\numberline {14.5.2}Corrections for multiple testing}{443}{subsection.14.5.2}
+\contentsline {subsection}{\numberline {14.5.3}Bonferroni corrections}{444}{subsection.14.5.3}
+\contentsline {subsection}{\numberline {14.5.4}Holm corrections}{445}{subsection.14.5.4}
+\contentsline {subsection}{\numberline {14.5.5}Writing up the post hoc test}{446}{subsection.14.5.5}
+\contentsline {section}{\numberline {14.6}Assumptions of one-way ANOVA }{446}{section.14.6}
+\contentsline {subsection}{\numberline {14.6.1}How robust is ANOVA?}{447}{subsection.14.6.1}
+\contentsline {section}{\numberline {14.7}Checking the homogeneity of variance assumption\nobreakspace {}}{447}{section.14.7}
+\contentsline {subsection}{\numberline {14.7.1}Running the Levene's test in \textsf {R}}{448}{subsection.14.7.1}
+\contentsline {subsection}{\numberline {14.7.2}Additional comments}{448}{subsection.14.7.2}
+\contentsline {section}{\numberline {14.8}Removing the homogeneity of variance assumption\nobreakspace {}}{449}{section.14.8}
+\contentsline {section}{\numberline {14.9}Checking the normality assumption\nobreakspace {}}{450}{section.14.9}
+\contentsline {section}{\numberline {14.10}Removing the normality assumption\nobreakspace {}}{450}{section.14.10}
+\contentsline {subsection}{\numberline {14.10.1}The logic behind the Kruskal-Wallis test}{451}{subsection.14.10.1}
+\contentsline {subsection}{\numberline {14.10.2}Additional details}{452}{subsection.14.10.2}
+\contentsline {subsection}{\numberline {14.10.3}How to run the Kruskal-Wallis test in \textsf {R}}{453}{subsection.14.10.3}
+\contentsline {section}{\numberline {14.11}On the relationship between ANOVA and the Student $t$ test\nobreakspace {}}{453}{section.14.11}
+\contentsline {section}{\numberline {14.12}Summary}{454}{section.14.12}
+\contentsline {chapter}{\numberline {15}Linear regression}{457}{chapter.15}
+\contentsline {section}{\numberline {15.1}What is a linear regression model?\nobreakspace {}}{457}{section.15.1}
+\contentsline {section}{\numberline {15.2}Estimating a linear regression model\nobreakspace {}}{459}{section.15.2}
+\contentsline {subsection}{\numberline {15.2.1}Using the \texttt {\relax \fontsize {10.95}{14}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \leavevmode {\color {Rtextcol}lm()}} function\nobreakspace {}}{460}{subsection.15.2.1}
+\contentsline {subsection}{\numberline {15.2.2}Interpreting the estimated model}{461}{subsection.15.2.2}
+\contentsline {section}{\numberline {15.3}Multiple linear regression\nobreakspace {}}{461}{section.15.3}
+\contentsline {subsection}{\numberline {15.3.1}Doing it in \textsf {R}}{462}{subsection.15.3.1}
+\contentsline {subsection}{\numberline {15.3.2}Formula for the general case}{464}{subsection.15.3.2}
+\contentsline {section}{\numberline {15.4}Quantifying the fit of the regression model\nobreakspace {}}{464}{section.15.4}
+\contentsline {subsection}{\numberline {15.4.1}The $R^2$ value}{464}{subsection.15.4.1}
+\contentsline {subsection}{\numberline {15.4.2}The relationship between regression and correlation}{465}{subsection.15.4.2}
+\contentsline {subsection}{\numberline {15.4.3}The adjusted $R^2$ value}{466}{subsection.15.4.3}
+\contentsline {section}{\numberline {15.5}Hypothesis tests for regression models\nobreakspace {}}{466}{section.15.5}
+\contentsline {subsection}{\numberline {15.5.1}Testing the model as a whole}{466}{subsection.15.5.1}
+\contentsline {subsection}{\numberline {15.5.2}Tests for individual coefficients}{467}{subsection.15.5.2}
+\contentsline {subsection}{\numberline {15.5.3}Running the hypothesis tests in \textsf {R}\nobreakspace {}}{468}{subsection.15.5.3}
+\contentsline {section}{\numberline {15.6}Testing the significance of a correlation\nobreakspace {}}{470}{section.15.6}
+\contentsline {subsection}{\numberline {15.6.1}Hypothesis tests for a single correlation}{470}{subsection.15.6.1}
+\contentsline {subsection}{\numberline {15.6.2}Hypothesis tests for all pairwise correlations\nobreakspace {}}{471}{subsection.15.6.2}
+\contentsline {section}{\numberline {15.7}Regarding regression coefficients\nobreakspace {}}{472}{section.15.7}
+\contentsline {subsection}{\numberline {15.7.1}Confidence intervals for the coefficients}{472}{subsection.15.7.1}
+\contentsline {subsection}{\numberline {15.7.2}Calculating standardised regression coefficients}{473}{subsection.15.7.2}
+\contentsline {section}{\numberline {15.8}Assumptions of regression\nobreakspace {}}{474}{section.15.8}
+\contentsline {section}{\numberline {15.9}Model checking\nobreakspace {}}{475}{section.15.9}
+\contentsline {subsection}{\numberline {15.9.1}Three kinds of residuals}{475}{subsection.15.9.1}
+\contentsline {subsection}{\numberline {15.9.2}Three kinds of anomalous data\nobreakspace {}}{477}{subsection.15.9.2}
+\contentsline {subsection}{\numberline {15.9.3}Checking the normality of the residuals\nobreakspace {}}{480}{subsection.15.9.3}
+\contentsline {subsection}{\numberline {15.9.4}Checking the linearity of the relationship\nobreakspace {}}{484}{subsection.15.9.4}
+\contentsline {subsection}{\numberline {15.9.5}Checking the homogeneity of variance\nobreakspace {}}{487}{subsection.15.9.5}
+\contentsline {subsection}{\numberline {15.9.6}Checking for collinearity\nobreakspace {}}{489}{subsection.15.9.6}
+\contentsline {section}{\numberline {15.10}Model selection}{490}{section.15.10}
+\contentsline {subsection}{\numberline {15.10.1}Backward elimination}{491}{subsection.15.10.1}
+\contentsline {subsection}{\numberline {15.10.2}Forward selection}{492}{subsection.15.10.2}
+\contentsline {subsection}{\numberline {15.10.3}A caveat}{493}{subsection.15.10.3}
+\contentsline {subsection}{\numberline {15.10.4}Comparing two regression models}{493}{subsection.15.10.4}
+\contentsline {section}{\numberline {15.11}Summary}{495}{section.15.11}
+\contentsline {chapter}{\numberline {16}Factorial ANOVA }{497}{chapter.16}
+\contentsline {section}{\numberline {16.1}Factorial ANOVA 1: balanced designs, no interactions}{497}{section.16.1}
+\contentsline {subsection}{\numberline {16.1.1}What hypotheses are we testing?}{498}{subsection.16.1.1}
+\contentsline {subsection}{\numberline {16.1.2}Running the analysis in \textsf {R}}{500}{subsection.16.1.2}
+\contentsline {subsection}{\numberline {16.1.3}How are the sum of squares calculated?}{502}{subsection.16.1.3}
+\contentsline {subsection}{\numberline {16.1.4}What are our degrees of freedom?}{505}{subsection.16.1.4}
+\contentsline {subsection}{\numberline {16.1.5}Factorial ANOVA versus one-way ANOVAs}{505}{subsection.16.1.5}
+\contentsline {subsection}{\numberline {16.1.6}What kinds of outcomes does this analysis capture?}{506}{subsection.16.1.6}
+\contentsline {section}{\numberline {16.2}Factorial ANOVA 2: balanced designs, interactions allowed}{506}{section.16.2}
+\contentsline {subsection}{\numberline {16.2.1}What exactly \relax $\@@underline {\hbox {is}}\mathsurround \z@ $\relax an interaction effect?}{509}{subsection.16.2.1}
+\contentsline {subsection}{\numberline {16.2.2}Calculating sums of squares for the interaction}{510}{subsection.16.2.2}
+\contentsline {subsection}{\numberline {16.2.3}Degrees of freedom for the interaction}{511}{subsection.16.2.3}
+\contentsline {subsection}{\numberline {16.2.4}Running the ANOVA in \textsf {R}}{512}{subsection.16.2.4}
+\contentsline {subsection}{\numberline {16.2.5}Interpreting the results}{512}{subsection.16.2.5}
+\contentsline {section}{\numberline {16.3}Effect size, estimated means, and confidence intervals}{513}{section.16.3}
+\contentsline {subsection}{\numberline {16.3.1}Effect sizes}{513}{subsection.16.3.1}
+\contentsline {subsection}{\numberline {16.3.2}Estimated group means}{515}{subsection.16.3.2}
+\contentsline {section}{\numberline {16.4}Assumption checking\nobreakspace {}}{517}{section.16.4}
+\contentsline {subsection}{\numberline {16.4.1}Levene test for homogeneity of variance}{517}{subsection.16.4.1}
+\contentsline {subsection}{\numberline {16.4.2}Normality of residuals}{518}{subsection.16.4.2}
+\contentsline {section}{\numberline {16.5}The $F$ test as a model comparison}{518}{section.16.5}
+\contentsline {subsection}{\numberline {16.5.1}The $F$ test comparing two models}{519}{subsection.16.5.1}
+\contentsline {subsection}{\numberline {16.5.2}Running the test in \textsf {R}}{520}{subsection.16.5.2}
+\contentsline {section}{\numberline {16.6}ANOVA as a linear model}{521}{section.16.6}
+\contentsline {subsection}{\numberline {16.6.1}Some data}{522}{subsection.16.6.1}
+\contentsline {subsection}{\numberline {16.6.2}ANOVA with binary factors as a regression model}{523}{subsection.16.6.2}
+\contentsline {subsection}{\numberline {16.6.3}Changing the baseline category}{526}{subsection.16.6.3}
+\contentsline {subsection}{\numberline {16.6.4}How to encode non binary factors as contrasts}{528}{subsection.16.6.4}
+\contentsline {subsection}{\numberline {16.6.5}The equivalence between ANOVA and regression for non-binary factors}{529}{subsection.16.6.5}
+\contentsline {subsection}{\numberline {16.6.6}Degrees of freedom as parameter counting!}{530}{subsection.16.6.6}
+\contentsline {subsection}{\numberline {16.6.7}A postscript}{531}{subsection.16.6.7}
+\contentsline {section}{\numberline {16.7}Different ways to specify contrasts}{532}{section.16.7}
+\contentsline {subsection}{\numberline {16.7.1}Treatment contrasts}{532}{subsection.16.7.1}
+\contentsline {subsection}{\numberline {16.7.2}Helmert contrasts}{533}{subsection.16.7.2}
+\contentsline {subsection}{\numberline {16.7.3}Sum to zero contrasts}{534}{subsection.16.7.3}
+\contentsline {subsection}{\numberline {16.7.4}Viewing and setting the default contrasts in \textsf {R}}{534}{subsection.16.7.4}
+\contentsline {subsection}{\numberline {16.7.5}Setting the contrasts for a single factor}{535}{subsection.16.7.5}
+\contentsline {subsection}{\numberline {16.7.6}Setting the contrasts for a single analysis}{536}{subsection.16.7.6}
+\contentsline {section}{\numberline {16.8}Post hoc tests}{537}{section.16.8}
+\contentsline {section}{\numberline {16.9}The method of planned comparisons}{539}{section.16.9}
+\contentsline {section}{\numberline {16.10}Factorial ANOVA 3: unbalanced designs}{539}{section.16.10}
+\contentsline {subsection}{\numberline {16.10.1}The coffee data}{540}{subsection.16.10.1}
+\contentsline {subsection}{\numberline {16.10.2}``Standard ANOVA'' does not exist for unbalanced designs}{541}{subsection.16.10.2}
+\contentsline {subsection}{\numberline {16.10.3}Type I sum of squares}{542}{subsection.16.10.3}
+\contentsline {subsection}{\numberline {16.10.4}Type III sum of squares}{544}{subsection.16.10.4}
+\contentsline {subsection}{\numberline {16.10.5}Type II sum of squares}{547}{subsection.16.10.5}
+\contentsline {subsection}{\numberline {16.10.6}Effect sizes (and non-additive sums of squares)}{549}{subsection.16.10.6}
+\contentsline {section}{\numberline {16.11}Summary}{551}{section.16.11}
+\contentsline {part}{VI\hspace {1em}Endings, alternatives and prospects}{553}{part.6}
+\contentsline {chapter}{\numberline {17}Bayesian statistics }{555}{chapter.17}
+\contentsline {section}{\numberline {17.1}Probabilistic reasoning by rational agents}{555}{section.17.1}
+\contentsline {subsection}{\numberline {17.1.1}Priors: what you believed before}{556}{subsection.17.1.1}
+\contentsline {subsection}{\numberline {17.1.2}Likelihoods: theories about the data}{556}{subsection.17.1.2}
+\contentsline {subsection}{\numberline {17.1.3}The joint probability of data and hypothesis}{557}{subsection.17.1.3}
+\contentsline {subsection}{\numberline {17.1.4}Updating beliefs using Bayes' rule}{558}{subsection.17.1.4}
+\contentsline {section}{\numberline {17.2}Bayesian hypothesis tests\nobreakspace {}}{560}{section.17.2}
+\contentsline {subsection}{\numberline {17.2.1}The Bayes factor}{560}{subsection.17.2.1}
+\contentsline {subsection}{\numberline {17.2.2}Interpreting Bayes factors}{561}{subsection.17.2.2}
+\contentsline {section}{\numberline {17.3}Why be a Bayesian?}{562}{section.17.3}
+\contentsline {subsection}{\numberline {17.3.1}Statistics that mean what you think they mean}{562}{subsection.17.3.1}
+\contentsline {subsection}{\numberline {17.3.2}Evidentiary standards you can believe}{563}{subsection.17.3.2}
+\contentsline {subsection}{\numberline {17.3.3}The $p$-value is a lie.}{564}{subsection.17.3.3}
+\contentsline {subsection}{\numberline {17.3.4}Is it really this bad?}{567}{subsection.17.3.4}
+\contentsline {section}{\numberline {17.4}Bayesian analysis of contingency tables\nobreakspace {}}{568}{section.17.4}
+\contentsline {subsection}{\numberline {17.4.1}The orthodox text}{569}{subsection.17.4.1}
+\contentsline {subsection}{\numberline {17.4.2}The Bayesian test}{569}{subsection.17.4.2}
+\contentsline {subsection}{\numberline {17.4.3}Writing up the results}{571}{subsection.17.4.3}
+\contentsline {subsection}{\numberline {17.4.4}Other sampling plans}{572}{subsection.17.4.4}
+\contentsline {section}{\numberline {17.5}Bayesian $t$-tests}{574}{section.17.5}
+\contentsline {subsection}{\numberline {17.5.1}Independent samples $t$-test}{574}{subsection.17.5.1}
+\contentsline {subsection}{\numberline {17.5.2}Paired samples $t$-test}{576}{subsection.17.5.2}
+\contentsline {section}{\numberline {17.6}Bayesian regression\nobreakspace {}}{577}{section.17.6}
+\contentsline {subsection}{\numberline {17.6.1}A quick refresher}{577}{subsection.17.6.1}
+\contentsline {subsection}{\numberline {17.6.2}The Bayesian version}{578}{subsection.17.6.2}
+\contentsline {subsection}{\numberline {17.6.3}Finding the best model}{578}{subsection.17.6.3}
+\contentsline {subsection}{\numberline {17.6.4}Extracting Bayes factors for all included terms}{580}{subsection.17.6.4}
+\contentsline {section}{\numberline {17.7}Bayesian ANOVA\nobreakspace {}}{581}{section.17.7}
+\contentsline {subsection}{\numberline {17.7.1}A quick refresher}{581}{subsection.17.7.1}
+\contentsline {subsection}{\numberline {17.7.2}The Bayesian version}{582}{subsection.17.7.2}
+\contentsline {subsection}{\numberline {17.7.3}Constructing Bayesian Type II tests}{583}{subsection.17.7.3}
+\contentsline {section}{\numberline {17.8}Summary}{584}{section.17.8}
+\contentsline {chapter}{\numberline {18}Epilogue}{587}{chapter.18}
+\contentsline {section}{\numberline {18.1}The undiscovered statistics}{587}{section.18.1}
+\contentsline {subsection}{\numberline {18.1.1}Omissions within the topics covered}{587}{subsection.18.1.1}
+\contentsline {subsection}{\numberline {18.1.2}Statistical models missing from the book}{588}{subsection.18.1.2}
+\contentsline {subsection}{\numberline {18.1.3}Other ways of doing inference}{592}{subsection.18.1.3}
+\contentsline {subsection}{\numberline {18.1.4}Miscellaneous topics}{593}{subsection.18.1.4}
+\contentsline {section}{\numberline {18.2}Learning the basics, and learning them in \textsf {R}}{595}{section.18.2}
+\contentsline {section}{References}{597}{section.18.2}
+\contentsfinish 

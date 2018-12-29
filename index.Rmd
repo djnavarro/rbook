@@ -1,5 +1,5 @@
 --- 
-title: "Learning statistics with R: A tutorial for psychology students and other beginners."
+title: "Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)"
 author: "DJ Navarro"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [./rbook-master/tex/refs.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "*Learning Statistics with R* covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software."
 ---
 
 # Overview{-}
@@ -24,6 +24,16 @@ https://creativecommons.org/licenses/by-sa/4.0/
 *This book was brought to you today by the letter ‘R’.*
 
 # Preface{-}
+
+## Preface to Version 0.6.1
+Hi! I'm not Danielle.
+
+This version is a work in progress to transport the book from LaTeX to bookdown, this allows for the code chunks shown in the text to be interactively rendered and is the first step in updating sections to make use of the **tidyverse**.
+
+Moving from LaTeX is a bit fiddly so there are broken pieces in this version that I am updating progressively. If you notice errors or have suggestions feel free to raise an issue (or pull request) at http://github.com/ekothe/rbook
+
+Cheers
+Emily Kothe
 
 ## Preface to Version 0.6
 The book hasn't changed much since 2015 when I released Version 0.5 -- it's probably fair to say that I've changed more than it has. I moved from Adelaide to Sydney in 2016 and my teaching profile at UNSW is different to what it was at Adelaide, and I haven't really had a chance to work on it since arriving here! It's a little strange looking back at this actually. A few quick comments...

@@ -1,0 +1,19 @@
+Keyterms style 
+
+Index?
+
+Glossary?
+
+Standardise the format for summary links
+
+Table caption alignment varies depends on method of table construction - need to standarise to use a common format (kable?)
+
+Warning messages... (explain R version warnings?)
+
+Chapter 02.04 ### Labelling the factor levels <- examples that should fail PASS and that should pass FAIL
+
+4.8.2 Pulling out the contents of the data frame using $ <- score can be found, need to remove it from the data frame? 
+
+print.formula( my.formula )       # print it out using the print.formula() method <-## Appears to be deprecated
+
+Correlation Strength Direction -1.0 to -0.9 Very strong Negative -0.9 to -0.7 Strong Negative -0.7 to -0.4 Moderate Negative -0.4 to -0.2 Weak Negative -0.2 to 0 Negligible Negative 0 to 0.2 Negligible Positive 0.2 to 0.4 Weak Positive 0.4 to 0.7 Moderate Positive 0.7 to 0.9 Strong Positive 0.9 to 1.0 Very strong Positive 

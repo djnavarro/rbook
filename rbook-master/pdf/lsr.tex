@@ -1,0 +1,94 @@
+ %%%%%%%%%%%%%%  packages, commands, titlepageinfo %%%%%%%%%%%%%%
+
+\input{../tex/header}
+\input{../tex/titlepage}
+
+%%%%%%%%%%%%%%  begin document %%%%%%%%%%%%%%
+\begin{document}
+
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle % title page
+\input{../tex/abstract}
+\input{../tex/copyright} % copyright page
+\input{../tex/dedication} % dedication page
+\input{../tex/tableofcontents} % toc
+\input{../tex/preface} % preface
+
+
+%%%%%%%%%%%%%%  content %%%%%%%%%%%%%%
+
+\input{../tex/contentstyle}  % alter the styling
+
+\part{Background}
+
+\input{../tex/chapter01_whystats}
+\input{../tex/chapter02_studydesign}
+
+\part{An introduction to \R}
+
+\input{../tex/chapter03_introR}
+\input{../tex/chapter04_mechanics}
+
+\part{Working with data}
+
+\input{../tex/chapter05_descriptives}
+\input{../tex/chapter06_graphics}
+\input{../tex/chapter07_datahandling}
+\input{../tex/chapter08_scripting}
+
+\part{Statistical theory}
+
+\input{../tex/prelude4}
+\input{../tex/chapter09_probability}
+\input{../tex/chapter10_estimation}
+\input{../tex/chapter11_hypothesistesting}
+
+\part{Statistical tools}
+
+\input{../tex/chapter12_chisquare}
+\input{../tex/chapter13_ttest}
+\input{../tex/chapter14_anova}
+\input{../tex/chapter15_regression}
+\input{../tex/chapter16_anova2} 
+
+\part{Endings, alternatives and prospects}
+
+\input{../tex/chapter17_bayes} 
+%\input{../tex/chapter18_alltogether}
+\input{../tex/epilogue}
+\input{../tex/wrapup}
+
+
+%%%%%%%%%%%%%%  references %%%%%%%%%%%%%%
+
+
+%\setlength{\baselineskip}{12pt}
+\setlength{\bibleftmargin}{1.5em}
+\setlength{\bibindent}{-1.5em}
+\setlength{\bibitemsep}{0pt}
+%\renewcommand{\bibliographytypesize}{\small}
+\bibliography{../tex/refs}
+\bibliographystyle{apacite} 
+
+
+\afterpage{\blankpage}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

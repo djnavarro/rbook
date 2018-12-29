@@ -208,7 +208,7 @@ knitr::include_graphics("./rbook-master/img/mechanics/workspacepanel.png")
 
 ```
 
-```{r workspace2, fig.cap="The Rstudio \"Environment\" panel shows you the contents of the workspace. Compare this \"grid\" view to the \"list\" view in Figure \\@ref(fig:workspace)", echo=FALSE}
+```{r workspace2, fig.cap="The Rstudio \"Environment\" panel shows you the contents of the workspace. Compare this \"grid\" view to the \"list\" earlier", echo=FALSE}
 knitr::include_graphics("./rbook-master/img/mechanics/workspacepanel2.png")
 
 ```
@@ -279,7 +279,7 @@ knitr::kable(rbind(
                   c("C:\\\\Users ", "..\\\\.. \\\\"),
                   c("C:\\\\Users\\\\danRbook\\\\source ", ".\\\\source "),
                   c("C:\\\\Users\\\\dan\\\\nerdstuff ", "..\\\\nerdstuff")),
-caption = 'Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it\'s important to be familiar with them at the outset. There are others as well, which I\'ll discuss in Chapter \\@ref(datahandling)',col.names = c("absolute path (i.e., from root)"  , "relative path (i.e. from C:\\Users\\danRbook)"),
+caption = 'Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it\'s important to be familiar with them at the outset.',col.names = c("absolute path (i.e., from root)"  , "relative path (i.e. from C:\\Users\\danRbook)"),
   booktabs = TRUE)
 ```
 
@@ -420,7 +420,7 @@ and the new variables will appear in the workspace (you'll see them in the Envir
 One quite commonly used data format is the humble "comma separated value" file, also called a CSV file, and usually bearing the file extension .csv. CSV files are just plain old-fashioned text files, and what they store is basically just a table of data. This is illustrated in Figure \@ref(fig:booksalescsv), which shows a file called booksales.csv that I've created. As you can see, each row corresponds to a variable, and each row represents the book sales data for one month. The first row doesn't contain actual data though: it has the names of the variables.
 
 ```{r booksalescsv, fig.cap="The booksales.csv data file. On the left, I've opened the file in using a spreadsheet program (OpenOffice), which shows that the file is basically a table. On the right, the same file is open in a standard text editor (the TextEdit program on a Mac), which shows how the file is formatted. The entries in the table are wrapped in quote marks and separated by commas.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/introR/booksalescsv.png")
+knitr::include_graphics("./rbook-master/img/mechanics/booksalescsv.jpg")
 
 ```
 

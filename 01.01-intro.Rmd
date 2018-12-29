@@ -95,18 +95,14 @@ The following is a true story (I think...). In 1973, the University of Californi
 Oddly, it's actually sort of true ...when people started looking more carefully at the admissions data [@Bickel1975] they told a rather different story. Specifically, when they looked at it on a department by department basis, it turned out that most of the departments actually had a slightly *higher* success rate for female applicants than for male applicants. Table \@ref(tab:simpsontable) shows the admission figures for the six largest departments (with the names of the departments removed for privacy reasons):
 
 
-```{r simpsontable, echo=FALSE}
-library(kableExtra)
-
+```{r simpsontable, echo=FALSE, warning = FALSE}
 simpson <- cbind(c("A", "B", "C", "D", "E", "F"), 
                  c(825,560,325,417,191,272), 
                  c("62%","63%","37%","33%","28%","6%"),
                  c(108,25,593,375,393,341),
                  c("82%","68%","34%","35%","24%","7%"))
 
-kable(simpson, col.names = c("Department","Applicants", "Percent Admitted", "Applicants", "Percent admitted"), align="c", caption = "Admission figures for the six largest departments by gender") %>%
-  kable_styling(full_width = F) %>%
-  add_header_above(c(" ", "Males" = 2, "Female" = 2))
+knitr::kable(simpson, col.names = c("Department","Male Applicants", "Male Percent Admitted", "Female Applicants", "Female Percent admitted"), align="c", caption = "Admission figures for the six largest departments by gender")
 ```
 
 Remarkably, most departments had a *higher* rate of admissions for females than for males! Yet the overall rate of admission across the university for females was *lower* than for males. How can this be? How can both of these statements be true at the same time?

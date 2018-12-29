@@ -5,27 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>A Minimal Book Example</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="A Minimal Book Example" />
+  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Minimal Book Example" />
+  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
-<meta name="author" content="Yihui Xie">
+<meta name="author" content="DJ Navarro">
 
 
-<meta name="date" content="2018-07-14">
+<meta name="date" content="2018-12-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="why-do-we-learn-statistics.html">
-<link rel="next" href="methods.html">
+<link rel="next" href="part-ii-an-introduction-to-r.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,6 +49,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -63,70 +100,437 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">Learning Statistics with R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html"><i class="fa fa-check"></i><b>2</b> Why do we learn statistics?</a><ul>
-<li class="chapter" data-level="2.1" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#whywhywhy"><i class="fa fa-check"></i><b>2.1</b> On the psychology of statistics</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#the-curse-of-belief-bias"><i class="fa fa-check"></i><b>2.1.1</b> The curse of belief bias</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="licensing.html"><a href="licensing.html"><i class="fa fa-check"></i>Licensing</a></li>
+<li class="chapter" data-level="" data-path="dedication.html"><a href="dedication.html"><i class="fa fa-check"></i>Dedication</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="preface.html"><a href="preface.html#preface-to-version-0.6.1"><i class="fa fa-check"></i><b>0.1</b> Preface to Version 0.6.1</a></li>
+<li class="chapter" data-level="0.2" data-path="preface.html"><a href="preface.html#preface-to-version-0.6"><i class="fa fa-check"></i><b>0.2</b> Preface to Version 0.6</a></li>
+<li class="chapter" data-level="0.3" data-path="preface.html"><a href="preface.html#preface-to-version-0.5"><i class="fa fa-check"></i><b>0.3</b> Preface to Version 0.5</a></li>
+<li class="chapter" data-level="0.4" data-path="preface.html"><a href="preface.html#preface-to-version-0.4"><i class="fa fa-check"></i><b>0.4</b> Preface to Version 0.4</a></li>
+<li class="chapter" data-level="0.5" data-path="preface.html"><a href="preface.html#preface-to-version-0.3"><i class="fa fa-check"></i><b>0.5</b> Preface to Version 0.3</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#the-cautionary-tale-of-simpsons-paradox"><i class="fa fa-check"></i><b>2.2</b> The cautionary tale of Simpson’s paradox</a></li>
-<li class="chapter" data-level="2.3" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#statistics-in-psychology"><i class="fa fa-check"></i><b>2.3</b> Statistics in psychology</a></li>
-<li class="chapter" data-level="2.4" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#statistics-in-everyday-life"><i class="fa fa-check"></i><b>2.4</b> Statistics in everyday life</a></li>
-<li class="chapter" data-level="2.5" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#theres-more-to-research-methods-than-statistics"><i class="fa fa-check"></i><b>2.5</b> There’s more to research methods than statistics</a></li>
+<li class="chapter" data-level="" data-path="part-i-background.html"><a href="part-i-background.html"><i class="fa fa-check"></i>Part I. Background</a></li>
+<li class="chapter" data-level="1" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html"><i class="fa fa-check"></i><b>1</b> Why do we learn statistics?</a><ul>
+<li class="chapter" data-level="1.1" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#whywhywhy"><i class="fa fa-check"></i><b>1.1</b> On the psychology of statistics</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#the-curse-of-belief-bias"><i class="fa fa-check"></i><b>1.1.1</b> The curse of belief bias</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="studydesign.html"><a href="studydesign.html"><i class="fa fa-check"></i><b>3</b> A brief introduction to research design</a><ul>
-<li class="chapter" data-level="3.1" data-path="studydesign.html"><a href="studydesign.html#measurement"><i class="fa fa-check"></i><b>3.1</b> Introduction to psychological measurement</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="studydesign.html"><a href="studydesign.html#some-thoughts-about-psychological-measurement"><i class="fa fa-check"></i><b>3.1.1</b> Some thoughts about psychological measurement</a></li>
-<li class="chapter" data-level="3.1.2" data-path="studydesign.html"><a href="studydesign.html#operationalisation-defining-your-measurement"><i class="fa fa-check"></i><b>3.1.2</b> Operationalisation: defining your measurement</a></li>
+<li class="chapter" data-level="1.2" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#the-cautionary-tale-of-simpsons-paradox"><i class="fa fa-check"></i><b>1.2</b> The cautionary tale of Simpson’s paradox</a></li>
+<li class="chapter" data-level="1.3" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#statistics-in-psychology"><i class="fa fa-check"></i><b>1.3</b> Statistics in psychology</a></li>
+<li class="chapter" data-level="1.4" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#statistics-in-everyday-life"><i class="fa fa-check"></i><b>1.4</b> Statistics in everyday life</a></li>
+<li class="chapter" data-level="1.5" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#theres-more-to-research-methods-than-statistics"><i class="fa fa-check"></i><b>1.5</b> There’s more to research methods than statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="studydesign.html"><a href="studydesign.html#scales"><i class="fa fa-check"></i><b>3.2</b> Scales of measurement</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="studydesign.html"><a href="studydesign.html#nominal-scale"><i class="fa fa-check"></i><b>3.2.1</b> Nominal scale</a></li>
-<li class="chapter" data-level="3.2.2" data-path="studydesign.html"><a href="studydesign.html#ordinal-scale"><i class="fa fa-check"></i><b>3.2.2</b> Ordinal scale</a></li>
-<li class="chapter" data-level="3.2.3" data-path="studydesign.html"><a href="studydesign.html#interval-scale"><i class="fa fa-check"></i><b>3.2.3</b> Interval scale</a></li>
-<li class="chapter" data-level="3.2.4" data-path="studydesign.html"><a href="studydesign.html#ratio-scale"><i class="fa fa-check"></i><b>3.2.4</b> Ratio scale</a></li>
-<li class="chapter" data-level="3.2.5" data-path="studydesign.html"><a href="studydesign.html#continuousdiscrete"><i class="fa fa-check"></i><b>3.2.5</b> Continuous versus discrete variables</a></li>
-<li class="chapter" data-level="3.2.6" data-path="studydesign.html"><a href="studydesign.html#some-complexities"><i class="fa fa-check"></i><b>3.2.6</b> Some complexities</a></li>
+<li class="chapter" data-level="2" data-path="studydesign.html"><a href="studydesign.html"><i class="fa fa-check"></i><b>2</b> A brief introduction to research design</a><ul>
+<li class="chapter" data-level="2.1" data-path="studydesign.html"><a href="studydesign.html#measurement"><i class="fa fa-check"></i><b>2.1</b> Introduction to psychological measurement</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="studydesign.html"><a href="studydesign.html#some-thoughts-about-psychological-measurement"><i class="fa fa-check"></i><b>2.1.1</b> Some thoughts about psychological measurement</a></li>
+<li class="chapter" data-level="2.1.2" data-path="studydesign.html"><a href="studydesign.html#operationalisation-defining-your-measurement"><i class="fa fa-check"></i><b>2.1.2</b> Operationalisation: defining your measurement</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="studydesign.html"><a href="studydesign.html#reliability"><i class="fa fa-check"></i><b>3.3</b> Assessing the reliability of a measurement</a></li>
-<li class="chapter" data-level="3.4" data-path="studydesign.html"><a href="studydesign.html#ivdv"><i class="fa fa-check"></i><b>3.4</b> The “role” of variables: predictors and outcomes</a></li>
-<li class="chapter" data-level="3.5" data-path="studydesign.html"><a href="studydesign.html#researchdesigns"><i class="fa fa-check"></i><b>3.5</b> Experimental and non-experimental research</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="studydesign.html"><a href="studydesign.html#experimental-research"><i class="fa fa-check"></i><b>3.5.1</b> Experimental research</a></li>
-<li class="chapter" data-level="3.5.2" data-path="studydesign.html"><a href="studydesign.html#non-experimental-research"><i class="fa fa-check"></i><b>3.5.2</b> Non-experimental research</a></li>
+<li class="chapter" data-level="2.2" data-path="studydesign.html"><a href="studydesign.html#scales"><i class="fa fa-check"></i><b>2.2</b> Scales of measurement</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="studydesign.html"><a href="studydesign.html#nominal-scale"><i class="fa fa-check"></i><b>2.2.1</b> Nominal scale</a></li>
+<li class="chapter" data-level="2.2.2" data-path="studydesign.html"><a href="studydesign.html#ordinal-scale"><i class="fa fa-check"></i><b>2.2.2</b> Ordinal scale</a></li>
+<li class="chapter" data-level="2.2.3" data-path="studydesign.html"><a href="studydesign.html#interval-scale"><i class="fa fa-check"></i><b>2.2.3</b> Interval scale</a></li>
+<li class="chapter" data-level="2.2.4" data-path="studydesign.html"><a href="studydesign.html#ratio-scale"><i class="fa fa-check"></i><b>2.2.4</b> Ratio scale</a></li>
+<li class="chapter" data-level="2.2.5" data-path="studydesign.html"><a href="studydesign.html#continuousdiscrete"><i class="fa fa-check"></i><b>2.2.5</b> Continuous versus discrete variables</a></li>
+<li class="chapter" data-level="2.2.6" data-path="studydesign.html"><a href="studydesign.html#some-complexities"><i class="fa fa-check"></i><b>2.2.6</b> Some complexities</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="studydesign.html"><a href="studydesign.html#validity"><i class="fa fa-check"></i><b>3.6</b> Assessing the validity of a study</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="studydesign.html"><a href="studydesign.html#internal-validity"><i class="fa fa-check"></i><b>3.6.1</b> Internal validity</a></li>
-<li class="chapter" data-level="3.6.2" data-path="studydesign.html"><a href="studydesign.html#external-validity"><i class="fa fa-check"></i><b>3.6.2</b> External validity</a></li>
-<li class="chapter" data-level="3.6.3" data-path="studydesign.html"><a href="studydesign.html#construct-validity"><i class="fa fa-check"></i><b>3.6.3</b> Construct validity</a></li>
-<li class="chapter" data-level="3.6.4" data-path="studydesign.html"><a href="studydesign.html#face-validity"><i class="fa fa-check"></i><b>3.6.4</b> Face validity</a></li>
-<li class="chapter" data-level="3.6.5" data-path="studydesign.html"><a href="studydesign.html#ecological-validity"><i class="fa fa-check"></i><b>3.6.5</b> Ecological validity</a></li>
+<li class="chapter" data-level="2.3" data-path="studydesign.html"><a href="studydesign.html#reliability"><i class="fa fa-check"></i><b>2.3</b> Assessing the reliability of a measurement</a></li>
+<li class="chapter" data-level="2.4" data-path="studydesign.html"><a href="studydesign.html#ivdv"><i class="fa fa-check"></i><b>2.4</b> The “role” of variables: predictors and outcomes</a></li>
+<li class="chapter" data-level="2.5" data-path="studydesign.html"><a href="studydesign.html#researchdesigns"><i class="fa fa-check"></i><b>2.5</b> Experimental and non-experimental research</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="studydesign.html"><a href="studydesign.html#experimental-research"><i class="fa fa-check"></i><b>2.5.1</b> Experimental research</a></li>
+<li class="chapter" data-level="2.5.2" data-path="studydesign.html"><a href="studydesign.html#non-experimental-research"><i class="fa fa-check"></i><b>2.5.2</b> Non-experimental research</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="studydesign.html"><a href="studydesign.html#confounds-artifacts-and-other-threats-to-validity"><i class="fa fa-check"></i><b>3.7</b> Confounds, artifacts and other threats to validity</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="studydesign.html"><a href="studydesign.html#history-effects"><i class="fa fa-check"></i><b>3.7.1</b> History effects</a></li>
-<li class="chapter" data-level="3.7.2" data-path="studydesign.html"><a href="studydesign.html#maturation-effects"><i class="fa fa-check"></i><b>3.7.2</b> Maturation effects</a></li>
-<li class="chapter" data-level="3.7.3" data-path="studydesign.html"><a href="studydesign.html#repeated-testing-effects"><i class="fa fa-check"></i><b>3.7.3</b> Repeated testing effects</a></li>
-<li class="chapter" data-level="3.7.4" data-path="studydesign.html"><a href="studydesign.html#selection-bias"><i class="fa fa-check"></i><b>3.7.4</b> Selection bias</a></li>
-<li class="chapter" data-level="3.7.5" data-path="studydesign.html"><a href="studydesign.html#differential-attrition"><i class="fa fa-check"></i><b>3.7.5</b> Differential attrition</a></li>
-<li class="chapter" data-level="3.7.6" data-path="studydesign.html"><a href="studydesign.html#non-response-bias"><i class="fa fa-check"></i><b>3.7.6</b> Non-response bias</a></li>
-<li class="chapter" data-level="3.7.7" data-path="studydesign.html"><a href="studydesign.html#regression-to-the-mean"><i class="fa fa-check"></i><b>3.7.7</b> Regression to the mean</a></li>
-<li class="chapter" data-level="3.7.8" data-path="studydesign.html"><a href="studydesign.html#experimenter-bias"><i class="fa fa-check"></i><b>3.7.8</b> Experimenter bias</a></li>
-<li class="chapter" data-level="3.7.9" data-path="studydesign.html"><a href="studydesign.html#demand-effects-and-reactivity"><i class="fa fa-check"></i><b>3.7.9</b> Demand effects and reactivity</a></li>
-<li class="chapter" data-level="3.7.10" data-path="studydesign.html"><a href="studydesign.html#placebo-effects"><i class="fa fa-check"></i><b>3.7.10</b> Placebo effects</a></li>
-<li class="chapter" data-level="3.7.11" data-path="studydesign.html"><a href="studydesign.html#situation-measurement-and-subpopulation-effects"><i class="fa fa-check"></i><b>3.7.11</b> Situation, measurement and subpopulation effects</a></li>
-<li class="chapter" data-level="3.7.12" data-path="studydesign.html"><a href="studydesign.html#fraud-deception-and-self-deception"><i class="fa fa-check"></i><b>3.7.12</b> Fraud, deception and self-deception</a></li>
+<li class="chapter" data-level="2.6" data-path="studydesign.html"><a href="studydesign.html#validity"><i class="fa fa-check"></i><b>2.6</b> Assessing the validity of a study</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="studydesign.html"><a href="studydesign.html#internal-validity"><i class="fa fa-check"></i><b>2.6.1</b> Internal validity</a></li>
+<li class="chapter" data-level="2.6.2" data-path="studydesign.html"><a href="studydesign.html#external-validity"><i class="fa fa-check"></i><b>2.6.2</b> External validity</a></li>
+<li class="chapter" data-level="2.6.3" data-path="studydesign.html"><a href="studydesign.html#construct-validity"><i class="fa fa-check"></i><b>2.6.3</b> Construct validity</a></li>
+<li class="chapter" data-level="2.6.4" data-path="studydesign.html"><a href="studydesign.html#face-validity"><i class="fa fa-check"></i><b>2.6.4</b> Face validity</a></li>
+<li class="chapter" data-level="2.6.5" data-path="studydesign.html"><a href="studydesign.html#ecological-validity"><i class="fa fa-check"></i><b>2.6.5</b> Ecological validity</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="studydesign.html"><a href="studydesign.html#summary"><i class="fa fa-check"></i><b>3.8</b> Summary</a></li>
+<li class="chapter" data-level="2.7" data-path="studydesign.html"><a href="studydesign.html#confounds-artifacts-and-other-threats-to-validity"><i class="fa fa-check"></i><b>2.7</b> Confounds, artifacts and other threats to validity</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="studydesign.html"><a href="studydesign.html#history-effects"><i class="fa fa-check"></i><b>2.7.1</b> History effects</a></li>
+<li class="chapter" data-level="2.7.2" data-path="studydesign.html"><a href="studydesign.html#maturation-effects"><i class="fa fa-check"></i><b>2.7.2</b> Maturation effects</a></li>
+<li class="chapter" data-level="2.7.3" data-path="studydesign.html"><a href="studydesign.html#repeated-testing-effects"><i class="fa fa-check"></i><b>2.7.3</b> Repeated testing effects</a></li>
+<li class="chapter" data-level="2.7.4" data-path="studydesign.html"><a href="studydesign.html#selection-bias"><i class="fa fa-check"></i><b>2.7.4</b> Selection bias</a></li>
+<li class="chapter" data-level="2.7.5" data-path="studydesign.html"><a href="studydesign.html#differential-attrition"><i class="fa fa-check"></i><b>2.7.5</b> Differential attrition</a></li>
+<li class="chapter" data-level="2.7.6" data-path="studydesign.html"><a href="studydesign.html#non-response-bias"><i class="fa fa-check"></i><b>2.7.6</b> Non-response bias</a></li>
+<li class="chapter" data-level="2.7.7" data-path="studydesign.html"><a href="studydesign.html#regression-to-the-mean"><i class="fa fa-check"></i><b>2.7.7</b> Regression to the mean</a></li>
+<li class="chapter" data-level="2.7.8" data-path="studydesign.html"><a href="studydesign.html#experimenter-bias"><i class="fa fa-check"></i><b>2.7.8</b> Experimenter bias</a></li>
+<li class="chapter" data-level="2.7.9" data-path="studydesign.html"><a href="studydesign.html#demand-effects-and-reactivity"><i class="fa fa-check"></i><b>2.7.9</b> Demand effects and reactivity</a></li>
+<li class="chapter" data-level="2.7.10" data-path="studydesign.html"><a href="studydesign.html#placebo-effects"><i class="fa fa-check"></i><b>2.7.10</b> Placebo effects</a></li>
+<li class="chapter" data-level="2.7.11" data-path="studydesign.html"><a href="studydesign.html#situation-measurement-and-subpopulation-effects"><i class="fa fa-check"></i><b>2.7.11</b> Situation, measurement and subpopulation effects</a></li>
+<li class="chapter" data-level="2.7.12" data-path="studydesign.html"><a href="studydesign.html#fraud-deception-and-self-deception"><i class="fa fa-check"></i><b>2.7.12</b> Fraud, deception and self-deception</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="2.8" data-path="studydesign.html"><a href="studydesign.html#summary"><i class="fa fa-check"></i><b>2.8</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="part-ii-an-introduction-to-r.html"><a href="part-ii-an-introduction-to-r.html"><i class="fa fa-check"></i>Part II. An introduction to R</a></li>
+<li class="chapter" data-level="3" data-path="introR.html"><a href="introR.html"><i class="fa fa-check"></i><b>3</b> Getting started with R</a><ul>
+<li class="chapter" data-level="3.1" data-path="introR.html"><a href="introR.html#gettingR"><i class="fa fa-check"></i><b>3.1</b> Installing R</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="introR.html"><a href="introR.html#installing-r-on-a-windows-computer"><i class="fa fa-check"></i><b>3.1.1</b> Installing R on a Windows computer</a></li>
+<li class="chapter" data-level="3.1.2" data-path="introR.html"><a href="introR.html#installing-r-on-a-mac"><i class="fa fa-check"></i><b>3.1.2</b> Installing R on a Mac</a></li>
+<li class="chapter" data-level="3.1.3" data-path="introR.html"><a href="introR.html#installing-r-on-a-linux-computer"><i class="fa fa-check"></i><b>3.1.3</b> Installing R on a Linux computer</a></li>
+<li class="chapter" data-level="3.1.4" data-path="introR.html"><a href="introR.html#downloading-and-installing-rstudio"><i class="fa fa-check"></i><b>3.1.4</b> Downloading and installing RStudio</a></li>
+<li class="chapter" data-level="3.1.5" data-path="introR.html"><a href="introR.html#startingR"><i class="fa fa-check"></i><b>3.1.5</b> Starting up R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introR.html"><a href="introR.html#firstcommand"><i class="fa fa-check"></i><b>3.2</b> Typing commands at the R console</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="introR.html"><a href="introR.html#an-important-digression-about-formatting"><i class="fa fa-check"></i><b>3.2.1</b> An important digression about formatting</a></li>
+<li class="chapter" data-level="3.2.2" data-path="introR.html"><a href="introR.html#be-very-careful-to-avoid-typos"><i class="fa fa-check"></i><b>3.2.2</b> Be very careful to avoid typos</a></li>
+<li class="chapter" data-level="3.2.3" data-path="introR.html"><a href="introR.html#r-is-a-bit-flexible-with-spacing"><i class="fa fa-check"></i><b>3.2.3</b> R is (a bit) flexible with spacing</a></li>
+<li class="chapter" data-level="3.2.4" data-path="introR.html"><a href="introR.html#r-can-sometimes-tell-that-youre-not-finished-yet-but-not-often"><i class="fa fa-check"></i><b>3.2.4</b> R can sometimes tell that you’re not finished yet (but not often)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introR.html"><a href="introR.html#arithmetic"><i class="fa fa-check"></i><b>3.3</b> Doing simple calculations with R</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="introR.html"><a href="introR.html#adding-subtracting-multiplying-and-dividing"><i class="fa fa-check"></i><b>3.3.1</b> Adding, subtracting, multiplying and dividing</a></li>
+<li class="chapter" data-level="3.3.2" data-path="introR.html"><a href="introR.html#taking-powers"><i class="fa fa-check"></i><b>3.3.2</b> Taking powers</a></li>
+<li class="chapter" data-level="3.3.3" data-path="introR.html"><a href="introR.html#bedmas"><i class="fa fa-check"></i><b>3.3.3</b> Doing calculations in the right order</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introR.html"><a href="introR.html#assign"><i class="fa fa-check"></i><b>3.4</b> Storing a number as a variable</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="introR.html"><a href="introR.html#variable-assignment-using---and--"><i class="fa fa-check"></i><b>3.4.1</b> Variable assignment using <code>&lt;-</code> and <code>-&gt;</code></a></li>
+<li class="chapter" data-level="3.4.2" data-path="introR.html"><a href="introR.html#doing-calculations-using-variables"><i class="fa fa-check"></i><b>3.4.2</b> Doing calculations using variables</a></li>
+<li class="chapter" data-level="3.4.3" data-path="introR.html"><a href="introR.html#rules-and-conventions-for-naming-variables"><i class="fa fa-check"></i><b>3.4.3</b> Rules and conventions for naming variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introR.html"><a href="introR.html#usingfunctions"><i class="fa fa-check"></i><b>3.5</b> Using functions to do calculations</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="introR.html"><a href="introR.html#functionarguments"><i class="fa fa-check"></i><b>3.5.1</b> Function arguments, their names and their defaults</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introR.html"><a href="introR.html#RStudio1"><i class="fa fa-check"></i><b>3.6</b> Letting RStudio help you with your commands</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="introR.html"><a href="introR.html#autocomplete-using-tab"><i class="fa fa-check"></i><b>3.6.1</b> Autocomplete using “tab”</a></li>
+<li class="chapter" data-level="3.6.2" data-path="introR.html"><a href="introR.html#browsing-your-command-history"><i class="fa fa-check"></i><b>3.6.2</b> Browsing your command history</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="introR.html"><a href="introR.html#vectors"><i class="fa fa-check"></i><b>3.7</b> Storing many numbers as a vector</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="introR.html"><a href="introR.html#creating-a-vector"><i class="fa fa-check"></i><b>3.7.1</b> Creating a vector</a></li>
+<li class="chapter" data-level="3.7.2" data-path="introR.html"><a href="introR.html#a-handy-digression"><i class="fa fa-check"></i><b>3.7.2</b> A handy digression</a></li>
+<li class="chapter" data-level="3.7.3" data-path="introR.html"><a href="introR.html#vectorsubset"><i class="fa fa-check"></i><b>3.7.3</b> Getting information out of vectors</a></li>
+<li class="chapter" data-level="3.7.4" data-path="introR.html"><a href="introR.html#altering-the-elements-of-a-vector"><i class="fa fa-check"></i><b>3.7.4</b> Altering the elements of a vector</a></li>
+<li class="chapter" data-level="3.7.5" data-path="introR.html"><a href="introR.html#veclength"><i class="fa fa-check"></i><b>3.7.5</b> Useful things to know about vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="introR.html"><a href="introR.html#text"><i class="fa fa-check"></i><b>3.8</b> Storing text data</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="introR.html"><a href="introR.html#simpletext"><i class="fa fa-check"></i><b>3.8.1</b> Working with text</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="introR.html"><a href="introR.html#logicals"><i class="fa fa-check"></i><b>3.9</b> Storing “true or false” data</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="introR.html"><a href="introR.html#assessing-mathematical-truths"><i class="fa fa-check"></i><b>3.9.1</b> Assessing mathematical truths</a></li>
+<li class="chapter" data-level="3.9.2" data-path="introR.html"><a href="introR.html#logical-operations"><i class="fa fa-check"></i><b>3.9.2</b> Logical operations</a></li>
+<li class="chapter" data-level="3.9.3" data-path="introR.html"><a href="introR.html#storing-and-using-logical-data"><i class="fa fa-check"></i><b>3.9.3</b> Storing and using logical data</a></li>
+<li class="chapter" data-level="3.9.4" data-path="introR.html"><a href="introR.html#vectors-of-logicals"><i class="fa fa-check"></i><b>3.9.4</b> Vectors of logicals</a></li>
+<li class="chapter" data-level="3.9.5" data-path="introR.html"><a href="introR.html#logictext"><i class="fa fa-check"></i><b>3.9.5</b> Applying logical operation to text</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="introR.html"><a href="introR.html#indexing"><i class="fa fa-check"></i><b>3.10</b> Indexing vectors</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="introR.html"><a href="introR.html#extracting-multiple-elements"><i class="fa fa-check"></i><b>3.10.1</b> Extracting multiple elements</a></li>
+<li class="chapter" data-level="3.10.2" data-path="introR.html"><a href="introR.html#logical-indexing"><i class="fa fa-check"></i><b>3.10.2</b> Logical indexing</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="introR.html"><a href="introR.html#quitting-r"><i class="fa fa-check"></i><b>3.11</b> Quitting R</a></li>
+<li class="chapter" data-level="3.12" data-path="introR.html"><a href="introR.html#summary-1"><i class="fa fa-check"></i><b>3.12</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mechanics.html"><a href="mechanics.html"><i class="fa fa-check"></i><b>4</b> Additional R concepts</a><ul>
+<li class="chapter" data-level="4.1" data-path="mechanics.html"><a href="mechanics.html#comments"><i class="fa fa-check"></i><b>4.1</b> Using comments</a></li>
+<li class="chapter" data-level="4.2" data-path="mechanics.html"><a href="mechanics.html#packageinstall"><i class="fa fa-check"></i><b>4.2</b> Installing and loading packages</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="mechanics.html"><a href="mechanics.html#the-package-panel-in-rstudio"><i class="fa fa-check"></i><b>4.2.1</b> The package panel in Rstudio</a></li>
+<li class="chapter" data-level="4.2.2" data-path="mechanics.html"><a href="mechanics.html#packageload"><i class="fa fa-check"></i><b>4.2.2</b> Loading a package</a></li>
+<li class="chapter" data-level="4.2.3" data-path="mechanics.html"><a href="mechanics.html#packageunload"><i class="fa fa-check"></i><b>4.2.3</b> Unloading a package</a></li>
+<li class="chapter" data-level="4.2.4" data-path="mechanics.html"><a href="mechanics.html#a-few-extra-comments"><i class="fa fa-check"></i><b>4.2.4</b> A few extra comments</a></li>
+<li class="chapter" data-level="4.2.5" data-path="mechanics.html"><a href="mechanics.html#downloading-new-packages"><i class="fa fa-check"></i><b>4.2.5</b> Downloading new packages</a></li>
+<li class="chapter" data-level="4.2.6" data-path="mechanics.html"><a href="mechanics.html#updating-r-and-r-packages"><i class="fa fa-check"></i><b>4.2.6</b> Updating R and R packages</a></li>
+<li class="chapter" data-level="4.2.7" data-path="mechanics.html"><a href="mechanics.html#what-packages-does-this-book-use"><i class="fa fa-check"></i><b>4.2.7</b> What packages does this book use?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="mechanics.html"><a href="mechanics.html#workspace"><i class="fa fa-check"></i><b>4.3</b> Managing the workspace</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="mechanics.html"><a href="mechanics.html#listing-the-contents-of-the-workspace"><i class="fa fa-check"></i><b>4.3.1</b> Listing the contents of the workspace</a></li>
+<li class="chapter" data-level="4.3.2" data-path="mechanics.html"><a href="mechanics.html#removing-variables-from-the-workspace"><i class="fa fa-check"></i><b>4.3.2</b> Removing variables from the workspace</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="mechanics.html"><a href="mechanics.html#navigation"><i class="fa fa-check"></i><b>4.4</b> Navigating the file system</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="mechanics.html"><a href="mechanics.html#filesystem"><i class="fa fa-check"></i><b>4.4.1</b> The file system itself</a></li>
+<li class="chapter" data-level="4.4.2" data-path="mechanics.html"><a href="mechanics.html#navigationR"><i class="fa fa-check"></i><b>4.4.2</b> Navigating the file system using the R console</a></li>
+<li class="chapter" data-level="4.4.3" data-path="mechanics.html"><a href="mechanics.html#why-do-the-windows-paths-use-the-wrong-slash"><i class="fa fa-check"></i><b>4.4.3</b> Why do the Windows paths use the wrong slash?</a></li>
+<li class="chapter" data-level="4.4.4" data-path="mechanics.html"><a href="mechanics.html#nav3"><i class="fa fa-check"></i><b>4.4.4</b> Navigating the file system using the Rstudio file panel</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
+<li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using Rstudio</a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code>loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using Rstudio</a></li>
+<li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
+<li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using Rstudio</a></li>
+<li class="chapter" data-level="4.5.7" data-path="mechanics.html"><a href="mechanics.html#other-things-you-might-want-to-save"><i class="fa fa-check"></i><b>4.5.7</b> Other things you might want to save</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="mechanics.html"><a href="mechanics.html#useful"><i class="fa fa-check"></i><b>4.6</b> Useful things to know about variables</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="mechanics.html"><a href="mechanics.html#specials"><i class="fa fa-check"></i><b>4.6.1</b> Special values</a></li>
+<li class="chapter" data-level="4.6.2" data-path="mechanics.html"><a href="mechanics.html#names"><i class="fa fa-check"></i><b>4.6.2</b> Assigning names to vector elements</a></li>
+<li class="chapter" data-level="4.6.3" data-path="mechanics.html"><a href="mechanics.html#variable-classes"><i class="fa fa-check"></i><b>4.6.3</b> Variable classes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="mechanics.html"><a href="mechanics.html#factors"><i class="fa fa-check"></i><b>4.7</b> Factors</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="mechanics.html"><a href="mechanics.html#introducing-factors"><i class="fa fa-check"></i><b>4.7.1</b> Introducing factors</a></li>
+<li class="chapter" data-level="4.7.2" data-path="mechanics.html"><a href="mechanics.html#labelling-the-factor-levels"><i class="fa fa-check"></i><b>4.7.2</b> Labelling the factor levels</a></li>
+<li class="chapter" data-level="4.7.3" data-path="mechanics.html"><a href="mechanics.html#moving-on"><i class="fa fa-check"></i><b>4.7.3</b> Moving on…</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="mechanics.html"><a href="mechanics.html#dataframes"><i class="fa fa-check"></i><b>4.8</b> Data frames</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="mechanics.html"><a href="mechanics.html#introducing-data-frames"><i class="fa fa-check"></i><b>4.8.1</b> Introducing data frames</a></li>
+<li class="chapter" data-level="4.8.2" data-path="mechanics.html"><a href="mechanics.html#pulling-out-the-contents-of-the-data-frame-using"><i class="fa fa-check"></i><b>4.8.2</b> Pulling out the contents of the data frame using <code>$</code></a></li>
+<li class="chapter" data-level="4.8.3" data-path="mechanics.html"><a href="mechanics.html#getting-information-about-a-data-frame"><i class="fa fa-check"></i><b>4.8.3</b> Getting information about a data frame</a></li>
+<li class="chapter" data-level="4.8.4" data-path="mechanics.html"><a href="mechanics.html#looking-for-more-on-data-frames"><i class="fa fa-check"></i><b>4.8.4</b> Looking for more on data frames?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="mechanics.html"><a href="mechanics.html#lists"><i class="fa fa-check"></i><b>4.9</b> Lists</a></li>
+<li class="chapter" data-level="4.10" data-path="mechanics.html"><a href="mechanics.html#formulas"><i class="fa fa-check"></i><b>4.10</b> Formulas</a></li>
+<li class="chapter" data-level="4.11" data-path="mechanics.html"><a href="mechanics.html#generics"><i class="fa fa-check"></i><b>4.11</b> Generic functions</a></li>
+<li class="chapter" data-level="4.12" data-path="mechanics.html"><a href="mechanics.html#help"><i class="fa fa-check"></i><b>4.12</b> Getting help</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="mechanics.html"><a href="mechanics.html#other-resources"><i class="fa fa-check"></i><b>4.12.1</b> Other resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="mechanics.html"><a href="mechanics.html#summary-2"><i class="fa fa-check"></i><b>4.13</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-iii-working-with-data.html"><a href="part-iii-working-with-data.html"><i class="fa fa-check"></i>Part III. Working with data</a></li>
+<li class="chapter" data-level="5" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>5</b> Descriptive statistics</a><ul>
+<li class="chapter" data-level="5.1" data-path="descriptives.html"><a href="descriptives.html#centraltendency"><i class="fa fa-check"></i><b>5.1</b> Measures of central tendency</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="descriptives.html"><a href="descriptives.html#mean"><i class="fa fa-check"></i><b>5.1.1</b> The mean</a></li>
+<li class="chapter" data-level="5.1.2" data-path="descriptives.html"><a href="descriptives.html#calculating-the-mean-in-r"><i class="fa fa-check"></i><b>5.1.2</b> Calculating the mean in R</a></li>
+<li class="chapter" data-level="5.1.3" data-path="descriptives.html"><a href="descriptives.html#median"><i class="fa fa-check"></i><b>5.1.3</b> The median</a></li>
+<li class="chapter" data-level="5.1.4" data-path="descriptives.html"><a href="descriptives.html#mean-or-median-whats-the-difference"><i class="fa fa-check"></i><b>5.1.4</b> Mean or median? What’s the difference?</a></li>
+<li class="chapter" data-level="5.1.5" data-path="descriptives.html"><a href="descriptives.html#housingpriceexample"><i class="fa fa-check"></i><b>5.1.5</b> A real life example</a></li>
+<li class="chapter" data-level="5.1.6" data-path="descriptives.html"><a href="descriptives.html#trimmedmean"><i class="fa fa-check"></i><b>5.1.6</b> Trimmed mean</a></li>
+<li class="chapter" data-level="5.1.7" data-path="descriptives.html"><a href="descriptives.html#mode"><i class="fa fa-check"></i><b>5.1.7</b> Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="descriptives.html"><a href="descriptives.html#var"><i class="fa fa-check"></i><b>5.2</b> Measures of variability</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="descriptives.html"><a href="descriptives.html#range"><i class="fa fa-check"></i><b>5.2.1</b> Range</a></li>
+<li class="chapter" data-level="5.2.2" data-path="descriptives.html"><a href="descriptives.html#interquartile-range"><i class="fa fa-check"></i><b>5.2.2</b> Interquartile range</a></li>
+<li class="chapter" data-level="5.2.3" data-path="descriptives.html"><a href="descriptives.html#aad"><i class="fa fa-check"></i><b>5.2.3</b> Mean absolute deviation</a></li>
+<li class="chapter" data-level="5.2.4" data-path="descriptives.html"><a href="descriptives.html#variance"><i class="fa fa-check"></i><b>5.2.4</b> Variance</a></li>
+<li class="chapter" data-level="5.2.5" data-path="descriptives.html"><a href="descriptives.html#sd"><i class="fa fa-check"></i><b>5.2.5</b> Standard deviation</a></li>
+<li class="chapter" data-level="5.2.6" data-path="descriptives.html"><a href="descriptives.html#mad"><i class="fa fa-check"></i><b>5.2.6</b> Median absolute deviation</a></li>
+<li class="chapter" data-level="5.2.7" data-path="descriptives.html"><a href="descriptives.html#which-measure-to-use"><i class="fa fa-check"></i><b>5.2.7</b> Which measure to use?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="descriptives.html"><a href="descriptives.html#kurtosis"><i class="fa fa-check"></i><b>5.3</b> Skew and kurtosis{#skew}</a></li>
+<li class="chapter" data-level="5.4" data-path="studydesign.html"><a href="studydesign.html#summary"><i class="fa fa-check"></i><b>5.4</b> Getting an overall summary of a variable</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="descriptives.html"><a href="descriptives.html#summarising-a-variable"><i class="fa fa-check"></i><b>5.4.1</b> “Summarising” a variable</a></li>
+<li class="chapter" data-level="5.4.2" data-path="descriptives.html"><a href="descriptives.html#summarising-a-data-frame"><i class="fa fa-check"></i><b>5.4.2</b> “Summarising” a data frame</a></li>
+<li class="chapter" data-level="5.4.3" data-path="descriptives.html"><a href="descriptives.html#describing-a-data-frame"><i class="fa fa-check"></i><b>5.4.3</b> “Describing” a data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="descriptives.html"><a href="descriptives.html#groupdescriptives"><i class="fa fa-check"></i><b>5.5</b> Descriptive statistics separately for each group</a></li>
+<li class="chapter" data-level="5.6" data-path="descriptives.html"><a href="descriptives.html#zscore"><i class="fa fa-check"></i><b>5.6</b> Standard scores</a></li>
+<li class="chapter" data-level="5.7" data-path="descriptives.html"><a href="descriptives.html#correl"><i class="fa fa-check"></i><b>5.7</b> Correlations</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="descriptives.html"><a href="descriptives.html#the-data"><i class="fa fa-check"></i><b>5.7.1</b> The data</a></li>
+<li class="chapter" data-level="5.7.2" data-path="descriptives.html"><a href="descriptives.html#the-strength-and-direction-of-a-relationship"><i class="fa fa-check"></i><b>5.7.2</b> The strength and direction of a relationship</a></li>
+<li class="chapter" data-level="5.7.3" data-path="descriptives.html"><a href="descriptives.html#the-correlation-coefficient"><i class="fa fa-check"></i><b>5.7.3</b> The correlation coefficient</a></li>
+<li class="chapter" data-level="5.7.4" data-path="descriptives.html"><a href="descriptives.html#calculating-correlations-in-r"><i class="fa fa-check"></i><b>5.7.4</b> Calculating correlations in R</a></li>
+<li class="chapter" data-level="5.7.5" data-path="descriptives.html"><a href="descriptives.html#interpretingcorrelations"><i class="fa fa-check"></i><b>5.7.5</b> Interpreting a correlation</a></li>
+<li class="chapter" data-level="5.7.6" data-path="descriptives.html"><a href="descriptives.html#spearmans-rank-correlations"><i class="fa fa-check"></i><b>5.7.6</b> Spearman’s rank correlations</a></li>
+<li class="chapter" data-level="5.7.7" data-path="descriptives.html"><a href="descriptives.html#the-correlate-function"><i class="fa fa-check"></i><b>5.7.7</b> The <code>correlate()</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="descriptives.html"><a href="descriptives.html#missing"><i class="fa fa-check"></i><b>5.8</b> Handling missing values</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="descriptives.html"><a href="descriptives.html#the-single-variable-case"><i class="fa fa-check"></i><b>5.8.1</b> The single variable case</a></li>
+<li class="chapter" data-level="5.8.2" data-path="descriptives.html"><a href="descriptives.html#missing-values-in-pairwise-calculations"><i class="fa fa-check"></i><b>5.8.2</b> Missing values in pairwise calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="descriptives.html"><a href="descriptives.html#summary-3"><i class="fa fa-check"></i><b>5.9</b> Summary</a></li>
+<li class="chapter" data-level="5.10" data-path="descriptives.html"><a href="descriptives.html#epilogue-good-descriptive-statistics-are-descriptive"><i class="fa fa-check"></i><b>5.10</b> Epilogue: Good descriptive statistics are descriptive!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>6</b> Drawing graphs</a><ul>
+<li class="chapter" data-level="6.1" data-path="graphics.html"><a href="graphics.html#rgraphics"><i class="fa fa-check"></i><b>6.1</b> An overview of R graphics</a></li>
+<li class="chapter" data-level="6.2" data-path="graphics.html"><a href="graphics.html#introplotting"><i class="fa fa-check"></i><b>6.2</b> An introduction to plotting</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="graphics.html"><a href="graphics.html#a-tedious-digression"><i class="fa fa-check"></i><b>6.2.1</b> A tedious digression</a></li>
+<li class="chapter" data-level="6.2.2" data-path="graphics.html"><a href="graphics.html#figtitles"><i class="fa fa-check"></i><b>6.2.2</b> Customising the title and the axis labels</a></li>
+<li class="chapter" data-level="6.2.3" data-path="graphics.html"><a href="graphics.html#changing-the-plot-type"><i class="fa fa-check"></i><b>6.2.3</b> Changing the plot type</a></li>
+<li class="chapter" data-level="6.2.4" data-path="graphics.html"><a href="graphics.html#changing-other-features-of-the-plot"><i class="fa fa-check"></i><b>6.2.4</b> Changing other features of the plot</a></li>
+<li class="chapter" data-level="6.2.5" data-path="graphics.html"><a href="graphics.html#changing-the-appearance-of-the-axes"><i class="fa fa-check"></i><b>6.2.5</b> Changing the appearance of the axes</a></li>
+<li class="chapter" data-level="6.2.6" data-path="graphics.html"><a href="graphics.html#dont-panic"><i class="fa fa-check"></i><b>6.2.6</b> Don’t panic</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="graphics.html"><a href="graphics.html#hist"><i class="fa fa-check"></i><b>6.3</b> Histograms</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="graphics.html"><a href="graphics.html#visual-style-of-your-histogram"><i class="fa fa-check"></i><b>6.3.1</b> Visual style of your histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="graphics.html"><a href="graphics.html#stem"><i class="fa fa-check"></i><b>6.4</b> Stem and leaf plots</a></li>
+<li class="chapter" data-level="6.5" data-path="graphics.html"><a href="graphics.html#boxplots"><i class="fa fa-check"></i><b>6.5</b> Boxplots</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="graphics.html"><a href="graphics.html#visual-style-of-your-boxplot"><i class="fa fa-check"></i><b>6.5.1</b> Visual style of your boxplot</a></li>
+<li class="chapter" data-level="6.5.2" data-path="graphics.html"><a href="graphics.html#boxplotoutliers"><i class="fa fa-check"></i><b>6.5.2</b> Using box plots to detect outliers</a></li>
+<li class="chapter" data-level="6.5.3" data-path="graphics.html"><a href="graphics.html#multipleboxplots"><i class="fa fa-check"></i><b>6.5.3</b> Drawing multiple boxplots</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="graphics.html"><a href="graphics.html#scatterplots"><i class="fa fa-check"></i><b>6.6</b> Scatterplots</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="graphics.html"><a href="graphics.html#more-elaborate-options"><i class="fa fa-check"></i><b>6.6.1</b> More elaborate options</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="graphics.html"><a href="graphics.html#bargraph"><i class="fa fa-check"></i><b>6.7</b> Bar graphs</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="graphics.html"><a href="graphics.html#changing-global-settings-using-par"><i class="fa fa-check"></i><b>6.7.1</b> Changing global settings using <code id="par">par()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="graphics.html"><a href="graphics.html#saveimage"><i class="fa fa-check"></i><b>6.8</b> Saving image files using R and Rstudio</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="graphics.html"><a href="graphics.html#the-ugly-details-advanced"><i class="fa fa-check"></i><b>6.8.1</b> The ugly details (advanced)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="graphics.html"><a href="graphics.html#summary-4"><i class="fa fa-check"></i><b>6.9</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="datahandling.html"><a href="datahandling.html"><i class="fa fa-check"></i><b>7</b> Pragmatic matters</a><ul>
+<li class="chapter" data-level="7.1" data-path="datahandling.html"><a href="datahandling.html#freqtables"><i class="fa fa-check"></i><b>7.1</b> Tabulating and cross-tabulating data</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="datahandling.html"><a href="datahandling.html#creating-tables-from-vectors"><i class="fa fa-check"></i><b>7.1.1</b> Creating tables from vectors</a></li>
+<li class="chapter" data-level="7.1.2" data-path="datahandling.html"><a href="datahandling.html#creating-tables-from-data-frames"><i class="fa fa-check"></i><b>7.1.2</b> Creating tables from data frames</a></li>
+<li class="chapter" data-level="7.1.3" data-path="datahandling.html"><a href="datahandling.html#converting-a-table-of-counts-to-a-table-of-proportions"><i class="fa fa-check"></i><b>7.1.3</b> Converting a table of counts to a table of proportions</a></li>
+<li class="chapter" data-level="7.1.4" data-path="datahandling.html"><a href="datahandling.html#low-level-tabulation"><i class="fa fa-check"></i><b>7.1.4</b> Low level tabulation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="datahandling.html"><a href="datahandling.html#transform"><i class="fa fa-check"></i><b>7.2</b> Transforming and recoding a variable</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="datahandling.html"><a href="datahandling.html#creating-a-transformed-variable"><i class="fa fa-check"></i><b>7.2.1</b> Creating a transformed variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="datahandling.html"><a href="datahandling.html#cutting-a-numeric-variable-into-categories"><i class="fa fa-check"></i><b>7.2.2</b> Cutting a numeric variable into categories</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="datahandling.html"><a href="datahandling.html#mathfunc"><i class="fa fa-check"></i><b>7.3</b> A few more mathematical functions and operations</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="datahandling.html"><a href="datahandling.html#rounding-a-number"><i class="fa fa-check"></i><b>7.3.1</b> Rounding a number</a></li>
+<li class="chapter" data-level="7.3.2" data-path="datahandling.html"><a href="datahandling.html#modulus-and-integer-division"><i class="fa fa-check"></i><b>7.3.2</b> Modulus and integer division</a></li>
+<li class="chapter" data-level="7.3.3" data-path="datahandling.html"><a href="datahandling.html#logarithms-and-exponentials"><i class="fa fa-check"></i><b>7.3.3</b> Logarithms and exponentials</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="datahandling.html"><a href="datahandling.html#subset"><i class="fa fa-check"></i><b>7.4</b> Extracting a subset of a vector</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="datahandling.html"><a href="datahandling.html#refresher"><i class="fa fa-check"></i><b>7.4.1</b> Refresher</a></li>
+<li class="chapter" data-level="7.4.2" data-path="datahandling.html"><a href="datahandling.html#using-in-to-match-multiple-cases"><i class="fa fa-check"></i><b>7.4.2</b> Using <code>%in%</code> to match multiple cases</a></li>
+<li class="chapter" data-level="7.4.3" data-path="datahandling.html"><a href="datahandling.html#using-negative-indices-to-drop-elements"><i class="fa fa-check"></i><b>7.4.3</b> Using negative indices to drop elements</a></li>
+<li class="chapter" data-level="7.4.4" data-path="datahandling.html"><a href="datahandling.html#splitting-a-vector-by-group"><i class="fa fa-check"></i><b>7.4.4</b> Splitting a vector by group</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="datahandling.html"><a href="datahandling.html#subsetdataframe"><i class="fa fa-check"></i><b>7.5</b> Extracting a subset of a data frame</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="datahandling.html"><a href="datahandling.html#using-the-subset-function"><i class="fa fa-check"></i><b>7.5.1</b> Using the <code>subset()</code> function</a></li>
+<li class="chapter" data-level="7.5.2" data-path="datahandling.html"><a href="datahandling.html#using-square-brackets-i.-rows-and-columns"><i class="fa fa-check"></i><b>7.5.2</b> Using square brackets: I. Rows and columns</a></li>
+<li class="chapter" data-level="7.5.3" data-path="datahandling.html"><a href="datahandling.html#using-square-brackets-ii.-some-elaborations"><i class="fa fa-check"></i><b>7.5.3</b> Using square brackets: II. Some elaborations</a></li>
+<li class="chapter" data-level="7.5.4" data-path="datahandling.html"><a href="datahandling.html#dropping"><i class="fa fa-check"></i><b>7.5.4</b> Using square brackets: III. Understanding “dropping”</a></li>
+<li class="chapter" data-level="7.5.5" data-path="datahandling.html"><a href="datahandling.html#using-square-brackets-iv.-columns-only"><i class="fa fa-check"></i><b>7.5.5</b> Using square brackets: IV. Columns only</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="datahandling.html"><a href="datahandling.html#sort"><i class="fa fa-check"></i><b>7.6</b> Sorting, flipping and merging data</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="datahandling.html"><a href="datahandling.html#sorting-a-numeric-or-character-vector"><i class="fa fa-check"></i><b>7.6.1</b> Sorting a numeric or character vector</a></li>
+<li class="chapter" data-level="7.6.2" data-path="datahandling.html"><a href="datahandling.html#sorting-a-factor"><i class="fa fa-check"></i><b>7.6.2</b> Sorting a factor</a></li>
+<li class="chapter" data-level="7.6.3" data-path="datahandling.html"><a href="datahandling.html#sortframe"><i class="fa fa-check"></i><b>7.6.3</b> Sorting a data frame</a></li>
+<li class="chapter" data-level="7.6.4" data-path="datahandling.html"><a href="datahandling.html#binding-vectors-together"><i class="fa fa-check"></i><b>7.6.4</b> Binding vectors together</a></li>
+<li class="chapter" data-level="7.6.5" data-path="datahandling.html"><a href="datahandling.html#binding-multiple-copies-of-the-same-vector-together"><i class="fa fa-check"></i><b>7.6.5</b> Binding multiple copies of the same vector together</a></li>
+<li class="chapter" data-level="7.6.6" data-path="datahandling.html"><a href="datahandling.html#transposing-a-matrix-or-data-frame"><i class="fa fa-check"></i><b>7.6.6</b> Transposing a matrix or data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="datahandling.html"><a href="datahandling.html#reshape"><i class="fa fa-check"></i><b>7.7</b> Reshaping a data frame</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="datahandling.html"><a href="datahandling.html#long-form-and-wide-form-data"><i class="fa fa-check"></i><b>7.7.1</b> Long form and wide form data</a></li>
+<li class="chapter" data-level="7.7.2" data-path="datahandling.html"><a href="datahandling.html#reshaping-data-using-widetolong"><i class="fa fa-check"></i><b>7.7.2</b> Reshaping data using <code>wideToLong()</code></a></li>
+<li class="chapter" data-level="7.7.3" data-path="datahandling.html"><a href="datahandling.html#reshaping-data-using-longtowide"><i class="fa fa-check"></i><b>7.7.3</b> Reshaping data using <code>longToWide()</code></a></li>
+<li class="chapter" data-level="7.7.4" data-path="datahandling.html"><a href="datahandling.html#reshaping-with-multiple-within-subject-factors"><i class="fa fa-check"></i><b>7.7.4</b> Reshaping with multiple within-subject factors</a></li>
+<li class="chapter" data-level="7.7.5" data-path="datahandling.html"><a href="datahandling.html#what-other-options-are-there"><i class="fa fa-check"></i><b>7.7.5</b> What other options are there?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="datahandling.html"><a href="datahandling.html#textprocessing"><i class="fa fa-check"></i><b>7.8</b> Working with text</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="datahandling.html"><a href="datahandling.html#shortening-a-string"><i class="fa fa-check"></i><b>7.8.1</b> Shortening a string</a></li>
+<li class="chapter" data-level="7.8.2" data-path="datahandling.html"><a href="datahandling.html#pasting-strings-together"><i class="fa fa-check"></i><b>7.8.2</b> Pasting strings together</a></li>
+<li class="chapter" data-level="7.8.3" data-path="datahandling.html"><a href="datahandling.html#splitting-strings"><i class="fa fa-check"></i><b>7.8.3</b> Splitting strings</a></li>
+<li class="chapter" data-level="7.8.4" data-path="datahandling.html"><a href="datahandling.html#making-simple-conversions"><i class="fa fa-check"></i><b>7.8.4</b> Making simple conversions</a></li>
+<li class="chapter" data-level="7.8.5" data-path="datahandling.html"><a href="datahandling.html#logictext2"><i class="fa fa-check"></i><b>7.8.5</b> Applying logical operations to text</a></li>
+<li class="chapter" data-level="7.8.6" data-path="datahandling.html"><a href="datahandling.html#concatenating-and-printing-with-cat"><i class="fa fa-check"></i><b>7.8.6</b> Concatenating and printing with <code>cat()</code></a></li>
+<li class="chapter" data-level="7.8.7" data-path="datahandling.html"><a href="datahandling.html#escapechars"><i class="fa fa-check"></i><b>7.8.7</b> Using escape characters in text</a></li>
+<li class="chapter" data-level="7.8.8" data-path="datahandling.html"><a href="datahandling.html#matching-and-substituting-text"><i class="fa fa-check"></i><b>7.8.8</b> Matching and substituting text</a></li>
+<li class="chapter" data-level="7.8.9" data-path="datahandling.html"><a href="datahandling.html#regex"><i class="fa fa-check"></i><b>7.8.9</b> Regular expressions (not really)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="datahandling.html"><a href="datahandling.html#importing"><i class="fa fa-check"></i><b>7.9</b> Reading unusual data files</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="datahandling.html"><a href="datahandling.html#loading-data-from-text-files"><i class="fa fa-check"></i><b>7.9.1</b> Loading data from text files</a></li>
+<li class="chapter" data-level="7.9.2" data-path="datahandling.html"><a href="datahandling.html#loading-data-from-spss-and-other-statistics-packages"><i class="fa fa-check"></i><b>7.9.2</b> Loading data from SPSS (and other statistics packages)</a></li>
+<li class="chapter" data-level="7.9.3" data-path="datahandling.html"><a href="datahandling.html#loading-excel-files"><i class="fa fa-check"></i><b>7.9.3</b> Loading Excel files</a></li>
+<li class="chapter" data-level="7.9.4" data-path="datahandling.html"><a href="datahandling.html#loading-matlab-octave-files"><i class="fa fa-check"></i><b>7.9.4</b> Loading Matlab (&amp; Octave) files</a></li>
+<li class="chapter" data-level="7.9.5" data-path="datahandling.html"><a href="datahandling.html#saving-other-kinds-of-data"><i class="fa fa-check"></i><b>7.9.5</b> Saving other kinds of data</a></li>
+<li class="chapter" data-level="7.9.6" data-path="datahandling.html"><a href="datahandling.html#are-we-done-yet"><i class="fa fa-check"></i><b>7.9.6</b> Are we done yet?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="datahandling.html"><a href="datahandling.html#coercion"><i class="fa fa-check"></i><b>7.10</b> Coercing data from one class to another</a></li>
+<li class="chapter" data-level="7.11" data-path="datahandling.html"><a href="datahandling.html#datastructures"><i class="fa fa-check"></i><b>7.11</b> Other useful data structures</a><ul>
+<li class="chapter" data-level="7.11.1" data-path="datahandling.html"><a href="datahandling.html#matrix"><i class="fa fa-check"></i><b>7.11.1</b> Matrices</a></li>
+<li class="chapter" data-level="7.11.2" data-path="datahandling.html"><a href="datahandling.html#orderedfactors"><i class="fa fa-check"></i><b>7.11.2</b> Ordered factors</a></li>
+<li class="chapter" data-level="7.11.3" data-path="datahandling.html"><a href="datahandling.html#dates"><i class="fa fa-check"></i><b>7.11.3</b> Dates and times</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="datahandling.html"><a href="datahandling.html#miscdatahandling"><i class="fa fa-check"></i><b>7.12</b> Miscellaneous topics</a><ul>
+<li class="chapter" data-level="7.12.1" data-path="datahandling.html"><a href="datahandling.html#the-problems-with-floating-point-arithmetic"><i class="fa fa-check"></i><b>7.12.1</b> The problems with floating point arithmetic</a></li>
+<li class="chapter" data-level="7.12.2" data-path="datahandling.html"><a href="datahandling.html#recycling"><i class="fa fa-check"></i><b>7.12.2</b> The recycling rule</a></li>
+<li class="chapter" data-level="7.12.3" data-path="datahandling.html"><a href="datahandling.html#environments"><i class="fa fa-check"></i><b>7.12.3</b> An introduction to environments</a></li>
+<li class="chapter" data-level="7.12.4" data-path="datahandling.html"><a href="datahandling.html#attaching-a-data-frame"><i class="fa fa-check"></i><b>7.12.4</b> Attaching a data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="7.13" data-path="datahandling.html"><a href="datahandling.html#summary-5"><i class="fa fa-check"></i><b>7.13</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>8</b> Basic programming</a><ul>
+<li class="chapter" data-level="8.1" data-path="scripting.html"><a href="scripting.html#scripts"><i class="fa fa-check"></i><b>8.1</b> Scripts</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="scripting.html"><a href="scripting.html#why-use-scripts"><i class="fa fa-check"></i><b>8.1.1</b> Why use scripts?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="scripting.html"><a href="scripting.html#our-first-script"><i class="fa fa-check"></i><b>8.1.2</b> Our first script</a></li>
+<li class="chapter" data-level="8.1.3" data-path="scripting.html"><a href="scripting.html#using-rstudio-to-write-scripts"><i class="fa fa-check"></i><b>8.1.3</b> Using Rstudio to write scripts</a></li>
+<li class="chapter" data-level="8.1.4" data-path="scripting.html"><a href="scripting.html#commenting-your-script"><i class="fa fa-check"></i><b>8.1.4</b> Commenting your script</a></li>
+<li class="chapter" data-level="8.1.5" data-path="scripting.html"><a href="scripting.html#differences-between-scripts-and-the-command-line"><i class="fa fa-check"></i><b>8.1.5</b> Differences between scripts and the command line</a></li>
+<li class="chapter" data-level="8.1.6" data-path="scripting.html"><a href="scripting.html#done"><i class="fa fa-check"></i><b>8.1.6</b> Done!</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="scripting.html"><a href="scripting.html#loops"><i class="fa fa-check"></i><b>8.2</b> Loops</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="scripting.html"><a href="scripting.html#the-while-loop"><i class="fa fa-check"></i><b>8.2.1</b> The <code>while</code> loop</a></li>
+<li class="chapter" data-level="8.2.2" data-path="scripting.html"><a href="scripting.html#for"><i class="fa fa-check"></i><b>8.2.2</b> The <code>for</code> loop</a></li>
+<li class="chapter" data-level="8.2.3" data-path="scripting.html"><a href="scripting.html#a-more-realistic-example-of-a-loop"><i class="fa fa-check"></i><b>8.2.3</b> A more realistic example of a loop</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="scripting.html"><a href="scripting.html#if"><i class="fa fa-check"></i><b>8.3</b> Conditional statements</a></li>
+<li class="chapter" data-level="8.4" data-path="scripting.html"><a href="scripting.html#functions"><i class="fa fa-check"></i><b>8.4</b> Writing functions</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="scripting.html"><a href="scripting.html#dotsargument"><i class="fa fa-check"></i><b>8.4.1</b> Function arguments revisited</a></li>
+<li class="chapter" data-level="8.4.2" data-path="scripting.html"><a href="scripting.html#theres-more-to-functions-than-this"><i class="fa fa-check"></i><b>8.4.2</b> There’s more to functions than this</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="scripting.html"><a href="scripting.html#vectorised"><i class="fa fa-check"></i><b>8.5</b> Implicit loops</a></li>
+<li class="chapter" data-level="8.6" data-path="scripting.html"><a href="scripting.html#summary-6"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>9</b> Introduction to probability</a><ul>
+<li class="chapter" data-level="9.1" data-path="probability.html"><a href="probability.html#probstats"><i class="fa fa-check"></i><b>9.1</b> How are probability and statistics different?</a></li>
+<li class="chapter" data-level="9.2" data-path="probability.html"><a href="probability.html#probmeaning"><i class="fa fa-check"></i><b>9.2</b> What does probability mean?</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="probability.html"><a href="probability.html#the-frequentist-view"><i class="fa fa-check"></i><b>9.2.1</b> The frequentist view</a></li>
+<li class="chapter" data-level="9.2.2" data-path="probability.html"><a href="probability.html#the-bayesian-view"><i class="fa fa-check"></i><b>9.2.2</b> The Bayesian view</a></li>
+<li class="chapter" data-level="9.2.3" data-path="probability.html"><a href="probability.html#whats-the-difference-and-who-is-right"><i class="fa fa-check"></i><b>9.2.3</b> What’s the difference? And who is right?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="probability.html"><a href="probability.html#basicprobability"><i class="fa fa-check"></i><b>9.3</b> Basic probability theory</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="probability.html"><a href="probability.html#introducing-probability-distributions"><i class="fa fa-check"></i><b>9.3.1</b> Introducing probability distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="probability.html"><a href="probability.html#binomial"><i class="fa fa-check"></i><b>9.4</b> The binomial distribution</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="probability.html"><a href="probability.html#introducing-the-binomial"><i class="fa fa-check"></i><b>9.4.1</b> Introducing the binomial</a></li>
+<li class="chapter" data-level="9.4.2" data-path="probability.html"><a href="probability.html#working-with-the-binomial-distribution-in-r"><i class="fa fa-check"></i><b>9.4.2</b> Working with the binomial distribution in R</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="probability.html"><a href="probability.html#normal"><i class="fa fa-check"></i><b>9.5</b> The normal distribution</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="probability.html"><a href="probability.html#density"><i class="fa fa-check"></i><b>9.5.1</b> Probability density</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="probability.html"><a href="probability.html#otherdists"><i class="fa fa-check"></i><b>9.6</b> Other useful distributions</a></li>
+<li class="chapter" data-level="9.7" data-path="probability.html"><a href="probability.html#summary-7"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Estimating unknown quantities from a sample</a><ul>
+<li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#srs"><i class="fa fa-check"></i><b>10.1</b> Samples, populations and sampling</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="estimation.html"><a href="estimation.html#pop"><i class="fa fa-check"></i><b>10.1.1</b> Defining a population</a></li>
+<li class="chapter" data-level="10.1.2" data-path="estimation.html"><a href="estimation.html#simple-random-samples"><i class="fa fa-check"></i><b>10.1.2</b> Simple random samples</a></li>
+<li class="chapter" data-level="10.1.3" data-path="estimation.html"><a href="estimation.html#most-samples-are-not-simple-random-samples"><i class="fa fa-check"></i><b>10.1.3</b> Most samples are not simple random samples</a></li>
+<li class="chapter" data-level="10.1.4" data-path="estimation.html"><a href="estimation.html#how-much-does-it-matter-if-you-dont-have-a-simple-random-sample"><i class="fa fa-check"></i><b>10.1.4</b> How much does it matter if you don’t have a simple random sample?</a></li>
+<li class="chapter" data-level="10.1.5" data-path="estimation.html"><a href="estimation.html#population-parameters-and-sample-statistics"><i class="fa fa-check"></i><b>10.1.5</b> Population parameters and sample statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="estimation.html"><a href="estimation.html#lawlargenumbers"><i class="fa fa-check"></i><b>10.2</b> The law of large numbers</a></li>
+<li class="chapter" data-level="10.3" data-path="estimation.html"><a href="estimation.html#samplesandclt"><i class="fa fa-check"></i><b>10.3</b> Sampling distributions and the central limit theorem</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="estimation.html"><a href="estimation.html#samplingdists"><i class="fa fa-check"></i><b>10.3.1</b> Sampling distribution of the mean</a></li>
+<li class="chapter" data-level="10.3.2" data-path="estimation.html"><a href="estimation.html#sampling-distributions-exist-for-any-sample-statistic"><i class="fa fa-check"></i><b>10.3.2</b> Sampling distributions exist for any sample statistic!</a></li>
+<li class="chapter" data-level="10.3.3" data-path="estimation.html"><a href="estimation.html#clt"><i class="fa fa-check"></i><b>10.3.3</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="estimation.html"><a href="estimation.html#pointestimates"><i class="fa fa-check"></i><b>10.4</b> Estimating population parameters</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="estimation.html"><a href="estimation.html#estimating-the-population-mean"><i class="fa fa-check"></i><b>10.4.1</b> Estimating the population mean</a></li>
+<li class="chapter" data-level="10.4.2" data-path="estimation.html"><a href="estimation.html#estimating-the-population-standard-deviation"><i class="fa fa-check"></i><b>10.4.2</b> Estimating the population standard deviation</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="estimation.html"><a href="estimation.html#ci"><i class="fa fa-check"></i><b>10.5</b> Estimating a confidence interval</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="estimation.html"><a href="estimation.html#a-slight-mistake-in-the-formula"><i class="fa fa-check"></i><b>10.5.1</b> A slight mistake in the formula</a></li>
+<li class="chapter" data-level="10.5.2" data-path="estimation.html"><a href="estimation.html#interpreting-a-confidence-interval"><i class="fa fa-check"></i><b>10.5.2</b> Interpreting a confidence interval</a></li>
+<li class="chapter" data-level="10.5.3" data-path="estimation.html"><a href="estimation.html#calculating-confidence-intervals-in-r"><i class="fa fa-check"></i><b>10.5.3</b> Calculating confidence intervals in R</a></li>
+<li class="chapter" data-level="10.5.4" data-path="estimation.html"><a href="estimation.html#ciplots"><i class="fa fa-check"></i><b>10.5.4</b> Plotting confidence intervals in R</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#summary-8"><i class="fa fa-check"></i><b>10.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="hypothesistesting.html"><a href="hypothesistesting.html"><i class="fa fa-check"></i><b>11</b> Hypothesis testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="hypothesistesting.html"><a href="hypothesistesting.html#hypotheses"><i class="fa fa-check"></i><b>11.1</b> A menagerie of hypotheses</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="hypothesistesting.html"><a href="hypothesistesting.html#research-hypotheses-versus-statistical-hypotheses"><i class="fa fa-check"></i><b>11.1.1</b> Research hypotheses versus statistical hypotheses</a></li>
+<li class="chapter" data-level="11.1.2" data-path="hypothesistesting.html"><a href="hypothesistesting.html#null-hypotheses-and-alternative-hypotheses"><i class="fa fa-check"></i><b>11.1.2</b> Null hypotheses and alternative hypotheses</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="hypothesistesting.html"><a href="hypothesistesting.html#errortypes"><i class="fa fa-check"></i><b>11.2</b> Two types of errors</a></li>
+<li class="chapter" data-level="11.3" data-path="hypothesistesting.html"><a href="hypothesistesting.html#teststatistics"><i class="fa fa-check"></i><b>11.3</b> Test statistics and sampling distributions</a></li>
+<li class="chapter" data-level="11.4" data-path="hypothesistesting.html"><a href="hypothesistesting.html#decisionmaking"><i class="fa fa-check"></i><b>11.4</b> Making decisions</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="hypothesistesting.html"><a href="hypothesistesting.html#critical-regions-and-critical-values"><i class="fa fa-check"></i><b>11.4.1</b> Critical regions and critical values</a></li>
+<li class="chapter" data-level="11.4.2" data-path="hypothesistesting.html"><a href="hypothesistesting.html#a-note-on-statistical-significance"><i class="fa fa-check"></i><b>11.4.2</b> A note on statistical “significance”</a></li>
+<li class="chapter" data-level="11.4.3" data-path="hypothesistesting.html"><a href="hypothesistesting.html#onesidedtests"><i class="fa fa-check"></i><b>11.4.3</b> The difference between one sided and two sided tests</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="hypothesistesting.html"><a href="hypothesistesting.html#pvalue"><i class="fa fa-check"></i><b>11.5</b> The <span class="math inline">\(p\)</span> value of a test</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="hypothesistesting.html"><a href="hypothesistesting.html#a-softer-view-of-decision-making"><i class="fa fa-check"></i><b>11.5.1</b> A softer view of decision making</a></li>
+<li class="chapter" data-level="11.5.2" data-path="hypothesistesting.html"><a href="hypothesistesting.html#the-probability-of-extreme-data"><i class="fa fa-check"></i><b>11.5.2</b> The probability of extreme data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="hypothesistesting.html"><a href="hypothesistesting.html#a-common-mistake"><i class="fa fa-check"></i><b>11.5.3</b> A common mistake</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="hypothesistesting.html"><a href="hypothesistesting.html#writeup"><i class="fa fa-check"></i><b>11.6</b> Reporting the results of a hypothesis test</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="hypothesistesting.html"><a href="hypothesistesting.html#the-issue"><i class="fa fa-check"></i><b>11.6.1</b> The issue</a></li>
+<li class="chapter" data-level="11.6.2" data-path="hypothesistesting.html"><a href="hypothesistesting.html#two-proposed-solutions"><i class="fa fa-check"></i><b>11.6.2</b> Two proposed solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="hypothesistesting.html"><a href="hypothesistesting.html#running-the-hypothesis-test-in-practice"><i class="fa fa-check"></i><b>11.7</b> Running the hypothesis test in practice</a></li>
+<li class="chapter" data-level="11.8" data-path="hypothesistesting.html"><a href="hypothesistesting.html#effectsize"><i class="fa fa-check"></i><b>11.8</b> Effect size, sample size and power</a><ul>
+<li class="chapter" data-level="11.8.1" data-path="hypothesistesting.html"><a href="hypothesistesting.html#the-power-function"><i class="fa fa-check"></i><b>11.8.1</b> The power function</a></li>
+<li class="chapter" data-level="11.8.2" data-path="hypothesistesting.html"><a href="hypothesistesting.html#effect-size"><i class="fa fa-check"></i><b>11.8.2</b> Effect size</a></li>
+<li class="chapter" data-level="11.8.3" data-path="hypothesistesting.html"><a href="hypothesistesting.html#increasing-the-power-of-your-study"><i class="fa fa-check"></i><b>11.8.3</b> Increasing the power of your study</a></li>
+</ul></li>
+<li class="chapter" data-level="11.9" data-path="hypothesistesting.html"><a href="hypothesistesting.html#nhstmess"><i class="fa fa-check"></i><b>11.9</b> Some issues to consider</a><ul>
+<li class="chapter" data-level="11.9.1" data-path="hypothesistesting.html"><a href="hypothesistesting.html#neyman-versus-fisher"><i class="fa fa-check"></i><b>11.9.1</b> Neyman versus Fisher</a></li>
+<li class="chapter" data-level="11.9.2" data-path="hypothesistesting.html"><a href="hypothesistesting.html#bayesians-versus-frequentists"><i class="fa fa-check"></i><b>11.9.2</b> Bayesians versus frequentists</a></li>
+<li class="chapter" data-level="11.9.3" data-path="hypothesistesting.html"><a href="hypothesistesting.html#traps"><i class="fa fa-check"></i><b>11.9.3</b> Traps</a></li>
+</ul></li>
+<li class="chapter" data-level="11.10" data-path="hypothesistesting.html"><a href="hypothesistesting.html#summary-9"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://bookdown.org/ekothe/navarro2/" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -137,7 +541,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</a>
           </h1>
         </div>
 
@@ -146,23 +550,23 @@
 
             <section class="normal" id="section-">
 <div id="studydesign" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> A brief introduction to research design</h1>
+<h1><span class="header-section-number">Chapter 2</span> A brief introduction to research design</h1>
 <blockquote>
 <p><em>To consult the statistician after an experiment is finished is often merely to ask him to conduct a post mortem examination. He can perhaps say what the experiment died of.</em></p>
-<p>– Sir Ronald Fisher<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>– Sir Ronald Fisher<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a></p>
 </blockquote>
 <p>In this chapter, we’re going to start thinking about the basic ideas that go into designing a study, collecting data, checking whether your data collection works, and so on. It won’t give you enough information to allow you to design studies of your own, but it will give you a lot of the basic tools that you need to assess the studies done by other people. However, since the focus of this book is much more on data analysis than on data collection, I’m only giving a very brief overview. Note that this chapter is “special” in two ways. Firstly, it’s much more psychology-specific than the later chapters. Secondly, it focuses much more heavily on the scientific problem of research methodology, and much less on the statistical problem of data analysis. Nevertheless, the two problems are related to one another, so it’s traditional for stats textbooks to discuss the problem in a little detail. This chapter relies heavily on <span class="citation">Campbell and Stanley (<a href="#ref-Campbell1963">1963</a>)</span> for the discussion of study design, and <span class="citation">Stevens (<a href="#ref-Stevens1946">1946</a>)</span> for the discussion of scales of measurement. Later versions will attempt to be more precise in the citations.</p>
 <div id="measurement" class="section level2">
-<h2><span class="header-section-number">3.1</span> Introduction to psychological measurement</h2>
+<h2><span class="header-section-number">2.1</span> Introduction to psychological measurement</h2>
 <p>The first thing to understand is data collection can be thought of as a kind of <strong><em>measurement</em></strong>. That is, what we’re trying to do here is measure something about human behaviour or the human mind. What do I mean by “measurement”?</p>
 <div id="some-thoughts-about-psychological-measurement" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Some thoughts about psychological measurement</h3>
+<h3><span class="header-section-number">2.1.1</span> Some thoughts about psychological measurement</h3>
 <p>Measurement itself is a subtle concept, but basically it comes down to finding some way of assigning numbers, or labels, or some other kind of well-defined descriptions to “stuff”. So, any of the following would count as a psychological measurement:</p>
 <ul>
 <li>My <strong>age</strong> is <em>33 years</em>.</li>
 <li>I <em>do not</em> <strong>like anchovies</strong>.</li>
 <li>My <strong>chromosomal gender</strong> is <em>male</em>.</li>
-<li>My <strong>self-identified gender</strong> is <em>male</em>.<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></li>
+<li>My <strong>self-identified gender</strong> is <em>male</em>.<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a></li>
 </ul>
 <p>In the short list above, the <strong>bolded part</strong> is “the thing to be measured”, and the <em>italicised part</em> is “the measurement itself”. In fact, we can expand on this a little bit, by thinking about the set of possible measurements that could have arisen in each case:</p>
 <ul>
@@ -181,7 +585,7 @@
 </ul>
 </div>
 <div id="operationalisation-defining-your-measurement" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Operationalisation: defining your measurement</h3>
+<h3><span class="header-section-number">2.1.2</span> Operationalisation: defining your measurement</h3>
 <p>All of the ideas discussed in the previous section all relate to the concept of <strong><em>operationalisation</em></strong>. To be a bit more precise about the idea, operationalisation is the process by which we take a meaningful but somewhat vague concept, and turn it into a precise measurement. The process of operationalisation can involve several different things:</p>
 <ul>
 <li>Being precise about what you are trying to measure. For instance, does “age” mean “time since birth” or “time since conception” in the context of your research?</li>
@@ -200,10 +604,10 @@
 </div>
 </div>
 <div id="scales" class="section level2">
-<h2><span class="header-section-number">3.2</span> Scales of measurement</h2>
+<h2><span class="header-section-number">2.2</span> Scales of measurement</h2>
 <p>As the previous section indicates, the outcome of a psychological measurement is called a variable. But not all variables are of the same qualitative type, and it’s very useful to understand what types there are. A very useful concept for distinguishing between different types of variables is what’s known as <strong><em>scales of measurement</em></strong>.</p>
 <div id="nominal-scale" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Nominal scale</h3>
+<h3><span class="header-section-number">2.2.1</span> Nominal scale</h3>
 <p>A <strong><em>nominal scale</em></strong> variable (also referred to as a <strong><em>categorical</em></strong> variable) is one in which there is no particular relationship between the different possibilities: for these kinds of variables it doesn’t make any sense to say that one of them is “bigger’ or”better&quot; than any other one, and it absolutely doesn’t make any sense to average them. The classic example for this is “eye colour”. Eyes can be blue, green and brown, among other possibilities, but none of them is any “better” than any other one. As a result, it would feel really weird to talk about an “average eye colour”. Similarly, gender is nominal too: male isn’t better or worse than female, neither does it make sense to try to talk about an “average gender”. In short, nominal scale variables are those for which the only thing you can say about the different possibilities is that they are different. That’s it.</p>
 <p>Let’s take a slightly closer look at this. Suppose I was doing research on how people commute to and from work. One variable I would have to measure would be what kind of transportation people use to get to work. This “transport type” variable could have quite a few possible values, including: “train”, “bus”, “car”, “bicycle”, etc. For now, let’s suppose that these four are the only possibilities, and suppose that when I ask 100 people how they got to work today, and I get this:</p>
 <table>
@@ -262,7 +666,7 @@
 <p>and nothing really changes.</p>
 </div>
 <div id="ordinal-scale" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Ordinal scale</h3>
+<h3><span class="header-section-number">2.2.2</span> Ordinal scale</h3>
 <p><strong><em>Ordinal scale</em></strong> variables have a bit more structure than nominal scale variables, but not by a lot. An ordinal scale variable is one in which there is a natural, meaningful way to order the different possibilities, but you can’t do anything else. The usual example given of an ordinal variable is “finishing position in a race”. You <em>can</em> say that the person who finished first was faster than the person who finished second, but you <em>don’t</em> know how much faster. As a consequence we know that 1st &gt; 2nd, and we know that 2nd &gt; 3rd, but the difference between 1st and 2nd might be much larger than the difference between 2nd and 3rd.</p>
 <p>Here’s an more psychologically interesting example. Suppose I’m interested in people’s attitudes to climate change, and I ask them to pick one of these four statements that most closely matches their beliefs:</p>
 <blockquote>
@@ -288,25 +692,25 @@
 <thead>
 <tr class="header">
 <th>Response</th>
-<th>Number</th>
+<th align="center">Number</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>(1) Temperatures are rising, because of human activity</td>
-<td>51</td>
+<td align="center">51</td>
 </tr>
 <tr class="even">
 <td>(2) Temperatures are rising, but we don’t know why</td>
-<td>20</td>
+<td align="center">20</td>
 </tr>
 <tr class="odd">
 <td>(3) Temperatures are rising, but not because of humans</td>
-<td>10</td>
+<td align="center">10</td>
 </tr>
 <tr class="even">
 <td>(4) Temperatures are not rising</td>
-<td>19</td>
+<td align="center">19</td>
 </tr>
 </tbody>
 </table>
@@ -314,57 +718,57 @@
 <p>That said, notice that while we <em>can</em> use the natural ordering of these items to construct sensible groupings, what we <em>can’t</em> do is average them. For instance, in my simple example here, the “average” response to the question is 1.97. If you can tell me what that means, I’d love to know. Because that sounds like gibberish to me!</p>
 </div>
 <div id="interval-scale" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Interval scale</h3>
-<p>In contrast to nominal and ordinal scale variables, <strong><em>interval scale</em></strong> and ratio scale variables are variables for which the numerical value is genuinely meaningful. In the case of interval scale variables, the <em>differences</em> between the numbers are interpretable, but the variable doesn’t have a “natural” zero value. A good example of an interval scale variable is measuring temperature in degrees celsius. For instance, if it was 15<span class="math inline">\(^\circ\)</span> yesterday and 18<span class="math inline">\(^\circ\)</span> today, then the 3<span class="math inline">\(^\circ\)</span> difference between the two is genuinely meaningful. Moreover, that 3<span class="math inline">\(^\circ\)</span> difference is <em>exactly the same</em> as the 3<span class="math inline">\(^\circ\)</span> difference between 7<span class="math inline">\(^\circ\)</span> and 10<span class="math inline">\(^\circ\)</span>. In short, addition and subtraction are meaningful for interval scale variables.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+<h3><span class="header-section-number">2.2.3</span> Interval scale</h3>
+<p>In contrast to nominal and ordinal scale variables, <strong><em>interval scale</em></strong> and ratio scale variables are variables for which the numerical value is genuinely meaningful. In the case of interval scale variables, the <em>differences</em> between the numbers are interpretable, but the variable doesn’t have a “natural” zero value. A good example of an interval scale variable is measuring temperature in degrees celsius. For instance, if it was 15<span class="math inline">\(^\circ\)</span> yesterday and 18<span class="math inline">\(^\circ\)</span> today, then the 3<span class="math inline">\(^\circ\)</span> difference between the two is genuinely meaningful. Moreover, that 3<span class="math inline">\(^\circ\)</span> difference is <em>exactly the same</em> as the 3<span class="math inline">\(^\circ\)</span> difference between 7<span class="math inline">\(^\circ\)</span> and 10<span class="math inline">\(^\circ\)</span>. In short, addition and subtraction are meaningful for interval scale variables.<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></p>
 <p>However, notice that the 0<span class="math inline">\(^\circ\)</span> does not mean “no temperature at all”: it actually means “the temperature at which water freezes”, which is pretty arbitrary. As a consequence, it becomes pointless to try to multiply and divide temperatures. It is wrong to say that <span class="math inline">\(20^\circ\)</span> is <em>twice as hot</em> as 10<span class="math inline">\(^\circ\)</span>, just as it is weird and meaningless to try to claim that 20<span class="math inline">\(^\circ\)</span> is negative two times as hot as -10<span class="math inline">\(^\circ\)</span>.</p>
 <p>Again, lets look at a more psychological example. Suppose I’m interested in looking at how the attitudes of first-year university students have changed over time. Obviously, I’m going to want to record the year in which each student started. This is an interval scale variable. A student who started in 2003 did arrive 5 years before a student who started in 2008. However, it would be completely insane for me to divide 2008 by 2003 and say that the second student started “1.0024 times later” than the first one. That doesn’t make any sense at all.</p>
 </div>
 <div id="ratio-scale" class="section level3">
-<h3><span class="header-section-number">3.2.4</span> Ratio scale</h3>
+<h3><span class="header-section-number">2.2.4</span> Ratio scale</h3>
 <p>The fourth and final type of variable to consider is a <strong><em>ratio scale</em></strong> variable, in which zero really means zero, and it’s okay to multiply and divide. A good psychological example of a ratio scale variable is response time (RT). In a lot of tasks it’s very common to record the amount of time somebody takes to solve a problem or answer a question, because it’s an indicator of how difficult the task is. Suppose that Alan takes 2.3 seconds to respond to a question, whereas Ben takes 3.1 seconds. As with an interval scale variable, addition and subtraction are both meaningful here. Ben really did take 3.1 - 2.3 = 0.8 seconds longer than Alan did. However, notice that multiplication and division also make sense here too: Ben took 3.1 / 2.3 = 1.35 times as long as Alan did to answer the question. And the reason why you can do this is that, for a ratio scale variable such as RT, “zero seconds” really does mean “no time at all”.</p>
 </div>
 <div id="continuousdiscrete" class="section level3">
-<h3><span class="header-section-number">3.2.5</span> Continuous versus discrete variables</h3>
+<h3><span class="header-section-number">2.2.5</span> Continuous versus discrete variables</h3>
 <p>There’s a second kind of distinction that you need to be aware of, regarding what types of variables you can run into. This is the distinction between continuous variables and discrete variables. The difference between these is as follows:</p>
 <ul>
 <li>A <strong><em>continuous variable</em></strong> is one in which, for any two values that you can think of, it’s always logically possible to have another value in between.</li>
 <li>A <strong><em>discrete variable</em></strong> is, in effect, a variable that isn’t continuous. For a discrete variable, it’s sometimes the case that there’s nothing in the middle.</li>
 </ul>
 <p>These definitions probably seem a bit abstract, but they’re pretty simple once you see some examples. For instance, response time is continuous. If Alan takes 3.1 seconds and Ben takes 2.3 seconds to respond to a question, then it’s possible for Cameron’s response time to lie in between, by taking 3.0 seconds. And of course it would also be possible for David to take 3.031 seconds to respond, meaning that his RT would lie in between Cameron’s and Alan’s. And while in practice it might be impossible to measure RT that precisely, it’s certainly possible in principle. Because we can always find a new value for RT in between any two other ones, we say that RT is continuous.</p>
-<p>Discrete variables occur when this rule is violated. For example, nominal scale variables are always discrete: there isn’t a type of transportation that falls “in between” trains and bicycles, not in the strict mathematical way that 2.3 falls in between 2 and 3. So transportation type is discrete. Similarly, ordinal scale variables are always discrete: although “2nd place” does fall between “1st place” and “3rd place”, there’s nothing that can logically fall in between “1st place” and “2nd place”. Interval scale and ratio scale variables can go either way. As we saw above, response time (a ratio scale variable) is continuous. Temperature in degrees celsius (an interval scale variable) is also continuous. However, the year you went to school (an interval scale variable) is discrete. There’s no year in between 2002 and 2003. The number of questions you get right on a true-or-false test (a ratio scale variable) is also discrete: since a true-or-false question doesn’t allow you to be “partially correct”, there’s nothing in between 5/10 and 6/10. Table <a href="studydesign.html#tab:scalescont">3.1</a> summarises the relationship between the scales of measurement and the discrete/continuity distinction. Cells with a tick mark correspond to things that are possible. I’m trying to hammer this point home, because (a) some textbooks get this wrong, and (b) people very often say things like “discrete variable” when they mean “nominal scale variable”. It’s very unfortunate.</p>
+<p>Discrete variables occur when this rule is violated. For example, nominal scale variables are always discrete: there isn’t a type of transportation that falls “in between” trains and bicycles, not in the strict mathematical way that 2.3 falls in between 2 and 3. So transportation type is discrete. Similarly, ordinal scale variables are always discrete: although “2nd place” does fall between “1st place” and “3rd place”, there’s nothing that can logically fall in between “1st place” and “2nd place”. Interval scale and ratio scale variables can go either way. As we saw above, response time (a ratio scale variable) is continuous. Temperature in degrees celsius (an interval scale variable) is also continuous. However, the year you went to school (an interval scale variable) is discrete. There’s no year in between 2002 and 2003. The number of questions you get right on a true-or-false test (a ratio scale variable) is also discrete: since a true-or-false question doesn’t allow you to be “partially correct”, there’s nothing in between 5/10 and 6/10. Table <a href="studydesign.html#tab:scalescont">2.1</a> summarises the relationship between the scales of measurement and the discrete/continuity distinction. Cells with a tick mark correspond to things that are possible. I’m trying to hammer this point home, because (a) some textbooks get this wrong, and (b) people very often say things like “discrete variable” when they mean “nominal scale variable”. It’s very unfortunate.</p>
 <table>
-<caption><span id="tab:scalescont">Table 3.1: </span>The relationship between the scales of measurement and the discrete/continuity distinction. Cells with a tick mark correspond to things that are possible.</caption>
+<caption><span id="tab:scalescont">Table 2.1: </span>The relationship between the scales of measurement and the discrete/continuity distinction. Cells with a tick mark correspond to things that are possible.</caption>
 <tbody>
 <tr class="odd">
 <td></td>
-<td align="left">continuous</td>
-<td align="left">discrete</td>
+<td align="center">continuous</td>
+<td align="center">discrete</td>
 </tr>
 <tr class="even">
 <td>nominal</td>
-<td align="left"></td>
-<td align="left"><span class="math inline">\(\checkmark\)</span></td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(\checkmark\)</span></td>
 </tr>
 <tr class="odd">
 <td>ordinal</td>
-<td align="left"></td>
-<td align="left"><span class="math inline">\(\checkmark\)</span></td>
+<td align="center"></td>
+<td align="center"><span class="math inline">\(\checkmark\)</span></td>
 </tr>
 <tr class="even">
 <td>interval</td>
-<td align="left"><span class="math inline">\(\checkmark\)</span></td>
-<td align="left"><span class="math inline">\(\checkmark\)</span></td>
+<td align="center"><span class="math inline">\(\checkmark\)</span></td>
+<td align="center"><span class="math inline">\(\checkmark\)</span></td>
 </tr>
 <tr class="odd">
 <td>ratio</td>
-<td align="left"><span class="math inline">\(\checkmark\)</span></td>
-<td align="left"><span class="math inline">\(\checkmark\)</span></td>
+<td align="center"><span class="math inline">\(\checkmark\)</span></td>
+<td align="center"><span class="math inline">\(\checkmark\)</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="some-complexities" class="section level3">
-<h3><span class="header-section-number">3.2.6</span> Some complexities</h3>
+<h3><span class="header-section-number">2.2.6</span> Some complexities</h3>
 <p>Okay, I know you’re going to be shocked to hear this, but … the real world is much messier than this little classification scheme suggests. Very few variables in real life actually fall into these nice neat categories, so you need to be kind of careful not to treat the scales of measurement as if they were hard and fast rules. It doesn’t work like that: they’re guidelines, intended to help you think about the situations in which you should treat different variables differently. Nothing more.</p>
 <p>So let’s take a classic example, maybe <em>the</em> classic example, of a psychological measurement tool: the <strong><em>Likert scale</em></strong>. The humble Likert scale is the bread and butter tool of all survey design. You yourself have filled out hundreds, maybe thousands of them, and odds are you’ve even used one yourself. Suppose we have a survey question that looks like this:</p>
 <blockquote>
@@ -395,7 +799,7 @@
 </div>
 </div>
 <div id="reliability" class="section level2">
-<h2><span class="header-section-number">3.3</span> Assessing the reliability of a measurement</h2>
+<h2><span class="header-section-number">2.3</span> Assessing the reliability of a measurement</h2>
 <p>At this point we’ve thought a little bit about how to operationalise a theoretical construct and thereby create a psychological measure; and we’ve seen that by applying psychological measures we end up with variables, which can come in many different types. At this point, we should start discussing the obvious question: is the measurement any good? We’ll do this in terms of two related ideas: <em>reliability</em> and <em>validity</em>. Put simply, the <strong><em>reliability</em></strong> of a measure tells you how <em>precisely</em> you are measuring something, whereas the validity of a measure tells you how <em>accurate</em> the measure is. In this section I’ll talk about reliability; we’ll talk about validity in the next chapter.</p>
 <p>Reliability is actually a very simple concept: it refers to the repeatability or consistency of your measurement. The measurement of my weight by means of a “bathroom scale” is very reliable: if I step on and off the scales over and over again, it’ll keep giving me the same answer. Measuring my intelligence by means of “asking my mum” is very unreliable: some days she tells me I’m a bit thick, and other days she tells me I’m a complete moron. Notice that this concept of reliability is different to the question of whether the measurements are correct (the correctness of a measurement relates to it’s validity). If I’m holding a sack of potatos when I step on and off of the bathroom scales, the measurement will still be reliable: it will always give me the same answer. However, this highly reliable answer doesn’t match up to my true weight at all, therefore it’s wrong. In technical terms, this is a <em>reliable but invalid</em> measurement. Similarly, while my mum’s estimate of my intelligence is a bit unreliable, she might be right. Maybe I’m just not too bright, and so while her estimate of my intelligence fluctuates pretty wildly from day to day, it’s basically right. So that would be an <em>unreliable but valid</em> measure. Of course, to some extent, notice that if my mum’s estimates are too unreliable, it’s going to be very hard to figure out which one of her many claims about my intelligence is actually the right one. To some extent, then, a very unreliable measure tends to end up being invalid for practical purposes; so much so that many people would say that reliability is necessary (but not sufficient) to ensure validity.</p>
 <p>Okay, now that we’re clear on the distinction between reliability and validity, let’s have a think about the different ways in which we might measure reliability:</p>
@@ -408,11 +812,11 @@
 <p>Not all measurements need to possess all forms of reliability. For instance, educational assessment can be thought of as a form of measurement. One of the subjects that I teach, <em>Computational Cognitive Science</em>, has an assessment structure that has a research component and an exam component (plus other things). The exam component is <em>intended</em> to measure something different from the research component, so the assessment as a whole has low internal consistency. However, within the exam there are several questions that are intended to (approximately) measure the same things, and those tend to produce similar outcomes; so the exam on its own has a fairly high internal consistency. Which is as it should be. You should only demand reliability in those situations where you want to be measure the same thing!</p>
 </div>
 <div id="ivdv" class="section level2">
-<h2><span class="header-section-number">3.4</span> The “role” of variables: predictors and outcomes</h2>
+<h2><span class="header-section-number">2.4</span> The “role” of variables: predictors and outcomes</h2>
 <p>Okay, I’ve got one last piece of terminology that I need to explain to you before moving away from variables. Normally, when we do some research we end up with lots of different variables. Then, when we analyse our data we usually try to explain some of the variables in terms of some of the other variables. It’s important to keep the two roles “thing doing the explaining” and “thing being explained” distinct. So let’s be clear about this now. Firstly, we might as well get used to the idea of using mathematical symbols to describe variables, since it’s going to happen over and over again. Let’s denote the “to be explained” variable <span class="math inline">\(Y\)</span>, and denote the variables “doing the explaining” as <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, etc.</p>
-<p>Now, when we doing an analysis, we have different names for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, since they play different roles in the analysis. The classical names for these roles are <strong><em>independent variable</em></strong> (IV) and <strong><em>dependent variable</em></strong> (DV). The IV is the variable that you use to do the explaining (i.e., <span class="math inline">\(X\)</span>) and the DV is the variable being explained (i.e., <span class="math inline">\(Y\)</span>). The logic behind these names goes like this: if there really is a relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> then we can say that <span class="math inline">\(Y\)</span> depends on <span class="math inline">\(X\)</span>, and if we have designed our study “properly” then <span class="math inline">\(X\)</span> isn’t dependent on anything else. However, I personally find those names horrible: they’re hard to remember and they’re highly misleading, because (a) the IV is never actually “independent of everything else” and (b) if there’s no relationship, then the DV doesn’t actually depend on the IV. And in fact, because I’m not the only person who thinks that IV and DV are just awful names, there are a number of alternatives that I find more appealing. The terms that I’ll use in these notes are <strong><em>predictors</em></strong> and <strong><em>outcomes</em></strong>. The idea here is that what you’re trying to do is use <span class="math inline">\(X\)</span> (the predictors) to make guesses about <span class="math inline">\(Y\)</span> (the outcomes).<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> This is summarised in Table <a href="studydesign.html#tab:ivdv">3.2</a>.</p>
+<p>Now, when we doing an analysis, we have different names for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, since they play different roles in the analysis. The classical names for these roles are <strong><em>independent variable</em></strong> (IV) and <strong><em>dependent variable</em></strong> (DV). The IV is the variable that you use to do the explaining (i.e., <span class="math inline">\(X\)</span>) and the DV is the variable being explained (i.e., <span class="math inline">\(Y\)</span>). The logic behind these names goes like this: if there really is a relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> then we can say that <span class="math inline">\(Y\)</span> depends on <span class="math inline">\(X\)</span>, and if we have designed our study “properly” then <span class="math inline">\(X\)</span> isn’t dependent on anything else. However, I personally find those names horrible: they’re hard to remember and they’re highly misleading, because (a) the IV is never actually “independent of everything else” and (b) if there’s no relationship, then the DV doesn’t actually depend on the IV. And in fact, because I’m not the only person who thinks that IV and DV are just awful names, there are a number of alternatives that I find more appealing. The terms that I’ll use in these notes are <strong><em>predictors</em></strong> and <strong><em>outcomes</em></strong>. The idea here is that what you’re trying to do is use <span class="math inline">\(X\)</span> (the predictors) to make guesses about <span class="math inline">\(Y\)</span> (the outcomes).<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> This is summarised in Table <a href="studydesign.html#tab:ivdv">2.2</a>.</p>
 <table>
-<caption><span id="tab:ivdv">Table 3.2: </span>The terminology used to distinguish between different roles that a variable can play when analysing a data set. Note that this book will tend to avoid the classical terminology in favour of the newer names.</caption>
+<caption><span id="tab:ivdv">Table 2.2: </span>The terminology used to distinguish between different roles that a variable can play when analysing a data set. Note that this book will tend to avoid the classical terminology in favour of the newer names.</caption>
 <thead>
 <tr class="header">
 <th align="left">role of the variable</th>
@@ -435,23 +839,23 @@
 </table>
 </div>
 <div id="researchdesigns" class="section level2">
-<h2><span class="header-section-number">3.5</span> Experimental and non-experimental research</h2>
+<h2><span class="header-section-number">2.5</span> Experimental and non-experimental research</h2>
 <p>One of the big distinctions that you should be aware of is the distinction between “experimental research” and “non-experimental research”. When we make this distinction, what we’re really talking about is the degree of control that the researcher exercises over the people and events in the study.</p>
 <div id="experimental-research" class="section level3">
-<h3><span class="header-section-number">3.5.1</span> Experimental research</h3>
+<h3><span class="header-section-number">2.5.1</span> Experimental research</h3>
 <p>The key features of <strong><em>experimental research</em></strong> is that the researcher controls all aspects of the study, especially what participants experience during the study. In particular, the researcher manipulates or varies the predictor variables (IVs), and then allows the outcome variable (DV) to vary naturally. The idea here is to deliberately vary the predictors (IVs) to see if they have any causal effects on the outcomes. Moreover, in order to ensure that there’s no chance that something other than the predictor variables is causing the outcomes, everything else is kept constant or is in some other way “balanced” to ensure that they have no effect on the results. In practice, it’s almost impossible to <em>think</em> of everything else that might have an influence on the outcome of an experiment, much less keep it constant. The standard solution to this is <strong><em>randomisation</em></strong>: that is, we randomly assign people to different groups, and then give each group a different treatment (i.e., assign them different values of the predictor variables). We’ll talk more about randomisation later in this course, but for now, it’s enough to say that what randomisation does is minimise (but not eliminate) the chances that there are any systematic difference between groups.</p>
 <p>Let’s consider a very simple, completely unrealistic and grossly unethical example. Suppose you wanted to find out if smoking causes lung cancer. One way to do this would be to find people who smoke and people who don’t smoke, and look to see if smokers have a higher rate of lung cancer. This is <em>not</em> a proper experiment, since the researcher doesn’t have a lot of control over who is and isn’t a smoker. And this really matters: for instance, it might be that people who choose to smoke cigarettes also tend to have poor diets, or maybe they tend to work in asbestos mines, or whatever. The point here is that the groups (smokers and non-smokers) actually differ on lots of things, not <em>just</em> smoking. So it might be that the higher incidence of lung cancer among smokers is caused by something else, not by smoking per se. In technical terms, these other things (e.g. diet) are called “confounds”, and we’ll talk about those in just a moment.</p>
 <p>In the meantime, let’s now consider what a proper experiment might look like. Recall that our concern was that smokers and non-smokers might differ in lots of ways. The solution, as long as you have no ethics, is to <em>control</em> who smokes and who doesn’t. Specifically, if we randomly divide participants into two groups, and force half of them to become smokers, then it’s very unlikely that the groups will differ in any respect other than the fact that half of them smoke. That way, if our smoking group gets cancer at a higher rate than the non-smoking group, then we can feel pretty confident that (a) smoking does cause cancer and (b) we’re murderers.</p>
 </div>
 <div id="non-experimental-research" class="section level3">
-<h3><span class="header-section-number">3.5.2</span> Non-experimental research</h3>
+<h3><span class="header-section-number">2.5.2</span> Non-experimental research</h3>
 <p><strong><em>Non-experimental research</em></strong> is a broad term that covers “any study in which the researcher doesn’t have quite as much control as they do in an experiment”. Obviously, control is something that scientists like to have, but as the previous example illustrates, there are lots of situations in which you can’t or shouldn’t try to obtain that control. Since it’s grossly unethical (and almost certainly criminal) to force people to smoke in order to find out if they get cancer, this is a good example of a situation in which you really shouldn’t try to obtain experimental control. But there are other reasons too. Even leaving aside the ethical issues, our “smoking experiment” does have a few other issues. For instance, when I suggested that we “force” half of the people to become smokers, I must have been talking about <em>starting</em> with a sample of non-smokers, and then forcing them to become smokers. While this sounds like the kind of solid, evil experimental design that a mad scientist would love, it might not be a very sound way of investigating the effect in the real world. For instance, suppose that smoking only causes lung cancer when people have poor diets, and suppose also that people who normally smoke do tend to have poor diets. However, since the “smokers” in our experiment aren’t “natural” smokers (i.e., we forced non-smokers to become smokers; they didn’t take on all of the other normal, real life characteristics that smokers might tend to possess) they probably have better diets. As such, in this silly example they wouldn’t get lung cancer, and our experiment will fail, because it violates the structure of the “natural” world (the technical name for this is an “artifactual” result; see later).</p>
 <p>One distinction worth making between two types of non-experimental research is the difference between <strong><em>quasi-experimental research</em></strong> and <strong><em>case studies</em></strong>. The example I discussed earlier – in which we wanted to examine incidence of lung cancer among smokers and non-smokers, without trying to control who smokes and who doesn’t – is a quasi-experimental design. That is, it’s the same as an experiment, but we don’t control the predictors (IVs). We can still use statistics to analyse the results, it’s just that we have to be a lot more careful.</p>
 <p>The alternative approach, case studies, aims to provide a very detailed description of one or a few instances. In general, you can’t use statistics to analyse the results of case studies, and it’s usually very hard to draw any general conclusions about “people in general” from a few isolated examples. However, case studies are very useful in some situations. Firstly, there are situations where you don’t have any alternative: neuropsychology has this issue a lot. Sometimes, you just can’t find a lot of people with brain damage in a specific area, so the only thing you can do is describe those cases that you do have in as much detail and with as much care as you can. However, there’s also some genuine advantages to case studies: because you don’t have as many people to study, you have the ability to invest lots of time and effort trying to understand the specific factors at play in each case. This is a very valuable thing to do. As a consequence, case studies can complement the more statistically-oriented approaches that you see in experimental and quasi-experimental designs. We won’t talk much about case studies in these lectures, but they are nevertheless very valuable tools!</p>
 </div>
 </div>
 <div id="validity" class="section level2">
-<h2><span class="header-section-number">3.6</span> Assessing the validity of a study</h2>
+<h2><span class="header-section-number">2.6</span> Assessing the validity of a study</h2>
 <p>More than any other thing, a scientist wants their research to be “valid”. The conceptual idea behind <strong><em>validity</em></strong> is very simple: can you trust the results of your study? If not, the study is invalid. However, while it’s easy to state, in practice it’s much harder to check validity than it is to check reliability. And in all honesty, there’s no precise, clearly agreed upon notion of what validity actually is. In fact, there’s lots of different kinds of validity, each of which raises it’s own issues, and not all forms of validity are relevant to all studies. I’m going to talk about five different types:</p>
 <ul>
 <li>Internal validity</li>
@@ -462,11 +866,11 @@
 </ul>
 <p>To give you a quick guide as to what matters here… (1) Internal and external validity are the most important, since they tie directly to the fundamental question of whether your study really works. (2) Construct validity asks whether you’re measuring what you think you are. (3) Face validity isn’t terribly important except insofar as you care about “appearances”. (4) Ecological validity is a special case of face validity that corresponds to a kind of appearance that you might care about a lot.</p>
 <div id="internal-validity" class="section level3">
-<h3><span class="header-section-number">3.6.1</span> Internal validity</h3>
+<h3><span class="header-section-number">2.6.1</span> Internal validity</h3>
 <p><strong><em>Internal validity</em></strong> refers to the extent to which you are able draw the correct conclusions about the causal relationships between variables. It’s called “internal” because it refers to the relationships between things “inside” the study. Let’s illustrate the concept with a simple example. Suppose you’re interested in finding out whether a university education makes you write better. To do so, you get a group of first year students, ask them to write a 1000 word essay, and count the number of spelling and grammatical errors they make. Then you find some third-year students, who obviously have had more of a university education than the first-years, and repeat the exercise. And let’s suppose it turns out that the third-year students produce fewer errors. And so you conclude that a university education improves writing skills. Right? Except… the big problem that you have with this experiment is that the third-year students are older, and they’ve had more experience with writing things. So it’s hard to know for sure what the causal relationship is: Do older people write better? Or people who have had more writing experience? Or people who have had more education? Which of the above is the true <em>cause</em> of the superior performance of the third-years? Age? Experience? Education? You can’t tell. This is an example of a failure of internal validity, because your study doesn’t properly tease apart the <em>causal</em> relationships between the different variables.</p>
 </div>
 <div id="external-validity" class="section level3">
-<h3><span class="header-section-number">3.6.2</span> External validity</h3>
+<h3><span class="header-section-number">2.6.2</span> External validity</h3>
 <p><strong><em>External validity</em></strong> relates to the <strong><em>generalisability</em></strong> of your findings. That is, to what extent do you expect to see the same pattern of results in “real life” as you saw in your study. To put it a bit more precisely, any study that you do in psychology will involve a fairly specific set of questions or tasks, will occur in a specific environment, and will involve participants that are drawn from a particular subgroup. So, if it turns out that the results don’t actually generalise to people and situations beyond the ones that you studied, then what you’ve got is a lack of external validity.</p>
 <p>The classic example of this issue is the fact that a very large proportion of studies in psychology will use undergraduate psychology students as the participants. Obviously, however, the researchers don’t care <em>only</em> about psychology students; they care about people in general. Given that, a study that uses only psych students as participants always carries a risk of lacking external validity. That is, if there’s something “special” about psychology students that makes them different to the general populace in some <em>relevant</em> respect, then we may start worrying about a lack of external validity.</p>
 <p>That said, it is absolutely critical to realise that a study that uses only psychology students does not necessarily have a problem with external validity. I’ll talk about this again later, but it’s such a common mistake that I’m going to mention it here. The external validity is threatened by the choice of population if (a) the population from which you sample your participants is very narrow (e.g., psych students), and (b) the narrow population that you sampled from is systematically different from the general population, <em>in some respect that is relevant to the psychological phenomenon that you intend to study</em>. The italicised part is the bit that lots of people forget: it is true that psychology undergraduates differ from the general population in lots of ways, and so a study that uses only psych students <em>may</em> have problems with external validity. However, if those differences aren’t very relevant to the phenomenon that you’re studying, then there’s nothing to worry about. To make this a bit more concrete, here’s two extreme examples:</p>
@@ -481,11 +885,11 @@
 </ul>
 </div>
 <div id="construct-validity" class="section level3">
-<h3><span class="header-section-number">3.6.3</span> Construct validity</h3>
+<h3><span class="header-section-number">2.6.3</span> Construct validity</h3>
 <p><strong><em>Construct validity</em></strong> is basically a question of whether you’re measuring what you want to be measuring. A measurement has good construct validity if it is actually measuring the correct theoretical construct, and bad construct validity if it doesn’t. To give very simple (if ridiculous) example, suppose I’m trying to investigate the rates with which university students cheat on their exams. And the way I attempt to measure it is by asking the cheating students to stand up in the lecture theatre so that I can count them. When I do this with a class of 300 students, 0 people claim to be cheaters. So I therefore conclude that the proportion of cheaters in my class is 0%. Clearly this is a bit ridiculous. But the point here is not that this is a very deep methodological example, but rather to explain what construct validity is. The problem with my measure is that while I’m <em>trying</em> to measure “the proportion of people who cheat” what I’m actually measuring is “the proportion of people stupid enough to own up to cheating, or bloody minded enough to pretend that they do”. Obviously, these aren’t the same thing! So my study has gone wrong, because my measurement has very poor construct validity.</p>
 </div>
 <div id="face-validity" class="section level3">
-<h3><span class="header-section-number">3.6.4</span> Face validity</h3>
+<h3><span class="header-section-number">2.6.4</span> Face validity</h3>
 <p><strong><em>Face validity</em></strong> simply refers to whether or not a measure “looks like” it’s doing what it’s supposed to, nothing more. If I design a test of intelligence, and people look at it and they say “no, that test doesn’t measure intelligence”, then the measure lacks face validity. It’s as simple as that. Obviously, face validity isn’t very important from a pure scientific perspective. After all, what we care about is whether or not the measure <em>actually</em> does what it’s supposed to do, not whether it <em>looks like</em> it does what it’s supposed to do. As a consequence, we generally don’t care very much about face validity. That said, the concept of face validity serves three useful pragmatic purposes:</p>
 <ul>
 <li>Sometimes, an experienced scientist will have a “hunch” that a particular measure won’t work. While these sorts of hunches have no strict evidentiary value, it’s often worth paying attention to them. Because often times people have knowledge that they can’t quite verbalise, so there might be something to worry about even if you can’t quite say why. In other words, when someone you trust criticises the face validity of your study, it’s worth taking the time to think more carefully about your design to see if you can think of reasons why it might go awry. Mind you, if you don’t find any reason for concern, then you should probably not worry: after all, face validity really doesn’t matter much.</li>
@@ -494,15 +898,15 @@
 </ul>
 </div>
 <div id="ecological-validity" class="section level3">
-<h3><span class="header-section-number">3.6.5</span> Ecological validity</h3>
+<h3><span class="header-section-number">2.6.5</span> Ecological validity</h3>
 <p><strong><em>Ecological validity</em></strong> is a different notion of validity, which is similar to external validity, but less important. The idea is that, in order to be ecologically valid, the entire set up of the study should closely approximate the real world scenario that is being investigated. In a sense, ecological validity is a kind of face validity – it relates mostly to whether the study “looks” right, but with a bit more rigour to it. To be ecologically valid, the study has to look right in a fairly specific way. The idea behind it is the intuition that a study that is ecologically valid is more likely to be externally valid. It’s no guarantee, of course. But the nice thing about ecological validity is that it’s much easier to check whether a study is ecologically valid than it is to check whether a study is externally valid. An simple example would be eyewitness identification studies. Most of these studies tend to be done in a university setting, often with fairly simple array of faces to look at rather than a line up. The length of time between seeing the “criminal” and being asked to identify the suspect in the “line up” is usually shorter. The “crime” isn’t real, so there’s no chance that the witness being scared, and there’s no police officers present, so there’s not as much chance of feeling pressured. These things all mean that the study <em>definitely</em> lacks ecological validity. They might (but might not) mean that it also lacks external validity.</p>
 </div>
 </div>
 <div id="confounds-artifacts-and-other-threats-to-validity" class="section level2">
-<h2><span class="header-section-number">3.7</span> Confounds, artifacts and other threats to validity</h2>
+<h2><span class="header-section-number">2.7</span> Confounds, artifacts and other threats to validity</h2>
 <p>If we look at the issue of validity in the most general fashion, the two biggest worries that we have are <em>confounds</em> and <em>artifact</em>. These two terms are defined in the following way:</p>
 <ul>
-<li><strong><em>Confound</em></strong>: A confound is an additional, often unmeasured variable^[The reason why I say that it’s unmeasured is that if you <em>have</em> measured it, then you can use some fancy statistical tricks to deal with the confound. Because of the existence of these statistical solutions to the problem of confounds, we often refer to a confound that we have measured and dealt with as a <em>covariate</em>. Dealing with covariates is a topic for a more advanced course, but I thought I’d mention it in passing, since it’s kind of comforting to at least know that this stuff exists.} that turns out to be related to both the predictors and the outcomes. The existence of confounds threatens the internal validity of the study because you can’t tell whether the predictor causes the outcome, or if the confounding variable causes it, etc.</li>
+<li><strong><em>Confound</em></strong>: A confound is an additional, often unmeasured variable<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> that turns out to be related to both the predictors and the outcomes. The existence of confounds threatens the internal validity of the study because you can’t tell whether the predictor causes the outcome, or if the confounding variable causes it, etc.</li>
 <li><strong><em>Artifact</em></strong>: A result is said to be “artifactual” if it only holds in the special situation that you happened to test in your study. The possibility that your result is an artifact describes a threat to your external validity, because it raises the possibility that you can’t generalise your results to the actual population that you care about.</li>
 </ul>
 <p>As a general rule confounds are a bigger concern for non-experimental studies, precisely because they’re not proper experiments: by definition, you’re leaving lots of things uncontrolled, so there’s a lot of scope for confounds working their way into your study. Experimental research tends to be much less vulnerable to confounds: the more control you have over what happens during the study, the more you can prevent confounds from appearing.</p>
@@ -510,7 +914,7 @@
 <p>Be warned though: the above is a rough guide only. It’s absolutely possible to have confounds in an experiment, and to get artifactual results with non-experimental studies. This can happen for all sorts of reasons, not least of which is researcher error. In practice, it’s really hard to think everything through ahead of time, and even very good researchers make mistakes. But other times it’s unavoidable, simply because the researcher has ethics (e.g., see “differential attrition”).</p>
 <p>Okay. There’s a sense in which almost any threat to validity can be characterised as a confound or an artifact: they’re pretty vague concepts. So let’s have a look at some of the most common examples…</p>
 <div id="history-effects" class="section level3">
-<h3><span class="header-section-number">3.7.1</span> History effects</h3>
+<h3><span class="header-section-number">2.7.1</span> History effects</h3>
 <p><strong><em>History effects</em></strong> refer to the possibility that specific events may occur during the study itself that might influence the outcomes. For instance, something might happen in between a pre-test and a post-test. Or, in between testing participant 23 and participant 24. Alternatively, it might be that you’re looking at an older study, which was perfectly valid for its time, but the world has changed enough since then that the conclusions are no longer trustworthy. Examples of things that would count as history effects:</p>
 <ul>
 <li>You’re interested in how people think about risk and uncertainty. You started your data collection in December 2010. But finding participants and collecting data takes time, so you’re still finding new people in February 2011. Unfortunately for you (and even more unfortunately for others), the Queensland floods occurred in January 2011, causing billions of dollars of damage and killing many people. Not surprisingly, the people tested in February 2011 express quite different beliefs about handling risk than the people tested in December 2010. Which (if any) of these reflects the “true” beliefs of participants? I think the answer is probably both: the Queensland floods genuinely changed the beliefs of the Australian public, though possibly only temporarily. The key thing here is that the “history” of the people tested in February is quite different to people tested in December.</li>
@@ -518,7 +922,7 @@
 </ul>
 </div>
 <div id="maturation-effects" class="section level3">
-<h3><span class="header-section-number">3.7.2</span> Maturation effects</h3>
+<h3><span class="header-section-number">2.7.2</span> Maturation effects</h3>
 <p>As with history effects, <strong><em>maturational effects</em></strong> are fundamentally about change over time. However, maturation effects aren’t in response to specific events. Rather, they relate to how people change on their own over time: we get older, we get tired, we get bored, etc. Some examples of maturation effects:</p>
 <ul>
 <li>When doing developmental psychology research, you need to be aware that children grow up quite rapidly. So, suppose that you want to find out whether some educational trick helps with vocabulary size among 3 year olds. One thing that you need to be aware of is that the vocabulary size of children that age is growing at an incredible rate (multiple words per day), all on its own. If you design your study without taking this maturational effect into account, then you won’t be able to tell if your educational trick works.</li>
@@ -526,7 +930,7 @@
 </ul>
 </div>
 <div id="repeated-testing-effects" class="section level3">
-<h3><span class="header-section-number">3.7.3</span> Repeated testing effects</h3>
+<h3><span class="header-section-number">2.7.3</span> Repeated testing effects</h3>
 <p>An important type of history effect is the effect of <strong><em>repeated testing</em></strong>. Suppose I want to take two measurements of some psychological construct (e.g., anxiety). One thing I might be worried about is if the first measurement has an effect on the second measurement. In other words, this is a history effect in which the “event” that influences the second measurement is the first measurement itself! This is not at all uncommon. Examples of this include:</p>
 <ul>
 <li><em>Learning and practice</em>: e.g., “intelligence” at time 2 might appear to go up relative to time 1 because participants learned the general rules of how to solve “intelligence-test-style” questions during the first testing session.<br />
@@ -536,33 +940,33 @@
 </ul>
 </div>
 <div id="selection-bias" class="section level3">
-<h3><span class="header-section-number">3.7.4</span> Selection bias</h3>
+<h3><span class="header-section-number">2.7.4</span> Selection bias</h3>
 <p><strong><em>Selection bias</em></strong> is a pretty broad term. Suppose that you’re running an experiment with two groups of participants, where each group gets a different “treatment”, and you want to see if the different treatments lead to different outcomes. However, suppose that, despite your best efforts, you’ve ended up with a gender imbalance across groups (say, group A has 80% females and group B has 50% females). It might sound like this could never happen, but trust me, it can. This is an example of a selection bias, in which the people “selected into” the two groups have different characteristics. If any of those characteristics turns out to be relevant (say, your treatment works better on females than males) then you’re in a lot of trouble.</p>
 </div>
 <div id="differential-attrition" class="section level3">
-<h3><span class="header-section-number">3.7.5</span> Differential attrition</h3>
+<h3><span class="header-section-number">2.7.5</span> Differential attrition</h3>
 <p>One quite subtle danger to be aware of is called <strong><em>differential attrition</em></strong>, which is a kind of selection bias that is caused by the study itself. Suppose that, for the first time ever in the history of psychology, I manage to find the perfectly balanced and representative sample of people. I start running “Dan’s incredibly long and tedious experiment” on my perfect sample, but then, because my study is incredibly long and tedious, lots of people start dropping out. I can’t stop this: as we’ll discuss later in the chapter on research ethics, participants absolutely have the right to stop doing any experiment, any time, for whatever reason they feel like, and as researchers we are morally (and professionally) obliged to remind people that they do have this right. So, suppose that “Dan’s incredibly long and tedious experiment” has a very high drop out rate. What do you suppose the odds are that this drop out is random? Answer: zero. Almost certainly, the people who remain are more conscientious, more tolerant of boredom etc than those that leave. To the extent that (say) conscientiousness is relevant to the psychological phenomenon that I care about, this attrition can decrease the validity of my results.</p>
 <p>When thinking about the effects of differential attrition, it is sometimes helpful to distinguish between two different types. The first is <strong><em>homogeneous attrition</em></strong>, in which the attrition effect is the same for all groups, treatments or conditions. In the example I gave above, the differential attrition would be homogeneous if (and only if) the easily bored participants are dropping out of all of the conditions in my experiment at about the same rate. In general, the main effect of homogeneous attrition is likely to be that it makes your sample unrepresentative. As such, the biggest worry that you’ll have is that the generalisability of the results decreases: in other words, you lose external validity.</p>
 <p>The second type of differential attrition is <strong><em>heterogeneous attrition</em></strong>, in which the attrition effect is different for different groups. This is a much bigger problem: not only do you have to worry about your external validity, you also have to worry about your internal validity too. To see why this is the case, let’s consider a very dumb study in which I want to see if insulting people makes them act in a more obedient way. Why anyone would actually want to study that I don’t know, but let’s suppose I really, deeply cared about this. So, I design my experiment with two conditions. In the “treatment” condition, the experimenter insults the participant and then gives them a questionnaire designed to measure obedience. In the “control” condition, the experimenter engages in a bit of pointless chitchat and then gives them the questionnaire. Leaving aside the questionable scientific merits and dubious ethics of such a study, let’s have a think about what might go wrong here. As a general rule, when someone insults me to my face, I tend to get much less co-operative. So, there’s a pretty good chance that a lot more people are going to drop out of the treatment condition than the control condition. And this drop out isn’t going to be random. The people most likely to drop out would probably be the people who don’t care all that much about the importance of obediently sitting through the experiment. Since the most bloody minded and disobedient people all left the treatment group but not the control group, we’ve introduced a confound: the people who actually took the questionnaire in the treatment group were <em>already</em> more likely to be dutiful and obedient than the people in the control group. In short, in this study insulting people doesn’t make them more obedient: it makes the more disobedient people leave the experiment! The internal validity of this experiment is completely shot.</p>
 </div>
 <div id="non-response-bias" class="section level3">
-<h3><span class="header-section-number">3.7.6</span> Non-response bias</h3>
+<h3><span class="header-section-number">2.7.6</span> Non-response bias</h3>
 <p><strong><em>Non-response bias</em></strong> is closely related to selection bias, and to differential attrition. The simplest version of the problem goes like this. You mail out a survey to 1000 people, and only 300 of them reply. The 300 people who replied are almost certainly not a random subsample. People who respond to surveys are systematically different to people who don’t. This introduces a problem when trying to generalise from those 300 people who replied, to the population at large; since you now have a very non-random sample. The issue of non-response bias is more general than this, though. Among the (say) 300 people that did respond to the survey, you might find that not everyone answers every question. If (say) 80 people chose not to answer one of your questions, does this introduce problems? As always, the answer is maybe. If the question that wasn’t answered was on the last page of the questionnaire, and those 80 surveys were returned with the last page missing, there’s a good chance that the missing data isn’t a big deal: probably the pages just fell off. However, if the question that 80 people didn’t answer was the most confrontational or invasive personal question in the questionnaire, then almost certainly you’ve got a problem. In essence, what you’re dealing with here is what’s called the problem of <strong><em>missing data</em></strong>. If the data that is missing was “lost” randomly, then it’s not a big problem. If it’s missing systematically, then it can be a big problem.</p>
 </div>
 <div id="regression-to-the-mean" class="section level3">
-<h3><span class="header-section-number">3.7.7</span> Regression to the mean</h3>
+<h3><span class="header-section-number">2.7.7</span> Regression to the mean</h3>
 <p><strong><em>Regression to the mean</em></strong> is a curious variation on selection bias. It refers to any situation where you select data based on an extreme value on some measure. Because the measure has natural variation, it almost certainly means that when you take a subsequent measurement, that later measurement will be less extreme than the first one, purely by chance.</p>
 <p>Here’s an example. Suppose I’m interested in whether a psychology education has an adverse effect on very smart kids. To do this, I find the 20 psych I students with the best high school grades and look at how well they’re doing at university. It turns out that they’re doing a lot better than average, but they’re not topping the class at university, even though they did top their classes at high school. What’s going on? The natural first thought is that this must mean that the psychology classes must be having an adverse effect on those students. However, while that might very well be the explanation, it’s more likely that what you’re seeing is an example of “regression to the mean”. To see how it works, let’s take a moment to think about what is required to get the best mark in a class, regardless of whether that class be at high school or at university. When you’ve got a big class, there are going to be <em>lots</em> of very smart people enrolled. To get the best mark you have to be very smart, work very hard, and be a bit lucky. The exam has to ask just the right questions for your idiosyncratic skills, and you have to not make any dumb mistakes (we all do that sometimes) when answering them. And that’s the thing: intelligence and hard work are transferrable from one class to the next. Luck isn’t. The people who got lucky in high school won’t be the same as the people who get lucky at university. That’s the very definition of “luck”. The consequence of this is that, when you select people at the very extreme values of one measurement (the top 20 students), you’re selecting for hard work, skill and luck. But because the luck doesn’t transfer to the second measurement (only the skill and work), these people will all be expected to drop a little bit when you measure them a second time (at university). So their scores fall back a little bit, back towards everyone else. This is regression to the mean.</p>
 <p>Regression to the mean is surprisingly common. For instance, if two very tall people have kids, their children will tend to be taller than average, but not as tall as the parents. The reverse happens with very short parents: two very short parents will tend to have short children, but nevertheless those kids will tend to be taller than the parents. It can also be extremely subtle. For instance, there have been studies done that suggested that people learn better from negative feedback than from positive feedback. However, the way that people tried to show this was to give people positive reinforcement whenever they did good, and negative reinforcement when they did bad. And what you see is that after the positive reinforcement, people tended to do worse; but after the negative reinforcement they tended to do better. But! Notice that there’s a selection bias here: when people do very well, you’re selecting for “high” values, and so you should <em>expect</em> (because of regression to the mean) that performance on the next trial should be worse, regardless of whether reinforcement is given. Similarly, after a bad trial, people will tend to improve all on their own. The apparent superiority of negative feedback is an artifact caused by regression to the mean <span class="citation">(see Kahneman and Tversky <a href="#ref-Kahneman1973">1973</a> for discussion)</span>.</p>
 </div>
 <div id="experimenter-bias" class="section level3">
-<h3><span class="header-section-number">3.7.8</span> Experimenter bias</h3>
+<h3><span class="header-section-number">2.7.8</span> Experimenter bias</h3>
 <p><strong><em>Experimenter bias</em></strong> can come in multiple forms. The basic idea is that the experimenter, despite the best of intentions, can accidentally end up influencing the results of the experiment by subtly communicating the “right answer” or the “desired behaviour” to the participants. Typically, this occurs because the experimenter has special knowledge that the participant does not – either the right answer to the questions being asked, or knowledge of the expected pattern of performance for the condition that the participant is in, and so on. The classic example of this happening is the case study of “Clever Hans”, which dates back to 1907 <span class="citation">(Pfungst <a href="#ref-Pfungst1911">1911</a>; Hothersall <a href="#ref-Hothersall2004">2004</a>)</span>. Clever Hans was a horse that apparently was able to read and count, and perform other human like feats of intelligence. After Clever Hans became famous, psychologists started examining his behaviour more closely. It turned out that – not surprisingly – Hans didn’t know how to do maths. Rather, Hans was responding to the human observers around him. Because they did know how to count, and the horse had learned to change its behaviour when people changed theirs.</p>
 <p>The general solution to the problem of experimenter bias is to engage in double blind studies, where neither the experimenter nor the participant knows which condition the participant is in, or knows what the desired behaviour is. This provides a very good solution to the problem, but it’s important to recognise that it’s not quite ideal, and hard to pull off perfectly. For instance, the obvious way that I could try to construct a double blind study is to have one of my Ph.D. students (one who doesn’t know anything about the experiment) run the study. That feels like it should be enough. The only person (me) who knows all the details (e.g., correct answers to the questions, assignments of participants to conditions) has no interaction with the participants, and the person who does all the talking to people (the Ph.D. student) doesn’t know anything. Except, that last part is very unlikely to be true. In order for the Ph.D. student to run the study effectively, they need to have been briefed by me, the researcher. And, as it happens, the Ph.D. student also knows me, and knows a bit about my general beliefs about people and psychology (e.g., I tend to think humans are much smarter than psychologists give them credit for). As a result of all this, it’s almost impossible for the experimenter to avoid knowing a little bit about what expectations I have. And even a little bit of knowledge can have an effect: suppose the experimenter accidentally conveys the fact that the participants are expected to do well in this task. Well, there’s a thing called the “Pygmalion effect”: if you expect great things of people, they’ll rise to the occasion; but if you expect them to fail, they’ll do that too. In other words, the expectations become a self-fulfilling prophesy.</p>
 </div>
 <div id="demand-effects-and-reactivity" class="section level3">
-<h3><span class="header-section-number">3.7.9</span> Demand effects and reactivity</h3>
-<p>When talking about experimenter bias, the worry is that the experimenter’s knowledge or desires for the experiment are communicated to the participants, and that these effect people’s behaviour <span class="citation">(Rosenthal <a href="#ref-Rosenthal1966">1966</a>)</span>. However, even if you manage to stop this from happening, it’s almost impossible to stop people from knowing that they’re part of a psychological study. And the mere fact of knowing that someone is watching/studying you can have a pretty big effect on behaviour. This is generally referred to as <strong><em>reactivity</em></strong> or <strong><em>demand effects</em></strong>. The basic idea is captured by the Hawthorne effect: people alter their performance because of the attention that the study focuses on them. The effect takes its name from a the “Hawthorne Works” factory outside of Chicago <span class="citation">(Adair <a href="#ref-Adair1984">1984</a>)</span>. A study done in the 1920s looking at the effects of lighting on worker productivity at the factory turned out to be an effect of the fact that the workers knew they were being studied, rather than the lighting.</p>
+<h3><span class="header-section-number">2.7.9</span> Demand effects and reactivity</h3>
+<p>When talking about experimenter bias, the worry is that the experimenter’s knowledge or desires for the experiment are communicated to the participants, and that these effect people’s behaviour <span class="citation">(Rosenthal <a href="#ref-Rosenthal1966">1966</a>)</span>. However, even if you manage to stop this from happening, it’s almost impossible to stop people from knowing that they’re part of a psychological study. And the mere fact of knowing that someone is watching/studying you can have a pretty big effect on behaviour. This is generally referred to as <strong><em>reactivity</em></strong> or <strong><em>demand effects</em></strong>. The basic idea is captured by the Hawthorne effect: people alter their performance because of the attention that the study focuses on them. The effect takes its name from a the “Hawthorne Works” factory outside of Chicago <span class="citation">(see Adair <a href="#ref-Adair1984">1984</a>)</span>. A study done in the 1920s looking at the effects of lighting on worker productivity at the factory turned out to be an effect of the fact that the workers knew they were being studied, rather than the lighting.</p>
 <p>To get a bit more specific about some of the ways in which the mere fact of being in a study can change how people behave, it helps to think like a social psychologist and look at some of the <em>roles</em> that people might adopt during an experiment, but might not adopt if the corresponding events were occurring in the real world:</p>
 <ul>
 <li>The <em>good participant</em> tries to be too helpful to the researcher: he or she seeks to figure out the experimenter’s hypotheses and confirm them.</li>
@@ -572,20 +976,20 @@
 </ul>
 </div>
 <div id="placebo-effects" class="section level3">
-<h3><span class="header-section-number">3.7.10</span> Placebo effects</h3>
+<h3><span class="header-section-number">2.7.10</span> Placebo effects</h3>
 <p>The <strong><em>placebo effect</em></strong> is a specific type of demand effect that we worry a lot about. It refers to the situation where the mere fact of being treated causes an improvement in outcomes. The classic example comes from clinical trials: if you give people a completely chemically inert drug and tell them that it’s a cure for a disease, they will tend to get better faster than people who aren’t treated at all. In other words, it is people’s belief that they are being treated that causes the improved outcomes, not the drug.</p>
 </div>
 <div id="situation-measurement-and-subpopulation-effects" class="section level3">
-<h3><span class="header-section-number">3.7.11</span> Situation, measurement and subpopulation effects</h3>
+<h3><span class="header-section-number">2.7.11</span> Situation, measurement and subpopulation effects</h3>
 <p>In some respects, these terms are a catch-all term for “all other threats to external validity”. They refer to the fact that the choice of subpopulation from which you draw your participants, the location, timing and manner in which you run your study (including who collects the data) and the tools that you use to make your measurements might all be influencing the results. Specifically, the worry is that these things might be influencing the results in such a way that the results won’t generalise to a wider array of people, places and measures.</p>
 </div>
 <div id="fraud-deception-and-self-deception" class="section level3">
-<h3><span class="header-section-number">3.7.12</span> Fraud, deception and self-deception</h3>
+<h3><span class="header-section-number">2.7.12</span> Fraud, deception and self-deception</h3>
 <blockquote>
 <p><em>It is difficult to get a man to understand something, when his salary depends on his not understanding it.</em></p>
 <p>– Upton Sinclair</p>
 </blockquote>
-<p>One final thing that I feel like I should mention. While reading what the textbooks often have to say about assessing the validity of the study, I couldn’t help but notice that they seem to make the assumption that the researcher is honest. I find this hilarious. While the vast majority of scientists are honest, in my experience at least, some are not.<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> Not only that, as I mentioned earlier, scientists are not immune to belief bias – it’s easy for a researcher to end up deceiving themselves into believing the wrong thing, and this can lead them to conduct subtly flawed research, and then hide those flaws when they write it up. So you need to consider not only the (probably unlikely) possibility of outright fraud, but also the (probably quite common) possibility that the research is unintentionally “slanted”. I opened a few standard textbooks and didn’t find much of a discussion of this problem, so here’s my own attempt to list a few ways in which these issues can arise are:</p>
+<p>One final thing that I feel like I should mention. While reading what the textbooks often have to say about assessing the validity of the study, I couldn’t help but notice that they seem to make the assumption that the researcher is honest. I find this hilarious. While the vast majority of scientists are honest, in my experience at least, some are not.<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a> Not only that, as I mentioned earlier, scientists are not immune to belief bias – it’s easy for a researcher to end up deceiving themselves into believing the wrong thing, and this can lead them to conduct subtly flawed research, and then hide those flaws when they write it up. So you need to consider not only the (probably unlikely) possibility of outright fraud, but also the (probably quite common) possibility that the research is unintentionally “slanted”. I opened a few standard textbooks and didn’t find much of a discussion of this problem, so here’s my own attempt to list a few ways in which these issues can arise are:</p>
 <ul>
 <li><strong><em>Data fabrication</em></strong>. Sometimes, people just make up the data. This is occasionally done with “good” intentions. For instance, the researcher believes that the fabricated data do reflect the truth, and may actually reflect “slightly cleaned up” versions of actual data. On other occasions, the fraud is deliberate and malicious. Some high-profile examples where data fabrication has been alleged or shown include Cyril Burt (a psychologist who is thought to have fabricated some of his data), Andrew Wakefield (who has been accused of fabricating his data connecting the MMR vaccine to autism) and Hwang Woo-suk (who falsified a lot of his data on stem cell research).<br />
 </li>
@@ -593,13 +997,13 @@
 <li><strong><em>Data misrepresentation</em></strong>. While fraud gets most of the headlines, it’s much more common in my experience to see data being misrepresented. When I say this, I’m not referring to newspapers getting it wrong (which they do, almost always). I’m referring to the fact that often, the data don’t actually say what the researchers think they say. My guess is that, almost always, this isn’t the result of deliberate dishonesty, it’s due to a lack of sophistication in the data analyses. For instance, think back to the example of Simpson’s paradox that I discussed in the beginning of these notes. It’s very common to see people present “aggregated” data of some kind; and sometimes, when you dig deeper and find the raw data yourself, you find that the aggregated data tell a different story to the disaggregated data. Alternatively, you might find that some aspect of the data is being hidden, because it tells an inconvenient story (e.g., the researcher might choose not to refer to a particular variable). There’s a lot of variants on this; many of which are very hard to detect.</li>
 <li><strong><em>Study “misdesign”</em></strong>. Okay, this one is subtle. Basically, the issue here is that a researcher designs a study that has built-in flaws, and those flaws are never reported in the paper. The data that are reported are completely real, and are correctly analysed, but they are produced by a study that is actually quite wrongly put together. The researcher really wants to find a particular effect, and so the study is set up in such a way as to make it “easy” to (artifactually) observe that effect. One sneaky way to do this – in case you’re feeling like dabbling in a bit of fraud yourself – is to design an experiment in which it’s obvious to the participants what they’re “supposed” to be doing, and then let reactivity work its magic for you. If you want, you can add all the trappings of double blind experimentation etc. It won’t make a difference, since the study materials themselves are subtly telling people what you want them to do. When you write up the results, the fraud won’t be obvious to the reader: what’s obvious to the participant when they’re in the experimental context isn’t always obvious to the person reading the paper. Of course, the way I’ve described this makes it sound like it’s always fraud: probably there are cases where this is done deliberately, but in my experience the bigger concern has been with unintentional misdesign. The researcher <em>believes</em> … and so the study just happens to end up with a built in flaw, and that flaw then magically erases itself when the study is written up for publication.</li>
 <li><strong><em>Data mining &amp; post hoc hypothesising</em></strong>. Another way in which the authors of a study can more or less lie about what they found is by engaging in what’s referred to as “data mining”. As we’ll discuss later in the class, if you keep trying to analyse your data in lots of different ways, you’ll eventually find something that “looks” like a real effect but isn’t. This is referred to as “data mining”. It used to be quite rare because data analysis used to take weeks, but now that everyone has very powerful statistical software on their computers, it’s becoming very common. Data mining per se isn’t “wrong”, but the more that you do it, the bigger the risk you’re taking. The thing that is wrong, and I suspect is very common, is <em>unacknowledged</em> data mining. That is, the researcher run every possible analysis known to humanity, finds the one that works, and then pretends that this was the only analysis that they ever conducted. Worse yet, they often “invent” a hypothesis after looking at the data, to cover up the data mining. To be clear: it’s not wrong to change your beliefs after looking at the data, and to reanalyse your data using your new “post hoc” hypotheses. What is wrong (and, I suspect, common) is failing to acknowledge that you’ve done so. If you acknowledge that you did it, then other researchers are able to take your behaviour into account. If you don’t, then they can’t. And that makes your behaviour deceptive. Bad!</li>
-<li><strong><em>Publication bias &amp; self-censoring</em></strong>. Finally, a pervasive bias is “non-reporting” of negative results. This is almost impossible to prevent. Journals don’t publish every article that is submitted to them: they prefer to publish articles that find “something”. So, if 20 people run an experiment looking at whether reading <em>Finnegans Wake</em> causes insanity in humans, and 19 of them find that it doesn’t, which one do you think is going to get published? Obviously, it’s the one study that did find that <em>Finnegans Wake</em> causes insanity.<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> This is an example of a <em>publication bias</em>: since no-one ever published the 19 studies that didn’t find an effect, a naive reader would never know that they existed. Worse yet, most researchers “internalise” this bias, and end up <em>self-censoring</em> their research. Knowing that negative results aren’t going to be accepted for publication, they never even try to report them. As a friend of mine says “for every experiment that you get published, you also have 10 failures”. And she’s right. The catch is, while some (maybe most) of those studies are failures for boring reasons (e.g. you stuffed something up) others might be genuine “null” results that you ought to acknowledge when you write up the “good” experiment. And telling which is which is often hard to do. A good place to start is a paper by <span class="citation">Ioannidis (<a href="#ref-Ioannidis2005">2005</a>)</span> with the depressing title “Why most published research findings are false”. I’d also suggest taking a look at work by <span class="citation">Kühberger, Fritz, and Scherndl (<a href="#ref-Kuhberger2014">2014</a>)</span> presenting statistical evidence that this actually happens in psychology.</li>
+<li><strong><em>Publication bias &amp; self-censoring</em></strong>. Finally, a pervasive bias is “non-reporting” of negative results. This is almost impossible to prevent. Journals don’t publish every article that is submitted to them: they prefer to publish articles that find “something”. So, if 20 people run an experiment looking at whether reading <em>Finnegans Wake</em> causes insanity in humans, and 19 of them find that it doesn’t, which one do you think is going to get published? Obviously, it’s the one study that did find that <em>Finnegans Wake</em> causes insanity.<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a> This is an example of a <em>publication bias</em>: since no-one ever published the 19 studies that didn’t find an effect, a naive reader would never know that they existed. Worse yet, most researchers “internalise” this bias, and end up <em>self-censoring</em> their research. Knowing that negative results aren’t going to be accepted for publication, they never even try to report them. As a friend of mine says “for every experiment that you get published, you also have 10 failures”. And she’s right. The catch is, while some (maybe most) of those studies are failures for boring reasons (e.g. you stuffed something up) others might be genuine “null” results that you ought to acknowledge when you write up the “good” experiment. And telling which is which is often hard to do. A good place to start is a paper by <span class="citation">Ioannidis (<a href="#ref-Ioannidis2005">2005</a>)</span> with the depressing title “Why most published research findings are false”. I’d also suggest taking a look at work by <span class="citation">Kühberger, Fritz, and Scherndl (<a href="#ref-Kuhberger2014">2014</a>)</span> presenting statistical evidence that this actually happens in psychology.</li>
 </ul>
 <p>There’s probably a lot more issues like this to think about, but that’ll do to start with. What I really want to point out is the blindingly obvious truth that real world science is conducted by actual humans, and only the most gullible of people automatically assumes that everyone else is honest and impartial. Actual scientists aren’t usually <em>that</em> naive, but for some reason the world likes to pretend that we are, and the textbooks we usually write seem to reinforce that stereotype.</p>
 </div>
 </div>
 <div id="summary" class="section level2">
-<h2><span class="header-section-number">3.8</span> Summary</h2>
+<h2><span class="header-section-number">2.8</span> Summary</h2>
 <p>This chapter isn’t really meant to provide a comprehensive discussion of psychological research methods: it would require another volume just as long as this one to do justice to the topic. However, in real life statistics and study design are tightly intertwined, so it’s very handy to discuss some of the key topics. In this chapter, I’ve briefly discussed the following topics:</p>
 <ul>
 <li><a href="studydesign.html#measurement">Introduction to psychological measurement</a>. What does it mean to operationalise a theoretical construct? What does it mean to have variables and take measurements?</li>
@@ -645,13 +1049,14 @@
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Presidential Address to the First Indian Statistical Congress, 1938. Source: <a href="http://en.wikiquote.org/wiki/Ronald_Fisher" class="uri">http://en.wikiquote.org/wiki/Ronald_Fisher</a><a href="studydesign.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Well… now this is awkward, isn’t it? This section is one of the oldest parts of the book, and it’s outdated in a rather embarrassing way. I wrote this in 2010, at which point all of those facts <em>were</em> true. Revisiting this in 2018… well I’m not 33 any more, but that’s not surprising I suppose. I can’t imagine my chromosomes have changed, so I’m going to guess my karyotype was then and is now XY. The self-identified gender, on the other hand… ah. I suppose the fact that the title page now refers to me as Danielle rather than Daniel might possibly be a giveaway, but I don’t typically identify as “male” on a gender questionnaire these days, and I prefer <em>“she/her”</em> pronouns as a default (it’s a long story)! I did think a little about how I was going to handle this in the book, actually. The book has a somewhat distinct authorial voice to it, and I feel like it would be a rather different work if I went back and wrote everything as Danielle and updated all the pronouns in the work. Besides, it would be a lot of work, so I’ve left my name as “Dan” throughout the book, and in ant case “Dan” is a perfectly good nickname for “Danielle”, don’t you think? In any case, it’s not a big deal. I only wanted to mention it to make life a little easier for readers who aren’t sure how to refer to me. I still don’t like anchovies though :-)<a href="studydesign.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Actually, I’ve been informed by readers with greater physics knowledge than I that temperature isn’t strictly an interval scale, in the sense that the amount of energy required to heat something up by 3<span class="math inline">\(^\circ\)</span> depends on it’s current temperature. So in the sense that physicists care about, temperature isn’t actually interval scale. But it still makes a cute example, so I’m going to ignore this little inconvenient truth.<a href="studydesign.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>Annoyingly, though, there’s a lot of different names used out there. I won’t list all of them – there would be no point in doing that – other than to note that  often uses “response variable” where I’ve used “outcome”, and a traditionalist would use “dependent variable”. Sigh. This sort of terminological confusion is very common, I’m afraid.<a href="studydesign.html#fnref4">↩</a></p></li>
-<li id="fn5"><p>Some people might argue that if you’re not honest then you’re not a real scientist. Which does have some truth to it I guess, but that’s disingenuous (google the “No true Scotsman” fallacy). The fact is that there are lots of people who are employed ostensibly as scientists, and whose work has all of the trappings of science, but who are outright fraudulent. Pretending that they don’t exist by saying that they’re not scientists is just childish.<a href="studydesign.html#fnref5">↩</a></p></li>
-<li id="fn6"><p>Clearly, the real effect is that only insane people would even try to read <em>Finnegans Wake.</em><a href="studydesign.html#fnref6">↩</a></p></li>
+<ol start="6">
+<li id="fn6"><p>Presidential Address to the First Indian Statistical Congress, 1938. Source: <a href="http://en.wikiquote.org/wiki/Ronald_Fisher" class="uri">http://en.wikiquote.org/wiki/Ronald_Fisher</a><a href="studydesign.html#fnref6">↩</a></p></li>
+<li id="fn7"><p>Well… now this is awkward, isn’t it? This section is one of the oldest parts of the book, and it’s outdated in a rather embarrassing way. I wrote this in 2010, at which point all of those facts <em>were</em> true. Revisiting this in 2018… well I’m not 33 any more, but that’s not surprising I suppose. I can’t imagine my chromosomes have changed, so I’m going to guess my karyotype was then and is now XY. The self-identified gender, on the other hand… ah. I suppose the fact that the title page now refers to me as Danielle rather than Daniel might possibly be a giveaway, but I don’t typically identify as “male” on a gender questionnaire these days, and I prefer <em>“she/her”</em> pronouns as a default (it’s a long story)! I did think a little about how I was going to handle this in the book, actually. The book has a somewhat distinct authorial voice to it, and I feel like it would be a rather different work if I went back and wrote everything as Danielle and updated all the pronouns in the work. Besides, it would be a lot of work, so I’ve left my name as “Dan” throughout the book, and in ant case “Dan” is a perfectly good nickname for “Danielle”, don’t you think? In any case, it’s not a big deal. I only wanted to mention it to make life a little easier for readers who aren’t sure how to refer to me. I still don’t like anchovies though :-)<a href="studydesign.html#fnref7">↩</a></p></li>
+<li id="fn8"><p>Actually, I’ve been informed by readers with greater physics knowledge than I that temperature isn’t strictly an interval scale, in the sense that the amount of energy required to heat something up by 3<span class="math inline">\(^\circ\)</span> depends on it’s current temperature. So in the sense that physicists care about, temperature isn’t actually interval scale. But it still makes a cute example, so I’m going to ignore this little inconvenient truth.<a href="studydesign.html#fnref8">↩</a></p></li>
+<li id="fn9"><p>Annoyingly, though, there’s a lot of different names used out there. I won’t list all of them – there would be no point in doing that – other than to note that R often uses “response variable” where I’ve used “outcome”, and a traditionalist would use “dependent variable”. Sigh. This sort of terminological confusion is very common, I’m afraid.<a href="studydesign.html#fnref9">↩</a></p></li>
+<li id="fn10"><p>The reason why I say that it’s unmeasured is that if you <em>have</em> measured it, then you can use some fancy statistical tricks to deal with the confound. Because of the existence of these statistical solutions to the problem of confounds, we often refer to a confound that we have measured and dealt with as a <em>covariate</em>. Dealing with covariates is a topic for a more advanced course, but I thought I’d mention it in passing, since it’s kind of comforting to at least know that this stuff exists.<a href="studydesign.html#fnref10">↩</a></p></li>
+<li id="fn11"><p>Some people might argue that if you’re not honest then you’re not a real scientist. Which does have some truth to it I guess, but that’s disingenuous (google the “No true Scotsman” fallacy). The fact is that there are lots of people who are employed ostensibly as scientists, and whose work has all of the trappings of science, but who are outright fraudulent. Pretending that they don’t exist by saying that they’re not scientists is just childish.<a href="studydesign.html#fnref11">↩</a></p></li>
+<li id="fn12"><p>Clearly, the real effect is that only insane people would even try to read <em>Finnegans Wake.</em><a href="studydesign.html#fnref12">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -660,7 +1065,7 @@
         </div>
       </div>
 <a href="why-do-we-learn-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="part-ii-an-introduction-to-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Pragmatic matters{#datahandling}
 
 >*The garden of life never seems to confine itself to the plots philosophers have
@@ -380,7 +385,7 @@ One particular example of subsetting that is especially common is the problem of
 - `x`. The variable that needs to be split into groups.
 - `f`. The grouping variable.
 
-What this function does is output a list (Section@refsec:lists), containing one variable for each group. For instance, I could split up the `utterance` variable by `speaker` using the following command:
+What this function does is output a list (Section \@ref(lists)), containing one variable for each group. For instance, I could split up the `utterance` variable by `speaker` using the following command:
 ```{r}
 speech.by.char <- split( x = utterance, f = speaker )
 speech.by.char
@@ -562,7 +567,7 @@ garden[[3]]
 ```
 Note that R will only allow you to ask for one column at a time using the double brackets. If you try to ask for multiple columns in this way, you get completely different behaviour,^[Specifically, recursive indexing, a handy tool in some contexts but not something that I want to discuss here.] which may or may not produce an error, but definitely won't give you the output you're expecting. The only reason I'm mentioning it at all is that you might run into double brackets when doing further reading, and a lot of books don't explicitly point out the difference between `[` and `[[`. However, I promise that I won't be using `[[` anywhere else in this book. 
 
-Okay, for those few readers that have persevered with this section long enough to get here without having set fire to the book, I should explain *why* R has these two different systems for subsetting a data frame (i.e., "row and column" versus "just columns"), and why they behave so differently to each other. I'm not 100\% sure about this since I'm still reading through some of the old references that describe the early development of R, but I think the answer relates to the fact that data frames are actually a very strange hybrid of two different kinds of thing. At a low level, a data frame is a list (Section@refsec:lists). I can demonstrate this to you by overriding the normal `print()` function^[Remember, `print()` is generic: see Section@refsec:generics.] and forcing R to print out the `garden` data frame using the default print method rather than the special one that is defined only for data frames. Here's what we get:
+Okay, for those few readers that have persevered with this section long enough to get here without having set fire to the book, I should explain *why* R has these two different systems for subsetting a data frame (i.e., "row and column" versus "just columns"), and why they behave so differently to each other. I'm not 100\% sure about this since I'm still reading through some of the old references that describe the early development of R, but I think the answer relates to the fact that data frames are actually a very strange hybrid of two different kinds of thing. At a low level, a data frame is a list (Section \@ref(lists)). I can demonstrate this to you by overriding the normal `print()` function^[Remember, `print()` is generic: see Section \@ref(generics).] and forcing R to print out the `garden` data frame using the default print method rather than the special one that is defined only for data frames. Here's what we get:
 ```{r}
 print.default( garden )
 ```
@@ -929,42 +934,37 @@ In this case, we see that `"cat"` does does come before `"dog"` alphabetically, 
 "cat" < "anteater"
 ``` 
 It tell us that the statement is false. So far, so good. But text data is a bit more complicated than the dictionary suggests. What about `"cat"` and `"CAT"`? Which of these comes first? Let's try it and find out:
-```{ref}
+```{r}
 "CAT" < "cat"
 ```
 In other words, R assumes that uppercase letters come before lowercase ones. Fair enough. No-one is likely to be surprised by that. What you might find surprising is that R assumes that *all* uppercase letters come before *all* lowercase ones. That is, while `"anteater" < "zebra"` is a true statement, and the uppercase equivalent `"ANTEATER" < "ZEBRA"` is also true, it is *not* true to say that `"anteater" < "ZEBRA"`, as the following extract illustrates:
-```{ref}
+```{r}
  "anteater" < "ZEBRA"
 ```
-This may seem slightly counterintuitive. With that in mind, it may help to have a quick look Table @ref(tab:asciiorder), which lists various text characters in the order that R uses. 
+This may seem slightly counterintuitive. With that in mind, it may help to have a quick look Table \@ref(tab:asciiorder), which lists various text characters in the order that R uses. 
 
 ```{r asciiorder, echo=FALSE}
-
+knitr::kable(data.frame(stringsAsFactors=FALSE,
+           Characters = c("! \" # $ % & ’ ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ ‘ a b c d e f g h i j k l m n o p q r s t u v w x y z } | {")
+), caption = "The ordering of various text characters used by the < and > operators, as well as by the sort() function. Not shown is the “space” character, which actually comes ﬁrst on the list.")
 ```
 
 ### Concatenating and printing with `cat()`
 
 One function that I want to make a point of talking about, even though it's not quite on topic, is the `cat()` function. The `cat()` function is a of mixture of  `paste()` and `print()`. That is, what it does is concatenate strings and then print them out. In your own work you can probably survive without it, since `print()` and `paste()` will actually do what you need, but the `cat()` function is so widely used that I think it's a good idea to talk about it here. The basic idea behind `cat()` is straightforward. Like `paste()`, it takes several arguments as inputs, which it converts to strings, collapses (using a separator character specified using the `sep` argument), and prints on screen. If you want, you can use the `file` argument to tell R to print the output into a file rather than on screen (I won't do that here). However, it's important to note that the `cat()` function collapses vectors first, and *then* concatenates them. That is, notice that when I use `cat()` to combine `hw` and `ng`, I get a different result than if I'd used `paste()`
-```
-> cat( hw, ng )
-hello world nasty government
-> paste( hw, ng, collapse = " " )
-[1] "hello nasty world government"
+```{r}
+cat( hw, ng )
+paste( hw, ng, collapse = " " )
 ``` 
 Notice the difference in the ordering of words. There's a few additional details that I need to mention about `cat()`. Firstly, `cat()` really is a function for *printing*, and not for creating text strings to store for later. You can't assign the output to a variable, as the following example illustrates:
-```
-> x <- cat( hw, ng )   
-hello world nasty government
-> x  
-NULL
+```{r}
+x <- cat( hw, ng )   
+x
 ```
 Despite my attempt to store the output as a variable, `cat()` printed the results on screen anyway, and it turns out that the variable I created doesn't contain anything at all.^[Note that you can capture the output from `cat()` if you want to, but you have to be sneaky and use the `capture.output()` function. For example, the command `x <- capture.output(cat(hw,ng))` would work just fine.] Secondly, the `cat()` function makes use of a number of "special" characters. I'll talk more about these in the next section, but I'll illustrate the basic point now, using the example of `"\n"` which is interpreted as a "new line" character. For instance, compare the behaviour of `print()` and `cat()` when asked to print the string `"hello\nworld"`:
-```
-> print( "hello\nworld" )  # print literally:
-[1] "hello\nworld"
-> cat( "hello\nworld" )  # interpret as newline
-hello
-world
+```{r}
+print( "hello\nworld" )  # print literally:
+cat( "hello\nworld" )  # interpret as newline
 ```
 In fact, this behaviour is important enough that it deserves a section of its very own...
 
@@ -972,125 +972,94 @@ In fact, this behaviour is important enough that it deserves a section of its ve
 
 
 The previous section brings us quite naturally to a fairly fundamental issue when dealing with strings, namely the issue of delimiters and escape characters. Reduced to its most basic form, the problem we have is that R commands are written using text characters, and our strings also consist of text characters. So, suppose I want to type in the word "hello", and have R encode it as a string. If I were to just type `hello`, R will think that I'm referring to a variable or a function called `hello` rather than interpret it as a string. The solution that R adopts is to require you to enclose your string by **_delimiter_** characters, which can be either double quotes or single quotes. So, when I type `"hello"` or `'hello'` then R knows that it should treat the text in between the quote marks as a character string. However, this isn't a complete solution to the problem: after all, `"` and `'` are themselves perfectly legitimate text characters, and so we might want to include those in our string as well. For instance, suppose I wanted to encode the name "O'Rourke" as a string. It's *not* legitimate for me to type `'O'rourke'` because R is too stupid to realise that "O'Rourke" is a real word. So it will interpret the `'O'` part as a complete string, and then will get confused when it reaches the `Rourke'` part. As a consequence, what you get is an error message:
-```
-> 'O'Rourke'
+```{r eval = FALSE}
+'O'Rourke'
 Error: unexpected symbol in "'O'Rourke"
 ```
 To some extent, R offers us a cheap fix to the problem because of the fact that it allows us to use either `"` or `'` as the delimiter character. Although `'O'rourke'` will make R cry, it is perfectly happy with `"O'Rourke"`:
-```
-> "O'Rourke"
-[1] "O'Rourke"
+```{r}
+"O'Rourke"
 ```
 This is a real advantage to having two different delimiter characters. Unfortunately, anyone with even the slightest bit of deviousness to them can see the problem with this. Suppose I'm reading a book that contains the following passage,
-\begin{quote}
-P.J. O'Rourke says, "Yay, money!". It's a joke, but no-one laughs.
-\end{quote}
+
+> P.J. O'Rourke says, "Yay, money!". It's a joke, but no-one laughs.
+
 and I want to enter this as a string. Neither the `'` or `"` delimiters will solve the problem here, since this string contains both a single quote character and a double quote character. To encode strings like this one, we have to do something a little bit clever. 
 
-\begin{table}[t]
-\begin{center}
-\caption{Standard escape characters that are evaluated by some text processing commands, including `cat()`. This convention dates back to the development of the C programming language in the 1970s, and as a consequence a lot of these characters make most sense if you pretend that R is actually a typewriter, as explained in the main text. Type `?Quotes` for the corresponding R help file.} \tabcapsep
-{#tab:textescape}
-\begin{tabular}{ccc}
-\begin{tabular}{cl}
-Escape sequence & Interpretation \\ \hline
-\verb#\n# & Newline \\
-\verb#\t# & Horizontal Tab \\
-\verb#\v# & Vertical Tab \\ 
-\verb#\b# & Backspace \\
-\verb#\r# & Carriage Return \\
-\end{tabular}
-& \hspace*{1cm} &
-\begin{tabular}{cl}
-Escape sequence & Interpretation \\ \hline
-\verb#\f# & Form feed \\ 
-\verb#\a# & Alert sound \\
-\verb#\\# & Backslash \\
-\verb#\'# & Single quote \\
-\verb#\"# & Double quote \\
-\end{tabular}
-\end{tabular}
-\tabcapsep \HR	
-\end{center}
-\end{table}
+```{r textescape, echo=FALSE}
+knitr::kable(data.frame(stringsAsFactors=FALSE,
+   Escape.sequence = c("`\\n`", "`\\t`", "`\\v`", "`\\b`", "`\\r`", "`\\f`", "`\\a`", "`\\\\`",
+                       "`\\'`", "`\\\"`"),
+    Interpretation = c("Newline", "Horizontal Tab", "Vertical Tab",
+                       "Backspace", "Carriage Return", "Form feed",
+                       "Alert sound", "Backslash", "Single quote", "Double quote")
+), caption = "Standard escape characters that are evaluated by some text processing commands, including `cat()`. This convention dates back to the development of the C programming language in the 1970s, and as a consequence a lot of these characters make most sense if you pretend that R is actually a typewriter, as explained in the main text. Type `?Quotes` for the corresponding R help file.")
+```
 
 The solution to the problem is to designate an **_escape character_**, which in this case is `\`, the humble backslash. The escape character is a bit of a sacrificial lamb: if you include a backslash character in your string, R will *not* treat it as a literal character at all. It's actually used as a way of inserting "special" characters into your string. For instance, if you want to force R to insert actual quote marks into the string, then what you actually type is `\'` or `\"` (these are called **_escape sequences_**). So, in order to encode the string discussed earlier, here's a command I could use:
-```
-> PJ <- "P.J. O\'Rourke says, \"Yay, money!\". It\'s a joke, but no-one laughs."
+```{r}
+PJ <- "P.J. O\'Rourke says, \"Yay, money!\". It\'s a joke, but no-one laughs."
 ``` 
 Notice that I've included the backslashes for both the single quotes and double quotes. That's actually overkill: since I've used `"` as my delimiter, I only needed to do this for the double quotes. Nevertheless, the command has worked, since I didn't get an error message. Now let's see what happens when I print it out:
-```
-> print( PJ )
-[1] "P.J. O'Rourke says, \"Yay, money!\". It's a joke, but no-one laughs."
+```{r}
+print( PJ )
 ```
 Hm. Why has R printed out the string using `\"`? For the exact same reason that *I* needed to insert the backslash in the first place. That is, when R prints out the `PJ` string, it has enclosed it with delimiter characters, and it wants to unambiguously show us which of the double quotes are delimiters and which ones are actually part of the string. Fortunately, if this bugs you, you can make it go away by using the `print.noquote()` function, which will just print out the literal string that you encoded in the first place:
 ```
-> print.noquote( PJ )
-[1] P.J. O'Rourke says, "Yay, money!". It's a joke, but no-one laughs.
+print.noquote( PJ )
 ```
 Typing `cat(PJ)` will produce a similar output.
 
-Introducing the escape character solves a lot of problems, since it provides a mechanism by which we can insert all sorts of characters that aren't on the keyboard. For instance, as far as a computer is concerned, "new line" is actually a text character. It's the character that is printed whenever you hit the "return" key on your keyboard. If you want to insert a new line character into your string, you can actually do this by including the escape sequence `\n`. Or, if you want to insert a backslash character, then you can use `\\`. A list of the standard escape sequences recognised by R is shown in Table@reftab:textescape. A lot of these actually date back to the days of the typewriter (e.g., carriage return), so they might seem a bit counterintuitive to people who've never used one. In order to get a sense for what the various escape sequences do, we'll have to use the `cat()` function, because it's the only function "dumb" enough to literally print them out:
+Introducing the escape character solves a lot of problems, since it provides a mechanism by which we can insert all sorts of characters that aren't on the keyboard. For instance, as far as a computer is concerned, "new line" is actually a text character. It's the character that is printed whenever you hit the "return" key on your keyboard. If you want to insert a new line character into your string, you can actually do this by including the escape sequence `\n`. Or, if you want to insert a backslash character, then you can use `\\`. A list of the standard escape sequences recognised by R is shown in Table \@ref(tab:textescape). A lot of these actually date back to the days of the typewriter (e.g., carriage return), so they might seem a bit counterintuitive to people who've never used one. In order to get a sense for what the various escape sequences do, we'll have to use the `cat()` function, because it's the only function "dumb" enough to literally print them out:
 ```
-> cat( "xxxx\boo" )  # \b is a backspace, so it deletes the preceding x
-xxxoo
-> cat( "xxxx\too" )  # \t is a tab, so it inserts a tab space
-xxxx	oo
-> cat( "xxxx\noo" )  # \n is a newline character
-xxxx
-oo
-> cat( "xxxx\roo" )  # \r returns you to the beginning of the line
-ooxx
+cat( "xxxx\boo" )  # \b is a backspace, so it deletes the preceding x
+cat( "xxxx\too" )  # \t is a tab, so it inserts a tab space
+cat( "xxxx\noo" )  # \n is a newline character
+cat( "xxxx\roo" )  # \r returns you to the beginning of the line
 ```
 And that's pretty much it. There are a few other escape sequence that R recognises, which you can use to insert arbitrary ASCII or Unicode characters into your string (type `?Quotes` for more details) but I won't go into details here.
 
 
 ### Matching and substituting text
 
-Another task that we often want to solve is find all strings that match a certain criterion, and possibly even to make alterations to the text on that basis. There are several functions in R that allow you to do this, three of which I'll talk about briefly here: `grep()`, `gsub()` and `sub()`. Much like the `substr()` function that I talked about earlier, all three of these functions are intended to be used in conjunction with regular expressions (see Section@refsec:regex) but you can also use them in a simpler fashion, since they all allow you to set `fixed = TRUE`, which means we can ignore all this regular expression rubbish and just use simple text matching.
+Another task that we often want to solve is find all strings that match a certain criterion, and possibly even to make alterations to the text on that basis. There are several functions in R that allow you to do this, three of which I'll talk about briefly here: `grep()`, `gsub()` and `sub()`. Much like the `substr()` function that I talked about earlier, all three of these functions are intended to be used in conjunction with regular expressions (see Section \@ref(regex) but you can also use them in a simpler fashion, since they all allow you to set `fixed = TRUE`, which means we can ignore all this regular expression rubbish and just use simple text matching.
 
 So, how do these functions work? Let's start with the `grep()` function. The purpose of this function is to input a  vector of character strings `x`, and to extract all those strings that fit a certain pattern. In our examples, I'll assume that the `pattern` in question is a literal sequence of characters that the string must contain (that's what `fixed = TRUE` does). To illustrate this, let's start with a simple data set, a vector that contains the names of three `beers`. Something like this:
-```
-> beers <- c( "little creatures", "sierra nevada", "coopers pale" )
+```{r}
+beers <- c( "little creatures", "sierra nevada", "coopers pale" )
 ```
 Next, let's use `grep()` to find out which of these strings contains the substring `"er"`. That is, the `pattern` that we need to match is the fixed string `"er"`, so the command we need to use is:
-```
-> grep( pattern = "er", x = beers, fixed = TRUE )
-[1] 2 3
+```{r}
+grep( pattern = "er", x = beers, fixed = TRUE )
 ```
 What the output here is telling us is that the second and third elements of `beers` both contain the substring `"er"`. Alternatively, however, we might prefer it if `grep()` returned the actual strings themselves. We can do this by specifying `value = TRUE` in our function call. That is, we'd use a command like this:
-```
-> grep( pattern = "er", x = beers, fixed = TRUE, value = TRUE )
-[1] "sierra nevada" "coopers pale"
+```{r}
+grep( pattern = "er", x = beers, fixed = TRUE, value = TRUE )
 ```
 
 
 The other two functions that I wanted to mention in this section are `gsub()` and `sub()`. These are both similar in spirit to `grep()` insofar as what they do is search through the input strings (`x`) and find all of the strings that match a `pattern`. However, what these two functions do is *replace* the pattern with a `replacement` string. The `gsub()` function will replace *all* instances of the pattern, whereas the `sub()` function just replaces the first instance of it in each string. To illustrate how this works, suppose I want to replace all instances of the letter `"a"` with the string `"BLAH"`. I can do this to the `beers` data using the `gsub()` function:
-```
-> gsub( pattern = "a", replacement = "BLAH", x = beers, fixed = TRUE )
-[1] "little creBLAHtures"    "sierrBLAH nevBLAHdBLAH"
-[3] "coopers pBLAHle" 
+```{r}
+gsub( pattern = "a", replacement = "BLAH", x = beers, fixed = TRUE )
 ```
 Notice that all three of the `"a"`s in `"sierra nevada"` have been replaced. In contrast, let's see what happens when we use the exact same command, but this time using the `sub()` function instead:
-```
-> sub( pattern = "a", replacement = "BLAH", x = beers, fixed = TRUE )
-[1] "little creBLAHtures" "sierrBLAH nevada"    "coopers pBLAHle"  
+```{r}
+sub( pattern = "a", replacement = "BLAH", x = beers, fixed = TRUE )
 ```
 Only the first `"a"` is changed.
 
-### Regular expressions (not really) {#regex}
+### Regular expressions (not really){#regex}
 
 There's one last thing I want to talk about regarding text manipulation, and that's the concept of a **_regular expression_**. Throughout this section we've often needed to specify `fixed = TRUE` in order to force R to treat some of our strings as actual strings, rather than as regular expressions. So, before moving on, I want to very briefly explain what regular expressions are. I'm *not* going to talk at all about how they work or how you specify them, because they're genuinely complicated and not at all relevant to this book. However, they are extremely powerful tools and they're quite widely used by people who have to work with lots of text data (e.g., people who work with natural language data), and so it's handy to at least have a vague idea about what they are. The basic idea is quite simple. Suppose I want to extract all strings in my `beers` vector that contain a vowel followed immediately by the letter `"s"`. That is, I want to finds the beer names that contain either `"as"`, `"es"`, `"is"`, `"os"` or `"us"`. One possibility would be to manually specify all of these possibilities and then match against these as fixed strings one at a time, but that's tedious. The alternative is to try to write out a single "regular" expression that matches all of these. The regular expression that does this^[Sigh. For advanced users: R actually supports two different ways of specifying regular expressions. One is the POSIX standard, the other is to use Perl-style regular expressions. The default is generally POSIX. If you understand regular expressions, that probably made sense to you. If not, don't worry. It's not important.] is `"[aeiou]s"`, and you can kind of see what the syntax is doing here. The bracketed expression means "any of the things in the middle", so the expression as a whole means "any of the things in the middle" (i.e. vowels) followed by the letter `"s"`. When applied to our beer names we get this:
-```
-> grep( pattern = "[aeiou]s", x = beers, value = TRUE )
-[1] "little creatures"
+```{r}
+grep( pattern = "[aeiou]s", x = beers, value = TRUE )
 ``` 
 So it turns out that only `"little creatures"` contains a vowel followed by the letter `"s"`. But of course, had the data contained a beer like `"fosters"`, that would have matched as well because it contains the string `"os"`. However, I deliberately chose not to include it because Fosters is not -- in my opinion -- a proper beer.^[I thank Amy Perfors for this example.] As you can tell from this example, regular expressions are a neat tool for specifying *patterns* in text: in this case, "vowel then s". So they are definitely things worth knowing about if you ever find yourself needing to work with a large body of text. However, since they are fairly complex and not necessary for any of the applications discussed in this book, I won't talk about them any further. 
 
 
 ## Reading unusual data files{#importing}
 
-In this section I'm going to switch topics (again!) and turn to the question of how you can load data from a range of different sources. Throughout this book I've assumed that your data are stored as an `.Rdata` file or as a "properly" formatted CSV file. And if so, then the basic tools that I discussed in Section@refsec:load should be quite sufficient. However, in real life that's not a terribly plausible assumption to make, so I'd better talk about some of the other possibilities that you might run into. 
+In this section I'm going to switch topics (again!) and turn to the question of how you can load data from a range of different sources. Throughout this book I've assumed that your data are stored as an `.Rdata` file or as a "properly" formatted CSV file. And if so, then the basic tools that I discussed in Section \@ref(load) should be quite sufficient. However, in real life that's not a terribly plausible assumption to make, so I'd better talk about some of the other possibilities that you might run into. 
 
 
 ### Loading data from text files 
@@ -1103,36 +1072,25 @@ The first thing I should point out is that if your data are saved as a text file
 - `skip`. It's actually very common to receive CSV files in which the first few rows have nothing to do with the actual data. Instead, they provide a human readable summary of where the data came from, or maybe they include some technical info that doesn't relate to the data. To tell R to ignore the first (say) three lines, you'd need to set `skip = 3`
 - `na.strings`. Often you'll get given data with missing values. For one reason or another, some entries in the table are missing. The data file needs to include a "special" string to indicate that the entry is missing. By default R assumes that this string is `NA`, since that's what *it* would do, but there's no universal agreement on what to use in this situation. If the file uses `???` instead, then you'll need to set `na.strings = "???"`. 
 
-It's kind of nice to be able to have all these options that you can tinker with. For instance, have a look at the data file shown pictured in Figure@reffig:booksales2csv. This file contains almost the same data as the last file (except it doesn't have a header), and it uses a bunch of wacky features that you don't normally see in CSV files. In fact, it just so happens that I'm going to have to change all five of those arguments listed above in order to load this file. Here's how I would do it:
-```
-> data <- read.csv( file = "booksales2.csv",  # specify the name of the file
-+                   header = FALSE,           # variable names in the file?
-+                   skip = 8,                 # ignore the first 8 lines
-+                   quote = "*",              # what indicates text data?
-+                   sep = "\t",               # what separates different entries?
-+                   na.strings = "NFI" )      # what is the code for missing data?
+It's kind of nice to be able to have all these options that you can tinker with. For instance, have a look at the data file shown pictured in Figure \@ref(fig:booksales2csv). This file contains almost the same data as the last file (except it doesn't have a header), and it uses a bunch of wacky features that you don't normally see in CSV files. In fact, it just so happens that I'm going to have to change all five of those arguments listed above in order to load this file. Here's how I would do it:
+```{r}
+data <- read.csv( file = "./rbook-master/data/booksales2.csv",  # specify the name of the file
+                   header = FALSE,           # variable names in the file?
+                   skip = 8,                 # ignore the first 8 lines
+                   quote = "*",              # what indicates text data?
+                   sep = "\t",               # what separates different entries?
+                   na.strings = "NFI" )      # what is the code for missing data?
 ``` 
 If I now have a look at the data I've loaded, I see that this is what I've got:
-```
-> head( data )
-         V1 V2  V3   V4
-1   January 31   0 high
-2 February  28 100 high
-3    March  31 200  low
-4    April  30  50  out
-5     May   31  NA  out
-6     June  30   0 high
+```{r}
+head( data )
 ```
 Because I told R to expect `*` to be used as the quoting character instead of `"`; to look for tabs (which we write like this: `\t`) instead of commas, and to skip the first 8 lines of the file, it's basically loaded the right data. However, since `booksales2.csv` doesn't contain the column names, R has made them up. Showing the kind of imagination I expect from insentient software, R decided to call them `V1`, `V2`, `V3` and `V4`. Finally, because I told it that the file uses "NFI" to denote missing data, R correctly figures out that the sales data for May are actually missing. 
 
-\begin{figure}[t]
-\begin{center}
-\epsfig{file = ../img/datahandling/booksales2csv.eps, clip=true,width = 14cm}
-\caption{The `booksales2.csv` data file. It contains more or less the same data as the original `booksales.csv` data file, but has a lot of very quirky features.}
-{#fig:booksales2csv}
-\HR
-\end{center}
-\end{figure} 
+```{r booksales2csv, fig.cap="The `booksales2.csv` data file. It contains more or less the same data as the original `booksales.csv` data file, but has a lot of very quirky features.", echo=FALSE}
+knitr::include_graphics("./rbook-master/img/datahandling/booksales2csv.jpg")
+
+```
 
 In real life you'll rarely see data this stupidly formatted.^[If you're lucky.] 
 
@@ -1140,22 +1098,22 @@ In real life you'll rarely see data this stupidly formatted.^[If you're lucky.]
 
 The commands listed above are the main ones we'll need for data files in this book. But in real life we have many more possibilities. For example, you might want to read data files in from other statistics programs. Since SPSS is probably the most widely used statistics package in psychology, it's worth briefly showing how to open SPSS data files (file extension `.sav`). It's surprisingly easy. The extract below should illustrate how to do so:
 ```
-> library( foreign )                 # load the package
-> X <- read.spss( "datafile.sav" )   # create a list containing the data
-> X <- as.data.frame( X )            # convert to data frame
+library( foreign )                 # load the package
+X <- read.spss( "./rbook-master/data/datafile.sav" )   # create a list containing the data
+X <- as.data.frame( X )            # convert to data frame
 ```
 If you wanted to import from an SPSS file to a data frame directly, instead of importing a list and then converting the list to a data frame, you can do that too:
 ```
-> X <- read.spss( file = "datafile.sav", to.data.frame = TRUE )
+X <- read.spss( file = "datafile.sav", to.data.frame = TRUE )
 ```
 And that's pretty much it, at least as far as SPSS goes.  As far as other statistical software goes, the `foreign` package provides a wealth of possibilities. To open SAS files, check out the `read.ssd()`and `read.xport()` functions. To open data from Minitab, the `read.mtp()` function is what you're looking for. For Stata, the `read.dta()` function is what you want. For Systat, the `read.systat()` function is what you're after. 
 
 ### Loading Excel files 
 
-A different problem is posed by Excel files. Despite years of yelling at people for sending data to me encoded in a proprietary data format, I get sent a lot of Excel files. In general R does a pretty good job of opening them, but it's bit finicky because Microsoft don't seem to be terribly fond of people using non-Microsoft products, and go to some lengths to make it tricky. If you get an Excel file, my suggestion would be to open it up in Excel (or better yet, OpenOffice, since that's free software) and then save the spreadsheet as a CSV file. Once you've got the data in that format, you can open it using `read.csv()`. However, if for some reason you're desperate to open the `.xls`} or `.xlsx` file directly, then you can use the `read.xls()` function in the `gdata` package:
+A different problem is posed by Excel files. Despite years of yelling at people for sending data to me encoded in a proprietary data format, I get sent a lot of Excel files. In general R does a pretty good job of opening them, but it's bit finicky because Microsoft don't seem to be terribly fond of people using non-Microsoft products, and go to some lengths to make it tricky. If you get an Excel file, my suggestion would be to open it up in Excel (or better yet, OpenOffice, since that's free software) and then save the spreadsheet as a CSV file. Once you've got the data in that format, you can open it using `read.csv()`. However, if for some reason you're desperate to open the `.xls` or `.xlsx` file directly, then you can use the `read.xls()` function in the `gdata` package:
 ```
-> library( gdata )                   # load the package
-> X <- read.xls( "datafile.xlsx" )   # create a data frame
+library( gdata )                   # load the package
+X <- read.xls( "datafile.xlsx" )   # create a data frame
 ``` 
 This usually works. And if it doesn't, you're probably justified in "suggesting" to the person that sent you the file that they should send you a nice clean CSV file instead.
 
@@ -1163,10 +1121,10 @@ This usually works. And if it doesn't, you're probably justified in "suggesting"
 
 A lot of scientific labs use Matlab as their default platform for scientific computing; or Octave as a free alternative. Opening Matlab data files (file extension `.mat`) slightly more complicated, and if it wasn't for the fact that Matlab is so very widespread and is an extremely good platform, I wouldn't mention it. However, since Matlab is so widely used, I think it's worth discussing briefly how to get Matlab and R to play nicely together. The way to do this is to install the `R.matlab` package (don't forget to install the dependencies too). Once you've installed and loaded the package, you have access to the `readMat()` function. As any Matlab user will know, the `.mat` files that Matlab produces are workspace files, very much like the `.Rdata` files that R produces. So you can't import a `.mat` file as a data frame. However, you can import it as a list. So, when we do this:
 ```
-> library( R.matlab )                   # load the package
-> data <- readMat( "matlabfile.mat" )   # read the data file to a list
+library( R.matlab )                   # load the package
+data <- readMat( "matlabfile.mat" )   # read the data file to a list
 ```
-The `data` object that gets created will be a list, containing one variable for every variable stored in the Matlab file. It's fairly straightforward, though there are some subtleties that I'm ignoring. In particular, note that if you don't have the `Rcompression` package, you can't open Matlab files above the version 6 format. So, if like me you've got a recent version of Matlab, and don't have the `Rcompression` package, you'll need to save your files using the \verb#-v6# flag otherwise R can't open them.
+The `data` object that gets created will be a list, containing one variable for every variable stored in the Matlab file. It's fairly straightforward, though there are some subtleties that I'm ignoring. In particular, note that if you don't have the `Rcompression` package, you can't open Matlab files above the version 6 format. So, if like me you've got a recent version of Matlab, and don't have the `Rcompression` package, you'll need to save your files using the `-v6` flag otherwise R can't open them.
 
 
 Oh, and Octave users? The `foreign` package contains a `read.octave()` command. Just this once, the world makes life easier for you folks than it does for all those cashed-up swanky Matlab bastards. 
@@ -1195,33 +1153,26 @@ Of course not. If I've learned nothing else about R it's that you're *never bloo
 Sometimes you want to change the variable class. This can happen for all sorts of reasons. Sometimes when you import data from files, it can come to you in the wrong format: numbers sometimes get imported as text, dates usually get imported as text, and many other possibilities besides. Regardless of how you've ended up in this situation, there's a very good chance that sometimes you'll want to convert a variable from one class into another one. Or, to use the correct term, you want to **_coerce_** the variable from one class into another. Coercion is a little tricky, and so I'll only discuss the very basics here, using a few simple examples. 
 
 Firstly, let's suppose we have a variable `x` that is *supposed* to be representing a number, but the data file that you've been given has encoded it as text. Let's imagine that the variable is something like this:
-```
-> x <- "100"  # the variable 
-> class(x)    # what class is it?
-[1] "character"
+```{r}
+x <- "100"  # the variable 
+class(x)    # what class is it?
 ```
 Obviously, if I want to do calculations using `x` in its current state, R is going to get very annoyed at me. It thinks that `x` is text, so it's not going to allow me to try to do mathematics using it! Obviously, we need to coerce `x` from character to numeric. We can do that in a straightforward way by using the `as.numeric()` function: 
-```
-> x <- as.numeric(x)  # coerce the variable
-> class(x)            # what class is it?
-[1] "numeric"
-> x + 1               # hey, addition works!
-[1] 101
+```{r}
+x <- as.numeric(x)  # coerce the variable
+class(x)            # what class is it?
+x + 1               # hey, addition works!
 ```
 Not surprisingly, we can also convert it back again if we need to. The function that we use to do this is the `as.character()` function:
-```
-> x <- as.character(x)   # coerce back to text
-> class(x)               # check the class:
-[1] "character"
+```{r}
+x <- as.character(x)   # coerce back to text
+class(x)               # check the class:
 ```
 However, there's some fairly obvious limitations: you can't coerce the string `"hello world"` into a number because, well, there's isn't a number that corresponds to it. Or, at least, you can't do anything useful:
+```{r}
+as.numeric( "hello world" )  # this isn't going to work.
 ```
-> as.numeric( "hello world" )  # this isn't going to work.
-[1] NA
-Warning message:
-NAs introduced by coercion
-```
-In this case R doesn't give you an error message; it just gives you a warning, and then says that the data is missing (see Section@refsec:specials for the interpretation of `NA`). 
+In this case R doesn't give you an error message; it just gives you a warning, and then says that the data is missing (see Section \@ref(specials) for the interpretation of `NA`). 
 
 That gives you a feel for how to change between numeric and character data. What about logical data? To cover this briefly, coercing text to logical data is pretty intuitive: you use the `as.logical()` function, and the character strings `"T"`, `"TRUE"`, `"True"` and `"true"` all convert to the logical value of `TRUE`. Similarly `"F"`, `"FALSE"`, `"False"`, and `"false"` all become `FALSE`. All other strings convert to `NA`. When you go back the other way using `as.character()`, `TRUE` converts to `"TRUE"` and `FALSE` converts to `"FALSE"`. Converting numbers to logicals -- again using `as.logical()` -- is straightforward. Following the convention in the study of logic, the number `0` converts to `FALSE`. Everything else is `TRUE`. Going back using `as.numeric()`, `FALSE` converts to `0` and `TRUE` converts to `1`.
 
@@ -1232,152 +1183,112 @@ Up to this point we have encountered several different kinds of variables. At th
 
 
 
-### Matrices {#matrix (and arrays)}
+### Matrices{#matrix}
 
 In various different places in this chapter I've made reference to an R data structure called a **_matrix_**, and mentioned that I'd talk a bit more about matrices later on. That time has come. Much like a data frame, a matrix is basically a big rectangular table of data, and in fact there are quite a few similarities between the two. However, there are also some key differences, so it's important to talk about matrices in a little detail. Let's start by using `rbind()` to create a small matrix:^[You can also use the `matrix()` command itself, but I think the "binding" approach is a little more intuitive.]
-```
-> row.1 <- c( 2,3,1 )         # create data for row 1
-> row.2 <- c( 5,6,7 )         # create data for row 2
-> M <- rbind( row.1, row.2 )  # row bind them into a matrix
-> print( M )                  # and print it out...
-      [,1] [,2] [,3]
-row.1    2    3    1
-row.2    5    6    7
+```{r}
+row.1 <- c( 2,3,1 )         # create data for row 1
+row.2 <- c( 5,6,7 )         # create data for row 2
+M <- rbind( row.1, row.2 )  # row bind them into a matrix
+print( M )                  # and print it out...
 ```
 The variable `M` is a matrix, which we can confirm by using the `class()` function. Notice that, when we bound the two vectors together, R retained the names of the original variables as row names. We could delete these if we wanted by typing `rownames(M)<-NULL`, but I generally prefer having meaningful names attached to my variables, so I'll keep them. In fact, let's also add some highly unimaginative column names as well:
+```{r}
+colnames(M) <- c( "col.1", "col.2", "col.3" )
+print(M)
 ```
-> colnames(M) <- c( "col.1", "col.2", "col.3" )
-> print(M)
-      col.1 col.2 col.3
-row.1     2     3     1
-row.2     5     6     7
+You can use square brackets to subset a matrix in much the same way that you can for data frames, again specifying a row index and then a column index. For instance, `M[2,3]` pulls out the entry in the 2nd row and 3rd column of the matrix (i.e., `7`), whereas `M[2,]` pulls out the entire 2nd row, and `M[,3]` pulls out the entire 3rd column. However, it's worth noting that when you pull out a column, R will print the results horizontally, not vertically. The reason for this relates to how matrices (and arrays generally) are implemented. The original matrix `M` is treated as a two-dimensional objects, containing 2 rows and 3 columns. However, whenever you pull out a single row or a single column, the result is considered to be one-dimensional. As far as R is concerned there's no real reason to distinguish between a one-dimensional object printed vertically (a column) and a one-dimensional object printed horizontally (a row), and it prints them all out horizontally.^[This has some interesting implications for how matrix algebra is implemented in R (which I'll admit I initially found odd), but that's a little beyond the scope of this book. However, since there will be a small proportion of readers that do care, I'll quickly outline the basic thing you need to get used to: when multiplying a matrix by a vector (or one-dimensional array) using the `\%*\%` operator R will attempt to interpret the vector (or 1D array) as either a row-vector or column-vector, depending on whichever one makes the multiplication work. That is, suppose $M$ is the $2\times3$ matrix, and $v$ is a $1 \times 3$ row vector. It is impossible to multiply $Mv$, since the dimensions don't conform, but you *can* multiply by the corresponding column vector, $Mv^t$. So, if I set ` v <- M[2,]` and then try to calculate `M \%*\% v`, which you'd think would fail, it actually works because R treats the one dimensional array as if it were a column vector for the purposes of matrix multiplication. Note that if both objects are one dimensional arrays/vectors, this leads to ambiguity since $vv^t$ (inner product) and $v^tv$ (outer product) yield different answers. In this situation, the `\%*\%` operator returns the inner product not the outer product. To understand all the details, check out the help documentation.] There is also a way of using only a single index, but due to the internal structure to how R defines a matrix, it works very differently to what we saw previously with data frames. 
+
+
+The single-index approach is illustrated in Table \@ref(tab:matrixindex) but I don't really want to focus on it since we'll never really need it for this book, and matrices don't play anywhere near as large a role in this book as data frames do. The reason for these differences is that for this is that, for both data frames and matrices, the "row and column" version exists to allow the human user to interact with the object in the psychologically meaningful way: since both data frames and matrices are basically just tables of data, it's the same in each case. However, the single-index version is really a method for you to interact with the object in terms of its internal structure, and the internals for data frames and matrices are quite different.
+
+```{r matrixindex, echo=FALSE}
+knitr::kable(data.frame(stringsAsFactors=FALSE,
+         Row = c("Row 1", "Row 2"),
+       Col.1 = c("[1,1]", "[2,1]"),
+       Col.2 = c("[1,2]", "[2,2]"),
+       Col.3 = c("[1,3]", "[2,3]")
+), caption = "The row and column version, which is identical to the corresponding indexing scheme for a data frame of the same size.")
+
+knitr::kable(data.frame(stringsAsFactors=FALSE,
+         Row = c("Row 1", "Row 2"),
+       Col.1 = c(1, 2),
+       Col.2 = c(3, 4),
+       Col.3 = c(5, 6)
+), caption = "The single-index version, which is quite different to what we would get with a data frame.")
+
+
 ```
-You can use square brackets to subset a matrix in much the same way that you can for data frames, again specifying a row index and then a column index. For instance, `M[2,3]` pulls out the entry in the 2nd row and 3rd column of the matrix (i.e., `7`), whereas `M[2,]` pulls out the entire 2nd row, and `M[,3]` pulls out the entire 3rd column. However, it's worth noting that when you pull out a column, R will print the results horizontally, not vertically. The reason for this relates to how matrices (and arrays generally) are implemented. The original matrix `M` is treated as a two-dimensional objects, containing 2 rows and 3 columns. However, whenever you pull out a single row or a single column, the result is considered to be one-dimensional. As far as R is concerned there's no real reason to distinguish between a one-dimensional object printed vertically (a column) and a one-dimensional object printed horizontally (a row), and it prints them all out horizontally.^[This has some interesting implications for how matrix algebra is implemented in R (which I'll admit I initially found odd), but that's a little beyond the scope of this book. However, since there will be a small proportion of readers that do care, I'll quickly outline the basic thing you need to get used to: when multiplying a matrix by a vector (or one-dimensional array) using the `\%*\%` operator R will attempt to interpret the vector (or 1D array) as either a row-vector or column-vector, depending on whichever one makes the multiplication work. That is, suppose $\mathbf{M]$ is the $2\times3$ matrix, and $\bm{v}$ is a $1 \times 3$ row vector. It is impossible to multiply $\mathbf{M} \bm{v}$, since the dimensions don't conform, but you *can* multiply by the corresponding column vector, $\mathbf{M} \bm{v}^\T$. So, if I set ` v <- M[2,]` and then try to calculate `M \%*\% v`, which you'd think would fail, it actually works because R treats the one dimensional array as if it were a column vector for the purposes of matrix multiplication. Note that if both objects are one dimensional arrays/vectors, this leads to ambiguity since $\bm{v}\bm{v}^\T$ (inner product) and $\bm{v}^\T\bm{v}$ (outer product) yield different answers. In this situation, the `\%*\%` operator returns the inner product not the outer product. To understand all the details, check out the help documentation.} There is also a way of using only a single index, but due to the internal structure to how R defines a matrix, it works very differently to what we saw previously with data frames. The single-index approach is illustrated in Table@reftab:matrixindex but I don't really want to focus on it since we'll never really need it for this book, and matrices don't play anywhere near as large a role in this book as data frames do.
-
-\begin{table}[t]
-\begin{center}
-\caption{An illustration of two different ways of indexing a $2 \times 3$ matrix. On the left we see the row and column version, which is identical to the corresponding indexing scheme for a data frame of the same size. On the right we see the single-index version, which is quite different to what we would get with a data frame. The reason for this is that, for both data frames and matrices, the "row and column" version exists to allow the human user to interact with the object in the psychologically meaningful way: since both data frames and matrices are basically just tables of data, it's the same in each case. However, the single-index version is really a method for you to interact with the object in terms of its internal structure, and the internals for data frames and matrices are quite different.}\tabcapsep
-{#tab:matrixindex}
-\begin{tabular}{ccc}
-\begin{tabular}{c|ccc}
-& \multicolumn{3}{c}{column} \\
-row & 1 & 2 & 3 \\ \hline
-1 & `[1,1]` & `[1,2]` & `[1,3]` \\
-2 & `[2,1]` & `[2,2]` & `[2,3]` \\
-\end{tabular}
-&
-\hspace*{1cm}
-&
-\begin{tabular}{c|ccc}
-& \multicolumn{3}{c}{column} \\
-row & 1 & 2 & 3 \\ \hline
-1 & `[1]` & `[3]` & `[5]` \\
-2 & `[2]` & `[4]` & `[6]` \\
-\end{tabular}
-\end{tabular}
-\tabcapsep \HR
-\end{center}
-\end{table}
-
 
 The critical difference between a data frame and a matrix is that, in a data frame, we have this notion that each of the columns corresponds to a different variable: as a consequence, the columns in a data frame can be of different data types. The first column could be numeric, and the second column could contain character strings, and the third column could be logical data. In that sense, there is a fundamental asymmetry build into a data frame, because of the fact that columns represent variables (which can be qualitatively different to each other) and rows represent cases (which cannot). Matrices are intended to be thought of in a different way. At a fundamental level, a matrix really is just *one* variable: it just happens that this one variable is formatted into rows and columns. If you want a matrix of numeric data, every single element in the matrix *must* be a number. If you want a matrix of character strings, every single element in the matrix *must* be a character string. If you try to mix data of different types together, then R will either spit out an error, or quietly coerce the underlying data into a list. If you want to find out what class R secretly thinks the data within the matrix is, you need to do something like this: 
-```
-> class( M[1] )
-[1] "numeric"
+```{r}
+class( M[1] )
 ```
 You can't type `class(M)`, because all that will happen is R will tell you that `M` is a matrix: we're not interested in the class of the matrix itself, we want to know what class the underlying data is assumed to be. Anyway, to give you a sense of how R enforces this, let's try to change one of the elements of our numeric matrix into a character string:
-```
-> M[1,2] <- "text"
-> M
-      col.1 col.2  col.3
-row.1 "2"   "text" "1"  
-row.2 "5"   "6"    "7" 
+```{r}
+M[1,2] <- "text"
+M
 ```
 It looks as if R has coerced all of the data in our matrix into character strings. And in fact, if we now typed in `class(M[1])` we'd see that this is exactly what has happened. If you alter the contents of one element in a matrix, R will change the underlying data type as necessary. 
 
 There's only one more thing I want to talk about regarding matrices. The concept behind a matrix is very much a mathematical one, and in mathematics a matrix is a most definitely a two-dimensional object. However, when doing data analysis, we often have reasons to want to use higher dimensional tables (e.g., sometimes you need to cross-tabulate three variables against each other). You can't do this with matrices, but you can do it with **_arrays_**. An array is just like a matrix, except it can have more than two dimensions if you need it to. In fact, as far as R is concerned a matrix is just a special kind of array, in much the same way that a data frame is a special kind of list. I don't want to talk about arrays too much, but I will very briefly show you an example of what a 3D array looks like. To that end, let's cross tabulate the `speaker` and `utterance` variables from the `nightgarden.Rdata` data file, but we'll add a third variable to the cross-tabs this time, a logical variable which indicates whether or not I was still awake at this point in the show:
-```
-> dan.awake <- c( TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE )
+```{r}
+dan.awake <- c( TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE )
 ```
 Now that we've got all three variables in the workspace (assuming you loaded the `nightgarden.Rdata` data earlier in the chapter) we can construct our three way cross-tabulation, using the `table()` function. 
-```
-> xtab.3d <- table( speaker, utterance, dan.awake )
-> xtab.3d
-, , dan.awake = FALSE
-
-             utterance
-speaker       ee onk oo pip
-  makka-pakka  0   2  0   2
-  tombliboo    0   0  1   0
-  upsy-daisy   0   0  0   0
-
-, , dan.awake = TRUE
-
-             utterance
-speaker       ee onk oo pip
-  makka-pakka  0   0  0   0
-  tombliboo    1   0  0   0
-  upsy-daisy   0   2  0   2
+```{r}
+xtab.3d <- table( speaker, utterance, dan.awake )
+xtab.3d
 ```
 Hopefully this output is fairly straightforward: because R can't print out text in three dimensions, what it does is show a sequence of 2D slices through the 3D table. That is, the `, , dan.awake = FALSE` part indicates that the 2D table that follows below shows the 2D cross-tabulation of `speaker` against `utterance` only for the `dan.awake = FALSE` instances, and so on.^[I should note that if you type `class(xtab.3d)` you'll discover that this is a `"table"` object rather than an `"array"` object. However, this labelling is only skin deep. The underlying data structure here is actually an array. Advanced users may wish to check this using the command `class(unclass(xtab.3d))`, but it's not important for our purposes. All I really want to do in this section is show you what the output looks like when you encounter a 3D array.]
 
 
 ### Ordered factors {#orderedfactors}
 
-One topic that I neglected to mention when discussing factors previously (Section@refsec:factors) is that there are actually two different types of factor in R, unordered factors and ordered factors. An unordered factor corresponds to a nominal scale variable, and all of the factors we've discussed so far in this book have been unordered (as will all the factors used anywhere else except in this section). However, it's often very useful to explicitly tell R that your variable is *ordinal scale*, and if so you need to declare it to be an **_ordered factor_**. For instance, earlier in this chapter we made use of a variable consisting of Likert scale data, which we represented as the `likert.raw` variable:
-```
-> likert.raw
- [1] 1 7 3 4 4 4 2 6 5 5
+One topic that I neglected to mention when discussing factors previously (Section \@ref(factors) is that there are actually two different types of factor in R, unordered factors and ordered factors. An unordered factor corresponds to a nominal scale variable, and all of the factors we've discussed so far in this book have been unordered (as will all the factors used anywhere else except in this section). However, it's often very useful to explicitly tell R that your variable is *ordinal scale*, and if so you need to declare it to be an **_ordered factor_**. For instance, earlier in this chapter we made use of a variable consisting of Likert scale data, which we represented as the `likert.raw` variable:
+```{r}
+likert.raw
 ```
 We can declare this to be an ordered factor in by using the `factor()` function, and setting `ordered = TRUE`. To illustrate how this works, let's create an ordered factor called `likert.ordinal` and have a look at it:
-```
-> likert.ordinal <- factor( x = likert.raw,        # the raw data 
-+                           levels = seq(7,1,-1),  # strongest agreement is 1, weakest is 7
-+                           ordered = TRUE )       # and it's ordered
-> print( likert.ordinal )
- [1] 1 7 3 4 4 4 2 6 5 5
-Levels: 7 < 6 < 5 < 4 < 3 < 2 < 1
+```{r}
+likert.ordinal <- factor( x = likert.raw,        # the raw data 
+                           levels = seq(7,1,-1),  # strongest agreement is 1, weakest is 7
+                           ordered = TRUE )       # and it's ordered
+print( likert.ordinal )
 ```
 Notice that when we print out the ordered factor, R explicitly tells us what order the levels come in. Because I wanted to order my levels in terms of *increasing* strength of agreement, and because a response of 1 corresponded to the strongest agreement and 7 to the strongest disagreement, it was important that I tell R to encode 7 as the lowest value and 1 as the largest. Always check this when creating an ordered factor: it's very easy to accidentally encode your data "upside down" if you're not paying attention. In any case, note that we can (and should) attach meaningful names to these factor levels by using the `levels()` function, like this:
-```
-> levels( likert.ordinal ) <- c( "strong.disagree", "disagree", "weak.disagree", 
-+                                "neutral", "weak.agree", "agree", "strong.agree" )
-> print( likert.ordinal )
- [1] strong.agree    strong.disagree weak.agree      neutral         neutral         neutral        
- [7] agree           disagree        weak.disagree   weak.disagree  
-Levels: strong.disagree < disagree < weak.disagree < neutral < weak.agree < agree < strong.agree
+```{r}
+levels( likert.ordinal ) <- c( "strong.disagree", "disagree", "weak.disagree", 
+                               "neutral", "weak.agree", "agree", "strong.agree" )
+print( likert.ordinal )
 ```
 One nice thing about using ordered factors is that there are a lot of analyses for which R automatically treats ordered factors differently from unordered factors, and generally in a way that is more appropriate for ordinal data. However, since I don't discuss that in this book, I won't go into details. Like so many things in this chapter, my main goal here is to make you aware that R has this capability built into it; so if you ever need to start thinking about ordinal scale variables in more detail, you have at least some idea where to start looking!
 
 
 
 
-### Dates and times {#dates}
+### Dates and times{#dates}
 
 Times and dates are very annoying types of data. To a first approximation we can say that there are 365 days in a year, 24 hours in a day, 60 minutes in an hour and 60 seconds in a minute, but that's not quite correct. The length of the solar day is not exactly 24 hours, and the length of solar year is not exactly 365 days, so we have a complicated system of corrections that have to be made to keep the time and date system working. On top of that, the measurement of time is usually taken relative to a local time zone, and most (but not all) time zones have both a standard time and a daylight savings time, though the date at which the switch occurs is not at all standardised. So, as a form of data, times and dates *suck*. Unfortunately, they're also important. Sometimes it's possible to avoid having to use any complicated system for dealing with times and dates. Often you just want to know what year something happened in, so you can just use numeric data: in quite a lot of situations something as simple as `this.year <- 2011` works just fine. If you can get away with that for your application, this is probably the best thing to do. However, sometimes you really do need to know the actual date. Or, even worse, the actual time. In this section, I'll very briefly introduce you to the basics of how R deals with date and time data. As with a lot of things in this chapter, I won't go into details because I don't use this kind of data anywhere else in the book. The goal here is to show you the basics of what you need to do if you ever encounter this kind of data in real life. And then we'll all agree never to speak of it again.
 
 To start with, let's talk about the date. As it happens, modern operating systems are very good at keeping track of the time and date, and can even handle all those annoying timezone issues and daylight savings pretty well. So R takes the quite sensible view that it can just ask the operating system what the date is. We can pull the date using the `Sys.Date()` function:
-```
-> today <- Sys.Date()  # ask the operating system for the date
-> print(today)         # display the date
-[1] "2011-08-24"
+```{r}
+today <- Sys.Date()  # ask the operating system for the date
+print(today)         # display the date
 ```
 Okay, that seems straightforward. But, it does rather look like `today` is just a character string, doesn't it? That would be a problem, because dates really do have a numeric character to them, and it would be nice to be able to do basic addition and subtraction to them. Well, fear not. If you type in `class(today)`, R will tell you that the class of the `today` variable is `"Date"`. What this means is that, hidden underneath this text string that prints out an actual date, R actually has a numeric representation.^[Date objects are coded as the number of days that have passed since January 1, 1970.] What that means is that you actually can add and subtract days. For instance, if we add 1 to `today`, R will print out the date for tomorrow:
-```
-> today + 1
-[1] "2011-08-25"
+```{r}
+today + 1
 ```
 Let's see what happens when we add 365 days:
+```{r}
+today + 365
 ```
-> today + 365
-[1] "2012-08-23"
+This is particularly handy if you forget that a year is a leap year since in that case you'd probably get it wrong is doing this in your head. R provides a number of functions for working with dates, but I don't want to talk about them in any detail. I will, however, make passing mention of the `weekdays()` function which will tell you what day of the week a particular date corresponded to, which is extremely convenient in some situations:
+```{r}
+weekdays( today )
 ```
-It turns out that R handles this better than I would have, since I'd forgotten that 2012 is a leap year and so I would have gotten the wrong answer had I done it myself. R provides a number of functions for working with dates, but I don't want to talk about them in any detail. I will, however, make passing mention of the `weekdays()` function which will tell you what day of the week a particular date corresponded to, which is extremely convenient in some situations:
-``` 
-> weekdays( today )
-[1] "Wednesday"
-```
-I'll also point out that you can use the `as.Date()` to convert various different kinds of data into dates. If the data happen to be strings formatted exactly according to the international standard notation (i.e., \textsc{yyyy-mm-dd}) then the conversion is straightforward, because that's the format that R expects to see by default. You can convert dates from other formats too, but it's slightly trickier, and beyond the scope of this book.
+I'll also point out that you can use the `as.Date()` to convert various different kinds of data into dates. If the data happen to be strings formatted exactly according to the international standard notation (i.e., `yyyy-mm-dd`) then the conversion is straightforward, because that's the format that R expects to see by default. You can convert dates from other formats too, but it's slightly trickier, and beyond the scope of this book.
 
 What about times? Well, times are even more annoying, so much so that I don't intend to talk about them at all in this book, other than to point you in the direction of some vaguely useful things. R itself does provide you with some tools for handling time data, and in fact there are two separate classes of data that are used to represent times, known by the odd names `POSIXct` and `POSIXlt`. You can use these to work with times if you want to, but for most applications you would probably be better off downloading the `chron` package, which provides some much more user friendly tools for working with times and dates. 
 
@@ -1392,16 +1303,14 @@ To finish this chapter, I have a few topics to discuss that don't really fit in 
 ### The problems with floating point arithmetic
 
 If I've learned nothing else about transfinite arithmetic (and I haven't) it's that infinity is a tedious and inconvenient concept. Not only is it annoying and counterintuitive at times, but it has nasty practical consequences. As we were all taught in high school, there are some numbers that *cannot* be represented as a decimal number of finite length, nor can they be represented as any kind of fraction between two whole numbers; $\sqrt{2}$, $\pi$ and $e$, for instance. In everyday life we mostly don't care about this. I'm perfectly happy to approximate $\pi$ as 3.14, quite frankly. Sure, this does produce some rounding errors from time to time, and if I'd used a more detailed approximation like 3.1415926535 I'd be less likely to run into those issues, but in all honesty I've never needed my calculations to be *that* precise. In other words, although our pencil and paper calculations cannot represent the number $\pi$ exactly as a decimal number, we humans are smart enough to realise that we don't care. Computers, unfortunately, are dumb ... and you don't have to dig too deep in order to run into some very weird issues that arise because they can't represent numbers perfectly. Here is my favourite example: 
-```
-> 0.1 + 0.2 == 0.3
-[1] FALSE
+```{r}
+0.1 + 0.2 == 0.3
 ```
 Obviously, R has made a mistake here, because this is definitely the wrong answer. Your first thought might be that R is broken, and you might be considering switching to some other language. But you can reproduce the same error in dozens of different programming languages, so the issue isn't specific to R. Your next thought might be that it's something in the hardware, but you can get the same mistake on any machine. It's something deeper than that. 
 
 The fundamental issue at hand is **_floating point arithmetic_**, which is a fancy way of saying that computers will *always* round a number to fixed number of significant digits. The exact number of significant digits that the computer stores isn't important to us:^[For advanced users: type `?double` for more information.] what matters is that whenever the number that the computer is trying to store is very long, you get rounding errors. That's actually what's happening with our example above. There are teeny tiny rounding errors that have appeared in the computer's storage of the numbers, and these rounding errors have in turn caused the internal storage of `0.1 + 0.2` to be a tiny bit different from the internal storage of `0.3`. How big are these differences? Let's ask R:
-```
-> 0.1 + 0.2 - 0.3
-[1] 5.551115e-17
+```{r}
+0.1 + 0.2 - 0.3
 ```
 Very tiny indeed. No sane person would care about differences that small. But R is not a sane person, and the equality operator `==` is very literal minded. It returns a value of `TRUE` only when the two values that it is given are absolutely identical to each other. And in this case they are not. However, this only answers half of the question. The other half of the question is, why are we getting these rounding errors when we're only using nice simple numbers like 0.1, 0.2 and 0.3? This seems a little counterintuitive. The answer is that, like most programming languages, R doesn't store numbers using their *decimal* expansion (i.e., base 10: using digits 0, 1, 2 ..., 9). We humans like to write our numbers in base 10 because we have 10 fingers. But computers don't have fingers, they have transistors; and transistors are built to store 2 numbers not 10. So you can see where this is going: the internal storage of a number in R is based on its *binary* expansion (i.e., base 2: using digits 0 and 1). And unfortunately, here's what the binary expansion of 0.1 looks like:
 $$
@@ -1410,14 +1319,12 @@ $$
 and the pattern continues forever. In other words, from the perspective of your computer, which likes to encode numbers in binary,^[Or at least, that's the default. If all your numbers are integers (whole numbers), then you can explicitly tell R to store them as integers by adding an `L` suffix at the end of the number. That is, an assignment like `x <- 2L` tells R to assign `x` a value of 2, and to store it as an integer rather than as a binary expansion. Type `?integer` for more details.] 0.1 is not a simple number at all. To a computer, 0.1 is actually an infinitely long binary number! As a consequence, the computer can make minor errors when doing calculations here. 
 
 With any luck you now understand the problem, which ultimately comes down to the twin fact that (1) we usually think in decimal numbers and computers usually compute with binary numbers, and (2) computers are finite machines and can't store infinitely long numbers. The only questions that remain are when you should care and what you should do about it. Thankfully, you don't have to care very often: because the rounding errors are small, the only practical situation that I've seen this issue arise for is when you want to test whether an arithmetic fact holds exactly numbers are identical (e.g., is someone's response time equal to *exactly* $2 \times 0.33$ seconds?) This is pretty rare in real world data analysis, but just in case it does occur, it's better to use a test that allows for a small *tolerance*. That is, if the difference between the two numbers is below a certain threshold value, we deem them to be equal for all practical purposes. For instance, you could do something like this, which asks whether the difference between the two numbers is less than a tolerance of $10^{-10}$
-```
-> abs( 0.1 + 0.2 - 0.3 ) < 10^-10
-[1] TRUE
+```{r}
+abs( 0.1 + 0.2 - 0.3 ) < 10^-10
 ```
 To deal with this problem, there is a function called `all.equal()` that lets you test for equality but allows a small tolerance for rounding errors:
-```
-> all.equal( 0.1 + 0.2, 0.3 )
-[1] TRUE
+```{r}
+all.equal( 0.1 + 0.2, 0.3 )
 ```
 
 
@@ -1426,55 +1333,35 @@ To deal with this problem, there is a function called `all.equal()` that lets yo
 ### The recycling rule {#recycling}
 
 There's one thing that I haven't mentioned about how vector arithmetic works in R, and that's the **_recycling rule_**. The easiest way to explain it is to give a simple example. Suppose I have two vectors of different length, `x` and `y`, and I want to add them together. It's not obvious what that actually means, so let's have a look at what R does:
-```
-> x <- c( 1,1,1,1,1,1 )  # x is length 6
-> y <- c( 0,1 )          # y is length 2
-> x + y                  # now add them:
-[1] 1 2 1 2 1 2
+```{r}
+x <- c( 1,1,1,1,1,1 )  # x is length 6
+y <- c( 0,1 )          # y is length 2
+x + y                  # now add them:
 ```
 As you can see from looking at this output, what R has done is "recycle" the value of the shorter vector (in this case `y`) several times. That is, the first element of `x` is added to the first element of `y`, and the second element of `x` is added to the second element of `y`. However, when R reaches the third element of `x` there isn't any corresponding element in `y`, so it returns to the beginning: thus, the third element of `x` is added to the *first* element of `y`. This process continues until R reaches the last element of `x`. And that's all there is to it really. The same recycling rule also applies for subtraction, multiplication and division. The only other thing I should note is that, if the length of the longer vector isn't an exact multiple of the length of the shorter one, R still does it, but also gives you a warning message:
-```
-> x <- c( 1,1,1,1,1 )    # x is length 5
-> y <- c( 0,1 )          # y is length 2
-> x + y                  # now add them:
-[1] 1 2 1 2 1
-Warning message:
-In x + y : longer object length is not a multiple of shorter object length
+```{r}
+x <- c( 1,1,1,1,1 )    # x is length 5
+y <- c( 0,1 )          # y is length 2
+x + y                  # now add them:
 ```
 
 
 ### An introduction to environments {#environments}
 
+```{r envs, fig.cap="The environment panel in Rstudio can actually show you the contents of any loaded package: each package defines a separate environment, so you can select the one you want to look at in this panel.", echo=FALSE}
+knitr::include_graphics("./rbook-master/img/datahandling/environments.png")
 
-\begin{figure}[t]
-\begin{center}
-\epsfig{file = ../img/datahandling/environments.eps, clip=true,width = 10cm}
-\caption{The environment panel in Rstudio can actually show you the contents of any loaded package: each package defines a separate environment, so you can select the one you want to look at in this panel.}
-{#fig:envs}
-\HR
-\end{center}
-\end{figure} 
-
+```
 
 In this section I want to ask a slightly different question: what *is* the workspace exactly? This question seems simple, but there's a fair bit to it. This section can be skipped if you're not really interested in the technical details. In the description I gave earlier, I talked about the workspace as an abstract location in which R variables are stored. That's basically true, but it hides a couple of key details. For example, any time you have R open, it has to store *lots* of things in the computer's memory, not just your variables. For example, the `who()` function that I wrote has to be stored in memory somewhere, right? If it weren't I wouldn't be able to use it. That's pretty obvious. But equally obviously it's not in the workspace either, otherwise you should have seen it! Here's what's happening. R needs to keep track of a lot of different things, so what it does is organise them into **_environments_**, each of which can contain lots of different variables and functions. Your workspace is one such environment. Every package that you have loaded is another environment. And every time you call a function, R briefly creates a temporary environment in which the function itself can work, which is then deleted after the calculations are complete. So, when I type in `search()` at the command line
-```
-> search()
- [1] ".GlobalEnv"        "package:lsr"       "tools:rstudio"    
- [4] "package:stats"     "package:graphics"  "package:grDevices"
- [7] "package:utils"     "package:datasets"  "package:methods"  
-[10] "Autoloads"         "package:base"    
+```{r}
+search()
 ```
 what I'm actually looking at is a *sequence of environments*. The first one, `".GlobalEnv"` is the technically-correct name for your workspace. No-one really calls it that: it's either called the workspace or the global environment. And so when you type in `objects()` or `who()` what you're really doing is listing the contents of `".GlobalEnv"`. But there's no reason why we can't look up the contents of these other environments using the `objects()` function (currently `who()` doesn't support this). You just have to be a bit more explicit in your command. If I wanted to find out what is in the `package:stats` environment (i.e., the environment into which the contents of the `stats` package have been loaded), here's what I'd get
+```{r}
+head(objects("package:stats"))
 ```
-> objects("package:stats")
-  [1] "acf"                  "acf2AR"               "add.scope"           
-  [4] "add1"                 "addmargins"           "aggregate"           
-  [7] "aggregate.data.frame" "aggregate.default"    "aggregate.ts"        
- [10] "AIC"                  "alias"                "anova"               
- [13] "anova.glm"            "anova.glmlist"        "anova.lm"         
-BLAH BLAH BLAH
-```
-where this time I've hidden a lot of output in the `BLAH BLAH BLAH` because the stats package contains about 500 functions. In fact, you can actually use the environment panel in Rstudio to browse any of your loaded packages (just click on the text that says "Global Environment" and you'll see a dropdown menu like the one shown in Figure@reffig:envs). The key thing to understand then, is that you can access any of the R variables and functions that are stored in one of these environments, precisely because those are the environments that you have loaded!^[For advanced users: that's a little over simplistic in two respects. First, it's a terribly imprecise way of talking about scoping. Second, it might give you the impression that all the variables in question are actually loaded into memory. That's not quite true, since that would be very wasteful of memory. Instead R has a "lazy loading" mechanism, in which what R actually does is create a "promise" to load those objects if they're actually needed. For details, check out the `delayedAssign()` function.] 
+where this time I've used head() to hide a lot of output because the stats package contains about 500 functions. In fact, you can actually use the environment panel in Rstudio to browse any of your loaded packages (just click on the text that says "Global Environment" and you'll see a dropdown menu like the one shown in Figure \@ref(fig:envs)). The key thing to understand then, is that you can access any of the R variables and functions that are stored in one of these environments, precisely because those are the environments that you have loaded!^[For advanced users: that's a little over simplistic in two respects. First, it's a terribly imprecise way of talking about scoping. Second, it might give you the impression that all the variables in question are actually loaded into memory. That's not quite true, since that would be very wasteful of memory. Instead R has a "lazy loading" mechanism, in which what R actually does is create a "promise" to load those objects if they're actually needed. For details, check out the `delayedAssign()` function.] 
 
 
 ### Attaching a data frame
@@ -1493,25 +1380,18 @@ To be fair to the writers of the `attach()` function, the help documentation doe
 Obviously, there's no real coherence to this chapter. It's just a grab bag of topics and tricks that can be handy to know about, so the best wrap up I can give here is just to repeat this list:
 
 
-- Section@refsec:freqtables. Tabulating data.
-- Section@refsec:transform. Transforming or recoding a variable.
-- Section@refsec:mathfunc. Some useful mathematical functions.
-- Section@refsec:subset. Extracting a subset of a vector.
-- Section@refsec:subsetdataframe. Extracting a subset of a data frame.
-- Section@refsec:sort. Sorting, flipping or merging data sets.
-- Section@refsec:reshape. Reshaping a data frame.
-- Section@refsec:textprocessing. Manipulating text.
-- Section@refsec:importing. Opening data from different file types.
-- Section@refsec:coercion. Coercing data from one type to another.
-- Section@refsec:datastructures. Other important data types.
-- Section@refsec:miscdatahandling. Miscellaneous topics.
+- Section \@ref(freqtables). Tabulating data.
+- Section \@ref(transform). Transforming or recoding a variable.
+- Section \@ref(mathfunc). Some useful mathematical functions.
+- Section \@ref(subset). Extracting a subset of a vector.
+- Section \@ref(subsetdataframe). Extracting a subset of a data frame.
+- Section \@ref(sort). Sorting, flipping or merging data sets.
+- Section \@ref(reshape). Reshaping a data frame.
+- Section \@ref(textprocessing). Manipulating text.
+- Section \@ref(importing). Opening data from different file types.
+- Section \@ref(coercion). Coercing data from one type to another.
+- Section \@ref(datastructures). Other important data types.
+- Section \@ref(miscdatahandling). Miscellaneous topics.
 
 
-There are a number of books out there that extend this discussion. A couple of my favourites are \citeA{Spector2008} "Data Manipulation with R" and \citeA{Teetor2011} "R Cookbook". 
-
-
-
-
-
-
-
+There are a number of books out there that extend this discussion. A couple of my favourites are @Spector2008 "Data Manipulation with R" and @Teetor2011 "R Cookbook". 

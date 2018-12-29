@@ -33,18 +33,6 @@ To give a sense of the importance of this chapter, I want to start with a classi
 
 The goals in this chapter are twofold: firstly, to discuss several fairly standard graphs that we use a lot when analysing and presenting data, and secondly, to show you how to create these graphs in R. The graphs themselves tend to be pretty straightforward, so in that respect this chapter is pretty simple. Where people usually struggle is learning how to produce graphs, and especially, learning how to produce good graphs.^[I should add that this isn't unique to R. Like everything in R there's a pretty steep learning curve to learning how to draw graphs, and like always there's a massive payoff at the end in terms of the quality of what you can produce. But to be honest, I've seen the same problems show up regardless of what system people use. I suspect that the hardest thing to do is to force yourself to take the time to think deeply about what your graphs are doing. I say that in full knowledge that only about half of my graphs turn out as well as they ought to. Understanding what makes a good graph is easy: actually designing a good graph is *hard*.] Fortunately, learning how to draw graphs in R is reasonably simple, as long as you're not too picky about what your graph looks like. What I mean when I say this is that R has a lot of *very* good graphing functions, and most of the time you can produce a clean, high-quality graphic without having to learn very much about the low-level details of how R handles graphics. Unfortunately, on those occasions when you do want to do something non-standard, or if you need to make highly specific changes to the figure, you actually do need to learn a fair bit about the these details; and those details are both complicated and boring. With that in mind, the structure of this chapter is as follows: I'll start out by giving you a very quick overview of how graphics work in R. I'll then discuss several different kinds of graph and how to draw them, as well as showing the basics of how to customise these plots. I'll then talk in more detail about R graphics, discussing some of those complicated and boring issues. In a future version of this book, I intend to finish this chapter off by talking about what makes a good or a bad graph, but I haven't yet had the time to write that section.
 
-\begin{figure}[t!!]
-\begin{center}
-\epsfig{file = ../img/graphics/snowMap.eps, clip=true,width = 12cm}
-\caption{A stylised redrawing of John Snow's original cholera map. Each small dot represents the location of a cholera case, and each large circle shows the location of a well. As the plot makes clear, the cholera outbreak is centred very closely on the Broad St pump.  This image uses the data from the `HistData` package @[Friendly2011], and was drawn using minor alterations to the commands provided in the help files. Note that Snow's original hand drawn map used different symbols and labels, but you get the idea.}
-{#fig:snowmap1}
-\HR
-\end{center}
-\end{figure}
-
-
-
-
 ## An overview of R graphics{#rgraphics}
 
 Reduced to its simplest form, you can think of an R graphic as being much like a painting. You start out with an empty canvas. Every time you use a graphics function, it paints some new things onto your canvas. Later on, you can paint more things over the top if you want; but just like painting, you can't "undo" your strokes. If you make a mistake, you have to throw away your painting and start over. Fortunately, this is way more easy to do when using R than it is when painting a picture in real life: you delete the plot and then type a new set of commands.^[Or, since you can always use the up and down keys to scroll through your recent command history, you can just pull up your most recent commands and edit them to fix your mistake. It becomes even easier once you start using scripts (Section \@ref(scripts), since all you have to do is edit your script and then run it again.] This way of thinking about drawing graphs is referred to as the **_painter's model_**. So far, this probably doesn't sound particularly complicated, and for the vast majority of graphs you'll want to draw it's exactly as simple as it sounds. Much like painting in real life, the headaches usually start when we dig into details. To see why, I'll  expand this "painting metaphor" a bit further just to show you the basics of what's going on under the hood, but before I do I want to stress that you really don't need to understand all these complexities in order to draw graphs. I'd been using R for years before I even realised that most of these issues existed! However, I don't want you to go through the same pain I went through every time I inadvertently discovered one of these things, so here's a quick overview.
@@ -169,26 +157,18 @@ Adding and customising the titles associated with the plot is one way in which y
 The simplest way to illustrate what each of these really looks like is just to draw them. To that end, Figure \@ref(fig:simpleplots) shows the same Fibonacci data, drawn using six different `types` of plot. As you can see, by altering the type argument you can get a qualitatively different appearance to your plot. In other words, as far as R is concerned, the only difference between a scatterplot (like the ones we drew in Section \@ref(correl)  and a line plot is that you draw a scatterplot by setting `type = "p"` and you draw a line plot by setting `type = "l"`. However, that doesn't imply that *you* should think of them as begin equivalent to each other. As you can see by looking at Figure \@ref(fig:simpleplots), a line plot implies that there is some notion of continuity from one point to the next, whereas a scatterplot does not.
 
 
-\begin{figure}[t]
-\begin{center}
-\epsfig{file = ../img/graphics2/simpleplot.eps, clip=true,width =13cm} 
-\caption{Changing the `type` of the plot.}
-\HR
-{#fig:simpleplots}
-\end{center}
-\end{figure}
+```{r simpleplots, echo=FALSE, fig.cap="Changing the `type` of the plot."}
+knitr::include_graphics("./rbook-master/img/graphics2/simpleplot.png")
+
+```
 
 ### Changing other features of the plot
 
-\begin{figure}[t]
-\begin{center}
-\epsfig{file = ../img/graphics2/pchvalues.eps, clip=true, width =8cm} 
-\epsfig{file = ../img/graphics2/ltyvalues.eps, clip=true, width =4cm} 
-\caption{Changing the `pch` parameter (panel a) or the `lty` parameter (panel b).}
-\HR
-{#fig:pch}
-\end{center}
-\end{figure}
+```{r pch, echo=FALSE, fig.cap="Changing the line and plotted characters of the plot."}
+knitr::include_graphics("./rbook-master/img/graphics2/pchlty.png")
+
+```
+
 
 In Section \@ref(sec:figtitles) we talked about a group of graphical parameters that are related to the formatting of titles, axis labels etc. The second group of parameters I want to discuss are those related to the formatting of the plot itself:
  
@@ -380,18 +360,10 @@ The stem and leaf plot itself will look identical to the original one we drew, e
 
 ## Boxplots{#boxplots}
 
-\begin{figure}[t]
-\begin{center}
-\begin{tabular}{cc}
-\epsfig{file = ../img/graphics2/boxplot1.eps, clip=true,width =7.25cm} & 
-\epsfig{file = ../img/graphics2/boxplot1_annotated.eps,clip=true, width =7.25cm} \\[-1cm]
-(a) & (b)  \\
-\end{tabular}
-\caption{A basic boxplot (panel a), plus the same plot with annotations added to explain what aspect of the data set each part of the boxplot corresponds to (panel b).}
-\HR
-{#fig:boxplot1}
-\end{center}
-\end{figure}
+```{r boxplot1, fig.cap="A basic boxplot (panel a), plus the same plot with annotations added to explain what aspect of the data set each part of the boxplot corresponds to (panel b).", echo=FALSE}
+knitr::include_graphics("./rbook-master/img/graphics2/boxplot1.png")
+
+```
 
 Another alternative to histograms is a **_boxplot_**, sometimes called a "box and whiskers" plot. Like histograms, they're most suited to interval or ratio scale data. The idea behind a boxplot is to provide a simple visual depiction of the median, the interquartile range, and the range of the data. And because they do so in a fairly compact way, boxplots have become a very popular statistical graphic, especially during the exploratory stage of data analysis when you're trying to understand the data yourself. Let's have a look at how they work, again using the `afl.margins` data as our example. Firstly, let's actually calculate these numbers ourselves using the `summary()` function:^[R being what it is, it's no great surprise that there's also a `fivenum()` function that does much the same thing.]
 ```
@@ -594,20 +566,10 @@ Of course, given that the command is that long, you might have guessed that I di
 
 **_Scatterplots_** are a simple but effective tool for visualising data. We've already seen scatterplots in this chapter, when using the `plot()` function to draw the `Fibonacci` variable as a collection of dots (Section \@ref(introplotting). However, for the purposes of this section I have a slightly different notion in mind. Instead of just plotting one variable, what I want to do with my scatterplot is display the relationship between *two* variables, like we saw with the figures in the section on correlation (Section \@ref(correl). It's this latter application that we usually have in mind when we use the term "scatterplot". In this kind of plot, each observation corresponds to one dot: the horizontal location of the dot plots the value of the observation on one variable, and the vertical location displays its value on the other variable. In many situations you don't really have a clear opinions about what the *causal* relationship is (e.g., does A cause B, or does B cause A, or does some other variable C control both A and B). If that's the case, it doesn't really matter which variable you plot on the x-axis and which one you plot on the y-axis. However, in many situations you do have a pretty strong idea which variable you think is most likely to be causal, or at least you have some suspicions in that direction. If so, then it's conventional to plot the cause variable on the x-axis, and the effect variable on the y-axis. With that in mind, let's look at how to draw scatterplots in R, using the same `parenthood` data set (i.e. `parenthood.Rdata`) that I used when introducing the idea of correlations.
 
+```{r scatter, fig.cap="{Two different scatterplots: (a) the default scatterplot that R produces, (b) one that makes use of several options for fancier display.", echo=FALSE}
+knitr::include_graphics("./rbook-master/img/graphics2/scatter1.png")
 
-
-
-\begin{figure}[t]
-\begin{center}
-\begin{tabular}{cc}
-\epsfig{file = ../img/graphics2/scatter1b.eps, clip=true,width = 7cm} &
-\epsfig{file = ../img/graphics2/scatter2b.eps, clip=true,width = 7cm} \\ (a) & (b) \\
-\end{tabular}
-\caption{Two different scatterplots: (a) the default scatterplot that R produces, (b) one that makes use of several options for fancier display.}
-\HR
-{#fig:scatter}
-\end{center}
-\end{figure}
+```
 
 Suppose my goal is to draw a scatterplot displaying the relationship between the amount of sleep that I get (`dan.sleep`) and how grumpy I am the next day (`dan.grump`). As you might expect given our earlier use of `plot()` to display the `Fibonacci` data, the function that we use is the `plot()` function, but because it's a generic function all the hard work is still being done by the `plot.default()` function. In any case, there are two different ways in which we can get the plot that we're after. The first way is to specify the name of the variable to be plotted on the `x` axis and the variable to be plotted on the `y` axis. When we do it this way, the command looks like this:
 ```{r eval=FALSE} 
@@ -679,7 +641,7 @@ library(car)
  )
 ```
 
-The first two arguments should be familiar: the first input is a formula (\rtextverb#dan.grump ~ dan.sleep#) telling R what variables to plot,^[You might be wondering why I haven't specified the argument name for the formula. The reason is that there's a bug in how the `scatterplot()` function is written: under the hood there's one function that expects the argument to be named `x` and another one that expects it to be called `formula`. I don't know why the function was written this way, but it's not an isolated problem: this particular kind of bug repeats itself in a couple of other functions (you'll see it again in Chapter \@ref(ttest). The solution in such cases is to omit the argument name: that way, one function "thinks" that you've specified `x` and the other one "thinks" you've specified `formula` and everything works the way it's supposed to. It's not a great state of affairs, I'll admit, but it sort of works.] and the second specifies a `data` frame. The third argument `smooth` I've set to `FALSE` to stop the `scatterplot()` function from drawing a fancy "smoothed" trendline (since it's a bit confusing to beginners). The scatterplot itself is shown in Figure \@ref(fig:fancyscatter). As you can see, it's not only drawn the scatterplot, but its also drawn boxplots for each of the two variables, as well as a simple line of best fit showing the relationship between the two variables. 
+The first two arguments should be familiar: the first input is a formula `dan.grump ~ dan.sleep` telling R what variables to plot,^[You might be wondering why I haven't specified the argument name for the formula. The reason is that there's a bug in how the `scatterplot()` function is written: under the hood there's one function that expects the argument to be named `x` and another one that expects it to be called `formula`. I don't know why the function was written this way, but it's not an isolated problem: this particular kind of bug repeats itself in a couple of other functions (you'll see it again in Chapter \@ref(ttest). The solution in such cases is to omit the argument name: that way, one function "thinks" that you've specified `x` and the other one "thinks" you've specified `formula` and everything works the way it's supposed to. It's not a great state of affairs, I'll admit, but it sort of works.] and the second specifies a `data` frame. The third argument `smooth` I've set to `FALSE` to stop the `scatterplot()` function from drawing a fancy "smoothed" trendline (since it's a bit confusing to beginners). The scatterplot itself is shown in Figure \@ref(fig:fancyscatter). As you can see, it's not only drawn the scatterplot, but its also drawn boxplots for each of the two variables, as well as a simple line of best fit showing the relationship between the two variables. 
 
  
 
@@ -815,7 +777,7 @@ If you're running R through Rstudio, then the easiest way to save your image is 
 
 This works pretty nicely for most situations. So, unless you're filled with a burning desire to learn the low level details, feel free to skip the rest of this section.
 
-### The ugly details \advanced 
+### The ugly details (advanced)
 
 As I say, the menu-based options should be good enough for most people most of the time. However, one day you might want to be a bit more sophisticated, and make use of R's image writing capabilities at a lower level. In this section I'll give you a very basic introduction to this. In all honesty, this barely scratches the surface, but it will help a little bit in getting you started if you want to learn the details. 
 
@@ -854,7 +816,7 @@ This takes the "active" figure window, copies it to a jpeg file (which R treats 
 Perhaps I'm a simple minded person, but I love pictures. Every time I write a new scientific paper, one of the first things I do is sit down and think about what the pictures will be. In my head, an article is really just a sequence of pictures, linked together by a story. All the rest of it is just window dressing. What I'm really trying to say here is that the human visual system is a very powerful data analysis tool. Give it the right kind of information and it will supply a human reader with a massive amount of knowledge very quickly. Not for nothing do we have the saying "a picture is worth a thousand words". With that in mind, I think that this is one of the most important chapters in the book. The topics covered were:
 
 
-- *Basic overview to R graphics*. In Section \@ref(sec:rgraphics) we talked about how graphics in R are organised, and then moved on to the basics of how they're drawn in Section \@ref(sec:introplotting).
+- *Basic overview to R graphics*. In Section \@ref(rgraphics) we talked about how graphics in R are organised, and then moved on to the basics of how they're drawn in Section \@ref(introplotting).
 - *Common plots*. Much of the chapter was focused on standard graphs that statisticians like to produce: histograms (Section \@ref(hist), stem and leaf plots (Section \@ref(stem), boxplots (Section \@ref(boxplots), scatterplots (Section \@ref(scatterplots) and bar graphs (Section \@ref(bargraph).
 - *Saving image files*. The last part of the chapter talked about how to export your pictures (Section \@ref(saveimage)
  
