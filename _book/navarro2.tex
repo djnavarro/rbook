@@ -8621,19 +8621,19 @@ achieve. As a rough guide:
 
 Let's expand on that last part a little. One consequence is that there's
 systematic differences between the mean and the median when the
-histogram is asymmetric (skewed; see Section \ref{skew}). This is
-illustrated in Figure \ref{fig:meanmedian} notice that the median (right
-hand side) is located closer to the ``body'' of the histogram, whereas
-the mean (left hand side) gets dragged towards the ``tail'' (where the
-extreme values are). To give a concrete example, suppose Bob (income
-\$50,000), Kate (income \$60,000) and Jane (income \$65,000) are sitting
-at a table: the average income at the table is \$58,333 and the median
-income is \$60,000. Then Bill sits down with them (income
-\$100,000,000). The average income has now jumped to \$25,043,750 but
-the median rises only to \$62,500. If you're interested in looking at
-the overall income at the table, the mean might be the right answer; but
-if you're interested in what counts as a typical income at the table,
-the median would be a better choice here.
+histogram is asymmetric (skewed; see Section \ref{skewandkurtosis}).
+This is illustrated in Figure \ref{fig:meanmedian} notice that the
+median (right hand side) is located closer to the ``body'' of the
+histogram, whereas the mean (left hand side) gets dragged towards the
+``tail'' (where the extreme values are). To give a concrete example,
+suppose Bob (income \$50,000), Kate (income \$60,000) and Jane (income
+\$65,000) are sitting at a table: the average income at the table is
+\$58,333 and the median income is \$60,000. Then Bill sits down with
+them (income \$100,000,000). The average income has now jumped to
+\$25,043,750 but the median rises only to \$62,500. If you're interested
+in looking at the overall income at the table, the mean might be the
+right answer; but if you're interested in what counts as a typical
+income at the table, the median would be a better choice here.
 
 \subsection{A real life example}\label{housingpriceexample}
 
@@ -9644,7 +9644,7 @@ are situations in which the others are used. I've described all of them
 in this book because there's a fair chance you'll run into most of these
 somewhere.
 
-\section{Skew and kurtosis\{\#skew\}}\label{kurtosis}
+\section{Skew and kurtosis}\label{skewandkurtosis}
 
 There are two more descriptive statistics that you will sometimes see
 reported in the psychological literature, known as skew and kurtosis. In
@@ -9655,11 +9655,11 @@ but I've actually never seen kurtosis reported in a scientific article
 to date.
 
 \begin{verbatim}
-## [1] -0.9196895
+## [1] -0.9216673
 \end{verbatim}
 
 \begin{verbatim}
-## [1] 0.006058435
+## [1] -0.004238203
 \end{verbatim}
 
 \begin{figure}
@@ -9672,7 +9672,7 @@ on the right we have a positively skewed data set (skewness \(= .93\)).}
 \end{figure}
 
 \begin{verbatim}
-## [1] 0.9250261
+## [1] 0.9290692
 \end{verbatim}
 
 Since it's the more interesting of the two, let's start by talking about
@@ -9722,11 +9722,11 @@ kurtosis is a measure of the ``pointiness'' of a data set, as
 illustrated in Figure \ref{fig:kurtosis}.
 
 \begin{verbatim}
-## [1] -0.9584174
+## [1] -0.9498221
 \end{verbatim}
 
 \begin{verbatim}
-## [1] 0.01945879
+## [1] 0.01159024
 \end{verbatim}
 
 \begin{figure}
@@ -9743,7 +9743,7 @@ normal curve (black line)}
 \end{figure}
 
 \begin{verbatim}
-## [1] 2.092893
+## [1] 2.08482
 \end{verbatim}
 
 By convention, we say that the ``normal curve'' (black lines) has zero
@@ -10031,9 +10031,9 @@ variable you give it. By default, these are:
 \item
   \texttt{range}. The range spanned by the data (Section \ref{range}).
 \item
-  \texttt{skew}. The skewness (Section \ref{skew}).
+  \texttt{skew}. The skewness (Section \ref{skewandkurtosis}).
 \item
-  \texttt{kurtosis}. The kurtosis (Section \ref{kurtosis}).
+  \texttt{kurtosis}. The kurtosis (Section \ref{skewandkurtosis}).
 \item
   \texttt{se}. The standard error of the mean (Chapter
   \ref{estimation}).
@@ -11321,8 +11321,8 @@ chapter, we talked about the following topics:
 \item
   \emph{Getting summaries of variables in R}. Since this book focuses on
   doing data analysis in R, we spent a bit of time talking about how
-  descriptive statistics are computed in R. (Section \ref{sec:summary}
-  and \ref{groupdescriptives})
+  descriptive statistics are computed in R. (Section \ref{summary} and
+  \ref{groupdescriptives})
 \item
   \emph{Standard scores}. The \(z\)-score is a slightly unusual beast.
   It's not quite a descriptive statistic, and not quite an inference. We
@@ -20695,9 +20695,6 @@ people have suggested to me that ``The art of programming with R''
 theory}\label{part-iv.-statistical-theory}
 \addcontentsline{toc}{chapter}{Part IV. Statistical theory}
 
-\section*{Prelude to Part IV}\label{prelude-to-part-iv}
-\addcontentsline{toc}{section}{Prelude to Part IV}
-
 Part IV of the book is by far the most theoretical one, focusing as it
 does on the theory of statistical inference. Over the next three
 chapters my goal is to give you an introduction to probability theory
@@ -25538,228 +25535,15 @@ called \texttt{cards}. Let's take a look:
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{( lsr )}
 \KeywordTok{load}\NormalTok{( }\StringTok{"./rbook-master/data/randomness.Rdata"}\NormalTok{ )}
-\KeywordTok{who}\NormalTok{( }\OtherTok{TRUE}\NormalTok{ )}
+\KeywordTok{str}\NormalTok{(cards)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##    -- Name --           -- Class --   -- Size --
-##    a                    numeric       1         
-##    addArrow             function                
-##    addDistPlot          function                
-##    afl                  data.frame    4296 x 12 
-##     $home.team          factor        4296      
-##     $away.team          factor        4296      
-##     $home.score         numeric       4296      
-##     $away.score         numeric       4296      
-##     $year               numeric       4296      
-##     $round              numeric       4296      
-##     $weekday            factor        4296      
-##     $day                numeric       4296      
-##     $month              numeric       4296      
-##     $is.final           logical       4296      
-##     $venue              factor        4296      
-##     $attendance         numeric       4296      
-##    afl.finalists        factor        400       
-##    afl.margins          numeric       176       
-##    afl.margins_out      numeric       176       
-##    afl2                 data.frame    4296 x 2  
-##     $margin             numeric       4296      
-##     $year               numeric       4296      
-##    age                  numeric       5         
-##    age.breaks           numeric       4         
-##    age.group            factor        11        
-##    age.group2           factor        11        
-##    age.group3           factor        11        
-##    age.labels           character     3         
-##    animals              character     4         
-##    b                    numeric       1         
-##    balance              numeric       1         
-##    beers                character     3         
-##    binomPlot            function                
-##    bw                   numeric       1         
-##    cake.1               numeric       5         
-##    cake.2               numeric       5         
-##    cake.df              data.frame    5 x 2     
-##     $cake.1             numeric       5         
-##     $cake.2             numeric       5         
-##    cake.mat1            matrix        5 x 2     
-##    cake.mat2            matrix        2 x 5     
-##    cakes                matrix        4 x 5     
-##    cakes.flipped        matrix        5 x 4     
-##    cards                data.frame    200 x 3   
-##     $id                 factor        200       
-##     $choice_1           factor        200       
-##     $choice_2           factor        200       
-##    chi.sq.20            numeric       1000      
-##    chi.sq.3             numeric       1000      
-##    choice               data.frame    4 x 10    
-##     $id                 integer       4         
-##     $gender             factor        4         
-##     $MRT/block1/day1    numeric       4         
-##     $MRT/block1/day2    numeric       4         
-##     $MRT/block2/day1    numeric       4         
-##     $MRT/block2/day2    numeric       4         
-##     $PC/block1/day1     numeric       4         
-##     $PC/block1/day2     numeric       4         
-##     $PC/block2/day1     numeric       4         
-##     $PC/block2/day2     numeric       4         
-##    choice.2             data.frame    16 x 6    
-##     $id                 integer       16        
-##     $gender             factor        16        
-##     $MRT                numeric       16        
-##     $PC                 numeric       16        
-##     $block              factor        16        
-##     $day                factor        16        
-##    colour               logical       1         
-##    crit.hi              numeric       1         
-##    crit.lo              numeric       1         
-##    d.cor                numeric       1         
-##    dan.awake            logical       10        
-##    data                 data.frame    12 x 4    
-##     $V1                 factor        12        
-##     $V2                 integer       12        
-##     $V3                 integer       12        
-##     $V4                 factor        12        
-##    day                  character     1         
-##    def.par              list          66        
-##    describeImg          list          0         
-##    df                   data.frame    4 x 1     
-##     $utterance          factor        4         
-##    doubleMax            function                
-##    drugs                data.frame    10 x 8    
-##     $id                 factor        10        
-##     $gender             factor        10        
-##     $WMC_alcohol        numeric       10        
-##     $WMC_caffeine       numeric       10        
-##     $WMC_no.drug        numeric       10        
-##     $RT_alcohol         numeric       10        
-##     $RT_caffeine        numeric       10        
-##     $RT_no.drug         numeric       10        
-##    drugs.2              data.frame    30 x 5    
-##     $id                 factor        30        
-##     $gender             factor        30        
-##     $drug               factor        30        
-##     $WMC                numeric       30        
-##     $RT                 numeric       30        
-##    effort               data.frame    10 x 2    
-##     $hours              numeric       10        
-##     $grade              numeric       10        
-##    emphCol              character     1         
-##    emphColLight         character     1         
-##    emphGrey             character     1         
-##    eps                  logical       1         
-##    estImg               list          0         
-##    eventNames           character     5         
-##    F.3.20               numeric       1000      
-##    fac                  factor        3         
-##    fibonacci            numeric       6         
-##    Fibonacci            numeric       7         
-##    fileName             character     1         
-##    freq                 integer       17        
-##    garden               data.frame    5 x 3     
-##     $speaker            factor        5         
-##     $utterance          factor        5         
-##     $line               numeric       5         
-##    gender               character     5         
-##    h                    numeric       1         
-##    height               numeric       1         
-##    hw                   character     2         
-##    i                    integer       1         
-##    interest             numeric       1         
-##    IQ                   numeric       10000     
-##    is.MP.speaking       logical       5         
-##    itng                 data.frame    10 x 2    
-##     $speaker            factor        10        
-##     $utterance          factor        10        
-##    itng.table           table         3 x 4     
-##    likert.centred       numeric       10        
-##    likert.ordinal       ordered       10        
-##    likert.raw           numeric       10        
-##    m                    numeric       1         
-##    M                    matrix        2 x 3     
-##    makka.pakka          character     4         
-##    monkey               character     1         
-##    monkey.1             list          1         
-##    month                numeric       1         
-##    monthly.multiplier   numeric       1         
-##    msg                  character     1         
-##    my.var               numeric       1         
-##    n                    numeric       1         
-##    N                    integer       100       
-##    ng                   character     2         
-##    nhstImg              list          0         
-##    normal.a             numeric       1000      
-##    normal.b             numeric       1000      
-##    normal.c             numeric       1000      
-##    normal.d             numeric       1000      
-##    numbers              numeric       3         
-##    old                  list          66        
-##    old.text             character     1         
-##    oneCorPlot           function                
-##    opinion.dir          numeric       10        
-##    opinion.strength     numeric       10        
-##    out.0                data.frame    100 x 2   
-##     $V1                 numeric       100       
-##     $V2                 numeric       100       
-##    out.1                data.frame    100 x 2   
-##     $V1                 numeric       100       
-##     $V2                 numeric       100       
-##    out.2                data.frame    100 x 2   
-##     $V1                 numeric       100       
-##     $V2                 numeric       100       
-##    parenthood           data.frame    100 x 4   
-##     $dan.sleep          numeric       100       
-##     $baby.sleep         numeric       100       
-##     $dan.grump          numeric       100       
-##     $day                integer       100       
-##    payments             numeric       1         
-##    PJ                   character     1         
-##    plotOne              function                
-##    plotSamples          function                
-##    pow                  numeric       100       
-##    probabilities        numeric       5         
-##    quadruple            function                
-##    row.1                numeric       3         
-##    row.2                numeric       3         
-##    s                    numeric       1         
-##    scaled.chi.sq.20     numeric       1000      
-##    scaled.chi.sq.3      numeric       1000      
-##    setUpPlot            function                
-##    some.data            numeric       18        
-##    speaker              character     10        
-##    speech.by.char       list          3         
-##    t.3                  numeric       1000      
-##    teams                character     17        
-##    text                 character     2         
-##    theta                numeric       1         
-##    today                Date          1         
-##    tombliboo            character     2         
-##    total.paid           numeric       1         
-##    upsy.daisy           character     4         
-##    utterance            character     10        
-##    w                    character     1         
-##    W                    character     1         
-##    w.length             integer       1         
-##    width                numeric       1         
-##    words                character     6         
-##    x                    integer       101       
-##    X                    numeric       1000      
-##    X1                   numeric       11        
-##    X2                   numeric       11        
-##    X3                   numeric       11        
-##    X4                   numeric       11        
-##    xtab.3d              table         3 x 4 x 2 
-##    xval                 numeric       1001      
-##    y                    numeric       101       
-##    Y1                   numeric       11        
-##    Y2                   numeric       11        
-##    Y3                   numeric       11        
-##    Y4                   numeric       11        
-##    yval                 numeric       1001      
-##    yval.1               numeric       1001      
-##    yval.2               numeric       1001      
-##    z                    logical       101
+## 'data.frame':    200 obs. of  3 variables:
+##  $ id      : Factor w/ 200 levels "subj1","subj10",..: 1 112 124 135 146 157 168 179 190 2 ...
+##  $ choice_1: Factor w/ 4 levels "clubs","diamonds",..: 4 2 3 4 3 1 3 2 4 2 ...
+##  $ choice_2: Factor w/ 4 levels "clubs","diamonds",..: 1 1 1 1 4 3 2 1 1 4 ...
 \end{verbatim}
 
 As you can see, the \texttt{cards} data frame contains three variables,
@@ -25825,7 +25609,7 @@ brackets: so the second observation in our table is written as
 relationship between the English descriptions, the R commands, and the
 mathematical symbols are illustrated below:
 
-\begin{tabular}{l|r|l|l|r}
+\begin{tabular}{lcccc|lcccc|lcccc|lcccc|lcccc}
 \hline
 label & index \$i\$ & math. symbol & R command & the value\\
 \hline
@@ -25864,14 +25648,6 @@ describe to you is \textbf{\emph{Pearson's \(\chi^2\) goodness of fit
 test}}, and as is so often the case, we have to begin by carefully
 constructing our null hypothesis. In this case, it's pretty easy. First,
 let's state the null hypothesis in words:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{stringsAsFactors=}\OtherTok{FALSE}\NormalTok{,}
-       \DataTypeTok{H_0 =} \KeywordTok{c}\NormalTok{(}\StringTok{"All four suits are chosen with equal probability"}\NormalTok{)),}
-       \DataTypeTok{col.names =} \KeywordTok{c}\NormalTok{(}\StringTok{"$H_0$"}\NormalTok{), }\DataTypeTok{align =}\NormalTok{ (}\StringTok{'c'}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{tabular}{c}
 \hline
@@ -25925,15 +25701,6 @@ All four suits are chosen with equal probability & At least one of the suit-choi
 \end{tabular}
 
 and the ``mathematician friendly'' version is
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{stringsAsFactors=}\OtherTok{FALSE}\NormalTok{,}
-       \DataTypeTok{H_0 =} \KeywordTok{c}\NormalTok{(}\StringTok{"$P = (.25, .25, .25, .25)$"}\NormalTok{),}
-       \DataTypeTok{H_1 =} \KeywordTok{c}\NormalTok{(}\StringTok{"$P }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{neq (.25,.25,.25,.25)$"}\NormalTok{)),}
-       \DataTypeTok{col.names =} \KeywordTok{c}\NormalTok{(}\StringTok{"$H_0$"}\NormalTok{, }\StringTok{"$H_1$"}\NormalTok{), }\DataTypeTok{align =}\NormalTok{ (}\StringTok{'cc'}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{tabular}{cc|cc}
 \hline
@@ -26721,28 +26488,27 @@ probably guess. Nevertheless, it's something to be aware of.
 \section{\texorpdfstring{The \(\chi^2\) test of independence (or
 association)}{The \textbackslash{}chi\^{}2 test of independence (or association)}}\label{chisqindependence}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{## Up to here}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{quote}
-{\it
-\begin{tabular}{ll}
-GUARDBOT 1:& Halt! \\
-GUARDBOT 2:& Be you robot or human? \\
-LEELA:& Robot...we be. \\
-FRY:& Uh, yup! Just two robots out roboting it up!  Eh? \\
-GUARDBOT 1:& Administer the test. \\
-GUARDBOT 2:& Which of the following would you most prefer? \\
-& A: A puppy, B: A pretty flower from your sweetie, \\
-& or C: A large properly-formatted data file? \\
-GUARDBOT 1:& Choose! \\
+\begin{tabular}{l|l}
+\hline
+ & \\
+\hline
+GUARDBOT1: & Halt!\\
+\hline
+GUARDBOT2: & Be you robot or human?\\
+\hline
+LEELA: & Robot...we be.\\
+\hline
+FRY: & Uh, yup! Just two robots out roboting it up!  Eh?\\
+\hline
+GUARDBOT1: & Administer the test.\\
+\hline
+GUARDBOT2: & Which of the following would you most prefer?  A: A puppy, B: A pretty flower from your sweetie, or C: A large properly-formatted data file?\\
+\hline
+GUARDBOT1: & Choose!\\
+\hline
 \end{tabular}
-} \\
-\hspace*{2cm} -- Futurama, "Fear of a Bot Planet"
-\end{quote}
+
+-- Futurama, ``Fear of a Bot Planet
 
 The other day I was watching an animated documentary examining the
 quaint customs of the natives of the planet \emph{Chapek 9}. Apparently,
@@ -26758,38 +26524,52 @@ very simple\ldots{} they found a bunch of robots and a bunch of humans
 and asked them what they preferred. I saved their data in a file called
 \texttt{chapek9.Rdata}, which I can now load and have a quick look at:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{load}\NormalTok{( }\StringTok{"./rbook-master/data/chapek9.Rdata"}\NormalTok{ )}
+\KeywordTok{str}\NormalTok{(chapek9)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> load( "chapek9.Rdata" )
-> who(TRUE)
-   -- Name --   -- Class --   -- Size --
-   chapek9      data.frame    180 x 2   
-    $species    factor        180       
-    $choice     factor        180            
+## 'data.frame':    180 obs. of  2 variables:
+##  $ species: Factor w/ 2 levels "robot","human": 1 2 2 2 1 2 2 1 2 1 ...
+##  $ choice : Factor w/ 3 levels "puppy","flower",..: 2 3 3 3 3 2 3 3 1 2 ...
 \end{verbatim}
 
 Okay, so we have a single data frame called \texttt{chapek9}, which
 contains two factors, \texttt{species} and \texttt{choice}. As always,
 it's nice to have a quick look at the data,
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(chapek9)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> head(chapek9)
-  species choice
-1   robot flower
-2   human   data
-3   human   data
-4   human   data
-5   robot   data
-6   human flower
+##   species choice
+## 1   robot flower
+## 2   human   data
+## 3   human   data
+## 4   human   data
+## 5   robot   data
+## 6   human flower
 \end{verbatim}
 
 and then take a \texttt{summary()},
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(chapek9)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> summary(chapek9)
-  species      choice   
- robot:87   puppy : 28  
- human:93   flower: 43  
-            data  :109  
+##   species      choice   
+##  robot:87   puppy : 28  
+##  human:93   flower: 43  
+##             data  :109
 \end{verbatim}
 
 In total there are 180 entries in the data frame, one for each person
@@ -26799,34 +26579,43 @@ overwhelmingly the preferred choice is the data file. However, these
 summaries don't address the question we're interested in. To do that, we
 need a more detailed description of the data. What we want to do is look
 at the \texttt{choices} broken down \emph{by} \texttt{species}. That is,
-we need to cross-tabulate the data (see Section \ref{freqtables}.
+we need to cross-tabulate the data (see Section \ref{freqtables}).
 There's quite a few ways to do this, as we've seen, but since our data
 are stored in a data frame, it's convenient to use the \texttt{xtabs()}
 function.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chapekFrequencies <-}\StringTok{ }\KeywordTok{xtabs}\NormalTok{( }\OperatorTok{~}\StringTok{ }\NormalTok{choice }\OperatorTok{+}\StringTok{ }\NormalTok{species, }\DataTypeTok{data =}\NormalTok{ chapek9)}
+\NormalTok{chapekFrequencies}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> chapekFrequencies <- xtabs( ~ choice + species, data = chapek9)
-> chapekFrequencies
-        species
-choice   robot human
-  puppy     13    15
-  flower    30    13
-  data      44    65
+##         species
+## choice   robot human
+##   puppy     13    15
+##   flower    30    13
+##   data      44    65
 \end{verbatim}
 
 That's more or less what we're after. So, if we add the row and column
 totals (which is convenient for the purposes of explaining the
 statistical tests), we would have a table like this,
 
-\begin{center}
-\begin{tabular}{l|cc|c}
-          & Robot & Human & Total \\ \hline
-Puppy     & 13  & 15 & 28 \\
-Flower    & 30  & 13 & 43 \\
-Data file & 44  & 65 & 109 \\ \hline
-Total     & 87 & 93 & 180
+\begin{tabular}{lccc|lccc|lccc|lccc}
+\hline
+ & Robot & Human & Total\\
+\hline
+Puppy & 13 & 15 & 28\\
+\hline
+Flower & 30 & 13 & 43\\
+\hline
+Data file & 44 & 65 & 109\\
+\hline
+Total & 87 & 93 & 180\\
+\hline
 \end{tabular}
-\end{center}
 
 which actually would be a nice way to report the descriptive statistics
 for this data set. In any case, it's quite clear that the vast majority
@@ -26846,15 +26635,19 @@ ways'', how can I construct a test of the \emph{null} hypothesis that
 ``humans and robots answer the question the same way''? As before, we
 begin by establishing some notation to describe the data:
 
-\begin{center}
-\begin{tabular}{l|cc|c}
-          & Robot & Human & Total \\ \hline
-Puppy     & $O_{11}$  & $O_{12}$ & $R_{1}$ \\
-Flower    & $O_{21}$ & $O_{22}$ & $R_{2}$ \\
-Data file & $O_{31}$  & $O_{32}$ & $R_{3}$ \\ \hline
-Total     & $C_{1}$ & $C_{2}$ & $N$
+\begin{tabular}{l|l|l|l}
+\hline
+ & Robot & Human & Total\\
+\hline
+Puppy & \$O\_\{11\}\$ & \$O\_\{12\}\$ & \$R\_\{1\}\$\\
+\hline
+Flower & \$O\_\{21\}\$ & \$O\_\{22\}\$ & \$R\_\{2\}\$\\
+\hline
+Data file & \$O\_\{31\}\$ & \$O\_\{32\}\$ & \$R\_\{3\}\$\\
+\hline
+Total & \$C\_\{1\}\$ & \$C\_\{2\}\$ & \$N\$\\
+\hline
 \end{tabular}
-\end{center}
 
 In this notation we say that \(O_{ij}\) is a count (observed frequency)
 of the number of respondents that are of species \(j\) (robots or human)
@@ -26868,13 +26661,12 @@ robots).\footnote{A technical note. The way I've described the test
   intended to survey 87 robots and 93 humans) and the row totals are
   random (i.e., it just turned out that 28 people chose the puppy). To
   use the terminology from my mathematical statistics textbook
-  \textbackslash{}cite\{Hogg2005} I should technically refer to this
-situation as a chi-square test of homogeneity; and reserve the term
-chi-square test of independence for the situation where both the row and
-column totals are random outcomes of the experiment. In the initial
-drafts of this book that's exactly what I did. However, it turns out
-that these two tests are identical; and so I've collapsed them
-together.\}
+  \citep{Hogg2005} I should technically refer to this situation as a
+  chi-square test of homogeneity; and reserve the term chi-square test
+  of independence for the situation where both the row and column totals
+  are random outcomes of the experiment. In the initial drafts of this
+  book that's exactly what I did. However, it turns out that these two
+  tests are identical; and so I've collapsed them together.}
 
 So now let's think about what the null hypothesis says. If robots and
 humans are responding in the same way to the question, it means that the
@@ -26883,16 +26675,19 @@ that ``a human says puppy'', and so on for the other two possibilities.
 So, if we use \(P_{ij}\) to denote ``the probability that a member of
 species \(j\) gives response \(i\)'' then our null hypothesis is that:
 
-\smallskip
-
-\begin{tabular}{ll}
-$H_0$: \hspace*{0.5cm} & All of the following are true: \\ 
-    & $P_{11} = P_{12}$ (same probability of saying "puppy"), \\ 
-    & $P_{21} = P_{22}$ (same probability of saying "flower"), and\\ 
-    & $P_{31} = P_{32}$ (same probability of saying "data").\\ 
+\begin{tabular}{l|l}
+\hline
+ & \\
+\hline
+\$H\_0\$: & All of the following are true:\\
+\hline
+ & \$P\_\{11\} = P\_\{12\}\$ (same probability of saying puppy)\\
+\hline
+ & \$P\_\{21\} = P\_\{22\}\$ (same probability of saying flower) and\\
+\hline
+ & \$P\_\{31\} = P\_\{32\}\$ (same probability of saying data).\\
+\hline
 \end{tabular}
-
-\smallskip
 
 And actually, since the null hypothesis is claiming that the true choice
 probabilities don't depend on the species of the person making the
@@ -26911,7 +26706,7 @@ E_{ij} = C_j \times P_i
 \] Now, this is all very well and good, but we have a problem. Unlike
 the situation we had with the goodness of fit test, the null hypothesis
 doesn't actually specify a particular value for \(P_i\). It's something
-we have to estimate (Chapter \ref{estimation} from the data!
+we have to estimate (Chapter \ref{estimation}) from the data!
 Fortunately, this is pretty easy to do. If 28 out of 180 people selected
 the flowers, then a natural estimate for the probability of choosing
 flowers is \(28/180\), which is approximately \(.16\). If we phrase this
@@ -26921,9 +26716,9 @@ the total sample size: \[
 \hat{P}_i = \frac{R_i}{N}
 \] Therefore, our expected frequency can be written as the product
 (i.e.~multiplication) of the row total and the column total, divided by
-the total number of observations:\footnote{Technically, \$E\_\{ij}\$
-here is an estimate, so I should probably write it \(\hat{E}_{ij}\). But
-since no-one else does, I won't either.\} \[
+the total number of observations:\footnote{Technically, \(E_{ij}\) here
+  is an estimate, so I should probably write it \(\hat{E}_{ij}\). But
+  since no-one else does, I won't either.} \[
 E_{ij} = \frac{R_i \times C_j}{N}
 \] Now that we've figured out how to calculate the expected frequencies,
 it's straightforward to define a test statistic; following the exact
@@ -27008,13 +26803,18 @@ beginners. It works in the exact same way as the \texttt{xtabs()}
 function. Recall that, in order to produce the contingency table, we
 used this command:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{xtabs}\NormalTok{( }\DataTypeTok{formula =} \OperatorTok{~}\NormalTok{choice}\OperatorTok{+}\NormalTok{species, }\DataTypeTok{data =}\NormalTok{ chapek9 )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> xtabs( formula = ~choice+species, data = chapek9 )
-        species
-choice   robot human
-  puppy     13    15
-  flower    30    13
-  data      44    65
+##         species
+## choice   robot human
+##   puppy     13    15
+##   flower    30    13
+##   data      44    65
 \end{verbatim}
 
 The \texttt{associationTest()} function has exactly the same structure:
@@ -27022,8 +26822,43 @@ it needs a \texttt{formula} that specifies which variables you're
 cross-tabulating, and the name of a \texttt{data} frame that contains
 those variables. So the command is just this:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{associationTest}\NormalTok{( }\DataTypeTok{formula =} \OperatorTok{~}\NormalTok{choice}\OperatorTok{+}\NormalTok{species, }\DataTypeTok{data =}\NormalTok{ chapek9 )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> associationTest( formula = ~choice+species, data = chapek9 )
+## 
+##      Chi-square test of categorical association
+## 
+## Variables:   choice, species 
+## 
+## Hypotheses: 
+##    null:        variables are independent of one another
+##    alternative: some contingency exists between variables
+## 
+## Observed contingency table:
+##         species
+## choice   robot human
+##   puppy     13    15
+##   flower    30    13
+##   data      44    65
+## 
+## Expected contingency table under the null hypothesis:
+##         species
+## choice   robot human
+##   puppy   13.5  14.5
+##   flower  20.8  22.2
+##   data    52.7  56.3
+## 
+## Test results: 
+##    X-squared statistic:  10.722 
+##    degrees of freedom:  2 
+##    p-value:  0.005 
+## 
+## Other information: 
+##    estimated effect size (Cramer's v):  0.244
 \end{verbatim}
 
 Just like we did with the goodness of fit test, I'll go through it line
@@ -27090,7 +26925,10 @@ You can ignore this bit for now. I'll talk about it in just a moment.
 This output gives us enough information to write up the result:
 
 \begin{quote}
-Pearson's $\chi^2$ revealed a significant association between species and choice ($\chi^2(2) = 10.7, p < .01$): robots appeared to be more likely to say that they prefer flowers, but the humans were more likely to say they prefer data.
+Pearson's \(\chi^2\) revealed a significant association between species
+and choice (\(\chi^2(2) = 10.7, p < .01\)): robots appeared to be more
+likely to say that they prefer flowers, but the humans were more likely
+to say they prefer data.
 \end{quote}
 
 Notice that, once again, I provided a little bit of interpretation to
@@ -27099,7 +26937,13 @@ in my discussion section, I'd provide a bit more context. To illustrate
 the difference, here's what I'd probably say later on:
 
 \begin{quote}
-The fact that humans appeared to have a stronger preference for raw data files than robots is somewhat counterintuitive. However, in context it makes some sense: the civil authority on Chapek 9 has an unfortunate tendency to kill and dissect humans when they are identified. As such it seems most likely that the human participants did not respond honestly to the question, so as to avoid potentially undesirable consequences. This should be considered to be a substantial methodological weakness.
+The fact that humans appeared to have a stronger preference for raw data
+files than robots is somewhat counterintuitive. However, in context it
+makes some sense: the civil authority on Chapek 9 has an unfortunate
+tendency to kill and dissect humans when they are identified. As such it
+seems most likely that the human participants did not respond honestly
+to the question, so as to avoid potentially undesirable consequences.
+This should be considered to be a substantial methodological weakness.
 \end{quote}
 
 This could be classified as a rather extreme example of a reactivity
@@ -27151,7 +26995,7 @@ has used a ``continuity correction'' or ``Yates' correction''.
 
 \section{Effect size}\label{chisqeffectsize}
 
-As we discussed earlier (Section \ref{effectsize}, it's becoming
+As we discussed earlier (Section \ref{effectsize}), it's becoming
 commonplace to ask researchers to report some measure of effect size.
 So, let's suppose that you've run your chi-square test, which turns out
 to be significant. So you now know that there is some association
@@ -27201,9 +27045,14 @@ one, I've included one in the \texttt{lsr} package, called
 \texttt{cramersV()}. It takes a contingency table as input, and prints
 out the measure of effect size:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cramersV}\NormalTok{( chapekFrequencies )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> cramersV( chapekFrequencies )
-[1] 0.244058
+## [1] 0.244058
 \end{verbatim}
 
 However, if you're using the \texttt{associationTest()} function to do
@@ -27223,7 +27072,7 @@ so far in this chapter, the assumptions are:
   the previous section we saw that the \(\chi^2\) sampling distribution
   emerges because the binomial distribution is pretty similar to a
   normal distribution? Well, like we discussed in Chapter
-  @ref(probability this is only true when the number of observations is
+  \ref{probability} this is only true when the number of observations is
   sufficiently large. What that means in practice is that all of the
   expected frequencies need to be reasonably big. How big is reasonably
   big? Opinions differ, but the default assumption seems to be that you
@@ -27233,7 +27082,7 @@ so far in this chapter, the assumptions are:
   them are below 1. However, from what I've been able to discover
   \cite<e.g.,>{Cochran1954}, these seem to have been proposed as rough
   guidelines, not hard and fast rules; and they seem to be somewhat
-  conservative \cite{Larntz1978}.
+  conservative {[}Larntz1978{]}.
 \item
   \emph{Data are independent of one another}. One somewhat hidden
   assumption of the chi-square test is that you have to genuinely
@@ -27270,11 +27119,11 @@ expected cell counts are too small, check out the Fisher exact test. It
 is to these topics that we now turn.
 
 \section{The most typical way to do chi-square tests in
-Rlabel\{sec:chisq.test\}}\label{the-most-typical-way-to-do-chi-square-tests-in-rlabelsecchisq.test}
+R}\label{chisq.test}
 
 When discussing how to do a chi-square goodness of fit test (Section
-\ref{gofTestInR} and the chi-square test of independence (Section
-\ref{AssocTestInR}, I introduced you to two separate functions in the
+\ref{gofTestInR}) and the chi-square test of independence (Section
+\ref{AssocTestInR}), I introduced you to two separate functions in the
 \texttt{lsr} package. We ran our goodness of fit tests using the
 \texttt{goodnessOfFitTest()} function, and our tests of independence (or
 association) using the \texttt{associationTest()} function. And both of
@@ -27295,24 +27144,34 @@ in each case, it can run either test depending on what kind of input it
 is given. First, here's the goodness of fit test. Suppose you have the
 frequency table \texttt{observed} that we used earlier,
 
-\begin{verbatim}
-> observed
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{observed}
+\end{Highlighting}
+\end{Shaded}
 
-   clubs diamonds   hearts   spades 
-      35       51       64       50 
+\begin{verbatim}
+## 
+##    clubs diamonds   hearts   spades 
+##       35       51       64       50
 \end{verbatim}
 
 If you want to run the goodness of fit test against the hypothesis that
 all four suits are equally likely to appear, then all you need to do is
 input this frequenct table to the \texttt{chisq.test()} function:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{chisq.test}\NormalTok{( }\DataTypeTok{x =}\NormalTok{ observed )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> chisq.test( x = observed )
-
-    Chi-squared test for given probabilities
-
-data:  observed
-X-squared = 8.44, df = 3, p-value = 0.03774
+## 
+##  Chi-squared test for given probabilities
+## 
+## data:  observed
+## X-squared = 8.44, df = 3, p-value = 0.03774
 \end{verbatim}
 
 Notice that the output is very compressed in comparison to the
@@ -27326,13 +27185,18 @@ produces. Anyway, if you want to change the null hypothesis, it's
 exactly the same as before, just specify the probabilities using the
 \texttt{p} argument. For instance:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{chisq.test}\NormalTok{( }\DataTypeTok{x =}\NormalTok{ observed, }\DataTypeTok{p =} \KeywordTok{c}\NormalTok{(.}\DecValTok{2}\NormalTok{, .}\DecValTok{3}\NormalTok{, .}\DecValTok{3}\NormalTok{, .}\DecValTok{2}\NormalTok{) )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> chisq.test( x = observed, p = c(.2, .3, .3, .2) )
-
-    Chi-squared test for given probabilities
-
-data:  observed
-X-squared = 4.7417, df = 3, p-value = 0.1917
+## 
+##  Chi-squared test for given probabilities
+## 
+## data:  observed
+## X-squared = 4.7417, df = 3, p-value = 0.1917
 \end{verbatim}
 
 Again, these are the same numbers that the \texttt{goodnessOfFitTest()}
@@ -27346,25 +27210,35 @@ table, it realises that you're asking for a test of independence and not
 a goodness of fit test. Recall that we already have this
 cross-tabulation stored as the \texttt{chapekFrequencies} variable:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chapekFrequencies}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> chapekFrequencies
-        species
-choice   robot human
-  puppy     13    15
-  flower    30    13
-  data      44    65
+##         species
+## choice   robot human
+##   puppy     13    15
+##   flower    30    13
+##   data      44    65
 \end{verbatim}
 
 To get the test of independence, all we have to do is feed this
 frequency table into the \texttt{chisq.test()} function like so:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{chisq.test}\NormalTok{( chapekFrequencies )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> chisq.test( chapekFrequencies )
-
-    Pearson's Chi-squared test
-
-data:  chapekFrequencies
-X-squared = 10.7216, df = 2, p-value = 0.004697
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  chapekFrequencies
+## X-squared = 10.722, df = 2, p-value = 0.004697
 \end{verbatim}
 
 Again, the numbers are the same as last time, it's just that the output
@@ -27394,21 +27268,20 @@ actually quite hard to find people in the process of being set on fire,
 so the cell counts are awfully small in some cases. The
 \texttt{salem.Rdata} file illustrates the point:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{load}\NormalTok{(}\StringTok{"./rbook-master/data/salem.Rdata"}\NormalTok{)}
+
+\NormalTok{salem.tabs <-}\StringTok{ }\KeywordTok{table}\NormalTok{( trial )}
+\KeywordTok{print}\NormalTok{( salem.tabs )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> load("salem.Rdata")
-
-> who(TRUE)
-   -- Name --   -- Class --   -- Size --
-   trial        data.frame    16 x 2    
-    $happy      logical       16        
-    $on.fire    logical       16       
-
-> salem.tabs <- table( trial )
-> print( salem.tabs )
-       on.fire
-happy   FALSE TRUE
-  FALSE     3    3
-  TRUE     10    0
+##        on.fire
+## happy   FALSE TRUE
+##   FALSE     3    3
+##   TRUE     10    0
 \end{verbatim}
 
 Looking at this data, you'd be hard pressed not to suspect that people
@@ -27416,16 +27289,23 @@ not on fire are more likely to be happy than people on fire. However,
 the chi-square test makes this very hard to test because of the small
 sample size. If I try to do so, R gives me a warning message:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{chisq.test}\NormalTok{( salem.tabs )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> chisq.test( salem.tabs )
+## Warning in chisq.test(salem.tabs): Chi-squared approximation may be
+## incorrect
+\end{verbatim}
 
-    Pearson's Chi-squared test with Yates' continuity correction
-
-data:  salem.tabs 
-X-squared = 3.3094, df = 1, p-value = 0.06888
-
-Warning message:
-In chisq.test(salem.tabs) : Chi-squared approximation may be incorrect
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test with Yates' continuity correction
+## 
+## data:  salem.tabs
+## X-squared = 3.3094, df = 1, p-value = 0.06888
 \end{verbatim}
 
 Speaking as someone who doesn't want to be set on fire, I'd
@@ -27440,21 +27320,24 @@ book) insofar as it doesn't have a test statistic; it calculates the
 for a \(2 \times 2\) contingency table, though the test works fine for
 larger tables. As before, let's have some notation:
 
-\begin{center}
-\begin{tabular}{l|cc|c}
-& Happy & Sad & Total \\ \hline
-Set on fire   & $O_{11}$ & $O_{12}$ & $R_{1}$ \\
-Not set on fire & $O_{21}$ & $O_{22}$ & $R_{2}$ \\ \hline
-Total & $C_{1}$ & $C_{2}$ & $N$
+\begin{tabular}{l|l|l|l}
+\hline
+ & Happy & Sad & Total\\
+\hline
+Set on fire & \$O\_\{11\}\$ & \$O\_\{12\}\$ & \$R\_\{1\}\$\\
+\hline
+Not set on fire & \$O\_\{21\}\$ & \$O\_\{22\}\$ & \$R\_\{2\}\$\\
+\hline
+Total & \$C\_\{1\}\$ & \$C\_\{2\}\$ & \$N\$\\
+\hline
 \end{tabular}
-\end{center}
 
 In order to construct the test Fisher treats both the row and column
 totals (\(R_1\), \(R_2\), \(C_1\) and \(C_2\)) are known, fixed
 quantities; and then calculates the probability that we would have
 obtained the observed frequencies that we did (\(O_{11}\), \(O_{12}\),
 \(O_{21}\) and \(O_{22}\)) given those totals. In the notation that we
-developed in Chapter @ref(probability this is written: \[
+developed in Chapter \ref{probability} this is written: \[
 P(O_{11}, O_{12}, O_{21}, O_{22} \ | \ R_1, R_2, C_1, C_2) 
 \] and as you might imagine, it's a slightly tricky exercise to figure
 out what this probability is, but it turns out that this probability is
@@ -27479,19 +27362,24 @@ then gives us the \(p\)-value.
 The implementation of the test in R is via the \texttt{fisher.test()}
 function. Here's how it is used:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fisher.test}\NormalTok{( salem.tabs )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> fisher.test( salem.tabs )
-
-    Fisher's Exact Test for Count Data
-
-data:  salem.tabs 
-p-value = 0.03571
-alternative hypothesis: true odds ratio is not equal to 1 
-95 percent confidence interval:
- 0.000000 1.202913 
-sample estimates:
-odds ratio 
-         0 
+## 
+##  Fisher's Exact Test for Count Data
+## 
+## data:  salem.tabs
+## p-value = 0.03571
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  0.000000 1.202913
+## sample estimates:
+## odds ratio 
+##          0
 \end{verbatim}
 
 This is a bit more output than we got from some of our earlier tests.
@@ -27512,18 +27400,21 @@ job, you'd also do a whole lot of other things too, but let's consider
 just this one simple experiment. One way to describe your data is via
 the following contingency table:
 
-\begin{center}
-\begin{tabular}{l|cc|c}
-& Before & After & Total \\ \hline
-Yes   & 30 & 10 & 40 \\
-No    & 70 & 90 & 160 \\ \hline
-Total & 100 & 100 & 200
+\begin{tabular}{lccc|lccc|lccc|lccc}
+\hline
+ & Before & After & Total\\
+\hline
+Yes & 30 & 10 & 40\\
+\hline
+No & 70 & 90 & 160\\
+\hline
+Total & 100 & 100 & 200\\
+\hline
 \end{tabular}
-\end{center}
 
 At first pass, you might think that this situation lends itself to the
 Pearson \(\chi^2\) test of independence (as per Section
-\ref{chisqindependence}. However, a little bit of thought reveals that
+\ref{chisqindependence}). However, a little bit of thought reveals that
 we've got a problem: we have 100 participants, but 200 observations.
 This is because each person has provided us with an answer in
 \emph{both} the before column and the after column. What this means is
@@ -27540,14 +27431,17 @@ we've considered so far can handle it. Eek.
 The solution to the problem was published by \citet{McNemar1947}. The
 trick is to start by tabulating your data in a slightly different way:
 
-\begin{center}
-\begin{tabular}{l|cc|c}
-& Before: Yes & Before: No & Total \\ \hline
-After: Yes   & 5 & 5 & 10 \\
-After: No    & 25 & 65 & 90 \\ \hline
-Total        & 30 & 70 & 100
+\begin{tabular}{lccc|lccc|lccc|lccc}
+\hline
+ & Before: Yes & Before: No & Total\\
+\hline
+After: Yes & 5 & 5 & 10\\
+\hline
+After: No & 25 & 65 & 90\\
+\hline
+Total & 30 & 70 & 100\\
+\hline
 \end{tabular}
-\end{center}
 
 This is exactly the same data, but it's been rewritten so that each of
 our 100 participants appears in only one cell. Because we've written our
@@ -27557,14 +27451,17 @@ goodness of fit statistic. However, as we'll see, we need to do it in a
 slightly nonstandard way. To see what's going on, it helps to label the
 entries in our table a little differently:
 
-\begin{center}
-\begin{tabular}{l|cc|c}
-& Before: Yes & Before: No & Total \\ \hline
-After: Yes   & $a$ & $b$ & $a+b$ \\
-After: No & $c$ & $d$ & $c+d$ \\ \hline
-Total & $a+c$ & $b+d$ & $n$
+\begin{tabular}{lccc|lccc|lccc|lccc}
+\hline
+ & Before: Yes & Before: No & Total\\
+\hline
+After: Yes & \$a\$ & \$b\$ & \$a+b\$\\
+\hline
+After: No & \$c\$ & \$d\$ & \$c+d\$\\
+\hline
+Total & \$a+c\$ & \$b+d\$ & \$n\$\\
+\hline
 \end{tabular}
-\end{center}
 
 Next, let's think about what our null hypothesis is: it's that the
 ``before'' test and the ``after'' test have the same proportion of
@@ -27597,14 +27494,18 @@ Now that you know what the McNemar test is all about, lets actually run
 one. The \texttt{agpp.Rdata} file contains the raw data that I discussed
 previously, so let's have a look at it:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{load}\NormalTok{(}\StringTok{"./rbook-master/data/agpp.Rdata"}\NormalTok{)}
+\KeywordTok{str}\NormalTok{(agpp)     }
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> load("agpp.Rdata")
-> who(TRUE)
-   -- Name --          -- Class --   -- Size --
-   agpp                data.frame    100 x 3   
-    $id                factor        100       
-    $response_before   factor        100       
-    $response_after    factor        100       
+## 'data.frame':    100 obs. of  3 variables:
+##  $ id             : Factor w/ 100 levels "subj.1","subj.10",..: 1 13 24 35 46 57 68 79 90 2 ...
+##  $ response_before: Factor w/ 2 levels "no","yes": 1 2 2 2 1 1 1 1 1 1 ...
+##  $ response_after : Factor w/ 2 levels "no","yes": 2 1 1 1 1 1 1 2 1 1 ...
 \end{verbatim}
 
 The \texttt{agpp} data frame contains three variables, an \texttt{id}
@@ -27615,54 +27516,74 @@ time, and a \texttt{response\_after} variable that shows the answer that
 they gave when asked the same question a second time. As usual, here's
 the first 6 entries:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(agpp)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> head(agpp)
-      id response_before response_after
-1 subj.1              no            yes
-2 subj.2             yes             no
-3 subj.3             yes             no
-4 subj.4             yes             no
-5 subj.5              no             no
-6 subj.6              no             no
+##       id response_before response_after
+## 1 subj.1              no            yes
+## 2 subj.2             yes             no
+## 3 subj.3             yes             no
+## 4 subj.4             yes             no
+## 5 subj.5              no             no
+## 6 subj.6              no             no
 \end{verbatim}
 
 and here's a summary:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(agpp)     }
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> summary(agpp)
-        id     response_before response_after
- subj.1  : 1   no :70          no :90        
- subj.10 : 1   yes:30          yes:10        
- subj.100: 1                                 
- subj.11 : 1                                 
- subj.12 : 1                                 
- subj.13 : 1                                 
- (Other) :94             
+##         id     response_before response_after
+##  subj.1  : 1   no :70          no :90        
+##  subj.10 : 1   yes:30          yes:10        
+##  subj.100: 1                                 
+##  subj.11 : 1                                 
+##  subj.12 : 1                                 
+##  subj.13 : 1                                 
+##  (Other) :94
 \end{verbatim}
 
 Notice that each participant appears only once in this data frame. When
 we tabulate this data frame using \texttt{xtabs()}, we get the
 appropriate table:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{right.table <-}\StringTok{ }\KeywordTok{xtabs}\NormalTok{( }\OperatorTok{~}\StringTok{ }\NormalTok{response_before }\OperatorTok{+}\StringTok{ }\NormalTok{response_after, }\DataTypeTok{data =}\NormalTok{ agpp)}
+\KeywordTok{print}\NormalTok{( right.table )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> right.table <- xtabs( ~ response_before + response_after, data = agpp)
-> print( right.table )
-               response_after
-response_before no yes
-            no  65   5
-            yes 25   5
+##                response_after
+## response_before no yes
+##             no  65   5
+##             yes 25   5
 \end{verbatim}
 
 and from there, we can run the McNemar test by using the
 \texttt{mcnemar.test()} function:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mcnemar.test}\NormalTok{( right.table )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> mcnemar.test( right.table )
-
-    McNemar's Chi-squared test with continuity correction
-
-data:  right.table 
-McNemar's chi-squared = 12.0333, df = 1, p-value = 0.0005226
+## 
+##  McNemar's Chi-squared test with continuity correction
+## 
+## data:  right.table
+## McNemar's chi-squared = 12.033, df = 1, p-value = 0.0005226
 \end{verbatim}
 
 And we're done. We've just run a McNemar's test to determine if people
@@ -27684,15 +27605,20 @@ second choice that everyone made, we can construct the following
 contingency table that cross-tabulates the first choice against the
 second choice.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cardChoices <-}\StringTok{ }\KeywordTok{xtabs}\NormalTok{( }\OperatorTok{~}\StringTok{ }\NormalTok{choice_}\DecValTok{1} \OperatorTok{+}\StringTok{ }\NormalTok{choice_}\DecValTok{2}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ cards )}
+\NormalTok{cardChoices}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> cardChoices <- xtabs( ~ choice_1 + choice_2, data = cards )
-> cardChoices
-          choice_2
-choice_1   clubs diamonds hearts spades
-  clubs       10        9     10      6
-  diamonds    20        4     13     14
-  hearts      20       18      3     23
-  spades      18       13     15      4
+##           choice_2
+## choice_1   clubs diamonds hearts spades
+##   clubs       10        9     10      6
+##   diamonds    20        4     13     14
+##   hearts      20       18      3     23
+##   spades      18       13     15      4
 \end{verbatim}
 
 Suppose I wanted to know whether the choice you make the second time is
@@ -27701,13 +27627,18 @@ independence is useful, and what we're trying to do is see if there's
 some relationship between the rows and columns of this table. Here's the
 result:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{chisq.test}\NormalTok{( cardChoices )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> chisq.test( cardChoices )
-
-    Pearson's Chi-squared test
-
-data:  cardChoices
-X-squared = 29.2373, df = 9, p-value = 0.0005909
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  cardChoices
+## X-squared = 29.237, df = 9, p-value = 0.0005909
 \end{verbatim}
 
 Alternatively, suppose I wanted to know if \emph{on average}, the
@@ -27718,13 +27649,18 @@ totals in \texttt{cardChoices} (i.e., the frequencies for
 frequencies for \texttt{choice\_2}). That's when you use the McNemar
 test:
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mcnemar.test}\NormalTok{( cardChoices )}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
-> mcnemar.test( cardChoices )
-
-    McNemar's Chi-squared test
-
-data:  cardChoices
-McNemar's chi-squared = 16.0334, df = 6, p-value = 0.01358
+## 
+##  McNemar's Chi-squared test
+## 
+## data:  cardChoices
+## McNemar's chi-squared = 16.033, df = 6, p-value = 0.01358
 \end{verbatim}
 
 Notice that the results are different! These aren't the same test.
@@ -27736,14 +27672,14 @@ The key ideas discussed in this chapter are:
 \begin{itemize}
 \tightlist
 \item
-  The chi-square goodness of fit test (Section \ref{goftest} is used
+  The chi-square goodness of fit test (Section \ref{goftest}) is used
   when you have a table of observed frequencies of different categories;
   and the null hypothesis gives you a set of ``known'' probabilities to
   compare them to. You can either use the \texttt{goodnessOfFitTest()}
   function in the \texttt{lsr} package to run this test, or the
   \texttt{chisq.test()} function.
 \item
-  The chi-square test of independence (Section \ref{chisqindependence}
+  The chi-square test of independence (Section \ref{chisqindependence})
   is used when you have a contingency table (cross-tabulation) of two
   categorical variables. The null hypothesis is that there is no
   relationship/association between the variables. You can either use the
@@ -27751,17 +27687,17 @@ The key ideas discussed in this chapter are:
   you can use \texttt{chisq.test()}.
 \item
   Effect size for a contingency table can be measured in several ways
-  (Section \ref{chisqeffectsize}. In particular we noted the Cram'er's
+  (Section \ref{chisqeffectsize}). In particular we noted the Cramer's
   \(V\) statistic, which can be calculated using \texttt{cramersV()}.
   This is also part of the output produced by
   \texttt{associationTest()}.
 \item
   Both versions of the Pearson test rely on two assumptions: that the
   expected frequencies are sufficiently large, and that the observations
-  are independent (Section \ref{chisqassumptions}. The Fisher exact test
-  (Section \ref{fisherexacttest} can be used when the expected
+  are independent (Section \ref{chisqassumptions}). The Fisher exact
+  test (Section \ref{fisherexacttest}) can be used when the expected
   frequencies are small, \texttt{fisher.test(x\ =\ contingency.table)}.
-  The McNemar test (Section \ref{mcnemar} can be used for some kinds of
+  The McNemar test (Section \ref{mcnemar}) can be used for some kinds of
   violations of independence,
   \texttt{mcnemar.test(x\ =\ contingency.table)}.
 \end{itemize}

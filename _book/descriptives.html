@@ -295,7 +295,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2.6" data-path="descriptives.html"><a href="descriptives.html#mad"><i class="fa fa-check"></i><b>5.2.6</b> Median absolute deviation</a></li>
 <li class="chapter" data-level="5.2.7" data-path="descriptives.html"><a href="descriptives.html#which-measure-to-use"><i class="fa fa-check"></i><b>5.2.7</b> Which measure to use?</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="descriptives.html"><a href="descriptives.html#kurtosis"><i class="fa fa-check"></i><b>5.3</b> Skew and kurtosis{#skew}</a></li>
+<li class="chapter" data-level="5.3" data-path="descriptives.html"><a href="descriptives.html#skewandkurtosis"><i class="fa fa-check"></i><b>5.3</b> Skew and kurtosis</a></li>
 <li class="chapter" data-level="5.4" data-path="studydesign.html"><a href="studydesign.html#summary"><i class="fa fa-check"></i><b>5.4</b> Getting an overall summary of a variable</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="descriptives.html"><a href="descriptives.html#summarising-a-variable"><i class="fa fa-check"></i><b>5.4.1</b> “Summarising” a variable</a></li>
 <li class="chapter" data-level="5.4.2" data-path="descriptives.html"><a href="descriptives.html#summarising-a-data-frame"><i class="fa fa-check"></i><b>5.4.2</b> “Summarising” a data frame</a></li>
@@ -449,7 +449,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.6" data-path="scripting.html"><a href="scripting.html#summary-6"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-iv-statistical-theory.html"><a href="part-iv-statistical-theory.html"><i class="fa fa-check"></i>Part IV. Statistical theory</a><ul>
-<li class="chapter" data-level="" data-path="part-iv-statistical-theory.html"><a href="part-iv-statistical-theory.html#prelude-to-part-iv"><i class="fa fa-check"></i>Prelude to Part IV</a></li>
 <li class="chapter" data-level="" data-path="part-iv-statistical-theory.html"><a href="part-iv-statistical-theory.html#on-the-limits-of-logical-reasoning"><i class="fa fa-check"></i>On the limits of logical reasoning</a></li>
 <li class="chapter" data-level="" data-path="part-iv-statistical-theory.html"><a href="part-iv-statistical-theory.html#learning-without-making-assumptions-is-a-myth"><i class="fa fa-check"></i>Learning without making assumptions is a myth</a></li>
 </ul></li>
@@ -555,7 +554,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.3" data-path="chisquare.html"><a href="chisquare.html#yates"><i class="fa fa-check"></i><b>12.3</b> The continuity correction</a></li>
 <li class="chapter" data-level="12.4" data-path="chisquare.html"><a href="chisquare.html#chisqeffectsize"><i class="fa fa-check"></i><b>12.4</b> Effect size</a></li>
 <li class="chapter" data-level="12.5" data-path="chisquare.html"><a href="chisquare.html#chisqassumptions"><i class="fa fa-check"></i><b>12.5</b> Assumptions of the test(s)</a></li>
-<li class="chapter" data-level="12.6" data-path="chisquare.html"><a href="chisquare.html#the-most-typical-way-to-do-chi-square-tests-in-rlabelsecchisq.test"><i class="fa fa-check"></i><b>12.6</b> The most typical way to do chi-square tests in Rlabel{sec:chisq.test}</a></li>
+<li class="chapter" data-level="12.6" data-path="chisquare.html"><a href="chisquare.html#chisq.test"><i class="fa fa-check"></i><b>12.6</b> The most typical way to do chi-square tests in R</a></li>
 <li class="chapter" data-level="12.7" data-path="chisquare.html"><a href="chisquare.html#fisherexacttest"><i class="fa fa-check"></i><b>12.7</b> The Fisher exact test</a></li>
 <li class="chapter" data-level="12.8" data-path="chisquare.html"><a href="chisquare.html#mcnemar"><i class="fa fa-check"></i><b>12.8</b> The McNemar test</a><ul>
 <li class="chapter" data-level="12.8.1" data-path="chisquare.html"><a href="chisquare.html#doing-the-mcnemar-test-in-r"><i class="fa fa-check"></i><b>12.8.1</b> Doing the McNemar test in R</a></li>
@@ -750,7 +749,7 @@ Figure 5.2: An illustration of the difference between how the mean and the media
 <li>If your data are ordinal scale, you’re more likely to want to use the median than the mean. The median only makes use of the order information in your data (i.e., which numbers are bigger), but doesn’t depend on the precise numbers involved. That’s exactly the situation that applies when your data are ordinal scale. The mean, on the other hand, makes use of the precise numeric values assigned to the observations, so it’s not really appropriate for ordinal data.</li>
 <li>For interval and ratio scale data, either one is generally acceptable. Which one you pick depends a bit on what you’re trying to achieve. The mean has the advantage that it uses all the information in the data (which is useful when you don’t have a lot of data), but it’s very sensitive to extreme values, as we’ll see in Section <a href="descriptives.html#trimmedmean">5.1.6</a>.</li>
 </ul>
-<p>Let’s expand on that last part a little. One consequence is that there’s systematic differences between the mean and the median when the histogram is asymmetric (skewed; see Section <a href="#skew"><strong>??</strong></a>). This is illustrated in Figure <a href="descriptives.html#fig:meanmedian">5.2</a> notice that the median (right hand side) is located closer to the “body” of the histogram, whereas the mean (left hand side) gets dragged towards the “tail” (where the extreme values are). To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.</p>
+<p>Let’s expand on that last part a little. One consequence is that there’s systematic differences between the mean and the median when the histogram is asymmetric (skewed; see Section <a href="descriptives.html#skewandkurtosis">5.3</a>). This is illustrated in Figure <a href="descriptives.html#fig:meanmedian">5.2</a> notice that the median (right hand side) is located closer to the “body” of the histogram, whereas the mean (left hand side) gets dragged towards the “tail” (where the extreme values are). To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.</p>
 </div>
 <div id="housingpriceexample" class="section level3">
 <h3><span class="header-section-number">5.1.5</span> A real life example</h3>
@@ -1061,18 +1060,18 @@ Figure 5.3: An illustration of the standard deviation, applied to the AFL winnin
 <p>In short, the IQR and the standard deviation are easily the two most common measures used to report the variability of the data; but there are situations in which the others are used. I’ve described all of them in this book because there’s a fair chance you’ll run into most of these somewhere.</p>
 </div>
 </div>
-<div id="kurtosis" class="section level2">
-<h2><span class="header-section-number">5.3</span> Skew and kurtosis{#skew}</h2>
+<div id="skewandkurtosis" class="section level2">
+<h2><span class="header-section-number">5.3</span> Skew and kurtosis</h2>
 <p>There are two more descriptive statistics that you will sometimes see reported in the psychological literature, known as skew and kurtosis. In practice, neither one is used anywhere near as frequently as the measures of central tendency and variability that we’ve been talking about. Skew is pretty important, so you do see it mentioned a fair bit; but I’ve actually never seen kurtosis reported in a scientific article to date.</p>
-<pre><code>## [1] -0.9166761</code></pre>
-<pre><code>## [1] 0.000657801</code></pre>
+<pre><code>## [1] -0.9238622</code></pre>
+<pre><code>## [1] -0.003259903</code></pre>
 <div class="figure"><span id="fig:skewness"></span>
 <img src="navarro2_files/figure-html/skewness-1.png" alt="An illustration of skewness. On the left we have a negatively skewed data set (skewness $= -.93$), in the middle we have a data set with no skew (technically, skewness $= -.006$), and on the right we have a positively skewed data set (skewness $= .93$)." width="672" />
 <p class="caption">
 Figure 5.4: An illustration of skewness. On the left we have a negatively skewed data set (skewness <span class="math inline">\(= -.93\)</span>), in the middle we have a data set with no skew (technically, skewness <span class="math inline">\(= -.006\)</span>), and on the right we have a positively skewed data set (skewness <span class="math inline">\(= .93\)</span>).
 </p>
 </div>
-<pre><code>## [1] 0.9117311</code></pre>
+<pre><code>## [1] 0.9193805</code></pre>
 <p>Since it’s the more interesting of the two, let’s start by talking about the <strong><em>skewness</em></strong>. Skewness is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As Figure <a href="descriptives.html#fig:skewness">5.4</a> illustrates, if the data tend to have a lot of extreme small values (i.e., the lower tail is “longer” than the upper tail) and not so many extremely large values (left panel), then we say that the data are <em>negatively skewed</em>. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are <em>positively skewed</em>. That’s the qualitative idea behind skewness. The actual formula for the skewness of a data set is as follows <span class="math display">\[
 \mbox{skewness}(X) = \frac{1}{N \hat{\sigma}^3} \sum_{i=1}^N (X_i - \bar{X})^3
 \]</span> where <span class="math inline">\(N\)</span> is the number of observations, <span class="math inline">\(\bar{X}\)</span> is the sample mean, and <span class="math inline">\(\hat{\sigma}\)</span> is the standard deviation (the “divide by <span class="math inline">\(N-1\)</span>” version, that is). Perhaps more helpfully, it might be useful to point out that the <code>psych</code> package contains a <code>skew()</code> function that you can use to calculate skewness. So if we wanted to use this function to calculate the skewness of the <code>afl.margins</code> data, we’d first need to load the package</p>
@@ -1082,15 +1081,15 @@ Figure 5.4: An illustration of skewness. On the left we have a negatively skewed
 <pre><code>## [1] 0.7671555</code></pre>
 <p>Not surprisingly, it turns out that the AFL winning margins data is fairly skewed.</p>
 <p>The final measure that is sometimes referred to, though very rarely in practice, is the <strong><em>kurtosis</em></strong> of a data set. Put simply, kurtosis is a measure of the “pointiness” of a data set, as illustrated in Figure <a href="descriptives.html#fig:kurtosis">5.5</a>.</p>
-<pre><code>## [1] -0.952141</code></pre>
-<pre><code>## [1] 0.009141449</code></pre>
+<pre><code>## [1] -0.9490753</code></pre>
+<pre><code>## [1] -0.03003238</code></pre>
 <div class="figure"><span id="fig:kurtosis"></span>
 <img src="navarro2_files/figure-html/kurtosis-1.png" alt="An illustration of kurtosis. On the left, we have a &quot;platykurtic&quot; data set (kurtosis = $-.95$), meaning that the data set is &quot;too flat&quot;. In the middle we have a &quot;mesokurtic&quot; data set (kurtosis is almost exactly 0), which means that the pointiness of the data is just about right. Finally, on the right, we have a &quot;leptokurtic&quot; data set (kurtosis $= 2.12$) indicating that the data set is &quot;too pointy&quot;. Note that kurtosis is measured with respect to a normal curve (black line)" width="672" />
 <p class="caption">
 Figure 5.5: An illustration of kurtosis. On the left, we have a “platykurtic” data set (kurtosis = <span class="math inline">\(-.95\)</span>), meaning that the data set is “too flat”. In the middle we have a “mesokurtic” data set (kurtosis is almost exactly 0), which means that the pointiness of the data is just about right. Finally, on the right, we have a “leptokurtic” data set (kurtosis <span class="math inline">\(= 2.12\)</span>) indicating that the data set is “too pointy”. Note that kurtosis is measured with respect to a normal curve (black line)
 </p>
 </div>
-<pre><code>## [1] 2.090079</code></pre>
+<pre><code>## [1] 2.026417</code></pre>
 <p>By convention, we say that the “normal curve” (black lines) has zero kurtosis, so the pointiness of a data set is assessed relative to this curve. In this Figure, the data on the left are not pointy enough, so the kurtosis is negative and we call the data <em>platykurtic</em>. The data on the right are too pointy, so the kurtosis is positive and we say that the data is <em>leptokurtic</em>. But the data in the middle are just pointy enough, so we say that it is <em>mesokurtic</em> and has kurtosis zero. This is summarised in the table below:</p>
 <table>
 <thead>
@@ -1213,8 +1212,8 @@ blowouts</code></pre></div>
 <li><code>min</code>. The minimum value.</li>
 <li><code>max</code>. The maximum value.</li>
 <li><code>range</code>. The range spanned by the data (Section <a href="descriptives.html#range">5.2.1</a>).</li>
-<li><code>skew</code>. The skewness (Section <a href="#skew"><strong>??</strong></a>).</li>
-<li><code>kurtosis</code>. The kurtosis (Section <a href="descriptives.html#kurtosis">5.3</a>).</li>
+<li><code>skew</code>. The skewness (Section <a href="descriptives.html#skewandkurtosis">5.3</a>).</li>
+<li><code>kurtosis</code>. The kurtosis (Section <a href="descriptives.html#skewandkurtosis">5.3</a>).</li>
 <li><code>se</code>. The standard error of the mean (Chapter <a href="estimation.html#estimation">10</a>).</li>
 </ul>
 <p>Notice that these descriptive statistics generally only make sense for data that are interval or ratio scale (usually encoded as numeric vectors). For nominal or ordinal variables (usually encoded as factors), most of these descriptive statistics are not all that useful. What the <code>describe()</code> function does is convert factors and logical variables to numeric vectors in order to do the calculations. These variables are marked with <code>*</code> and most of the time, the descriptive statistics for those variables won’t make much sense. If you try to feed it a data frame that includes a character vector as a variable, it produces an error.</p>
@@ -1830,7 +1829,7 @@ day           -0.077      0.058     0.006      .</code></pre>
 <ul>
 <li><em>Measures of central tendency</em>. Broadly speaking, central tendency measures tell you where the data are. There’s three measures that are typically reported in the literature: the mean, median and mode. (Section <a href="descriptives.html#centraltendency">5.1</a>)</li>
 <li><em>Measures of variability</em>. In contrast, measures of variability tell you about how “spread out” the data are. The key measures are: range, standard deviation, interquartile reange (Section <a href="descriptives.html#var">5.2</a>)</li>
-<li><em>Getting summaries of variables in R</em>. Since this book focuses on doing data analysis in R, we spent a bit of time talking about how descriptive statistics are computed in R. (Section  and <a href="descriptives.html#groupdescriptives">5.5</a>)</li>
+<li><em>Getting summaries of variables in R</em>. Since this book focuses on doing data analysis in R, we spent a bit of time talking about how descriptive statistics are computed in R. (Section <a href="studydesign.html#summary">2.8</a> and <a href="descriptives.html#groupdescriptives">5.5</a>)</li>
 <li><em>Standard scores</em>. The <span class="math inline">\(z\)</span>-score is a slightly unusual beast. It’s not quite a descriptive statistic, and not quite an inference. We talked about it in Section <a href="descriptives.html#zscore">5.6</a>. Make sure you understand that section: it’ll come up again later.</li>
 <li><em>Correlations</em>. Want to know how strong the relationship is between two variables? Calculate a correlation. (Section <a href="descriptives.html#correl">5.7</a>)</li>
 <li><em>Missing data</em>. Dealing with missing data is one of those frustrating things that data analysts really wish the didn’t have to think about. In real life it can be hard to do well. For the purpose of this book, we only touched on the basics in Section <a href="descriptives.html#missing">5.8</a></li>
