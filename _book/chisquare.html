@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="part-v-statistical-tools.html">
-<link rel="next" href="references.html">
+<link rel="next" href="ttest.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -562,6 +562,56 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.9" data-path="chisquare.html"><a href="chisquare.html#whats-the-difference-between-mcnemar-and-independence"><i class="fa fa-check"></i><b>12.9</b> What’s the difference between McNemar and independence?</a></li>
 <li class="chapter" data-level="12.10" data-path="chisquare.html"><a href="chisquare.html#summary-10"><i class="fa fa-check"></i><b>12.10</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="13" data-path="ttest.html"><a href="ttest.html"><i class="fa fa-check"></i><b>13</b> Comparing two means</a><ul>
+<li class="chapter" data-level="13.1" data-path="ttest.html"><a href="ttest.html#the-one-sample-z-test"><i class="fa fa-check"></i><b>13.1</b> The one-sample <span class="math inline">\(z\)</span>-test</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="ttest.html"><a href="ttest.html#the-inference-problem-that-the-test-addresses"><i class="fa fa-check"></i><b>13.1.1</b> The inference problem that the test addresses</a></li>
+<li class="chapter" data-level="13.1.2" data-path="ttest.html"><a href="ttest.html#constructing-the-hypothesis-test"><i class="fa fa-check"></i><b>13.1.2</b> Constructing the hypothesis test</a></li>
+<li class="chapter" data-level="13.1.3" data-path="ttest.html"><a href="ttest.html#a-worked-example-using-r"><i class="fa fa-check"></i><b>13.1.3</b> A worked example using R</a></li>
+<li class="chapter" data-level="13.1.4" data-path="ttest.html"><a href="ttest.html#zassumptions"><i class="fa fa-check"></i><b>13.1.4</b> Assumptions of the <span class="math inline">\(z\)</span>-test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="ttest.html"><a href="ttest.html#onesamplettest"><i class="fa fa-check"></i><b>13.2</b> The one-sample <span class="math inline">\(t\)</span>-test</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="ttest.html"><a href="ttest.html#introducing-the-t-test"><i class="fa fa-check"></i><b>13.2.1</b> Introducing the <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="13.2.2" data-path="ttest.html"><a href="ttest.html#doing-the-test-in-r"><i class="fa fa-check"></i><b>13.2.2</b> Doing the test in R</a></li>
+<li class="chapter" data-level="13.2.3" data-path="ttest.html"><a href="ttest.html#ttestoneassumptions"><i class="fa fa-check"></i><b>13.2.3</b> Assumptions of the one sample <span class="math inline">\(t\)</span>-test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="ttest.html"><a href="ttest.html#studentttest"><i class="fa fa-check"></i><b>13.3</b> The independent samples <span class="math inline">\(t\)</span>-test (Student test)</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="ttest.html"><a href="ttest.html#the-data-1"><i class="fa fa-check"></i><b>13.3.1</b> The data</a></li>
+<li class="chapter" data-level="13.3.2" data-path="ttest.html"><a href="ttest.html#introducing-the-test"><i class="fa fa-check"></i><b>13.3.2</b> Introducing the test</a></li>
+<li class="chapter" data-level="13.3.3" data-path="ttest.html"><a href="ttest.html#a-pooled-estimate-of-the-standard-deviation"><i class="fa fa-check"></i><b>13.3.3</b> A “pooled estimate” of the standard deviation</a></li>
+<li class="chapter" data-level="13.3.4" data-path="ttest.html"><a href="ttest.html#the-same-pooled-estimate-described-differently"><i class="fa fa-check"></i><b>13.3.4</b> The same pooled estimate, described differently</a></li>
+<li class="chapter" data-level="13.3.5" data-path="ttest.html"><a href="ttest.html#completing-the-test"><i class="fa fa-check"></i><b>13.3.5</b> Completing the test</a></li>
+<li class="chapter" data-level="13.3.6" data-path="ttest.html"><a href="ttest.html#doing-the-test-in-r-1"><i class="fa fa-check"></i><b>13.3.6</b> Doing the test in R</a></li>
+<li class="chapter" data-level="13.3.7" data-path="ttest.html"><a href="ttest.html#positive-and-negative-t-values"><i class="fa fa-check"></i><b>13.3.7</b> Positive and negative <span class="math inline">\(t\)</span> values</a></li>
+<li class="chapter" data-level="13.3.8" data-path="ttest.html"><a href="ttest.html#studentassumptions"><i class="fa fa-check"></i><b>13.3.8</b> Assumptions of the test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="ttest.html"><a href="ttest.html#welchttest"><i class="fa fa-check"></i><b>13.4</b> The independent samples <span class="math inline">\(t\)</span>-test (Welch test)</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="ttest.html"><a href="ttest.html#doing-the-test-in-r-2"><i class="fa fa-check"></i><b>13.4.1</b> Doing the test in R</a></li>
+<li class="chapter" data-level="13.4.2" data-path="ttest.html"><a href="ttest.html#assumptions-of-the-test"><i class="fa fa-check"></i><b>13.4.2</b> Assumptions of the test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="ttest.html"><a href="ttest.html#pairedsamplesttest"><i class="fa fa-check"></i><b>13.5</b> The paired-samples <span class="math inline">\(t\)</span>-test</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="ttest.html"><a href="ttest.html#the-data-2"><i class="fa fa-check"></i><b>13.5.1</b> The data</a></li>
+<li class="chapter" data-level="13.5.2" data-path="ttest.html"><a href="ttest.html#what-is-the-paired-samples-t-test"><i class="fa fa-check"></i><b>13.5.2</b> What is the paired samples <span class="math inline">\(t\)</span>-test?</a></li>
+<li class="chapter" data-level="13.5.3" data-path="ttest.html"><a href="ttest.html#doing-the-test-in-r-part-1"><i class="fa fa-check"></i><b>13.5.3</b> Doing the test in R, part 1</a></li>
+<li class="chapter" data-level="13.5.4" data-path="ttest.html"><a href="ttest.html#doing-the-test-in-r-part-2"><i class="fa fa-check"></i><b>13.5.4</b> Doing the test in R, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="ttest.html"><a href="ttest.html#one-sided-tests"><i class="fa fa-check"></i><b>13.6</b> One sided tests</a></li>
+<li class="chapter" data-level="13.7" data-path="ttest.html"><a href="ttest.html#ttestfunction"><i class="fa fa-check"></i><b>13.7</b> Using the t.test() function</a></li>
+<li class="chapter" data-level="13.8" data-path="ttest.html"><a href="ttest.html#cohensd"><i class="fa fa-check"></i><b>13.8</b> Effect size</a><ul>
+<li class="chapter" data-level="13.8.1" data-path="ttest.html"><a href="ttest.html#cohens-d-from-one-sample"><i class="fa fa-check"></i><b>13.8.1</b> Cohen’s <span class="math inline">\(d\)</span> from one sample</a></li>
+<li class="chapter" data-level="13.8.2" data-path="ttest.html"><a href="ttest.html#cohens-d-from-a-student-t-test"><i class="fa fa-check"></i><b>13.8.2</b> Cohen’s <span class="math inline">\(d\)</span> from a Student <span class="math inline">\(t\)</span> test</a></li>
+<li class="chapter" data-level="13.8.3" data-path="ttest.html"><a href="ttest.html#cohens-d-from-a-welch-test"><i class="fa fa-check"></i><b>13.8.3</b> Cohen’s <span class="math inline">\(d\)</span> from a Welch test</a></li>
+<li class="chapter" data-level="13.8.4" data-path="ttest.html"><a href="ttest.html#cohens-d-from-a-paired-samples-test"><i class="fa fa-check"></i><b>13.8.4</b> Cohen’s <span class="math inline">\(d\)</span> from a paired-samples test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.9" data-path="ttest.html"><a href="ttest.html#shapiro"><i class="fa fa-check"></i><b>13.9</b> Checking the normality of a sample</a><ul>
+<li class="chapter" data-level="13.9.1" data-path="ttest.html"><a href="ttest.html#qq-plots"><i class="fa fa-check"></i><b>13.9.1</b> QQ plots</a></li>
+<li class="chapter" data-level="13.9.2" data-path="ttest.html"><a href="ttest.html#shapiro-wilk-tests"><i class="fa fa-check"></i><b>13.9.2</b> Shapiro-Wilk tests</a></li>
+</ul></li>
+<li class="chapter" data-level="13.10" data-path="ttest.html"><a href="ttest.html#wilcox"><i class="fa fa-check"></i><b>13.10</b> Testing non-normal data with Wilcoxon tests</a><ul>
+<li class="chapter" data-level="13.10.1" data-path="ttest.html"><a href="ttest.html#two-sample-wilcoxon-test"><i class="fa fa-check"></i><b>13.10.1</b> Two sample Wilcoxon test</a></li>
+<li class="chapter" data-level="13.10.2" data-path="ttest.html"><a href="ttest.html#one-sample-wilcoxon-test"><i class="fa fa-check"></i><b>13.10.2</b> One sample Wilcoxon test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.11" data-path="ttest.html"><a href="ttest.html#summary-11"><i class="fa fa-check"></i><b>13.11</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org/ekothe/navarro2/" target="blank">Published with bookdown</a></li>
@@ -585,7 +635,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="chisquare" class="section level1">
 <h1><span class="header-section-number">Chapter 12</span> Categorical data analysis</h1>
-<p>Now that we’ve got the basic theory behind hypothesis testing, it’s time to start looking at specific tests that are commonly used in psychology. So where should we start? Not every textbook agrees on where to start, but I’m going to start with “<span class="math inline">\(\chi^2\)</span> tests” (this chapter) and “<span class="math inline">\(t\)</span>-tests” (Chapter <a href="#ttest"><strong>??</strong></a>). Both of these tools are very frequently used in scientific practice, and while they’re not as powerful as “analysis of variance” (Chapter <a href="#anova"><strong>??</strong></a>) and “regression” (Chapter <a href="#regression"><strong>??</strong></a>) they’re much easier to understand.</p>
+<p>Now that we’ve got the basic theory behind hypothesis testing, it’s time to start looking at specific tests that are commonly used in psychology. So where should we start? Not every textbook agrees on where to start, but I’m going to start with “<span class="math inline">\(\chi^2\)</span> tests” (this chapter) and “<span class="math inline">\(t\)</span>-tests” (Chapter <a href="ttest.html#ttest">13</a>). Both of these tools are very frequently used in scientific practice, and while they’re not as powerful as “analysis of variance” (Chapter <a href="#anova"><strong>??</strong></a>) and “regression” (Chapter <a href="#regression"><strong>??</strong></a>) they’re much easier to understand.</p>
 <p>The term “categorical data” is just another name for “nominal scale data”. It’s nothing that we haven’t already discussed, it’s just that in the context of data analysis people tend to use the term “categorical data” rather than “nominal scale data”. I don’t know why. In any case, <strong><em>categorical data analysis</em></strong> refers to a collection of tools that you can use when your data are nominal scale. However, there are a lot of different tools that can be used for categorical data analysis, and this chapter only covers a few of the more common ones.</p>
 <div id="goftest" class="section level2">
 <h2><span class="header-section-number">12.1</span> The <span class="math inline">\(\chi^2\)</span> goodness-of-fit test</h2>
@@ -1591,7 +1641,7 @@ cardChoices</code></pre></div>
         </div>
       </div>
 <a href="part-v-statistical-tools.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ttest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
