@@ -29,7 +29,7 @@ At the top of the page -- under the heading "Download and Install R" -- you'll s
 
 ### Installing R on a Windows computer
 
-The CRAN homepage changes from time to time, and it's not particularly pretty, or all that well-designed quite frankly. But it's not difficult to find what you're after. In general you'll find a link at the top of the page with the text "Download R for Windows". If you click on that, it will take you to a page that offers you a few options. Again, at the very top of the page you'll be told to click on a link that says to click here if you're installing R for the first time. That's probably what you want. This will take you to a page that has a prominent link at the top called "Download R 3.0.2 for Windows". That's the one you want. Click on that and your browser should start downloading a file called `R-3.0.2-win.exe`, or whatever the equivalent version number is by the time you read this. The file for version 3.0.2 is about 54MB in size, so it may take some time depending on how fast your internet connection is. Once you've downloaded the file, double click to install it. As with any software you download online, Windows will ask you some questions about whether you trust the file and so on. After you click through those, it'll ask you where you want to install it, and what components you want to install. The default values should be fine for most people, so again, just click through. Once all that is done, you should have  R  installed on your system. You can access it from the Start menu, or from the desktop if you asked it to add a shortcut there. You can now open up R in the usual way if you want to, but what I'm going to suggest is that instead of doing that you should now install RStudio.
+The CRAN homepage changes from time to time, and it's not particularly pretty, or all that well-designed quite frankly. But it's not difficult to find what you're after. In general you'll find a link at the top of the page with the text "Download R for Windows". If you click on that, it will take you to a page that offers you a few options. Again, at the very top of the page you'll be told to click on a link that says to click here if you're installing R for the first time. That's probably what you want. This will take you to a page that has a prominent link at the top called "Download R 3.0.2 for Windows". That's the one you want. Click on that and your browser should start downloading a file called `R-3.0.2-win.exe`, or whatever the equivalent version number is by the time you read this. The file for version 3.0.2 is about 54MB in size, so it may take some time depending on how fast your internet connection is. Once you've downloaded the file, double click to install it. As with any software you download online, Windows will ask you some questions about whether you trust the file and so on. After you click through those, it'll ask you where you want to install it, and what components you want to install. The default values should be fine for most people, so again, just click through. Once all that is done, you should have  R  installed on your system. You can access it from the Start menu, or from the desktop if you asked it to add a shortcut there. You can now open up R in the usual way if you want to, but what I'm going to suggest is that instead of doing that you should now install RStudio (see Section \@ref(installingrstudio) for instructions).
 
 
 
@@ -38,14 +38,14 @@ The CRAN homepage changes from time to time, and it's not particularly pretty, o
 
 When you click on the Mac OS X link, you should find yourself on a page with the title "R for Mac OS X". The vast majority of Mac users will have a fairly recent version of the operating system: as long as you're running Mac OS X 10.6 (Snow Leopard) or higher, then you'll be fine.^[If you're running an older version of the Mac OS, then you need to follow the link to the "old" page (http://cran.r-project.org/bin/macosx/old/). You should be able to find the installer file that you need at the bottom of the page.] There's a fairly prominent link on the page called "R-3.0.2.pkg", which is the one you want. Click on that link and you'll start downloading the installer file, which is (not surprisingly) called `R-3.0.2.pkg`. It's about 61MB in size, so the download can take a while on slower internet connections. 
 
-Once you've downloaded `R-3.0.2.pkg`, all you need to do is open it by double clicking on the package file. The installation should go smoothly from there: just follow all the instructions just like you usually do when you install something. Once it's finished, you'll find a file called `R.app` in the Applications folder. You can now open up R in the usual way^[Tip for advanced Mac users. You can run  R  from the terminal if you want to. The command is just "R". It behaves like the normal desktop version, except that help documentation behaves like a "man" page instead of opening in a new window.] if you want to, but what I'm going to suggest is that instead of doing that you should now install RStudio. 
+Once you've downloaded `R-3.0.2.pkg`, all you need to do is open it by double clicking on the package file. The installation should go smoothly from there: just follow all the instructions just like you usually do when you install something. Once it's finished, you'll find a file called `R.app` in the Applications folder. You can now open up R in the usual way^[Tip for advanced Mac users. You can run  R  from the terminal if you want to. The command is just "R". It behaves like the normal desktop version, except that help documentation behaves like a "man" page instead of opening in a new window.] if you want to, but what I'm going to suggest is that instead of doing that you should now install RStudio (see Section \@ref(installingrstudio) for instructions). 
 
 ### Installing R on a Linux computer
 
 If you're successfully managing to run a Linux box, regardless of what distribution, then you should find the instructions on the website easy enough. You can compile R from source yourself if you want, or install it through your package management system, which will probably have R in it. 
-Alternatively, the CRAN site has precompiled binaries for Debian, Red Hat, Suse and Ubuntu and has separate instructions for each. Once you've got R installed, you can run it from the command line just by typing `R`. However, if you're feeling envious of Windows and Mac users for their fancy GUIs, you can download RStudio too.
+Alternatively, the CRAN site has precompiled binaries for Debian, Red Hat, Suse and Ubuntu and has separate instructions for each. Once you've got R installed, you can run it from the command line just by typing `R`. However, if you're feeling envious of Windows and Mac users for their fancy GUIs, you can download RStudio too (see Section \@ref(installingrstudio) for instructions).
 
-### Downloading and installing  RStudio
+### Downloading and installing  RStudio{#installingrstudio}
 
 Okay, so regardless of what operating system you're using, the last thing that I told you to do is to download RStudio. To understand why I've suggested this,  you need to understand a little bit more about R itself. The term R doesn't really refer to a specific application on your computer. Rather, it refers to the underlying statistical language. You can use this language through lots of different applications. When you install R initially, it comes with one application that lets you do this: it's the R.exe application on a Windows machine, and the R.app application on a Mac. But that's not the only way to do it. There are lots of different applications that you can use that will let you interact with R. One of those is called RStudio, and it's the one I'm going to suggest that you use. RStudio provides a clean, professional interface to R that I find much nicer to work with than either the Windows or Mac defaults. Like R itself, RStudio is free software: you can find all the details on their webpage. In the meantime, you can download it here:
 
@@ -55,12 +55,11 @@ When you visit the RStudio website, you'll probably be struck by how much cleane
 
 When you click on the download button on the homepage it will ask you to choose whether you want  the desktop version or the server version. You want the desktop version. After choosing the desktop version it will take you to a page http://www.RStudio.org/download/desktop) that shows several possible downloads: there's a different one for each operating system. However, the nice people at RStudio have designed the webpage so that it automatically recommends the download that is most appropriate for your computer. Click on the appropriate link, and the RStudio installer file will start downloading. 
 
+Once it's finished downloading, open the installer file in the usual way to install RStudio. After it's finished installing, you can start R by opening RStudio.  You don't need to open R.app or R.exe in order to access R. RStudio will take care of that for you. To illustrate what RStudio looks like, Figure \@ref(fig:RStudio) shows a screenshot of an R session in progress. In this screenshot, you can see that it's running on a Mac, but it looks almost identical no matter what operating system you have. The Windows version looks more like a Windows application (e.g., the menus are attached to the application window and the colour scheme is slightly different), but it's more or less identical. There are a few minor differences in where things are located in the menus (I'll point them out as we go along) and in the shortcut keys, because RStudio is trying to "feel" like a proper Mac application or a proper Windows application, and this means that it has to change its behaviour a little bit depending on what computer it's running on. Even so, these differences are very small: I started out using the Mac version of RStudio and then started using the Windows version as well in order to write these notes.
+
 ```{r RStudio, fig.cap="An R session in progress running through RStudio. The picture shows RStudio running on a Mac, but the Windows interface is almost identical.", echo=FALSE}
 knitr::include_graphics("./rbook-master/img/introR/RStudio2.png")
-
 ```
-
-Once it's finished downloading, open the installer file in the usual way to install RStudio. After it's finished installing, you can start R by opening RStudio.  You don't need to open R.app or R.exe in order to access R. RStudio will take care of that for you. To illustrate what RStudio looks like, Figure \@ref(fig:RStudio) shows a screenshot of an R session in progress. In this screenshot, you can see that it's running on a Mac, but it looks almost identical no matter what operating system you have. The Windows version looks more like a Windows application (e.g., the menus are attached to the application window and the colour scheme is slightly different), but it's more or less identical. There are a few minor differences in where things are located in the menus (I'll point them out as we go along) and in the shortcut keys, because RStudio is trying to "feel" like a proper Mac application or a proper Windows application, and this means that it has to change its behaviour a little bit depending on what computer it's running on. Even so, these differences are very small: I started out using the Mac version of RStudio and then started using the Windows version as well in order to write these notes.
 
 The only "shortcoming" I've found with RStudio is that -- as of this writing -- it's still a work in progress. The "problem" is that they keep improving it. New features keep turning up the more recent releases, so there's a good chance that by the time you read this book there will be a version out that has some really neat things that weren't in the version that I'm using now.
 
@@ -248,12 +247,12 @@ Error: object 'citat' not found
 What about if I typed `citation` and hit enter? In this case we get something very odd, something that we definitely *don't* want, at least at this stage. Here's what happens:
 
 ```
-> [citation]
-function (package = "base", lib.loc = NULL, auto = NULL) 
-{
-    dir <- system.file(package = package, lib.loc = lib.loc)
-    if (dir == "") 
-        stop(gettextf("package '%s' not found", package), domain = NA)
+citation
+## function (package = "base", lib.loc = NULL, auto = NULL) 
+## {
+##     dir <- system.file(package = package, lib.loc = lib.loc)
+##     if (dir == "") 
+##         stop(gettextf("package '%s' not found", package), domain = NA)
 
 BLAH BLAH BLAH
 ```
@@ -411,7 +410,7 @@ In the examples that we've seen so far, my variable names (`sales` and `revenue`
 - Variable names cannot include spaces: therefore `my sales` is not a valid name, but `my.sales` is.
 - Variable names are case sensitive: that is, `Sales` and `sales` are *different* variable names.
 - Variable names must start with a letter or a period. You can't use something like `_sales` or `1sales` as a variable name. You can use `.sales` as a variable name if you want, but it's not usually a good idea. By convention, variables starting with a `.` are used for special purposes, so you should avoid doing so. 
-- Variable names cannot be one of the reserved keywords. These are special names that R needs to keep "safe" from us mere users, so you can't use them as the names of variables. The keywords are: `if`, `else`, `repeat`, `while`, `function`, `for`, `in`, `next`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, Rtextverb#NA_integer_#, Rtextverb#NA_real_#, `NA_complex_`, and finally,  `NA_character_`. Don't feel especially obliged to memorise these: if you make a mistake and try to use one of the keywords as a variable name, R will complain about it like the whiny little automaton it is.
+- Variable names cannot be one of the reserved keywords. These are special names that R needs to keep "safe" from us mere users, so you can't use them as the names of variables. The keywords are: `if`, `else`, `repeat`, `while`, `function`, `for`, `in`, `next`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, and finally,  `NA_character_`. Don't feel especially obliged to memorise these: if you make a mistake and try to use one of the keywords as a variable name, R will complain about it like the whiny little automaton it is.
 
 
 
@@ -428,7 +427,7 @@ In addition to those rules that R enforces, there are some informal conventions 
 
 ## Using functions to do calculations{#usingfunctions}
 
-The symbols `+`, `-`, `*` and so on are examples of operators. As we've seen, you can do quite a lot of calculations just by using these operators. However, in order to do more advanced calculations (and later on, to do actual statistics), you're going to need to start using **_functions_**.^[A side note for students with a programming background. Technically speaking, operators *are* functions in R: the addition operator `+` is actually a convenient way of calling the addition function ``+()``]. Thus `10+20` is equivalent to the function call `+(20, 30)`. Not surprisingly, no-one ever uses this version. Because that would be stupid.] I'll talk in more detail about functions and how they work in Section \@ref(functions), but for now let's just dive in and use a few. To get started, suppose I wanted to take the square root of 225. The  square root, in case your high school maths is a bit rusty, is just the opposite of squaring a number. So, for instance, since "5 squared is 25" I can say that "5 is the square root of 25". The usual notation for this is 
+The symbols `+`, `-`, `*` and so on are examples of operators. As we've seen, you can do quite a lot of calculations just by using these operators. However, in order to do more advanced calculations (and later on, to do actual statistics), you're going to need to start using **_functions_**.^[A side note for students with a programming background. Technically speaking, operators *are* functions in R: the addition operator `+` is actually a convenient way of calling the addition function ``+()``. Thus `10+20` is equivalent to the function call `+(20, 30)`. Not surprisingly, no-one ever uses this version. Because that would be stupid.] I'll talk in more detail about functions and how they work in Section \@ref(functions), but for now let's just dive in and use a few. To get started, suppose I wanted to take the square root of 225. The  square root, in case your high school maths is a bit rusty, is just the opposite of squaring a number. So, for instance, since "5 squared is 25" I can say that "5 is the square root of 25". The usual notation for this is 
 
 $$
 \sqrt{25} = 5
@@ -493,7 +492,7 @@ What's happening here is that I've specified *two* arguments: the first argument
 round( x = 3.1415, digits = 2 )
 ```
 
-Notice that this is kind of similar in spirit to variable assignment (Section \ref@(assign), except that I used `=` here, rather than `<-`. In both cases we're specifying specific values to be associated with a label. However, there are some differences between what I was doing earlier on when creating variables, and what I'm doing here when specifying arguments, and so as a consequence it's important that you use `=` in this context.
+Notice that this is kind of similar in spirit to variable assignment (Section \@ref(assign)), except that I used `=` here, rather than `<-`. In both cases we're specifying specific values to be associated with a label. However, there are some differences between what I was doing earlier on when creating variables, and what I'm doing here when specifying arguments, and so as a consequence it's important that you use `=` in this context.
 
 
 As you can see, specifying the arguments by name involves a lot more typing, but it's also a lot easier to read. Because of this, the commands in this book will usually specify arguments by name,^[The two functions discussed previously, `sqrt()` and `abs()`, both only have a single argument, `x`. So I could have typed something like `sqrt(x = 225)` or `abs(x = -13)` earlier. The fact that all these functions use `x` as the name of the argument that corresponds the "main" variable that you're working with is no coincidence. That's a fairly widely used convention. Quite often, the writers of R functions will try to use conventional names like this to make your life easier. Or at least that's the theory. In practice it doesn't always work as well as you'd hope.] since that makes it clearer to you what I'm doing. However, one important thing to note is that when specifying the arguments using their names, it doesn't matter what order you type them in. But if you don't use the argument names, then you have to input the arguments in the correct order. In other words, these three commands all produce the same output...
@@ -525,26 +524,20 @@ The first thing I  want to call your attention to is the *autocomplete* ability 
 
 Let's stick to our example above and assume that what you want to do is to round a number. This time around, start typing the name of the function that you want, and then hit the "tab" key. RStudio will then display a little window like the one shown in Figure \@ref(fig:RStudiotab). In this figure, I've typed the letters `ro` at the command line, and then hit tab. The window has two panels. On the left, there's a list of variables and functions that start with the letters that I've typed shown in black text, and some grey text that tells you where that variable/function is stored. Ignore the grey text for now: it won't make much sense to you until we've talked about packages in Section \@ref(packageinstall). In Figure \@ref(fig:RStudiotab) you can see that there's quite a few things that start with the letters `ro`: there's something called `rock`, something called `round`, something called `round.Date` and so on. The one we want is `round`, but if you're typing this yourself you'll notice that when you hit the tab key the window pops up with the top entry (i.e., `rock`) highlighted. You can use the up and down arrow keys to select the one that you want. Or, if none of the options look right to you, you can hit the escape key ("esc") or the left arrow key to make the window go away. 
 
-In our case, the thing we want is the `round` option, so we'll select that. When you do this, you'll see that the panel on the right changes. Previously, it had been telling us something about the `rock` data set (i.e., "Measurements on 48 rock samples...") that is distributed as part of R. But when we select `round`, it displays information about the `round()` function, exactly as it is shown in Figure \@ref(fig:RStudiotab). This display is really handy. The very first thing it says is `round(x, digits = 0)`: what this is telling you is that the `round()` function has two arguments. The first argument is called `x`, and it doesn't have a default value. The second argument is `digits`, and it has a default value of 0. In a lot of situations, that's all the information you need. But RStudio goes a bit further, and provides some additional information about the function underneath. Sometimes that additional information is very helpful, sometimes it's not: RStudio pulls that text from the R help documentation, and my experience is that the helpfulness of that documentation varies wildly. Anyway, if you've decided that `round()` is the function that you want to use, you can hit the right arrow or the enter key, and RStudio will finish typing the rest of the function name for you. 
-
 ```{r RStudiotab, fig.cap="Start typing the name of a function or a variable, and hit the \"tab\" key. RStudio brings up a little dialog box like this one that lets you select the one you want, and even prints out a little information about it.", echo=FALSE}
 knitr::include_graphics("./rbook-master/img/introR/RStudio_tab.png")
 
 ```
 
-Start typing the name of a function or a variable, and hit the "tab" key. RStudio brings up a little dialog box like this one that lets you select the one you want, and even prints out a little information about it.
+In our case, the thing we want is the `round` option, so we'll select that. When you do this, you'll see that the panel on the right changes. Previously, it had been telling us something about the `rock` data set (i.e., "Measurements on 48 rock samples...") that is distributed as part of R. But when we select `round`, it displays information about the `round()` function, exactly as it is shown in Figure \@ref(fig:RStudiotab). This display is really handy. The very first thing it says is `round(x, digits = 0)`: what this is telling you is that the `round()` function has two arguments. The first argument is called `x`, and it doesn't have a default value. The second argument is `digits`, and it has a default value of 0. In a lot of situations, that's all the information you need. But RStudio goes a bit further, and provides some additional information about the function underneath. Sometimes that additional information is very helpful, sometimes it's not: RStudio pulls that text from the R help documentation, and my experience is that the helpfulness of that documentation varies wildly. Anyway, if you've decided that `round()` is the function that you want to use, you can hit the right arrow or the enter key, and RStudio will finish typing the rest of the function name for you. 
 
-The RStudio autocomplete tool works slightly differently if you've already got the name of the function typed and you're now trying to type the arguments. For instance, suppose I've typed `round(` into the console, and *then* I hit tab. RStudio is smart enough to recognise that I already know the name of the function that I want, because I've already typed it! Instead, it figures that what I'm interested in is the *arguments* to that function. So that's what pops up in the little window. You can see this in Figure \@ref(fig:RStudiotab2). Again, the window has two panels, and you can interact with this window in exactly the same way that you did with the window shown in \@ref(fig:RStudiotab). On the left hand panel, you can see a list of the argument names. On the right hand side, it displays some information about what the selected argument does. 
+The RStudio autocomplete tool works slightly differently if you've already got the name of the function typed and you're now trying to type the arguments. For instance, suppose I've typed `round(` into the console, and *then* I hit tab. RStudio is smart enough to recognise that I already know the name of the function that I want, because I've already typed it! Instead, it figures that what I'm interested in is the *arguments* to that function. So that's what pops up in the little window. You can see this in Figure \@ref(fig:RStudiotab2). Again, the window has two panels, and you can interact with this window in exactly the same way that you did with the window shown in Figure \@ref(fig:RStudiotab). On the left hand panel, you can see a list of the argument names. On the right hand side, it displays some information about what the selected argument does. 
 
 
 ```{r RStudiotab2, fig.cap="If you've typed the name of a function already along with the left parenthesis and then hit the \"tab\" key, RStudio brings up a different window to the one shown above. This one lists all the arguments to the function on the left, and information about each argument on the right.", echo=FALSE}
 knitr::include_graphics("./rbook-master/img/introR/RStudio_tab2.png")
 
 ```
-
-
-If you've typed the name of a function already along with the left parenthesis and then hit the "tab" key, RStudio brings up a different window to the one shown in Figure \@ref(fig:RStudiotab). This one lists all the arguments to the function on the left, and information about each argument on the right.
-
 
 ### Browsing your command history
 
@@ -560,7 +553,7 @@ knitr::include_graphics("./rbook-master/img/introR/historyTab.png")
 
 ## Storing many numbers as a vector{#vectors}
 
-At this point we've covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see Section\@ref(generics), so let's return to our discussion of variables. When I introduced variables in Section\@ref(assign) I showed you how we can use variables to store a single number. In this section, we'll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a **_vector_**. So let's create one. 
+At this point we've covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see Section \@ref(generics), so let's return to our discussion of variables. When I introduced variables in Section \@ref(assign) I showed you how we can use variables to store a single number. In this section, we'll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a **_vector_**. So let's create one. 
 
 ### Creating a vector
 Let's stick to my silly "get rich quick by textbook writing" example. Suppose the textbook company (if I actually had one, that is) sends me sales data on a monthly basis. Since my class start in late February, we might expect most of the sales to occur towards the start of the year. Let's suppose that I have 100 sales in February, 200 sales in March and 50 sales in April, and no other sales for the rest of the year. What I would like to do is have a variable -- let's call it `sales.by.month` -- that stores all this sales data. The first number stored should be `0` since I had no sales in January, the second should be `100`, and so on. The simplest way to do this in R is to use the **_combine_** function, `c()`. To do so, all we have to do is type all the numbers you want to store in a comma separated list, like this:^[Notice that I didn't specify any argument names here. The `c()` function is one of those cases where we don't use names. We just type all the numbers, and R just dumps them all in a single variable.]
@@ -578,11 +571,18 @@ To use the correct terminology here, we have a single variable here called `sale
 
 Now that we've learned how to put information into a vector, the next  thing to understand is how to pull that information back out again. However, before I do so it's worth taking a slight detour. If you've been following along, typing all the commands into R yourself, it's possible that the output that you saw when we printed out the `sales.by.month` vector was slightly different to what I showed above. This would have happened if the window (or the RStudio panel) that contains the R console is really, really narrow. If that were the case, you might have seen output that looks something like this:
 
+```{r set-options1, echo=FALSE, cache=FALSE}
+options(width = 20)
+```
+
 ```{r}
 sales.by.month
 ```
-Because there wasn't much room on the screen, R has printed out the results over two lines. But that's not the important thing to notice. The important point is that the first line has a `[1]` in front of it, whereas the second line starts with `[9]`. It's pretty clear what's happening here. For the first row, R has printed out the 1st element through to the 8th element, so it starts that row with a `[1]`. For the second row, R has printed out the 9th element of the vector through to the 12th one, and so it begins that row with a `[9]` so that you can tell where it's up to at a glance. It might seem a bit odd to you that R does this, but in some ways it's a kindness, especially when dealing with larger data sets!
+Because there wasn't much room on the screen, R has printed out the results over three lines. But that's not the important thing to notice. The important point is that the first line has a `[1]` in front of it, whereas the second line starts with `[5]` and the third with `[9]`. It's pretty clear what's happening here. For the first row, R has printed out the 1st element through to the 4th element, so it starts that row with a `[1]`. For the second row, R has printed out the 5th element of the vector through to the 8th one, and so it begins that row with a `[5]` so that you can tell where it's up to at a glance. It might seem a bit odd to you that R does this, but in some ways it's a kindness, especially when dealing with larger data sets!
 
+```{r set-options2, echo=FALSE, cache=FALSE}
+options(width = 75)
+```
 
 ### Getting information out of vectors{#vectorsubset}
 
@@ -597,7 +597,7 @@ Yep, that's the February sales all right. But there's a subtle detail to be awar
 february.sales <- sales.by.month[2]
 february.sales
 ```
-Obviously, the new variable `february.sales` should only have one element and so when I print it out this new variable, the R output begins with a `[1]` because `100` is the value of the first (and only) element of `february.sales`. The fact that this also happens to be the value of the second element of `sales.by.month` is irrelevant. We'll pick this topic up again shortly (Section\@ref(indexing). 
+Obviously, the new variable `february.sales` should only have one element and so when I print it out this new variable, the R output begins with a `[1]` because `100` is the value of the first (and only) element of `february.sales`. The fact that this also happens to be the value of the second element of `sales.by.month` is irrelevant. We'll pick this topic up again shortly (Section \@ref(indexing)). 
 
 ### Altering the elements of a vector
 
@@ -637,7 +637,7 @@ Obviously, the `profit` variable is the same one we created earlier, and the `da
 ```{r}
 profit / days.per.month
 ```
-I still don't like all those zeros, but that's not what matters here. Notice that the second element of the output is 25, because R has divided the second element of `profit` (i.e. 700) by the second element of `days.per.month` (i.e. 28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on. We'll talk more about calculations involving vectors later on (and in particular a thing called the "recycling rule"; Section \@ref(recycling), but that's enough detail for now.
+I still don't like all those zeros, but that's not what matters here. Notice that the second element of the output is 25, because R has divided the second element of `profit` (i.e. 700) by the second element of `days.per.month` (i.e. 28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on. We'll talk more about calculations involving vectors later on (and in particular a thing called the "recycling rule"; Section \@ref(recycling)), but that's enough detail for now.
 
 ## Storing text data{#text}
 
@@ -652,7 +652,7 @@ Okay, so that's how we store the text. Next, it's important to recognise that wh
 ```{r}
 greeting[1]
 ```
-Of course, there's no reason why I can't create a vector of character strings. For instance, if we were to continue with the example of my attempts to look at the monthly sales data for my book, one variable I might want would include the names of all 12 `months`.^[Though actually there's no real need to do this, since R has an inbuilt variable called `month.name] that you can use for this purpose.` To do so, I could type in a command like this
+Of course, there's no reason why I can't create a vector of character strings. For instance, if we were to continue with the example of my attempts to look at the monthly sales data for my book, one variable I might want would include the names of all 12 `months`.^[Though actually there's no real need to do this, since R has an inbuilt variable called `month.name` that you can use for this purpose.] To do so, I could type in a command like this
 ```{r}
 months <- c("January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", 
@@ -693,7 +693,7 @@ Of course, so far R is just doing the calculations. I haven't asked it to explic
 ```{r}
 2 + 2 == 4
 ```
-What I've done here is use the **_equality operator_**, `==`, to force R to make a "true or false" judgement.^[Note that this is a very different operator to the assignment operator `=` that I talked about in Section\@ref(assign). A common typo that people make when trying to write logical commands in R (or other languages, since the "`=` versus `==`" distinction is important in most programming languages) is to accidentally type `=` when you really mean `==`. Be especially cautious with this -- I've been programming in various languages since I was a teenager, and I *still* screw this up a lot. Hm. I think I see why I wasn't cool as a teenager. And why I'm still not cool.] Okay, let's see what R thinks of the Party slogan:
+What I've done here is use the **_equality operator_**, `==`, to force R to make a "true or false" judgement.^[Note that this is a very different operator to the assignment operator `=` that I talked about in Section \@ref(assign). A common typo that people make when trying to write logical commands in R (or other languages, since the "`=` versus `==`" distinction is important in most programming languages) is to accidentally type `=` when you really mean `==`. Be especially cautious with this -- I've been programming in various languages since I was a teenager, and I *still* screw this up a lot. Hm. I think I see why I wasn't cool as a teenager. And why I'm still not cool.] Okay, let's see what R thinks of the Party slogan:
 ```{r}
 2+2 == 5
 ```
@@ -801,7 +801,7 @@ But there are many situations where you really do need to use the `!` operator. 
  
 ### Storing and using logical data
 
-Up to this point, I've introduced *numeric data* (in Sections \@ref(assign) and \@ref(#vectors)) and *character data* (in Section \@ref(text)). So you might not be surprised to discover that these `TRUE` and `FALSE` values that R has been producing are actually a third kind of data, called *logical data*. That is, when I asked R if `2 + 2 == 5` and it said `[1] FALSE` in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called `is.the.Party.correct`, which would store R's opinion:
+Up to this point, I've introduced *numeric data* (in Sections \@ref(assign) and \@ref(vectors)) and *character data* (in Section \@ref(text)). So you might not be surprised to discover that these `TRUE` and `FALSE` values that R has been producing are actually a third kind of data, called *logical data*. That is, when I asked R if `2 + 2 == 5` and it said `[1] FALSE` in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called `is.the.Party.correct`, which would store R's opinion:
 ```{r}
 is.the.Party.correct <- 2 + 2 == 5
 is.the.Party.correct
@@ -813,7 +813,7 @@ is.the.Party.correct <- FALSE
 is.the.Party.correct
 
 ```
-Better yet, because it's kind of tedious to type `TRUE` or `FALSE` over and over again, R provides you with a shortcut: you can use `T` and `F` instead (but it's case sensitive: `t` and `f` won't work).^[Warning! `TRUE` and `FALSE` are reserved keywords in R, so you can trust that they always mean what they say they do. Unfortunately, the shortcut versions `T` and `F` do not have this property. It's even possible to create variables that set up the reverse meanings, by typing commands like `T <- FALSE` and `F <- TRUE`. This is kind of insane, and something that is generally thought to be a design flaw in R. Anyway, the long and short of it is that it's safer to use `TRUE` and `FALSE`.]So this works:
+Better yet, because it's kind of tedious to type `TRUE` or `FALSE` over and over again, R provides you with a shortcut: you can use `T` and `F` instead (but it's case sensitive: `t` and `f` won't work).^[Warning! `TRUE` and `FALSE` are reserved keywords in R, so you can trust that they always mean what they say they do. Unfortunately, the shortcut versions `T` and `F` do not have this property. It's even possible to create variables that set up the reverse meanings, by typing commands like `T <- FALSE` and `F <- TRUE`. This is kind of insane, and something that is generally thought to be a design flaw in R. Anyway, the long and short of it is that it's safer to use `TRUE` and `FALSE`.] So this works:
 ```{r}
 is.the.Party.correct <- F
 is.the.Party.correct
@@ -825,12 +825,12 @@ is.the.Party.correct <- f
 
 ### Vectors of logicals
 
-The next thing to mention is that you can store vectors of logical values in exactly the same way that you can store vectors of numbers (Section\@ref(vectors)) and vectors of text data (Section\@ref(text)). Again, we can define them directly via the `c()` function, like this:
+The next thing to mention is that you can store vectors of logical values in exactly the same way that you can store vectors of numbers (Section \@ref(vectors)) and vectors of text data (Section \@ref(text)). Again, we can define them directly via the `c()` function, like this:
 ```{r}
 x <- c(TRUE, TRUE, FALSE)
 x
 ```
-or you can produce a vector of logicals by applying a logical operator to a vector. This might not make a lot of sense to you, so let's unpack it slowly. First, let's suppose we have a vector of numbers (i.e., a "non-logical vector"). For instance, we could use the `sales.by.month` vector that we were using in Section\@ref(#vectors). Suppose I wanted R to tell me, for each month of the year, whether I actually sold a book in that month. I can do that by typing this: 
+or you can produce a vector of logicals by applying a logical operator to a vector. This might not make a lot of sense to you, so let's unpack it slowly. First, let's suppose we have a vector of numbers (i.e., a "non-logical vector"). For instance, we could use the `sales.by.month` vector that we were using in Section \@ref(vectors). Suppose I wanted R to tell me, for each month of the year, whether I actually sold a book in that month. I can do that by typing this: 
 ```{r}
 sales.by.month > 0
 
@@ -940,7 +940,7 @@ At this point, I hope you can see why logical indexing is such a useful thing. I
 ## Quitting R
 
 
-```{r quitR, fig.cap="The dialog box that shows up when you try to close RStudio."}
+```{r quitR, fig.cap="The dialog box that shows up when you try to close RStudio.", echo=FALSE}
 knitr::include_graphics("./rbook-master/img/introR/Rstudio_quit.png")
 
 ```
@@ -948,7 +948,7 @@ knitr::include_graphics("./rbook-master/img/introR/Rstudio_quit.png")
 
 There's one last thing I should cover in this chapter: how to quit R. When I say this, I'm not trying to imply that R is some kind of pathological addition and that you need to call the R QuitLine or wear patches to control the cravings (although you certainly might argue that there's something seriously pathological about being addicted to R). I just mean how to exit the program. Assuming you're running R in the usual way (i.e., through RStudio or the default GUI on a Windows or Mac computer), then you can just shut down the application in the normal way. However, R also has a function, called `q()` that you can use to quit, which is pretty handy if you're running R in a terminal window.
 
-Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the "workspace image". We'll talk a lot more about loading and saving data in Section\@ref(load), but I figured we'd better quickly cover this now otherwise you're going to get annoyed when you close R at the end of the chapter. If you're using RStudio, you'll see a dialog box that looks like the one shown in Figure \@ref(fig:quitR). If you're using a text based interface you'll see this:
+Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the "workspace image". We'll talk a lot more about loading and saving data in Section \@ref(load), but I figured we'd better quickly cover this now otherwise you're going to get annoyed when you close R at the end of the chapter. If you're using RStudio, you'll see a dialog box that looks like the one shown in Figure \@ref(fig:quitR). If you're using a text based interface you'll see this:
 ```{r eval=FALSE}
 q()
 
@@ -961,7 +961,7 @@ What does this actually *mean*? What's going on is that R wants to know if you w
 In fact, every time I install R on a new machine one of the first things I do is change the settings so that it never asks me again. You can do this in RStudio really easily: use the menu system to find the RStudio option; the dialog box that comes up will give you an option to tell R never to whine about this again (see Figure \@ref(fig:RStudiooptions). On a Mac, you can open this window by going to the "RStudio" menu and selecting "Preferences". On a Windows machine you go to the "Tools" menu and select "Global Options". Under the "General" tab you'll see an option that reads "Save workspace to .Rdata on exit". By default this is set to "ask". If you want R to stop asking, change it to "never".
 
 
-```{r RStudiooptions, fig.cap="The options window in RStudio. On a Mac, you can open this window by going to the \"RStudio\" menu and selecting \"Preferences\". On a Windows machine you go to the \"Tools\" menu and select \"Global Options\""}
+```{r RStudiooptions, fig.cap="The options window in RStudio. On a Mac, you can open this window by going to the \"RStudio\" menu and selecting \"Preferences\". On a Windows machine you go to the \"Tools\" menu and select \"Global Options\"", echo=FALSE}
 knitr::include_graphics("./rbook-master/img/introR/Rstudio_options.png")
 
 ```
@@ -972,12 +972,10 @@ Every book that tries to introduce basic programming ideas to novices has to cov
 
 
 - [Getting started](#gettingR). We downloaded and installed R and RStudio
-- [Basic commands](#arithmetic). We talked a bit about the logic of how R works and in particular how to type commands into the R console (Section\@ref(#firstcommand), and in doing so learned how to perform basic calculations using the arithmetic operators `+`, `-`, `*`, `/` and `^`.
-- [Introduction to functions](#usingfunctions). We saw several different functions, three that are used to perform numeric calculations (`sqrt()`, `abs()`, `round()`, one that applies to text (`nchar()`; Section\@ref(#simpletext), and one that works on any variable (`length()`; Section\@ref(#veclength). In doing so, we talked a bit about  how argument names work, and learned about default values for arguments. (Section\@ref(#functionarguments)
-- Introduction to variables. We learned the basic idea behind variables, and how to assign values to variables using the assignment operator `<-` (Section\@ref(#assign). We also learned how to create vectors using the combine function `c()`. (Section\@ref(#vectors) 
-- Data types. Learned the distinction between numeric, character and logical data; including the basics of how to enter and use each of them. (Sections\@ref(#assign) to Sections\@ref(logicals)
-- [Logical operations].(#logicals) Learned how to use the logical operators `==`, `!=`, `<`, `>`, `<=`, `=>`, `!`, `&` and `|`. And learned how to use logical indexing. (Section \@ref(indexing)
-
-
+- [Basic commands](#arithmetic). We talked a bit about the logic of how R works and in particular how to type commands into the R console (Section \@ref(#firstcommand), and in doing so learned how to perform basic calculations using the arithmetic operators `+`, `-`, `*`, `/` and `^`.
+- [Introduction to functions](#usingfunctions). We saw several different functions, three that are used to perform numeric calculations (`sqrt()`, `abs()`, `round()`, one that applies to text (`nchar()`; Section \@ref(simpletext)), and one that works on any variable (`length()`; Section \@ref(veclength)). In doing so, we talked a bit about  how argument names work, and learned about default values for arguments. (Section \@ref(functionarguments))
+- Introduction to variables. We learned the basic idea behind variables, and how to assign values to variables using the assignment operator `<-` (Section \@ref(assign)). We also learned how to create vectors using the combine function `c()` (Section \@ref(vectors)).
+- Data types. Learned the distinction between numeric, character and logical data; including the basics of how to enter and use each of them. (Sections \@ref(assign) to \@ref(logicals))
+- [Logical operations](#logicals). Learned how to use the logical operators `==`, `!=`, `<`, `>`, `<=`, `=>`, `!`, `&` and `|`. And learned how to use logical indexing. (Section \@ref(indexing))
 
 We still haven't arrived at anything that resembles a "data set", of course. Maybe the next Chapter will get us a bit closer...
