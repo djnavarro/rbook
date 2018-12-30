@@ -10,6 +10,12 @@ laid out for its convenience. Maybe a few more tractors would do the trick.*
 >
 >--Roger Zelazny^[The quote comes from *Home is the Hangman*, published in 1975.]
 
+```{r, include=FALSE}
+# specify path to root folder in platform independent way.
+# later on, use: file.path(projecthome,"subfolder","filename")
+projecthome <- here::here("bookdown")
+```
+
 This is a somewhat strange chapter, even by my standards. My goal in this chapter is to talk a bit more honestly about the realities of working with data than you'll see anywhere else in the book. The problem with real world data sets is that they are *messy*. Very often the data file that you start out with doesn't have the variables stored in the right format for the analysis you want to do. Sometimes might be a lot of missing values in your data set. Sometimes you only want to analyse a subset of the data. Et cetera. In other words, there's a lot of **_data manipulation_** that you need to do, just to get all your data set into the format that you need it. The purpose of this chapter is to provide a basic introduction to all these pragmatic topics. Although the chapter is motivated by the kinds of practical issues that arise when manipulating real data, I'll stick with the practice that I've adopted through most of the book and rely on very small, toy data sets that illustrate the underlying issue. Because this chapter is essentially a collection of "tricks" and doesn't tell a single coherent story, it may be useful to start with a list of topics:
 
 - Section \@ref(freqtables). Tabulating data.
@@ -36,7 +42,7 @@ A very common task when analysing data is the construction of frequency tables, 
 Let's start with a simple example. As the father of a small child, I naturally spend a lot of time watching TV shows like *In the Night Garden*. In the `nightgarden.Rdata` file, I've transcribed a short section of the dialogue. The file contains two variables, `speaker` and `utterance`, and when we take a look at the data, it becomes very clear what happened to my sanity. 
 ```{r warning=FALSE}
 library(lsr)
-load("./rbook-master/data/nightgarden.Rdata" )
+load(file.path(projecthome,"data","nightgarden.Rdata"))
 who()
 print( speaker )
 print( utterance )
@@ -124,7 +130,7 @@ To keep the explanation simple, the variable we'll try to transform (`likert.raw
 
 Now let's load and look at the data. The data file `likert.Rdata` contains a single variable that contains the raw Likert-scale responses:
 ```{r}
-load("./rbook-master/data/likert.Rdata")
+load(file.path(projecthome,"data","likert.Rdata"))
 likert.raw
 ```
 However, if you think about it, this isn't the best way to represent these responses.   Because of the fairly symmetric way that we set up the response scale, there's a sense in which the midpoint of the scale should have been coded as 0 (no opinion), and the two endpoints should be $+3$ (strong agree) and $-3$ (strong disagree). By recoding the data in this way, it's a bit more reflective of how we really think about the responses. The recoding here is trivially easy: we just subtract 4 from the raw scores:
@@ -454,7 +460,7 @@ Again, it's important to note that this output is still a data frame: it's just 
 
 Throughout the book so far, whenever I've been subsetting a vector I've tended use the square brackets `[]` to do so. But in the previous section when I started talking about subsetting a data frame I used the `subset()` function. As a consequence, you might be wondering whether it is possible to use the square brackets to subset a data frame. The answer, of course, is yes. Not only *can* you use square brackets for this purpose, as you become more familiar with R you'll find that this is actually much more convenient than using `subset()`. Unfortunately, the use of square brackets for this purpose is somewhat complicated, and can be very confusing to novices. So be warned: this section is more complicated than it feels like it "should" be. With that warning in place, I'll try to walk you through it slowly. For this section, I'll use a slightly different data set, namely the `garden` data frame that is stored in the `"nightgarden2.Rdata"` file. 
 ```{r}
-load("./rbook-master/data/nightgarden2.Rdata" )
+load(file.path(projecthome,"data","nightgarden2.Rdata"))
 garden
 ``` 
 As you can see, the `garden` data frame contains 3 variables and 5 cases, and this time around I've used the `rownames()` function to attach slightly verbose labels to each of the cases. Moreover, let's assume that what we want to do is to pick out rows 4 and 5 (the two cases when Makka-Pakka is speaking), and columns 1 and 2 (variables `speaker` and `utterance`).
@@ -694,7 +700,7 @@ colCopy( fibonacci, 3 )
 
 One of the main reasons that I wanted to discuss the `rbind()` and `cbind()` functions in the same section as the `data.frame()` function is that it immediately raises the question of how to "flip" or **_transpose_** a matrix or data frame. Notice that in the last section I was able to produce two different matrices, `cake.mat1` and `cake.mat2` that were basically mirror images of one another. A natural question to ask is whether you can directly transform one into another. The transpose function `t()` allows us to do this in a straightforward fashion. To start with, I'll show you how to transpose a matrix, and then I'll move onto talk about data frames. Firstly, let's load a matrix I prepared earlier, from the `cakes.Rdata` file:
 ```{r}
-load("./rbook-master/data/cakes.Rdata" )
+load(file.path(projecthome,"data","cakes.Rdata"))
 cakes
 ```
 And just to make sure you believe me that this is actually a matrix:
@@ -738,7 +744,7 @@ One of the most annoying tasks that you need to undertake on a regular basis is 
 The most common format in which you might obtain data is as a "case by variable" layout, commonly known as the **_wide form_** of the data. 
 
 ```{r}
-load("./rbook-master/data/repeated.Rdata")
+load(file.path(projecthome,"data","repeated.Rdata"))
 who()
 ```
 
@@ -1074,12 +1080,13 @@ The first thing I should point out is that if your data are saved as a text file
 
 It's kind of nice to be able to have all these options that you can tinker with. For instance, have a look at the data file shown pictured in Figure \@ref(fig:booksales2csv). This file contains almost the same data as the last file (except it doesn't have a header), and it uses a bunch of wacky features that you don't normally see in CSV files. In fact, it just so happens that I'm going to have to change all five of those arguments listed above in order to load this file. Here's how I would do it:
 ```{r}
-data <- read.csv( file = "./rbook-master/data/booksales2.csv",  # specify the name of the file
-                   header = FALSE,           # variable names in the file?
-                   skip = 8,                 # ignore the first 8 lines
-                   quote = "*",              # what indicates text data?
-                   sep = "\t",               # what separates different entries?
-                   na.strings = "NFI" )      # what is the code for missing data?
+data <- read.csv( 
+  file = file.path(projecthome,"data","booksales2.csv"), # specify path to the file
+  header = FALSE,           # variable names in the file?
+  skip = 8,                 # ignore the first 8 lines
+  quote = "*",              # what indicates text data?
+  sep = "\t",               # what separates different entries?
+  na.strings = "NFI" )      # what is the code for missing data?
 ``` 
 If I now have a look at the data I've loaded, I see that this is what I've got:
 ```{r}
@@ -1088,7 +1095,8 @@ head( data )
 Because I told R to expect `*` to be used as the quoting character instead of `"`; to look for tabs (which we write like this: `\t`) instead of commas, and to skip the first 8 lines of the file, it's basically loaded the right data. However, since `booksales2.csv` doesn't contain the column names, R has made them up. Showing the kind of imagination I expect from insentient software, R decided to call them `V1`, `V2`, `V3` and `V4`. Finally, because I told it that the file uses "NFI" to denote missing data, R correctly figures out that the sales data for May are actually missing. 
 
 ```{r booksales2csv, fig.cap="The `booksales2.csv` data file. It contains more or less the same data as the original `booksales.csv` data file, but has a lot of very quirky features.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/datahandling/booksales2csv.jpg")
+
+knitr::include_graphics(file.path(projecthome,"img","datahandling","booksales2csv.jpg"))
 
 ```
 
@@ -1099,7 +1107,7 @@ In real life you'll rarely see data this stupidly formatted.^[If you're lucky.]
 The commands listed above are the main ones we'll need for data files in this book. But in real life we have many more possibilities. For example, you might want to read data files in from other statistics programs. Since SPSS is probably the most widely used statistics package in psychology, it's worth briefly showing how to open SPSS data files (file extension `.sav`). It's surprisingly easy. The extract below should illustrate how to do so:
 ```
 library( foreign )                 # load the package
-X <- read.spss( "./rbook-master/data/datafile.sav" )   # create a list containing the data
+X <- read.spss( file.path(projecthome,"data","datafile.sav" ))   # create a list containing the data
 X <- as.data.frame( X )            # convert to data frame
 ```
 If you wanted to import from an SPSS file to a data frame directly, instead of importing a list and then converting the list to a data frame, you can do that too:
@@ -1139,13 +1147,6 @@ Given that I talked extensively about how to load data from non-R files, it migh
 ### Are we done yet?
 
 Of course not. If I've learned nothing else about R it's that you're *never bloody done*. This listing doesn't even come close to exhausting the possibilities. Databases are supported by the `RODBC`, `DBI`, and `RMySQL` packages among others. You can open webpages using the `RCurl` package. Reading and writing JSON objects is supported through the `rjson` package. And so on. In a sense, the right question is not so much "can R do this?" so much as "whereabouts in the wilds of CRAN *is* the damn package that does it?"
-
-
-
-
-
-
-
 
 
 ## Coercing data from one class to another{#coercion}
@@ -1349,7 +1350,9 @@ x + y                  # now add them:
 ### An introduction to environments {#environments}
 
 ```{r envs, fig.cap="The environment panel in Rstudio can actually show you the contents of any loaded package: each package defines a separate environment, so you can select the one you want to look at in this panel.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/datahandling/environments.png")
+
+
+knitr::include_graphics(file.path(projecthome,"img","datahandling","environments.png"))
 
 ```
 

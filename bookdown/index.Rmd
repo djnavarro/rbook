@@ -4,11 +4,17 @@ author: "DJ Navarro"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [./rbook-master/tex/refs.bib, packages.bib]
+bibliography: [./bookdown/refs.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "*Learning Statistics with R* covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software."
 ---
+
+```{r, include=FALSE}
+# specify path to root folder in platform independent way.
+# later on, use: file.path(projecthome,"subfolder","filename")
+projecthome <- here::here("bookdown")
+```
 
 # Overview{-}
 

@@ -1,0 +1,230 @@
+%!PS-Adobe-3.0
+%%DocumentNeededResources: font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Helvetica-Oblique
+%%+ font Helvetica-BoldOblique
+%%+ font Symbol
+%%DocumentMedia: a4 595 841 0 () ()
+%%Title: R Graphics Output
+%%Creator: R Software
+%%Pages: (atend)
+%%Orientation: Portrait
+%%BoundingBox: 64 187 532 655
+%%EndComments
+%%BeginProlog
+/bp  { gs gs } def
+% begin .ps.prolog
+/gs  { gsave } def
+/gr  { grestore } def
+/ep  { showpage gr gr } def
+/m   { moveto } def
+/l  { rlineto } def
+/np  { newpath } def
+/cp  { closepath } def
+/f   { fill } def
+/o   { stroke } def
+/c   { newpath 0 360 arc } def
+/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } def
+/p1  { stroke } def
+/p2  { gsave bg fill grestore newpath } def
+/p3  { gsave bg fill grestore stroke } def
+/p6  { gsave bg eofill grestore newpath } def
+/p7  { gsave bg eofill grestore stroke } def
+/t   { 5 -2 roll moveto gsave rotate
+       1 index stringwidth pop
+       mul neg 0 rmoveto show grestore } def
+/ta  { 4 -2 roll moveto gsave rotate show } def
+/tb  { 2 -1 roll 0 rmoveto show } def
+/cl  { grestore gsave newpath 3 index 3 index moveto 1 index
+       4 -1 roll lineto  exch 1 index lineto lineto
+       closepath clip newpath } def
+/srgb { [ /CIEBasedABC
+          << /DecodeLMN
+               [ { dup 0.03928 le
+                        {12.92321 div}
+                        {0.055 add 1.055 div 2.4 exp }
+                     ifelse
+                 } bind dup dup
+               ]
+             /MatrixLMN [0.412457 0.212673 0.019334
+                         0.357576 0.715152 0.119192
+                         0.180437 0.072175 0.950301]
+             /WhitePoint [0.9505 1.0 1.0890]
+           >>
+         ] setcolorspace } def
+/setrgb { srgb setcolor } def
+/s   { scalefont setfont } def
+% end   .ps.prolog
+%%IncludeResource: font Helvetica
+/Helvetica findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font1 exch definefont pop
+%%IncludeResource: font Helvetica-Bold
+/Helvetica-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font2 exch definefont pop
+%%IncludeResource: font Helvetica-Oblique
+/Helvetica-Oblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font3 exch definefont pop
+%%IncludeResource: font Helvetica-BoldOblique
+/Helvetica-BoldOblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font4 exch definefont pop
+%%IncludeResource: font Symbol
+/Symbol findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  currentdict
+  end
+/Font5 exch definefont pop
+%%EndProlog
+%%Page: 1 1
+bp
+[ /CIEBasedABC
+  << /DecodeLMN
+       [ { dup 0.03928 le {12.92321 div} {0.055 add 1.055 div 2.4 exp } ifelse } bind dup dup ]
+     /MatrixLMN [0.412457 0.212673 0.019334 0.357576 0.715152 0.119192 0.180437 0.072175 0.950301]
+     /WhitePoint [0.9505 1.0 1.0890]
+  >>
+] setcolorspace
+/bg { 1 setgray } def
+0.00 0.00 595.28 841.89 r p2
+122.68 260.38 501.40 595.90 cl
+122.68 260.38 501.40 595.90 cl
+0 setgray
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+122.68 331.07 m
+378.72 136.55 l
+o
+0.75 setlinewidth
+[ 2.25 3.75] 0 setdash
+np
+122.68 277.49 m
+378.72 288.41 l
+o
+np
+428.93 389.31 m
+0 121.40 l
+o
+0 0 1 setrgb
+0.75 setlinewidth
+[] 0 setdash
+428.93 389.31 5.40 c p1
+304.48 429.72 5.40 c p1
+244.50 374.95 5.40 c p1
+270.39 387.71 5.40 c p1
+288.64 420.11 5.40 c p1
+276.66 373.13 5.40 c p1
+282.73 416.39 5.40 c p1
+353.06 450.03 5.40 c p1
+291.73 377.92 5.40 c p1
+199.84 321.28 5.40 c p1
+259.99 380.17 5.40 c p1
+235.76 377.18 5.40 c p1
+197.96 341.46 5.40 c p1
+63.64 186.94 531.64 654.94 cl
+0.3020 setgray
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+136.70 260.38 m
+350.67 0 l
+o
+np
+136.70 260.38 m
+0 -7.20 l
+o
+np
+195.15 260.38 m
+0 -7.20 l
+o
+np
+253.59 260.38 m
+0 -7.20 l
+o
+np
+312.04 260.38 m
+0 -7.20 l
+o
+np
+370.48 260.38 m
+0 -7.20 l
+o
+np
+428.93 260.38 m
+0 -7.20 l
+o
+np
+487.37 260.38 m
+0 -7.20 l
+o
+np
+122.68 272.81 m
+0 310.67 l
+o
+np
+122.68 272.81 m
+-7.20 0 l
+o
+np
+122.68 324.59 m
+-7.20 0 l
+o
+np
+122.68 376.37 m
+-7.20 0 l
+o
+np
+122.68 428.14 m
+-7.20 0 l
+o
+np
+122.68 479.92 m
+-7.20 0 l
+o
+np
+122.68 531.70 m
+-7.20 0 l
+o
+np
+122.68 583.48 m
+-7.20 0 l
+o
+63.64 186.94 531.64 654.94 cl
+/Font1 findfont 16 s
+0.3020 setgray
+312.04 227.26 (Predictor) .5 0 t
+98.20 428.14 (Outcome) .5 90 t
+122.68 260.38 501.40 595.90 cl
+/Font1 findfont 16 s
+0 setgray
+428.93 351.59 (High influence) .5 0 t
+ep
+%%Trailer
+%%Pages: 1
+%%EOF

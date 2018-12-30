@@ -111,7 +111,7 @@ Here's what's going on. Firstly, notice that the departments are *not* equal to 
 
 ```{r berkeley, fig.cap="The Berkeley 1973 college admissions data. This figure plots the admission rate for the 85 departments that had at least one female applicant, as a function of the percentage of applicants that were female. The plot is a redrawing of Figure 1 from @Bickel1975. Circles plot departments with more than 40 applicants; the area of the circle is proportional to the total number of applicants. The crosses plot department with fewer than 40 applicants.", echo=FALSE}
 
-source("./scripts/ekothe_plotberkeley.R")
+source(file = file.path(projecthome, "scripts", "ekothe_plotberkeley.R"))
 
 ```
 

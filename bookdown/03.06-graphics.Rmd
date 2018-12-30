@@ -4,7 +4,11 @@
 >
 >--Edward Tufte^[The origin of this quote is Tufte's lovely book *The Visual Display of Quantitative Information*.]
 
-
+```{r, include=FALSE}
+# specify path to root folder in platform independent way.
+# later on, use: file.path(projecthome,"subfolder","filename")
+projecthome <- here::here("bookdown")
+```
 
 Visualising data is one of the most important tasks facing the data analyst. It's important for two distinct but closely related reasons. Firstly, there's the matter of drawing "presentation graphics": displaying your data in a clean, visually appealing fashion makes it easier for your reader to understand what you're trying to tell them. Equally important, perhaps even more important, is the fact that drawing graphs helps *you* to understand the data. To that end, it's important to draw "exploratory graphics" that help you learn about the data as you go about analysing it. These points might seem pretty obvious, but I cannot count the number of times I've seen people forget them. 
 
@@ -273,7 +277,7 @@ Now that we've tamed (or possibly fled from) the beast that is R graphical param
 ```
 
 ```{r hist1a, fig.cap="The default histogram that R produces"}
-load("./rbook-master/data/aflsmall.Rdata")
+load(file.path(projecthome,"data", "aflsmall.Rdata"))
 hist(afl.margins)   # panel a
 ```
 

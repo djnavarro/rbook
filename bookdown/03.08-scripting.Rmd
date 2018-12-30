@@ -4,6 +4,12 @@
 >
 >--William Gibson^[The quote comes from *Count Zero* (1986)]
 
+```{r, include=FALSE}
+# specify path to root folder in platform independent way.
+# later on, use: file.path(projecthome,"subfolder","filename")
+projecthome <- here::here("bookdown")
+```
+
 Up to this point in the book I've tried hard to avoid using the word "programming" too much because -- at least in my experience -- it's a word that can cause a lot of fear. For one reason or another, programming (like mathematics and statistics) is often perceived by people on the "outside" as a black art, a magical skill that can be learned only by some kind of super-nerd. I think this is a shame. It's certainly true that advanced programming is a very specialised skill: several different skills actually, since there's quite a lot of different kinds of programming out there. However, the *basics* of programming aren't all that hard, and you can accomplish a lot of very impressive things just using those basics. 
 
 With that in mind, the goal of this chapter is to discuss a few basic programming concepts and how to apply them in R. However, before I do, I want to make one further attempt to point out just how non-magical programming really is, via one very simple observation: *you already know how to do it*. Stripped to its essentials, programming is nothing more (and nothing less) than the process of writing out a bunch of instructions that a computer can understand. To phrase this slightly differently, when you write a computer program, you need to write it in a **_programming language_** that the computer knows how to interpret. R is one such language. Although I've been having you type all your commands at the command prompt, and all the commands in this book so far have been shown as if that's what I were doing, it's also quite possible (and as you'll see shortly, shockingly easy) to write a program using these R commands. In other words, if this is the first time reading this book, then you're only one short chapter away from being able to legitimately claim that you can program in R, albeit at a beginner's level.    
@@ -45,8 +51,7 @@ In other words, what you want is a *script*.
 ### Our first script
 
 ```{r script, fig.cap="A screenshot showing the `hello.R` script if you open in using the default text editor (TextEdit) on a Mac. Using a simple text editor like TextEdit on a Mac or Notepad on Windows isn't actually the best way to write your scripts, but it is the simplest. More to the point, it highlights the fact that a script really is just an ordinary text file.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/scripting/script.png")
-
+knitr::include_graphics(file.path(projecthome,"img","scripting","script.png"))
 ```
 
 Okay then. Since scripts are so terribly awesome, let's write one. To do this, open up a simple text editing program, like TextEdit (on a Mac) or Notebook (on Windows). Don't use a fancy word processing program like Microsoft Word or OpenOffice: use the simplest program you can find. Open a new text document, and type some R commands, hitting enter after each command. Let's try using `x <- "hello world"` and `print(x)` as our commands. Then save the document as `hello.R`, and remember to save it as a plain text file: don't save it as a word document or a rich text file. Just a boring old plain text file. Also, when it asks you *where* to save the file, save it to whatever folder you're using as your working directory in R. At this point, you should be looking at something like Figure \@ref(fig:script). And if so, you have now successfully written your first R program. Because I don't want to take screenshots for every single script, I'm going to present scripts using extracts formatted as follows:
@@ -65,12 +70,12 @@ source( "hello.R" )
 ```
 If the script file is saved in a different directory, then you need to specify the path to the file, in exactly the same way that you would have to when loading a data file using `load()`. In any case, when you type this command, R opens up the script file: it then reads each command in the file in the same order that they appear in the file, and executes those commands in that order. The simple script that I've shown above contains two commands. The first one creates a variable `x` and the second one prints it on screen. So, when we run the script, this is what we see on screen:
 ```{r}
-source("./rbook-master/scripts/hello.R")
+source(file.path(projecthome,"scripts","hello.R"))
 ```
 If we inspect the workspace using a command like `who()` or `objects()`, we discover that R has created the new variable `x` within the workspace, and not surprisingly `x` is a character string containing the text `"hello world"`. And just like that, you've written your first program R. It really is that simple. 
 
 ```{r script2, fig.cap="A screenshot showing the `hello.R` script open in Rstudio. Assuming that you're looking at this document in colour, you\'ll notice that the \"hello world\" text is shown in green. This isn\'t something that you do yourself: that's Rstudio being helpful. Because the text editor in Rstudio \"knows\" something about how R commands work, it will highlight different parts of your script in different colours. This is useful, but it's not actually part of the script itself.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/scripting/script2.png")
+knitr::include_graphics(file.path(projecthome,"img","scripting","script2.png"))
 
 ```
 
@@ -95,7 +100,7 @@ When writing up your data analysis as a script, one thing that is generally a go
 # Load the data, and tell the user that this is what we're
 # doing. 
 cat( "loading data from nightgarden.Rdata...\n" )
-load( "./rbook-master/data/nightgarden.Rdata" )
+load(file.path(projecthome,"data","nightgarden.Rdata"))
 
 # Create a cross tabulation and print it out:
 cat( "tabulating data...\n" )
@@ -113,7 +118,7 @@ You'll notice that I've gone a bit overboard with my commenting: at the top of t
 # Load the data, and tell the user that this is what we're
 # doing. 
 cat( "loading data from nightgarden.Rdata...\n" )
-load( "./rbook-master/data/nightgarden.Rdata" )
+load(file.path(projecthome,"data","nightgarden.Rdata"))
 
 # Create a cross tabulation and print it out:
 cat( "tabulating data...\n" )
@@ -168,7 +173,7 @@ print( x )
 ```
 When we run this script, R starts at the top and creates a new variable called `x` and assigns it a value of 0. It then moves down to the loop, and "notices" that the condition here is `x < 1000`. Since the current value of `x` is zero, the condition is true, so it enters the body of the loop (inside the curly braces). There's only one command here^[As an aside: if there's only a single command that you want to include inside your loop, then you don't actually need to bother including the curly braces at all. However, until you're comfortable programming in R I'd advise *always* using them, even when you don't have to.] which instructs R to increase the value of `x` by 17. R then returns to the top of the loop, and rechecks the condition. The value of `x` is now 17, but that's still less than 1000, so the loop continues. This cycle will continue for a total of 59 iterations, until finally `x` reaches a value of 1003 (i.e., $59 \times 17 = 1003$). At this point, the loop stops, and R finally reaches line 5 of the script, prints out the value of `x` on screen, and then halts. Let's watch:
 ```{r}
-source( "./rbook-master/scripts/whileexample.R" )
+source(file.path(projecthome,"scripts","whileexample.R"))
 ```
 Truly fascinating stuff.
 
@@ -193,7 +198,7 @@ for ( i in 1:3 ) {
 ```
 This is the simplest example of a `for` loop. The vector of possible values for the `i` variable just corresponds to the numbers from 1 to 3. Not only that, the body of the loop doesn't actually depend on `i` at all. Not surprisingly, here's what happens when we run it:
 ```{r}
-source( "./rbook-master/scripts/forexample.R" )
+source(file.path(projecthome,"scripts","forexample.R"))
 ```
 However, there's nothing that stops you from using something non-numeric as the vector of possible values, as the following example illustrates. This time around, we'll use a character vector to control our loop, which in this case will be a vector of `words`. And what we'll do in the loop is get R to convert the word to upper case letters, calculate the length of the word, and print it out. Here's the script: 
 ```{r eval=FALSE}
@@ -214,7 +219,7 @@ for ( w in words ) {
 ```
 And here's the output:
 ```{r}
-source( "./rbook-master/scripts/forexample2.R" )
+source(file.path(projecthome,"scripts","forexample2.R"))
 ```
 Again, pretty straightforward I hope.
 
@@ -259,7 +264,7 @@ In any case, the key thing here is the tension between the increase in `balance`
 
 Now that I've explained everything in the script in tedious detail, let's run it and see what happens:
 ```{r}
-source( "./rbook-master/scripts/mortgage.R" )
+source(file.path(projecthome,"scripts","mortgage.R"))
 ```
 So our nice young couple have paid off their \$300,000 loan in just 4 months shy of the 30 year term of their loan, at a bargain basement price of \$568,046 (since  569600 - 1554 = 568046). A happy ending!
 
@@ -304,7 +309,7 @@ if ( day == "Monday" ) {
 ```
 Since today happens to be a `r weekdays( today )`, when I run the script here's what happens:
 ```{r}
-source( "./rbook-master/scripts/ifelseexample.R" )
+source(file.path(projecthome,"scripts","ifelseexample.R"))
 ```
 
 There are other ways of making conditional statements in R. In particular, the `ifelse()` function and the `switch()` functions can be very useful in different contexts. However, my main aim in this chapter is to briefly cover the very basics, so I'll move on.
@@ -336,7 +341,7 @@ quadruple <- function(x) {
 ```
 When we run this script, as follows
 ```{r}
-source( "./rbook-master/scripts/functionexample.R" )
+source(file.path(projecthome,"scripts","functionexample.R"))
 ```
 nothing appears to have happened, but there is a new object created in the workspace called `quadruple`. Not surprisingly, if we ask R to tell us what kind of object it is, it tells us that it is a function:
 ```{r}
