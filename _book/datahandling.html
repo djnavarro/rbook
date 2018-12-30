@@ -5,27 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <title>Chapter 7 Pragmatic matters | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 7 Pragmatic matters | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 7 Pragmatic matters | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
 
 
-<meta name="date" content="2018-12-30">
+<meta name="date" content="2018-12-31">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="scripting.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -154,7 +155,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.7.2" data-path="studydesign.html"><a href="studydesign.html#maturation-effects"><i class="fa fa-check"></i><b>2.7.2</b> Maturation effects</a></li>
 <li class="chapter" data-level="2.7.3" data-path="studydesign.html"><a href="studydesign.html#repeated-testing-effects"><i class="fa fa-check"></i><b>2.7.3</b> Repeated testing effects</a></li>
 <li class="chapter" data-level="2.7.4" data-path="studydesign.html"><a href="studydesign.html#selection-bias"><i class="fa fa-check"></i><b>2.7.4</b> Selection bias</a></li>
-<li class="chapter" data-level="2.7.5" data-path="studydesign.html"><a href="studydesign.html#differential-attrition"><i class="fa fa-check"></i><b>2.7.5</b> Differential attrition</a></li>
+<li class="chapter" data-level="2.7.5" data-path="studydesign.html"><a href="studydesign.html#differentialattrition"><i class="fa fa-check"></i><b>2.7.5</b> Differential attrition</a></li>
 <li class="chapter" data-level="2.7.6" data-path="studydesign.html"><a href="studydesign.html#non-response-bias"><i class="fa fa-check"></i><b>2.7.6</b> Non-response bias</a></li>
 <li class="chapter" data-level="2.7.7" data-path="studydesign.html"><a href="studydesign.html#regression-to-the-mean"><i class="fa fa-check"></i><b>2.7.7</b> Regression to the mean</a></li>
 <li class="chapter" data-level="2.7.8" data-path="studydesign.html"><a href="studydesign.html#experimenter-bias"><i class="fa fa-check"></i><b>2.7.8</b> Experimenter bias</a></li>
@@ -2595,16 +2596,16 @@ xtab.3d</code></pre></div>
 <p>To start with, let’s talk about the date. As it happens, modern operating systems are very good at keeping track of the time and date, and can even handle all those annoying timezone issues and daylight savings pretty well. So R takes the quite sensible view that it can just ask the operating system what the date is. We can pull the date using the <code>Sys.Date()</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()  <span class="co"># ask the operating system for the date</span>
 <span class="kw">print</span>(today)         <span class="co"># display the date</span></code></pre></div>
-<pre><code>## [1] &quot;2018-12-30&quot;</code></pre>
+<pre><code>## [1] &quot;2018-12-31&quot;</code></pre>
 <p>Okay, that seems straightforward. But, it does rather look like <code>today</code> is just a character string, doesn’t it? That would be a problem, because dates really do have a numeric character to them, and it would be nice to be able to do basic addition and subtraction to them. Well, fear not. If you type in <code>class(today)</code>, R will tell you that the class of the <code>today</code> variable is <code>&quot;Date&quot;</code>. What this means is that, hidden underneath this text string that prints out an actual date, R actually has a numeric representation.<a href="#fn129" class="footnoteRef" id="fnref129"><sup>129</sup></a> What that means is that you actually can add and subtract days. For instance, if we add 1 to <code>today</code>, R will print out the date for tomorrow:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">today <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre></div>
-<pre><code>## [1] &quot;2018-12-31&quot;</code></pre>
+<pre><code>## [1] &quot;2019-01-01&quot;</code></pre>
 <p>Let’s see what happens when we add 365 days:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">today <span class="op">+</span><span class="st"> </span><span class="dv">365</span></code></pre></div>
-<pre><code>## [1] &quot;2019-12-30&quot;</code></pre>
+<pre><code>## [1] &quot;2019-12-31&quot;</code></pre>
 <p>This is particularly handy if you forget that a year is a leap year since in that case you’d probably get it wrong is doing this in your head. R provides a number of functions for working with dates, but I don’t want to talk about them in any detail. I will, however, make passing mention of the <code>weekdays()</code> function which will tell you what day of the week a particular date corresponded to, which is extremely convenient in some situations:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weekdays</span>( today )</code></pre></div>
-<pre><code>## [1] &quot;Sunday&quot;</code></pre>
+<pre><code>## [1] &quot;Monday&quot;</code></pre>
 <p>I’ll also point out that you can use the <code>as.Date()</code> to convert various different kinds of data into dates. If the data happen to be strings formatted exactly according to the international standard notation (i.e., <code>yyyy-mm-dd</code>) then the conversion is straightforward, because that’s the format that R expects to see by default. You can convert dates from other formats too, but it’s slightly trickier, and beyond the scope of this book.</p>
 <p>What about times? Well, times are even more annoying, so much so that I don’t intend to talk about them at all in this book, other than to point you in the direction of some vaguely useful things. R itself does provide you with some tools for handling time data, and in fact there are two separate classes of data that are used to represent times, known by the odd names <code>POSIXct</code> and <code>POSIXlt</code>. You can use these to work with times if you want to, but for most applications you would probably be better off downloading the <code>chron</code> package, which provides some much more user friendly tools for working with times and dates.</p>
 </div>
@@ -2765,7 +2766,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -2775,6 +2776,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
@@ -2792,7 +2797,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
