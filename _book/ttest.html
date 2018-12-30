@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="chisquare.html">
-<link rel="next" href="references.html">
+<link rel="next" href="anova.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -612,6 +612,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="13.11" data-path="ttest.html"><a href="ttest.html#summary-11"><i class="fa fa-check"></i><b>13.11</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> Comparing several means (one-way ANOVA)</a><ul>
+<li class="chapter" data-level="14.1" data-path="anova.html"><a href="anova.html#anxifree"><i class="fa fa-check"></i><b>14.1</b> An illustrative data set</a></li>
+<li class="chapter" data-level="14.2" data-path="anova.html"><a href="anova.html#anovaintro"><i class="fa fa-check"></i><b>14.2</b> How ANOVA works</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="anova.html"><a href="anova.html#two-formulas-for-the-variance-of-y"><i class="fa fa-check"></i><b>14.2.1</b> Two formulas for the variance of <span class="math inline">\(Y\)</span></a></li>
+<li class="chapter" data-level="14.2.2" data-path="anova.html"><a href="anova.html#from-variances-to-sums-of-squares"><i class="fa fa-check"></i><b>14.2.2</b> From variances to sums of squares</a></li>
+<li class="chapter" data-level="14.2.3" data-path="anova.html"><a href="anova.html#from-sums-of-squares-to-the-f-test"><i class="fa fa-check"></i><b>14.2.3</b> From sums of squares to the <span class="math inline">\(F\)</span>-test</a></li>
+<li class="chapter" data-level="14.2.4" data-path="anova.html"><a href="anova.html#anovamodel"><i class="fa fa-check"></i><b>14.2.4</b> The model for the data and the meaning of <span class="math inline">\(F\)</span> (advanced)</a></li>
+<li class="chapter" data-level="14.2.5" data-path="anova.html"><a href="anova.html#anovacalc"><i class="fa fa-check"></i><b>14.2.5</b> A worked example</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="anova.html"><a href="anova.html#introduceaov"><i class="fa fa-check"></i><b>14.3</b> Running an ANOVA in R</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="anova.html"><a href="anova.html#using-the-aov-function-to-specify-your-anova"><i class="fa fa-check"></i><b>14.3.1</b> Using the <code>aov()</code> function to specify your ANOVA</a></li>
+<li class="chapter" data-level="14.3.2" data-path="anova.html"><a href="anova.html#aovobjects"><i class="fa fa-check"></i><b>14.3.2</b> Understanding what the <code>aov()</code> function produces</a></li>
+<li class="chapter" data-level="14.3.3" data-path="anova.html"><a href="anova.html#running-the-hypothesis-tests-for-the-anova"><i class="fa fa-check"></i><b>14.3.3</b> Running the hypothesis tests for the ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="anova.html"><a href="anova.html#etasquared"><i class="fa fa-check"></i><b>14.4</b> Effect size</a></li>
+<li class="chapter" data-level="14.5" data-path="anova.html"><a href="anova.html#posthoc"><i class="fa fa-check"></i><b>14.5</b> Multiple comparisons and post hoc tests</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="anova.html"><a href="anova.html#running-pairwise-t-tests"><i class="fa fa-check"></i><b>14.5.1</b> Running “pairwise” <span class="math inline">\(t\)</span>-tests</a></li>
+<li class="chapter" data-level="14.5.2" data-path="anova.html"><a href="anova.html#corrections-for-multiple-testing"><i class="fa fa-check"></i><b>14.5.2</b> Corrections for multiple testing</a></li>
+<li class="chapter" data-level="14.5.3" data-path="anova.html"><a href="anova.html#bonferroni-corrections"><i class="fa fa-check"></i><b>14.5.3</b> Bonferroni corrections</a></li>
+<li class="chapter" data-level="14.5.4" data-path="anova.html"><a href="anova.html#holm-corrections"><i class="fa fa-check"></i><b>14.5.4</b> Holm corrections</a></li>
+<li class="chapter" data-level="14.5.5" data-path="anova.html"><a href="anova.html#writing-up-the-post-hoc-test"><i class="fa fa-check"></i><b>14.5.5</b> Writing up the post hoc test</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="anova.html"><a href="anova.html#anovaassumptions"><i class="fa fa-check"></i><b>14.6</b> Assumptions of one-way ANOVA</a><ul>
+<li class="chapter" data-level="14.6.1" data-path="anova.html"><a href="anova.html#how-robust-is-anova"><i class="fa fa-check"></i><b>14.6.1</b> How robust is ANOVA?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="anova.html"><a href="anova.html#levene"><i class="fa fa-check"></i><b>14.7</b> Checking the homogeneity of variance assumption</a><ul>
+<li class="chapter" data-level="14.7.1" data-path="anova.html"><a href="anova.html#running-the-levenes-test-in-r"><i class="fa fa-check"></i><b>14.7.1</b> Running the Levene’s test in R</a></li>
+<li class="chapter" data-level="14.7.2" data-path="anova.html"><a href="anova.html#additional-comments"><i class="fa fa-check"></i><b>14.7.2</b> Additional comments</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="anova.html"><a href="anova.html#welchoneway"><i class="fa fa-check"></i><b>14.8</b> Removing the homogeneity of variance assumption</a></li>
+<li class="chapter" data-level="14.9" data-path="anova.html"><a href="anova.html#anovanormality"><i class="fa fa-check"></i><b>14.9</b> Checking the normality assumption</a></li>
+<li class="chapter" data-level="14.10" data-path="anova.html"><a href="anova.html#kruskalwallis"><i class="fa fa-check"></i><b>14.10</b> Removing the normality assumption</a><ul>
+<li class="chapter" data-level="14.10.1" data-path="anova.html"><a href="anova.html#the-logic-behind-the-kruskal-wallis-test"><i class="fa fa-check"></i><b>14.10.1</b> The logic behind the Kruskal-Wallis test</a></li>
+<li class="chapter" data-level="14.10.2" data-path="anova.html"><a href="anova.html#additional-details"><i class="fa fa-check"></i><b>14.10.2</b> Additional details</a></li>
+<li class="chapter" data-level="14.10.3" data-path="anova.html"><a href="anova.html#how-to-run-the-kruskal-wallis-test-in-r"><i class="fa fa-check"></i><b>14.10.3</b> How to run the Kruskal-Wallis test in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14.11" data-path="anova.html"><a href="anova.html#anovaandt"><i class="fa fa-check"></i><b>14.11</b> On the relationship between ANOVA and the Student <span class="math inline">\(t\)</span> test</a></li>
+<li class="chapter" data-level="14.12" data-path="anova.html"><a href="anova.html#summary-12"><i class="fa fa-check"></i><b>14.12</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org/ekothe/navarro2/" target="blank">Published with bookdown</a></li>
@@ -1073,7 +1112,7 @@ t = \frac{\mbox{(mean 1)} -\mbox{(mean 2)}}{ \mbox{(SE)}}
 <ul>
 <li><em>Normality</em>. Like the one-sample <span class="math inline">\(t\)</span>-test, it is assumed that the data are normally distributed. Specifically, we assume that both groups are normally distributed. In Section <a href="ttest.html#shapiro">13.9</a> we’ll discuss how to test for normality, and in Section <a href="ttest.html#wilcox">13.10</a> we’ll discuss possible solutions.</li>
 <li><em>Independence</em>. Once again, it is assumed that the observations are independently sampled. In the context of the Student test this has two aspects to it. Firstly, we assume that the observations within each sample are independent of one another (exactly the same as for the one-sample test). However, we also assume that there are no cross-sample dependencies. If, for instance, it turns out that you included some participants in both experimental conditions of your study (e.g., by accidentally allowing the same person to sign up to different conditions), then there are some cross sample dependencies that you’d need to take into account.</li>
-<li><em>Homogeneity of variance</em> (also called “homoscedasticity”). The third assumption is that the population standard deviation is the same in both groups. You can test this assumption using the Levene test, which I’ll talk about later on in the book (Section <a href="#levene"><strong>??</strong></a>). However, there’s a very simple remedy for this assumption, which I’ll talk about in the next section.</li>
+<li><em>Homogeneity of variance</em> (also called “homoscedasticity”). The third assumption is that the population standard deviation is the same in both groups. You can test this assumption using the Levene test, which I’ll talk about later on in the book (Section <a href="anova.html#levene">14.7</a>). However, there’s a very simple remedy for this assumption, which I’ll talk about in the next section.</li>
 </ul>
 </div>
 </div>
@@ -1828,7 +1867,7 @@ score.A</code></pre></div>
 <li id="fn189"><p>Although it is the simplest, which is why I started with it.<a href="ttest.html#fnref189">↩</a></p></li>
 <li id="fn190"><p>A funny question almost always pops up at this point: what the heck <em>is</em> the population being referred to in this case? Is it the set of students actually taking Dr Harpo’s class (all 33 of them)? The set of people who might take the class (an unknown number) of them? Or something else? Does it matter which of these we pick? It’s traditional in an introductory behavioural stats class to mumble a lot at this point, but since I get asked this question every year by my students, I’ll give a brief answer. Technically yes, it does matter: if you change your definition of what the “real world” population actually is, then the sampling distribution of your observed mean <span class="math inline">\(\bar{X}\)</span> changes too. The <span class="math inline">\(t\)</span>-test relies on an assumption that the observations are sampled at random from an infinitely large population; and to the extent that real life isn’t like that, then the <span class="math inline">\(t\)</span>-test can be wrong. In practice, however, this isn’t usually a big deal: even though the assumption is almost always wrong, it doesn’t lead to a lot of pathological behaviour from the test, so we tend to just ignore it.<a href="ttest.html#fnref190">↩</a></p></li>
 <li id="fn191"><p>Yes, I have a “favourite” way of thinking about pooled standard deviation estimates. So what?<a href="ttest.html#fnref191">↩</a></p></li>
-<li id="fn192"><p>A more correct notation will be introduced in Chapter <a href="#anova"><strong>??</strong></a>.<a href="ttest.html#fnref192">↩</a></p></li>
+<li id="fn192"><p>A more correct notation will be introduced in Chapter <a href="anova.html#anova">14</a>.<a href="ttest.html#fnref192">↩</a></p></li>
 <li id="fn193"><p>Well, I guess you can average apples and oranges, and what you end up with is a delicious fruit smoothie. But no one really thinks that a fruit smoothie is a very good way to describe the original fruits, do they?<a href="ttest.html#fnref193">↩</a></p></li>
 <li id="fn194"><p>This design is very similar to the one in Section <a href="chisquare.html#mcnemar">12.8</a> that motivated the McNemar test. This should be no surprise. Both are standard repeated measures designs involving two measurements. The only difference is that this time our outcome variable is interval scale (working memory capacity) rather than a binary, nominal scale variable (a yes-or-no question).<a href="ttest.html#fnref194">↩</a></p></li>
 <li id="fn195"><p>At this point we have Drs Harpo, Chico and Zeppo. No prizes for guessing who Dr Groucho is.<a href="ttest.html#fnref195">↩</a></p></li>
@@ -1845,7 +1884,7 @@ score.A</code></pre></div>
         </div>
       </div>
 <a href="chisquare.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

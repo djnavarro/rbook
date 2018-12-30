@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ttest.html">
+<link rel="prev" href="anova.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -612,6 +612,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="13.11" data-path="ttest.html"><a href="ttest.html#summary-11"><i class="fa fa-check"></i><b>13.11</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> Comparing several means (one-way ANOVA)</a><ul>
+<li class="chapter" data-level="14.1" data-path="anova.html"><a href="anova.html#anxifree"><i class="fa fa-check"></i><b>14.1</b> An illustrative data set</a></li>
+<li class="chapter" data-level="14.2" data-path="anova.html"><a href="anova.html#anovaintro"><i class="fa fa-check"></i><b>14.2</b> How ANOVA works</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="anova.html"><a href="anova.html#two-formulas-for-the-variance-of-y"><i class="fa fa-check"></i><b>14.2.1</b> Two formulas for the variance of <span class="math inline">\(Y\)</span></a></li>
+<li class="chapter" data-level="14.2.2" data-path="anova.html"><a href="anova.html#from-variances-to-sums-of-squares"><i class="fa fa-check"></i><b>14.2.2</b> From variances to sums of squares</a></li>
+<li class="chapter" data-level="14.2.3" data-path="anova.html"><a href="anova.html#from-sums-of-squares-to-the-f-test"><i class="fa fa-check"></i><b>14.2.3</b> From sums of squares to the <span class="math inline">\(F\)</span>-test</a></li>
+<li class="chapter" data-level="14.2.4" data-path="anova.html"><a href="anova.html#anovamodel"><i class="fa fa-check"></i><b>14.2.4</b> The model for the data and the meaning of <span class="math inline">\(F\)</span> (advanced)</a></li>
+<li class="chapter" data-level="14.2.5" data-path="anova.html"><a href="anova.html#anovacalc"><i class="fa fa-check"></i><b>14.2.5</b> A worked example</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="anova.html"><a href="anova.html#introduceaov"><i class="fa fa-check"></i><b>14.3</b> Running an ANOVA in R</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="anova.html"><a href="anova.html#using-the-aov-function-to-specify-your-anova"><i class="fa fa-check"></i><b>14.3.1</b> Using the <code>aov()</code> function to specify your ANOVA</a></li>
+<li class="chapter" data-level="14.3.2" data-path="anova.html"><a href="anova.html#aovobjects"><i class="fa fa-check"></i><b>14.3.2</b> Understanding what the <code>aov()</code> function produces</a></li>
+<li class="chapter" data-level="14.3.3" data-path="anova.html"><a href="anova.html#running-the-hypothesis-tests-for-the-anova"><i class="fa fa-check"></i><b>14.3.3</b> Running the hypothesis tests for the ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="anova.html"><a href="anova.html#etasquared"><i class="fa fa-check"></i><b>14.4</b> Effect size</a></li>
+<li class="chapter" data-level="14.5" data-path="anova.html"><a href="anova.html#posthoc"><i class="fa fa-check"></i><b>14.5</b> Multiple comparisons and post hoc tests</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="anova.html"><a href="anova.html#running-pairwise-t-tests"><i class="fa fa-check"></i><b>14.5.1</b> Running “pairwise” <span class="math inline">\(t\)</span>-tests</a></li>
+<li class="chapter" data-level="14.5.2" data-path="anova.html"><a href="anova.html#corrections-for-multiple-testing"><i class="fa fa-check"></i><b>14.5.2</b> Corrections for multiple testing</a></li>
+<li class="chapter" data-level="14.5.3" data-path="anova.html"><a href="anova.html#bonferroni-corrections"><i class="fa fa-check"></i><b>14.5.3</b> Bonferroni corrections</a></li>
+<li class="chapter" data-level="14.5.4" data-path="anova.html"><a href="anova.html#holm-corrections"><i class="fa fa-check"></i><b>14.5.4</b> Holm corrections</a></li>
+<li class="chapter" data-level="14.5.5" data-path="anova.html"><a href="anova.html#writing-up-the-post-hoc-test"><i class="fa fa-check"></i><b>14.5.5</b> Writing up the post hoc test</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="anova.html"><a href="anova.html#anovaassumptions"><i class="fa fa-check"></i><b>14.6</b> Assumptions of one-way ANOVA</a><ul>
+<li class="chapter" data-level="14.6.1" data-path="anova.html"><a href="anova.html#how-robust-is-anova"><i class="fa fa-check"></i><b>14.6.1</b> How robust is ANOVA?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="anova.html"><a href="anova.html#levene"><i class="fa fa-check"></i><b>14.7</b> Checking the homogeneity of variance assumption</a><ul>
+<li class="chapter" data-level="14.7.1" data-path="anova.html"><a href="anova.html#running-the-levenes-test-in-r"><i class="fa fa-check"></i><b>14.7.1</b> Running the Levene’s test in R</a></li>
+<li class="chapter" data-level="14.7.2" data-path="anova.html"><a href="anova.html#additional-comments"><i class="fa fa-check"></i><b>14.7.2</b> Additional comments</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="anova.html"><a href="anova.html#welchoneway"><i class="fa fa-check"></i><b>14.8</b> Removing the homogeneity of variance assumption</a></li>
+<li class="chapter" data-level="14.9" data-path="anova.html"><a href="anova.html#anovanormality"><i class="fa fa-check"></i><b>14.9</b> Checking the normality assumption</a></li>
+<li class="chapter" data-level="14.10" data-path="anova.html"><a href="anova.html#kruskalwallis"><i class="fa fa-check"></i><b>14.10</b> Removing the normality assumption</a><ul>
+<li class="chapter" data-level="14.10.1" data-path="anova.html"><a href="anova.html#the-logic-behind-the-kruskal-wallis-test"><i class="fa fa-check"></i><b>14.10.1</b> The logic behind the Kruskal-Wallis test</a></li>
+<li class="chapter" data-level="14.10.2" data-path="anova.html"><a href="anova.html#additional-details"><i class="fa fa-check"></i><b>14.10.2</b> Additional details</a></li>
+<li class="chapter" data-level="14.10.3" data-path="anova.html"><a href="anova.html#how-to-run-the-kruskal-wallis-test-in-r"><i class="fa fa-check"></i><b>14.10.3</b> How to run the Kruskal-Wallis test in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14.11" data-path="anova.html"><a href="anova.html#anovaandt"><i class="fa fa-check"></i><b>14.11</b> On the relationship between ANOVA and the Student <span class="math inline">\(t\)</span> test</a></li>
+<li class="chapter" data-level="14.12" data-path="anova.html"><a href="anova.html#summary-12"><i class="fa fa-check"></i><b>14.12</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org/ekothe/navarro2/" target="blank">Published with bookdown</a></li>
@@ -656,6 +695,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Braun, John, and Duncan J Murdoch. 2007. <em>A First Course in Statistical Programming with R</em>. Cambridge University Press Cambridge.</p>
 </div>
 <div>
+<p>Brown, M. B., and A. B. Forsythe. 1974. “Robust Tests for Equality of Variances.” <em>Journal of the American Statistical Association</em> 69: 364–67.</p>
+</div>
+<div>
 <p>Campbell, D. T., and J. C. Stanley. 1963. <em>Experimental and Quasi-Experimental Designs for Research</em>. Boston, MA: Houghton Mifflin.</p>
 </div>
 <div>
@@ -663,6 +705,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div>
 <p>Cramér, H. 1946. <em>Mathematical Methods of Statistics</em>. Princeton: Princeton University Press.</p>
+</div>
+<div>
+<p>Dunn, O.J. 1961. “Multiple Comparisons Among Means.” <em>Journal of the American Statistical Association</em> 56: 52–64.</p>
 </div>
 <div>
 <p>Ellis, P. D. 2010. <em>The Essential Guide to Effect Sizes: Statistical Power, Meta-Analysis, and the Interpretation of Research Results</em>. Cambridge, UK: Cambridge University Press.</p>
@@ -689,6 +734,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Gelman, A., and H. Stern. 2006. “The Difference Between ‘Significant’ and ‘Not Significant’ Is Not Itself Statistically Significant.” <em>The American Statistician</em> 60: 328–31.</p>
 </div>
 <div>
+<p>Hays, W. L. 1994. <em>Statistics</em>. 5th ed. Fort Worth, TX: Harcourt Brace.</p>
+</div>
+<div>
 <p>Hedges, L. V. 1981. “Distribution Theory for Glass’s Estimator of Effect Size and Related Estimators.” <em>Journal of Educational Statistics</em> 6: 107–28.</p>
 </div>
 <div>
@@ -698,7 +746,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Hogg, R. V., J. V. McKean, and A. T. Craig. 2005. <em>Introduction to Mathematical Statistics</em>. 6th ed. Upper Saddle River, NJ: Pearson.</p>
 </div>
 <div>
+<p>Holm, S. 1979. “A Simple Sequentially Rejective Multiple Test Procedure.” <em>Scandinavian Journal of Statistics</em> 6: 65–70.</p>
+</div>
+<div>
 <p>Hothersall, D. 2004. <em>History of Psychology</em>. McGraw-Hill.</p>
+</div>
+<div>
+<p>Hsu, J. C. 1996. <em>Multiple Comparisons: Theory and Methods</em>. London, UK: Chapman; Hall.</p>
 </div>
 <div>
 <p>Ioannidis, John P. A. 2005. “Why Most Published Research Findings Are False.” <em>PLoS Med</em> 2 (8). Public Library of Science: 697–701.</p>
@@ -710,10 +764,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Keynes, John Maynard. 1923. <em>A Tract on Monetary Reform</em>. London: Macmillan; Company.</p>
 </div>
 <div>
+<p>Kruskal, W. H., and W. A. Wallis. 1952. “Use of Ranks in One-Criterion Variance Analysis.” <em>Journal of the American Statistical Association</em> 47: 583–621.</p>
+</div>
+<div>
 <p>Kühberger, A, A Fritz, and T. Scherndl. 2014. “Publication Bias in Psychology: A Diagnosis Based on the Correlation Between Effect Size and Sample Size.” <em>Public Library of Science One</em> 9: 1–8.</p>
 </div>
 <div>
 <p>Lehmann, Erich L. 2011. <em>Fisher, Neyman, and the Creation of Classical Statistics</em>. Springer.</p>
+</div>
+<div>
+<p>Levene, H. 1960. “Robust Tests for Equality of Variances.” In <em>Contributions to Probability and Statistics: Essays in Honor of Harold Hotelling</em>, edited by I. Olkin et al, 278–92. Palo Alto, CA: Stanford University Press.</p>
 </div>
 <div>
 <p>Matloff, Norman, and Norman S Matloff. 2011. <em>The Art of R Programming: A Tour of Statistical Software Design</em>. No Starch Press.</p>
@@ -740,6 +800,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Rosenthal, R. 1966. <em>Experimenter Effects in Behavioral Research</em>. New York: Appleton.</p>
 </div>
 <div>
+<p>Sahai, H., and M. I. Ageel. 2000. <em>The Analysis of Variance: Fixed, Random and Mixed Models</em>. Boston: Birkhauser.</p>
+</div>
+<div>
+<p>Shaffer, J. P. 1995. “Multiple Hypothesis Testing.” <em>Annual Review of Psychology</em> 46: 561–84.</p>
+</div>
+<div>
 <p>Shapiro, S. S., and M. B. Wilk. 1965. “An Analysis of Variance Test for Normality (Complete Samples).” <em>Biometrika</em> 52: 591–611.</p>
 </div>
 <div>
@@ -759,6 +825,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div>
 <p>Welch, B. L. 1947. “The Generalization of ‘Student’s’ Problem When Several Different Population Variances Are Involved.” <em>Biometrika</em> 34: 28–35.</p>
+</div>
+<div>
+<p>———. 1951. “On the Comparison of Several Mean Values: An Alternative Approach.” <em>Biometrika</em> 38: 330–36.</p>
 </div>
 <div>
 <p>Yates, F. 1934. “Contingency Tables Involving Small Numbers and the <span class="math inline">\(\chi^2\)</span> Test.” <em>Supplement to the Journal of the Royal Statistical Society</em> 1: 217–35.</p>
@@ -970,12 +1039,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="ttest.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anova.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
