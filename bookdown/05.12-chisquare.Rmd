@@ -15,7 +15,7 @@ The $\chi^2$ goodness-of-fit test is one of the oldest hypothesis tests around: 
 Over the years, there have been a lot of studies showing that humans have a lot of difficulties in simulating randomness. Try as we might to "act" random, we *think* in terms of patterns and structure, and so when asked to "do something at random", what people actually do is anything but random. As a consequence, the study of human randomness (or non-randomness, as the case may be) opens up a lot of deep psychological questions about how we think about the world. With this in mind, let's consider a very simple study. Suppose I asked people to imagine a shuffled deck of cards, and mentally pick one card from this imaginary deck "at random". After they've chosen one card, I ask them to mentally select a second one. For both choices, what we're going to look at is the suit (hearts, clubs, spades or diamonds) that people chose. After asking, say, $N=200$ people to do this, I'd like to look at the data and figure out whether or not the cards that people pretended to select were really random. The data are contained in the `randomness.Rdata` file, which contains a single data frame called `cards`. Let's take a look:
 ```{r warning = FALSE, message= FALSE}
 library( lsr )
-load( "./rbook-master/data/randomness.Rdata" )
+load( file.path(projecthome, "data/randomness.Rdata" ))
 str(cards)
 ```
 As you can see, the `cards` data frame contains three variables, an `id` variable that assigns a unique identifier to each participant, and the two variables `choice_1` and `choice_2` that indicate the card suits that people chose. Here's the first few entries in the data frame:
@@ -376,7 +376,7 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 The other day I was watching an animated documentary examining the quaint customs of the natives of the planet *Chapek 9*. Apparently, in order to gain access to their capital city, a visitor must prove that they're a robot, not a human. In order to determine whether or not visitor is human, they ask whether the visitor prefers puppies, flowers or large, properly formatted data files. "Pretty clever," I thought to myself "but what if humans and robots have the same preferences? That probably wouldn't be a very good test then, would it?" As it happens, I got my hands on the testing data that the civil authorities of *Chapek 9* used to check this. It turns out that what they did was very simple... they found a bunch of robots and a bunch of humans and asked them what they preferred. I saved their data in a file called `chapek9.Rdata`, which I can now load and have a quick look at:
 
 ```{r}
-load( "./rbook-master/data/chapek9.Rdata" )
+load( file.path(projecthome, "data/chapek9.Rdata" ))
 str(chapek9)
 ```
 Okay, so we have a single data frame called `chapek9`, which contains two factors, `species` and `choice`. As always, it's nice to have a quick look at the data,
@@ -629,7 +629,7 @@ Again, the numbers are the same as last time, it's just that the output is very 
 
 What should you do if your cell counts are too small, but you'd still like to test the null hypothesis that the two variables are independent? One answer would be "collect more data", but that's far too glib: there are a lot of situations in which it would be either infeasible or unethical do that. If so, statisticians have a kind of moral obligation to provide scientists with better tests. In this instance, Fisher (1922) kindly provided the right answer to the question. To illustrate the basic idea, let's suppose that we're analysing data from a field experiment, looking at the emotional status of people who have been accused of witchcraft; some of whom are currently being burned at the stake.^[This example is based on a joke article published in the *Journal of Irreproducible Results*.] Unfortunately for the scientist (but rather fortunately for the general populace), it's actually quite hard to find people in the process of being set on fire, so the cell counts are awfully small in some cases. The `salem.Rdata` file illustrates the point:
 ```{r}
-load("./rbook-master/data/salem.Rdata")
+load( file.path(projecthome, "data/salem.Rdata"))
 
 salem.tabs <- table( trial )
 print( salem.tabs )
@@ -716,7 +716,7 @@ and this statistic has an (approximately) $\chi^2$ distribution with $df=1$. How
 
 Now that you know what the McNemar test is all about, lets actually run one. The `agpp.Rdata` file contains the raw data that I discussed previously, so let's have a look at it:
 ```{r}
-load("./rbook-master/data/agpp.Rdata")
+load(file.path(projecthome, "data/agpp.Rdata"))
 str(agpp)     
 ```
 The `agpp` data frame contains three variables, an `id` variable that labels each participant in the data set (we'll see why that's useful in a moment), a `response_before` variable that records the person's answer when they were asked the question the first time, and a `response_after` variable that shows the answer that they gave when asked the same question a second time. As usual, here's the first 6 entries:

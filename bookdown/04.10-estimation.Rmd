@@ -1,3 +1,4 @@
+
 # Estimating unknown quantities from a sample{#estimation}
 
  
@@ -38,8 +39,7 @@ Again, it's not obvious what the population is.
 
 
 ```{r srs1, fig.cap="Simple random sampling without replacement from a finite population", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/srs1.png")
-
+knitr::include_graphics(file.path(projecthome, "img", "estimation", "srs1.png"))
 ```
 
 Irrespective of how I define the population, the critical point is that the sample is a subset of the population, and our goal is to use our knowledge of the sample to draw inferences about the properties of the population. The relationship between the two depends on the *procedure* by which the sample was selected. This procedure is referred to as a **_sampling method_**, and it is important to understand why it matters.
@@ -49,12 +49,12 @@ To keep things simple, let's imagine that we have a bag containing 10 chips. Eac
 To help make sure you understand the importance of the sampling procedure, consider an alternative way in which the experiment could have been run. Suppose that my 5-year old son had opened the bag, and decided to pull out four black chips without putting any of them back in the bag. This *biased* sampling scheme is depicted in Figure \@ref(fig:brs). Now consider the evidentiary value of seeing 4 black chips and 0 white chips. Clearly, it depends on the sampling scheme, does it not? If you know that the sampling scheme is biased to select only black chips, then a sample that consists of only black chips doesn't tell you very much about the population! For this reason, statisticians really like it when a data set can be considered a simple random sample, because it makes the data analysis *much* easier.  
 
 ```{r brs, fig.cap="Biased sampling without replacement from a finite population", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/brs.PNG")
+knitr::include_graphics(file.path(projecthome, "img/estimation/brs.PNG"))
 
 ```
 
 ```{r srs2, fig.cap="Simple random sampling *with* replacement from a finite population", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/srs2.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/srs2.png"))
 
 ```
 
@@ -207,12 +207,12 @@ Sampling distributions are another important theoretical idea in statistics, and
 
 
 ```{r sampdistmean, fig.cap="The sampling distribution of the mean for the \"five IQ scores experiment\". If you sample 5 people at random and calculate their *average* IQ, you'll almost certainly get a number between 80 and 120, even though there are quite a lot of individuals who have IQs above 120 or below 80. For comparison, the black line plots the population distribution of IQ scores.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/sampleDist4.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/sampleDist4.png"))
 
 ```
 
 ```{r sampdistmax, fig.cap="The sampling distribution of the *maximum* for the \"five IQ scores experiment\". If you sample 5 people at random and select the one with the highest IQ score, you'll probably see someone with an IQ between 100 and 140.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/sampleDistMax.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/sampleDistMax.png"))
 
 ```
 
@@ -384,7 +384,7 @@ Let's extend this example a little. Suppose I now make a second observation. My 
 This time around, our sample is *just* large enough for us to be able to observe some variability: two observations is the bare minimum number needed for any variability to be observed! For our new data set, the sample mean is $\bar{X}=21$, and the sample standard deviation is $s=1$. What intuitions do we have about the population? Again, as far as the population mean goes, the best guess we can possibly make is the sample mean: if forced to guess, we'd probably guess that the population mean cromulence is 21. What about the standard deviation? This is a little more complicated. The sample standard deviation is only based on two observations, and if you're at all like me you probably have the intuition that, with only two observations, we haven't given the population "enough of a chance" to reveal its true variability to us. It's not just that we suspect that the estimate is *wrong*: after all, with only two observations we expect it to be wrong to some degree. The worry is that the error is *systematic*. Specifically, we suspect that the sample standard deviation is likely to be smaller than the population standard deviation. 
 
 ```{r sampdistsd, fig.cap="The sampling distribution of the sample standard deviation for a \"two IQ scores\" experiment. The true population standard deviation is 15 (dashed line), but as you can see from the histogram, the vast majority of experiments will produce a much smaller sample standard deviation than this. On average, this experiment would produce a sample standard deviation of only 8.5, well below the true value! In other words, the sample standard deviation is a *biased* estimate of the population standard deviation. ", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/samplingDistSampleSD.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/samplingDistSampleSD.png"))
 
 ```
 
@@ -393,7 +393,7 @@ This intuition feels right, but it would be nice to demonstrate this somehow. Th
 Now let's extend the simulation. Instead of restricting ourselves to the situation where we have a sample size of $N=2$, let's repeat the exercise for sample sizes from 1 to 10. If we plot the average sample mean and average sample standard deviation as a function of sample size, you get the results shown in Figure \@ref(fig:estimatorbias). On the left hand side (panel a), I've plotted the average sample mean and on the right hand side (panel b), I've plotted the average standard deviation. The two plots are quite different: *on average*, the average sample mean is equal to the population mean. It is an **_unbiased estimator_**, which is essentially the reason why your best estimate for the population mean is the sample mean.^[I should note that I'm hiding something here. Unbiasedness is a desirable characteristic for an estimator, but there are other things that matter besides bias. However, it's beyond the scope of this book to discuss this in any detail. I just want to draw your attention to the fact that there's some hidden complexity here.] The plot on the right is quite different: on average, the sample standard deviation $s$ is *smaller* than the population standard deviation $\sigma$. It is a **_biased estimator_**. In other words, if we want to make a "best guess" $\hat\sigma$ about the value of the population standard deviation $\sigma$, we should make sure our guess is a little bit larger than the sample standard deviation $s$. 
 
 ```{r estimatorbias, fig.cap="An illustration of the fact that the sample mean is an unbiased estimator of the population mean (panel a), but the sample standard deviation is a biased estimator of the population standard deviation (panel b). To generate the figure, I generated 10,000 simulated data sets with 1 observation each, 10,000 more with 2 observations, and so on up to a sample size of 10. Each data set consisted of fake IQ data: that is, the data were normally distributed with a true population mean of 100 and standard deviation 15. *On average*, the sample means turn out to be 100, regardless of sample size (panel a). However, the sample standard deviations turn out to be systematically too small (panel b), especially for small sample sizes.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/biasMeanSD.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/biasMeanSD.png"))
 
 ```
 
@@ -486,7 +486,7 @@ Okay, so if that's not the right answer, what is? Remember what we said about fr
 
 
 ```{r cirep, fig.cap="95% confidence intervals. The top (panel a) shows 50 simulated replications of an experiment in which we measure the IQs of 10 people. The dot marks the location of the sample mean, and the line shows the 95% confidence interval. In total 47 of the 50 confidence intervals do contain the true mean (i.e., 100), but the three intervals marked with asterisks do not. The lower graph (panel b) shows a similar simulation, but this time we simulate replications of an experiment that measures the IQs of 25 people.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/confIntReplicated.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/confIntReplicated.png"))
 
 ```
 
@@ -514,7 +514,7 @@ Hopefully that's fairly clear.
 
 There's several different ways you can draw graphs that show confidence intervals as error bars. I'll show three versions here, but this certainly doesn't exhaust the possibilities. In doing so, what I'm assuming is that you want to draw is a plot showing the means and confidence intervals for one variable, broken down by different levels of a second variable. For instance, in our `afl` data that we discussed earlier, we might be interested in plotting the average `attendance` by `year`. I'll do this using two different functions, `bargraph.CI()` and `lineplot.CI()` (both of which are in the `sciplot` package). Assuming that you've installed these packages on your system (see Section \@ref(packageinstall) if you've forgotten how to do this), you'll need to load them. You'll also need to load the `lsr` package, because we'll make use of the `ciMean()` function to actually calculate the confidence intervals
 ```{r warning = FALSE, message = FALSE}
-load( "./rbook-master/data/afl24.Rdata" )  # contains the "afl" data frame
+load( file.path(projecthome, "data/afl24.Rdata" ))  # contains the "afl" data frame
 library( sciplot )     # bargraph.CI() and lineplot.CI() functions
 library( lsr )         # ciMean() function
 ```

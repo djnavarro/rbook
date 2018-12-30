@@ -18,7 +18,7 @@ In this section I'll describe one of the most useless tests in all of statistics
 
 To introduce the idea behind the $z$-test, let's use a simple example. A friend of mine, Dr Zeppo, grades his introductory statistics class on a curve. Let's suppose that the average grade in his class is 67.5, and the standard deviation is 9.5. Of his many hundreds of students, it turns out that 20 of them also take psychology classes. Out of curiosity, I find myself wondering: do the psychology students tend to get the same grades as everyone else (i.e., mean 67.5) or do they tend to score higher or lower? He emails me the `zeppo.Rdata` file, which I use to pull up the `grades` of those students, 
 ```{r}
-load( "./rbook-master/data/zeppo.Rdata" ) 
+load( file.path(projecthome, "data/zeppo.Rdata" )) 
 print( grades )
 ``` 
 and calculate the mean:
@@ -398,7 +398,7 @@ $$
 The only thing that has changed in the equation is that instead of using the known true value $\sigma$, we use the estimate $\hat{\sigma}$. And if this estimate has been constructed from $N$ observations, then the sampling distribution turns into a $t$-distribution with $N-1$ **_degrees of freedom_** (df). The $t$ distribution is very similar to the normal distribution, but has "heavier" tails, as discussed earlier in Section \@ref(otherdists) and illustrated in Figure \@ref(fig:ttestdist). Notice, though, that as df gets larger, the $t$-distribution starts to look identical to the standard normal distribution. This is as it should be: if you have a sample size of $N = 70,000,000$ then your "estimate" of the standard deviation would be pretty much perfect, right? So, you should expect that for large $N$, the $t$-test would behave exactly the same way as a $z$-test. And that's exactly what happens!  
 
 ```{r ttestdist, fig.cap="The $t$ distribution with 2 degrees of freedom (left) and 10 degrees of freedom (right), with a standard normal distribution (i.e., mean 0 and std dev 1) plotted as dotted lines for comparison purposes. Notice that the $t$ distribution has heavier tails (higher kurtosis) than the normal distribution; this effect is quite exaggerated when the degrees of freedom are very small, but negligible for larger values. In other words, for large $df$ the $t$ distribution is essentially identical to a normal distribution.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/tdist_3.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/tdist_3.png"))
 
 ```
 
@@ -470,7 +470,7 @@ Although the one sample $t$-test has its uses, it's not the most typical example
 
 Suppose we have 33 students taking Dr Harpo's statistics lectures, and Dr Harpo doesn't grade to a curve. Actually, Dr Harpo's grading is a bit of a mystery, so we don't really know anything about what the average grade is for the class as a whole. There are two tutors for the class, Anastasia and Bernadette. There are $N_1 = 15$ students in Anastasia's tutorials, and $N_2 = 18$ in Bernadette's tutorials. The research question I'm interested in is whether Anastasia or Bernadette is a better tutor, or if it doesn't make much of a difference. Dr Harpo emails me the course grades, in the `harpo.Rdata` file. As usual, I'll load the file and have a look at what variables it contains:
 ```{r}
-load( "./rbook-master/data/harpo.Rdata" )
+load (file.path(projecthome, "data/harpo.Rdata" ))
 str(harpo)
 ```
 As we can see, there's a single data frame with two variables, `grade` and `tutor`. The `grade` variable is a numeric vector, containing the grades for all $N = 33$ students taking Dr Harpo's class; the `tutor` variable is a factor that indicates who each student's tutor was. The first six observations in this data set are shown below:
@@ -504,7 +504,7 @@ To give you a more detailed sense of what's going on here, I've plotted histogra
 Here is a simpler plot showing the means and corresponding confidence intervals for both groups of students (Figure \@ref(fig:ttestci)).
 
 ```{r ttestci, fig.cap="Plots showing the mean grade for the students in Anastasia's and Bernadette's tutorials. Error bars depict 95% confidence intervals around the mean. On the basis of visual inspection, it does look like there's a real difference between the groups, though it's hard to say for sure.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/ttestci.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/ttestci.png"))
 
 ```
 
@@ -839,7 +839,7 @@ Regardless of whether we're talking about the Student test or the Welch test, an
 
 The data set that we'll use this time comes from Dr Chico's class.^[At this point we have Drs Harpo, Chico and Zeppo. No prizes for guessing who Dr Groucho is.] In her class, students take two major tests, one early in the semester and one later in the semester. To hear her tell it, she runs a very hard class, one that most students find very challenging; but she argues that by setting hard assessments, students are encouraged to work harder. Her theory is that the first test is a bit of a "wake up call" for students: when they realise how hard her class really is, they'll work harder for the second test and get a better mark. Is she right? To test this, let's have a look at the `chico.Rdata` file: 
 ```{r}
-load( "./rbook-master/data/chico.Rdata" )
+load( file.path(projecthome, "data/chico.Rdata" ))
 str(chico)     
 ```
 The data frame `chico` contains three variables: an `id` variable that identifies each student in the class, the `grade_test1` variable that records the student grade for the first test, and the `grade_test2` variable that has the grades for the second test. Here's the first six students:
@@ -1292,7 +1292,7 @@ where $\bar{X}$ is the mean of the observations, and the $a_i$ values are ... mu
 Because it's a little hard to explain the maths behind the $W$ statistic, a better idea is to give a broad brush description of how it behaves. Unlike most of the test statistics that we'll encounter in this book, it's actually *small* values of $W$ that indicated departure from normality. The $W$ statistic has a maximum value of 1, which arises when the data look "perfectly normal". The smaller the value of $W$, the less normal the data are. However, the sampling distribution for $W$  -- which is not one of the standard ones that I discussed in Chapter \@ref(probability) and is in fact a complete pain in the arse to work with -- does depend on the sample size $N$. To give you a feel for what these sampling distributions look like, I've plotted three of them in Figure \@ref(fig:swdist). Notice that, as the sample size starts to get large, the sampling distribution becomes very tightly clumped up near $W=1$, and as a consequence, for larger samples $W$ doesn't have to be very much smaller than 1 in order for the test to be significant. 
 
 ```{r swdist, fig.cap="Sampling distribution of the Shapiro-Wilk $W$ statistic, under the null hypothesis that the data are normally distributed, for samples of size 10, 20 and 50. Note that *small* values of $W$ indicate departure from normality.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/shapirowilkdist.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/shapirowilkdist.png"))
 
 ```
 
@@ -1313,13 +1313,13 @@ Like the $t$-test, the Wilcoxon test comes in two forms, one-sample and two-samp
 
 I'll start by describing the **_two sample Wilcoxon test_** (also known as the Mann-Whitney test), since it's actually simpler than the one sample version. Suppose we're looking at the scores of 10 people on some test. Since my imagination has now failed me completely, let's pretend it's a "test of awesomeness", and there are two groups of people, "A" and "B". I'm curious to know which group is more awesome. The data are included in the file `awesome.Rdata`, and like many of the data sets I've been using, it contains only a single data frame, in this case called `awesome`. Here's the data:
 ```{r}
-load("./rbook-master/data/awesome.Rdata")
+load(file.path(projecthome, "data/awesome.Rdata"))
 print( awesome )
 ```
 As long as there are no ties (i.e., people with the exact same awesomeness score), then the test that we want to do is surprisingly simple. All we have to do is construct a table that compares every observation in group $A$ against every observation in group $B$. Whenever the group $A$ datum is larger, we place a check mark in the table:
 
 ```{r echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/wilcox1.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox1.png"))
 
 ```
 
@@ -1332,7 +1332,7 @@ wilcox.test( formula = scores ~ group, data = awesome)
 Just like we saw with the `t.test()` function, there is an `alternative` argument that you can use to switch between two-sided tests and one-sided tests, plus a few other arguments that we don't need to worry too much about at an introductory level. 
 Similarly, the `wilcox.test()` function allows you to use the  `x` and `y` arguments when you have your data stored separately for each group. For instance, suppose we use the data from the `awesome2.Rdata` file:
 ```{r}
-load( "./rbook-master/data/awesome2.Rdata" )
+load( file.path(projecthome, "data/awesome2.Rdata" ))
 score.A
 score.B
 ```
@@ -1348,13 +1348,13 @@ The output that R produces is pretty much the same as last time.
 
 What about the **_one sample Wilcoxon test_** (or equivalently, the paired samples Wilcoxon test)? Suppose I'm interested in finding out whether taking a statistics class has any effect on the happiness of students. Here's my data:
 ```{r}
-load( "./rbook-master/data/happy.Rdata" )
+load( file.path(projecthome, "data/happy.Rdata" ))
 print( happiness )
 ```
 What I've measured here is the happiness of each student `before` taking the class and `after` taking the class; the `change` score is the difference between the two. Just like we saw with the $t$-test, there's no fundamental difference between doing a paired-samples test using `before` and `after`, versus doing a one-sample test using the `change` scores. As before, the simplest way to think about the test is to construct a tabulation. The way to do it this time is to take those change scores that are positive valued, and tabulate them against all the complete sample. What you end up with is a table that looks like this:
 
 ```{r echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/wilcox2.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox2.png"))
 
 ```
 

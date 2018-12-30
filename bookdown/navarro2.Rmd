@@ -7470,6 +7470,7 @@ Picking up on that last point, there's a sense in which this whole chapter is so
 
 <!--chapter:end:04.09-probability.Rmd-->
 
+
 # Estimating unknown quantities from a sample{#estimation}
 
  
@@ -7510,8 +7511,7 @@ Again, it's not obvious what the population is.
 
 
 ```{r srs1, fig.cap="Simple random sampling without replacement from a finite population", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/srs1.png")
-
+knitr::include_graphics(file.path(projecthome, "img", "estimation", "srs1.png"))
 ```
 
 Irrespective of how I define the population, the critical point is that the sample is a subset of the population, and our goal is to use our knowledge of the sample to draw inferences about the properties of the population. The relationship between the two depends on the *procedure* by which the sample was selected. This procedure is referred to as a **_sampling method_**, and it is important to understand why it matters.
@@ -7521,12 +7521,12 @@ To keep things simple, let's imagine that we have a bag containing 10 chips. Eac
 To help make sure you understand the importance of the sampling procedure, consider an alternative way in which the experiment could have been run. Suppose that my 5-year old son had opened the bag, and decided to pull out four black chips without putting any of them back in the bag. This *biased* sampling scheme is depicted in Figure \@ref(fig:brs). Now consider the evidentiary value of seeing 4 black chips and 0 white chips. Clearly, it depends on the sampling scheme, does it not? If you know that the sampling scheme is biased to select only black chips, then a sample that consists of only black chips doesn't tell you very much about the population! For this reason, statisticians really like it when a data set can be considered a simple random sample, because it makes the data analysis *much* easier.  
 
 ```{r brs, fig.cap="Biased sampling without replacement from a finite population", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/brs.PNG")
+knitr::include_graphics(file.path(projecthome, "img/estimation/brs.PNG"))
 
 ```
 
 ```{r srs2, fig.cap="Simple random sampling *with* replacement from a finite population", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/srs2.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/srs2.png"))
 
 ```
 
@@ -7679,12 +7679,12 @@ Sampling distributions are another important theoretical idea in statistics, and
 
 
 ```{r sampdistmean, fig.cap="The sampling distribution of the mean for the \"five IQ scores experiment\". If you sample 5 people at random and calculate their *average* IQ, you'll almost certainly get a number between 80 and 120, even though there are quite a lot of individuals who have IQs above 120 or below 80. For comparison, the black line plots the population distribution of IQ scores.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/sampleDist4.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/sampleDist4.png"))
 
 ```
 
 ```{r sampdistmax, fig.cap="The sampling distribution of the *maximum* for the \"five IQ scores experiment\". If you sample 5 people at random and select the one with the highest IQ score, you'll probably see someone with an IQ between 100 and 140.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/sampleDistMax.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/sampleDistMax.png"))
 
 ```
 
@@ -7856,7 +7856,7 @@ Let's extend this example a little. Suppose I now make a second observation. My 
 This time around, our sample is *just* large enough for us to be able to observe some variability: two observations is the bare minimum number needed for any variability to be observed! For our new data set, the sample mean is $\bar{X}=21$, and the sample standard deviation is $s=1$. What intuitions do we have about the population? Again, as far as the population mean goes, the best guess we can possibly make is the sample mean: if forced to guess, we'd probably guess that the population mean cromulence is 21. What about the standard deviation? This is a little more complicated. The sample standard deviation is only based on two observations, and if you're at all like me you probably have the intuition that, with only two observations, we haven't given the population "enough of a chance" to reveal its true variability to us. It's not just that we suspect that the estimate is *wrong*: after all, with only two observations we expect it to be wrong to some degree. The worry is that the error is *systematic*. Specifically, we suspect that the sample standard deviation is likely to be smaller than the population standard deviation. 
 
 ```{r sampdistsd, fig.cap="The sampling distribution of the sample standard deviation for a \"two IQ scores\" experiment. The true population standard deviation is 15 (dashed line), but as you can see from the histogram, the vast majority of experiments will produce a much smaller sample standard deviation than this. On average, this experiment would produce a sample standard deviation of only 8.5, well below the true value! In other words, the sample standard deviation is a *biased* estimate of the population standard deviation. ", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/samplingDistSampleSD.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/samplingDistSampleSD.png"))
 
 ```
 
@@ -7865,7 +7865,7 @@ This intuition feels right, but it would be nice to demonstrate this somehow. Th
 Now let's extend the simulation. Instead of restricting ourselves to the situation where we have a sample size of $N=2$, let's repeat the exercise for sample sizes from 1 to 10. If we plot the average sample mean and average sample standard deviation as a function of sample size, you get the results shown in Figure \@ref(fig:estimatorbias). On the left hand side (panel a), I've plotted the average sample mean and on the right hand side (panel b), I've plotted the average standard deviation. The two plots are quite different: *on average*, the average sample mean is equal to the population mean. It is an **_unbiased estimator_**, which is essentially the reason why your best estimate for the population mean is the sample mean.^[I should note that I'm hiding something here. Unbiasedness is a desirable characteristic for an estimator, but there are other things that matter besides bias. However, it's beyond the scope of this book to discuss this in any detail. I just want to draw your attention to the fact that there's some hidden complexity here.] The plot on the right is quite different: on average, the sample standard deviation $s$ is *smaller* than the population standard deviation $\sigma$. It is a **_biased estimator_**. In other words, if we want to make a "best guess" $\hat\sigma$ about the value of the population standard deviation $\sigma$, we should make sure our guess is a little bit larger than the sample standard deviation $s$. 
 
 ```{r estimatorbias, fig.cap="An illustration of the fact that the sample mean is an unbiased estimator of the population mean (panel a), but the sample standard deviation is a biased estimator of the population standard deviation (panel b). To generate the figure, I generated 10,000 simulated data sets with 1 observation each, 10,000 more with 2 observations, and so on up to a sample size of 10. Each data set consisted of fake IQ data: that is, the data were normally distributed with a true population mean of 100 and standard deviation 15. *On average*, the sample means turn out to be 100, regardless of sample size (panel a). However, the sample standard deviations turn out to be systematically too small (panel b), especially for small sample sizes.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/biasMeanSD.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/biasMeanSD.png"))
 
 ```
 
@@ -7958,7 +7958,7 @@ Okay, so if that's not the right answer, what is? Remember what we said about fr
 
 
 ```{r cirep, fig.cap="95% confidence intervals. The top (panel a) shows 50 simulated replications of an experiment in which we measure the IQs of 10 people. The dot marks the location of the sample mean, and the line shows the 95% confidence interval. In total 47 of the 50 confidence intervals do contain the true mean (i.e., 100), but the three intervals marked with asterisks do not. The lower graph (panel b) shows a similar simulation, but this time we simulate replications of an experiment that measures the IQs of 25 people.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/estimation/confIntReplicated.png")
+knitr::include_graphics(file.path(projecthome, "img/estimation/confIntReplicated.png"))
 
 ```
 
@@ -7986,7 +7986,7 @@ Hopefully that's fairly clear.
 
 There's several different ways you can draw graphs that show confidence intervals as error bars. I'll show three versions here, but this certainly doesn't exhaust the possibilities. In doing so, what I'm assuming is that you want to draw is a plot showing the means and confidence intervals for one variable, broken down by different levels of a second variable. For instance, in our `afl` data that we discussed earlier, we might be interested in plotting the average `attendance` by `year`. I'll do this using two different functions, `bargraph.CI()` and `lineplot.CI()` (both of which are in the `sciplot` package). Assuming that you've installed these packages on your system (see Section \@ref(packageinstall) if you've forgotten how to do this), you'll need to load them. You'll also need to load the `lsr` package, because we'll make use of the `ciMean()` function to actually calculate the confidence intervals
 ```{r warning = FALSE, message = FALSE}
-load( "./rbook-master/data/afl24.Rdata" )  # contains the "afl" data frame
+load( file.path(projecthome, "data/afl24.Rdata" ))  # contains the "afl" data frame
 library( sciplot )     # bargraph.CI() and lineplot.CI() functions
 library( lsr )         # ciMean() function
 ```
@@ -8560,7 +8560,7 @@ The $\chi^2$ goodness-of-fit test is one of the oldest hypothesis tests around: 
 Over the years, there have been a lot of studies showing that humans have a lot of difficulties in simulating randomness. Try as we might to "act" random, we *think* in terms of patterns and structure, and so when asked to "do something at random", what people actually do is anything but random. As a consequence, the study of human randomness (or non-randomness, as the case may be) opens up a lot of deep psychological questions about how we think about the world. With this in mind, let's consider a very simple study. Suppose I asked people to imagine a shuffled deck of cards, and mentally pick one card from this imaginary deck "at random". After they've chosen one card, I ask them to mentally select a second one. For both choices, what we're going to look at is the suit (hearts, clubs, spades or diamonds) that people chose. After asking, say, $N=200$ people to do this, I'd like to look at the data and figure out whether or not the cards that people pretended to select were really random. The data are contained in the `randomness.Rdata` file, which contains a single data frame called `cards`. Let's take a look:
 ```{r warning = FALSE, message= FALSE}
 library( lsr )
-load( "./rbook-master/data/randomness.Rdata" )
+load( file.path(projecthome, "data/randomness.Rdata" ))
 str(cards)
 ```
 As you can see, the `cards` data frame contains three variables, an `id` variable that assigns a unique identifier to each participant, and the two variables `choice_1` and `choice_2` that indicate the card suits that people chose. Here's the first few entries in the data frame:
@@ -8921,7 +8921,7 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 The other day I was watching an animated documentary examining the quaint customs of the natives of the planet *Chapek 9*. Apparently, in order to gain access to their capital city, a visitor must prove that they're a robot, not a human. In order to determine whether or not visitor is human, they ask whether the visitor prefers puppies, flowers or large, properly formatted data files. "Pretty clever," I thought to myself "but what if humans and robots have the same preferences? That probably wouldn't be a very good test then, would it?" As it happens, I got my hands on the testing data that the civil authorities of *Chapek 9* used to check this. It turns out that what they did was very simple... they found a bunch of robots and a bunch of humans and asked them what they preferred. I saved their data in a file called `chapek9.Rdata`, which I can now load and have a quick look at:
 
 ```{r}
-load( "./rbook-master/data/chapek9.Rdata" )
+load( file.path(projecthome, "data/chapek9.Rdata" ))
 str(chapek9)
 ```
 Okay, so we have a single data frame called `chapek9`, which contains two factors, `species` and `choice`. As always, it's nice to have a quick look at the data,
@@ -9174,7 +9174,7 @@ Again, the numbers are the same as last time, it's just that the output is very 
 
 What should you do if your cell counts are too small, but you'd still like to test the null hypothesis that the two variables are independent? One answer would be "collect more data", but that's far too glib: there are a lot of situations in which it would be either infeasible or unethical do that. If so, statisticians have a kind of moral obligation to provide scientists with better tests. In this instance, Fisher (1922) kindly provided the right answer to the question. To illustrate the basic idea, let's suppose that we're analysing data from a field experiment, looking at the emotional status of people who have been accused of witchcraft; some of whom are currently being burned at the stake.^[This example is based on a joke article published in the *Journal of Irreproducible Results*.] Unfortunately for the scientist (but rather fortunately for the general populace), it's actually quite hard to find people in the process of being set on fire, so the cell counts are awfully small in some cases. The `salem.Rdata` file illustrates the point:
 ```{r}
-load("./rbook-master/data/salem.Rdata")
+load( file.path(projecthome, "data/salem.Rdata"))
 
 salem.tabs <- table( trial )
 print( salem.tabs )
@@ -9261,7 +9261,7 @@ and this statistic has an (approximately) $\chi^2$ distribution with $df=1$. How
 
 Now that you know what the McNemar test is all about, lets actually run one. The `agpp.Rdata` file contains the raw data that I discussed previously, so let's have a look at it:
 ```{r}
-load("./rbook-master/data/agpp.Rdata")
+load(file.path(projecthome, "data/agpp.Rdata"))
 str(agpp)     
 ```
 The `agpp` data frame contains three variables, an `id` variable that labels each participant in the data set (we'll see why that's useful in a moment), a `response_before` variable that records the person's answer when they were asked the question the first time, and a `response_after` variable that shows the answer that they gave when asked the same question a second time. As usual, here's the first 6 entries:
@@ -9341,7 +9341,7 @@ In this section I'll describe one of the most useless tests in all of statistics
 
 To introduce the idea behind the $z$-test, let's use a simple example. A friend of mine, Dr Zeppo, grades his introductory statistics class on a curve. Let's suppose that the average grade in his class is 67.5, and the standard deviation is 9.5. Of his many hundreds of students, it turns out that 20 of them also take psychology classes. Out of curiosity, I find myself wondering: do the psychology students tend to get the same grades as everyone else (i.e., mean 67.5) or do they tend to score higher or lower? He emails me the `zeppo.Rdata` file, which I use to pull up the `grades` of those students, 
 ```{r}
-load( "./rbook-master/data/zeppo.Rdata" ) 
+load( file.path(projecthome, "data/zeppo.Rdata" )) 
 print( grades )
 ``` 
 and calculate the mean:
@@ -9721,7 +9721,7 @@ $$
 The only thing that has changed in the equation is that instead of using the known true value $\sigma$, we use the estimate $\hat{\sigma}$. And if this estimate has been constructed from $N$ observations, then the sampling distribution turns into a $t$-distribution with $N-1$ **_degrees of freedom_** (df). The $t$ distribution is very similar to the normal distribution, but has "heavier" tails, as discussed earlier in Section \@ref(otherdists) and illustrated in Figure \@ref(fig:ttestdist). Notice, though, that as df gets larger, the $t$-distribution starts to look identical to the standard normal distribution. This is as it should be: if you have a sample size of $N = 70,000,000$ then your "estimate" of the standard deviation would be pretty much perfect, right? So, you should expect that for large $N$, the $t$-test would behave exactly the same way as a $z$-test. And that's exactly what happens!  
 
 ```{r ttestdist, fig.cap="The $t$ distribution with 2 degrees of freedom (left) and 10 degrees of freedom (right), with a standard normal distribution (i.e., mean 0 and std dev 1) plotted as dotted lines for comparison purposes. Notice that the $t$ distribution has heavier tails (higher kurtosis) than the normal distribution; this effect is quite exaggerated when the degrees of freedom are very small, but negligible for larger values. In other words, for large $df$ the $t$ distribution is essentially identical to a normal distribution.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/tdist_3.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/tdist_3.png"))
 
 ```
 
@@ -9793,7 +9793,7 @@ Although the one sample $t$-test has its uses, it's not the most typical example
 
 Suppose we have 33 students taking Dr Harpo's statistics lectures, and Dr Harpo doesn't grade to a curve. Actually, Dr Harpo's grading is a bit of a mystery, so we don't really know anything about what the average grade is for the class as a whole. There are two tutors for the class, Anastasia and Bernadette. There are $N_1 = 15$ students in Anastasia's tutorials, and $N_2 = 18$ in Bernadette's tutorials. The research question I'm interested in is whether Anastasia or Bernadette is a better tutor, or if it doesn't make much of a difference. Dr Harpo emails me the course grades, in the `harpo.Rdata` file. As usual, I'll load the file and have a look at what variables it contains:
 ```{r}
-load( "./rbook-master/data/harpo.Rdata" )
+load (file.path(projecthome, "data/harpo.Rdata" ))
 str(harpo)
 ```
 As we can see, there's a single data frame with two variables, `grade` and `tutor`. The `grade` variable is a numeric vector, containing the grades for all $N = 33$ students taking Dr Harpo's class; the `tutor` variable is a factor that indicates who each student's tutor was. The first six observations in this data set are shown below:
@@ -9827,7 +9827,7 @@ To give you a more detailed sense of what's going on here, I've plotted histogra
 Here is a simpler plot showing the means and corresponding confidence intervals for both groups of students (Figure \@ref(fig:ttestci)).
 
 ```{r ttestci, fig.cap="Plots showing the mean grade for the students in Anastasia's and Bernadette's tutorials. Error bars depict 95% confidence intervals around the mean. On the basis of visual inspection, it does look like there's a real difference between the groups, though it's hard to say for sure.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/ttestci.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/ttestci.png"))
 
 ```
 
@@ -10162,7 +10162,7 @@ Regardless of whether we're talking about the Student test or the Welch test, an
 
 The data set that we'll use this time comes from Dr Chico's class.^[At this point we have Drs Harpo, Chico and Zeppo. No prizes for guessing who Dr Groucho is.] In her class, students take two major tests, one early in the semester and one later in the semester. To hear her tell it, she runs a very hard class, one that most students find very challenging; but she argues that by setting hard assessments, students are encouraged to work harder. Her theory is that the first test is a bit of a "wake up call" for students: when they realise how hard her class really is, they'll work harder for the second test and get a better mark. Is she right? To test this, let's have a look at the `chico.Rdata` file: 
 ```{r}
-load( "./rbook-master/data/chico.Rdata" )
+load( file.path(projecthome, "data/chico.Rdata" ))
 str(chico)     
 ```
 The data frame `chico` contains three variables: an `id` variable that identifies each student in the class, the `grade_test1` variable that records the student grade for the first test, and the `grade_test2` variable that has the grades for the second test. Here's the first six students:
@@ -10615,7 +10615,7 @@ where $\bar{X}$ is the mean of the observations, and the $a_i$ values are ... mu
 Because it's a little hard to explain the maths behind the $W$ statistic, a better idea is to give a broad brush description of how it behaves. Unlike most of the test statistics that we'll encounter in this book, it's actually *small* values of $W$ that indicated departure from normality. The $W$ statistic has a maximum value of 1, which arises when the data look "perfectly normal". The smaller the value of $W$, the less normal the data are. However, the sampling distribution for $W$  -- which is not one of the standard ones that I discussed in Chapter \@ref(probability) and is in fact a complete pain in the arse to work with -- does depend on the sample size $N$. To give you a feel for what these sampling distributions look like, I've plotted three of them in Figure \@ref(fig:swdist). Notice that, as the sample size starts to get large, the sampling distribution becomes very tightly clumped up near $W=1$, and as a consequence, for larger samples $W$ doesn't have to be very much smaller than 1 in order for the test to be significant. 
 
 ```{r swdist, fig.cap="Sampling distribution of the Shapiro-Wilk $W$ statistic, under the null hypothesis that the data are normally distributed, for samples of size 10, 20 and 50. Note that *small* values of $W$ indicate departure from normality.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/shapirowilkdist.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/shapirowilkdist.png"))
 
 ```
 
@@ -10636,13 +10636,13 @@ Like the $t$-test, the Wilcoxon test comes in two forms, one-sample and two-samp
 
 I'll start by describing the **_two sample Wilcoxon test_** (also known as the Mann-Whitney test), since it's actually simpler than the one sample version. Suppose we're looking at the scores of 10 people on some test. Since my imagination has now failed me completely, let's pretend it's a "test of awesomeness", and there are two groups of people, "A" and "B". I'm curious to know which group is more awesome. The data are included in the file `awesome.Rdata`, and like many of the data sets I've been using, it contains only a single data frame, in this case called `awesome`. Here's the data:
 ```{r}
-load("./rbook-master/data/awesome.Rdata")
+load(file.path(projecthome, "data/awesome.Rdata"))
 print( awesome )
 ```
 As long as there are no ties (i.e., people with the exact same awesomeness score), then the test that we want to do is surprisingly simple. All we have to do is construct a table that compares every observation in group $A$ against every observation in group $B$. Whenever the group $A$ datum is larger, we place a check mark in the table:
 
 ```{r echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/wilcox1.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox1.png"))
 
 ```
 
@@ -10655,7 +10655,7 @@ wilcox.test( formula = scores ~ group, data = awesome)
 Just like we saw with the `t.test()` function, there is an `alternative` argument that you can use to switch between two-sided tests and one-sided tests, plus a few other arguments that we don't need to worry too much about at an introductory level. 
 Similarly, the `wilcox.test()` function allows you to use the  `x` and `y` arguments when you have your data stored separately for each group. For instance, suppose we use the data from the `awesome2.Rdata` file:
 ```{r}
-load( "./rbook-master/data/awesome2.Rdata" )
+load( file.path(projecthome, "data/awesome2.Rdata" ))
 score.A
 score.B
 ```
@@ -10671,13 +10671,13 @@ The output that R produces is pretty much the same as last time.
 
 What about the **_one sample Wilcoxon test_** (or equivalently, the paired samples Wilcoxon test)? Suppose I'm interested in finding out whether taking a statistics class has any effect on the happiness of students. Here's my data:
 ```{r}
-load( "./rbook-master/data/happy.Rdata" )
+load( file.path(projecthome, "data/happy.Rdata" ))
 print( happiness )
 ```
 What I've measured here is the happiness of each student `before` taking the class and `after` taking the class; the `change` score is the difference between the two. Just like we saw with the $t$-test, there's no fundamental difference between doing a paired-samples test using `before` and `after`, versus doing a one-sample test using the `change` scores. As before, the simplest way to think about the test is to construct a tabulation. The way to do it this time is to take those change scores that are positive valued, and tabulate them against all the complete sample. What you end up with is a table that looks like this:
 
 ```{r echo=FALSE}
-knitr::include_graphics("./rbook-master/img/ttest2/wilcox2.png")
+knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox2.png"))
 
 ```
 
