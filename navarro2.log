@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.7.29)  30 DEC 2018 19:23
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.7.29)  30 DEC 2018 20:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -936,7 +936,7 @@ Package: amsthm 2017/10/31 v2.20.4
 \c@proposition=\count297
 \c@example=\count298
 \c@exercise=\count299
-(./navarro2.aux)
+No file navarro2.aux.
 \openout1 = `navarro2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
@@ -1014,16 +1014,18 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 147.
 LaTeX Info: Redefining \pageref on input line 147.
 LaTeX Info: Redefining \nameref on input line 147.
-(./navarro2.out) (./navarro2.out)
 \@outlinefile=\write4
 \openout4 = `navarro2.out'.
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 [1
 
 
 ] [2
 
-] (./navarro2.toc)
+]
 \tf@toc=\write5
 \openout5 = `navarro2.toc'.
 
@@ -1065,4 +1067,4135 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Try loading font information for U+msb on input line 177.
 (c:/Users/pcmis/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [7
+) [7] [8
+
+] [9] [10
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 215--222
+
+ []
+
+[11] [12] [13] [14] [15
+
+] [16
+
+]
+Chapter 1.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 420.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 420.
+[17] [18]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 1.1 on input line 559.
+
+
+Package natbib Warning: Citation `Evans1983' on page 19 undefined on input line
+ 568.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 1.2 on input line 581.
+
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 1.3 on input line 597.
+
+[19]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 1.4 on input line 639.
+
+
+Package natbib Warning: Citation `Bickel1975' on page 20 undefined on input lin
+e 653.
+
+
+LaTeX Warning: Reference `tab:simpsontable' on page 20 undefined on input line 
+657.
+
+
+Overfull \hbox (7.23499pt too wide) in paragraph at lines 665--682
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `fig:berkeley' on page 20 undefined on input line 708.
+
+
+File: navarro2_files/figure-latex/berkeley-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/berkeley-1.pdf>
+
+Package natbib Warning: Citation `Bickel1975' on page 20 undefined on input lin
+e 731.
+
+
+Package natbib Warning: Citation `Bickel1975' on page 20 undefined on input lin
+e 731.
+
+[20] [21] [22]
+
+LaTeX Warning: Reference `housingpriceexample' on page 23 undefined on input li
+ne 901.
+
+[23] [24]
+Chapter 2.
+
+Package natbib Warning: Citation `Campbell1963' on page 25 undefined on input l
+ine 970.
+
+
+Package natbib Warning: Citation `Stevens1946' on page 25 undefined on input li
+ne 971.
+
+[25
+
+] [26] [27] [28]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 2.3 on input line 1330.
+
+[29]
+
+LaTeX Warning: Reference `tab:scalescont' on page 30 undefined on input line 14
+49.
+
+[30] [31] [32]
+
+LaTeX Warning: Reference `tab:ivdv' on page 33 undefined on input line 1673.
+
+[33] [34] [35] [36] [37] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 2179--2184
+
+ []
+
+[39]
+Underfull \vbox (badness 1728) has occurred while \output is active []
+
+[40]
+
+Package natbib Warning: Citation `Kahneman1973' on page 41 undefined on input l
+ine 2352.
+
+[41]
+
+Package natbib Warning: Citation `Pfungst1911' on page 42 undefined on input li
+ne 2366.
+
+
+Package natbib Warning: Citation `Hothersall2004' on page 42 undefined on input
+ line 2366.
+
+
+Package natbib Warning: Citation `Rosenthal1966' on page 42 undefined on input 
+line 2408.
+
+
+Package natbib Warning: Citation `Adair1984' on page 42 undefined on input line
+ 2417.
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 2506--2518
+
+ []
+
+[43]
+
+Package natbib Warning: Citation `Ioannidis2005' on page 44 undefined on input 
+line 2614.
+
+
+Package natbib Warning: Citation `Kuhberger2014' on page 44 undefined on input 
+line 2616.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[44]
+
+Package natbib Warning: Citation `Campbell1963' on page 45 undefined on input l
+ine 2676.
+
+[45] [46
+
+] [47] [48
+
+]
+Chapter 3.
+[49] [50] [51]
+File: ./rbook-master/img/introR/RStudio2.png Graphic file (type bmp)
+<./rbook-master/img/introR/RStudio2.png>
+
+Overfull \hbox (370.4934pt too wide) in paragraph at lines 2926--2926
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 35.95331pt on input line 2927.
+
+
+LaTeX Warning: Reference `fig:RStudio' on page 52 undefined on input line 2933.
+
+
+[52] [53]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 3014.
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 3084--3087
+
+ []
+
+[55]
+
+LaTeX Warning: Reference `startingR' on page 56 undefined on input line 3224.
+
+[56]
+
+Package natbib Warning: Citation `R2013' on page 57 undefined on input line 325
+8.
+
+[57] [58]
+
+LaTeX Warning: Reference `tab:arithmetic1' on page 59 undefined on input line 3
+429.
+
+
+LaTeX Warning: Reference `tab:arithmetic1' on page 59 undefined on input line 3
+470.
+
+
+LaTeX Warning: Reference `datahandling' on page 59 undefined on input line 3477
+.
+
+[59] [60]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 3637.
+[61]
+
+LaTeX Warning: Reference `functionarguments' on page 62 undefined on input line
+ 3700.
+
+[62] [63]
+
+LaTeX Warning: Reference `functions' on page 64 undefined on input line 3923.
+
+[64] [65] [66]
+
+LaTeX Warning: Reference `@' on page 67 undefined on input line 4128.
+
+
+LaTeX Warning: Reference `help' on page 67 undefined on input line 4198.
+
+
+LaTeX Warning: Reference `help' on page 67 undefined on input line 4230.
+
+[67]
+
+LaTeX Warning: Reference `fig:RStudiotab' on page 68 undefined on input line 42
+51.
+
+
+LaTeX Warning: Reference `packageinstall' on page 68 undefined on input line 42
+57.
+
+
+LaTeX Warning: Reference `fig:RStudiotab' on page 68 undefined on input line 42
+57.
+
+
+LaTeX Warning: Reference `fig:RStudiotab' on page 68 undefined on input line 42
+74.
+
+File: ./rbook-master/img/introR/RStudio_tab.png Graphic file (type bmp)
+<./rbook-master/img/introR/RStudio_tab.png>
+
+Overfull \hbox (557.2534pt too wide) in paragraph at lines 4291--4291
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:RStudiotab2' on page 68 undefined on input line 4
+306.
+
+
+LaTeX Warning: Reference `fig:RStudiotab' on page 68 undefined on input line 43
+08.
+
+File: ./rbook-master/img/introR/RStudio_tab2.png Graphic file (type bmp)
+<./rbook-master/img/introR/RStudio_tab2.png>
+
+Overfull \hbox (387.88142pt too wide) in paragraph at lines 4314--4314
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:RStudiotab' on page 68 undefined on input line 43
+19.
+
+[68] [69] [70]
+
+LaTeX Warning: Reference `fig:RStudiohistory' on page 71 undefined on input lin
+e 4343.
+
+File: ./rbook-master/img/introR/historyTab.png Graphic file (type bmp)
+<./rbook-master/img/introR/historyTab.png>
+
+Overfull \hbox (27.14069pt too wide) in paragraph at lines 4354--4354
+[][] 
+ []
+
+
+LaTeX Warning: Reference `generics' on page 71 undefined on input line 4361.
+
+
+LaTeX Warning: Reference `assign' on page 71 undefined on input line 4362.
+
+
+Underfull \vbox (badness 1803) has occurred while \output is active []
+
+[71] [72]
+
+LaTeX Warning: Reference `indexing' on page 73 undefined on input line 4484.
+
+[73]
+
+LaTeX Warning: Reference `recycling' on page 74 undefined on input line 4590.
+
+[74]
+
+LaTeX Warning: Reference `textprocessing' on page 75 undefined on input line 46
+74.
+
+[75]
+
+LaTeX Warning: Reference `assign' on page 76 undefined on input line 4788.
+
+[76]
+
+LaTeX Warning: Reference `tab:logicals' on page 77 undefined on input line 4857
+.
+
+[77]
+
+LaTeX Warning: Reference `tab:logicals2' on page 78 undefined on input line 496
+4.
+
+[78]
+
+LaTeX Warning: Reference `assign' on page 79 undefined on input line 5082.
+
+
+LaTeX Warning: Reference `text' on page 79 undefined on input line 5083.
+
+[79]
+
+LaTeX Warning: Reference `vectors' on page 80 undefined on input line 5157.
+
+
+LaTeX Warning: Reference `text' on page 80 undefined on input line 5157.
+
+[80]
+
+LaTeX Warning: Reference `indexing' on page 81 undefined on input line 5214.
+
+
+LaTeX Warning: Reference `logictext2' on page 81 undefined on input line 5225.
+
+[81] [82] [83]
+
+LaTeX Warning: Reference `datahandling' on page 84 undefined on input line 5506
+.
+
+[84]
+File: ./rbook-master/img/introR/Rstudio_quit.png Graphic file (type bmp)
+<./rbook-master/img/introR/Rstudio_quit.png>
+
+Overfull \hbox (33.16368pt too wide) in paragraph at lines 5528--5528
+[][] 
+ []
+
+
+LaTeX Warning: Reference `load' on page 85 undefined on input line 5546.
+
+
+LaTeX Warning: Reference `fig:quitR' on page 85 undefined on input line 5549.
+
+
+LaTeX Warning: Reference `fig:RStudiooptions' on page 85 undefined on input lin
+e 5581.
+
+[85]
+File: ./rbook-master/img/introR/Rstudio_options.png Graphic file (type bmp)
+<./rbook-master/img/introR/Rstudio_options.png>
+
+Overfull \hbox (111.50674pt too wide) in paragraph at lines 5596--5596
+[][] 
+ []
+
+
+LaTeX Warning: Reference `logicals' on page 86 undefined on input line 5636.
+
+
+LaTeX Warning: Reference `indexing' on page 86 undefined on input line 5644.
+
+[86] [87] [88
+
+]
+Chapter 4.
+
+LaTeX Warning: Reference `introR' on page 89 undefined on input line 5658.
+
+
+LaTeX Warning: Reference `datahandling' on page 89 undefined on input line 5677
+.
+
+
+LaTeX Warning: Reference `scripting' on page 89 undefined on input line 5677.
+
+
+LaTeX Warning: Reference `scripting' on page 89 undefined on input line 5686.
+
+[89]
+
+LaTeX Warning: Reference `introR' on page 90 undefined on input line 5724.
+
+File: ./rbook-master/img/mechanics/Rstudiopackages.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/Rstudiopackages.png>
+
+Overfull \hbox (29.15596pt too wide) in paragraph at lines 5791--5791
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:packagepanel' on page 90 undefined on input line 
+5797.
+
+[90] [91] [92]
+
+LaTeX Warning: Reference `packageload' on page 93 undefined on input line 5942.
+
+
+
+LaTeX Warning: Reference `packageunload' on page 93 undefined on input line 594
+2.
+
+[93]
+
+LaTeX Warning: Reference `fig:packagepanel' on page 94 undefined on input line 
+6048.
+
+
+LaTeX Warning: Reference `fig:packageinstalla' on page 94 undefined on input li
+ne 6051.
+
+File: ./rbook-master/img/mechanics/installpackage.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/installpackage.png>
+
+LaTeX Warning: Reference `fig:packageinstallb' on page 94 undefined on input li
+ne 6060.
+
+[94]
+File: ./rbook-master/img/mechanics/installpackage2.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/installpackage2.png>
+[95]
+
+LaTeX Warning: Reference `fig:updatepackages' on page 96 undefined on input lin
+e 6110.
+
+File: ./rbook-master/img/mechanics/updatepackages.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/updatepackages.png>
+
+Overfull \hbox (11.0794pt too wide) in paragraph at lines 6122--6122
+[][] 
+ []
+
+[96] [97]
+
+Package natbib Warning: Citation `Fox2011' on page 98 undefined on input line 6
+161.
+
+
+LaTeX Warning: Reference `comments' on page 98 undefined on input line 6185.
+
+File: ./rbook-master/img/mechanics/workspacepanel.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/workspacepanel.png>
+
+Overfull \hbox (63.30295pt too wide) in paragraph at lines 6196--6196
+[][] 
+ []
+
+File: ./rbook-master/img/mechanics/workspacepanel2.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/workspacepanel2.png>
+
+Overfull \hbox (64.29872pt too wide) in paragraph at lines 6200--6200
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:workspace' on page 98 undefined on input line 620
+7.
+
+
+LaTeX Warning: Reference `fig:workspace2' on page 98 undefined on input line 62
+08.
+
+[98] [99]
+
+LaTeX Warning: Reference `load' on page 100 undefined on input line 6308.
+
+[100]
+
+LaTeX Warning: Reference `fig:workspace2' on page 101 undefined on input line 6
+313.
+
+
+LaTeX Warning: Reference `filesystem' on page 101 undefined on input line 6379.
+
+
+
+LaTeX Warning: Reference `navigationR' on page 101 undefined on input line 6387
+.
+
+[101] [102]
+
+LaTeX Warning: Reference `nav3' on page 103 undefined on input line 6493.
+
+[103]
+
+LaTeX Warning: Reference `escapechars' on page 104 undefined on input line 6579
+.
+
+
+LaTeX Warning: Reference `escapechars' on page 104 undefined on input line 6591
+.
+
+
+LaTeX Warning: Reference `fig:filepanel' on page 104 undefined on input line 66
+02.
+
+File: ./rbook-master/img/mechanics/filepanel.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/filepanel.png>
+
+Overfull \hbox (61.26283pt too wide) in paragraph at lines 6608--6608
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:filepanel' on page 104 undefined on input line 66
+13.
+
+[104] [105]
+
+LaTeX Warning: Reference `scripting' on page 106 undefined on input line 6672.
+
+
+LaTeX Warning: Reference `importing' on page 106 undefined on input line 6686.
+
+
+LaTeX Warning: Reference `navigationR' on page 106 undefined on input line 6699
+.
+
+[106]
+
+LaTeX Warning: Reference `nav3' on page 107 undefined on input line 6720.
+
+
+LaTeX Warning: Reference `fig:filepanel' on page 107 undefined on input line 67
+50.
+
+
+LaTeX Warning: Reference `fig:booksalescsv' on page 107 undefined on input line
+ 6771.
+
+File: ./rbook-master/img/mechanics/booksalescsv.jpg Graphic file (type bmp)
+<./rbook-master/img/mechanics/booksalescsv.jpg>
+
+LaTeX Warning: Reference `importing' on page 107 undefined on input line 6794.
+
+[107] [108]
+
+LaTeX Warning: Reference `dataframes' on page 109 undefined on input line 6860.
+
+
+
+LaTeX Warning: Reference `fig:fileopen' on page 109 undefined on input line 687
+3.
+
+
+LaTeX Warning: Reference `fig:import' on page 109 undefined on input line 6877.
+
+
+File: ./rbook-master/img/mechanics/openscreen.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/openscreen.png>
+
+Overfull \hbox (357.42595pt too wide) in paragraph at lines 6880--6880
+[][] 
+ []
+
+File: ./rbook-master/img/mechanics/import.png Graphic file (type bmp)
+<./rbook-master/img/mechanics/import.png>
+
+Overfull \hbox (193.7663pt too wide) in paragraph at lines 6886--6886
+[][] 
+ []
+
+[109] [110] [111]
+
+LaTeX Warning: Reference `navigation' on page 112 undefined on input line 6953.
+
+
+
+LaTeX Warning: Reference `fig:workspace' on page 112 undefined on input line 69
+98.
+
+
+LaTeX Warning: Reference `fig:workspace2' on page 112 undefined on input line 6
+998.
+
+
+LaTeX Warning: Reference `scripting' on page 112 undefined on input line 7008.
+
+
+LaTeX Warning: Reference `fig:fileopen' on page 112 undefined on input line 701
+1.
+
+[112]
+
+LaTeX Warning: Reference `scripting' on page 113 undefined on input line 7054.
+
+
+LaTeX Warning: Reference `introR' on page 113 undefined on input line 7059.
+
+[113] [114] [115]
+
+LaTeX Warning: Reference `coercion' on page 116 undefined on input line 7344.
+
+[116]
+
+LaTeX Warning: Reference `studydesign' on page 117 undefined on input line 7387
+.
+
+
+LaTeX Warning: Reference `orderedfactors' on page 117 undefined on input line 7
+450.
+
+[117]
+
+LaTeX Warning: Reference `coercion' on page 118 undefined on input line 7495.
+
+[118]
+
+LaTeX Warning: Reference `specials' on page 119 undefined on input line 7543.
+
+[119]
+
+LaTeX Warning: Reference `orderedfactors' on page 120 undefined on input line 7
+649.
+
+
+LaTeX Warning: Reference `loadingcsv' on page 120 undefined on input line 7655.
+
+
+
+LaTeX Warning: Reference `factors' on page 120 undefined on input line 7665.
+
+[120] [121] [122]
+
+LaTeX Warning: Reference `datahandling' on page 123 undefined on input line 788
+7.
+
+[123]
+
+LaTeX Warning: Reference `regression' on page 124 undefined on input line 7981.
+
+
+[124]
+
+LaTeX Warning: Reference `usingfunctions' on page 125 undefined on input line 8
+028.
+
+[125]
+
+LaTeX Warning: Reference `introR' on page 126 undefined on input line 8167.
+
+[126]
+
+LaTeX Warning: Reference `packageinstall' on page 127 undefined on input line 8
+177.
+
+
+LaTeX Warning: Reference `workspace' on page 127 undefined on input line 8179.
+
+
+LaTeX Warning: Reference `navigation' on page 127 undefined on input line 8181.
+
+
+
+LaTeX Warning: Reference `load' on page 127 undefined on input line 8186.
+
+
+LaTeX Warning: Reference `useful' on page 127 undefined on input line 8190.
+
+
+LaTeX Warning: Reference `factors' on page 127 undefined on input line 8194.
+
+
+LaTeX Warning: Reference `dataframes' on page 127 undefined on input line 8195.
+
+
+
+LaTeX Warning: Reference `lists' on page 127 undefined on input line 8195.
+
+
+LaTeX Warning: Reference `formulas' on page 127 undefined on input line 8196.
+
+
+LaTeX Warning: Reference `generics' on page 127 undefined on input line 8199.
+
+
+LaTeX Warning: Reference `help' on page 127 undefined on input line 8202.
+
+
+LaTeX Warning: Reference `introR' on page 127 undefined on input line 8206.
+
+
+LaTeX Warning: Reference `mechanics' on page 127 undefined on input line 8206.
+
+
+LaTeX Warning: Reference `datahandling' on page 127 undefined on input line 820
+9.
+
+
+LaTeX Warning: Reference `scripting' on page 127 undefined on input line 8210.
+
+[127] [128
+
+] [129] [130
+
+]
+Chapter 5.
+[131]
+
+LaTeX Warning: Reference `graphics' on page 132 undefined on input line 8305.
+
+
+LaTeX Warning: Reference `fig:histogram1' on page 132 undefined on input line 8
+310.
+
+
+LaTeX Warning: Reference `hist' on page 132 undefined on input line 8312.
+
+File: navarro2_files/figure-latex/histogram1-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/histogram1-1.pdf>
+
+LaTeX Warning: Reference `fig:histogram1' on page 132 undefined on input line 8
+326.
+
+[132] [133] [134]
+
+LaTeX Warning: Reference `dotsargument' on page 135 undefined on input line 844
+7.
+
+[135]
+
+LaTeX Warning: Reference `datahandling' on page 136 undefined on input line 854
+1.
+
+File: ./img/descriptives2/meanmedian.png Graphic file (type bmp)
+<./img/descriptives2/meanmedian.png>
+
+Overfull \hbox (227.4769pt too wide) in paragraph at lines 8585--8585
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:meanmedian' on page 136 undefined on input line 8
+591.
+
+[136] [137]
+
+LaTeX Warning: Reference `mode' on page 138 undefined on input line 8604.
+
+
+LaTeX Warning: Reference `trimmedmean' on page 138 undefined on input line 8619
+.
+
+
+LaTeX Warning: Reference `skewandkurtosis' on page 138 undefined on input line 
+8624.
+
+
+LaTeX Warning: Reference `fig:meanmedian' on page 138 undefined on input line 8
+625.
+
+[138] [139] [140]
+
+LaTeX Warning: Reference `freqtables' on page 141 undefined on input line 8865.
+
+
+[141]
+
+LaTeX Warning: Reference `scales' on page 142 undefined on input line 8931.
+
+[142] [143]
+
+LaTeX Warning: Reference `usingfunctions' on page 144 undefined on input line 9
+133.
+
+[144] [145]
+Overfull \hbox (158.40509pt too wide) in paragraph at lines 9255--9266
+ [][] 
+ []
+
+[146]
+Underfull \hbox (badness 10000) in paragraph at lines 9351--9360
+
+ []
+
+
+LaTeX Warning: Reference `estimation' on page 147 undefined on input line 9381.
+
+
+
+LaTeX Warning: Reference `estimation' on page 147 undefined on input line 9397.
+
+
+[147]
+
+LaTeX Warning: Reference `probability' on page 148 undefined on input line 9476
+.
+
+
+LaTeX Warning: Reference `fig:histogram1' on page 148 undefined on input line 9
+477.
+
+
+LaTeX Warning: Reference `fig:aflsd' on page 148 undefined on input line 9480.
+
+[148]
+File: navarro2_files/figure-latex/aflsd-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/aflsd-1.pdf>
+
+LaTeX Warning: Reference `aad' on page 149 undefined on input line 9498.
+
+[149] [150]
+File: navarro2_files/figure-latex/skewness-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/skewness-1.pdf>
+
+LaTeX Warning: Reference `fig:skewness' on page 151 undefined on input line 968
+1.
+
+[151] [152]
+
+LaTeX Warning: Reference `fig:kurtosis' on page 153 undefined on input line 972
+2.
+
+File: navarro2_files/figure-latex/kurtosis-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/kurtosis-1.pdf>
+[153] [154]
+
+LaTeX Warning: Reference `generics' on page 155 undefined on input line 9813.
+
+
+LaTeX Warning: Reference `studydesign' on page 155 undefined on input line 9841
+.
+
+[155]
+
+LaTeX Warning: Reference `coercion' on page 156 undefined on input line 9916.
+
+
+LaTeX Warning: Reference `factors' on page 156 undefined on input line 9931.
+
+
+LaTeX Warning: Reference `anova' on page 156 undefined on input line 9946.
+
+[156]
+
+LaTeX Warning: Reference `mean' on page 157 undefined on input line 10016.
+
+
+LaTeX Warning: Reference `sd' on page 157 undefined on input line 10019.
+
+
+LaTeX Warning: Reference `median' on page 157 undefined on input line 10021.
+
+
+LaTeX Warning: Reference `trimmedmean' on page 157 undefined on input line 1002
+4.
+
+
+LaTeX Warning: Reference `mad' on page 157 undefined on input line 10026.
+
+
+LaTeX Warning: Reference `range' on page 157 undefined on input line 10032.
+
+
+LaTeX Warning: Reference `skewandkurtosis' on page 157 undefined on input line 
+10034.
+
+
+LaTeX Warning: Reference `skewandkurtosis' on page 157 undefined on input line 
+10036.
+
+
+LaTeX Warning: Reference `estimation' on page 157 undefined on input line 10039
+.
+
+[157] [158] [159] [160]
+
+LaTeX Warning: Reference `estimation' on page 161 undefined on input line 10325
+.
+
+
+LaTeX Warning: Reference `sd' on page 161 undefined on input line 10328.
+
+
+LaTeX Warning: Reference `normal' on page 161 undefined on input line 10331.
+
+[161] [162]
+
+LaTeX Warning: Reference `fig:parenthood' on page 163 undefined on input line 1
+0467.
+
+File: navarro2_files/figure-latex/parenthood-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/parenthood-1.pdf>
+
+LaTeX Warning: Reference `tab:parenthood' on page 163 undefined on input line 1
+0481.
+
+File: navarro2_files/figure-latex/scatterparent1a-1.pdf Graphic file (type pdf)
+
+<use navarro2_files/figure-latex/scatterparent1a-1.pdf>
+File: navarro2_files/figure-latex/scatterparent1b-1.pdf Graphic file (type pdf)
+
+<use navarro2_files/figure-latex/scatterparent1b-1.pdf>
+
+LaTeX Warning: Reference `fig:scatterparent1a' on page 163 undefined on input l
+ine 10525.
+
+
+LaTeX Warning: Reference `fig:scatterparent1b' on page 163 undefined on input l
+ine 10526.
+
+[163] [164] [165] [166]
+
+LaTeX Warning: Reference `fig:scatterparent1b' on page 167 undefined on input l
+ine 10537.
+
+
+LaTeX Warning: Reference `fig:scatterparent2' on page 167 undefined on input li
+ne 10538.
+
+File: navarro2_files/figure-latex/scatterparent2-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/scatterparent2-1.pdf>
+
+LaTeX Warning: Reference `fig:corr' on page 167 undefined on input line 10565.
+
+File: navarro2_files/figure-latex/corr-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/corr-1.pdf>
+
+LaTeX Warning: Float too large for page by 24.065pt on input line 10573.
+
+[167] [168]
+
+LaTeX Warning: Reference `hypothesistesting' on page 169 undefined on input lin
+e 10635.
+
+
+LaTeX Warning: Reference `corrhyp' on page 169 undefined on input line 10635.
+
+[169]
+
+LaTeX Warning: Reference `tab:interpretingcorrelations' on page 170 undefined o
+n input line 10689.
+
+
+Package natbib Warning: Citation `ref' on page 170 undefined on input line 1073
+1.
+
+[170]
+
+LaTeX Warning: Reference `fig:anscombe' on page 171 undefined on input line 107
+63.
+
+File: navarro2_files/figure-latex/anscombe-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/anscombe-1.pdf>
+
+Overfull \hbox (122.33885pt too wide) in paragraph at lines 10761--10766
+\TU/lmr/m/it/10 larly \TU/lmr/m/n/10 different to each other. [] 
+ []
+
+
+LaTeX Warning: Reference `graphics' on page 171 undefined on input line 10769.
+
+File: navarro2_files/figure-latex/rankcorrpic-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/rankcorrpic-1.pdf>
+[171] [172]
+
+LaTeX Warning: Reference `fig:rankcorrpic' on page 173 undefined on input line 
+10818.
+
+[173]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 5.3 on input line 10905.
+
+[174] [175] [176] [177] [178]
+
+LaTeX Warning: Reference `estimation' on page 179 undefined on input line 11280
+.
+
+
+LaTeX Warning: Reference `centraltendency' on page 179 undefined on input line 
+11316.
+
+[179]
+
+LaTeX Warning: Reference `var' on page 180 undefined on input line 11320.
+
+
+LaTeX Warning: Reference `summary' on page 180 undefined on input line 11324.
+
+
+LaTeX Warning: Reference `groupdescriptives' on page 180 undefined on input lin
+e 11325.
+
+
+LaTeX Warning: Reference `zscore' on page 180 undefined on input line 11329.
+
+
+LaTeX Warning: Reference `correl' on page 180 undefined on input line 11333.
+
+
+LaTeX Warning: Reference `missing' on page 180 undefined on input line 11338.
+
+
+Package natbib Warning: Citation `Ellman2002' on page 180 undefined on input li
+ne 11364.
+
+[180] [181] [182
+
+]
+Chapter 6.
+File: navarro2_files/figure-latex/snowmap1-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/snowmap1-1.pdf>
+
+LaTeX Warning: Reference `fig:snowmap1' on page 183 undefined on input line 114
+47.
+
+[183] [184]
+
+LaTeX Warning: Reference `scripts' on page 185 undefined on input line 11507.
+
+
+LaTeX Warning: Reference `fig:multipleregression' on page 185 undefined on inpu
+t line 11565.
+
+[185]
+
+LaTeX Warning: Reference `fig:firstplot' on page 186 undefined on input line 11
+633.
+
+File: navarro2_files/figure-latex/firstplot-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/firstplot-1.pdf>
+
+LaTeX Warning: Reference `fig:firstplot' on page 186 undefined on input line 11
+646.
+
+
+LaTeX Warning: Reference `generics' on page 186 undefined on input line 11663.
+
+[186] [187]
+
+LaTeX Warning: Reference `sec:par' on page 188 undefined on input line 11703.
+
+[188]
+
+LaTeX Warning: Reference `fig:secondplot' on page 189 undefined on input line 1
+1754.
+
+File: navarro2_files/figure-latex/secondplot-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/secondplot-1.pdf>
+
+LaTeX Warning: Reference `fig:firstplot' on page 189 undefined on input line 11
+764.
+
+[189]
+
+LaTeX Warning: Reference `fig:thirdplot' on page 190 undefined on input line 11
+830.
+
+File: navarro2_files/figure-latex/thirdplot-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/thirdplot-1.pdf>
+[190] [191]
+
+LaTeX Warning: Reference `fig:simpleplots' on page 192 undefined on input line 
+11899.
+
+
+LaTeX Warning: Reference `correl' on page 192 undefined on input line 11904.
+
+
+LaTeX Warning: Reference `fig:simpleplots' on page 192 undefined on input line 
+11908.
+
+File: ./rbook-master/img/graphics2/simpleplot.png Graphic file (type bmp)
+<./rbook-master/img/graphics2/simpleplot.png>
+
+Overfull \hbox (165.75436pt too wide) in paragraph at lines 11913--11913
+[][] 
+ []
+
+File: ./rbook-master/img/graphics2/pchlty.png Graphic file (type bmp)
+<./rbook-master/img/graphics2/pchlty.png>
+
+Overfull \hbox (84.41632pt too wide) in paragraph at lines 11920--11920
+[][] 
+ []
+
+
+LaTeX Warning: Reference `sec:figtitles' on page 192 undefined on input line 11
+923.
+
+
+LaTeX Warning: Reference `fig:pch' on page 192 undefined on input line 11946.
+
+
+LaTeX Warning: Reference `fig:pch' on page 192 undefined on input line 11963.
+
+
+LaTeX Warning: Reference `fig:fifthplot' on page 192 undefined on input line 11
+988.
+
+[192] [193] [194]
+File: navarro2_files/figure-latex/fifthplot-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/fifthplot-1.pdf>
+[195]
+
+LaTeX Warning: Reference `fig:fourthplot' on page 196 undefined on input line 1
+2070.
+
+File: navarro2_files/figure-latex/fourthplot-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/fourthplot-1.pdf>
+[196] [197]
+
+LaTeX Warning: Reference `fig:sixthplot' on page 198 undefined on input line 12
+152.
+
+File: navarro2_files/figure-latex/sixthplot-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/sixthplot-1.pdf>
+
+LaTeX Warning: Reference `descriptives' on page 198 undefined on input line 121
+99.
+
+
+LaTeX Warning: Reference `fig:hist1a' on page 198 undefined on input line 12208
+.
+
+
+LaTeX Warning: Reference `fig:hist1a' on page 198 undefined on input line 12211
+.
+
+[198] [199]
+File: navarro2_files/figure-latex/hist1a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/hist1a-1.pdf>
+
+LaTeX Warning: Reference `fig:hist1a' on page 200 undefined on input line 12244
+.
+
+
+LaTeX Warning: Reference `fig:hist1b' on page 200 undefined on input line 12248
+.
+
+
+LaTeX Warning: Reference `fig:hist1c' on page 200 undefined on input line 12248
+.
+
+[200]
+File: navarro2_files/figure-latex/hist1b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/hist1b-1.pdf>
+File: navarro2_files/figure-latex/hist1c-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/hist1c-1.pdf>
+
+LaTeX Warning: Reference `fig:hist1c' on page 201 undefined on input line 12275
+.
+
+
+LaTeX Warning: Reference `fig:hist1b' on page 201 undefined on input line 12279
+.
+
+[201] [202]
+
+LaTeX Warning: Reference `introplotting' on page 203 undefined on input line 12
+325.
+
+
+LaTeX Warning: Reference `sec:introplotting' on page 203 undefined on input lin
+e 12357.
+
+
+LaTeX Warning: Reference `fig:hist1d' on page 203 undefined on input line 12358
+.
+
+File: navarro2_files/figure-latex/hist1d-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/hist1d-1.pdf>
+[203] [204]
+File: ./rbook-master/img/graphics2/boxplot1.png Graphic file (type bmp)
+<./rbook-master/img/graphics2/boxplot1.png>
+
+Overfull \hbox (269.63078pt too wide) in paragraph at lines 12504--12504
+[][] 
+ []
+
+[205] [206]
+File: navarro2_files/figure-latex/boxplot1a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/boxplot1a-1.pdf>
+
+LaTeX Warning: Reference `fig:boxplot1a' on page 207 undefined on input line 12
+545.
+
+
+LaTeX Warning: Reference `fig:boxplot1b' on page 207 undefined on input line 12
+551.
+
+File: navarro2_files/figure-latex/boxplot2a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/boxplot2a-1.pdf>
+
+LaTeX Warning: Reference `sec:boxplotoutliers' on page 207 undefined on input l
+ine 12586.
+
+
+LaTeX Warning: Reference `fig:boxplot2b' on page 207 undefined on input line 12
+591.
+
+[207] [208]
+File: navarro2_files/figure-latex/boxplot2b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/boxplot2b-1.pdf>
+[209] [210]
+
+LaTeX Warning: Reference `multipleboxplots' on page 211 undefined on input line
+ 12742.
+
+
+LaTeX Warning: Reference `hypothesistesting' on page 211 undefined on input lin
+e 12751.
+
+
+LaTeX Warning: Reference `fig:boxplotoutlier' on page 211 undefined on input li
+ne 12766.
+
+File: navarro2_files/figure-latex/boxplotoutlier-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/boxplotoutlier-1.pdf>
+
+LaTeX Warning: Reference `fig:boxplot2b' on page 211 undefined on input line 12
+774.
+
+
+LaTeX Warning: Reference `fig:boxplot2b' on page 211 undefined on input line 12
+774.
+
+[211] [212]
+
+LaTeX Warning: Reference `regressiondiagnostics' on page 213 undefined on input
+ line 12874.
+
+[213]
+File: navarro2_files/figure-latex/multipleboxplots-1.pdf Graphic file (type pdf
+)
+<use navarro2_files/figure-latex/multipleboxplots-1.pdf>
+
+Overfull \hbox (22.83385pt too wide) in paragraph at lines 12917--12926
+\TU/lmr/m/n/10 this: [] 
+ []
+
+
+LaTeX Warning: Reference `fig:multipleboxplots' on page 214 undefined on input 
+line 12927.
+
+
+LaTeX Warning: Reference `lists' on page 214 undefined on input line 12939.
+
+
+LaTeX Warning: Reference `generics' on page 214 undefined on input line 12939.
+
+File: navarro2_files/figure-latex/multipleboxplots2-1.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/multipleboxplots2-1.pdf>
+
+LaTeX Warning: Reference `fig:multipleboxplots' on page 214 undefined on input 
+line 12960.
+
+
+LaTeX Warning: Reference `fig:multipleboxplots' on page 214 undefined on input 
+line 12960.
+
+
+LaTeX Warning: Reference `fig:multipleboxplots2' on page 214 undefined on input
+ line 12970.
+
+[214] [215]
+
+LaTeX Warning: Reference `scripts' on page 216 undefined on input line 12999.
+
+
+LaTeX Warning: Reference `introplotting' on page 216 undefined on input line 13
+008.
+
+
+LaTeX Warning: Reference `correl' on page 216 undefined on input line 13013.
+
+File: ./rbook-master/img/graphics2/scatter1.png Graphic file (type bmp)
+<./rbook-master/img/graphics2/scatter1.png>
+
+Overfull \hbox (752.83185pt too wide) in paragraph at lines 13031--13036
+[]\TU/lmr/m/n/10 \begin{figure} []
+ []
+
+[216] [217]
+File: navarro2_files/figure-latex/scattera-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/scattera-1.pdf>
+
+LaTeX Warning: Reference `fig:scattera' on page 218 undefined on input line 130
+78.
+
+
+LaTeX Warning: Reference `fig:scattera' on page 218 undefined on input line 130
+82.
+
+[218]
+
+LaTeX Warning: Reference `fig:scatterb' on page 219 undefined on input line 131
+04.
+
+File: navarro2_files/figure-latex/scatterb-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/scatterb-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[219]
+File: navarro2_files/figure-latex/fancyscatter-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/fancyscatter-1.pdf>
+
+LaTeX Warning: Reference `ttest' on page 220 undefined on input line 13184.
+
+
+LaTeX Warning: Reference `fig:fancyscatter' on page 220 undefined on input line
+ 13189.
+
+[220] [221]
+File: navarro2_files/figure-latex/pairs-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/pairs-1.pdf>
+
+LaTeX Warning: Reference `fig:pairs' on page 222 undefined on input line 13225.
+
+
+[222]
+
+LaTeX Warning: Reference `mode' on page 223 undefined on input line 13252.
+
+
+LaTeX Warning: Reference `sec:freqtables' on page 223 undefined on input line 1
+3257.
+
+
+LaTeX Warning: Reference `factors' on page 223 undefined on input line 13271.
+
+
+LaTeX Warning: Reference `fig:bar1a' on page 223 undefined on input line 13294.
+
+
+File: navarro2_files/figure-latex/bar1a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/bar1a-1.pdf>
+[223] [224]
+File: navarro2_files/figure-latex/bar1b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/bar1b-1.pdf>
+
+LaTeX Warning: Reference `fig:multipleboxplots' on page 225 undefined on input 
+line 13328.
+
+
+LaTeX Warning: Reference `fig:multipleboxplots' on page 225 undefined on input 
+line 13329.
+
+
+LaTeX Warning: Reference `sec:introplotting' on page 225 undefined on input lin
+e 13338.
+
+File: navarro2_files/figure-latex/bar1c-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/bar1c-1.pdf>
+
+LaTeX Warning: Reference `fig:bar1c' on page 225 undefined on input line 13358.
+
+
+[225] [226]
+File: navarro2_files/figure-latex/bar1d-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/bar1d-1.pdf>
+[227] [228] [229]
+
+LaTeX Warning: Reference `rgraphics' on page 230 undefined on input line 13566.
+
+
+
+LaTeX Warning: Reference `introplotting' on page 230 undefined on input line 13
+568.
+
+
+LaTeX Warning: Reference `hist' on page 230 undefined on input line 13572.
+
+
+LaTeX Warning: Reference `stem' on page 230 undefined on input line 13572.
+
+
+LaTeX Warning: Reference `boxplots' on page 230 undefined on input line 13573.
+
+
+LaTeX Warning: Reference `scatterplots' on page 230 undefined on input line 135
+73.
+
+
+LaTeX Warning: Reference `bargraph' on page 230 undefined on input line 13574.
+
+
+LaTeX Warning: Reference `saveimage' on page 230 undefined on input line 13577.
+
+
+[230]
+Chapter 7.
+
+LaTeX Warning: Reference `freqtables' on page 231 undefined on input line 13627
+.
+
+
+LaTeX Warning: Reference `transform' on page 231 undefined on input line 13629.
+
+
+
+LaTeX Warning: Reference `mathfunc' on page 231 undefined on input line 13631.
+
+
+LaTeX Warning: Reference `subset' on page 231 undefined on input line 13633.
+
+
+LaTeX Warning: Reference `subsetdataframe' on page 231 undefined on input line 
+13635.
+
+
+LaTeX Warning: Reference `sort' on page 231 undefined on input line 13637.
+
+
+LaTeX Warning: Reference `reshape' on page 231 undefined on input line 13639.
+
+
+LaTeX Warning: Reference `textprocessing' on page 231 undefined on input line 1
+3641.
+
+
+LaTeX Warning: Reference `importing' on page 231 undefined on input line 13643.
+
+
+
+LaTeX Warning: Reference `coercion' on page 231 undefined on input line 13645.
+
+
+LaTeX Warning: Reference `datastructures' on page 231 undefined on input line 1
+3647.
+
+
+LaTeX Warning: Reference `miscdatahandling' on page 231 undefined on input line
+ 13649.
+
+[231
+
+] [232]
+
+LaTeX Warning: Reference `matrix' on page 233 undefined on input line 13777.
+
+[233] [234] [235] [236]
+
+LaTeX Warning: Reference `introR' on page 237 undefined on input line 14106.
+
+
+LaTeX Warning: Reference `mechanics' on page 237 undefined on input line 14107.
+
+
+
+LaTeX Warning: Reference `mathfunc' on page 237 undefined on input line 14108.
+
+[237] [238]
+
+LaTeX Warning: Reference `graphics' on page 239 undefined on input line 14280.
+
+[239]
+
+LaTeX Warning: Reference `transform' on page 240 undefined on input line 14396.
+
+
+
+LaTeX Warning: Reference `introR' on page 240 undefined on input line 14400.
+
+
+LaTeX Warning: Reference `tab:mathfunctab' on page 240 undefined on input line 
+14404.
+
+
+Underfull \vbox (badness 1194) has occurred while \output is active []
+
+[240] [241] [242] [243] [244]
+
+LaTeX Warning: Reference `introR' on page 245 undefined on input line 14772.
+
+
+LaTeX Warning: Reference `mechanics' on page 245 undefined on input line 14772.
+
+
+
+LaTeX Warning: Reference `subsetdataframe' on page 245 undefined on input line 
+14773.
+
+
+LaTeX Warning: Reference `freqtables' on page 245 undefined on input line 14784
+.
+
+[245]
+
+LaTeX Warning: Reference `indexing' on page 246 undefined on input line 14867.
+
+
+LaTeX Warning: Reference `lists' on page 246 undefined on input line 14921.
+
+[246] [247] [248]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[249] [250] [251]
+
+LaTeX Warning: Reference `dropping' on page 252 undefined on input line 15352.
+
+[252] [253] [254] [255] [256]
+
+LaTeX Warning: Reference `lists' on page 257 undefined on input line 15745.
+
+
+LaTeX Warning: Reference `generics' on page 257 undefined on input line 15748.
+
+
+LaTeX Warning: Reference `lists' on page 257 undefined on input line 15776.
+
+[257]
+
+LaTeX Warning: Reference `matrix' on page 258 undefined on input line 15811.
+
+[258]
+
+LaTeX Warning: Reference `logictext2' on page 259 undefined on input line 15879
+.
+
+
+LaTeX Warning: Reference `tab:asciiorder' on page 259 undefined on input line 1
+5879.
+
+[259] [260]
+
+LaTeX Warning: Reference `matrix' on page 261 undefined on input line 16092.
+
+[261] [262] [263] [264] [265]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[266] [267] [268] [269] [270] [271] [272]
+
+Package natbib Warning: Citation `ref' on page 273 undefined on input line 1694
+2.
+
+
+LaTeX Warning: Reference `simpletext' on page 273 undefined on input line 16959
+.
+
+[273] [274] [275] [276]
+
+LaTeX Warning: Reference `logictext' on page 277 undefined on input line 17298.
+
+
+[277]
+
+LaTeX Warning: Reference `tab:asciiorder' on page 278 undefined on input line 1
+7368.
+
+
+Overfull \hbox (363.00513pt too wide) in paragraph at lines 17375--17382
+ [][] 
+ []
+
+[278] [279] [280]
+
+LaTeX Warning: Reference `tab:textescape' on page 281 undefined on input line 1
+7646.
+
+
+LaTeX Warning: Reference `regex' on page 281 undefined on input line 17676.
+
+[281] [282]
+
+LaTeX Warning: Reference `load' on page 283 undefined on input line 17830.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17857--17867
+
+ []
+
+
+LaTeX Warning: Reference `fig:booksales2csv' on page 283 undefined on input lin
+e 17894.
+
+[283]
+File: ./rbook-master/img/datahandling/booksales2csv.jpg Graphic file (type bmp)
+
+<./rbook-master/img/datahandling/booksales2csv.jpg>
+
+Overfull \hbox (2.74498pt too wide) in paragraph at lines 17969--17969
+[]\TU/lmtt/m/n/10 X <- read.spss( "./rbook-master/data/datafile.sav" )   # crea
+te a list containing the data[] 
+ []
+
+[284] [285] [286] [287]
+
+LaTeX Warning: Reference `specials' on page 288 undefined on input line 18167.
+
+[288]
+
+LaTeX Warning: Reference `tab:matrixindex' on page 289 undefined on input line 
+18288.
+
+[289] [290]
+
+LaTeX Warning: Reference `factors' on page 291 undefined on input line 18457.
+
+[291] [292] [293] [294]
+File: ./rbook-master/img/datahandling/environments.png Graphic file (type bmp)
+<./rbook-master/img/datahandling/environments.png>
+
+Overfull \hbox (64.27428pt too wide) in paragraph at lines 18848--18848
+[][] 
+ []
+
+[295] [296]
+
+LaTeX Warning: Reference `fig:envs' on page 297 undefined on input line 18917.
+
+[297]
+
+LaTeX Warning: Reference `freqtables' on page 298 undefined on input line 18981
+.
+
+
+LaTeX Warning: Reference `transform' on page 298 undefined on input line 18983.
+
+
+
+LaTeX Warning: Reference `mathfunc' on page 298 undefined on input line 18985.
+
+
+LaTeX Warning: Reference `subset' on page 298 undefined on input line 18987.
+
+
+LaTeX Warning: Reference `subsetdataframe' on page 298 undefined on input line 
+18989.
+
+
+LaTeX Warning: Reference `sort' on page 298 undefined on input line 18991.
+
+
+LaTeX Warning: Reference `reshape' on page 298 undefined on input line 18993.
+
+
+LaTeX Warning: Reference `textprocessing' on page 298 undefined on input line 1
+8995.
+
+
+LaTeX Warning: Reference `importing' on page 298 undefined on input line 18997.
+
+
+
+LaTeX Warning: Reference `coercion' on page 298 undefined on input line 18999.
+
+
+LaTeX Warning: Reference `datastructures' on page 298 undefined on input line 1
+9001.
+
+
+LaTeX Warning: Reference `miscdatahandling' on page 298 undefined on input line
+ 19003.
+
+
+Package natbib Warning: Citation `Spector2008' on page 298 undefined on input l
+ine 19007.
+
+
+Package natbib Warning: Citation `Teetor2011' on page 298 undefined on input li
+ne 19008.
+
+[298]
+Chapter 8.
+[299
+
+] [300]
+File: ./rbook-master/img/scripting/script.png Graphic file (type bmp)
+<./rbook-master/img/scripting/script.png>
+
+LaTeX Warning: Reference `fig:script' on page 301 undefined on input line 19204
+.
+
+[301] [302]
+File: ./rbook-master/img/scripting/script2.png Graphic file (type bmp)
+<./rbook-master/img/scripting/script2.png>
+
+Overfull \hbox (22.0198pt too wide) in paragraph at lines 19264--19264
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:script2' on page 303 undefined on input line 1928
+8.
+
+[303]
+
+LaTeX Warning: Reference `fig:script2' on page 304 undefined on input line 1929
+3.
+
+[304] [305] [306] [307] [308] [309] [310]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[311]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[312]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[313]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[314]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[315] [316]
+
+LaTeX Warning: Reference `dates' on page 317 undefined on input line 20178.
+
+
+LaTeX Warning: Reference `usingfunctions' on page 317 undefined on input line 2
+0221.
+
+[317] [318] [319]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[320]
+
+LaTeX Warning: Reference `usingfunctions' on page 321 undefined on input line 2
+0445.
+
+[321] [322]
+
+LaTeX Warning: Reference `for' on page 323 undefined on input line 20594.
+
+
+LaTeX Warning: Reference `datahandling' on page 323 undefined on input line 206
+10.
+
+
+LaTeX Warning: Reference `scripts' on page 323 undefined on input line 20670.
+
+
+LaTeX Warning: Reference `loops' on page 323 undefined on input line 20672.
+
+
+LaTeX Warning: Reference `vectorised' on page 323 undefined on input line 20673
+.
+
+[323]
+
+LaTeX Warning: Reference `if' on page 324 undefined on input line 20675.
+
+
+LaTeX Warning: Reference `functions' on page 324 undefined on input line 20677.
+
+
+
+LaTeX Warning: Reference `introR' on page 324 undefined on input line 20687.
+
+
+LaTeX Warning: Reference `mechanics' on page 324 undefined on input line 20688.
+
+
+
+LaTeX Warning: Reference `datahandling' on page 324 undefined on input line 206
+88.
+
+
+Package natbib Warning: Citation `Braun2007' on page 324 undefined on input lin
+e 20692.
+
+
+Package natbib Warning: Citation `Matloff2011' on page 324 undefined on input l
+ine 20694.
+
+[324]
+
+LaTeX Warning: Reference `probability' on page 325 undefined on input line 2070
+3.
+
+
+LaTeX Warning: Reference `estimation' on page 325 undefined on input line 20704
+.
+
+
+LaTeX Warning: Reference `hypothesistesting' on page 325 undefined on input lin
+e 20705.
+
+[325
+
+] [326] [327] [328]
+Chapter 9.
+[329
+
+] [330] [331]
+
+LaTeX Warning: Reference `fig:frequentistprobability' on page 332 undefined on 
+input line 21266.
+
+File: navarro2_files/figure-latex/frequentistprobability-1.pdf Graphic file (ty
+pe pdf)
+<use navarro2_files/figure-latex/frequentistprobability-1.pdf>
+
+LaTeX Warning: Reference `ci' on page 332 undefined on input line 21326.
+
+[332] [333] [334]
+
+Package natbib Warning: Citation `Fisher1922b' on page 335 undefined on input l
+ine 21406.
+
+
+Package natbib Warning: Citation `Meehl1967' on page 335 undefined on input lin
+e 21409.
+
+
+LaTeX Warning: Reference `bayes' on page 335 undefined on input line 21426.
+
+[335]
+
+LaTeX Warning: Reference `bargraph' on page 336 undefined on input line 21495.
+
+
+LaTeX Warning: Reference `pantsprob' on page 336 undefined on input line 21496.
+
+
+File: navarro2_files/figure-latex/pantsprob-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/pantsprob-1.pdf>
+[336]
+
+LaTeX Warning: Reference `tab:probrules' on page 337 undefined on input line 21
+535.
+
+[337]
+
+LaTeX Warning: Reference `tab:distformulas' on page 338 undefined on input line
+ 21619.
+
+
+LaTeX Warning: Reference `fig:binomial1' on page 338 undefined on input line 21
+624.
+
+
+LaTeX Warning: Reference `fig:pantsprob' on page 338 undefined on input line 21
+628.
+
+File: navarro2_files/figure-latex/binomial1-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/binomial1-1.pdf>
+
+LaTeX Warning: Reference `tab:distformulas' on page 338 undefined on input line
+ 21650.
+
+
+LaTeX Warning: Reference `fig:binomial2a' on page 338 undefined on input line 2
+1691.
+
+
+LaTeX Warning: Reference `fig:binomial2b' on page 338 undefined on input line 2
+1693.
+
+File: navarro2_files/figure-latex/binomial2a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/binomial2a-1.pdf>
+File: navarro2_files/figure-latex/binomial2b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/binomial2b-1.pdf>
+[338] [339] [340] [341]
+Overfull \hbox (449.97502pt too wide) in paragraph at lines 21726--21733
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:pdistnames' on page 342 undefined on input line 2
+1768.
+
+[342]
+
+LaTeX Warning: Reference `continuousdiscrete' on page 343 undefined on input li
+ne 21865.
+
+
+LaTeX Warning: Reference `fig:binomial1' on page 343 undefined on input line 21
+891.
+
+File: navarro2_files/figure-latex/normdist-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/normdist-1.pdf>
+[343]
+
+LaTeX Warning: Reference `tab:distformulas' on page 344 undefined on input line
+ 21938.
+
+File: navarro2_files/figure-latex/normmean-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/normmean-1.pdf>
+File: navarro2_files/figure-latex/normsd-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/normsd-1.pdf>
+
+LaTeX Warning: Reference `fig:normdist' on page 344 undefined on input line 219
+73.
+
+
+LaTeX Warning: Reference `fig:normdist' on page 344 undefined on input line 219
+78.
+
+
+LaTeX Warning: Reference `fig:binomial1' on page 344 undefined on input line 21
+984.
+
+[344] [345] [346]
+
+LaTeX Warning: Reference `fig:normmean' on page 347 undefined on input line 220
+01.
+
+
+LaTeX Warning: Reference `fig:normsd' on page 347 undefined on input line 22008
+.
+
+
+LaTeX Warning: Reference `fig:sdnorm' on page 347 undefined on input line 22019
+.
+
+File: navarro2_files/figure-latex/sdnorm1a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/sdnorm1a-1.pdf>
+File: navarro2_files/figure-latex/sdnorm1b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/sdnorm1b-1.pdf>
+File: navarro2_files/figure-latex/sdnorm2a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/sdnorm2a-1.pdf>
+File: navarro2_files/figure-latex/sdnorm2b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/sdnorm2b-1.pdf>
+[347] [348] [349] [350] [351]
+
+LaTeX Warning: Reference `fig:sdnorm1a' on page 352 undefined on input line 221
+41.
+
+
+LaTeX Warning: Reference `(' on page 352 undefined on input line 22142.
+
+
+LaTeX Warning: Reference `fig:sdnorm1a' on page 352 undefined on input line 221
+43.
+
+File: navarro2_files/figure-latex/tdist-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/tdist-1.pdf>
+File: navarro2_files/figure-latex/chisqdist-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/chisqdist-1.pdf>
+File: navarro2_files/figure-latex/Fdist-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/Fdist-1.pdf>
+
+LaTeX Warning: Reference `fig:tdist' on page 352 undefined on input line 22213.
+
+
+
+LaTeX Warning: Reference `ttest' on page 352 undefined on input line 22218.
+
+[352] [353] [354] [355]
+
+LaTeX Warning: Reference `chisquare' on page 356 undefined on input line 22223.
+
+
+
+LaTeX Warning: Reference `fig:chisqdist' on page 356 undefined on input line 22
+231.
+
+
+LaTeX Warning: Reference `anova' on page 356 undefined on input line 22247.
+
+
+LaTeX Warning: Reference `fig:Fdist' on page 356 undefined on input line 22248.
+
+
+File: navarro2_files/figure-latex/unnamed-chunk-437-1.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-437-1.pdf>
+
+LaTeX Warning: Reference `fig:variaterelationsa' on page 356 undefined on input
+ line 22292.
+
+
+LaTeX Warning: Reference `graphics' on page 356 undefined on input line 22294.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22290--22298
+[][]
+ []
+
+
+Underfull \vbox (badness 7012) has occurred while \output is active []
+
+[356]
+File: navarro2_files/figure-latex/variaterelations-1.pdf Graphic file (type pdf
+)
+<use navarro2_files/figure-latex/variaterelations-1.pdf>
+File: navarro2_files/figure-latex/variaterelations-2.pdf Graphic file (type pdf
+)
+<use navarro2_files/figure-latex/variaterelations-2.pdf>
+File: navarro2_files/figure-latex/variaterelations-3.pdf Graphic file (type pdf
+)
+<use navarro2_files/figure-latex/variaterelations-3.pdf>
+File: navarro2_files/figure-latex/variaterelations-4.pdf Graphic file (type pdf
+)
+<use navarro2_files/figure-latex/variaterelations-4.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 22299--22303
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22299--22303
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22299--22303
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[357]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[358]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[359]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[360]
+File: navarro2_files/figure-latex/unnamed-chunk-440-1.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-440-1.pdf>
+
+LaTeX Warning: Reference `fig:variaterelations' on page 361 undefined on input 
+line 22351.
+
+
+LaTeX Warning: Reference `chisquare' on page 361 undefined on input line 22359.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22349--22361
+[][]
+ []
+
+[361]
+
+LaTeX Warning: Reference `ttest' on page 362 undefined on input line 22366.
+
+
+LaTeX Warning: Reference `fig:variaterelations' on page 362 undefined on input 
+line 22389.
+
+[362]
+File: navarro2_files/figure-latex/unnamed-chunk-443-1.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-443-1.pdf>
+
+LaTeX Warning: Reference `fig:variaterelations' on page 363 undefined on input 
+line 22411.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22408--22415
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[363]
+
+LaTeX Warning: Reference `probstats' on page 364 undefined on input line 22446.
+
+
+
+LaTeX Warning: Reference `probmeaning' on page 364 undefined on input line 2244
+9.
+
+
+LaTeX Warning: Reference `basicprobability' on page 364 undefined on input line
+ 22451.
+
+
+LaTeX Warning: Reference `binomial' on page 364 undefined on input line 22453.
+
+
+LaTeX Warning: Reference `normal' on page 364 undefined on input line 22454.
+
+
+LaTeX Warning: Reference `otherdists' on page 364 undefined on input line 22454
+.
+
+
+Package natbib Warning: Citation `Evans2000' on page 364 undefined on input lin
+e 22465.
+
+
+LaTeX Warning: Reference `ttest' on page 364 undefined on input line 22485.
+
+[364]
+Chapter 10.
+
+LaTeX Warning: Reference `descriptives' on page 365 undefined on input line 224
+94.
+
+
+LaTeX Warning: Reference `srs' on page 365 undefined on input line 22507.
+
+
+LaTeX Warning: Reference `samplesandclt' on page 365 undefined on input line 22
+507.
+
+
+LaTeX Warning: Reference `pointestimates' on page 365 undefined on input line 2
+2508.
+
+
+LaTeX Warning: Reference `ci' on page 365 undefined on input line 22508.
+
+
+LaTeX Warning: Reference `descriptives' on page 365 undefined on input line 225
+35.
+
+
+Underfull \vbox (badness 3179) has occurred while \output is active []
+
+[365
+
+]
+File: ./rbook-master/img/estimation/srs1.pdf Graphic file (type pdf)
+<use ./rbook-master/img/estimation/srs1.pdf>
+
+Overfull \hbox (375.41328pt too wide) in paragraph at lines 22617--22617
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:srs1' on page 366 undefined on input line 22632.
+
+
+LaTeX Warning: Reference `fig:srs1' on page 366 undefined on input line 22641.
+
+[366] [367]
+
+LaTeX Warning: Reference `fig:brs' on page 368 undefined on input line 22662.
+
+File: ./rbook-master/img/estimation/brs.pdf Graphic file (type pdf)
+<use ./rbook-master/img/estimation/brs.pdf>
+
+Overfull \hbox (357.3456pt too wide) in paragraph at lines 22671--22671
+[][] 
+ []
+
+File: ./rbook-master/img/estimation/srs2.pdf Graphic file (type pdf)
+<use ./rbook-master/img/estimation/srs2.pdf>
+
+Overfull \hbox (375.41328pt too wide) in paragraph at lines 22675--22675
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:srs2' on page 368 undefined on input line 22687.
+
+[368] [369] [370]
+
+LaTeX Warning: Reference `fig:srs1' on page 371 undefined on input line 22784.
+
+
+LaTeX Warning: Reference `fig:brs' on page 371 undefined on input line 22785.
+
+[371]
+
+LaTeX Warning: Reference `measurement' on page 372 undefined on input line 2286
+3.
+
+
+LaTeX Warning: Reference `probability' on page 372 undefined on input line 2286
+6.
+
+
+LaTeX Warning: Reference `fig:IQdista' on page 372 undefined on input line 2287
+3.
+
+File: navarro2_files/figure-latex/IQdist-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/IQdist-1.pdf>
+File: navarro2_files/figure-latex/IQdist-2.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/IQdist-2.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 22880--22882
+[][]
+ []
+
+
+Underfull \vbox (badness 6157) has occurred while \output is active []
+
+[372]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[373]
+File: navarro2_files/figure-latex/IQdist-3.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/IQdist-3.pdf>
+
+LaTeX Warning: Reference `fig:IQdist' on page 374 undefined on input line 22911
+.
+
+
+LaTeX Warning: Reference `fig:IQdist' on page 374 undefined on input line 22914
+.
+
+
+LaTeX Warning: Reference `pointestimates' on page 374 undefined on input line 2
+2924.
+
+
+LaTeX Warning: Reference `ci' on page 374 undefined on input line 22925.
+
+[374] [375]
+
+LaTeX Warning: Reference `normal' on page 376 undefined on input line 22941.
+
+
+LaTeX Warning: Reference `fig:IQdist' on page 376 undefined on input line 22963
+.
+
+
+Package natbib Warning: Citation `Stigler1986' on page 376 undefined on input l
+ine 22982.
+
+[376]
+
+Package natbib Warning: Citation `Keynes1923' on page 377 undefined on input li
+ne 23035.
+
+
+LaTeX Warning: Reference `tab:replications' on page 377 undefined on input line
+ 23075.
+
+
+Overfull \hbox (255.2151pt too wide) in paragraph at lines 23078--23103
+[][] 
+ []
+
+[377]
+
+LaTeX Warning: Reference `tab:replications' on page 378 undefined on input line
+ 23109.
+
+
+LaTeX Warning: Reference `fig:sampdistmean' on page 378 undefined on input line
+ 23118.
+
+
+LaTeX Warning: Reference `fig:sampdistmean' on page 378 undefined on input line
+ 23130.
+
+File: ./rbook-master/img/estimation/sampleDist4.png Graphic file (type bmp)
+<./rbook-master/img/estimation/sampleDist4.png>
+
+Overfull \hbox (171.77812pt too wide) in paragraph at lines 23136--23136
+[][] 
+ []
+
+File: ./rbook-master/img/estimation/sampleDistMax.png Graphic file (type bmp)
+<./rbook-master/img/estimation/sampleDistMax.png>
+
+Overfull \hbox (135.58926pt too wide) in paragraph at lines 23140--23140
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:sampdistmax' on page 378 undefined on input line 
+23160.
+
+File: navarro2_files/figure-latex/IQsampa-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/IQsampa-1.pdf>
+File: navarro2_files/figure-latex/IQsampb-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/IQsampb-1.pdf>
+File: navarro2_files/figure-latex/IQsampc-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/IQsampc-1.pdf>
+
+LaTeX Warning: Reference `fig:IQsampa' on page 378 undefined on input line 2321
+2.
+
+
+LaTeX Warning: Reference `fig:IQsampb' on page 378 undefined on input line 2321
+2.
+
+
+LaTeX Warning: Reference `fig:IQsampc' on page 378 undefined on input line 2321
+2.
+
+[378] [379] [380] [381] [382] [383]
+
+LaTeX Warning: Reference `fig:cltdemo' on page 384 undefined on input line 2323
+2.
+
+
+LaTeX Warning: Reference `fig:cltdemob' on page 384 undefined on input line 232
+38.
+
+
+LaTeX Warning: Reference `fig:cltdemoa' on page 384 undefined on input line 232
+42.
+
+
+LaTeX Warning: Reference `fig:cltdemoc' on page 384 undefined on input line 232
+44.
+
+[384]
+File: navarro2_files/figure-latex/cltdemo-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/cltdemo-1.pdf>
+File: navarro2_files/figure-latex/cltdemo-2.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/cltdemo-2.pdf>
+File: navarro2_files/figure-latex/cltdemo-3.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/cltdemo-3.pdf>
+File: navarro2_files/figure-latex/cltdemo-4.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/cltdemo-4.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 23293--23297
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23293--23297
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23293--23297
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[385]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[386]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[387] [388]
+
+LaTeX Warning: Reference `studydesign' on page 389 undefined on input line 2339
+5.
+
+[389] [390]
+File: ./rbook-master/img/estimation/samplingDistSampleSD.png Graphic file (type
+ bmp)
+<./rbook-master/img/estimation/samplingDistSampleSD.png>
+
+Overfull \hbox (53.56131pt too wide) in paragraph at lines 23533--23533
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:sampdistsd' on page 391 undefined on input line 2
+3547.
+
+
+LaTeX Warning: Reference `fig:IQsampb' on page 391 undefined on input line 2355
+0.
+
+
+LaTeX Warning: Reference `fig:estimatorbias' on page 391 undefined on input lin
+e 23559.
+
+File: ./rbook-master/img/estimation/biasMeanSD.png Graphic file (type bmp)
+<./rbook-master/img/estimation/biasMeanSD.png>
+
+Overfull \hbox (744.80925pt too wide) in paragraph at lines 23579--23579
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 26.62114pt on input line 23580.
+
+
+LaTeX Warning: Reference `var' on page 391 undefined on input line 23584.
+
+
+LaTeX Warning: Reference `var' on page 391 undefined on input line 23596.
+
+[391] [392] [393]
+Overfull \hbox (98.01509pt too wide) in paragraph at lines 23664--23681
+[][] 
+ []
+
+[394]
+
+LaTeX Warning: Reference `clt' on page 395 undefined on input line 23713.
+
+
+LaTeX Warning: Reference `normal' on page 395 undefined on input line 23715.
+
+[395]
+
+LaTeX Warning: Reference `probmeaning' on page 396 undefined on input line 2384
+6.
+
+[396]
+
+LaTeX Warning: Reference `fig:cirep' on page 397 undefined on input line 23867.
+
+
+File: ./rbook-master/img/estimation/confIntReplicated.png Graphic file (type bm
+p)
+<./rbook-master/img/estimation/confIntReplicated.png>
+
+Overfull \hbox (340.99707pt too wide) in paragraph at lines 23874--23885
+[]\TU/lmr/m/n/10 \begin{figure} []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[397]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[398]
+
+LaTeX Warning: Reference `bayes' on page 399 undefined on input line 23905.
+
+
+LaTeX Warning: Reference `regression' on page 399 undefined on input line 23915
+.
+
+
+LaTeX Warning: Reference `packageinstall' on page 399 undefined on input line 2
+3961.
+
+[399]
+File: navarro2_files/figure-latex/bargraphCI-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/bargraphCI-1.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 23989--23991
+[][]
+ []
+
+File: navarro2_files/figure-latex/lineplotCI-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/lineplotCI-1.pdf>
+[400] [401]
+
+LaTeX Warning: Reference `srs' on page 402 undefined on input line 24024.
+
+
+LaTeX Warning: Reference `lawlargenumbers' on page 402 undefined on input line 
+24027.
+
+
+LaTeX Warning: Reference `samplesandclt' on page 402 undefined on input line 24
+028.
+
+
+LaTeX Warning: Reference `pointestimates' on page 402 undefined on input line 2
+4031.
+
+
+LaTeX Warning: Reference `ci' on page 402 undefined on input line 24033.
+
+[402]
+Chapter 11.
+[403
+
+] [404] [405] [406]
+
+LaTeX Warning: Reference `samplingdists' on page 407 undefined on input line 24
+473.
+
+[407]
+File: navarro2_files/figure-latex/samplingdist-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/samplingdist-1.pdf>
+
+LaTeX Warning: Reference `binomial' on page 408 undefined on input line 24500.
+
+
+LaTeX Warning: Reference `fig:samplingdist' on page 408 undefined on input line
+ 24508.
+
+[408]
+File: navarro2_files/figure-latex/crit2-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/crit2-1.pdf>
+
+LaTeX Warning: Reference `fig:crit2' on page 409 undefined on input line 24579.
+
+
+[409] [410]
+
+LaTeX Warning: Reference `fig:crit2' on page 411 undefined on input line 24657.
+
+
+
+LaTeX Warning: Reference `fig:crit1' on page 411 undefined on input line 24671.
+
+
+File: navarro2_files/figure-latex/crit1-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/crit1-1.pdf>
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 24685.
+[411] [412] [413]
+
+LaTeX Warning: Reference `chisqreport' on page 414 undefined on input line 2482
+0.
+
+[414]
+
+LaTeX Warning: Reference `tab:pvaltable' on page 415 undefined on input line 24
+898.
+
+
+Overfull \hbox (142.8651pt too wide) in paragraph at lines 24908--24921
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:pvaltable' on page 415 undefined on input line 24
+947.
+
+[415]
+File: navarro2_files/figure-latex/crit3-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/crit3-1.pdf>
+[416]
+
+LaTeX Warning: Reference `fig:crit3' on page 417 undefined on input line 25043.
+
+
+
+LaTeX Warning: Reference `fig:crit4' on page 417 undefined on input line 25054.
+
+
+File: navarro2_files/figure-latex/crit4-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/crit4-1.pdf>
+File: navarro2_files/figure-latex/powerfunction-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/powerfunction-1.pdf>
+
+LaTeX Warning: Reference `fig:powerfunction' on page 417 undefined on input lin
+e 25087.
+
+[417] [418] [419]
+
+LaTeX Warning: Reference `fig:powerfunction' on page 420 undefined on input lin
+e 25104.
+
+
+Package natbib Warning: Citation `Cohen1988' on page 420 undefined on input lin
+e 25112.
+
+
+Package natbib Warning: Citation `Ellis2010' on page 420 undefined on input lin
+e 25112.
+
+
+Overfull \hbox (57.30504pt too wide) in paragraph at lines 25128--25137
+[][] 
+ []
+
+[420]
+
+LaTeX Warning: Reference `fig:powerfunctionsample' on page 421 undefined on inp
+ut line 25213.
+
+File: navarro2_files/figure-latex/powerfunctionsample-1.pdf Graphic file (type 
+pdf)
+<use navarro2_files/figure-latex/powerfunctionsample-1.pdf>
+[421] [422]
+
+Package natbib Warning: Citation `Lehmann2011' on page 423 undefined on input l
+ine 25307.
+
+[423]
+
+LaTeX Warning: Reference `probability' on page 424 undefined on input line 2536
+0.
+
+
+LaTeX Warning: Reference `bayes' on page 424 undefined on input line 25380.
+
+
+Package natbib Warning: Citation `Gelman2006' on page 424 undefined on input li
+ne 25404.
+
+
+LaTeX Warning: Reference `chisquare' on page 424 undefined on input line 25421.
+
+
+[424]
+
+LaTeX Warning: Reference `hypotheses' on page 425 undefined on input line 25455
+.
+
+
+LaTeX Warning: Reference `errortypes' on page 425 undefined on input line 25457
+.
+
+
+LaTeX Warning: Reference `teststatistics' on page 425 undefined on input line 2
+5460.
+
+
+LaTeX Warning: Reference `decisionmaking' on page 425 undefined on input line 2
+5463.
+
+
+LaTeX Warning: Reference `pvalue' on page 425 undefined on input line 25465.
+
+
+LaTeX Warning: Reference `writeup' on page 425 undefined on input line 25467.
+
+
+LaTeX Warning: Reference `effectsize' on page 425 undefined on input line 25469
+.
+
+
+LaTeX Warning: Reference `nhstmess' on page 425 undefined on input line 25472.
+
+
+LaTeX Warning: Reference `bayes' on page 425 undefined on input line 25475.
+
+[425] [426
+
+] [427] [428
+
+]
+Chapter 12.
+
+LaTeX Warning: Reference `ttest' on page 429 undefined on input line 25491.
+
+
+LaTeX Warning: Reference `anova' on page 429 undefined on input line 25493.
+
+
+LaTeX Warning: Reference `regression' on page 429 undefined on input line 25494
+.
+
+
+Package natbib Warning: Citation `Pearson1900' on page 429 undefined on input l
+ine 25512.
+
+
+Package natbib Warning: Citation `Fisher1922' on page 429 undefined on input li
+ne 25513.
+
+[429]
+Overfull \hbox (39.49498pt too wide) in paragraph at lines 25549--25549
+[]\TU/lmtt/m/n/10 ##  $ id      : Factor w/ 200 levels "subj1","subj10",..: 1 1
+12 124 135 146 157 168 179 190 2 ...[] 
+ []
+
+[430] [431] [432]
+
+LaTeX Warning: Reference `binomial' on page 433 undefined on input line 25914.
+
+[433]
+
+LaTeX Warning: Reference `clt' on page 434 undefined on input line 25920.
+
+
+LaTeX Warning: Reference `otherdists' on page 434 undefined on input line 25934
+.
+
+
+LaTeX Warning: Reference `otherdists' on page 434 undefined on input line 25942
+.
+
+File: navarro2_files/figure-latex/manychi-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/manychi-1.pdf>
+
+LaTeX Warning: Reference `otherdists' on page 434 undefined on input line 25974
+.
+
+
+LaTeX Warning: Reference `fig:manychi' on page 434 undefined on input line 2597
+6.
+
+[434] [435]
+File: navarro2_files/figure-latex/goftest-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/goftest-1.pdf>
+
+LaTeX Warning: Reference `fig:goftest' on page 436 undefined on input line 2605
+4.
+
+
+LaTeX Warning: Reference `probability' on page 436 undefined on input line 2606
+0.
+
+[436] [437] [438] [439] [440] [441]
+
+Package natbib Warning: Citation `Sokal1994' on page 442 undefined on input lin
+e 26441.
+
+
+LaTeX Warning: Reference `chisqindependence' on page 442 undefined on input lin
+e 26487.
+
+
+Overfull \hbox (242.51506pt too wide) in paragraph at lines 26493--26512
+[] 
+ []
+
+[442]
+
+LaTeX Warning: Reference `freqtables' on page 443 undefined on input line 26584
+.
+
+[443]
+
+Package natbib Warning: Citation `Hogg2005' on page 444 undefined on input line
+ 26671.
+
+[444]
+
+LaTeX Warning: Reference `estimation' on page 445 undefined on input line 26711
+.
+
+[445] [446] [447]
+
+Package natbib Warning: Citation `Yates1934' on page 448 undefined on input lin
+e 26985.
+
+[448]
+
+LaTeX Warning: Reference `effectsize' on page 449 undefined on input line 27000
+.
+
+
+Package natbib Warning: Citation `Cramer1946' on page 449 undefined on input li
+ne 27033.
+
+[449]
+
+LaTeX Warning: Reference `probability' on page 450 undefined on input line 2707
+7.
+
+
+Package natbib Warning: Citation `<' on page 450 undefined on input line 27085.
+
+
+[450]
+
+LaTeX Warning: Reference `gofTestInR' on page 451 undefined on input line 27127
+.
+
+
+LaTeX Warning: Reference `AssocTestInR' on page 451 undefined on input line 271
+28.
+
+[451] [452]
+
+Package natbib Warning: Citation `Fisher1922' on page 453 undefined on input li
+ne 27315.
+
+
+LaTeX Warning: Reference `probability' on page 453 undefined on input line 2734
+2.
+
+[453]
+
+LaTeX Warning: Reference `chisqindependence' on page 454 undefined on input lin
+e 27419.
+
+
+Package natbib Warning: Citation `McNemar1947' on page 454 undefined on input l
+ine 27433.
+
+[454]
+Overfull \hbox (44.74498pt too wide) in paragraph at lines 27511--27511
+[]\TU/lmtt/m/n/10 ##  $ id             : Factor w/ 100 levels "subj.1","subj.10
+",..: 1 13 24 35 46 57 68 79 90 2 ...[] 
+ []
+
+[455] [456]
+
+LaTeX Warning: Reference `goftest' on page 457 undefined on input line 27677.
+
+
+LaTeX Warning: Reference `chisqindependence' on page 457 undefined on input lin
+e 27684.
+
+[457]
+
+LaTeX Warning: Reference `chisqeffectsize' on page 458 undefined on input line 
+27692.
+
+
+LaTeX Warning: Reference `chisqassumptions' on page 458 undefined on input line
+ 27699.
+
+
+LaTeX Warning: Reference `fisherexacttest' on page 458 undefined on input line 
+27700.
+
+
+LaTeX Warning: Reference `mcnemar' on page 458 undefined on input line 27702.
+
+
+Package natbib Warning: Citation `Agresti1996' on page 458 undefined on input l
+ine 27708.
+
+
+Package natbib Warning: Citation `Agresti2002' on page 458 undefined on input l
+ine 27711.
+
+[458]
+Chapter 13.
+
+LaTeX Warning: Reference `regression' on page 459 undefined on input line 27719
+.
+
+
+LaTeX Warning: Reference `onesamplettest' on page 459 undefined on input line 2
+7747.
+
+
+LaTeX Warning: Reference `studentttest' on page 459 undefined on input line 277
+48.
+
+
+LaTeX Warning: Reference `welchttest' on page 459 undefined on input line 27749
+.
+
+
+LaTeX Warning: Reference `pairedsamplesttest' on page 459 undefined on input li
+ne 27750.
+
+
+LaTeX Warning: Reference `cohensd' on page 459 undefined on input line 27752.
+
+[459
+
+]
+
+LaTeX Warning: Reference `fig:zeppo' on page 460 undefined on input line 27823.
+
+
+File: navarro2_files/figure-latex/zeppo-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/zeppo-1.pdf>
+
+LaTeX Warning: Reference `fig:ztesthyp' on page 460 undefined on input line 278
+52.
+
+File: navarro2_files/figure-latex/ztesthyp-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/ztesthyp-1.pdf>
+[460] [461] [462]
+
+LaTeX Warning: Reference `normal' on page 463 undefined on input line 27906.
+
+
+LaTeX Warning: Reference `clt' on page 463 undefined on input line 27911.
+
+
+LaTeX Warning: Reference `zscore' on page 463 undefined on input line 27921.
+
+
+LaTeX Warning: Reference `zscore' on page 463 undefined on input line 27935.
+
+
+LaTeX Warning: Reference `fig:ztest1' on page 463 undefined on input line 27943
+.
+
+
+LaTeX Warning: Reference `fig:ztest2' on page 463 undefined on input line 27943
+.
+
+[463]
+File: navarro2_files/figure-latex/ztest2-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/ztest2-1.pdf>
+File: navarro2_files/figure-latex/ztest1-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/ztest1-1.pdf>
+[464] [465] [466]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 28134.
+
+LaTeX Warning: Reference `shapiro' on page 467 undefined on input line 28157.
+
+[467]
+File: navarro2_files/figure-latex/ttesthyp_onesample-1.pdf Graphic file (type p
+df)
+<use navarro2_files/figure-latex/ttesthyp_onesample-1.pdf>
+
+Package natbib Warning: Citation `Student1908' on page 468 undefined on input l
+ine 28247.
+
+
+Package natbib Warning: Citation `Box1987' on page 468 undefined on input line 
+28248.
+
+
+LaTeX Warning: Reference `otherdists' on page 468 undefined on input line 28271
+.
+
+
+LaTeX Warning: Reference `fig:ttestdist' on page 468 undefined on input line 28
+272.
+
+File: ./rbook-master/img/ttest2/tdist_3.png Graphic file (type bmp)
+<./rbook-master/img/ttest2/tdist_3.png>
+
+Overfull \hbox (559.49658pt too wide) in paragraph at lines 28281--28281
+[][] 
+ []
+
+[468] [469] [470]
+
+LaTeX Warning: Reference `chisquare' on page 471 undefined on input line 28300.
+
+
+
+LaTeX Warning: Reference `ttestfunction' on page 471 undefined on input line 28
+304.
+
+[471]
+
+LaTeX Warning: Reference `shapiro' on page 472 undefined on input line 28444.
+
+
+LaTeX Warning: Reference `wilcox' on page 472 undefined on input line 28446.
+
+[472]
+
+LaTeX Warning: Reference `zassumptions' on page 473 undefined on input line 284
+51.
+
+[473]
+
+LaTeX Warning: Reference `fig:harpohistanastasia' on page 474 undefined on inpu
+t line 28538.
+
+
+LaTeX Warning: Reference `fig:harpohistbernadette' on page 474 undefined on inp
+ut line 28538.
+
+File: navarro2_files/figure-latex/harpohistanastasia-1.pdf Graphic file (type p
+df)
+<use navarro2_files/figure-latex/harpohistanastasia-1.pdf>
+File: navarro2_files/figure-latex/harpohistbernadette-1.pdf Graphic file (type 
+pdf)
+<use navarro2_files/figure-latex/harpohistbernadette-1.pdf>
+
+LaTeX Warning: Reference `fig:ttestci' on page 474 undefined on input line 2855
+8.
+
+File: ./rbook-master/img/ttest2/ttestci.png Graphic file (type bmp)
+<./rbook-master/img/ttest2/ttestci.png>
+
+Overfull \hbox (355.25699pt too wide) in paragraph at lines 28560--28568
+[]\TU/lmr/m/n/10 \begin{figure} []
+ []
+
+[474] [475]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[476]
+File: navarro2_files/figure-latex/ttesthyp-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/ttesthyp-1.pdf>
+[477] [478]
+
+LaTeX Warning: Reference `anova' on page 479 undefined on input line 28712.
+
+
+LaTeX Warning: Reference `estimation' on page 479 undefined on input line 28713
+.
+
+[479]
+
+LaTeX Warning: Reference `ttestfunction' on page 480 undefined on input line 28
+765.
+
+[480] [481] [482]
+
+LaTeX Warning: Reference `ttestoneassumptions' on page 483 undefined on input l
+ine 28974.
+
+
+LaTeX Warning: Reference `shapiro' on page 483 undefined on input line 28981.
+
+
+LaTeX Warning: Reference `wilcox' on page 483 undefined on input line 28982.
+
+
+LaTeX Warning: Reference `levene' on page 483 undefined on input line 28999.
+
+
+Package natbib Warning: Citation `Welch1947' on page 483 undefined on input lin
+e 29015.
+
+
+LaTeX Warning: Reference `fig:ttesthyp2' on page 483 undefined on input line 29
+018.
+
+
+LaTeX Warning: Reference `fig:ttesthyp' on page 483 undefined on input line 290
+19.
+
+[483]
+File: navarro2_files/figure-latex/ttesthyp2-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/ttesthyp2-1.pdf>
+
+Underfull \vbox (badness 1281) has occurred while \output is active []
+
+[484]
+
+LaTeX Warning: Reference `studentassumptions' on page 485 undefined on input li
+ne 29147.
+
+[485]
+
+LaTeX Warning: Reference `mcnemar' on page 486 undefined on input line 29174.
+
+
+Overfull \hbox (39.49498pt too wide) in paragraph at lines 29204--29204
+[]\TU/lmtt/m/n/10 ##  $ id         : Factor w/ 20 levels "student1","student10"
+,..: 1 12 14 15 16 17 18 19 20 2 ...[] 
+ []
+
+[486]
+
+LaTeX Warning: Reference `fig:pairedta' on page 487 undefined on input line 292
+60.
+
+File: navarro2_files/figure-latex/pairedta-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/pairedta-1.pdf>
+
+LaTeX Warning: Reference `fig:pairedtb' on page 487 undefined on input line 292
+76.
+
+File: navarro2_files/figure-latex/pairedtb-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/pairedtb-1.pdf>
+[487] [488] [489]
+
+LaTeX Warning: Reference `fig:pairedtc' on page 490 undefined on input line 293
+29.
+
+File: navarro2_files/figure-latex/pairedtc-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/pairedtc-1.pdf>
+[490] [491]
+
+LaTeX Warning: Reference `onesamplettest' on page 492 undefined on input line 2
+9461.
+
+
+LaTeX Warning: Reference `chisquare' on page 492 undefined on input line 29474.
+
+
+[492]
+
+LaTeX Warning: Reference `reshape' on page 493 undefined on input line 29535.
+
+
+LaTeX Warning: Reference `reshape' on page 493 undefined on input line 29553.
+
+
+LaTeX Warning: Reference `sortframe' on page 493 undefined on input line 29583.
+
+
+[493]
+
+LaTeX Warning: Reference `reshape' on page 494 undefined on input line 29611.
+
+[494]
+
+LaTeX Warning: Reference `onesidedtests' on page 495 undefined on input line 29
+735.
+
+[495]
+
+LaTeX Warning: Reference `hypothesistesting' on page 496 undefined on input lin
+e 29791.
+
+
+LaTeX Warning: Reference `onesidedtests' on page 496 undefined on input line 29
+792.
+
+[496] [497]
+
+LaTeX Warning: Reference `onesamplettest' on page 498 undefined on input line 2
+9946.
+
+[498]
+
+LaTeX Warning: Reference `welchttest' on page 499 undefined on input line 29986
+.
+
+[499]
+
+LaTeX Warning: Reference `pairedsamplesttest' on page 500 undefined on input li
+ne 30049.
+
+
+Package natbib Warning: Citation `Cohen1988' on page 500 undefined on input lin
+e 30054.
+
+
+LaTeX Warning: Reference `tab:cohensdinterpretation' on page 500 undefined on i
+nput line 30064.
+
+
+Package natbib Warning: Citation `McGrath2006' on page 500 undefined on input l
+ine 30068.
+
+[500]
+
+LaTeX Warning: Reference `onesamplettest' on page 501 undefined on input line 3
+0130.
+
+
+Package natbib Warning: Citation `Hedges1981' on page 501 undefined on input li
+ne 30188.
+
+[501]
+
+Package natbib Warning: Citation `Hedges1985' on page 502 undefined on input li
+ne 30206.
+
+
+Package natbib Warning: Citation `Cohen1988' on page 502 undefined on input lin
+e 30244.
+
+[502]
+
+LaTeX Warning: Reference `clt' on page 503 undefined on input line 30339.
+
+[503]
+File: navarro2_files/figure-latex/qq1a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/qq1a-1.pdf>
+[504]
+File: navarro2_files/figure-latex/qq1b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/qq1b-1.pdf>
+
+LaTeX Warning: Reference `fig:qq1a' on page 505 undefined on input line 30387.
+
+
+LaTeX Warning: Reference `fig:qq1b' on page 505 undefined on input line 30387.
+
+
+LaTeX Warning: Reference `fig:qq2a' on page 505 undefined on input line 30392.
+
+
+LaTeX Warning: Reference `fig:qq2b' on page 505 undefined on input line 30392.
+
+
+LaTeX Warning: Reference `fig:qq2c' on page 505 undefined on input line 30392.
+
+
+LaTeX Warning: Reference `fig:qq2d' on page 505 undefined on input line 30392.
+
+
+LaTeX Warning: Reference `fig:qq2a' on page 505 undefined on input line 30393.
+
+
+LaTeX Warning: Reference `fig:qq2b' on page 505 undefined on input line 30393.
+
+
+LaTeX Warning: Reference `fig:qq2c' on page 505 undefined on input line 30395.
+
+
+LaTeX Warning: Reference `fig:qq2d' on page 505 undefined on input line 30395.
+
+File: navarro2_files/figure-latex/qq2a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/qq2a-1.pdf>
+File: navarro2_files/figure-latex/qq2b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/qq2b-1.pdf>
+
+LaTeX Warning: Reference `fig:qq2a' on page 505 undefined on input line 30424.
+
+
+LaTeX Warning: Reference `fig:qq2b' on page 505 undefined on input line 30424.
+
+[505] [506] [507]
+File: navarro2_files/figure-latex/qq2c-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/qq2c-1.pdf>
+File: navarro2_files/figure-latex/qq2d-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/qq2d-1.pdf>
+
+LaTeX Warning: Reference `fig:qq2c' on page 508 undefined on input line 30454.
+
+
+LaTeX Warning: Reference `fig:qq2d' on page 508 undefined on input line 30454.
+
+[508] [509]
+File: navarro2_files/figure-latex/unnamed-chunk-553-1.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-553-1.pdf>
+File: navarro2_files/figure-latex/unnamed-chunk-553-2.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-553-2.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[510]
+
+Package natbib Warning: Citation `Shapiro1965' on page 511 undefined on input l
+ine 30499.
+
+
+LaTeX Warning: Reference `probability' on page 511 undefined on input line 3052
+6.
+
+
+LaTeX Warning: Reference `fig:swdist' on page 511 undefined on input line 30529
+.
+
+[511]
+File: ./rbook-master/img/ttest2/shapirowilkdist.png Graphic file (type bmp)
+<./rbook-master/img/ttest2/shapirowilkdist.png>
+
+Overfull \hbox (259.11191pt too wide) in paragraph at lines 30536--30536
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 5.26006pt on input line 30537.
+
+[512] [513]
+File: ./rbook-master/img/ttest2/wilcox1.png Graphic file (type bmp)
+<./rbook-master/img/ttest2/wilcox1.png>
+
+Overfull \hbox (153.70679pt too wide) in paragraph at lines 30626--30627
+[][] 
+ []
+
+[514] [515]
+File: ./rbook-master/img/ttest2/wilcox2.png Graphic file (type bmp)
+<./rbook-master/img/ttest2/wilcox2.png>
+
+Overfull \hbox (454.1149pt too wide) in paragraph at lines 30750--30751
+[][] 
+ []
+
+
+LaTeX Warning: Reference `onesamplettest' on page 516 undefined on input line 3
+0805.
+
+[516]
+
+LaTeX Warning: Reference `studentttest' on page 517 undefined on input line 308
+09.
+
+
+LaTeX Warning: Reference `welchttest' on page 517 undefined on input line 30811
+.
+
+
+LaTeX Warning: Reference `pairedsamplesttest' on page 517 undefined on input li
+ne 30818.
+
+
+LaTeX Warning: Reference `cohensd' on page 517 undefined on input line 30821.
+
+
+LaTeX Warning: Reference `shapiro' on page 517 undefined on input line 30824.
+
+
+LaTeX Warning: Reference `wilcox' on page 517 undefined on input line 30827.
+
+[517] [518
+
+]
+Chapter 14.
+
+LaTeX Warning: Reference `anxifree' on page 519 undefined on input line 30849.
+
+
+LaTeX Warning: Reference `anovaintro' on page 519 undefined on input line 30853
+.
+
+
+LaTeX Warning: Reference `introduceaov' on page 519 undefined on input line 308
+54.
+
+
+LaTeX Warning: Reference `etasquared' on page 519 undefined on input line 30857
+.
+
+
+LaTeX Warning: Reference `posthoc' on page 519 undefined on input line 30858.
+
+
+LaTeX Warning: Reference `anovaassumptions' on page 519 undefined on input line
+ 30859.
+
+
+LaTeX Warning: Reference `levene' on page 519 undefined on input line 30861.
+
+
+LaTeX Warning: Reference `kruskalwallis' on page 519 undefined on input line 30
+862.
+
+
+LaTeX Warning: Reference `anovaandt' on page 519 undefined on input line 30864.
+
+
+[519]
+
+LaTeX Warning: Reference `descriptives' on page 520 undefined on input line 309
+37.
+
+[520]
+
+LaTeX Warning: Reference `fig:moodgain' on page 521 undefined on input line 309
+98.
+
+File: navarro2_files/figure-latex/moodgain-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/moodgain-1.pdf>
+
+LaTeX Warning: Reference `ttest' on page 521 undefined on input line 31031.
+
+[521] [522]
+
+LaTeX Warning: Reference `var' on page 523 undefined on input line 31088.
+
+
+LaTeX Warning: Reference `var' on page 523 undefined on input line 31093.
+
+
+Overfull \hbox (20.38507pt too wide) in paragraph at lines 31108--31123
+[][] 
+ []
+
+[523]
+File: navarro2_files/figure-latex/anovavara-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/anovavara-1.pdf>
+File: navarro2_files/figure-latex/anovavarb-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/anovavarb-1.pdf>
+[524] [525] [526]
+
+LaTeX Warning: Reference `tab:anovatable' on page 527 undefined on input line 3
+1285.
+
+
+Overfull \hbox (663.12512pt too wide) in paragraph at lines 31291--31300
+ [][] 
+ []
+
+[527]
+
+LaTeX Warning: Reference `probability' on page 528 undefined on input line 3133
+0.
+
+
+LaTeX Warning: Reference `estimation' on page 528 undefined on input line 31352
+.
+
+
+LaTeX Warning: Reference `anova2' on page 528 undefined on input line 31364.
+
+
+LaTeX Warning: Reference `interactions' on page 528 undefined on input line 313
+64.
+
+
+Package natbib Warning: Citation `Hays1994' on page 528 undefined on input line
+ 31370.
+
+
+LaTeX Warning: Reference `otherdists' on page 528 undefined on input line 31384
+.
+
+[528]
+Overfull \hbox (340.30513pt too wide) in paragraph at lines 31458--31473
+[][] 
+ []
+
+[529] [530]
+Overfull \hbox (269.60513pt too wide) in paragraph at lines 31577--31588
+[][] 
+ []
+
+
+Overfull \hbox (211.2451pt too wide) in paragraph at lines 31598--31609
+[][] 
+ []
+
+[531] [532] [533]
+
+LaTeX Warning: Reference `regression' on page 534 undefined on input line 31865
+.
+
+[534]
+
+LaTeX Warning: Reference `anovacalc' on page 535 undefined on input line 31936.
+
+
+
+LaTeX Warning: Reference `tab:anovatable' on page 535 undefined on input line 3
+1975.
+
+
+LaTeX Warning: Reference `anovacalc' on page 535 undefined on input line 31976.
+
+
+[535]
+
+LaTeX Warning: Reference `anova2' on page 536 undefined on input line 32029.
+
+[536]
+Overfull \hbox (29.78508pt too wide) in paragraph at lines 32108--32129
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:moodgain' on page 537 undefined on input line 321
+35.
+
+[537]
+
+LaTeX Warning: Reference `datahandling' on page 538 undefined on input line 321
+75.
+
+
+LaTeX Warning: Reference `aovobjects' on page 538 undefined on input line 32222
+.
+
+
+LaTeX Warning: Reference `anova2' on page 538 undefined on input line 32232.
+
+[538]
+
+LaTeX Warning: Reference `plannedcomparisons' on page 539 undefined on input li
+ne 32287.
+
+
+LaTeX Warning: Reference `hypothesistesting' on page 539 undefined on input lin
+e 32297.
+
+
+Package natbib Warning: Citation `Shaffer1995' on page 539 undefined on input l
+ine 32306.
+
+
+LaTeX Warning: Reference `posthoc2' on page 539 undefined on input line 32312.
+
+
+Package natbib Warning: Citation `Hsu1996' on page 539 undefined on input line 
+32313.
+
+
+Package natbib Warning: Citation `Dunn1961' on page 539 undefined on input line
+ 32318.
+
+[539]
+
+Package natbib Warning: Citation `Dunn1961' on page 540 undefined on input line
+ 32344.
+
+
+Package natbib Warning: Citation `Holm1979' on page 540 undefined on input line
+ 32387.
+
+[540] [541]
+
+LaTeX Warning: Reference `anovamodel' on page 542 undefined on input line 32494
+.
+
+
+LaTeX Warning: Reference `shapiro' on page 542 undefined on input line 32525.
+
+
+LaTeX Warning: Reference `anovanormality' on page 542 undefined on input line 3
+2527.
+
+
+LaTeX Warning: Reference `levene' on page 542 undefined on input line 32535.
+
+
+Package natbib Warning: Citation `Levene1960' on page 542 undefined on input li
+ne 32568.
+
+
+Package natbib Warning: Citation `BrownForsythe1974' on page 542 undefined on i
+nput line 32569.
+
+[542] [543]
+
+Package natbib Warning: Citation `Welch1951' on page 544 undefined on input lin
+e 32728.
+
+[544]
+
+LaTeX Warning: Reference `introduceaov' on page 545 undefined on input line 327
+69.
+
+
+LaTeX Warning: Reference `shapiro' on page 545 undefined on input line 32796.
+
+[545]
+File: navarro2_files/figure-latex/unnamed-chunk-611-1.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-611-1.pdf>
+File: navarro2_files/figure-latex/unnamed-chunk-611-2.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-611-2.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[546]
+
+LaTeX Warning: Reference `graphics' on page 547 undefined on input line 32850.
+
+
+LaTeX Warning: Reference `ttest' on page 547 undefined on input line 32861.
+
+
+Package natbib Warning: Citation `KruskalWallis1952' on page 547 undefined on i
+nput line 32864.
+
+[547] [548] [549] [550]
+
+LaTeX Warning: Reference `anova2' on page 551 undefined on input line 33119.
+
+
+LaTeX Warning: Reference `anovaintro' on page 551 undefined on input line 33125
+.
+
+
+LaTeX Warning: Reference `introduceaov' on page 551 undefined on input line 331
+26.
+
+
+LaTeX Warning: Reference `etasquared' on page 551 undefined on input line 33128
+.
+
+
+LaTeX Warning: Reference `posthoc' on page 551 undefined on input line 33131.
+
+
+LaTeX Warning: Reference `anovaassumptions' on page 551 undefined on input line
+ 33133.
+
+
+LaTeX Warning: Reference `levene' on page 551 undefined on input line 33136.
+
+
+LaTeX Warning: Reference `welchoneway' on page 551 undefined on input line 3313
+7.
+
+
+LaTeX Warning: Reference `anovanormality' on page 551 undefined on input line 3
+3139.
+
+
+LaTeX Warning: Reference `kruskalwallis' on page 551 undefined on input line 33
+140.
+
+
+Package natbib Warning: Citation `Sahai2000' on page 551 undefined on input lin
+e 33145.
+
+[551] [552
+
+]
+Chapter 15.
+
+LaTeX Warning: Reference `correl' on page 553 undefined on input line 33157.
+
+File: navarro2_files/figure-latex/regression0-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/regression0-1.pdf>
+File: navarro2_files/figure-latex/regression1a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/regression1a-1.pdf>
+File: navarro2_files/figure-latex/regression1b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/regression1b-1.pdf>
+
+LaTeX Warning: Reference `fig:regression0' on page 553 undefined on input line 
+33192.
+
+
+LaTeX Warning: Reference `fig:regression1a' on page 553 undefined on input line
+ 33195.
+
+
+LaTeX Warning: Reference `fig:regression1b' on page 553 undefined on input line
+ 33200.
+
+
+LaTeX Warning: Reference `fig:regression1b' on page 553 undefined on input line
+ 33203.
+
+[553] [554] [555] [556]
+File: navarro2_files/figure-latex/regression3a-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/regression3a-1.pdf>
+File: navarro2_files/figure-latex/regression3b-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/regression3b-1.pdf>
+
+LaTeX Warning: Reference `fig:regression3a' on page 557 undefined on input line
+ 33287.
+
+
+LaTeX Warning: Reference `fig:regression3b' on page 557 undefined on input line
+ 33289.
+
+[557] [558] [559]
+
+LaTeX Warning: Reference `anova' on page 560 undefined on input line 33364.
+
+
+LaTeX Warning: Reference `fig:regression1a' on page 560 undefined on input line
+ 33408.
+
+[560]
+File: ./rbook-master/img/regression2/scatter3d_1.png Graphic file (type bmp)
+<./rbook-master/img/regression2/scatter3d_1.png>
+
+Overfull \hbox (364.55197pt too wide) in paragraph at lines 33463--33463
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 12.5552pt on input line 33464.
+
+[561] [562]
+
+LaTeX Warning: Reference `fig:multipleregression' on page 563 undefined on inpu
+t line 33517.
+
+[563]
+
+LaTeX Warning: Reference `regressionsummary' on page 564 undefined on input lin
+e 33650.
+
+[564]
+
+LaTeX Warning: Reference `regressiontests' on page 565 undefined on input line 
+33712.
+
+
+LaTeX Warning: Reference `anova' on page 565 undefined on input line 33733.
+
+
+LaTeX Warning: Reference `ttest' on page 565 undefined on input line 33734.
+
+[565]
+
+LaTeX Warning: Reference `anova' on page 566 undefined on input line 33782.
+
+[566]
+
+LaTeX Warning: Reference `ttest' on page 567 undefined on input line 33846.
+
+
+LaTeX Warning: Reference `ttest' on page 567 undefined on input line 33853.
+
+
+LaTeX Warning: Reference `ttest' on page 567 undefined on input line 33861.
+
+[567]
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+Missing character: There is no � in font [lmmono10-regular]:!
+[568] [569]
+
+LaTeX Warning: Reference `correl' on page 570 undefined on input line 34070.
+
+
+LaTeX Warning: Reference `posthoc' on page 570 undefined on input line 34093.
+
+
+LaTeX Warning: Reference `correl' on page 570 undefined on input line 34101.
+
+[570] [571] [572]
+
+LaTeX Warning: Reference `anova2' on page 573 undefined on input line 34275.
+
+
+LaTeX Warning: Reference `regressiondiagnostics' on page 573 undefined on input
+ line 34324.
+
+[573]
+
+LaTeX Warning: Reference `regressionnormality' on page 574 undefined on input l
+ine 34336.
+
+
+LaTeX Warning: Reference `regressionlinearity' on page 574 undefined on input l
+ine 34342.
+
+
+LaTeX Warning: Reference `regressionhomogeneity' on page 574 undefined on input
+ line 34353.
+
+
+LaTeX Warning: Reference `regressioncollinearity' on page 574 undefined on inpu
+t line 34361.
+
+
+LaTeX Warning: Reference `regressionoutliers' on page 574 undefined on input li
+ne 34375.
+
+
+Package natbib Warning: Citation `Fox2011' on page 574 undefined on input line 
+34404.
+
+
+Package natbib Warning: Citation `Fox2011' on page 574 undefined on input line 
+34408.
+
+[574] [575] [576] [577]
+
+LaTeX Warning: Reference `boxplotoutliers' on page 578 undefined on input line 
+34631.
+
+
+LaTeX Warning: Reference `fig:outlier' on page 578 undefined on input line 3464
+2.
+
+File: ./rbook-master/img/regression2/unusual_outlier.png Graphic file (type bmp
+)
+<./rbook-master/img/regression2/unusual_outlier.png>
+
+Overfull \hbox (219.92636pt too wide) in paragraph at lines 34653--34653
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 5.14854pt on input line 34654.
+
+
+LaTeX Warning: Reference `fig:leverage' on page 578 undefined on input line 346
+62.
+
+[578] [579]
+File: ./rbook-master/img/regression2/unusual_leverage.png Graphic file (type bm
+p)
+<./rbook-master/img/regression2/unusual_leverage.png>
+
+Overfull \hbox (228.9721pt too wide) in paragraph at lines 34722--34722
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:influence' on page 580 undefined on input line 34
+738.
+
+File: ./rbook-master/img/regression2/unusual_influence.png Graphic file (type b
+mp)
+<./rbook-master/img/regression2/unusual_influence.png>
+
+Overfull \hbox (198.14238pt too wide) in paragraph at lines 34744--34744
+[][] 
+ []
+
+[580] [581] [582]
+
+LaTeX Warning: Reference `fig:regressionplot4' on page 583 undefined on input l
+ine 34822.
+
+
+LaTeX Warning: Reference `fig:regressionplot5' on page 583 undefined on input l
+ine 34824.
+
+File: navarro2_files/figure-latex/regressionplot4-1.pdf Graphic file (type pdf)
+
+<use navarro2_files/figure-latex/regressionplot4-1.pdf>
+File: navarro2_files/figure-latex/regressionplot5-1.pdf Graphic file (type pdf)
+
+<use navarro2_files/figure-latex/regressionplot5-1.pdf>
+
+Underfull \vbox (badness 5388) has occurred while \output is active []
+
+[583] [584] [585]
+
+LaTeX Warning: Reference `shapiro' on page 586 undefined on input line 34893.
+
+
+LaTeX Warning: Reference `fig:residhist' on page 586 undefined on input line 34
+907.
+
+File: ./rbook-master/img/regression2/residhist.png Graphic file (type bmp)
+<./rbook-master/img/regression2/residhist.png>
+
+Overfull \hbox (326.07695pt too wide) in paragraph at lines 34912--34912
+[][] 
+ []
+
+File: navarro2_files/figure-latex/regressionplot2-1.pdf Graphic file (type pdf)
+
+<use navarro2_files/figure-latex/regressionplot2-1.pdf>
+
+LaTeX Warning: Reference `fig:regressionplot2' on page 586 undefined on input l
+ine 34940.
+
+File: navarro2_files/figure-latex/regressionlinearity-1.pdf Graphic file (type 
+pdf)
+<use navarro2_files/figure-latex/regressionlinearity-1.pdf>
+
+LaTeX Warning: Reference `fig:regressionlinearity' on page 586 undefined on inp
+ut line 34962.
+
+[586] [587] [588] [589]
+File: navarro2_files/figure-latex/regressionplot1-1.pdf Graphic file (type pdf)
+
+<use navarro2_files/figure-latex/regressionplot1-1.pdf>
+
+LaTeX Warning: Reference `fig:regressionplot1' on page 590 undefined on input l
+ine 34999.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34998--35005
+[][]
+ []
+
+
+LaTeX Warning: Reference `fig:residualPlots' on page 590 undefined on input lin
+e 35010.
+
+File: navarro2_files/figure-latex/residualPlots-1.pdf Graphic file (type pdf)
+<use navarro2_files/figure-latex/residualPlots-1.pdf>
+[590] [591]
+
+LaTeX Warning: Reference `fig:regressionplot1' on page 592 undefined on input l
+ine 35051.
+
+
+LaTeX Warning: Reference `fig:residualPlots' on page 592 undefined on input lin
+e 35051.
+
+
+LaTeX Warning: Reference `fig:regressionlinearity' on page 592 undefined on inp
+ut line 35058.
+
+
+LaTeX Warning: Reference `transform' on page 592 undefined on input line 35064.
+
+
+
+LaTeX Warning: Reference `(' on page 592 undefined on input line 35064.
+
+
+LaTeX Warning: Reference `fig:regressionplot3' on page 592 undefined on input l
+ine 35097.
+
+File: navarro2_files/figure-latex/regressionplot3-1.pdf Graphic file (type pdf)
+
+<use navarro2_files/figure-latex/regressionplot3-1.pdf>
+
+Package natbib Warning: Citation `Cook1983' on page 592 undefined on input line
+ 35118.
+
+
+LaTeX Warning: Reference `fig:regressionplot3' on page 592 undefined on input l
+ine 35130.
+
+[592] [593]
+
+Package natbib Warning: Citation `White1980' on page 594 undefined on input lin
+e 35168.
+
+
+Package natbib Warning: Citation `Fox2011' on page 594 undefined on input line 
+35168.
+
+
+Package natbib Warning: Citation `Long2000' on page 594 undefined on input line
+ 35170.
+
+[594] [595]
+
+Package natbib Warning: Citation `Akaike1974' on page 596 undefined on input li
+ne 35334.
+
+[596] [597] [598] [599] [600] [601]
+
+LaTeX Warning: Reference `introregression' on page 602 undefined on input line 
+35781.
+
+
+LaTeX Warning: Reference `regressionestimation' on page 602 undefined on input 
+line 35782.
+
+
+LaTeX Warning: Reference `multipleregression' on page 602 undefined on input li
+ne 35784.
+
+
+LaTeX Warning: Reference `r2' on page 602 undefined on input line 35787.
+
+
+LaTeX Warning: Reference `regressiontests' on page 602 undefined on input line 
+35789.
+
+
+LaTeX Warning: Reference `regressioncoefs' on page 602 undefined on input line 
+35792.
+
+
+LaTeX Warning: Reference `regressionassumptions' on page 602 undefined on input
+ line 35794.
+
+
+LaTeX Warning: Reference `regressiondiagnostics' on page 602 undefined on input
+ line 35795.
+
+
+LaTeX Warning: Reference `modelselreg' on page 602 undefined on input line 3579
+7.
+
+[602]
+Chapter 16.
+
+LaTeX Warning: Reference `ttest' on page 603 undefined on input line 35805.
+
+
+LaTeX Warning: Reference `anova' on page 603 undefined on input line 35806.
+
+
+LaTeX Warning: Reference `regression' on page 603 undefined on input line 35807
+.
+
+
+LaTeX Warning: Reference `anova' on page 603 undefined on input line 35826.
+
+
+LaTeX Warning: Reference `anova' on page 603 undefined on input line 35831.
+
+
+LaTeX Warning: Reference `anova' on page 603 undefined on input line 35838.
+
+
+LaTeX Warning: Reference `freqtables' on page 603 undefined on input line 35853
+.
+
+[603
+
+] [604] [605]
+
+LaTeX Warning: Reference `interactions' on page 606 undefined on input line 360
+99.
+
+[606]
+
+LaTeX Warning: Reference `anova' on page 607 undefined on input line 36129.
+
+
+LaTeX Warning: Reference `anova' on page 607 undefined on input line 36172.
+
+
+LaTeX Warning: Reference `anova' on page 607 undefined on input line 36174.
+
+
+LaTeX Warning: Reference `anova' on page 607 undefined on input line 36185.
+
+
+LaTeX Warning: Reference `anova' on page 607 undefined on input line 36191.
+
+
+LaTeX Warning: Reference `regression' on page 607 undefined on input line 36215
+.
+
+[607]
+
+LaTeX Warning: Reference `otherdists' on page 608 undefined on input line 36292
+.
+
+[608] [609] [610]
+
+LaTeX Warning: Reference `anova' on page 611 undefined on input line 36483.
+
+
+LaTeX Warning: Reference `regression' on page 611 undefined on input line 36489
+.
+
+[611]
+
+LaTeX Warning: Reference `anovalm' on page 612 undefined on input line 36573.
+
+
+LaTeX Warning: Reference `anova' on page 612 undefined on input line 36593.
+
+
+LaTeX Warning: Reference `factanovahyp' on page 612 undefined on input line 365
+96.
+
+
+LaTeX Warning: Reference `anovaandt' on page 612 undefined on input line 36604.
+
+
+File: ./rbook-master/img/factorialanova/maineffectA.png Graphic file (type bmp)
+
+<./rbook-master/img/factorialanova/maineffectA.png>
+
+Overfull \hbox (260.62898pt too wide) in paragraph at lines 36632--36632
+[][] 
+ []
+
+File: ./rbook-master/img/factorialanova/maineffectB.png Graphic file (type bmp)
+
+<./rbook-master/img/factorialanova/maineffectB.png>
+
+Overfull \hbox (252.33527pt too wide) in paragraph at lines 36636--36636
+[][] 
+ []
+
+File: ./rbook-master/img/factorialanova/maineffectAB.png Graphic file (type bmp
+)
+<./rbook-master/img/factorialanova/maineffectAB.png>
+
+Overfull \hbox (225.971pt too wide) in paragraph at lines 36640--36640
+[][] 
+ []
+
+File: ./rbook-master/img/factorialanova/maineffectAB.png Graphic file (type bmp
+)
+<./rbook-master/img/factorialanova/maineffectAB.png>
+
+Overfull \hbox (225.971pt too wide) in paragraph at lines 36644--36644
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:maineffects' on page 612 undefined on input line 
+36655.
+
+[612] [613] [614] [615] [616]
+File: ./rbook-master/img/factorialanova/interaction2.png Graphic file (type bmp
+)
+<./rbook-master/img/factorialanova/interaction2.png>
+
+Overfull \hbox (204.86775pt too wide) in paragraph at lines 36661--36661
+[][] 
+ []
+
+File: ./rbook-master/img/factorialanova/interaction3.png Graphic file (type bmp
+)
+<./rbook-master/img/factorialanova/interaction3.png>
+
+Overfull \hbox (204.86775pt too wide) in paragraph at lines 36665--36665
+[][] 
+ []
+
+File: ./rbook-master/img/factorialanova/interaction1.png Graphic file (type bmp
+)
+<./rbook-master/img/factorialanova/interaction1.png>
+
+Overfull \hbox (204.86775pt too wide) in paragraph at lines 36669--36669
+[][] 
+ []
+
+File: ./rbook-master/img/factorialanova/interaction4.png Graphic file (type bmp
+)
+<./rbook-master/img/factorialanova/interaction4.png>
+
+Overfull \hbox (204.86775pt too wide) in paragraph at lines 36673--36673
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:maineffects' on page 617 undefined on input line 
+36676.
+
+
+LaTeX Warning: Reference `fig:interaction' on page 617 undefined on input line 
+36687.
+
+
+LaTeX Warning: Reference `ciplots' on page 617 undefined on input line 36700.
+
+
+LaTeX Warning: Reference `fig:interactionplot' on page 617 undefined on input l
+ine 36715.
+
+
+LaTeX Warning: Reference `fig:interaction' on page 617 undefined on input line 
+36748.
+
+[617] [618] [619] [620] [621]
+File: navarro2_files/figure-latex/interactionplot-1.pdf Graphic file (type pdf)
+
+<use navarro2_files/figure-latex/interactionplot-1.pdf>
+[622] [623] [624]
+
+LaTeX Warning: Reference `contrasts' on page 625 undefined on input line 36949.
+
+
+
+LaTeX Warning: Reference `sec:posthoc2' on page 625 undefined on input line 369
+49.
+
+
+LaTeX Warning: Reference `fig:interactiona' on page 625 undefined on input line
+ 36957.
+
+
+LaTeX Warning: Reference `factanovahyp' on page 625 undefined on input line 369
+67.
+
+[625]
+
+LaTeX Warning: Reference `etasquared' on page 626 undefined on input line 37021
+.
+
+[626] [627] [628] [629]
+
+LaTeX Warning: Reference `levene' on page 630 undefined on input line 37338.
+
+[630]
+
+LaTeX Warning: Reference `anovanormality' on page 631 undefined on input line 3
+7411.
+
+File: navarro2_files/figure-latex/unnamed-chunk-689-1.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-689-1.pdf>
+[631]
+File: navarro2_files/figure-latex/unnamed-chunk-689-2.pdf Graphic file (type pd
+f)
+<use navarro2_files/figure-latex/unnamed-chunk-689-2.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[632]
+
+LaTeX Warning: Reference `modelselreg' on page 633 undefined on input line 3748
+2.
+
+[633]
+
+LaTeX Warning: Reference `anova' on page 634 undefined on input line 37537.
+
+[634]
+! Argument of \mbox has an extra }.
+<inserted text> 
+                \par 
+l.37573 \mbox
+             {SS}_{\Delta} &=& \mbox{SS}_{M1} - \mbox{SS}_{M0}\\ 
+Here is how much of TeX's memory you used:
+ 23605 strings out of 494950
+ 445947 string characters out of 6176542
+ 521000 words of memory out of 5000000
+ 27077 multiletter control sequences out of 15000+600000
+ 581801 words of font info for 93 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 45i,9n,68p,1653b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on navarro2.pdf (634 pages).
