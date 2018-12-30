@@ -806,7 +806,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://bookdown.org/ekothe/navarro2/" target="blank">Published with bookdown</a></li>
+<li><a href="https://learningstatisticswithr-bookdown.netlify.com" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -1434,9 +1434,9 @@ df_{A:B} &amp;=&amp; (R\times C - 1) - (R - 1) - (C -1 ) \\
 <p>As with one-way ANOVA, we can test for the normality of residuals in a straightforward fashion (see Section <a href="anova.html#anovanormality">14.9</a>). First, we use the <code>residuals()</code> function to extract the residuals from the model itself, and then we can examine those residuals in a few different ways. It’s generally a good idea to examine them graphically, by drawing histograms (i.e., <code>hist()</code> function) and QQ plots (i.e., <code>qqnorm()</code> function. If you want a formal test for the normality of the residuals, then we can run the Shapiro-Wilk test (i.e., <code>shapiro.test()</code>). If we wanted to check the residuals with respect to <code>model.2</code> (i.e., the model with both main effects but no interactions) then we could do the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> resid &lt;-<span class="st"> </span><span class="kw">residuals</span>( model.<span class="dv">2</span> )  <span class="co"># pull the residuals</span>
  <span class="kw">hist</span>( resid )                  <span class="co"># draw a histogram</span></code></pre></div>
-<p><img src="navarro2_files/figure-html/unnamed-chunk-689-1.png" width="672" /></p>
+<p><img src="navarro2_files/figure-html/unnamed-chunk-687-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">qqnorm</span>( resid )                <span class="co"># draw a normal QQ plot</span></code></pre></div>
-<p><img src="navarro2_files/figure-html/unnamed-chunk-689-2.png" width="672" /></p>
+<p><img src="navarro2_files/figure-html/unnamed-chunk-687-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">shapiro.test</span>( resid )          <span class="co"># run the Shapiro-Wilk test</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
@@ -2920,9 +2920,9 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["navarro2.pdf", "navarro2.epub"],
+"download": null,
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });
