@@ -537,7 +537,7 @@ Start typing the name of a function or a variable, and hit the "tab" key. RStudi
 The RStudio autocomplete tool works slightly differently if you've already got the name of the function typed and you're now trying to type the arguments. For instance, suppose I've typed `round(` into the console, and *then* I hit tab. RStudio is smart enough to recognise that I already know the name of the function that I want, because I've already typed it! Instead, it figures that what I'm interested in is the *arguments* to that function. So that's what pops up in the little window. You can see this in Figure \@ref(fig:RStudiotab2). Again, the window has two panels, and you can interact with this window in exactly the same way that you did with the window shown in \@ref(fig:RStudiotab). On the left hand panel, you can see a list of the argument names. On the right hand side, it displays some information about what the selected argument does. 
 
 
-```{r fig.cap="If you've typed the name of a function already along with the left parenthesis and then hit the \"tab\" key, RStudio brings up a different window to the one shown above. This one lists all the arguments to the function on the left, and information about each argument on the right.", echo=FALSE}
+```{r RStudiotab2, fig.cap="If you've typed the name of a function already along with the left parenthesis and then hit the \"tab\" key, RStudio brings up a different window to the one shown above. This one lists all the arguments to the function on the left, and information about each argument on the right.", echo=FALSE}
 knitr::include_graphics("./rbook-master/img/introR/RStudio_tab2.png")
 
 ```
@@ -554,7 +554,7 @@ The second way to get access to your command history is to look at the history p
 
 
 
-```{r fig.cap="The history panel is located in the top right hand side of the RStudio window. Click on the word \"History\" and it displays this panel.", echo=FALSE}
+```{r RStudiohistory, fig.cap="The history panel is located in the top right hand side of the RStudio window. Click on the word \"History\" and it displays this panel.", echo=FALSE}
 knitr::include_graphics("./rbook-master/img/introR/historyTab.png")
 ```
 

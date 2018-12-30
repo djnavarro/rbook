@@ -1,0 +1,89 @@
+---
+title: '<div class="jumbotron"><h1 class="title toc-ignore display-3" align="center">Learning Statistics with R</h1><p class="lead" align="center">by Danielle Navarro <a href="https://twitter.com/djnavarro"><i class="fab fa-twitter"></i></a></p></div>'
+output:
+  html_document:
+    includes:
+      in_header: header.html    
+    theme: flatly
+    highlight: textmate
+    css: mystyle.css
+    self_contained: false
+pagetitle: "Learning Statistics with R"
+---
+
+```{r,echo=FALSE}
+rm(list=objects()) # start with a clean workspace
+```
+
+Back in the grimdark pre-Snapchat era of humanity (i.e. early 2011), I started teaching an introductory statistics class for psychology students offered at the University of Adelaide, using the R statistical package as the primary tool. I wrote my own lecture notes for the class, which have now expanded to the point of effectively being a book. The book is freely available, and as of version 0.6 it is released under a creative commons licence (CC BY-SA 4.0)
+
+- [LSR version 0.6](./lsr-0.6.pdf)
+- [Data sets](./data.zip)
+- [Source on GitHub](https://github.com/djnavarro/rbook)
+
+The book is associated with the `lsr` package on CRAN and GitHub. The package is probably okay for many introductory teaching purposes, but some care is required. The package does have some limitations (e.g., the `etaSquared` function does strange things for unbalanced ANOVA designs), but I haven't updated it in a while because I've decided to spend some time learning  more about package development before tackling this. 
+
+The decision to release the book under a Creative Commons licence reflects the fact that - much like the package - I've found very little time to update the book myself, and I feel a little bad about that. There have been a number of people who have asked about adapting the book or using it in teaching, and I've invariably said "yes, please do!" so it seems like a sensible thing to do is throw it open for anyone to adapt it if they would like to. Like most people writing open textbooks, I chose a BY-SA licence. As per the licence "this book can be reused, remixed, retained, revised and redistributed (including commercially) as long as appropriate credit is given to the authors. If you remix, or modify the original version of this open textbook, you must redistribute all versions of this open textbook under the same license - CC BY-SA."
+
+There are a few projects that I'm aware of that adapt or extend some of the content from LSR
+
+- Emily Kothe has a fantastic [conversion to bookdown](https://learningstatisticswithr-bookdown.netlify.com/) and tidyverse in progress
+- Matt Crump has a lovely book-in-progress that uses some LSR content, [Answering Questions with Data](https://crumplab.github.io/statistics/)
+- David Foxcroft has produced a really slick adaptation to jamovi, [Learning Statistics with Jamovi]("https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
+- My own approach to adapting LSR is another work-in-progress, [R for Psychological Science](https://psyr.org/)
+
+If you know of any other projects using LSR, please let me know. I'd love to list them here! 
+
+
+### Table of Contents
+
+#### I. Background
+
+- **Chapter 1: Why do we learn statistics?** Psychology and statistics. Statistics in everyday life. Some examples where intuition is misleading, and statistics is critical.
+- **Chapter 2: A brief introduction to research design.** Basics of psychological measurement. Reliability and validity of a measurement. Experimental and non-experimental design. Predictors versus outcomes.
+
+#### II. An introduction to R
+
+- **Chapter 3: Getting started with R.** Getting R and Rstudio. Typing commands at the console. Simple calculations. Using functions. Introduction to variables. Numeric, character and logical data. Storing multiple values as a vector.
+- **Chapter 4: Additional R concepts.** Installing and loading packages. The workspace. Navigating the file system. More complicated data structures: factors, data frames, lists and formulas. A brief discussion of generic functions.
+
+#### III. Working with data
+
+- **Chapter 5: Descriptive statistics.** Mean, median and mode. Range, interquartile range and standard deviations. Skew and kurtosis. Standard scores. Correlations. Tools for computing these things in R. Brief comments missing data.
+- **Chapter 6: Drawing graphs.** Discussion of R graphics. Histograms. Stem and leaf plots. Boxplots. Scatterplots. Bar graphs.
+- **Chapter 7: Pragmatic matters.** Tabulating data. Transforming a variable. Subsetting vectors and data frames. Sorting, transposing and merging data. Reshaping a data frame. Basics of text processing. Reading unusual data files. Basics of variable coercion. Even more data structures. Other miscellaneous topics, including floating point arithmetic.
+- **Chapter 8: Basic programming.** Scripts. Loops. Conditionals. Writing functions. Implicit loops.
+
+#### IV. Statistical theory
+
+- **Prelude.** The riddle of induction, and why statisticians make assumptions.
+- **Chapter 9: Introduction to probability.** Probability versus statistics. Basics of probability theory. Common distributions: normal, binomial, t, chi-square, F. Bayesian versus frequentist probability.
+- **Chapter 10: Estimating unknown quantities from a sample.** Sampling from populations. Estimating population means and standard deviations. Sampling distributions. The central limit theorem. Confidence intervals.
+- **Chapter 11: Hypothesis testing.** Research hypotheses versus statistical hypotheses. Null versus alternative hypotheses. Type I and Type II errors. Sampling distributions for test statistics. Hypothesis testing as decision making. p-values. Reporting the results of a test. Effect size and power. Controversies and traps in hypothesis testing.
+
+#### V. Statistical tools
+
+- **Chapter 12: Categorical data analysis.** Chi-square goodness of fit test. Chi-square test of independence. Yate's continuity correction. Effect size with Cramer's V. Assumptions of the tests. Other tests: Fisher exact test and McNemar's test.
+- **Chapter 13: Comparing two means.** One sample z-test. One sample t-test. Student's independent sample t-test. Welch's independent samples t-test. Paired sample t-test. Effect size with Cohen's d. Checking the normality assumption. Wilcoxon tests for non-normal data.
+- **Chapter 14: Comparing several means (one-way ANOVA).** Introduction to one-way ANOVA. Doing it in R. Effect size with eta-squared. Simple corrections for multiple comparisons (post hoc tests). Assumptions of one-way ANOVA. Checking homogeneity of variance using Levene tests. Avoiding the homogeneity of variance assumption. Checking and avoiding the normality assumption. Relationship between ANOVA and t-tests.
+- **Chapter 15: Linear regression.** Introduction to regression. Estimation by least squares. Multiple regression models. Measuring the fit of a regression model. Hypothesis tests for regression models. Standardised regression coefficient. Assumptions of regression models. Basic regression diagnostics. Model selection methods for regression.
+- **Chapter 16: Factorial ANOVA.** Factorial ANOVA without interactions. Factorial ANOVA with interactions. Effect sizes, estimated marginal means, confidence intervals for effects. Assumption checking. F-tests as model selection. Interpreting ANOVA as a linear model. Specifying contrasts. Post hoc testing via Tukey's HSD. Factorial ANOVA with unbalanced data (Type I, III and III sums of squares)
+
+#### VI. Other topics
+
+- **Chapter 17: Bayesian statistics.** Introduction to Bayesian inference. Bayesian analysis of contingency tables. Bayesian t-tests, ANOVAs and regressions.
+- **Chapter 18: Epilogue.** Comments on the content missing from this book. Advantages to using R.
+- **References.** An incomplete reference list.
+
+<br>
+<center>
+---- &nbsp;&nbsp;
+<a href="https://twitter.com/djnavarro"><i class="fab fa-twitter"></i></a> &nbsp;
+<a href="https://compcogscisydney.org"><i class="fas fa-home"></i></a> &nbsp;
+<a href="https://github.com/djnavarro"><i class="fab fa-github"></i></a> &nbsp;
+<a href="mailto:d.navarro@unsw.edu.au"><i class="fas fa-paper-plane"></i></a>
+&nbsp;&nbsp; ----
+</center>
+<br>
+<br>
+
