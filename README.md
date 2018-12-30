@@ -1,7 +1,25 @@
-# Learning statistics with R
 
-Contains LaTeX source for:
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+Learning statistics with R
+==========================
 
-DJ Navarro (2018). *Learning statistics with R: A tutorial for psychology students and other beginners.* (Version 0.6). https://learningstatisticswithr.com
+This repository contains all the source materials for *Learning Statistics with R*.
 
-Scripts to generate the images are included, as are the data sets from which they are drawn. In principle, this repository and the `lsr` package itself should include everything needed to reproduce the book from scratch. The book is open access, and released under a creative commons [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) licence.
+There are two versions of the content, the `original` version (LSR v0.6) written in LaTeX and the `bookdown` adaptation (LSR v0.6.1). The two versions are kept in distinct folders to ensure they share no dependencies.
+
+Bookdown
+--------
+
+Add notes her
+
+Original
+--------
+
+Add notes here
+
+Docs
+----
+
+The `blogdown` directory contains the entire blogdown site. Like any blogdown site, the generated site appears in the `blogdown/public` subdirectory, which is (deliberately) ignored using the `.gitignore` file. GitHub pages deploys the site from the `docs` directory; to publish the site, simply copy the entire contents of `blogdown/public` to `docs` and then push to GitHub.
+
+The reason for setting it up this way is twofold. First, blogdown is quite insistent that the static site be located in the "public" folder, and GitHub is equally insistent on "docs", so this is just a necessity. Second, it also doubles as a convenient way to generate drafts locally (within `blogdown/public`) and then copy to `docs` when you're ready to publish. (Yes you could create a git branch for drafts, but that seems more complex than necessary).
