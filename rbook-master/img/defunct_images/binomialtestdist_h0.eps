@@ -1,0 +1,949 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: MATLAB, The Mathworks, Inc. Version 7.6.0.324 (R2008a). Operating System: Darwin 10.4.0 Darwin Kernel Version 10.4.0: Fri Apr 23 18:28:53 PDT 2010; root:xnu-1504.7.4~1/RELEASE_I386 i386.
+%%Title: /Users/dan/Work/teaching/research methods 2011/tex/img/binomialtestdist_h0.eps
+%%CreationDate: 10/31/2010  11:09:04
+%%DocumentNeededFonts: Helvetica
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%LanguageLevel: 2
+%%Pages: 1
+%%BoundingBox:   -59   250   673   541
+%%EndComments
+
+%%BeginProlog
+% MathWorks dictionary
+/MathWorks 160 dict begin
+% definition operators
+/bdef {bind def} bind def
+/ldef {load def} bind def
+/xdef {exch def} bdef
+/xstore {exch store} bdef
+% operator abbreviations
+/c  /clip ldef
+/cc /concat ldef
+/cp /closepath ldef
+/gr /grestore ldef
+/gs /gsave ldef
+/mt /moveto ldef
+/np /newpath ldef
+/cm /currentmatrix ldef
+/sm /setmatrix ldef
+/rm /rmoveto ldef
+/rl /rlineto ldef
+/s {show newpath} bdef
+/sc {setcmykcolor} bdef
+/sr /setrgbcolor ldef
+/sg /setgray ldef
+/w /setlinewidth ldef
+/j /setlinejoin ldef
+/cap /setlinecap ldef
+/rc {rectclip} bdef
+/rf {rectfill} bdef
+% page state control
+/pgsv () def
+/bpage {/pgsv save def} bdef
+/epage {pgsv restore} bdef
+/bplot /gsave ldef
+/eplot {stroke grestore} bdef
+% orientation switch
+/portraitMode 0 def /landscapeMode 1 def /rotateMode 2 def
+% coordinate system mappings
+/dpi2point 0 def
+% font control
+/FontSize 0 def
+/FMS {/FontSize xstore findfont [FontSize 0 0 FontSize neg 0 0]
+  makefont setfont} bdef
+/reencode {exch dup where {pop load} {pop StandardEncoding} ifelse
+  exch dup 3 1 roll findfont dup length dict begin
+  { 1 index /FID ne {def}{pop pop} ifelse } forall
+  /Encoding exch def currentdict end definefont pop} bdef
+/isroman {findfont /CharStrings get /Agrave known} bdef
+/FMSR {3 1 roll 1 index dup isroman {reencode} {pop pop} ifelse
+  exch FMS} bdef
+/csm {1 dpi2point div -1 dpi2point div scale neg translate
+ dup landscapeMode eq {pop -90 rotate}
+  {rotateMode eq {90 rotate} if} ifelse} bdef
+% line types: solid, dotted, dashed, dotdash
+/SO { [] 0 setdash } bdef
+/DO { [.5 dpi2point mul 4 dpi2point mul] 0 setdash } bdef
+/DA { [6 dpi2point mul] 0 setdash } bdef
+/DD { [.5 dpi2point mul 4 dpi2point mul 6 dpi2point mul 4
+  dpi2point mul] 0 setdash } bdef
+% macros for lines and objects
+/L {lineto stroke} bdef
+/MP {3 1 roll moveto 1 sub {rlineto} repeat} bdef
+/AP {{rlineto} repeat} bdef
+/PDlw -1 def
+/W {/PDlw currentlinewidth def setlinewidth} def
+/PP {closepath eofill} bdef
+/DP {closepath stroke} bdef
+/MR {4 -2 roll moveto dup  0 exch rlineto exch 0 rlineto
+  neg 0 exch rlineto closepath} bdef
+/FR {MR stroke} bdef
+/PR {MR fill} bdef
+/L1i {{currentfile picstr readhexstring pop} image} bdef
+/tMatrix matrix def
+/MakeOval {newpath tMatrix currentmatrix pop translate scale
+0 0 1 0 360 arc tMatrix setmatrix} bdef
+/FO {MakeOval stroke} bdef
+/PO {MakeOval fill} bdef
+/PD {currentlinewidth 2 div 0 360 arc fill
+   PDlw -1 eq not {PDlw w /PDlw -1 def} if} def
+/FA {newpath tMatrix currentmatrix pop translate scale
+  0 0 1 5 -2 roll arc tMatrix setmatrix stroke} bdef
+/PA {newpath tMatrix currentmatrix pop	translate 0 0 moveto scale
+  0 0 1 5 -2 roll arc closepath tMatrix setmatrix fill} bdef
+/FAn {newpath tMatrix currentmatrix pop translate scale
+  0 0 1 5 -2 roll arcn tMatrix setmatrix stroke} bdef
+/PAn {newpath tMatrix currentmatrix pop translate 0 0 moveto scale
+  0 0 1 5 -2 roll arcn closepath tMatrix setmatrix fill} bdef
+/vradius 0 def /hradius 0 def /lry 0 def
+/lrx 0 def /uly 0 def /ulx 0 def /rad 0 def
+/MRR {/vradius xdef /hradius xdef /lry xdef /lrx xdef /uly xdef
+  /ulx xdef newpath tMatrix currentmatrix pop ulx hradius add uly
+  vradius add translate hradius vradius scale 0 0 1 180 270 arc 
+  tMatrix setmatrix lrx hradius sub uly vradius add translate
+  hradius vradius scale 0 0 1 270 360 arc tMatrix setmatrix
+  lrx hradius sub lry vradius sub translate hradius vradius scale
+  0 0 1 0 90 arc tMatrix setmatrix ulx hradius add lry vradius sub
+  translate hradius vradius scale 0 0 1 90 180 arc tMatrix setmatrix
+  closepath} bdef
+/FRR {MRR stroke } bdef
+/PRR {MRR fill } bdef
+/MlrRR {/lry xdef /lrx xdef /uly xdef /ulx xdef /rad lry uly sub 2 div def
+  newpath tMatrix currentmatrix pop ulx rad add uly rad add translate
+  rad rad scale 0 0 1 90 270 arc tMatrix setmatrix lrx rad sub lry rad
+  sub translate rad rad scale 0 0 1 270 90 arc tMatrix setmatrix
+  closepath} bdef
+/FlrRR {MlrRR stroke } bdef
+/PlrRR {MlrRR fill } bdef
+/MtbRR {/lry xdef /lrx xdef /uly xdef /ulx xdef /rad lrx ulx sub 2 div def
+  newpath tMatrix currentmatrix pop ulx rad add uly rad add translate
+  rad rad scale 0 0 1 180 360 arc tMatrix setmatrix lrx rad sub lry rad
+  sub translate rad rad scale 0 0 1 0 180 arc tMatrix setmatrix
+  closepath} bdef
+/FtbRR {MtbRR stroke } bdef
+/PtbRR {MtbRR fill } bdef
+/stri 6 array def /dtri 6 array def
+/smat 6 array def /dmat 6 array def
+/tmat1 6 array def /tmat2 6 array def /dif 3 array def
+/asub {/ind2 exch def /ind1 exch def dup dup
+  ind1 get exch ind2 get sub exch } bdef
+/tri_to_matrix {
+  2 0 asub 3 1 asub 4 0 asub 5 1 asub
+  dup 0 get exch 1 get 7 -1 roll astore } bdef
+/compute_transform {
+  dmat dtri tri_to_matrix tmat1 invertmatrix 
+  smat stri tri_to_matrix tmat2 concatmatrix } bdef
+/ds {stri astore pop} bdef
+/dt {dtri astore pop} bdef
+/db {2 copy /cols xdef /rows xdef mul dup 3 mul string
+  currentfile 
+  3 index 0 eq {/ASCIIHexDecode filter}
+  {/ASCII85Decode filter 3 index 2 eq {/RunLengthDecode filter} if }
+  ifelse exch readstring pop
+  dup 0 3 index getinterval /rbmap xdef
+  dup 2 index dup getinterval /gbmap xdef
+  1 index dup 2 mul exch getinterval /bbmap xdef pop pop}bdef
+/it {gs np dtri aload pop moveto lineto lineto cp c
+  cols rows 8 compute_transform 
+  rbmap gbmap bbmap true 3 colorimage gr}bdef
+/il {newpath moveto lineto stroke}bdef
+currentdict end def
+%%EndProlog
+
+%%BeginSetup
+MathWorks begin
+
+0 cap
+
+end
+%%EndSetup
+
+%%Page: 1 1
+%%BeginPageSetup
+%%PageBoundingBox:   -59   250   673   541
+MathWorks begin
+bpage
+%%EndPageSetup
+
+%%BeginObject: obj1
+bplot
+
+/dpi2point 12 def
+portraitMode -0708 6492 csm
+
+    0     0  8792  3485 rc
+86 dict begin %Colortable dictionary
+/c0 { 0.000000 0.000000 0.000000 sr} bdef
+/c1 { 1.000000 1.000000 1.000000 sr} bdef
+/c2 { 0.900000 0.000000 0.000000 sr} bdef
+/c3 { 0.000000 0.820000 0.000000 sr} bdef
+/c4 { 0.000000 0.000000 0.800000 sr} bdef
+/c5 { 0.910000 0.820000 0.320000 sr} bdef
+/c6 { 1.000000 0.260000 0.820000 sr} bdef
+/c7 { 0.000000 0.820000 0.820000 sr} bdef
+c0
+1 j
+1 sg
+   0    0 8793 3486 rf
+6 w
+0 2773 6814 0 0 -2773 1143 3034 4 MP
+PP
+-6814 0 0 2773 6814 0 0 -2773 1143 3034 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+1143 3034 mt 7957 3034 L
+1143 3034 mt 1143  261 L
+1143 3034 mt 1143 2965 L
+%%IncludeResource: font Helvetica
+/Helvetica /ISOLatin1Encoding 144 FMSR
+
+1103 3202 mt 
+(0) s
+1824 3034 mt 1824 2965 L
+1744 3202 mt 
+(10) s
+2505 3034 mt 2505 2965 L
+2425 3202 mt 
+(20) s
+3187 3034 mt 3187 2965 L
+3107 3202 mt 
+(30) s
+3868 3034 mt 3868 2965 L
+3788 3202 mt 
+(40) s
+4550 3034 mt 4550 2965 L
+4470 3202 mt 
+(50) s
+5231 3034 mt 5231 2965 L
+5151 3202 mt 
+(60) s
+5912 3034 mt 5912 2965 L
+5832 3202 mt 
+(70) s
+6594 3034 mt 6594 2965 L
+6514 3202 mt 
+(80) s
+7275 3034 mt 7275 2965 L
+7195 3202 mt 
+(90) s
+7957 3034 mt 7957 2965 L
+7837 3202 mt 
+(100) s
+1143 3034 mt 1211 3034 L
+1028 3087 mt 
+(0) s
+1143 2687 mt 1211 2687 L
+ 828 2740 mt 
+(0.01) s
+1143 2340 mt 1211 2340 L
+ 828 2393 mt 
+(0.02) s
+1143 1994 mt 1211 1994 L
+ 828 2047 mt 
+(0.03) s
+1143 1647 mt 1211 1647 L
+ 828 1700 mt 
+(0.04) s
+1143 1300 mt 1211 1300 L
+ 828 1353 mt 
+(0.05) s
+1143  954 mt 1211  954 L
+ 828 1007 mt 
+(0.06) s
+1143  607 mt 1211  607 L
+ 828  660 mt 
+(0.07) s
+1143  261 mt 1211  261 L
+ 828  314 mt 
+(0.08) s
+gs 1143 261 6815 2774 rc
+0 j
+0.5 sg
+1108 3034   69    0 rf
+0 sg
+1108 3034   69    0 rectstroke
+1 j
+0 j
+0.5 sg
+1177 3034   68    0 rf
+0 sg
+1177 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+1245 3034   68    0 rf
+0 sg
+1245 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+1313 3034   68    0 rf
+0 sg
+1313 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+1381 3034   68    0 rf
+0 sg
+1381 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+1449 3034   68    0 rf
+0 sg
+1449 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+1517 3034   68    0 rf
+0 sg
+1517 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+1585 3034   69    0 rf
+0 sg
+1585 3034   69    0 rectstroke
+1 j
+0 j
+0.5 sg
+1654 3034   68    0 rf
+0 sg
+1654 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+1722 3034   68    0 rf
+0 sg
+1722 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+1790 3033   68    1 rf
+0 sg
+1790 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+1858 3033   68    1 rf
+0 sg
+1858 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+1926 3033   68    1 rf
+0 sg
+1926 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+1994 3033   68    1 rf
+0 sg
+1994 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2062 3033   69    1 rf
+0 sg
+2062 3033   69    1 rectstroke
+1 j
+0 j
+0.5 sg
+2131 3033   68    1 rf
+0 sg
+2131 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2199 3033   68    1 rf
+0 sg
+2199 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2267 3033   68    1 rf
+0 sg
+2267 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2335 3033   68    1 rf
+0 sg
+2335 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2403 3033   68    1 rf
+0 sg
+2403 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2471 3033   68    1 rf
+0 sg
+2471 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2539 3033   69    1 rf
+0 sg
+2539 3033   69    1 rectstroke
+1 j
+0 j
+0.5 sg
+2608 3033   68    1 rf
+0 sg
+2608 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2676 3033   68    1 rf
+0 sg
+2676 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2744 3033   68    1 rf
+0 sg
+2744 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2812 3033   68    1 rf
+0 sg
+2812 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2880 3033   68    1 rf
+0 sg
+2880 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+2948 3033   68    1 rf
+0 sg
+2948 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+3016 3033   68    1 rf
+0 sg
+3016 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+3084 3033   69    1 rf
+0 sg
+3084 3033   69    1 rectstroke
+1 j
+0 j
+0.5 sg
+3153 3033   68    1 rf
+0 sg
+3153 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+3221 3032   68    2 rf
+0 sg
+3221 3032   68    2 rectstroke
+1 j
+0 j
+0.5 sg
+3289 3030   68    4 rf
+0 sg
+3289 3030   68    4 rectstroke
+1 j
+0 j
+0.5 sg
+3357 3025   68    9 rf
+0 sg
+3357 3025   68    9 rectstroke
+1 j
+0 j
+0.5 sg
+3425 3018   68   16 rf
+0 sg
+3425 3018   68   16 rectstroke
+1 j
+0 j
+0.5 sg
+3493 3004   68   30 rf
+0 sg
+3493 3004   68   30 rectstroke
+1 j
+0 j
+0.5 sg
+3561 2979   69   55 rf
+0 sg
+3561 2979   69   55 rectstroke
+1 j
+0 j
+0.5 sg
+3630 2940   68   94 rf
+0 sg
+3630 2940   68   94 rectstroke
+1 j
+0 j
+0.5 sg
+3698 2878   68  156 rf
+0 sg
+3698 2878   68  156 rectstroke
+1 j
+0 j
+0.5 sg
+3766 2787   68  247 rf
+0 sg
+3766 2787   68  247 rectstroke
+1 j
+0 j
+0.5 sg
+3834 2658   68  376 rf
+0 sg
+3834 2658   68  376 rectstroke
+1 j
+0 j
+1 sg
+3902 2483   68  551 rf
+0 sg
+3902 2483   68  551 rectstroke
+1 j
+0 j
+1 sg
+3970 2261   68  773 rf
+0 sg
+3970 2261   68  773 rectstroke
+1 j
+0 j
+1 sg
+4038 1991   69 1043 rf
+0 sg
+4038 1991   69 1043 rectstroke
+1 j
+0 j
+1 sg
+4107 1683   68 1351 rf
+0 sg
+4107 1683   68 1351 rectstroke
+1 j
+0 j
+1 sg
+4175 1353   68 1681 rf
+0 sg
+4175 1353   68 1681 rectstroke
+1 j
+0 j
+1 sg
+4243 1025   68 2009 rf
+0 sg
+4243 1025   68 2009 rectstroke
+1 j
+0 j
+1 sg
+4311  725   68 2309 rf
+0 sg
+4311  725   68 2309 rectstroke
+1 j
+0 j
+1 sg
+4379  485   68 2549 rf
+0 sg
+4379  485   68 2549 rectstroke
+1 j
+0 j
+1 sg
+4447  329   68 2705 rf
+0 sg
+4447  329   68 2705 rectstroke
+1 j
+0 j
+1 sg
+4515  275   69 2759 rf
+0 sg
+4515  275   69 2759 rectstroke
+1 j
+0 j
+1 sg
+4584  329   68 2705 rf
+0 sg
+4584  329   68 2705 rectstroke
+1 j
+0 j
+1 sg
+4652  485   68 2549 rf
+0 sg
+4652  485   68 2549 rectstroke
+1 j
+0 j
+1 sg
+4720  725   68 2309 rf
+0 sg
+4720  725   68 2309 rectstroke
+1 j
+0 j
+1 sg
+4788 1025   68 2009 rf
+0 sg
+4788 1025   68 2009 rectstroke
+1 j
+0 j
+1 sg
+4856 1353   68 1681 rf
+0 sg
+4856 1353   68 1681 rectstroke
+1 j
+0 j
+1 sg
+4924 1683   68 1351 rf
+0 sg
+4924 1683   68 1351 rectstroke
+1 j
+0 j
+1 sg
+4992 1991   69 1043 rf
+0 sg
+4992 1991   69 1043 rectstroke
+1 j
+0 j
+1 sg
+5061 2261   68  773 rf
+0 sg
+5061 2261   68  773 rectstroke
+1 j
+0 j
+1 sg
+5129 2483   68  551 rf
+0 sg
+5129 2483   68  551 rectstroke
+1 j
+0 j
+0.5 sg
+5197 2658   68  376 rf
+0 sg
+5197 2658   68  376 rectstroke
+1 j
+0 j
+0.5 sg
+5265 2787   68  247 rf
+0 sg
+5265 2787   68  247 rectstroke
+1 j
+0 j
+0.5 sg
+5333 2878   68  156 rf
+0 sg
+5333 2878   68  156 rectstroke
+1 j
+0 j
+0.5 sg
+5401 2940   68   94 rf
+0 sg
+5401 2940   68   94 rectstroke
+1 j
+0 j
+0.5 sg
+5469 2979   69   55 rf
+0 sg
+5469 2979   69   55 rectstroke
+1 j
+0 j
+0.5 sg
+5538 3004   68   30 rf
+0 sg
+5538 3004   68   30 rectstroke
+1 j
+0 j
+0.5 sg
+5606 3018   68   16 rf
+0 sg
+5606 3018   68   16 rectstroke
+1 j
+0 j
+0.5 sg
+5674 3025   68    9 rf
+0 sg
+5674 3025   68    9 rectstroke
+1 j
+0 j
+0.5 sg
+5742 3030   68    4 rf
+0 sg
+5742 3030   68    4 rectstroke
+1 j
+0 j
+0.5 sg
+5810 3032   68    2 rf
+0 sg
+5810 3032   68    2 rectstroke
+1 j
+0 j
+0.5 sg
+5878 3033   68    1 rf
+0 sg
+5878 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+5946 3033   69    1 rf
+0 sg
+5946 3033   69    1 rectstroke
+1 j
+0 j
+0.5 sg
+6015 3033   68    1 rf
+0 sg
+6015 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6083 3033   68    1 rf
+0 sg
+6083 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6151 3033   68    1 rf
+0 sg
+6151 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6219 3033   68    1 rf
+0 sg
+6219 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6287 3033   68    1 rf
+0 sg
+6287 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6355 3033   68    1 rf
+0 sg
+6355 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6423 3033   68    1 rf
+0 sg
+6423 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6491 3033   69    1 rf
+0 sg
+6491 3033   69    1 rectstroke
+1 j
+0 j
+0.5 sg
+6560 3033   68    1 rf
+0 sg
+6560 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6628 3033   68    1 rf
+0 sg
+6628 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6696 3033   68    1 rf
+0 sg
+6696 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6764 3033   68    1 rf
+0 sg
+6764 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6832 3033   68    1 rf
+0 sg
+6832 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6900 3033   68    1 rf
+0 sg
+6900 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+6968 3033   69    1 rf
+0 sg
+6968 3033   69    1 rectstroke
+1 j
+0 j
+0.5 sg
+7037 3033   68    1 rf
+0 sg
+7037 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+7105 3033   68    1 rf
+0 sg
+7105 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+7173 3033   68    1 rf
+0 sg
+7173 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+7241 3033   68    1 rf
+0 sg
+7241 3033   68    1 rectstroke
+1 j
+0 j
+0.5 sg
+7309 3034   68    0 rf
+0 sg
+7309 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+7377 3034   68    0 rf
+0 sg
+7377 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+7445 3034   69    0 rf
+0 sg
+7445 3034   69    0 rectstroke
+1 j
+0 j
+0.5 sg
+7514 3034   68    0 rf
+0 sg
+7514 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+7582 3034   68    0 rf
+0 sg
+7582 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+7650 3034   68    0 rf
+0 sg
+7650 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+7718 3034   68    0 rf
+0 sg
+7718 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+7786 3034   68    0 rf
+0 sg
+7786 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+7854 3034   68    0 rf
+0 sg
+7854 3034   68    0 rectstroke
+1 j
+0 j
+0.5 sg
+7922 3034   69    0 rf
+0 sg
+7922 3034   69    0 rectstroke
+1 j
+gr
+
+3303 3329 mt 
+(Number of people responding "true", N) s
+%%IncludeResource: font Helvetica
+/Helvetica /ISOLatin1Encoding 108 FMSR
+
+5776 3401 mt 
+(t) s
+%%IncludeResource: font Helvetica
+/Helvetica /ISOLatin1Encoding 144 FMSR
+
+ 677 2480 mt  -90 rotate
+(Probability of observing N) s
+90 rotate
+%%IncludeResource: font Helvetica
+/Helvetica /ISOLatin1Encoding 108 FMSR
+
+ 749  836 mt  -90 rotate
+(t) s
+90 rotate
+%%IncludeResource: font Helvetica
+/Helvetica /ISOLatin1Encoding 144 FMSR
+
+2637  137 mt 
+(Sampling distribution if the null hypothesis is correct \() s
+%%IncludeResource: font Symbol
+/Symbol /ISOLatin1Encoding 144 FMSR
+
+6023  137 mt 
+(q) s
+%%IncludeResource: font Helvetica
+/Helvetica /ISOLatin1Encoding 144 FMSR
+
+6098  137 mt 
+( = .5\) ) s
+-247 847 5643 1747 2 MP stroke
+21 -74 -76 102 5451 2566 3 MP
+PP
+55 -28 21 -74 -76 102 5451 2566 4 MP stroke
+31 53 -10 -127 5375 2668 3 MP
+PP
+-21 74 31 53 -10 -127 5375 2668 4 MP stroke
+-1592 893 5643 1737 2 MP stroke
+68 -38 -126 19 4109 2649 3 MP
+PP
+58 19 68 -38 -126 19 4109 2649 4 MP stroke
+-14 59 82 -97 3983 2668 3 MP
+PP
+-68 38 -14 59 82 -97 3983 2668 4 MP stroke
+5250 1641 mt 7630 1641 L
+7630 1641 mt 7630  806 L
+5250 1641 mt 5250  806 L
+5250  806 mt 7630  806 L
+%%IncludeResource: font Helvetica
+/Helvetica /ISOLatin1Encoding 120 FMSR
+
+5310  954 mt 
+(The critical region for this test covers both) s
+5310 1092 mt 
+("tails" of the sampling distribution, and) s
+5310 1230 mt 
+(occupies 5% of the distribution. If the) s
+5310 1368 mt 
+(actual value falls inside the shaded area,) s
+5310 1506 mt 
+(then we reject the null hypothesis) s
+
+end %%Color Dict
+
+eplot
+%%EndObject
+
+epage
+end
+
+showpage
+
+%%Trailer
+%%EOF
