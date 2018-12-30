@@ -5,27 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <title>Chapter 5 Descriptive statistics | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 5 Descriptive statistics | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 5 Descriptive statistics | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
 
 
-<meta name="date" content="2018-12-30">
+<meta name="date" content="2018-12-31">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="graphics.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -154,7 +155,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.7.2" data-path="studydesign.html"><a href="studydesign.html#maturation-effects"><i class="fa fa-check"></i><b>2.7.2</b> Maturation effects</a></li>
 <li class="chapter" data-level="2.7.3" data-path="studydesign.html"><a href="studydesign.html#repeated-testing-effects"><i class="fa fa-check"></i><b>2.7.3</b> Repeated testing effects</a></li>
 <li class="chapter" data-level="2.7.4" data-path="studydesign.html"><a href="studydesign.html#selection-bias"><i class="fa fa-check"></i><b>2.7.4</b> Selection bias</a></li>
-<li class="chapter" data-level="2.7.5" data-path="studydesign.html"><a href="studydesign.html#differential-attrition"><i class="fa fa-check"></i><b>2.7.5</b> Differential attrition</a></li>
+<li class="chapter" data-level="2.7.5" data-path="studydesign.html"><a href="studydesign.html#differentialattrition"><i class="fa fa-check"></i><b>2.7.5</b> Differential attrition</a></li>
 <li class="chapter" data-level="2.7.6" data-path="studydesign.html"><a href="studydesign.html#non-response-bias"><i class="fa fa-check"></i><b>2.7.6</b> Non-response bias</a></li>
 <li class="chapter" data-level="2.7.7" data-path="studydesign.html"><a href="studydesign.html#regression-to-the-mean"><i class="fa fa-check"></i><b>2.7.7</b> Regression to the mean</a></li>
 <li class="chapter" data-level="2.7.8" data-path="studydesign.html"><a href="studydesign.html#experimenter-bias"><i class="fa fa-check"></i><b>2.7.8</b> Experimenter bias</a></li>
@@ -1305,15 +1306,15 @@ Figure 5.3: An illustration of the standard deviation, applied to the AFL winnin
 <div id="skewandkurtosis" class="section level2">
 <h2><span class="header-section-number">5.3</span> Skew and kurtosis</h2>
 <p>There are two more descriptive statistics that you will sometimes see reported in the psychological literature, known as skew and kurtosis. In practice, neither one is used anywhere near as frequently as the measures of central tendency and variability that we’ve been talking about. Skew is pretty important, so you do see it mentioned a fair bit; but I’ve actually never seen kurtosis reported in a scientific article to date.</p>
-<pre><code>## [1] -0.9288358</code></pre>
-<pre><code>## [1] -0.003667971</code></pre>
+<pre><code>## [1] -0.9222338</code></pre>
+<pre><code>## [1] 0.003889921</code></pre>
 <div class="figure"><span id="fig:skewness"></span>
 <img src="navarro2_files/figure-html/skewness-1.png" alt="An illustration of skewness. On the left we have a negatively skewed data set (skewness $= -.93$), in the middle we have a data set with no skew (technically, skewness $= -.006$), and on the right we have a positively skewed data set (skewness $= .93$)." width="672" />
 <p class="caption">
 Figure 5.4: An illustration of skewness. On the left we have a negatively skewed data set (skewness <span class="math inline">\(= -.93\)</span>), in the middle we have a data set with no skew (technically, skewness <span class="math inline">\(= -.006\)</span>), and on the right we have a positively skewed data set (skewness <span class="math inline">\(= .93\)</span>).
 </p>
 </div>
-<pre><code>## [1] 0.9177036</code></pre>
+<pre><code>## [1] 0.9267987</code></pre>
 <p>Since it’s the more interesting of the two, let’s start by talking about the <strong><em>skewness</em></strong>. Skewness is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As Figure <a href="descriptives.html#fig:skewness">5.4</a> illustrates, if the data tend to have a lot of extreme small values (i.e., the lower tail is “longer” than the upper tail) and not so many extremely large values (left panel), then we say that the data are <em>negatively skewed</em>. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are <em>positively skewed</em>. That’s the qualitative idea behind skewness. The actual formula for the skewness of a data set is as follows <span class="math display">\[
 \mbox{skewness}(X) = \frac{1}{N \hat{\sigma}^3} \sum_{i=1}^N (X_i - \bar{X})^3
 \]</span> where <span class="math inline">\(N\)</span> is the number of observations, <span class="math inline">\(\bar{X}\)</span> is the sample mean, and <span class="math inline">\(\hat{\sigma}\)</span> is the standard deviation (the “divide by <span class="math inline">\(N-1\)</span>” version, that is). Perhaps more helpfully, it might be useful to point out that the <code>psych</code> package contains a <code>skew()</code> function that you can use to calculate skewness. So if we wanted to use this function to calculate the skewness of the <code>afl.margins</code> data, we’d first need to load the package</p>
@@ -1323,15 +1324,15 @@ Figure 5.4: An illustration of skewness. On the left we have a negatively skewed
 <pre><code>## [1] 0.7671555</code></pre>
 <p>Not surprisingly, it turns out that the AFL winning margins data is fairly skewed.</p>
 <p>The final measure that is sometimes referred to, though very rarely in practice, is the <strong><em>kurtosis</em></strong> of a data set. Put simply, kurtosis is a measure of the “pointiness” of a data set, as illustrated in Figure <a href="descriptives.html#fig:kurtosis">5.5</a>.</p>
-<pre><code>## [1] -0.9566581</code></pre>
-<pre><code>## [1] 0.0002211671</code></pre>
+<pre><code>## [1] -0.9508933</code></pre>
+<pre><code>## [1] 0.0261484</code></pre>
 <div class="figure"><span id="fig:kurtosis"></span>
 <img src="navarro2_files/figure-html/kurtosis-1.png" alt="An illustration of kurtosis. On the left, we have a &quot;platykurtic&quot; data set (kurtosis = $-.95$), meaning that the data set is &quot;too flat&quot;. In the middle we have a &quot;mesokurtic&quot; data set (kurtosis is almost exactly 0), which means that the pointiness of the data is just about right. Finally, on the right, we have a &quot;leptokurtic&quot; data set (kurtosis $= 2.12$) indicating that the data set is &quot;too pointy&quot;. Note that kurtosis is measured with respect to a normal curve (black line)" width="672" />
 <p class="caption">
 Figure 5.5: An illustration of kurtosis. On the left, we have a “platykurtic” data set (kurtosis = <span class="math inline">\(-.95\)</span>), meaning that the data set is “too flat”. In the middle we have a “mesokurtic” data set (kurtosis is almost exactly 0), which means that the pointiness of the data is just about right. Finally, on the right, we have a “leptokurtic” data set (kurtosis <span class="math inline">\(= 2.12\)</span>) indicating that the data set is “too pointy”. Note that kurtosis is measured with respect to a normal curve (black line)
 </p>
 </div>
-<pre><code>## [1] 2.080429</code></pre>
+<pre><code>## [1] 2.092485</code></pre>
 <p>By convention, we say that the “normal curve” (black lines) has zero kurtosis, so the pointiness of a data set is assessed relative to this curve. In this Figure, the data on the left are not pointy enough, so the kurtosis is negative and we call the data <em>platykurtic</em>. The data on the right are too pointy, so the kurtosis is positive and we say that the data is <em>leptokurtic</em>. But the data in the middle are just pointy enough, so we say that it is <em>mesokurtic</em> and has kurtosis zero. This is summarised in the table below:</p>
 <table>
 <thead>
@@ -2153,7 +2154,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -2163,6 +2164,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
@@ -2180,7 +2185,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
