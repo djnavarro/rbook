@@ -494,7 +494,7 @@ Given the way that I've been describing the ANOVA $F$-test up to this point, you
 
 Let's frame this in a slightly more abstract way. We'll say that our full model can be written as an R formula that contains several different terms, say `Y ~ A + B + C + D`. Our null model only contains some subset of these terms, say `Y ~ A + B`. Some of these terms might be main effect terms, others might be interaction terms. It really doesn't matter. The only thing that matters here is that we want to treat some of these terms as the "starting point" (i.e. the terms in the null model, `A` and `B`), and we want to see if including the other terms (i.e., `C` and `D`) leads to a significant improvement in model performance, over and above what could be achieved by a model that includes only `A` and `B`.  In essence, we have null and alternative hypotheses that look like this:
 
-```{r}
+```{r echo=FALSE}
 knitr::kable(tibble::tribble(
             ~V1,              ~V2,                           ~V3,
          "Null",           "$M0$",                 "`Y ~ A + B`",
