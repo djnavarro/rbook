@@ -1365,17 +1365,8 @@ crosstab</code></pre></div>
 <li><strong>Nothing is fixed</strong>. Finally, it might be the case that <em>nothing</em> is fixed. Not the row columns, not the column totals, and not the total sample size either. For instance, in the <code>chapek9</code> scenario, suppose what I’d done is run the study for a fixed length of <em>time</em>. By chance, it turned out that I got 180 people to turn up to study, but it could easily have been something else. This is referred to as “Poisson” sampling, and if that’s what you’ve done you should specify <code>sampleType=&quot;poisson&quot;</code>.</li>
 </ul>
 <p>Okay, so now we have enough knowledge to actually run a test. For the <code>chapek9</code> data, I implied that we designed the study such that the total sample size <span class="math inline">\(N\)</span> was fixed, so we should set <code>sampleType = &quot;jointMulti&quot;</code>. The command that we need is,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>( BayesFactor )</code></pre></div>
-<pre><code>## Warning: package &#39;BayesFactor&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## Loading required package: coda</code></pre>
-<pre><code>## Warning: package &#39;coda&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## Loading required package: Matrix</code></pre>
-<pre><code>## ************
-## Welcome to BayesFactor 0.9.12-4.2. If you have questions, please contact Richard Morey (richarddmorey@gmail.com).
-## 
-## Type BFManual() to open the manual.
-## ************</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contingencyTableBF</span>( crosstab, <span class="dt">sampleType =</span> <span class="st">&quot;jointMulti&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>( BayesFactor )
+<span class="kw">contingencyTableBF</span>( crosstab, <span class="dt">sampleType =</span> <span class="st">&quot;jointMulti&quot;</span> )</code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] Non-indep. (a=1) : 15.92684 ±0%
