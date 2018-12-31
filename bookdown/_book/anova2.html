@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 16 Factorial ANOVA | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 16 Factorial ANOVA | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 16 Factorial ANOVA | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="part-vi-endings-alternatives-and-prospects.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -831,7 +832,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="factorialanovasimple" class="section level2">
 <h2><span class="header-section-number">16.1</span> Factorial ANOVA 1: balanced designs, no interactions</h2>
 <p>When we discussed analysis of variance in Chapter <a href="anova.html#anova">14</a>, we assumed a fairly simple experimental design: each person falls into one of several groups, and we want to know whether these groups have different means on some outcome variable. In this section, I’ll discuss a broader class of experimental designs, known as <strong><em>factorial designs</em></strong>, in we have more than one grouping variable. I gave one example of how this kind of design might arise above. Another example appears in Chapter <a href="anova.html#anova">14</a>, in which we were looking at the effect of different drugs on the <code>mood.gain</code> experienced by each person. In that chapter we did find a significant effect of drug, but at the end of the chapter we also ran an analysis to see if there was an effect of therapy. We didn’t find one, but there’s something a bit worrying about trying to run two <em>separate</em> analyses trying to predict the same outcome. Maybe there actually <em>is</em> an effect of therapy on mood gain, but we couldn’t find it because it was being “hidden” by the effect of drug? In other words, we’re going to want to run a <em>single</em> analysis that includes <em>both</em> <code>drug</code> and <code>therapy</code> as predictors. For this analysis each person is cross-classified by the drug they were given (a factor with 3 levels) and what therapy they received (a factor with 2 levels). We refer to this as a <span class="math inline">\(3 \times 2\)</span> factorial design. If we cross-tabulate <code>drug</code> by <code>therapy</code>, using the <code>xtabs()</code> function (see Section <a href="datahandling.html#freqtables">7.1</a>), we get the following table:<a href="#fn230" class="footnoteRef" id="fnref230"><sup>230</sup></a></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/clinicaltrial.rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;clinicaltrial.Rdata&quot;</span>))
 <span class="kw">xtabs</span>( <span class="op">~</span><span class="st"> </span>drug <span class="op">+</span><span class="st"> </span>therapy, clin.trial )</code></pre></div>
 <pre><code>##           therapy
 ## drug       no.therapy CBT
@@ -1161,25 +1162,25 @@ SS.res</code></pre></div>
 <p>Now that we’ve seen <em>how</em> a factorial ANOVA works, it’s worth taking a moment to compare it to the results of the one way analyses, because this will give us a really good sense of <em>why</em> it’s a good idea to run the factorial ANOVA. In Chapter <a href="anova.html#anova">14</a> that I ran a one-way ANOVA that looked to see if there are any differences between drugs, and a second one-way ANOVA to see if there were any differences between therapies. As we saw in Section <a href="anova2.html#factanovahyp">16.1.1</a>, the null and alternative hypotheses tested by the one-way ANOVAs are in fact identical to the hypotheses tested by the factorial ANOVA. Looking even more carefully at the ANOVA tables, we can see that the sum of squares associated with the factors are identical in the two different analyses (3.45 for <code>drug</code> and 0.92 for <code>therapy</code>), as are the degrees of freedom (2 for <code>drug</code>, 1 for <code>therapy</code>). But they don’t give the same answers! Most notably, when we ran the one-way ANOVA for <code>therapy</code> in Section <a href="anova.html#anovaandt">14.11</a> we didn’t find a significant effect (the <span class="math inline">\(p\)</span>-value was 0.21). However, when we look at the main effect of <code>therapy</code> within the context of the two-way ANOVA, we do get a significant effect (<span class="math inline">\(p=.019\)</span>). The two analyses are clearly not the same.</p>
 <p>Why does that happen? The answer lies in understanding how the <em>residuals</em> are calculated. Recall that the whole idea behind an <span class="math inline">\(F\)</span>-test is to compare the variability that can be attributed to a particular factor with the variability that cannot be accounted for (the residuals). If you run a one-way ANOVA for <code>therapy</code>, and therefore ignore the effect of <code>drug</code>, the ANOVA will end up dumping all of the drug-induced variability into the residuals! This has the effect of making the data look more noisy than they really are, and the effect of <code>therapy</code> which is correctly found to be significant in the two-way ANOVA now becomes non-significant. If we ignore something that actually matters (e.g., <code>drug</code>) when trying to assess the contribution of something else (e.g., <code>therapy</code>) then our analysis will be distorted. Of course, it’s perfectly okay to ignore variables that are genuinely irrelevant to the phenomenon of interest: if we had recorded the colour of the walls, and that turned out to be non-significant in a three-way ANOVA (i.e. <code>mood.gain ~ drug + therapy + wall.colour</code>), it would be perfectly okay to disregard it and just report the simpler two-way ANOVA that doesn’t include this irrelevant factor. What you shouldn’t do is drop variables that actually make a difference!</p>
 <div class="figure"><span id="fig:maineffectsa"></span>
-<img src="rbook-master/img/factorialanova/maineffectA.png" alt="A main effect of Factor A, and no effect of Factor B" width="485" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/factorialanova/maineffectA.png" alt="A main effect of Factor A, and no effect of Factor B"  />
 <p class="caption">
 Figure 16.1: A main effect of Factor A, and no effect of Factor B
 </p>
 </div>
 <div class="figure"><span id="fig:maineffectsb"></span>
-<img src="rbook-master/img/factorialanova/maineffectB.png" alt="A main effect of Factor B but no effect of Factor A" width="480" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/factorialanova/maineffectB.png" alt="A main effect of Factor B but no effect of Factor A"  />
 <p class="caption">
 Figure 16.2: A main effect of Factor B but no effect of Factor A
 </p>
 </div>
 <div class="figure"><span id="fig:maineffectsc"></span>
-<img src="rbook-master/img/factorialanova/maineffectAB.png" alt="Main effects of both Factor A and Factor B" width="462" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/factorialanova/maineffectAB.png" alt="Main effects of both Factor A and Factor B"  />
 <p class="caption">
 Figure 16.3: Main effects of both Factor A and Factor B
 </p>
 </div>
 <div class="figure"><span id="fig:maineffectsd"></span>
-<img src="rbook-master/img/factorialanova/maineffectAB.png" alt="No effect of either factor" width="462" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/factorialanova/maineffectAB.png" alt="No effect of either factor"  />
 <p class="caption">
 Figure 16.4: No effect of either factor
 </p>
@@ -1193,25 +1194,25 @@ Figure 16.4: No effect of either factor
 <div id="interactions" class="section level2">
 <h2><span class="header-section-number">16.2</span> Factorial ANOVA 2: balanced designs, interactions allowed</h2>
 <div class="figure"><span id="fig:interaction1"></span>
-<img src="rbook-master/img/factorialanova/interaction2.png" alt="Qualitatively different interactions for a $2    imes 2$ ANOVA" width="448" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/factorialanova/interaction2.png" alt="Qualitatively different interactions for a $2    imes 2$ ANOVA"  />
 <p class="caption">
 Figure 16.5: Qualitatively different interactions for a <span class="math inline">\(2 imes 2\)</span> ANOVA
 </p>
 </div>
 <div class="figure"><span id="fig:interaction2"></span>
-<img src="rbook-master/img/factorialanova/interaction3.png" alt="Qualitatively different interactions for a $2    imes 2$ ANOVA" width="448" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/factorialanova/interaction3.png" alt="Qualitatively different interactions for a $2    imes 2$ ANOVA"  />
 <p class="caption">
 Figure 16.6: Qualitatively different interactions for a <span class="math inline">\(2 imes 2\)</span> ANOVA
 </p>
 </div>
 <div class="figure"><span id="fig:interaction3"></span>
-<img src="rbook-master/img/factorialanova/interaction1.png" alt="Qualitatively different interactions for a $2    imes 2$ ANOVA" width="448" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/factorialanova/interaction1.png" alt="Qualitatively different interactions for a $2    imes 2$ ANOVA"  />
 <p class="caption">
 Figure 16.7: Qualitatively different interactions for a <span class="math inline">\(2 imes 2\)</span> ANOVA
 </p>
 </div>
 <div class="figure"><span id="fig:interaction4"></span>
-<img src="rbook-master/img/factorialanova/interaction4.png" alt="Qualitatively different interactions for a $2    imes 2$ ANOVA" width="448" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/factorialanova/interaction4.png" alt="Qualitatively different interactions for a $2    imes 2$ ANOVA"  />
 <p class="caption">
 Figure 16.8: Qualitatively different interactions for a <span class="math inline">\(2 imes 2\)</span> ANOVA
 </p>
@@ -1434,9 +1435,9 @@ df_{A:B} &amp;=&amp; (R\times C - 1) - (R - 1) - (C -1 ) \\
 <p>As with one-way ANOVA, we can test for the normality of residuals in a straightforward fashion (see Section <a href="anova.html#anovanormality">14.9</a>). First, we use the <code>residuals()</code> function to extract the residuals from the model itself, and then we can examine those residuals in a few different ways. It’s generally a good idea to examine them graphically, by drawing histograms (i.e., <code>hist()</code> function) and QQ plots (i.e., <code>qqnorm()</code> function. If you want a formal test for the normality of the residuals, then we can run the Shapiro-Wilk test (i.e., <code>shapiro.test()</code>). If we wanted to check the residuals with respect to <code>model.2</code> (i.e., the model with both main effects but no interactions) then we could do the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> resid &lt;-<span class="st"> </span><span class="kw">residuals</span>( model.<span class="dv">2</span> )  <span class="co"># pull the residuals</span>
  <span class="kw">hist</span>( resid )                  <span class="co"># draw a histogram</span></code></pre></div>
-<p><img src="navarro2_files/figure-html/unnamed-chunk-687-1.png" width="672" /></p>
+<p><img src="navarro2_files/figure-html/unnamed-chunk-691-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">qqnorm</span>( resid )                <span class="co"># draw a normal QQ plot</span></code></pre></div>
-<p><img src="navarro2_files/figure-html/unnamed-chunk-687-2.png" width="672" /></p>
+<p><img src="navarro2_files/figure-html/unnamed-chunk-691-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">shapiro.test</span>( resid )          <span class="co"># run the Shapiro-Wilk test</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
@@ -1613,7 +1614,7 @@ Y_{p} = b_1 X_{1p} + b_2 X_{2p} + b_0 + \epsilon_{p}
 </tbody>
 </table>
 <p>This isn’t anything particularly special, of course: it’s exactly the format in which we expect to see our data! In other words, if your data have been stored as a data frame in R then you’re probably expecting to see something that looks like the <code>rtfm.1</code> data frame:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/rtfm.rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;rtfm.Rdata&quot;</span>))
 rtfm.<span class="dv">1</span></code></pre></div>
 <pre><code>##   grade attend reading
 ## 1    90      1       1
@@ -2103,8 +2104,7 @@ Y_{p} = b_1 X_{1p} + b_2 X_{2p} + b_0 + \epsilon_p
 <p>These are the same treatment contrast that we set up manually in Section <a href="anova2.html#anovalm">16.6</a>. How did R know to set up treatment contrasts, even though I never actually told it anything about what contrasts I wanted? The answer is that R has a hidden list of default “options” that it looks up to resolve situations like this. You can print out all of the options by typing <code>options()</code> at the command prompt, but it’s not a very enlightening read. There are a lot of options, and we’re only interested in contrasts right now. Instead of printing out all of the options, we can ask for just one, like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">options</span>( <span class="st">&quot;contrasts&quot;</span> )</code></pre></div>
 <pre><code>## $contrasts
-##         unordered           ordered 
-## &quot;contr.treatment&quot;      &quot;contr.poly&quot;</code></pre>
+## [1] &quot;contr.treatment&quot; &quot;contr.poly&quot;</code></pre>
 <p>What this is telling us is that the default contrasts for unordered factors (i.e., nominal scale variables) are treatment contrasts, and the default for ordered factors (i.e., interval scale variables) are “polynomial” contrasts. I don’t discuss ordered factors much in this book, and so I won’t go into what polynomial contrasts are all about. The key thing is that the <code>options()</code> function also allows you to reset these defaults (though only for the current session: they’ll revert to the original settings once you close R). Here’s the command:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">options</span>(<span class="dt">contrasts =</span> <span class="kw">c</span>(<span class="st">&quot;contr.helmert&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</code></pre></div>
 <p>Once we’ve done this, we can inspect the contrast settings again:</p>
@@ -2252,7 +2252,7 @@ Y_{p} = b_1 X_{1p} + b_2 X_{2p} + b_0 + \epsilon_p
 <div id="the-coffee-data" class="section level3">
 <h3><span class="header-section-number">16.10.1</span> The coffee data</h3>
 <p>As usual, it will help us to work with some data. The <code>coffee.Rdata</code> file contains a hypothetical data set (the <code>coffee</code> data frame) that produces an unbalanced <span class="math inline">\(3 \times 2\)</span> ANOVA. Suppose we were interested in finding out whether or not the tendency of people to <code>babble</code> when they have too much coffee is purely an effect of the coffee itself, or whether there’s some effect of the <code>milk</code> and <code>sugar</code> that people add to the coffee. Suppose we took 18 people, and gave them some coffee to drink. The amount of coffee / caffeine was held constant, and we varied whether or not milk was added: so <code>milk</code> is a binary factor with two levels, <code>&quot;yes&quot;</code> and <code>&quot;no&quot;</code>. We also varied the kind of sugar involved. The coffee might contain <code>&quot;real&quot;</code> sugar, or it might contain <code>&quot;fake&quot;</code> sugar (i.e., artificial sweetener), or it might contain <code>&quot;none&quot;</code> at all, so the <code>sugar</code> variable is a three level factor. Our outcome variable is a continuous variable that presumably refers to some psychologically sensible measure of the extent to which someone is “babbling”. The details don’t really matter for our purpose. To get a sense of what the data look like, we use the <code>some()</code> function in the <code>car</code> package. The <code>some()</code> function randomly picks a few of the observations in the data frame to print out, which is often very handy:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/coffee.rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;coffee.Rdata&quot;</span>))
  <span class="kw">some</span>( coffee )</code></pre></div>
 <pre><code>##    milk sugar babble
 ## 1   yes  real    4.6
@@ -2907,7 +2907,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -2917,6 +2917,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 12 Categorical data analysis | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 12 Categorical data analysis | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 12 Categorical data analysis | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="ttest.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -836,7 +837,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">12.1.1</span> The cards data</h3>
 <p>Over the years, there have been a lot of studies showing that humans have a lot of difficulties in simulating randomness. Try as we might to “act” random, we <em>think</em> in terms of patterns and structure, and so when asked to “do something at random”, what people actually do is anything but random. As a consequence, the study of human randomness (or non-randomness, as the case may be) opens up a lot of deep psychological questions about how we think about the world. With this in mind, let’s consider a very simple study. Suppose I asked people to imagine a shuffled deck of cards, and mentally pick one card from this imaginary deck “at random”. After they’ve chosen one card, I ask them to mentally select a second one. For both choices, what we’re going to look at is the suit (hearts, clubs, spades or diamonds) that people chose. After asking, say, <span class="math inline">\(N=200\)</span> people to do this, I’d like to look at the data and figure out whether or not the cards that people pretended to select were really random. The data are contained in the <code>randomness.Rdata</code> file, which contains a single data frame called <code>cards</code>. Let’s take a look:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>( lsr )
-<span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/randomness.Rdata&quot;</span> )
+<span class="kw">load</span>( <span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/randomness.Rdata&quot;</span> ))
 <span class="kw">str</span>(cards)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    200 obs. of  3 variables:
 ##  $ id      : Factor w/ 200 levels &quot;subj1&quot;,&quot;subj10&quot;,..: 1 112 124 135 146 157 168 179 190 2 ...
@@ -1213,7 +1214,7 @@ nullProbs</code></pre></div>
 </table>
 <p>– Futurama, “Fear of a Bot Planet</p>
 <p>The other day I was watching an animated documentary examining the quaint customs of the natives of the planet <em>Chapek 9</em>. Apparently, in order to gain access to their capital city, a visitor must prove that they’re a robot, not a human. In order to determine whether or not visitor is human, they ask whether the visitor prefers puppies, flowers or large, properly formatted data files. “Pretty clever,” I thought to myself “but what if humans and robots have the same preferences? That probably wouldn’t be a very good test then, would it?” As it happens, I got my hands on the testing data that the civil authorities of <em>Chapek 9</em> used to check this. It turns out that what they did was very simple… they found a bunch of robots and a bunch of humans and asked them what they preferred. I saved their data in a file called <code>chapek9.Rdata</code>, which I can now load and have a quick look at:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/chapek9.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/chapek9.Rdata&quot;</span> ))
 <span class="kw">str</span>(chapek9)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    180 obs. of  2 variables:
 ##  $ species: Factor w/ 2 levels &quot;robot&quot;,&quot;human&quot;: 1 2 2 2 1 2 2 1 2 1 ...
@@ -1531,7 +1532,7 @@ V = \sqrt{\frac{X^2}{N(k-1)}}
 <div id="fisherexacttest" class="section level2">
 <h2><span class="header-section-number">12.7</span> The Fisher exact test</h2>
 <p>What should you do if your cell counts are too small, but you’d still like to test the null hypothesis that the two variables are independent? One answer would be “collect more data”, but that’s far too glib: there are a lot of situations in which it would be either infeasible or unethical do that. If so, statisticians have a kind of moral obligation to provide scientists with better tests. In this instance, Fisher (1922) kindly provided the right answer to the question. To illustrate the basic idea, let’s suppose that we’re analysing data from a field experiment, looking at the emotional status of people who have been accused of witchcraft; some of whom are currently being burned at the stake.<a href="#fn181" class="footnoteRef" id="fnref181"><sup>181</sup></a> Unfortunately for the scientist (but rather fortunately for the general populace), it’s actually quite hard to find people in the process of being set on fire, so the cell counts are awfully small in some cases. The <code>salem.Rdata</code> file illustrates the point:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/salem.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/salem.Rdata&quot;</span>))
 
 salem.tabs &lt;-<span class="st"> </span><span class="kw">table</span>( trial )
 <span class="kw">print</span>( salem.tabs )</code></pre></div>
@@ -1702,7 +1703,7 @@ X^2 = \frac{(|O_{12}-O_{21}| - 0.5)^2}{O_{12} + O_{21}}
 <div id="doing-the-mcnemar-test-in-r" class="section level3">
 <h3><span class="header-section-number">12.8.1</span> Doing the McNemar test in R</h3>
 <p>Now that you know what the McNemar test is all about, lets actually run one. The <code>agpp.Rdata</code> file contains the raw data that I discussed previously, so let’s have a look at it:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/agpp.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/agpp.Rdata&quot;</span>))
 <span class="kw">str</span>(agpp)     </code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    100 obs. of  3 variables:
 ##  $ id             : Factor w/ 100 levels &quot;subj.1&quot;,&quot;subj.10&quot;,..: 1 13 24 35 46 57 68 79 90 2 ...
@@ -1853,7 +1854,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1863,6 +1864,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

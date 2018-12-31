@@ -4,7 +4,7 @@ author: "DJ Navarro"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [./bookdown/refs.bib, packages.bib]
+bibliography: ['`r here::here("bookdown","refs.bib")`', '`r here::here("bookdown","packages.bib")`']
 biblio-style: apalike
 link-citations: yes
 description: "*Learning Statistics with R* covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software."

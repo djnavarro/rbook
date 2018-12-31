@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 13 Comparing two means | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 13 Comparing two means | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 13 Comparing two means | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="anova.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -835,7 +836,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="the-inference-problem-that-the-test-addresses" class="section level3">
 <h3><span class="header-section-number">13.1.1</span> The inference problem that the test addresses</h3>
 <p>To introduce the idea behind the <span class="math inline">\(z\)</span>-test, let’s use a simple example. A friend of mine, Dr Zeppo, grades his introductory statistics class on a curve. Let’s suppose that the average grade in his class is 67.5, and the standard deviation is 9.5. Of his many hundreds of students, it turns out that 20 of them also take psychology classes. Out of curiosity, I find myself wondering: do the psychology students tend to get the same grades as everyone else (i.e., mean 67.5) or do they tend to score higher or lower? He emails me the <code>zeppo.Rdata</code> file, which I use to pull up the <code>grades</code> of those students,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/zeppo.Rdata&quot;</span> ) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/zeppo.Rdata&quot;</span> )) 
 <span class="kw">print</span>( grades )</code></pre></div>
 <pre><code>##  [1] 50 60 60 64 66 66 67 69 70 74 76 76 77 79 79 79 81 82 82 89</code></pre>
 <p>and calculate the mean:</p>
@@ -997,7 +998,7 @@ sd.true &lt;-<span class="st"> </span><span class="fl">9.5</span></code></pre></
 t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{N} }
 \]</span> The only thing that has changed in the equation is that instead of using the known true value <span class="math inline">\(\sigma\)</span>, we use the estimate <span class="math inline">\(\hat{\sigma}\)</span>. And if this estimate has been constructed from <span class="math inline">\(N\)</span> observations, then the sampling distribution turns into a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(N-1\)</span> <strong><em>degrees of freedom</em></strong> (df). The <span class="math inline">\(t\)</span> distribution is very similar to the normal distribution, but has “heavier” tails, as discussed earlier in Section <a href="probability.html#otherdists">9.6</a> and illustrated in Figure <a href="ttest.html#fig:ttestdist">13.5</a>. Notice, though, that as df gets larger, the <span class="math inline">\(t\)</span>-distribution starts to look identical to the standard normal distribution. This is as it should be: if you have a sample size of <span class="math inline">\(N = 70,000,000\)</span> then your “estimate” of the standard deviation would be pretty much perfect, right? So, you should expect that for large <span class="math inline">\(N\)</span>, the <span class="math inline">\(t\)</span>-test would behave exactly the same way as a <span class="math inline">\(z\)</span>-test. And that’s exactly what happens!</p>
 <div class="figure"><span id="fig:ttestdist"></span>
-<img src="rbook-master/img/ttest2/tdist_3.PNG" alt="The $t$ distribution with 2 degrees of freedom (left) and 10 degrees of freedom (right), with a standard normal distribution (i.e., mean 0 and std dev 1) plotted as dotted lines for comparison purposes. Notice that the $t$ distribution has heavier tails (higher kurtosis) than the normal distribution; this effect is quite exaggerated when the degrees of freedom are very small, but negligible for larger values. In other words, for large $df$ the $t$ distribution is essentially identical to a normal distribution." width="684" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/ttest2/tdist_3.png" alt="The $t$ distribution with 2 degrees of freedom (left) and 10 degrees of freedom (right), with a standard normal distribution (i.e., mean 0 and std dev 1) plotted as dotted lines for comparison purposes. Notice that the $t$ distribution has heavier tails (higher kurtosis) than the normal distribution; this effect is quite exaggerated when the degrees of freedom are very small, but negligible for larger values. In other words, for large $df$ the $t$ distribution is essentially identical to a normal distribution."  />
 <p class="caption">
 Figure 13.5: The <span class="math inline">\(t\)</span> distribution with 2 degrees of freedom (left) and 10 degrees of freedom (right), with a standard normal distribution (i.e., mean 0 and std dev 1) plotted as dotted lines for comparison purposes. Notice that the <span class="math inline">\(t\)</span> distribution has heavier tails (higher kurtosis) than the normal distribution; this effect is quite exaggerated when the degrees of freedom are very small, but negligible for larger values. In other words, for large <span class="math inline">\(df\)</span> the <span class="math inline">\(t\)</span> distribution is essentially identical to a normal distribution.
 </p>
@@ -1081,7 +1082,7 @@ Other information:
 <div id="the-data-1" class="section level3">
 <h3><span class="header-section-number">13.3.1</span> The data</h3>
 <p>Suppose we have 33 students taking Dr Harpo’s statistics lectures, and Dr Harpo doesn’t grade to a curve. Actually, Dr Harpo’s grading is a bit of a mystery, so we don’t really know anything about what the average grade is for the class as a whole. There are two tutors for the class, Anastasia and Bernadette. There are <span class="math inline">\(N_1 = 15\)</span> students in Anastasia’s tutorials, and <span class="math inline">\(N_2 = 18\)</span> in Bernadette’s tutorials. The research question I’m interested in is whether Anastasia or Bernadette is a better tutor, or if it doesn’t make much of a difference. Dr Harpo emails me the course grades, in the <code>harpo.Rdata</code> file. As usual, I’ll load the file and have a look at what variables it contains:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/harpo.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span> (<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/harpo.Rdata&quot;</span> ))
 <span class="kw">str</span>(harpo)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    33 obs. of  2 variables:
 ##  $ grade: num  65 72 66 74 73 71 66 76 69 79 ...
@@ -1135,7 +1136,7 @@ Figure 13.7: Histogram showing the overall distribution of grades for students i
 </div>
 <p>Here is a simpler plot showing the means and corresponding confidence intervals for both groups of students (Figure <a href="ttest.html#fig:ttestci">13.8</a>).</p>
 <div class="figure"><span id="fig:ttestci"></span>
-<img src="rbook-master/img/ttest2/ttestci.PNG" alt="Plots showing the mean grade for the students in Anastasia's and Bernadette's tutorials. Error bars depict 95% confidence intervals around the mean. On the basis of visual inspection, it does look like there's a real difference between the groups, though it's hard to say for sure." width="504" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/ttest2/ttestci.png" alt="Plots showing the mean grade for the students in Anastasia's and Bernadette's tutorials. Error bars depict 95% confidence intervals around the mean. On the basis of visual inspection, it does look like there's a real difference between the groups, though it's hard to say for sure."  />
 <p class="caption">
 Figure 13.8: Plots showing the mean grade for the students in Anastasia’s and Bernadette’s tutorials. Error bars depict 95% confidence intervals around the mean. On the basis of visual inspection, it does look like there’s a real difference between the groups, though it’s hard to say for sure.
 </p>
@@ -1331,7 +1332,7 @@ Figure 13.10: Graphical illustration of the null and alternative hypotheses assu
 <div id="the-data-2" class="section level3">
 <h3><span class="header-section-number">13.5.1</span> The data</h3>
 <p>The data set that we’ll use this time comes from Dr Chico’s class.<a href="#fn195" class="footnoteRef" id="fnref195"><sup>195</sup></a> In her class, students take two major tests, one early in the semester and one later in the semester. To hear her tell it, she runs a very hard class, one that most students find very challenging; but she argues that by setting hard assessments, students are encouraged to work harder. Her theory is that the first test is a bit of a “wake up call” for students: when they realise how hard her class really is, they’ll work harder for the second test and get a better mark. Is she right? To test this, let’s have a look at the <code>chico.Rdata</code> file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/chico.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/chico.Rdata&quot;</span> ))
 <span class="kw">str</span>(chico)     </code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
 ##  $ id         : Factor w/ 20 levels &quot;student1&quot;,&quot;student10&quot;,..: 1 12 14 15 16 17 18 19 20 2 ...
@@ -1855,9 +1856,9 @@ Figure 13.19: A histogram of the 100 observations in a <em>heavy tailed</em>` da
 <p>One way to check whether a sample violates the normality assumption is to draw a <strong><em>“quantile-quantile” plot</em></strong> (QQ plot). This allows you to visually check whether you’re seeing any systematic violations. In a QQ plot, each observation is plotted as a single dot. The x co-ordinate is the theoretical quantile that the observation should fall in, if the data were normally distributed (with mean and variance estimated from the sample) and on the y co-ordinate is the actual quantile of the data within the sample. If the data are normal, the dots should form a straight line. For instance, lets see what happens if we generate data by sampling from a normal distribution, and then drawing a QQ plot using the R function <code>qqnorm()</code>. The <code>qqnorm()</code> function has a few arguments, but the only one we really need to care about here is <code>y</code>, a vector specifying the data whose normality we’re interested in checking. Here’s the R commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">normal.data &lt;-<span class="st"> </span><span class="kw">rnorm</span>( <span class="dt">n =</span> <span class="dv">100</span> )  <span class="co"># generate N = 100 normally distributed numbers</span>
 <span class="kw">hist</span>( <span class="dt">x =</span> normal.data )          <span class="co"># draw a histogram of these numbers</span></code></pre></div>
-<p><img src="navarro2_files/figure-html/unnamed-chunk-551-1.png" width="672" /></p>
+<p><img src="navarro2_files/figure-html/unnamed-chunk-555-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>( <span class="dt">y =</span> normal.data )        <span class="co"># draw the QQ plot</span></code></pre></div>
-<p><img src="navarro2_files/figure-html/unnamed-chunk-551-2.png" width="672" /></p>
+<p><img src="navarro2_files/figure-html/unnamed-chunk-555-2.png" width="672" /></p>
 </div>
 <div id="shapiro-wilk-tests" class="section level3">
 <h3><span class="header-section-number">13.9.2</span> Shapiro-Wilk tests</h3>
@@ -1866,7 +1867,7 @@ W = \frac{ \left( \sum_{i = 1}^N a_i X_i \right)^2 }{ \sum_{i = 1}^N (X_i - \bar
 \]</span> where <span class="math inline">\(\bar{X}\)</span> is the mean of the observations, and the <span class="math inline">\(a_i\)</span> values are … mumble, mumble … something complicated that is a bit beyond the scope of an introductory text.</p>
 <p>Because it’s a little hard to explain the maths behind the <span class="math inline">\(W\)</span> statistic, a better idea is to give a broad brush description of how it behaves. Unlike most of the test statistics that we’ll encounter in this book, it’s actually <em>small</em> values of <span class="math inline">\(W\)</span> that indicated departure from normality. The <span class="math inline">\(W\)</span> statistic has a maximum value of 1, which arises when the data look “perfectly normal”. The smaller the value of <span class="math inline">\(W\)</span>, the less normal the data are. However, the sampling distribution for <span class="math inline">\(W\)</span> – which is not one of the standard ones that I discussed in Chapter <a href="probability.html#probability">9</a> and is in fact a complete pain in the arse to work with – does depend on the sample size <span class="math inline">\(N\)</span>. To give you a feel for what these sampling distributions look like, I’ve plotted three of them in Figure <a href="ttest.html#fig:swdist">13.20</a>. Notice that, as the sample size starts to get large, the sampling distribution becomes very tightly clumped up near <span class="math inline">\(W=1\)</span>, and as a consequence, for larger samples <span class="math inline">\(W\)</span> doesn’t have to be very much smaller than 1 in order for the test to be significant.</p>
 <div class="figure"><span id="fig:swdist"></span>
-<img src="rbook-master/img/ttest2/shapirowilkdist.png" alt="Sampling distribution of the Shapiro-Wilk $W$ statistic, under the null hypothesis that the data are normally distributed, for samples of size 10, 20 and 50. Note that *small* values of $W$ indicate departure from normality." width="484" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/ttest2/shapirowilkdist.png" alt="Sampling distribution of the Shapiro-Wilk $W$ statistic, under the null hypothesis that the data are normally distributed, for samples of size 10, 20 and 50. Note that *small* values of $W$ indicate departure from normality."  />
 <p class="caption">
 Figure 13.20: Sampling distribution of the Shapiro-Wilk <span class="math inline">\(W\)</span> statistic, under the null hypothesis that the data are normally distributed, for samples of size 10, 20 and 50. Note that <em>small</em> values of <span class="math inline">\(W\)</span> indicate departure from normality.
 </p>
@@ -1888,7 +1889,7 @@ Figure 13.20: Sampling distribution of the Shapiro-Wilk <span class="math inline
 <div id="two-sample-wilcoxon-test" class="section level3">
 <h3><span class="header-section-number">13.10.1</span> Two sample Wilcoxon test</h3>
 <p>I’ll start by describing the <strong><em>two sample Wilcoxon test</em></strong> (also known as the Mann-Whitney test), since it’s actually simpler than the one sample version. Suppose we’re looking at the scores of 10 people on some test. Since my imagination has now failed me completely, let’s pretend it’s a “test of awesomeness”, and there are two groups of people, “A” and “B”. I’m curious to know which group is more awesome. The data are included in the file <code>awesome.Rdata</code>, and like many of the data sets I’ve been using, it contains only a single data frame, in this case called <code>awesome</code>. Here’s the data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/awesome.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/awesome.Rdata&quot;</span>))
 <span class="kw">print</span>( awesome )</code></pre></div>
 <pre><code>##    scores group
 ## 1     6.4     A
@@ -1902,7 +1903,7 @@ Figure 13.20: Sampling distribution of the Shapiro-Wilk <span class="math inline
 ## 9    11.7     B
 ## 10   13.0     B</code></pre>
 <p>As long as there are no ties (i.e., people with the exact same awesomeness score), then the test that we want to do is surprisingly simple. All we have to do is construct a table that compares every observation in group <span class="math inline">\(A\)</span> against every observation in group <span class="math inline">\(B\)</span>. Whenever the group <span class="math inline">\(A\)</span> datum is larger, we place a check mark in the table:</p>
-<p><img src="rbook-master/img/ttest2/wilcox1.PNG" width="414" /></p>
+<p><img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/ttest2/wilcox1.png" /><!-- --></p>
 <p>We then count up the number of checkmarks. This is our test statistic, <span class="math inline">\(W\)</span>.<a href="#fn200" class="footnoteRef" id="fnref200"><sup>200</sup></a> The actual sampling distribution for <span class="math inline">\(W\)</span> is somewhat complicated, and I’ll skip the details. For our purposes, it’s sufficient to note that the interpretation of <span class="math inline">\(W\)</span> is qualitatively the same as the interpretation of <span class="math inline">\(t\)</span> or <span class="math inline">\(z\)</span>. That is, if we want a two-sided test, then we reject the null hypothesis when <span class="math inline">\(W\)</span> is very large or very small; but if we have a directional (i.e., one-sided) hypothesis, then we only use one or the other.</p>
 <p>The structure of the <code>wilcox.test()</code> function should feel very familiar to you by now. When you have your data organised in terms of an outcome variable and a grouping variable, then you use the <code>formula</code> and <code>data</code> arguments, so your command looks like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>( <span class="dt">formula =</span> scores <span class="op">~</span><span class="st"> </span>group, <span class="dt">data =</span> awesome)</code></pre></div>
@@ -1913,7 +1914,7 @@ Figure 13.20: Sampling distribution of the Shapiro-Wilk <span class="math inline
 ## W = 3, p-value = 0.05556
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 <p>Just like we saw with the <code>t.test()</code> function, there is an <code>alternative</code> argument that you can use to switch between two-sided tests and one-sided tests, plus a few other arguments that we don’t need to worry too much about at an introductory level. Similarly, the <code>wilcox.test()</code> function allows you to use the <code>x</code> and <code>y</code> arguments when you have your data stored separately for each group. For instance, suppose we use the data from the <code>awesome2.Rdata</code> file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/awesome2.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/awesome2.Rdata&quot;</span> ))
 score.A</code></pre></div>
 <pre><code>## [1]  6.4 10.7 11.9  7.3 10.0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">score.B</code></pre></div>
@@ -1931,7 +1932,7 @@ score.A</code></pre></div>
 <div id="one-sample-wilcoxon-test" class="section level3">
 <h3><span class="header-section-number">13.10.2</span> One sample Wilcoxon test</h3>
 <p>What about the <strong><em>one sample Wilcoxon test</em></strong> (or equivalently, the paired samples Wilcoxon test)? Suppose I’m interested in finding out whether taking a statistics class has any effect on the happiness of students. Here’s my data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/happy.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="kw">file.path</span>(projecthome, <span class="st">&quot;data/happy.Rdata&quot;</span> ))
 <span class="kw">print</span>( happiness )</code></pre></div>
 <pre><code>##    before after change
 ## 1      30     6    -24
@@ -1945,7 +1946,7 @@ score.A</code></pre></div>
 ## 9      38     8    -30
 ## 10     16    21      5</code></pre>
 <p>What I’ve measured here is the happiness of each student <code>before</code> taking the class and <code>after</code> taking the class; the <code>change</code> score is the difference between the two. Just like we saw with the <span class="math inline">\(t\)</span>-test, there’s no fundamental difference between doing a paired-samples test using <code>before</code> and <code>after</code>, versus doing a one-sample test using the <code>change</code> scores. As before, the simplest way to think about the test is to construct a tabulation. The way to do it this time is to take those change scores that are positive valued, and tabulate them against all the complete sample. What you end up with is a table that looks like this:</p>
-<p><img src="rbook-master/img/ttest2/wilcox2.PNG" width="614" /></p>
+<p><img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/ttest2/wilcox2.png" /><!-- --></p>
 <p>Counting up the tick marks this time, we get a test statistic of <span class="math inline">\(V = 7\)</span>. As before, if our test is two sided, then we reject the null hypothesis when <span class="math inline">\(V\)</span> is very large or very small. As far of running it in R goes, it’s pretty much what you’d expect. For the one-sample version, the command you would use is</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>( <span class="dt">x =</span> happiness<span class="op">$</span>change,
               <span class="dt">mu =</span> <span class="dv">0</span>
@@ -2057,7 +2058,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -2067,6 +2068,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

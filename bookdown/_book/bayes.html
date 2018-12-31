@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 17 Bayesian statistics | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 17 Bayesian statistics | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 17 Bayesian statistics | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="epilogue.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -1254,7 +1255,7 @@ P(h_1 | d) = \frac{P(d|h_1) P(h_1)}{P(d)}
 <p>The “basic” theory of null hypothesis testing isn’t built to handle this sort of thing, not in the form I described back in Chapter <a href="hypothesistesting.html#hypothesistesting">11</a>. If you’re the kind of person who would choose to “collect more data” in real life, it implies that you are <em>not</em> making decisions in accordance with the rules of null hypothesis testing. Even if you happen to arrive at the same decision as the hypothesis test, you aren’t following the decision <em>process</em> it implies, and it’s this failure to follow the process that is causing the problem.<a href="#fn264" class="footnoteRef" id="fnref264"><sup>264</sup></a> Your <span class="math inline">\(p\)</span>-values are a lie.</p>
 <p>Worse yet, they’re a lie in a dangerous way, because they’re all <em>too small</em>. To give you a sense of just how bad it can be, consider the following (worst case) scenario. Imagine you’re a really super-enthusiastic researcher on a tight budget who didn’t pay any attention to my warnings above. You design a study comparing two groups. You desperately want to see a significant result at the <span class="math inline">\(p&lt;.05\)</span> level, but you really don’t want to collect any more data than you have to (because it’s expensive). In order to cut costs, you start collecting data, but every time a new observation arrives you run a <span class="math inline">\(t\)</span>-test on your data. If the <span class="math inline">\(t\)</span>-tests says <span class="math inline">\(p&lt;.05\)</span> then you stop the experiment and report a significant result. If not, you keep collecting data. You keep doing this until you reach your pre-defined spending limit for this experiment. Let’s say that limit kicks in at <span class="math inline">\(N=1000\)</span> observations. As it turns out, the truth of the matter is that there is no real effect to be found: the null hypothesis is true. So, what’s the chance that you’ll make it to the end of the experiment and (correctly) conclude that there is no effect? In an ideal world, the answer here should be 95%. After all, the whole <em>point</em> of the <span class="math inline">\(p&lt;.05\)</span> criterion is to control the Type I error rate at 5%, so what we’d hope is that there’s only a 5% chance of falsely rejecting the null hypothesis in this situation. However, there’s no guarantee that will be true. You’re breaking the rules: you’re running tests repeatedly, “peeking” at your data to see if you’ve gotten a significant result, and all bets are off.</p>
 <div class="figure"><span id="fig:type1"></span>
-<img src="rbook-master/img/bayes/adapt.PNG" alt="How badly can things go wrong if you re-run your tests every time new data arrive? If you are a frequentist, the answer is &quot;very wrong&quot;." width="418" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/bayes/adapt.png" alt="How badly can things go wrong if you re-run your tests every time new data arrive? If you are a frequentist, the answer is &quot;very wrong&quot;."  />
 <p class="caption">
 Figure 17.1: How badly can things go wrong if you re-run your tests every time new data arrive? If you are a frequentist, the answer is “very wrong”.
 </p>
@@ -1278,7 +1279,7 @@ Figure 17.1: How badly can things go wrong if you re-run your tests every time n
 <h2><span class="header-section-number">17.6</span> Bayesian analysis of contingency tables</h2>
 <p>Time to change gears. Up to this point I’ve been talking about what Bayesian inference is and why you might consider using it. I now want to briefly describe how to do Bayesian versions of various statistical tests. The discussions in the next few sections are not as detailed as I’d like, but I hope they’re enough to help you get started. So let’s begin.</p>
 <p>The first kind of statistical inference problem I discussed in this book appeared in Chapter <a href="chisquare.html#chisquare">12</a>, in which we discussed categorical data analysis problems. In that chapter I talked about several different statistical problems that you might be interested in, but the one that appears most often in real life is the analysis of <em>contingency tables</em>. In this kind of data analysis situation, we have a cross-tabulation of one variable against another one, and the goal is to find out if there is some <em>association</em> between these variables. The data set I used to illustrate this problem is found in the <code>chapek9.Rdata</code> file, and it contains a single data frame <code>chapek9</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/chapek9.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;chapek9.Rdata&quot;</span>))
 <span class="kw">head</span>(chapek9)</code></pre></div>
 <pre><code>##   species choice
 ## 1   robot flower
@@ -1344,16 +1345,8 @@ crosstab</code></pre></div>
 <li><strong>Nothing is fixed</strong>. Finally, it might be the case that <em>nothing</em> is fixed. Not the row columns, not the column totals, and not the total sample size either. For instance, in the <code>chapek9</code> scenario, suppose what I’d done is run the study for a fixed length of <em>time</em>. By chance, it turned out that I got 180 people to turn up to study, but it could easily have been something else. This is referred to as “Poisson” sampling, and if that’s what you’ve done you should specify <code>sampleType=&quot;poisson&quot;</code>.</li>
 </ul>
 <p>Okay, so now we have enough knowledge to actually run a test. For the <code>chapek9</code> data, I implied that we designed the study such that the total sample size <span class="math inline">\(N\)</span> was fixed, so we should set <code>sampleType = &quot;jointMulti&quot;</code>. The command that we need is,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>( BayesFactor )</code></pre></div>
-<pre><code>## Warning: package &#39;BayesFactor&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## Loading required package: coda</code></pre>
-<pre><code>## Loading required package: Matrix</code></pre>
-<pre><code>## ************
-## Welcome to BayesFactor 0.9.12-4.2. If you have questions, please contact Richard Morey (richarddmorey@gmail.com).
-## 
-## Type BFManual() to open the manual.
-## ************</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contingencyTableBF</span>( crosstab, <span class="dt">sampleType =</span> <span class="st">&quot;jointMulti&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>( BayesFactor )
+<span class="kw">contingencyTableBF</span>( crosstab, <span class="dt">sampleType =</span> <span class="st">&quot;jointMulti&quot;</span> )</code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] Non-indep. (a=1) : 15.92684 ±0%
@@ -1447,7 +1440,7 @@ Against denominator:
 <div id="independent-samples-t-test" class="section level3">
 <h3><span class="header-section-number">17.7.1</span> Independent samples <span class="math inline">\(t\)</span>-test</h3>
 <p>The most common type of <span class="math inline">\(t\)</span>-test is the independent samples <span class="math inline">\(t\)</span>-test, and it arises when you have data that look something like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/harpo.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;harpo.Rdata&quot;</span>))
 <span class="kw">head</span>(harpo)</code></pre></div>
 <pre><code>##   grade      tutor
 ## 1    65  Anastasia
@@ -1506,7 +1499,7 @@ Against denominator:
 <div id="paired-samples-t-test" class="section level3">
 <h3><span class="header-section-number">17.7.2</span> Paired samples <span class="math inline">\(t\)</span>-test</h3>
 <p>Back in Section <a href="ttest.html#pairedsamplesttest">13.5</a> I discussed the <code>chico</code> data frame in which students grades were measured on two tests, and we were interested in finding out whether grades went up from test 1 to test 2. Because every student did both tests, the tool we used to analyse the data was a paired samples <span class="math inline">\(t\)</span>-test. To remind you of what the data look like, here’s the first few cases:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/chico.rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;chico.Rdata&quot;</span>))
 <span class="kw">head</span>(chico)</code></pre></div>
 <pre><code>##         id grade_test1 grade_test2
 ## 1 student1        42.9        44.6
@@ -1538,7 +1531,7 @@ Against denominator:
 <div id="a-quick-refresher" class="section level3">
 <h3><span class="header-section-number">17.8.1</span> A quick refresher</h3>
 <p>In Chapter <a href="regression.html#regression">15</a> I used the <code>parenthood</code> data to illustrate the basic ideas behind regression. To remind you of what that data set looks like, here’s the first six observations:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/parenthood.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;parenthood.Rdata&quot;</span>))
 <span class="kw">head</span>(parenthood)</code></pre></div>
 <pre><code>##   dan.sleep baby.sleep dan.grump day
 ## 1      7.59      10.18        56   1
@@ -1730,7 +1723,7 @@ Against denominator:
 <div id="a-quick-refresher-1" class="section level3">
 <h3><span class="header-section-number">17.9.1</span> A quick refresher</h3>
 <p>As with the other examples, I think it’s useful to start with a reminder of how I discussed ANOVA earlier in the book. First, let’s remind ourselves of what the data were. The example I used originally is the <code>clin.trial</code> data frame, which looks like this</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/clinicaltrial.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;clinicaltrial.Rdata&quot;</span>))
 <span class="kw">head</span>(clin.trial)</code></pre></div>
 <pre><code>##       drug    therapy mood.gain
 ## 1  placebo no.therapy       0.5
@@ -1937,7 +1930,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1947,6 +1940,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 3 Getting started with R | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 3 Getting started with R | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 3 Getting started with R | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="mechanics.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -870,7 +871,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>When you visit the RStudio website, you’ll probably be struck by how much cleaner and simpler it is than the CRAN website,<a href="#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a> and how obvious it is what you need to do: click the big green button that says “Download”.</p>
 <p>When you click on the download button on the homepage it will ask you to choose whether you want the desktop version or the server version. You want the desktop version. After choosing the desktop version it will take you to a page <a href="http://www.RStudio.org/download/desktop" class="uri">http://www.RStudio.org/download/desktop</a>) that shows several possible downloads: there’s a different one for each operating system. However, the nice people at RStudio have designed the webpage so that it automatically recommends the download that is most appropriate for your computer. Click on the appropriate link, and the RStudio installer file will start downloading.</p>
 <div class="figure"><span id="fig:RStudio"></span>
-<img src="rbook-master/img/introR/Rstudio2.png" alt="An R session in progress running through RStudio. The picture shows RStudio running on a Mac, but the Windows interface is almost identical." width="881" />
+<img src="./rbook-master/img/introR/RStudio2.png" alt="An R session in progress running through RStudio. The picture shows RStudio running on a Mac, but the Windows interface is almost identical."  />
 <p class="caption">
 Figure 3.1: An R session in progress running through RStudio. The picture shows RStudio running on a Mac, but the Windows interface is almost identical.
 </p>
@@ -1220,7 +1221,7 @@ revenue</code></pre></div>
 <p>Let’s stick to our example above and assume that what you want to do is to round a number. This time around, start typing the name of the function that you want, and then hit the “tab” key. RStudio will then display a little window like the one shown in Figure <a href="introR.html#fig:RStudiotab">3.2</a>. In this figure, I’ve typed the letters <code>ro</code> at the command line, and then hit tab. The window has two panels. On the left, there’s a list of variables and functions that start with the letters that I’ve typed shown in black text, and some grey text that tells you where that variable/function is stored. Ignore the grey text for now: it won’t make much sense to you until we’ve talked about packages in Section <a href="mechanics.html#packageinstall">4.2</a>. In Figure <a href="introR.html#fig:RStudiotab">3.2</a> you can see that there’s quite a few things that start with the letters <code>ro</code>: there’s something called <code>rock</code>, something called <code>round</code>, something called <code>round.Date</code> and so on. The one we want is <code>round</code>, but if you’re typing this yourself you’ll notice that when you hit the tab key the window pops up with the top entry (i.e., <code>rock</code>) highlighted. You can use the up and down arrow keys to select the one that you want. Or, if none of the options look right to you, you can hit the escape key (“esc”) or the left arrow key to make the window go away.</p>
 <p>In our case, the thing we want is the <code>round</code> option, so we’ll select that. When you do this, you’ll see that the panel on the right changes. Previously, it had been telling us something about the <code>rock</code> data set (i.e., “Measurements on 48 rock samples…”) that is distributed as part of R. But when we select <code>round</code>, it displays information about the <code>round()</code> function, exactly as it is shown in Figure <a href="introR.html#fig:RStudiotab">3.2</a>. This display is really handy. The very first thing it says is <code>round(x, digits = 0)</code>: what this is telling you is that the <code>round()</code> function has two arguments. The first argument is called <code>x</code>, and it doesn’t have a default value. The second argument is <code>digits</code>, and it has a default value of 0. In a lot of situations, that’s all the information you need. But RStudio goes a bit further, and provides some additional information about the function underneath. Sometimes that additional information is very helpful, sometimes it’s not: RStudio pulls that text from the R help documentation, and my experience is that the helpfulness of that documentation varies wildly. Anyway, if you’ve decided that <code>round()</code> is the function that you want to use, you can hit the right arrow or the enter key, and RStudio will finish typing the rest of the function name for you.</p>
 <div class="figure"><span id="fig:RStudiotab"></span>
-<img src="rbook-master/img/introR/RStudio_tab.png" alt="Start typing the name of a function or a variable, and hit the &quot;tab&quot; key. RStudio brings up a little dialog box like this one that lets you select the one you want, and even prints out a little information about it." width="682" />
+<img src="./rbook-master/img/introR/RStudio_tab.png" alt="Start typing the name of a function or a variable, and hit the &quot;tab&quot; key. RStudio brings up a little dialog box like this one that lets you select the one you want, and even prints out a little information about it."  />
 <p class="caption">
 Figure 3.2: Start typing the name of a function or a variable, and hit the “tab” key. RStudio brings up a little dialog box like this one that lets you select the one you want, and even prints out a little information about it.
 </p>
@@ -1228,7 +1229,7 @@ Figure 3.2: Start typing the name of a function or a variable, and hit the “ta
 <p>Start typing the name of a function or a variable, and hit the “tab” key. RStudio brings up a little dialog box like this one that lets you select the one you want, and even prints out a little information about it.</p>
 <p>The RStudio autocomplete tool works slightly differently if you’ve already got the name of the function typed and you’re now trying to type the arguments. For instance, suppose I’ve typed <code>round(</code> into the console, and <em>then</em> I hit tab. RStudio is smart enough to recognise that I already know the name of the function that I want, because I’ve already typed it! Instead, it figures that what I’m interested in is the <em>arguments</em> to that function. So that’s what pops up in the little window. You can see this in Figure <a href="introR.html#fig:RStudiotab2">3.3</a>. Again, the window has two panels, and you can interact with this window in exactly the same way that you did with the window shown in <a href="introR.html#fig:RStudiotab">3.2</a>. On the left hand panel, you can see a list of the argument names. On the right hand side, it displays some information about what the selected argument does.</p>
 <div class="figure"><span id="fig:RStudiotab2"></span>
-<img src="rbook-master/img/introR/RStudio_tab2.png" alt="If you've typed the name of a function already along with the left parenthesis and then hit the &quot;tab&quot; key, RStudio brings up a different window to the one shown above. This one lists all the arguments to the function on the left, and information about each argument on the right." width="570" />
+<img src="./rbook-master/img/introR/RStudio_tab2.png" alt="If you've typed the name of a function already along with the left parenthesis and then hit the &quot;tab&quot; key, RStudio brings up a different window to the one shown above. This one lists all the arguments to the function on the left, and information about each argument on the right."  />
 <p class="caption">
 Figure 3.3: If you’ve typed the name of a function already along with the left parenthesis and then hit the “tab” key, RStudio brings up a different window to the one shown above. This one lists all the arguments to the function on the left, and information about each argument on the right.
 </p>
@@ -1240,7 +1241,7 @@ Figure 3.3: If you’ve typed the name of a function already along with the left
 <p>One thing that R does automatically is keep track of your “command history”. That is, it remembers all the commands that you’ve previously typed. You can access this history in a few different ways. The simplest way is to use the up and down arrow keys. If you hit the up key, the R console will show you the most recent command that you’ve typed. Hit it again, and it will show you the command before that. If you want the text on the screen to go away, hit escape<a href="#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a> Using the up and down keys can be really handy if you’ve typed a long command that had one typo in it. Rather than having to type it all again from scratch, you can use the up key to bring up the command and fix it.</p>
 <p>The second way to get access to your command history is to look at the history panel in RStudio. On the upper right hand side of the RStudio window you’ll see a tab labelled “History”. Click on that, and you’ll see a list of all your recent commands displayed in that panel: it should look something like Figure <a href="introR.html#fig:RStudiohistory">3.4</a>. If you double click on one of the commands, it will be copied to the R console. (You can achieve the same result by selecting the command you want with the mouse and then clicking the “To Console” button).<a href="#fn34" class="footnoteRef" id="fnref34"><sup>34</sup></a></p>
 <div class="figure"><span id="fig:RStudiohistory"></span>
-<img src="rbook-master/img/introR/historyTab.png" alt="The history panel is located in the top right hand side of the RStudio window. Click on the word &quot;History&quot; and it displays this panel." width="495" />
+<img src="./rbook-master/img/introR/historyTab.png" alt="The history panel is located in the top right hand side of the RStudio window. Click on the word &quot;History&quot; and it displays this panel."  />
 <p class="caption">
 Figure 3.4: The history panel is located in the top right hand side of the RStudio window. Click on the word “History” and it displays this panel.
 </p>
@@ -1583,7 +1584,7 @@ stock.levels</code></pre></div>
 <h2><span class="header-section-number">3.11</span> Quitting R</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;./rbook-master/img/introR/Rstudio_quit.png&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:quitR"></span>
-<img src="rbook-master/img/introR/Rstudio_quit.png" alt="The dialog box that shows up when you try to close RStudio." width="501" />
+<img src="./rbook-master/img/introR/Rstudio_quit.png" alt="The dialog box that shows up when you try to close RStudio."  />
 <p class="caption">
 Figure 3.5: The dialog box that shows up when you try to close RStudio.
 </p>
@@ -1598,7 +1599,7 @@ Figure 3.5: The dialog box that shows up when you try to close RStudio.
 <p>In fact, every time I install R on a new machine one of the first things I do is change the settings so that it never asks me again. You can do this in RStudio really easily: use the menu system to find the RStudio option; the dialog box that comes up will give you an option to tell R never to whine about this again (see Figure <a href="introR.html#fig:RStudiooptions">3.6</a>. On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”. Under the “General” tab you’ll see an option that reads “Save workspace to .Rdata on exit”. By default this is set to “ask”. If you want R to stop asking, change it to “never”.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;./rbook-master/img/introR/Rstudio_options.png&quot;</span>)</code></pre></div>
 <div class="figure"><span id="fig:RStudiooptions"></span>
-<img src="rbook-master/img/introR/Rstudio_options.png" alt="The options window in RStudio. On a Mac, you can open this window by going to the &quot;RStudio&quot; menu and selecting &quot;Preferences&quot;. On a Windows machine you go to the &quot;Tools&quot; menu and select &quot;Global Options&quot;" width="579" />
+<img src="./rbook-master/img/introR/Rstudio_options.png" alt="The options window in RStudio. On a Mac, you can open this window by going to the &quot;RStudio&quot; menu and selecting &quot;Preferences&quot;. On a Windows machine you go to the &quot;Tools&quot; menu and select &quot;Global Options&quot;"  />
 <p class="caption">
 Figure 3.6: The options window in RStudio. On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”
 </p>
@@ -1684,7 +1685,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1694,6 +1695,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

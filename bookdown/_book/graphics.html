@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 6 Drawing graphs | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 6 Drawing graphs | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 6 Drawing graphs | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="datahandling.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -932,7 +933,7 @@ Figure 6.4: How to customise the appearance of the titles and labels.
 </ul>
 <p>The simplest way to illustrate what each of these really looks like is just to draw them. To that end, Figure <a href="graphics.html#fig:simpleplots">6.5</a> shows the same Fibonacci data, drawn using six different <code>types</code> of plot. As you can see, by altering the type argument you can get a qualitatively different appearance to your plot. In other words, as far as R is concerned, the only difference between a scatterplot (like the ones we drew in Section <a href="descriptives.html#correl">5.7</a> and a line plot is that you draw a scatterplot by setting <code>type = &quot;p&quot;</code> and you draw a line plot by setting <code>type = &quot;l&quot;</code>. However, that doesn’t imply that <em>you</em> should think of them as begin equivalent to each other. As you can see by looking at Figure <a href="graphics.html#fig:simpleplots">6.5</a>, a line plot implies that there is some notion of continuity from one point to the next, whereas a scatterplot does not.</p>
 <div class="figure"><span id="fig:simpleplots"></span>
-<img src="rbook-master/img/graphics2/simpleplot.png" alt="Changing the `type` of the plot." width="422" />
+<img src="./rbook-master/img/graphics2/simpleplot.png" alt="Changing the `type` of the plot."  />
 <p class="caption">
 Figure 6.5: Changing the <code>type</code> of the plot.
 </p>
@@ -941,7 +942,7 @@ Figure 6.5: Changing the <code>type</code> of the plot.
 <div id="changing-other-features-of-the-plot" class="section level3">
 <h3><span class="header-section-number">6.2.4</span> Changing other features of the plot</h3>
 <div class="figure"><span id="fig:pch"></span>
-<img src="rbook-master/img/graphics2/pchlty.PNG" alt="Changing the line and plotted characters of the plot." width="368" />
+<img src="./rbook-master/img/graphics2/pchlty.png" alt="Changing the line and plotted characters of the plot."  />
 <p class="caption">
 Figure 6.6: Changing the line and plotted characters of the plot.
 </p>
@@ -1041,7 +1042,7 @@ Figure 6.9: Other ways to customise the axes
 <h2><span class="header-section-number">6.3</span> Histograms</h2>
 <p>Now that we’ve tamed (or possibly fled from) the beast that is R graphical parameters, let’s talk more seriously about some real life graphics that you’ll want to draw. We begin with the humble <strong><em>histogram</em></strong>. Histograms are one of the simplest and most useful ways of visualising data. They make most sense when you have an interval or ratio scale (e.g., the <code>afl.margins</code> data from Chapter <a href="descriptives.html#descriptives">5</a> and what you want to do is get an overall impression of the data. Most of you probably know how histograms work, since they’re so widely used, but for the sake of completeness I’ll describe them. All you do is divide up the possible values into <strong><em>bins</em></strong>, and then count the number of observations that fall within each bin. This count is referred to as the frequency of the bin, and is displayed as a bar: in the AFL winning margins data, there are 33 games in which the winning margin was less than 10 points, and it is this fact that is represented by the height of the leftmost bar in Figure <a href="graphics.html#fig:hist1a">6.10</a>. Drawing this histogram in R is pretty straightforward. The function you need to use is called <code>hist()</code>, and it has pretty reasonable default settings. In fact, Figure <a href="graphics.html#fig:hist1a">6.10</a> is exactly what you get if you just type this:</p>
 <pre><code>&gt; hist( afl.margins )   # panel a</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/aflsmall.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>, <span class="st">&quot;aflsmall.Rdata&quot;</span>))
 <span class="kw">hist</span>(afl.margins)   <span class="co"># panel a</span></code></pre></div>
 <div class="figure"><span id="fig:hist1a"></span>
 <img src="navarro2_files/figure-html/hist1a-1.png" alt="The default histogram that R produces" width="672" />
@@ -1129,7 +1130,7 @@ Figure 6.12: A histogram with too many bins
 <div id="boxplots" class="section level2">
 <h2><span class="header-section-number">6.5</span> Boxplots</h2>
 <div class="figure"><span id="fig:boxplot1"></span>
-<img src="rbook-master/img/graphics2/boxplot1.PNG" alt="A basic boxplot (panel a), plus the same plot with annotations added to explain what aspect of the data set each part of the boxplot corresponds to (panel b)." width="491" />
+<img src="./rbook-master/img/graphics2/boxplot1.png" alt="A basic boxplot (panel a), plus the same plot with annotations added to explain what aspect of the data set each part of the boxplot corresponds to (panel b)."  />
 <p class="caption">
 Figure 6.13: A basic boxplot (panel a), plus the same plot with annotations added to explain what aspect of the data set each part of the boxplot corresponds to (panel b).
 </p>
@@ -1272,7 +1273,7 @@ Figure 6.17: A cleaned up version of Figure <a href="graphics.html#fig:multipleb
 <h2><span class="header-section-number">6.6</span> Scatterplots</h2>
 <p><strong><em>Scatterplots</em></strong> are a simple but effective tool for visualising data. We’ve already seen scatterplots in this chapter, when using the <code>plot()</code> function to draw the <code>Fibonacci</code> variable as a collection of dots (Section <a href="graphics.html#introplotting">6.2</a>. However, for the purposes of this section I have a slightly different notion in mind. Instead of just plotting one variable, what I want to do with my scatterplot is display the relationship between <em>two</em> variables, like we saw with the figures in the section on correlation (Section <a href="descriptives.html#correl">5.7</a>. It’s this latter application that we usually have in mind when we use the term “scatterplot”. In this kind of plot, each observation corresponds to one dot: the horizontal location of the dot plots the value of the observation on one variable, and the vertical location displays its value on the other variable. In many situations you don’t really have a clear opinions about what the <em>causal</em> relationship is (e.g., does A cause B, or does B cause A, or does some other variable C control both A and B). If that’s the case, it doesn’t really matter which variable you plot on the x-axis and which one you plot on the y-axis. However, in many situations you do have a pretty strong idea which variable you think is most likely to be causal, or at least you have some suspicions in that direction. If so, then it’s conventional to plot the cause variable on the x-axis, and the effect variable on the y-axis. With that in mind, let’s look at how to draw scatterplots in R, using the same <code>parenthood</code> data set (i.e. <code>parenthood.Rdata</code>) that I used when introducing the idea of correlations.</p>
 <div class="figure"><span id="fig:scatter"></span>
-<img src="rbook-master/img/graphics2/scatter1.PNG" alt="{Two different scatterplots: (a) the default scatterplot that R produces, (b) one that makes use of several options for fancier display." width="768" />
+<img src="./rbook-master/img/graphics2/scatter1.png" alt="{Two different scatterplots: (a) the default scatterplot that R produces, (b) one that makes use of several options for fancier display."  />
 <p class="caption">
 Figure 6.18: {Two different scatterplots: (a) the default scatterplot that R produces, (b) one that makes use of several options for fancier display.
 </p>
@@ -1504,7 +1505,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1514,6 +1515,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

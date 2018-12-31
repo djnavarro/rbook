@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 15 Linear regression | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 15 Linear regression | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 15 Linear regression | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="anova2.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -916,7 +917,7 @@ Figure 15.5: The residuals associated with a poor regression line
 Y_i = b_2 X_{i2} + b_1 X_{i1} + b_0 + \epsilon_i
 \]</span> As before, <span class="math inline">\(\epsilon_i\)</span> is the residual associated with the <span class="math inline">\(i\)</span>-th observation, <span class="math inline">\(\epsilon_i = {Y}_i - \hat{Y}_i\)</span>. In this model, we now have three coefficients that need to be estimated: <span class="math inline">\(b_0\)</span> is the intercept, <span class="math inline">\(b_1\)</span> is the coefficient associated with my sleep, and <span class="math inline">\(b_2\)</span> is the coefficient associated with my son’s sleep. However, although the number of coefficients that need to be estimated has changed, the basic idea of how the estimation works is unchanged: our estimated coefficients <span class="math inline">\(\hat{b}_0\)</span>, <span class="math inline">\(\hat{b}_1\)</span> and <span class="math inline">\(\hat{b}_2\)</span> are those that minimise the sum squared residuals.</p>
 <div class="figure"><span id="fig:multipleregression"></span>
-<img src="rbook-master/img/regression2/scatter3d_1.png" alt="A 3D visualisation of a multiple regression model. There are two predictors in the model, `dan.sleep` and `baby.sleep`; the outcome variable is `dan.grump`. Together, these three variables form a 3D space: each observation (blue dots) is a point in this space. In much the same way that a simple linear regression model forms a line in 2D space, this multiple regression model forms a plane in 3D space. When we estimate the regression coefficients, what we're trying to do is find a plane that is as close to all the blue dots as possible." width="554" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/regression2/scatter3d_1.png" alt="A 3D visualisation of a multiple regression model. There are two predictors in the model, `dan.sleep` and `baby.sleep`; the outcome variable is `dan.grump`. Together, these three variables form a 3D space: each observation (blue dots) is a point in this space. In much the same way that a simple linear regression model forms a line in 2D space, this multiple regression model forms a plane in 3D space. When we estimate the regression coefficients, what we're trying to do is find a plane that is as close to all the blue dots as possible."  />
 <p class="caption">
 Figure 15.6: A 3D visualisation of a multiple regression model. There are two predictors in the model, <code>dan.sleep</code> and <code>baby.sleep</code>; the outcome variable is <code>dan.grump</code>. Together, these three variables form a 3D space: each observation (blue dots) is a point in this space. In much the same way that a simple linear regression model forms a line in 2D space, this multiple regression model forms a plane in 3D space. When we estimate the regression coefficients, what we’re trying to do is find a plane that is as close to all the blue dots as possible.
 </p>
@@ -1352,7 +1353,7 @@ F-statistic: 215.2 on 2 and 97 DF,  p-value: &lt; 2.2e-16 </code></pre>
 <p>One danger that you can run into with linear regression models is that your analysis might be disproportionately sensitive to a smallish number of “unusual” or “anomalous” observations. I discussed this idea previously in Section <a href="graphics.html#boxplotoutliers">6.5.2</a> in the context of discussing the outliers that get automatically identified by the <code>boxplot()</code> function, but this time we need to be much more precise. In the context of linear regression, there are three conceptually distinct ways in which an observation might be called “anomalous”. All three are interesting, but they have rather different implications for your analysis.</p>
 The first kind of unusual observation is an <strong><em>outlier</em></strong>. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in Figure <a href="regression.html#fig:outlier">15.7</a>. In practice, we operationalise this concept by saying that an outlier is an observation that has a very large Studentised residual, <span class="math inline">\(\epsilon_i^*\)</span>. Outliers are interesting: a big outlier <em>might</em> correspond to junk data – e.g., the variables might have been entered incorrectly, or some other defect may be detectable. Note that you shouldn’t throw an observation away just because it’s an outlier. But the fact that it’s an outlier is often a cue to look more closely at that case, and try to find out why it’s so different.
 <div class="figure"><span id="fig:outlier"></span>
-<img src="rbook-master/img/regression2/unusual_outlier.png" alt="An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line." width="458" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/regression2/unusual_outlier.png" alt="An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line."  />
 <p class="caption">
 Figure 15.7: An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line.
 </p>
@@ -1394,7 +1395,7 @@ Figure 15.7: An illustration of outliers. The dotted lines plot the regression l
 ##         97         98         99        100 
 ## 0.01817919 0.03811718 0.01945603 0.01373394</code></pre>
 <div class="figure"><span id="fig:leverage"></span>
-<img src="rbook-master/img/regression2/unusual_leverage.png" alt="An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations; as a consequence, the observation falls very close to the regression line and does not distort it." width="464" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/regression2/unusual_leverage.png" alt="An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations; as a consequence, the observation falls very close to the regression line and does not distort it."  />
 <p class="caption">
 Figure 15.8: An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations; as a consequence, the observation falls very close to the regression line and does not distort it.
 </p>
@@ -1402,7 +1403,7 @@ Figure 15.8: An illustration of high leverage points. The anomalous observation 
 <p>In general, if an observation lies far away from the other ones in terms of the predictor variables, it will have a large hat value (as a rough guide, high leverage is when the hat value is more than 2-3 times the average; and note that the sum of the hat values is constrained to be equal to <span class="math inline">\(K+1\)</span>). High leverage points are also worth looking at in more detail, but they’re much less likely to be a cause for concern unless they are also outliers. % guide from Venables and Ripley.</p>
 <p>This brings us to our third measure of unusualness, the <strong><em>influence</em></strong> of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in Figure <a href="regression.html#fig:influence">15.9</a>. Notice the contrast to the previous two figures: outliers don’t move the regression line much, and neither do high leverage points. But something that is an outlier and has high leverage… that has a big effect on the regression line.</p>
 <div class="figure"><span id="fig:influence"></span>
-<img src="rbook-master/img/regression2/unusual_influence.png" alt="An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)." width="444" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/regression2/unusual_influence.png" alt="An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis)."  />
 <p class="caption">
 Figure 15.9: An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis).
 </p>
@@ -1490,7 +1491,7 @@ Figure 15.11: Residuals versus leverage. This is one of the standard regression 
  )</code></pre></div>
 <p>The resulting plot is shown in Figure <a href="regression.html#fig:residhist">15.12</a>, and as you can see the plot looks pretty damn close to normal, almost unnaturally so.</p>
 <div class="figure"><span id="fig:residhist"></span>
-<img src="rbook-master/img/regression2/residhist.png" alt="A histogram of the (ordinary) residuals in the `regression.2` model. These residuals look very close to being normally distributed, much moreso than is typically seen with real data. This shouldn't surprise you... they aren't real data, and they aren't real residuals!" width="528" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/regression2/residhist.png" alt="A histogram of the (ordinary) residuals in the `regression.2` model. These residuals look very close to being normally distributed, much moreso than is typically seen with real data. This shouldn't surprise you... they aren't real data, and they aren't real residuals!"  />
 <p class="caption">
 Figure 15.12: A histogram of the (ordinary) residuals in the <code>regression.2</code> model. These residuals look very close to being normally distributed, much moreso than is typically seen with real data. This shouldn’t surprise you… they aren’t real data, and they aren’t real residuals!
 </p>
@@ -1860,7 +1861,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1870,6 +1871,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

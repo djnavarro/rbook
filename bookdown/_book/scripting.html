@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 8 Basic programming | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 8 Basic programming | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 8 Basic programming | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="part-iv-statistical-theory.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -854,7 +855,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="our-first-script" class="section level3">
 <h3><span class="header-section-number">8.1.2</span> Our first script</h3>
 <div class="figure"><span id="fig:script"></span>
-<img src="rbook-master/img/scripting/script.png" alt="A screenshot showing the `hello.R` script if you open in using the default text editor (TextEdit) on a Mac. Using a simple text editor like TextEdit on a Mac or Notepad on Windows isn't actually the best way to write your scripts, but it is the simplest. More to the point, it highlights the fact that a script really is just an ordinary text file." width="232" />
+<img src="img/scripting/script.png" alt="A screenshot showing the `hello.R` script if you open in using the default text editor (TextEdit) on a Mac. Using a simple text editor like TextEdit on a Mac or Notepad on Windows isn't actually the best way to write your scripts, but it is the simplest. More to the point, it highlights the fact that a script really is just an ordinary text file." width="232" />
 <p class="caption">
 Figure 8.1: A screenshot showing the <code>hello.R</code> script if you open in using the default text editor (TextEdit) on a Mac. Using a simple text editor like TextEdit on a Mac or Notepad on Windows isn’t actually the best way to write your scripts, but it is the simplest. More to the point, it highlights the fact that a script really is just an ordinary text file.
 </p>
@@ -867,11 +868,11 @@ x &lt;-<span class="st"> &quot;hello world&quot;</span>
 <p>So how do we run the script? Assuming that the <code>hello.R</code> file has been saved to your working directory, then you can run the script using the following command:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>( <span class="st">&quot;hello.R&quot;</span> )</code></pre></div>
 <p>If the script file is saved in a different directory, then you need to specify the path to the file, in exactly the same way that you would have to when loading a data file using <code>load()</code>. In any case, when you type this command, R opens up the script file: it then reads each command in the file in the same order that they appear in the file, and executes those commands in that order. The simple script that I’ve shown above contains two commands. The first one creates a variable <code>x</code> and the second one prints it on screen. So, when we run the script, this is what we see on screen:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;./rbook-master/scripts/hello.R&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;hello.R&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;hello world&quot;</code></pre>
 <p>If we inspect the workspace using a command like <code>who()</code> or <code>objects()</code>, we discover that R has created the new variable <code>x</code> within the workspace, and not surprisingly <code>x</code> is a character string containing the text <code>&quot;hello world&quot;</code>. And just like that, you’ve written your first program R. It really is that simple.</p>
 <div class="figure"><span id="fig:script2"></span>
-<img src="rbook-master/img/scripting/script2.png" alt="A screenshot showing the `hello.R` script open in Rstudio. Assuming that you're looking at this document in colour, you'll notice that the &quot;hello world&quot; text is shown in green. This isn't something that you do yourself: that's Rstudio being helpful. Because the text editor in Rstudio &quot;knows&quot; something about how R commands work, it will highlight different parts of your script in different colours. This is useful, but it's not actually part of the script itself." width="245" />
+<img src="img/scripting/script2.png" alt="A screenshot showing the `hello.R` script open in Rstudio. Assuming that you're looking at this document in colour, you'll notice that the &quot;hello world&quot; text is shown in green. This isn't something that you do yourself: that's Rstudio being helpful. Because the text editor in Rstudio &quot;knows&quot; something about how R commands work, it will highlight different parts of your script in different colours. This is useful, but it's not actually part of the script itself." width="245" />
 <p class="caption">
 Figure 8.2: A screenshot showing the <code>hello.R</code> script open in Rstudio. Assuming that you’re looking at this document in colour, you’ll notice that the “hello world” text is shown in green. This isn’t something that you do yourself: that’s Rstudio being helpful. Because the text editor in Rstudio “knows” something about how R commands work, it will highlight different parts of your script in different colours. This is useful, but it’s not actually part of the script itself.
 </p>
@@ -893,7 +894,7 @@ Figure 8.2: A screenshot showing the <code>hello.R</code> script open in Rstudio
 <span class="co"># Load the data, and tell the user that this is what we&#39;re</span>
 <span class="co"># doing. </span>
 <span class="kw">cat</span>( <span class="st">&quot;loading data from nightgarden.Rdata...</span><span class="ch">\n</span><span class="st">&quot;</span> )
-<span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/nightgarden.Rdata&quot;</span> )
+<span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;nightgarden.Rdata&quot;</span>))
 
 <span class="co"># Create a cross tabulation and print it out:</span>
 <span class="kw">cat</span>( <span class="st">&quot;tabulating data...</span><span class="ch">\n</span><span class="st">&quot;</span> )
@@ -909,7 +910,7 @@ itng.table &lt;-<span class="st"> </span><span class="kw">table</span>( speaker,
 <span class="co"># doing. </span>
 <span class="kw">cat</span>( <span class="st">&quot;loading data from nightgarden.Rdata...</span><span class="ch">\n</span><span class="st">&quot;</span> )</code></pre></div>
 <pre><code>## loading data from nightgarden.Rdata...</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/nightgarden.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;nightgarden.Rdata&quot;</span>))
 
 <span class="co"># Create a cross tabulation and print it out:</span>
 <span class="kw">cat</span>( <span class="st">&quot;tabulating data...</span><span class="ch">\n</span><span class="st">&quot;</span> )</code></pre></div>
@@ -957,7 +958,7 @@ x &lt;-<span class="st"> </span><span class="dv">0</span>
 }
 <span class="kw">print</span>( x )</code></pre></div>
 <p>When we run this script, R starts at the top and creates a new variable called <code>x</code> and assigns it a value of 0. It then moves down to the loop, and “notices” that the condition here is <code>x &lt; 1000</code>. Since the current value of <code>x</code> is zero, the condition is true, so it enters the body of the loop (inside the curly braces). There’s only one command here<a href="#fn135" class="footnoteRef" id="fnref135"><sup>135</sup></a> which instructs R to increase the value of <code>x</code> by 17. R then returns to the top of the loop, and rechecks the condition. The value of <code>x</code> is now 17, but that’s still less than 1000, so the loop continues. This cycle will continue for a total of 59 iterations, until finally <code>x</code> reaches a value of 1003 (i.e., <span class="math inline">\(59 \times 17 = 1003\)</span>). At this point, the loop stops, and R finally reaches line 5 of the script, prints out the value of <code>x</code> on screen, and then halts. Let’s watch:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>( <span class="st">&quot;./rbook-master/scripts/whileexample.R&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;whileexample.R&quot;</span>))</code></pre></div>
 <pre><code>## [1] 1003</code></pre>
 <p>Truly fascinating stuff.</p>
 </div>
@@ -976,7 +977,7 @@ x &lt;-<span class="st"> </span><span class="dv">0</span>
   <span class="kw">print</span>( <span class="st">&quot;hello&quot;</span> )
 }</code></pre></div>
 <p>This is the simplest example of a <code>for</code> loop. The vector of possible values for the <code>i</code> variable just corresponds to the numbers from 1 to 3. Not only that, the body of the loop doesn’t actually depend on <code>i</code> at all. Not surprisingly, here’s what happens when we run it:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>( <span class="st">&quot;./rbook-master/scripts/forexample.R&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;forexample.R&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;hello&quot;
 ## [1] &quot;hello&quot;
 ## [1] &quot;hello&quot;</code></pre>
@@ -996,7 +997,7 @@ words &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&
   
 }</code></pre></div>
 <p>And here’s the output:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>( <span class="st">&quot;./rbook-master/scripts/forexample2.R&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;forexample2.R&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;IT has 2 letters&quot;
 ## [1] &quot;WAS has 3 letters&quot;
 ## [1] &quot;THE has 3 letters&quot;
@@ -1041,7 +1042,7 @@ monthly.multiplier &lt;-<span class="st"> </span>(<span class="dv">1</span><span
 <p>Anyway… all of that is really just setting the stage. It’s not the interesting part of the script. The interesting part (such as it is) is the loop. The <code>while</code> statement on tells R that it needs to keep looping until the <code>balance</code> reaches zero (or less, since it might be that the final payment of $1600 pushes the balance below zero). Then, inside the body of the loop, we have two different blocks of code. In the first bit, we do all the number crunching. Firstly we increase the value <code>month</code> by 1. Next, the bank charges the interest, so the <code>balance</code> goes up. Then, the couple makes their monthly payment and the <code>balance</code> goes down. Finally, we keep track of the total amount of money that the couple has paid so far, by adding the <code>payments</code> to the running tally. After having done all this number crunching, we tell R to issue the couple with a very terse monthly statement, which just indicates how many months they’ve been paying the loan and how much money they still owe the bank. Which is rather rude of us really. I’ve grown attached to this couple and I really feel they deserve better than that. But, that’s banks for you.</p>
 <p>In any case, the key thing here is the tension between the increase in <code>balance</code> on and the decrease. As long as the decrease is bigger, then the balance will eventually drop to zero and the loop will eventually terminate. If not, the loop will continue forever! This is actually very bad programming on my part: I really should have included something to force R to stop if this goes on too long. However, I haven’t shown you how to evaluate “if” statements yet, so we’ll just have to hope that the author of the book has rigged the example so that the code actually runs. Hm. I wonder what the odds of that are? Anyway, assuming that the loop does eventually terminate, there’s one last line of code that prints out the total amount of money that the couple handed over to the bank over the lifetime of the loan.</p>
 <p>Now that I’ve explained everything in the script in tedious detail, let’s run it and see what happens:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>( <span class="st">&quot;./rbook-master/scripts/mortgage.R&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;mortgage.R&quot;</span>))</code></pre></div>
 <pre><code>## month 1 : balance 299622 
 ## month 2 : balance 299243 
 ## month 3 : balance 298862 
@@ -1435,7 +1436,7 @@ day &lt;-<span class="st"> </span><span class="kw">weekdays</span>( today )  <sp
 }</code></pre></div>
 <pre><code>## [1] &quot;I don&#39;t like Mondays&quot;</code></pre>
 <p>Since today happens to be a Monday, when I run the script here’s what happens:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>( <span class="st">&quot;./rbook-master/scripts/ifelseexample.R&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;ifelseexample.R&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;I don&#39;t like Mondays&quot;</code></pre>
 <p>There are other ways of making conditional statements in R. In particular, the <code>ifelse()</code> function and the <code>switch()</code> functions can be very useful in different contexts. However, my main aim in this chapter is to briefly cover the very basics, so I’ll move on.</p>
 </div>
@@ -1456,7 +1457,7 @@ quadruple &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
   <span class="kw">return</span>(y)
 } </code></pre></div>
 <p>When we run this script, as follows</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>( <span class="st">&quot;./rbook-master/scripts/functionexample.R&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;functionexample.R&quot;</span>))</code></pre></div>
 <p>nothing appears to have happened, but there is a new object created in the workspace called <code>quadruple</code>. Not surprisingly, if we ask R to tell us what kind of object it is, it tells us that it is a function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>( quadruple )</code></pre></div>
 <pre><code>## [1] &quot;function&quot;</code></pre>
@@ -1541,6 +1542,7 @@ quadruple &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
 ##    payments             numeric       1         
 ##    PJ                   character     1         
 ##    plotOne              function                
+##    projecthome          character     1         
 ##    quadruple            function                
 ##    row.1                numeric       3         
 ##    row.2                numeric       3         
@@ -1695,7 +1697,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1705,6 +1707,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

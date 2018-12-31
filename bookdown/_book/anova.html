@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 14 Comparing several means (one-way ANOVA) | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 14 Comparing several means (one-way ANOVA) | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 14 Comparing several means (one-way ANOVA) | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="regression.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -833,7 +834,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">14.1</span> An illustrative data set</h2>
 <p>Suppose you’ve become involved in a clinical trial in which you are testing a new antidepressant drug called <em>Joyzepam</em>. In order to construct a fair test of the drug’s effectiveness, the study involves three separate drugs to be administered. One is a placebo, and the other is an existing antidepressant / anti-anxiety drug called <em>Anxifree</em>. A collection of 18 participants with moderate to severe depression are recruited for your initial testing. Because the drugs are sometimes administered in conjunction with psychological therapy, your study includes 9 people undergoing cognitive behavioural therapy (CBT) and 9 who are not. Participants are randomly assigned (doubly blinded, of course) a treatment, such that there are 3 CBT people and 3 no-therapy people assigned to each of the 3 drugs. A psychologist assesses the mood of each person after a 3 month run with each drug: and the overall <em>improvement</em> in each person’s mood is assessed on a scale ranging from <span class="math inline">\(-5\)</span> to <span class="math inline">\(+5\)</span>.</p>
 <p>With that as the study design, let’s now look at what we’ve got in the data file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./rbook-master/data/clinicaltrial.Rdata&quot;</span> ) <span class="co"># load data</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>, <span class="st">&quot;clinicaltrial.Rdata&quot;</span>)) <span class="co"># load data</span>
 <span class="kw">str</span>(clin.trial)       </code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    18 obs. of  3 variables:
 ##  $ drug     : Factor w/ 3 levels &quot;placebo&quot;,&quot;anxifree&quot;,..: 1 1 1 2 2 2 3 3 3 1 ...
@@ -1774,9 +1775,9 @@ Z &lt;-<span class="st"> </span><span class="kw">abs</span>(Y <span class="op">-
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my.anova.residuals &lt;-<span class="st"> </span><span class="kw">residuals</span>( <span class="dt">object =</span> my.anova )   <span class="co"># extract the residuals</span></code></pre></div>
 <p>We can print them out too, though it’s not exactly an edifying experience. In fact, given that I’m on the verge of putting <em>myself</em> to sleep just typing this, it might be a good idea to skip that step. Instead, let’s draw some pictures and run ourselves a hypothesis test:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>( <span class="dt">x =</span> my.anova.residuals )           <span class="co"># plot a histogram (similar to Figure @ref{fig:normalityanova}a)</span></code></pre></div>
-<p><img src="navarro2_files/figure-html/unnamed-chunk-609-1.png" width="672" /></p>
+<p><img src="navarro2_files/figure-html/unnamed-chunk-613-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>( <span class="dt">y =</span> my.anova.residuals )         <span class="co"># draw a QQ plot (similar to Figure @ref{fig:normalityanova}b)</span></code></pre></div>
-<p><img src="navarro2_files/figure-html/unnamed-chunk-609-2.png" width="672" /></p>
+<p><img src="navarro2_files/figure-html/unnamed-chunk-613-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shapiro.test</span>( <span class="dt">x =</span> my.anova.residuals )   <span class="co"># run Shapiro-Wilk test</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
@@ -1959,7 +1960,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1969,6 +1970,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

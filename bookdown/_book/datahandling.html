@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown 0.9 and GitBook 2.6.7">
+  <title>Chapter 7 Pragmatic matters | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta property="og:title" content="Chapter 7 Pragmatic matters | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta property="og:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
+  <meta name="twitter:title" content="Chapter 7 Pragmatic matters | Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   
-  <meta name="twitter:description" content="<em>Learning Statistics with R</em> covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
 <meta name="author" content="DJ Navarro">
@@ -36,6 +36,7 @@
 <link rel="next" href="scripting.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -854,7 +855,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">7.1.1</span> Creating tables from vectors</h3>
 <p>Let’s start with a simple example. As the father of a small child, I naturally spend a lot of time watching TV shows like <em>In the Night Garden</em>. In the <code>nightgarden.Rdata</code> file, I’ve transcribed a short section of the dialogue. The file contains two variables, <code>speaker</code> and <code>utterance</code>, and when we take a look at the data, it becomes very clear what happened to my sanity.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lsr)
-<span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/nightgarden.Rdata&quot;</span> )
+<span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;nightgarden.Rdata&quot;</span>))
 <span class="kw">who</span>()</code></pre></div>
 <pre><code>##    -- Name --        -- Class --   -- Size --
 ##    afl.finalists     factor        400       
@@ -879,6 +880,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##    out.2             data.frame    100 x 2   
 ##    parenthood        data.frame    100 x 4   
 ##    plotOne           function                
+##    projecthome       character     1         
 ##    speaker           character     10        
 ##    teams             character     17        
 ##    utterance         character     10        
@@ -998,7 +1000,7 @@ itng.table                   <span class="co"># display the table again, as a re
 <p>On a scale of 1 (strongly disagree) to 7 (strongly agree), to what extent do you agree with the proposition that “Dinosaurs are awesome”?</p>
 </blockquote>
 <p>Now let’s load and look at the data. The data file <code>likert.Rdata</code> contains a single variable that contains the raw Likert-scale responses:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/likert.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;likert.Rdata&quot;</span>))
 likert.raw</code></pre></div>
 <pre><code>##  [1] 1 7 3 4 4 4 2 6 5 5</code></pre>
 <p>However, if you think about it, this isn’t the best way to represent these responses. Because of the fairly symmetric way that we set up the response scale, there’s a sense in which the midpoint of the scale should have been coded as 0 (no opinion), and the two endpoints should be <span class="math inline">\(+3\)</span> (strong agree) and <span class="math inline">\(-3\)</span> (strong disagree). By recoding the data in this way, it’s a bit more reflective of how we really think about the responses. The recoding here is trivially easy: we just subtract 4 from the raw scores:</p>
@@ -1336,6 +1338,7 @@ speech.by.char</code></pre></div>
 ##    out.2              data.frame    100 x 2   
 ##    parenthood         data.frame    100 x 4   
 ##    plotOne            function                
+##    projecthome        character     1         
 ##    some.data          numeric       18        
 ##    speaker            character     10        
 ##    speech.by.char     list          3         
@@ -1392,6 +1395,7 @@ speech.by.char</code></pre></div>
 ##    out.2              data.frame    100 x 2   
 ##    parenthood         data.frame    100 x 4   
 ##    plotOne            function                
+##    projecthome        character     1         
 ##    some.data          numeric       18        
 ##    speaker            character     10        
 ##    speech.by.char     list          3         
@@ -1462,7 +1466,7 @@ speech.by.char</code></pre></div>
 <div id="using-square-brackets-i.-rows-and-columns" class="section level3">
 <h3><span class="header-section-number">7.5.2</span> Using square brackets: I. Rows and columns</h3>
 <p>Throughout the book so far, whenever I’ve been subsetting a vector I’ve tended use the square brackets <code>[]</code> to do so. But in the previous section when I started talking about subsetting a data frame I used the <code>subset()</code> function. As a consequence, you might be wondering whether it is possible to use the square brackets to subset a data frame. The answer, of course, is yes. Not only <em>can</em> you use square brackets for this purpose, as you become more familiar with R you’ll find that this is actually much more convenient than using <code>subset()</code>. Unfortunately, the use of square brackets for this purpose is somewhat complicated, and can be very confusing to novices. So be warned: this section is more complicated than it feels like it “should” be. With that warning in place, I’ll try to walk you through it slowly. For this section, I’ll use a slightly different data set, namely the <code>garden</code> data frame that is stored in the <code>&quot;nightgarden2.Rdata&quot;</code> file.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/nightgarden2.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;nightgarden2.Rdata&quot;</span>))
 garden</code></pre></div>
 <pre><code>##            speaker utterance line
 ## case.1  upsy-daisy       pip    1
@@ -1790,7 +1794,7 @@ cake.mat2</code></pre></div>
 <div id="transposing-a-matrix-or-data-frame" class="section level3">
 <h3><span class="header-section-number">7.6.6</span> Transposing a matrix or data frame</h3>
 <p>One of the main reasons that I wanted to discuss the <code>rbind()</code> and <code>cbind()</code> functions in the same section as the <code>data.frame()</code> function is that it immediately raises the question of how to “flip” or <strong><em>transpose</em></strong> a matrix or data frame. Notice that in the last section I was able to produce two different matrices, <code>cake.mat1</code> and <code>cake.mat2</code> that were basically mirror images of one another. A natural question to ask is whether you can directly transform one into another. The transpose function <code>t()</code> allows us to do this in a straightforward fashion. To start with, I’ll show you how to transpose a matrix, and then I’ll move onto talk about data frames. Firstly, let’s load a matrix I prepared earlier, from the <code>cakes.Rdata</code> file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/cakes.Rdata&quot;</span> )
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;cakes.Rdata&quot;</span>))
 cakes</code></pre></div>
 <pre><code>##        time.1 time.2 time.3 time.4 time.5
 ## cake.1    100     80      0      0      0
@@ -1843,7 +1847,7 @@ cakes.flipped</code></pre></div>
 <div id="long-form-and-wide-form-data" class="section level3">
 <h3><span class="header-section-number">7.7.1</span> Long form and wide form data</h3>
 <p>The most common format in which you might obtain data is as a “case by variable” layout, commonly known as the <strong><em>wide form</em></strong> of the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./rbook-master/data/repeated.Rdata&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;repeated.Rdata&quot;</span>))
 <span class="kw">who</span>()</code></pre></div>
 <pre><code>##    -- Name --         -- Class --   -- Size --
 ##    afl.finalists      factor        400       
@@ -1896,6 +1900,7 @@ cakes.flipped</code></pre></div>
 ##    out.2              data.frame    100 x 2   
 ##    parenthood         data.frame    100 x 4   
 ##    plotOne            function                
+##    projecthome        character     1         
 ##    some.data          numeric       18        
 ##    speaker            character     10        
 ##    speech.by.char     list          3         
@@ -2382,12 +2387,13 @@ cat( &quot;xxxx\roo&quot; )  # \r returns you to the beginning of the line</code
 <li><code>na.strings</code>. Often you’ll get given data with missing values. For one reason or another, some entries in the table are missing. The data file needs to include a “special” string to indicate that the entry is missing. By default R assumes that this string is <code>NA</code>, since that’s what <em>it</em> would do, but there’s no universal agreement on what to use in this situation. If the file uses <code>???</code> instead, then you’ll need to set <code>na.strings = &quot;???&quot;</code>.</li>
 </ul>
 <p>It’s kind of nice to be able to have all these options that you can tinker with. For instance, have a look at the data file shown pictured in Figure <a href="datahandling.html#fig:booksales2csv">7.1</a>. This file contains almost the same data as the last file (except it doesn’t have a header), and it uses a bunch of wacky features that you don’t normally see in CSV files. In fact, it just so happens that I’m going to have to change all five of those arguments listed above in order to load this file. Here’s how I would do it:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read.csv</span>( <span class="dt">file =</span> <span class="st">&quot;./rbook-master/data/booksales2.csv&quot;</span>,  <span class="co"># specify the name of the file</span>
-                   <span class="dt">header =</span> <span class="ot">FALSE</span>,           <span class="co"># variable names in the file?</span>
-                   <span class="dt">skip =</span> <span class="dv">8</span>,                 <span class="co"># ignore the first 8 lines</span>
-                   <span class="dt">quote =</span> <span class="st">&quot;*&quot;</span>,              <span class="co"># what indicates text data?</span>
-                   <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,               <span class="co"># what separates different entries?</span>
-                   <span class="dt">na.strings =</span> <span class="st">&quot;NFI&quot;</span> )      <span class="co"># what is the code for missing data?</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read.csv</span>( 
+  <span class="dt">file =</span> <span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;booksales2.csv&quot;</span>), <span class="co"># specify path to the file</span>
+  <span class="dt">header =</span> <span class="ot">FALSE</span>,           <span class="co"># variable names in the file?</span>
+  <span class="dt">skip =</span> <span class="dv">8</span>,                 <span class="co"># ignore the first 8 lines</span>
+  <span class="dt">quote =</span> <span class="st">&quot;*&quot;</span>,              <span class="co"># what indicates text data?</span>
+  <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,               <span class="co"># what separates different entries?</span>
+  <span class="dt">na.strings =</span> <span class="st">&quot;NFI&quot;</span> )      <span class="co"># what is the code for missing data?</span></code></pre></div>
 <p>If I now have a look at the data I’ve loaded, I see that this is what I’ve got:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>( data )</code></pre></div>
 <pre><code>##          V1 V2  V3   V4
@@ -2399,7 +2405,7 @@ cat( &quot;xxxx\roo&quot; )  # \r returns you to the beginning of the line</code
 ## 6    June   30   0 high</code></pre>
 <p>Because I told R to expect <code>*</code> to be used as the quoting character instead of <code>&quot;</code>; to look for tabs (which we write like this: <code>\t</code>) instead of commas, and to skip the first 8 lines of the file, it’s basically loaded the right data. However, since <code>booksales2.csv</code> doesn’t contain the column names, R has made them up. Showing the kind of imagination I expect from insentient software, R decided to call them <code>V1</code>, <code>V2</code>, <code>V3</code> and <code>V4</code>. Finally, because I told it that the file uses “NFI” to denote missing data, R correctly figures out that the sales data for May are actually missing.</p>
 <div class="figure"><span id="fig:booksales2csv"></span>
-<img src="rbook-master/img/datahandling/booksales2csv.jpg" alt="The `booksales2.csv` data file. It contains more or less the same data as the original `booksales.csv` data file, but has a lot of very quirky features." width="286" />
+<img src="img/datahandling/booksales2csv.jpg" alt="The `booksales2.csv` data file. It contains more or less the same data as the original `booksales.csv` data file, but has a lot of very quirky features." width="286" />
 <p class="caption">
 Figure 7.1: The <code>booksales2.csv</code> data file. It contains more or less the same data as the original <code>booksales.csv</code> data file, but has a lot of very quirky features.
 </p>
@@ -2410,7 +2416,7 @@ Figure 7.1: The <code>booksales2.csv</code> data file. It contains more or less 
 <h3><span class="header-section-number">7.9.2</span> Loading data from SPSS (and other statistics packages)</h3>
 <p>The commands listed above are the main ones we’ll need for data files in this book. But in real life we have many more possibilities. For example, you might want to read data files in from other statistics programs. Since SPSS is probably the most widely used statistics package in psychology, it’s worth briefly showing how to open SPSS data files (file extension <code>.sav</code>). It’s surprisingly easy. The extract below should illustrate how to do so:</p>
 <pre><code>library( foreign )                 # load the package
-X &lt;- read.spss( &quot;./rbook-master/data/datafile.sav&quot; )   # create a list containing the data
+X &lt;- read.spss( file.path(projecthome,&quot;data&quot;,&quot;datafile.sav&quot; ))   # create a list containing the data
 X &lt;- as.data.frame( X )            # convert to data frame</code></pre>
 <p>If you wanted to import from an SPSS file to a data frame directly, instead of importing a list and then converting the list to a data frame, you can do that too:</p>
 <pre><code>X &lt;- read.spss( file = &quot;datafile.sav&quot;, to.data.frame = TRUE )</code></pre>
@@ -2649,20 +2655,21 @@ x <span class="op">+</span><span class="st"> </span>y                  <span cla
 <div id="environments" class="section level3">
 <h3><span class="header-section-number">7.12.3</span> An introduction to environments</h3>
 <div class="figure"><span id="fig:envs"></span>
-<img src="rbook-master/img/datahandling/environments.png" alt="The environment panel in Rstudio can actually show you the contents of any loaded package: each package defines a separate environment, so you can select the one you want to look at in this panel." width="532" />
+<img src="C:/Users/Dan/GitHub/sites/learningstatisticswithr/bookdown/img/datahandling/environments.png" alt="The environment panel in Rstudio can actually show you the contents of any loaded package: each package defines a separate environment, so you can select the one you want to look at in this panel."  />
 <p class="caption">
 Figure 7.2: The environment panel in Rstudio can actually show you the contents of any loaded package: each package defines a separate environment, so you can select the one you want to look at in this panel.
 </p>
 </div>
 <p>In this section I want to ask a slightly different question: what <em>is</em> the workspace exactly? This question seems simple, but there’s a fair bit to it. This section can be skipped if you’re not really interested in the technical details. In the description I gave earlier, I talked about the workspace as an abstract location in which R variables are stored. That’s basically true, but it hides a couple of key details. For example, any time you have R open, it has to store <em>lots</em> of things in the computer’s memory, not just your variables. For example, the <code>who()</code> function that I wrote has to be stored in memory somewhere, right? If it weren’t I wouldn’t be able to use it. That’s pretty obvious. But equally obviously it’s not in the workspace either, otherwise you should have seen it! Here’s what’s happening. R needs to keep track of a lot of different things, so what it does is organise them into <strong><em>environments</em></strong>, each of which can contain lots of different variables and functions. Your workspace is one such environment. Every package that you have loaded is another environment. And every time you call a function, R briefly creates a temporary environment in which the function itself can work, which is then deleted after the calculations are complete. So, when I type in <code>search()</code> at the command line</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre></div>
-<pre><code>##  [1] &quot;.GlobalEnv&quot;        &quot;package:lmtest&quot;    &quot;package:zoo&quot;      
-##  [4] &quot;package:gplots&quot;    &quot;package:sciplot&quot;   &quot;package:HistData&quot; 
-##  [7] &quot;package:MASS&quot;      &quot;package:lsr&quot;       &quot;package:psych&quot;    
-## [10] &quot;package:car&quot;       &quot;package:carData&quot;   &quot;tools:rstudio&quot;    
-## [13] &quot;package:stats&quot;     &quot;package:graphics&quot;  &quot;package:grDevices&quot;
-## [16] &quot;package:utils&quot;     &quot;package:datasets&quot;  &quot;package:methods&quot;  
-## [19] &quot;Autoloads&quot;         &quot;package:base&quot;</code></pre>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;          &quot;package:BayesFactor&quot; &quot;package:Matrix&quot;     
+##  [4] &quot;package:coda&quot;        &quot;package:effects&quot;     &quot;package:lmtest&quot;     
+##  [7] &quot;package:zoo&quot;         &quot;package:gplots&quot;      &quot;package:sciplot&quot;    
+## [10] &quot;package:HistData&quot;    &quot;package:MASS&quot;        &quot;package:lsr&quot;        
+## [13] &quot;package:psych&quot;       &quot;package:car&quot;         &quot;package:carData&quot;    
+## [16] &quot;tools:rstudio&quot;       &quot;package:stats&quot;       &quot;package:graphics&quot;   
+## [19] &quot;package:grDevices&quot;   &quot;package:utils&quot;       &quot;package:datasets&quot;   
+## [22] &quot;package:methods&quot;     &quot;Autoloads&quot;           &quot;package:base&quot;</code></pre>
 <p>what I’m actually looking at is a <em>sequence of environments</em>. The first one, <code>&quot;.GlobalEnv&quot;</code> is the technically-correct name for your workspace. No-one really calls it that: it’s either called the workspace or the global environment. And so when you type in <code>objects()</code> or <code>who()</code> what you’re really doing is listing the contents of <code>&quot;.GlobalEnv&quot;</code>. But there’s no reason why we can’t look up the contents of these other environments using the <code>objects()</code> function (currently <code>who()</code> doesn’t support this). You just have to be a bit more explicit in your command. If I wanted to find out what is in the <code>package:stats</code> environment (i.e., the environment into which the contents of the <code>stats</code> package have been loaded), here’s what I’d get</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">objects</span>(<span class="st">&quot;package:stats&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;acf&quot;        &quot;acf2AR&quot;     &quot;add.scope&quot;  &quot;add1&quot;       &quot;addmargins&quot;
@@ -2767,7 +2774,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -2777,6 +2784,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
