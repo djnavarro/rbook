@@ -351,7 +351,7 @@ The "basic" theory of null hypothesis testing isn't built to handle this sort of
 Worse yet, they're a lie in a dangerous way, because they're all *too small*. To give you a sense of just how bad it can be, consider the following (worst case) scenario. Imagine you're a really super-enthusiastic researcher on a tight budget who didn't pay any attention to my warnings above. You design a study comparing two groups. You desperately want to see a significant result at the $p<.05$ level, but you really don't want to collect any more data than you have to (because it's expensive). In order to cut costs, you start collecting data, but every time a new observation arrives you run a $t$-test on your data. If the $t$-tests says $p<.05$ then you stop the experiment and report a significant result. If not, you keep collecting data. You keep doing this until you reach your pre-defined spending limit for this experiment. Let's say that limit kicks in at $N=1000$ observations. As it turns out, the truth of the matter is that there is no real effect to be found: the null hypothesis is true. So, what's the chance that you'll make it to the end of the experiment and (correctly) conclude that there is no effect? In an ideal world, the answer here should be 95\%. After all, the whole *point* of the $p<.05$ criterion is to control the Type I error rate at 5\%, so what we'd hope is that there's only a 5\% chance of falsely rejecting the null hypothesis in this situation. However, there's no guarantee that will be true. You're breaking the rules: you're running tests repeatedly, "peeking" at your data to see if you've gotten a significant result, and all bets are off. 
 
 ```{r type1, fig.cap="How badly can things go wrong if you re-run your tests every time new data arrive? If you are a frequentist, the answer is \"very wrong\".", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/bayes/adapt.png")
+knitr::include_graphics(file.path(projecthome, "img","bayes","adapt.png"))
 
 ```
 
@@ -389,7 +389,7 @@ Time to change gears. Up to this point I've been talking about what Bayesian inf
 The first kind of statistical inference problem I discussed in this book appeared in Chapter \@ref(chisquare), in which we discussed categorical data analysis problems. In that chapter I talked about several different statistical problems that you might be interested in, but the one that appears most often in real life is the analysis of  *contingency tables*. In this kind of data analysis situation, we have a cross-tabulation of one variable against another one, and the goal is to find out if there is some *association* between these variables. The data set I used to illustrate this problem is found in the `chapek9.Rdata` file, and it contains a single data frame `chapek9`
 
 ```{r}
-load("./rbook-master/data/chapek9.Rdata")
+load(file.path(projecthome, "data","chapek9.Rdata"))
 head(chapek9)
 ```
 
@@ -534,7 +534,7 @@ The second type of statistical inference problem discussed in this book is the c
 The most common type of $t$-test is the independent samples $t$-test, and it arises when you have data that look something like this:
 
 ```{r}
-load( "./rbook-master/data/harpo.Rdata" )
+load(file.path(projecthome, "data","harpo.Rdata"))
 head(harpo)
 ```
 
@@ -569,7 +569,7 @@ Before moving on, it's worth highlighting the difference between the orthodox te
 
 Back in Section \@ref(pairedsamplesttest) I discussed the `chico` data frame in which students grades were measured on two tests, and we were interested in finding out whether grades went up from test 1 to test 2. Because every student did both tests, the tool we used to analyse the data was a paired samples $t$-test. To remind you of what the data look like, here's the first few cases:
 ```{r}
-load("./rbook-master/data/chico.rdata")
+load(file.path(projecthome, "data","chico.Rdata"))
 head(chico)
 ```
 We originally analysed the data using the `pairedSamplesTTest()` function in the `lsr` package, but this time we'll use the `ttestBF()` function from the `BayesFactor` package to do the same thing. The easiest way to do it with this data set is to use the `x` argument to specify one variable and the `y` argument to specify the other. All we need to do then is specify `paired=TRUE` to tell R that this is a paired samples test. So here's our command:
@@ -591,7 +591,7 @@ Okay, so now we've seen Bayesian equivalents to orthodox chi-square tests and $t
 
 In Chapter \@ref(regression) I used the `parenthood` data to illustrate the basic ideas behind regression. To remind you of what that data set looks like, here's the first six observations:
 ```{r}
-load("./rbook-master/data/parenthood.Rdata")
+load(file.path(projecthome, "data","parenthood.Rdata"))
 head(parenthood)
 ```
 
@@ -684,7 +684,7 @@ As you can tell, the `BayesFactor` package is pretty flexible, and it can do Bay
 As with the other examples, I think it's useful to start with a reminder of how I discussed ANOVA earlier in the book. First, let's remind ourselves of what the data were. The example I used originally is the `clin.trial` data frame, which looks like this
 
 ```{r}
-load("./rbook-master/data/clinicaltrial.Rdata")
+load(file.path(projecthome, "data","clinicaltrial.Rdata"))
 head(clin.trial)
 ```
 

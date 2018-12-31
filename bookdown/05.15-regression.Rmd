@@ -17,7 +17,7 @@ colour <- TRUE
 	width <- 6
 	height <- 6
 	
-  load("./rbook-master/data/parenthood.Rdata")
+  load(file.path(projecthome, "data","parenthood.Rdata"))
 	
   
   drawBasicScatterplot <- function(dotcol,title) {
@@ -149,7 +149,7 @@ $$
 As before, $\epsilon_i$ is the residual associated with the $i$-th observation, $\epsilon_i = {Y}_i - \hat{Y}_i$. In this model, we now have three coefficients that need to be estimated: $b_0$ is the intercept, $b_1$ is the coefficient associated with my sleep, and $b_2$ is the coefficient associated with my son's sleep. However, although the number of coefficients that need to be estimated has changed, the basic idea of how the estimation works is unchanged: our estimated coefficients $\hat{b}_0$, $\hat{b}_1$ and $\hat{b}_2$ are those that minimise the sum squared residuals. 
 
 ```{r multipleregression, fig.cap="A 3D visualisation of a multiple regression model. There are two predictors in the model, `dan.sleep` and `baby.sleep`; the outcome variable is `dan.grump`. Together, these three variables form a 3D space: each observation (blue dots) is a point in this space. In much the same way that a simple linear regression model forms a line in 2D space, this multiple regression model forms a plane in 3D space. When we estimate the regression coefficients, what we're trying to do is find a plane that is as close to all the blue dots as possible.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/scatter3d_1.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2","scatter3d_1.png"))
 
 ```
 
@@ -502,7 +502,7 @@ One danger that you can run into with linear regression models is that your anal
 
 The first kind of unusual observation is an **_outlier_**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in Figure \@ref(fig:outlier). In practice, we operationalise this concept by saying that an outlier is an observation that has a very large Studentised residual, $\epsilon_i^*$. Outliers are interesting: a big outlier *might* correspond to junk data -- e.g., the variables might have been entered incorrectly, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case, and try to find out why it's so different.
 ```{r outlier, fig.cap="An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/unusual_outlier.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2","unusual_outlier.png"))
 
 ```
 
@@ -512,7 +512,7 @@ hatvalues( model = regression.2 )
 ```
 
 ```{r leverage, fig.cap="An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations; as a consequence, the observation falls very close to the regression line and does not distort it.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/unusual_leverage.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2", "unusual_leverage.png"))
 
 ```
 
@@ -521,7 +521,7 @@ In general, if an observation lies far away from the other ones in terms of the 
 This brings us to our third measure of unusualness, the **_influence_** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in Figure \@ref(fig:influence). Notice the contrast to the previous two figures: outliers don't move the regression line much, and neither do high leverage points. But something that is an outlier and has high leverage... that has a big effect on the regression line.
 
 ```{r influence, fig.cap="An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis).", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/unusual_influence.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2","unusual_influence.png"))
 
 ```
 
@@ -574,7 +574,7 @@ The resulting plot is shown in Figure \@ref(fig:residhist), and as you can see t
 
 
 ```{r residhist, fig.cap="A histogram of the (ordinary) residuals in the `regression.2` model. These residuals look very close to being normally distributed, much moreso than is typically seen with real data. This shouldn't surprise you... they aren't real data, and they aren't real residuals!", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/residhist.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2","residhist.png"))
 
 ```
 

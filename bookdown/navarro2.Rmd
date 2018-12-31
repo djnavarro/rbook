@@ -10729,7 +10729,7 @@ Suppose you've become involved in a clinical trial in which you are testing a ne
 
 With that as the study design, let's now look at what we've got in the data file:
 ```{r}
-load( "./rbook-master/data/clinicaltrial.Rdata" ) # load data
+load(file.path(projecthome, "data", "clinicaltrial.Rdata")) # load data
 str(clin.trial)       
 ```
 So we have a single data frame called `clin.trial`, containing three variables; `drug`, `therapy` and `mood.gain`. Next, let's print the data frame to get a sense of what the data actually look like. 
@@ -11664,7 +11664,7 @@ colour <- TRUE
 	width <- 6
 	height <- 6
 	
-  load("./rbook-master/data/parenthood.Rdata")
+  load(file.path(projecthome, "data","parenthood.Rdata"))
 	
   
   drawBasicScatterplot <- function(dotcol,title) {
@@ -11796,7 +11796,7 @@ $$
 As before, $\epsilon_i$ is the residual associated with the $i$-th observation, $\epsilon_i = {Y}_i - \hat{Y}_i$. In this model, we now have three coefficients that need to be estimated: $b_0$ is the intercept, $b_1$ is the coefficient associated with my sleep, and $b_2$ is the coefficient associated with my son's sleep. However, although the number of coefficients that need to be estimated has changed, the basic idea of how the estimation works is unchanged: our estimated coefficients $\hat{b}_0$, $\hat{b}_1$ and $\hat{b}_2$ are those that minimise the sum squared residuals. 
 
 ```{r multipleregression, fig.cap="A 3D visualisation of a multiple regression model. There are two predictors in the model, `dan.sleep` and `baby.sleep`; the outcome variable is `dan.grump`. Together, these three variables form a 3D space: each observation (blue dots) is a point in this space. In much the same way that a simple linear regression model forms a line in 2D space, this multiple regression model forms a plane in 3D space. When we estimate the regression coefficients, what we're trying to do is find a plane that is as close to all the blue dots as possible.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/scatter3d_1.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2","scatter3d_1.png"))
 
 ```
 
@@ -12149,7 +12149,7 @@ One danger that you can run into with linear regression models is that your anal
 
 The first kind of unusual observation is an **_outlier_**. The definition of an outlier (in this context) is an observation that is very different from what the regression model predicts. An example is shown in Figure \@ref(fig:outlier). In practice, we operationalise this concept by saying that an outlier is an observation that has a very large Studentised residual, $\epsilon_i^*$. Outliers are interesting: a big outlier *might* correspond to junk data -- e.g., the variables might have been entered incorrectly, or some other defect may be detectable. Note that you shouldn't throw an observation away just because it's an outlier. But the fact that it's an outlier is often a cue to look more closely at that case, and try to find out why it's so different.
 ```{r outlier, fig.cap="An illustration of outliers. The dotted lines plot the regression line that would have been estimated without the anomalous observation included, and the corresponding residual (i.e., the Studentised residual). The solid line shows the regression line with the anomalous observation included. The outlier has an unusual value on the outcome (y axis location) but not the predictor (x axis location), and lies a long way from the regression line.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/unusual_outlier.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2","unusual_outlier.png"))
 
 ```
 
@@ -12159,7 +12159,7 @@ hatvalues( model = regression.2 )
 ```
 
 ```{r leverage, fig.cap="An illustration of high leverage points. The anomalous observation in this case is unusual both in terms of the predictor (x axis) and the outcome (y axis), but this unusualness is highly consistent with the pattern of correlations that exists among the other observations; as a consequence, the observation falls very close to the regression line and does not distort it.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/unusual_leverage.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2", "unusual_leverage.png"))
 
 ```
 
@@ -12168,7 +12168,7 @@ In general, if an observation lies far away from the other ones in terms of the 
 This brings us to our third measure of unusualness, the **_influence_** of an observation. A high influence observation is an outlier that has high leverage. That is, it is an observation that is very different to all the other ones in some respect, and also lies a long way from the regression line. This is illustrated in Figure \@ref(fig:influence). Notice the contrast to the previous two figures: outliers don't move the regression line much, and neither do high leverage points. But something that is an outlier and has high leverage... that has a big effect on the regression line.
 
 ```{r influence, fig.cap="An illustration of high influence points. In this case, the anomalous observation is highly unusual on the predictor variable (x axis), and falls a long way from the regression line. As a consequence, the regression line is highly distorted, even though (in this case) the anomalous observation is entirely typical in terms of the outcome variable (y axis).", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/unusual_influence.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2","unusual_influence.png"))
 
 ```
 
@@ -12221,7 +12221,7 @@ The resulting plot is shown in Figure \@ref(fig:residhist), and as you can see t
 
 
 ```{r residhist, fig.cap="A histogram of the (ordinary) residuals in the `regression.2` model. These residuals look very close to being normally distributed, much moreso than is typically seen with real data. This shouldn't surprise you... they aren't real data, and they aren't real residuals!", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/regression2/residhist.png")
+knitr::include_graphics(file.path(projecthome, "img","regression2","residhist.png"))
 
 ```
 
@@ -12517,7 +12517,7 @@ Over the course of the last few chapters you can probably detect a general trend
 
 When we discussed analysis of variance in Chapter \@ref(anova), we assumed a fairly simple experimental design: each person falls into one of several groups, and we want to know whether these groups have different means on some outcome variable. In this section, I'll discuss a broader class of experimental designs, known as **_factorial designs_**, in we have more than one grouping variable. I gave one example of how this kind of design might arise above. Another example appears in  Chapter \@ref(anova), in which we were looking at the effect of different drugs on the `mood.gain` experienced by each person. In that chapter we did find a significant effect of drug, but at the end of the chapter we also ran an analysis to see if there was an effect of therapy. We didn't find one, but there's something a bit worrying about trying to run two *separate* analyses trying to predict the same outcome. Maybe there actually *is* an effect of therapy on mood gain, but we couldn't find it because it was being "hidden" by the effect of drug? In other words, we're going to want to run a *single* analysis that includes *both* `drug` and `therapy` as predictors. For this analysis each person is cross-classified by the drug they were given (a factor with 3 levels) and what therapy they received (a factor with 2 levels). We refer to this as a $3 \times 2$ factorial design. If we cross-tabulate `drug` by `therapy`, using the `xtabs()` function (see Section \@ref(freqtables)), we get the following table:^[The R command we need is `xtabs(~ drug+gender, clin.trial)`.]
 ```{r}
-load("./rbook-master/data/clinicaltrial.rdata")
+load(file.path(projecthome, "data","clinicaltrial.Rdata"))
 xtabs( ~ drug + therapy, clin.trial )
 ```
 As you can see, not only do we have participants corresponding to all possible combinations of the two factors, indicating that our design is **_completely crossed_**, it turns out that there are an equal number of people in each group. In other words, we have a **_balanced_** design. In this section I'll talk about how to analyse data from balanced designs, since this is the simplest case. The story for unbalanced designs is quite tedious, so we'll put it to one side for the moment.
@@ -12720,23 +12720,23 @@ Now that we've seen *how* a factorial ANOVA works, it's worth taking a moment to
 Why does that happen? The answer lies in understanding how the *residuals* are calculated. Recall that the whole idea behind an $F$-test is to compare the variability that can be attributed to a particular factor with the variability that cannot be accounted for (the residuals). If you run a one-way ANOVA for `therapy`, and therefore ignore the effect of `drug`, the ANOVA will end up dumping all of the drug-induced variability into the residuals! This has the effect of making the data look more noisy than they really are, and the effect of `therapy` which is correctly found to be significant in the two-way ANOVA now becomes non-significant. If we ignore something that actually matters (e.g., `drug`) when trying to assess the contribution of something else (e.g., `therapy`) then our analysis will be distorted. Of course, it's perfectly okay to ignore variables that are genuinely irrelevant to the phenomenon of interest: if we had recorded the colour of the walls, and that turned out to be non-significant in a three-way ANOVA (i.e. `mood.gain ~ drug + therapy + wall.colour`), it would be perfectly okay to disregard it and just report the simpler two-way ANOVA that doesn't include this irrelevant factor. What you shouldn't do is drop variables that actually make a difference! 
 
 ```{r maineffectsa, fig.cap="A main effect of Factor A, and no effect of Factor B", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/factorialanova/maineffectA.png")
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectA.png"))
 
 ```
 
 ```{r maineffectsb, fig.cap="A main effect of Factor B but no effect of Factor A", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/factorialanova/maineffectB.png")
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectB.png"))
 
 ```
 
 ```{r maineffectsc, fig.cap="Main effects of both Factor A and Factor B", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/factorialanova/maineffectAB.png")
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectAB.png"))
 
 ```
 
 
 ```{r maineffectsd, fig.cap="No effect of either factor", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/factorialanova/maineffectAB.png")
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectAB.png"))
 
 ```
 
@@ -12750,22 +12750,22 @@ The ANOVA model that we've been talking about so far covers a range of different
 ## Factorial ANOVA 2: balanced designs, interactions allowed{#interactions}
 
 ```{r interaction1, fig.cap="Qualitatively different interactions for a $2 \times 2$ ANOVA", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/factorialanova/interaction2.png")
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction2.png"))
 
 ```
 
 ```{r interaction2, fig.cap="Qualitatively different interactions for a $2 \times 2$ ANOVA", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/factorialanova/interaction3.png")
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction3.png"))
 
 ```
 
 ```{r interaction3, fig.cap="Qualitatively different interactions for a $2 \times 2$ ANOVA", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/factorialanova/interaction1.png")
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction1.png"))
 
 ```
 
 ```{r interaction4, fig.cap="Qualitatively different interactions for a $2 \times 2$ ANOVA", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/factorialanova/interaction4.png")
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction4.png"))
 
 ```
 
@@ -13124,7 +13124,7 @@ col.names= c("person $p$", "grade $Y_p$", "attendance $X_{1p}$", "reading $X_{2p
 
 This isn't anything particularly special, of course: it's exactly the format in which we expect to see our data! In other words, if your data have been stored as a data frame in R then you're probably expecting to see something that looks like the `rtfm.1` data frame:
 ```{r}
-load("./rbook-master/data/rtfm.rdata")
+load(file.path(projecthome, "data","rtfm.Rdata"))
 rtfm.1
 ```
 Well, sort of. I suspect that a few readers are probably frowning a little at this point. Earlier on in the book I emphasised the importance of converting nominal scale variables such as `attend` and `reading` to factors, rather than encoding them as numeric variables. The `rtfm.1` data frame doesn't do this, but the `rtfm.2` data frame does, and so you might instead be expecting to see data like this:
@@ -13484,7 +13484,7 @@ Unbalanced designs need to be treated with a lot more care than balanced designs
 
 As usual, it will help us to work with some data. The `coffee.Rdata` file contains a hypothetical data set (the `coffee` data frame) that produces an unbalanced $3 \times 2$ ANOVA. Suppose we were interested in finding out whether or not the tendency of people to `babble` when they have too much coffee is purely an effect of the coffee itself, or whether there's some effect of the `milk` and `sugar` that people add to the coffee. Suppose we took 18 people, and gave them some coffee to drink. The amount of coffee / caffeine was held constant, and we varied whether or not milk was added: so `milk` is a binary factor with two levels, `"yes"` and `"no"`. We also varied the kind of sugar involved. The coffee might contain `"real"` sugar, or it might contain `"fake"` sugar (i.e., artificial sweetener), or it might contain `"none"` at all, so the `sugar` variable is a three level factor. Our outcome variable is a continuous variable that presumably refers to some psychologically sensible measure of the extent to which someone is "babbling". The details don't really matter for our purpose. To get a sense of what the data look like, we use the `some()` function in the `car` package. The `some()` function randomly picks a few of the observations in the data frame to print out, which is often very handy:
 ```{r}
-load("./rbook-master/data/coffee.rdata")
+load(file.path(projecthome, "data","coffee.Rdata"))
  some( coffee )
 ```
 If we use the `aggregate()` function to quickly produce a table of means, we get a strong impression that there are differences between the groups:
@@ -14188,7 +14188,7 @@ The "basic" theory of null hypothesis testing isn't built to handle this sort of
 Worse yet, they're a lie in a dangerous way, because they're all *too small*. To give you a sense of just how bad it can be, consider the following (worst case) scenario. Imagine you're a really super-enthusiastic researcher on a tight budget who didn't pay any attention to my warnings above. You design a study comparing two groups. You desperately want to see a significant result at the $p<.05$ level, but you really don't want to collect any more data than you have to (because it's expensive). In order to cut costs, you start collecting data, but every time a new observation arrives you run a $t$-test on your data. If the $t$-tests says $p<.05$ then you stop the experiment and report a significant result. If not, you keep collecting data. You keep doing this until you reach your pre-defined spending limit for this experiment. Let's say that limit kicks in at $N=1000$ observations. As it turns out, the truth of the matter is that there is no real effect to be found: the null hypothesis is true. So, what's the chance that you'll make it to the end of the experiment and (correctly) conclude that there is no effect? In an ideal world, the answer here should be 95\%. After all, the whole *point* of the $p<.05$ criterion is to control the Type I error rate at 5\%, so what we'd hope is that there's only a 5\% chance of falsely rejecting the null hypothesis in this situation. However, there's no guarantee that will be true. You're breaking the rules: you're running tests repeatedly, "peeking" at your data to see if you've gotten a significant result, and all bets are off. 
 
 ```{r type1, fig.cap="How badly can things go wrong if you re-run your tests every time new data arrive? If you are a frequentist, the answer is \"very wrong\".", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/bayes/adapt.png")
+knitr::include_graphics(file.path(projecthome, "img","bayes","adapt.png"))
 
 ```
 
@@ -14226,7 +14226,7 @@ Time to change gears. Up to this point I've been talking about what Bayesian inf
 The first kind of statistical inference problem I discussed in this book appeared in Chapter \@ref(chisquare), in which we discussed categorical data analysis problems. In that chapter I talked about several different statistical problems that you might be interested in, but the one that appears most often in real life is the analysis of  *contingency tables*. In this kind of data analysis situation, we have a cross-tabulation of one variable against another one, and the goal is to find out if there is some *association* between these variables. The data set I used to illustrate this problem is found in the `chapek9.Rdata` file, and it contains a single data frame `chapek9`
 
 ```{r}
-load("./rbook-master/data/chapek9.Rdata")
+load(file.path(projecthome, "data","chapek9.Rdata"))
 head(chapek9)
 ```
 
@@ -14371,7 +14371,7 @@ The second type of statistical inference problem discussed in this book is the c
 The most common type of $t$-test is the independent samples $t$-test, and it arises when you have data that look something like this:
 
 ```{r}
-load( "./rbook-master/data/harpo.Rdata" )
+load(file.path(projecthome, "data","harpo.Rdata"))
 head(harpo)
 ```
 
@@ -14406,7 +14406,7 @@ Before moving on, it's worth highlighting the difference between the orthodox te
 
 Back in Section \@ref(pairedsamplesttest) I discussed the `chico` data frame in which students grades were measured on two tests, and we were interested in finding out whether grades went up from test 1 to test 2. Because every student did both tests, the tool we used to analyse the data was a paired samples $t$-test. To remind you of what the data look like, here's the first few cases:
 ```{r}
-load("./rbook-master/data/chico.rdata")
+load(file.path(projecthome, "data","chico.Rdata"))
 head(chico)
 ```
 We originally analysed the data using the `pairedSamplesTTest()` function in the `lsr` package, but this time we'll use the `ttestBF()` function from the `BayesFactor` package to do the same thing. The easiest way to do it with this data set is to use the `x` argument to specify one variable and the `y` argument to specify the other. All we need to do then is specify `paired=TRUE` to tell R that this is a paired samples test. So here's our command:
@@ -14428,7 +14428,7 @@ Okay, so now we've seen Bayesian equivalents to orthodox chi-square tests and $t
 
 In Chapter \@ref(regression) I used the `parenthood` data to illustrate the basic ideas behind regression. To remind you of what that data set looks like, here's the first six observations:
 ```{r}
-load("./rbook-master/data/parenthood.Rdata")
+load(file.path(projecthome, "data","parenthood.Rdata"))
 head(parenthood)
 ```
 
@@ -14521,7 +14521,7 @@ As you can tell, the `BayesFactor` package is pretty flexible, and it can do Bay
 As with the other examples, I think it's useful to start with a reminder of how I discussed ANOVA earlier in the book. First, let's remind ourselves of what the data were. The example I used originally is the `clin.trial` data frame, which looks like this
 
 ```{r}
-load("./rbook-master/data/clinicaltrial.Rdata")
+load(file.path(projecthome, "data","clinicaltrial.Rdata"))
 head(clin.trial)
 ```
 

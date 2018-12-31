@@ -16,7 +16,7 @@ Suppose you've become involved in a clinical trial in which you are testing a ne
 
 With that as the study design, let's now look at what we've got in the data file:
 ```{r}
-load( "./rbook-master/data/clinicaltrial.Rdata" ) # load data
+load(file.path(projecthome, "data", "clinicaltrial.Rdata")) # load data
 str(clin.trial)       
 ```
 So we have a single data frame called `clin.trial`, containing three variables; `drug`, `therapy` and `mood.gain`. Next, let's print the data frame to get a sense of what the data actually look like. 
