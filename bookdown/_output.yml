@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Learning Statistics with R</a></li>
       after: |
-        <li><a href="https://learningstatisticswithr-bookdown.netlify.com" target="blank">Published with bookdown</a></li>
+        <li><a href="https://learningstatisticswithr.com/book/" target="blank">Published with bookdown</a></li>
       collapse: section
     download: no
 bookdown::pdf_book:
@@ -15,5 +15,3 @@ bookdown::pdf_book:
   citation_package: natbib
   keep_tex: yes
 bookdown::epub_book: default
-
-
