@@ -1,12 +1,12 @@
-# tex output to ignore
-lsr.ps
-lsr.aux
-lsr.bbl
-lsr.brf
-lsr.log
-lsr.out
-lsr.synctex.gz
-lst.toc
+# tex output to ignore from "original"
+original/lsr.ps
+original/lsr.aux
+original/lsr.bbl
+original/lsr.brf
+original/lsr.log
+original/lsr.out
+original/lsr.synctex.gz
+original/lst.toc
 
 # History files
 .Rhistory

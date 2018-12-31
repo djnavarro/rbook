@@ -17,9 +17,13 @@ rm(list=objects()) # start with a clean workspace
 
 Back in the grimdark pre-Snapchat era of humanity (i.e. early 2011), I started teaching an introductory statistics class for psychology students offered at the University of Adelaide, using the R statistical package as the primary tool. I wrote my own lecture notes for the class, which have now expanded to the point of effectively being a book. The book is freely available, and as of version 0.6 it is released under a creative commons licence (CC BY-SA 4.0)
 
-- [LSR version 0.6](./lsr-0.6.pdf)
+- [LSR version 0.6](./lsr-0.6.pdf) (pdf)
 - [Data sets](./data.zip)
 - [Source on GitHub](https://github.com/djnavarro/rbook)
+
+Thanks to the incredible efforts of [Emily Kothe](https://twitter.com/emilyandthelime), there is now also a tentative bookdown adaptation (version 0.6.1) of LSR. We're still working on typo fixes and translation errors, but here it is:
+
+- [LSR version 0.6.1](./book/) (bookdown)
 
 The book is associated with the `lsr` package on CRAN and GitHub. The package is probably okay for many introductory teaching purposes, but some care is required. The package does have some limitations (e.g., the `etaSquared` function does strange things for unbalanced ANOVA designs), but I haven't updated it in a while because I've decided to spend some time learning  more about package development before tackling this. 
 
@@ -27,7 +31,6 @@ The decision to release the book under a Creative Commons licence reflects the f
 
 There are a few projects that I'm aware of that adapt or extend some of the content from LSR
 
-- Emily Kothe has a fantastic [conversion to bookdown](https://learningstatisticswithr-bookdown.netlify.com/) and tidyverse in progress
 - Matt Crump has a lovely book-in-progress that uses some LSR content, [Answering Questions with Data](https://crumplab.github.io/statistics/)
 - David Foxcroft has produced a really slick adaptation to jamovi, [Learning Statistics with Jamovi]("https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
 - My own approach to adapting LSR is another work-in-progress, [R for Psychological Science](https://psyr.org/)
