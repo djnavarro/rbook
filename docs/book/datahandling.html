@@ -49,6 +49,25 @@
 
 
 
+<!-- ###### start inserted header ##### -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115940772-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-115940772-1');
+</script>
+
+<!-- add the twitter card and open graph tags -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@djnavarro">
+<meta property="og:image" content="http://learningstatisticswithr.com/images/jasmine-faint.jpg">
+<meta name="twitter:image" content="http://learningstatisticswithr.com/images/jasmine-faint.jpg">
+
+<!-- ###### end inserted header ##### -->
+
 
 <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -2662,12 +2681,14 @@ Figure 7.2: The environment panel in Rstudio can actually show you the contents 
 </div>
 <p>In this section I want to ask a slightly different question: what <em>is</em> the workspace exactly? This question seems simple, but there’s a fair bit to it. This section can be skipped if you’re not really interested in the technical details. In the description I gave earlier, I talked about the workspace as an abstract location in which R variables are stored. That’s basically true, but it hides a couple of key details. For example, any time you have R open, it has to store <em>lots</em> of things in the computer’s memory, not just your variables. For example, the <code>who()</code> function that I wrote has to be stored in memory somewhere, right? If it weren’t I wouldn’t be able to use it. That’s pretty obvious. But equally obviously it’s not in the workspace either, otherwise you should have seen it! Here’s what’s happening. R needs to keep track of a lot of different things, so what it does is organise them into <strong><em>environments</em></strong>, each of which can contain lots of different variables and functions. Your workspace is one such environment. Every package that you have loaded is another environment. And every time you call a function, R briefly creates a temporary environment in which the function itself can work, which is then deleted after the calculations are complete. So, when I type in <code>search()</code> at the command line</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre></div>
-<pre><code>##  [1] &quot;.GlobalEnv&quot;        &quot;package:HistData&quot;  &quot;package:MASS&quot;     
-##  [4] &quot;package:lsr&quot;       &quot;package:psych&quot;     &quot;package:car&quot;      
-##  [7] &quot;package:carData&quot;   &quot;tools:rstudio&quot;     &quot;package:stats&quot;    
-## [10] &quot;package:graphics&quot;  &quot;package:grDevices&quot; &quot;package:utils&quot;    
-## [13] &quot;package:datasets&quot;  &quot;package:methods&quot;   &quot;Autoloads&quot;        
-## [16] &quot;package:base&quot;</code></pre>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;          &quot;package:BayesFactor&quot; &quot;package:Matrix&quot;     
+##  [4] &quot;package:coda&quot;        &quot;package:effects&quot;     &quot;package:lmtest&quot;     
+##  [7] &quot;package:zoo&quot;         &quot;package:gplots&quot;      &quot;package:sciplot&quot;    
+## [10] &quot;package:HistData&quot;    &quot;package:MASS&quot;        &quot;package:lsr&quot;        
+## [13] &quot;package:psych&quot;       &quot;package:car&quot;         &quot;package:carData&quot;    
+## [16] &quot;tools:rstudio&quot;       &quot;package:stats&quot;       &quot;package:graphics&quot;   
+## [19] &quot;package:grDevices&quot;   &quot;package:utils&quot;       &quot;package:datasets&quot;   
+## [22] &quot;package:methods&quot;     &quot;Autoloads&quot;           &quot;package:base&quot;</code></pre>
 <p>what I’m actually looking at is a <em>sequence of environments</em>. The first one, <code>&quot;.GlobalEnv&quot;</code> is the technically-correct name for your workspace. No-one really calls it that: it’s either called the workspace or the global environment. And so when you type in <code>objects()</code> or <code>who()</code> what you’re really doing is listing the contents of <code>&quot;.GlobalEnv&quot;</code>. But there’s no reason why we can’t look up the contents of these other environments using the <code>objects()</code> function (currently <code>who()</code> doesn’t support this). You just have to be a bit more explicit in your command. If I wanted to find out what is in the <code>package:stats</code> environment (i.e., the environment into which the contents of the <code>stats</code> package have been loaded), here’s what I’d get</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">objects</span>(<span class="st">&quot;package:stats&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;acf&quot;        &quot;acf2AR&quot;     &quot;add.scope&quot;  &quot;add1&quot;       &quot;addmargins&quot;

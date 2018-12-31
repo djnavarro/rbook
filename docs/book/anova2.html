@@ -49,6 +49,25 @@
 
 
 
+<!-- ###### start inserted header ##### -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115940772-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-115940772-1');
+</script>
+
+<!-- add the twitter card and open graph tags -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@djnavarro">
+<meta property="og:image" content="http://learningstatisticswithr.com/images/jasmine-faint.jpg">
+<meta name="twitter:image" content="http://learningstatisticswithr.com/images/jasmine-faint.jpg">
+
+<!-- ###### end inserted header ##### -->
+
 
 <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -2104,8 +2123,7 @@ Y_{p} = b_1 X_{1p} + b_2 X_{2p} + b_0 + \epsilon_p
 <p>These are the same treatment contrast that we set up manually in Section <a href="anova2.html#anovalm">16.6</a>. How did R know to set up treatment contrasts, even though I never actually told it anything about what contrasts I wanted? The answer is that R has a hidden list of default “options” that it looks up to resolve situations like this. You can print out all of the options by typing <code>options()</code> at the command prompt, but it’s not a very enlightening read. There are a lot of options, and we’re only interested in contrasts right now. Instead of printing out all of the options, we can ask for just one, like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">options</span>( <span class="st">&quot;contrasts&quot;</span> )</code></pre></div>
 <pre><code>## $contrasts
-##         unordered           ordered 
-## &quot;contr.treatment&quot;      &quot;contr.poly&quot;</code></pre>
+## [1] &quot;contr.treatment&quot; &quot;contr.poly&quot;</code></pre>
 <p>What this is telling us is that the default contrasts for unordered factors (i.e., nominal scale variables) are treatment contrasts, and the default for ordered factors (i.e., interval scale variables) are “polynomial” contrasts. I don’t discuss ordered factors much in this book, and so I won’t go into what polynomial contrasts are all about. The key thing is that the <code>options()</code> function also allows you to reset these defaults (though only for the current session: they’ll revert to the original settings once you close R). Here’s the command:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">options</span>(<span class="dt">contrasts =</span> <span class="kw">c</span>(<span class="st">&quot;contr.helmert&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</code></pre></div>
 <p>Once we’ve done this, we can inspect the contrast settings again:</p>
