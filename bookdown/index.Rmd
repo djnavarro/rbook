@@ -8,6 +8,10 @@ bibliography: ['`r here::here("bookdown","refs.bib")`', '`r here::here("bookdown
 biblio-style: apalike
 link-citations: yes
 description: "*Learning Statistics with R* covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software."
+output:
+  bookdown::gitbook:
+    includes:
+      in_header: header.html
 ---
 
 ```{r, include=FALSE}
