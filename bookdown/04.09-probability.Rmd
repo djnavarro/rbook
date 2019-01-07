@@ -4,7 +4,7 @@
 >
 > -- John Locke
 
-Up to this point in the book, we've discussed some of the key ideas in experimental design, and we've talked a little about how you can summarise a data set.  To a lot of people, this is all there is to statistics: it's about calculating averages, collecting all the numbers, drawing pictures, and putting them all in a report somewhere. Kind of like stamp collecting, but with numbers. However, statistics covers much more than that. In fact, descriptive statistics is one of the smallest parts of statistics, and one of the least powerful. The bigger and more useful part of statistics is that it provides that let you make inferences about data. 
+Up to this point in the book, we've discussed some of the key ideas in experimental design, and we've talked a little about how you can summarise a data set.  To a lot of people, this is all there is to statistics: it's about calculating averages, collecting all the numbers, drawing pictures, and putting them all in a report somewhere. Kind of like stamp collecting, but with numbers. However, statistics covers much more than that. In fact, descriptive statistics is one of the smallest parts of statistics, and one of the least powerful. The bigger and more useful part of statistics is that it provides tools that let you make *inferences* about data. 
 
 Once you start thinking about statistics in these terms -- that statistics is there to help us draw inferences from data -- you start seeing examples of it everywhere. For instance, here's a tiny extract from a newspaper article in the Sydney Morning Herald (30 Oct 2010):
 
