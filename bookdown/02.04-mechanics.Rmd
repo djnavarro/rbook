@@ -45,8 +45,7 @@ This two step process might seem a little odd at first, but the designers of R h
 
 
 ```{r packagepanel, fig.cap="The packages panel.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/Rstudiopackages.png")
-
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "Rstudiopackages.png"))
 ```
 
 Right, lets get started. The first thing you need to do is look in the lower right hand panel in RStudio. You'll see a tab labelled "Packages". Click on the tab, and you'll see a list of packages that looks something like Figure \@ref(fig:packagepanel). Every row in the panel corresponds to a different package, and every column is a useful piece of information about that package.^[If you're using the command line, you can get the same information by typing `library()` at the command line.] Going from left to right, here's what each column is telling you:
@@ -133,7 +132,8 @@ One of the main selling points for R is that there are thousands of packages tha
 Using the RStudio tools is, again, dead simple. In the top left hand corner of the packages panel (Figure \@ref(fig:packagepanel)) you'll see a button called "Install Packages". If you click on that, it will bring up a window like the one shown in Figure \@ref(fig:packageinstalla).
 
 ```{r packageinstalla, fig.cap=c("The package installation dialog box in RStudio"), echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/installpackage.png")
+
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "installpackage.png"))
 
 ```
 
@@ -141,7 +141,7 @@ There are a few different buttons and boxes you can play with. Ignore most of th
 
 ```{r packageinstallb, fig.cap="When you start typing, you\'ll see a dropdown menu suggest a list of possible packages that you might want to install", echo=FALSE}
 
-knitr::include_graphics("./rbook-master/img/mechanics/installpackage2.png")
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "installpackage2.png"))
 
 ```
 
@@ -172,8 +172,7 @@ Despite the long and tedious response, all thar really means is "I've installed 
 Every now and then the authors of packages release updated versions. The updated versions often add new functionality, fix bugs, and so on. It's generally a good idea to update your packages periodically. There's an `update.packages()` function that you can use to do this, but it's probably easier to stick with the RStudio tool. In the packages panel, click on the "Update Packages" button. This will bring up a window that looks like the one shown in Figure \@ref(fig:updatepackages). In this window, each row refers to a package that needs to be updated. You can to tell R which updates you want to install by checking the boxes on the left. If you're feeling lazy and just want to update everything, click the "Select All" button, and then click the "Install Updates" button. R then prints out a *lot* of garbage on the screen, individually downloading and installing all the new packages. This might take a while to complete depending on how good your internet connection is. Go make a cup of coffee. Come back, and all will be well. 
 
 ```{r updatepackages, fig.cap="The RStudio dialog box for updating packages", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/updatepackages.png")
-
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "updatepackages.png"))
 ```
 
 About every six months or so, a new version of R is released. You can't update R from within RStudio (not to my knowledge, at least): to get the new version you can go to the CRAN website and download the most recent version of R, and install it in the same way you did when you originally installed R on your computer. This used to be a slightly frustrating event, because whenever you downloaded the new version of R, you would lose all the packages that you'd downloaded and installed, and would have to repeat the process of re-installing them. This was pretty annoying, and there were some neat tricks you could use to get around this. However, newer versions of R don't have this problem so I no longer bother explaining the workarounds for that issue.
@@ -204,12 +203,12 @@ Let's suppose that you're reading through this book, and what you're doing is si
 
 
 ```{r workspace, fig.cap="The RStudio Environment panel shows you the contents of the workspace. The view shown above is the list view. To switch to the grid view, click on the menu item on the top right that currently reads list. Select grid from the dropdown menu, and then it will switch to a view like the one shown in the other workspace figure", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/workspacepanel.png")
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "workspacepanel.png"))
 
 ```
 
 ```{r workspace2, fig.cap="The RStudio \"Environment\" panel shows you the contents of the workspace. Compare this \"grid\" view to the \"list\" earlier", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/workspacepanel2.png")
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "workspacepanel2.png"))
 
 ```
 
@@ -351,7 +350,8 @@ It's kind of annoying to have to do it this way, but as you'll see later on in S
 Although I think it's important to understand how all this command line stuff works, in many (maybe even most) situations there's an easier way. For our purposes, the easiest way to navigate the file system is to make use of RStudio's built in tools. The "file" panel -- the lower right hand area in Figure \@ref(fig:filepanel) -- is actually a pretty decent file browser. Not only can you just point and click on the names to move around the file system, you can also use it to set the working directory, and even load files. 
 
 ```{r filepanel, fig.cap="The \"file panel\" is the area shown in the lower right hand corner. It provides a very easy way to browse and navigate your computer using R. See main text for details.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/filepanel.png")
+
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "filepanel.png"))
 
 ```
 
@@ -420,7 +420,8 @@ and the new variables will appear in the workspace (you'll see them in the Envir
 One quite commonly used data format is the humble "comma separated value" file, also called a CSV file, and usually bearing the file extension .csv. CSV files are just plain old-fashioned text files, and what they store is basically just a table of data. This is illustrated in Figure \@ref(fig:booksalescsv), which shows a file called booksales.csv that I've created. As you can see, each row corresponds to a variable, and each row represents the book sales data for one month. The first row doesn't contain actual data though: it has the names of the variables.
 
 ```{r booksalescsv, fig.cap="The booksales.csv data file. On the left, I've opened the file in using a spreadsheet program (OpenOffice), which shows that the file is basically a table. On the right, the same file is open in a standard text editor (the TextEdit program on a Mac), which shows how the file is formatted. The entries in the table are wrapped in quote marks and separated by commas.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/booksalescsv.jpg")
+
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "booksalescsv.jpg"))
 
 ```
 
@@ -450,7 +451,8 @@ Clearly, it's worked, but the format of this output is a bit unfamiliar. We have
 Yet again, it's easier in RStudio. In the environment panel in RStudio you should see a button called "Import Dataset". Click on that, and it will give you a couple of options: select the "From Text File..." option, and it will open up a very familiar dialog box asking you to select a file: if you're on a Mac, it'll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. An example of what it looks like on a Mac is shown in Figure \@ref(fig:fileopen). I'm assuming that you're familiar with your own computer, so you should have no problem finding the CSV file that you want to import! Find the one you want, then click on the "Open" button. When you do this, you'll see a window that looks like the one in Figure \@ref(fig:import).
 
 ```{r fileopen, fig.cap="A dialog box on a Mac asking you to select the CSV file R should try to import. Mac users will recognise this immediately: it's the usual way in which a Mac asks you to find a file. Windows users won't see this: they'll see the usual explorer window that Windows always gives you when it wants you to select a file.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/openscreen.png")
+
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "openscreen.png"))
 
 ```
 
@@ -461,7 +463,8 @@ knitr::include_graphics("./rbook-master/img/mechanics/openscreen.png")
 The import data set window is relatively straightforward to understand. 
 
 ```{r import, fig.cap="The RStudio window for importing a CSV file into R", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/mechanics/import.png")
+
+knitr::include_graphics(here::here("bookdown", "img", "mechanics", "import.png"))
 
 ```
 
@@ -696,13 +699,7 @@ gender<-as.factor(c(1, 1 ,1, 1 ,1, 2 ,2, 2 , 2))
 gender
 
 ```
-Okaaaay. That's not helpful at all, and it makes me very sad. Which number corresponds to the males and which one corresponds to the females? Wouldn't it be nice if R could actually keep track of this? It's way too hard to remember which number corresponds to which gender. And besides, the problem that this causes is much more serious than a single sad nerd... because R has no way of knowing that the `1`s in the `group` variable are a very different kind of thing to the `1`s in the `gender` variable. So if I try to ask which elements of the `group` variable are equal to the corresponding elements in `gender`, R thinks this is totally kosher, and gives me this:
-```{r error=TRUE}
-group == gender
-```
-Well, that's ... especially stupid.^[Some users might wonder why R even allows the `==` operator for factors. The reason is that sometimes you really do have different factors that have the same levels. For instance, if I was analysing data associated with football games, I might have a factor called `home.team`, and another factor called `winning.team`. In that situation I really should be able to ask if `home.team == winning.team`.]  The problem here is that R is very literal minded. Even though you've declared both `group` and `gender` to be factors, it still assumes that a `1` is a `1` no matter which variable it appears in. 
-
-To fix both of these problems (my memory problem, and R's infuriating literal interpretations), what we need to do is assign meaningful labels to the different *levels* of each factor. We can do that like this:
+Okaaaay. That's not helpful at all, and it makes me very sad. Which number corresponds to the males and which one corresponds to the females? Wouldn't it be nice if R could actually keep track of this? It's way too hard to remember which number corresponds to which gender. To fix this problem what we need to do is assign meaningful labels to the different *levels* of each factor. We can do that like this:
 ```{r}
 levels(group) <- c("group 1", "group 2", "group 3")
 print(group)
@@ -710,12 +707,7 @@ print(group)
 levels(gender) <- c("male", "female")
 print(gender)
 ```
-That's much easier on the eye, and better yet, R is smart enough to know that `"female"` is not equal to `"group 2"`, so now when I try to ask which group memberships are "equal to" the gender of the corresponding person, 
-```{r error=TRUE}
-group == gender
-
-```
-R correctly tells me that I'm an idiot.
+That's much easier on the eye.
 
 
 ### Moving on...
