@@ -58,7 +58,8 @@ When you click on the download button on the homepage it will ask you to choose 
 Once it's finished downloading, open the installer file in the usual way to install RStudio. After it's finished installing, you can start R by opening RStudio.  You don't need to open R.app or R.exe in order to access R. RStudio will take care of that for you. To illustrate what RStudio looks like, Figure \@ref(fig:RStudio) shows a screenshot of an R session in progress. In this screenshot, you can see that it's running on a Mac, but it looks almost identical no matter what operating system you have. The Windows version looks more like a Windows application (e.g., the menus are attached to the application window and the colour scheme is slightly different), but it's more or less identical. There are a few minor differences in where things are located in the menus (I'll point them out as we go along) and in the shortcut keys, because RStudio is trying to "feel" like a proper Mac application or a proper Windows application, and this means that it has to change its behaviour a little bit depending on what computer it's running on. Even so, these differences are very small: I started out using the Mac version of RStudio and then started using the Windows version as well in order to write these notes.
 
 ```{r RStudio, fig.cap="An R session in progress running through RStudio. The picture shows RStudio running on a Mac, but the Windows interface is almost identical.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/introR/RStudio2.png")
+
+knitr::include_graphics(here::here("bookdown", "img", "introR", "RStudio2.png"))
 ```
 
 The only "shortcoming" I've found with RStudio is that -- as of this writing -- it's still a work in progress. The "problem" is that they keep improving it. New features keep turning up the more recent releases, so there's a good chance that by the time you read this book there will be a version out that has some really neat things that weren't in the version that I'm using now.
@@ -525,7 +526,7 @@ The first thing I  want to call your attention to is the *autocomplete* ability 
 Let's stick to our example above and assume that what you want to do is to round a number. This time around, start typing the name of the function that you want, and then hit the "tab" key. RStudio will then display a little window like the one shown in Figure \@ref(fig:RStudiotab). In this figure, I've typed the letters `ro` at the command line, and then hit tab. The window has two panels. On the left, there's a list of variables and functions that start with the letters that I've typed shown in black text, and some grey text that tells you where that variable/function is stored. Ignore the grey text for now: it won't make much sense to you until we've talked about packages in Section \@ref(packageinstall). In Figure \@ref(fig:RStudiotab) you can see that there's quite a few things that start with the letters `ro`: there's something called `rock`, something called `round`, something called `round.Date` and so on. The one we want is `round`, but if you're typing this yourself you'll notice that when you hit the tab key the window pops up with the top entry (i.e., `rock`) highlighted. You can use the up and down arrow keys to select the one that you want. Or, if none of the options look right to you, you can hit the escape key ("esc") or the left arrow key to make the window go away. 
 
 ```{r RStudiotab, fig.cap="Start typing the name of a function or a variable, and hit the \"tab\" key. RStudio brings up a little dialog box like this one that lets you select the one you want, and even prints out a little information about it.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/introR/RStudio_tab.png")
+knitr::include_graphics(here::here("bookdown", "img", "introR", "RStudio_tab.png"))
 
 ```
 
@@ -535,7 +536,7 @@ The RStudio autocomplete tool works slightly differently if you've already got t
 
 
 ```{r RStudiotab2, fig.cap="If you've typed the name of a function already along with the left parenthesis and then hit the \"tab\" key, RStudio brings up a different window to the one shown above. This one lists all the arguments to the function on the left, and information about each argument on the right.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/introR/RStudio_tab2.png")
+knitr::include_graphics(here::here("bookdown", "img", "introR", "RStudio_tab2.png"))
 
 ```
 
@@ -548,7 +549,7 @@ The second way to get access to your command history is to look at the history p
 
 
 ```{r RStudiohistory, fig.cap="The history panel is located in the top right hand side of the RStudio window. Click on the word \"History\" and it displays this panel.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/introR/historyTab.png")
+knitr::include_graphics(here::here("bookdown", "img", "introR", "historyTab.png"))
 ```
 
 ## Storing many numbers as a vector{#vectors}
@@ -941,7 +942,7 @@ At this point, I hope you can see why logical indexing is such a useful thing. I
 
 
 ```{r quitR, fig.cap="The dialog box that shows up when you try to close RStudio.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/introR/Rstudio_quit.png")
+knitr::include_graphics(here::here("bookdown", "img", "introR", "Rstudio_quit.png"))
 
 ```
 
@@ -962,8 +963,7 @@ In fact, every time I install R on a new machine one of the first things I do is
 
 
 ```{r RStudiooptions, fig.cap="The options window in RStudio. On a Mac, you can open this window by going to the \"RStudio\" menu and selecting \"Preferences\". On a Windows machine you go to the \"Tools\" menu and select \"Global Options\"", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/introR/Rstudio_options.png")
-
+knitr::include_graphics(here::here("bookdown", "img", "introR", "Rstudio_options.png"))
 ```
 
 ## Summary
