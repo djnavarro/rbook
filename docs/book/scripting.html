@@ -25,7 +25,7 @@
 <meta name="author" content="Danielle Navarro (bookdown translation: Emily Kothe)">
 
 
-<meta name="date" content="2018-12-31">
+<meta name="date" content="2019-01-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -363,7 +363,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.6.1" data-path="graphics.html"><a href="graphics.html#more-elaborate-options"><i class="fa fa-check"></i><b>6.6.1</b> More elaborate options</a></li>
 </ul></li>
 <li class="chapter" data-level="6.7" data-path="graphics.html"><a href="graphics.html#bargraph"><i class="fa fa-check"></i><b>6.7</b> Bar graphs</a><ul>
-<li class="chapter" data-level="6.7.1" data-path="graphics.html"><a href="graphics.html#changing-global-settings-using-par"><i class="fa fa-check"></i><b>6.7.1</b> Changing global settings using <code id="par">par()</code></a></li>
+<li class="chapter" data-level="6.7.1" data-path="graphics.html"><a href="graphics.html#par"><i class="fa fa-check"></i><b>6.7.1</b> Changing global settings using par()</a></li>
 </ul></li>
 <li class="chapter" data-level="6.8" data-path="graphics.html"><a href="graphics.html#saveimage"><i class="fa fa-check"></i><b>6.8</b> Saving image files using R and Rstudio</a><ul>
 <li class="chapter" data-level="6.8.1" data-path="graphics.html"><a href="graphics.html#the-ugly-details-advanced"><i class="fa fa-check"></i><b>6.8.1</b> The ugly details (advanced)</a></li>
@@ -850,7 +850,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 8</span> Basic programming</h1>
 <blockquote>
 <p><em>Machine dreams hold a special vertigo.</em></p>
-<p>–William Gibson<a href="#fn135" class="footnoteRef" id="fnref135"><sup>135</sup></a></p>
+<p>–William Gibson<a href="#fn134" class="footnoteRef" id="fnref134"><sup>134</sup></a></p>
 </blockquote>
 <p>Up to this point in the book I’ve tried hard to avoid using the word “programming” too much because – at least in my experience – it’s a word that can cause a lot of fear. For one reason or another, programming (like mathematics and statistics) is often perceived by people on the “outside” as a black art, a magical skill that can be learned only by some kind of super-nerd. I think this is a shame. It’s certainly true that advanced programming is a very specialised skill: several different skills actually, since there’s quite a lot of different kinds of programming out there. However, the <em>basics</em> of programming aren’t all that hard, and you can accomplish a lot of very impressive things just using those basics.</p>
 <p>With that in mind, the goal of this chapter is to discuss a few basic programming concepts and how to apply them in R. However, before I do, I want to make one further attempt to point out just how non-magical programming really is, via one very simple observation: <em>you already know how to do it</em>. Stripped to its essentials, programming is nothing more (and nothing less) than the process of writing out a bunch of instructions that a computer can understand. To phrase this slightly differently, when you write a computer program, you need to write it in a <strong><em>programming language</em></strong> that the computer knows how to interpret. R is one such language. Although I’ve been having you type all your commands at the command prompt, and all the commands in this book so far have been shown as if that’s what I were doing, it’s also quite possible (and as you’ll see shortly, shockingly easy) to write a program using these R commands. In other words, if this is the first time reading this book, then you’re only one short chapter away from being able to legitimately claim that you can program in R, albeit at a beginner’s level.</p>
@@ -901,7 +901,7 @@ Figure 8.2: A screenshot showing the <code>hello.R</code> script open in Rstudio
 <div id="using-rstudio-to-write-scripts" class="section level3">
 <h3><span class="header-section-number">8.1.3</span> Using Rstudio to write scripts</h3>
 <p>In the example above I assumed that you were writing your scripts using a simple text editor. However, it’s usually more convenient to use a text editor that is specifically designed to help you write scripts. There’s a lot of these out there, and experienced programmers will all have their own personal favourites. For our purposes, however, we can just use the one built into Rstudio. To create new script file in R studio, go to the “File” menu, select the “New” option, and then click on “R script”. This will open a new window within the “source” panel. Then you can type the commands you want (or <strong><em>code</em></strong> as it is generally called when you’re typing the commands into a script file) and save it when you’re done. The nice thing about using Rstudio to do this is that it automatically changes the colour of the text to indicate which parts of the code are comments and which are parts are actual R commands (these colours are called <strong><em>syntax highlighting</em></strong>, but they’re not actually part of the file – it’s just Rstudio trying to be helpful. To see an example of this, let’s open up our <code>hello.R</code> script in Rstudio. To do this, go to the “File” menu again, and select “Open…”. Once you’ve opened the file, you should be looking at something like Figure <a href="scripting.html#fig:script2">8.2</a>. As you can see (if you’re looking at this book in colour) the character string “hello world” is highlighted in green.</p>
-<p>Using Rstudio for your text editor is convenient for other reasons too. Notice in the top right hand corner of Figure <a href="scripting.html#fig:script2">8.2</a> there’s a little button that reads “Source”? If you click on that, Rstudio will construct the relevant <code>source()</code> command for you, and send it straight to the R console. So you don’t even have to type in the <code>source()</code> command, which actually I think is a great thing, because it really bugs me having to type all those extra keystrokes every time I want to run my script. Anyway, Rstudio provide several other convenient little tools to help make scripting easier, but I won’t discuss them here.<a href="#fn136" class="footnoteRef" id="fnref136"><sup>136</sup></a></p>
+<p>Using Rstudio for your text editor is convenient for other reasons too. Notice in the top right hand corner of Figure <a href="scripting.html#fig:script2">8.2</a> there’s a little button that reads “Source”? If you click on that, Rstudio will construct the relevant <code>source()</code> command for you, and send it straight to the R console. So you don’t even have to type in the <code>source()</code> command, which actually I think is a great thing, because it really bugs me having to type all those extra keystrokes every time I want to run my script. Anyway, Rstudio provide several other convenient little tools to help make scripting easier, but I won’t discuss them here.<a href="#fn135" class="footnoteRef" id="fnref135"><sup>135</sup></a></p>
 </div>
 <div id="commenting-your-script" class="section level3">
 <h3><span class="header-section-number">8.1.4</span> Commenting your script</h3>
@@ -977,7 +977,7 @@ x &lt;-<span class="st"> </span><span class="dv">0</span>
   x &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="dv">17</span>
 }
 <span class="kw">print</span>( x )</code></pre></div>
-<p>When we run this script, R starts at the top and creates a new variable called <code>x</code> and assigns it a value of 0. It then moves down to the loop, and “notices” that the condition here is <code>x &lt; 1000</code>. Since the current value of <code>x</code> is zero, the condition is true, so it enters the body of the loop (inside the curly braces). There’s only one command here<a href="#fn137" class="footnoteRef" id="fnref137"><sup>137</sup></a> which instructs R to increase the value of <code>x</code> by 17. R then returns to the top of the loop, and rechecks the condition. The value of <code>x</code> is now 17, but that’s still less than 1000, so the loop continues. This cycle will continue for a total of 59 iterations, until finally <code>x</code> reaches a value of 1003 (i.e., <span class="math inline">\(59 \times 17 = 1003\)</span>). At this point, the loop stops, and R finally reaches line 5 of the script, prints out the value of <code>x</code> on screen, and then halts. Let’s watch:</p>
+<p>When we run this script, R starts at the top and creates a new variable called <code>x</code> and assigns it a value of 0. It then moves down to the loop, and “notices” that the condition here is <code>x &lt; 1000</code>. Since the current value of <code>x</code> is zero, the condition is true, so it enters the body of the loop (inside the curly braces). There’s only one command here<a href="#fn136" class="footnoteRef" id="fnref136"><sup>136</sup></a> which instructs R to increase the value of <code>x</code> by 17. R then returns to the top of the loop, and rechecks the condition. The value of <code>x</code> is now 17, but that’s still less than 1000, so the loop continues. This cycle will continue for a total of 59 iterations, until finally <code>x</code> reaches a value of 1003 (i.e., <span class="math inline">\(59 \times 17 = 1003\)</span>). At this point, the loop stops, and R finally reaches line 5 of the script, prints out the value of <code>x</code> on screen, and then halts. Let’s watch:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;whileexample.R&quot;</span>))</code></pre></div>
 <pre><code>## [1] 1003</code></pre>
 <p>Truly fascinating stuff.</p>
@@ -1029,7 +1029,7 @@ words &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&
 </div>
 <div id="a-more-realistic-example-of-a-loop" class="section level3">
 <h3><span class="header-section-number">8.2.3</span> A more realistic example of a loop</h3>
-<p>To give you a sense of how you can use a loop in a more complex situation, let’s write a simple script to simulate the progression of a mortgage. Suppose we have a nice young couple who borrow $300000 from the bank, at an annual interest rate of 5%. The mortgage is a 30 year loan, so they need to pay it off within 360 months total. Our happy couple decide to set their monthly mortgage payment at $1600 per month. Will they pay off the loan in time or not? Only time will tell.<a href="#fn138" class="footnoteRef" id="fnref138"><sup>138</sup></a> Or, alternatively, we could simulate the whole process and get R to tell us. The script to run this is a fair bit more complicated.</p>
+<p>To give you a sense of how you can use a loop in a more complex situation, let’s write a simple script to simulate the progression of a mortgage. Suppose we have a nice young couple who borrow $300000 from the bank, at an annual interest rate of 5%. The mortgage is a 30 year loan, so they need to pay it off within 360 months total. Our happy couple decide to set their monthly mortgage payment at $1600 per month. Will they pay off the loan in time or not? Only time will tell.<a href="#fn137" class="footnoteRef" id="fnref137"><sup>137</sup></a> Or, alternatively, we could simulate the whole process and get R to tell us. The script to run this is a fair bit more complicated.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## --- mortgage.R
 
 <span class="co"># set up</span>
@@ -1454,10 +1454,10 @@ day &lt;-<span class="st"> </span><span class="kw">weekdays</span>( today )  <sp
 } <span class="cf">else</span> {
   <span class="kw">print</span>( <span class="st">&quot;I&#39;m a happy little automaton&quot;</span> )
 }</code></pre></div>
-<pre><code>## [1] &quot;I don&#39;t like Mondays&quot;</code></pre>
-<p>Since today happens to be a Monday, when I run the script here’s what happens:</p>
+<pre><code>## [1] &quot;I&#39;m a happy little automaton&quot;</code></pre>
+<p>Since today happens to be a Wednesday, when I run the script here’s what happens:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;scripts&quot;</span>,<span class="st">&quot;ifelseexample.R&quot;</span>))</code></pre></div>
-<pre><code>## [1] &quot;I don&#39;t like Mondays&quot;</code></pre>
+<pre><code>## [1] &quot;I&#39;m a happy little automaton&quot;</code></pre>
 <p>There are other ways of making conditional statements in R. In particular, the <code>ifelse()</code> function and the <code>switch()</code> functions can be very useful in different contexts. However, my main aim in this chapter is to briefly cover the very basics, so I’ll move on.</p>
 </div>
 <div id="functions" class="section level2">
@@ -1488,110 +1488,112 @@ quadruple &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
 <p>An important thing to recognise here is that the two internal variables that the <code>quadruple()</code> function makes use of, <code>x</code> and <code>y</code>, stay internal. That is, if we inspect the contents of the workspace,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lsr)
 <span class="kw">who</span>()</code></pre></div>
-<pre><code>##    -- Name --           -- Class --   -- Size --
-##    afl.finalists        factor        400       
-##    afl.margins          numeric       176       
-##    afl.margins_out      numeric       176       
-##    afl2                 data.frame    4296 x 2  
-##    age                  numeric       11        
-##    age.breaks           numeric       4         
-##    age.group            factor        11        
-##    age.group2           factor        11        
-##    age.group3           factor        11        
-##    age.labels           character     3         
-##    animals              character     4         
-##    balance              numeric       1         
-##    beers                character     3         
-##    cake.1               numeric       5         
-##    cake.2               numeric       5         
-##    cake.df              data.frame    5 x 2     
-##    cake.mat1            matrix        5 x 2     
-##    cake.mat2            matrix        2 x 5     
-##    cakes                matrix        4 x 5     
-##    cakes.flipped        matrix        5 x 4     
-##    choice               data.frame    4 x 10    
-##    choice.2             data.frame    16 x 6    
-##    colour               logical       1         
-##    d.cor                numeric       1         
-##    dan.awake            logical       10        
-##    data                 data.frame    12 x 4    
-##    day                  character     1         
-##    describeImg          list          0         
-##    df                   data.frame    4 x 1     
-##    drugs                data.frame    10 x 8    
-##    drugs.2              data.frame    30 x 5    
-##    effort               data.frame    10 x 2    
-##    emphCol              character     1         
-##    emphColLight         character     1         
-##    emphGrey             character     1         
-##    eps                  logical       1         
-##    fac                  factor        3         
-##    fibonacci            numeric       6         
-##    Fibonacci            numeric       7         
-##    freq                 integer       17        
-##    garden               data.frame    5 x 3     
-##    height               numeric       1         
-##    hw                   character     2         
-##    i                    integer       1         
-##    interest             numeric       1         
-##    is.MP.speaking       logical       5         
-##    itng                 data.frame    10 x 2    
-##    itng.table           table         3 x 4     
-##    likert.centred       numeric       10        
-##    likert.ordinal       ordered       10        
-##    likert.raw           numeric       10        
-##    M                    matrix        2 x 3     
-##    makka.pakka          character     4         
-##    monkey               character     1         
-##    monkey.1             list          1         
-##    month                numeric       1         
-##    monthly.multiplier   numeric       1         
-##    msg                  character     1         
-##    my.var               numeric       1         
-##    ng                   character     2         
-##    numbers              numeric       3         
-##    old                  list          66        
-##    old.text             character     1         
-##    oneCorPlot           function                
-##    opinion.dir          numeric       10        
-##    opinion.strength     numeric       10        
-##    out.0                data.frame    100 x 2   
-##    out.1                data.frame    100 x 2   
-##    out.2                data.frame    100 x 2   
-##    parenthood           data.frame    100 x 4   
-##    payments             numeric       1         
-##    PJ                   character     1         
-##    plotOne              function                
-##    projecthome          character     1         
-##    quadruple            function                
-##    row.1                numeric       3         
-##    row.2                numeric       3         
-##    some.data            numeric       18        
-##    speaker              character     10        
-##    speech.by.char       list          3         
-##    teams                character     17        
-##    text                 character     2         
-##    today                Date          1         
-##    tombliboo            character     2         
-##    total.paid           numeric       1         
-##    upsy.daisy           character     4         
-##    utterance            character     10        
-##    w                    character     1         
-##    W                    character     1         
-##    w.length             integer       1         
-##    width                numeric       1         
-##    words                character     7         
-##    x                    numeric       1         
-##    X1                   numeric       11        
-##    X2                   numeric       11        
-##    X3                   numeric       11        
-##    X4                   numeric       11        
-##    xtab.3d              table         3 x 4 x 2 
-##    y                    numeric       2         
-##    Y1                   numeric       11        
-##    Y2                   numeric       11        
-##    Y3                   numeric       11        
-##    Y4                   numeric       11</code></pre>
+<pre><code>##    -- Name --             -- Class --   -- Size --
+##    afl.finalists          factor        400       
+##    afl.margins            numeric       176       
+##    afl2                   data.frame    4296 x 2  
+##    age                    numeric       11        
+##    age.breaks             numeric       4         
+##    age.group              factor        11        
+##    age.group2             factor        11        
+##    age.group3             factor        11        
+##    age.labels             character     3         
+##    animals                character     4         
+##    balance                numeric       1         
+##    beers                  character     3         
+##    cake.1                 numeric       5         
+##    cake.2                 numeric       5         
+##    cake.df                data.frame    5 x 2     
+##    cake.mat1              matrix        5 x 2     
+##    cake.mat2              matrix        2 x 5     
+##    cakes                  matrix        4 x 5     
+##    cakes.flipped          matrix        5 x 4     
+##    choice                 data.frame    4 x 10    
+##    choice.2               data.frame    16 x 6    
+##    colour                 logical       1         
+##    d.cor                  numeric       1         
+##    dan.awake              logical       10        
+##    data                   data.frame    12 x 4    
+##    day                    character     1         
+##    describeImg            list          0         
+##    df                     data.frame    4 x 1     
+##    drugs                  data.frame    10 x 8    
+##    drugs.2                data.frame    30 x 5    
+##    effort                 data.frame    10 x 2    
+##    emphCol                character     1         
+##    emphColLight           character     1         
+##    emphGrey               character     1         
+##    eps                    logical       1         
+##    fac                    factor        3         
+##    fibonacci              numeric       6         
+##    Fibonacci              numeric       7         
+##    freq                   integer       17        
+##    garden                 data.frame    5 x 3     
+##    generateRLineTypes     function                
+##    generateRPointShapes   function                
+##    height                 numeric       1         
+##    hw                     character     2         
+##    i                      integer       1         
+##    interest               numeric       1         
+##    is.MP.speaking         logical       5         
+##    itng                   data.frame    10 x 2    
+##    itng.table             table         3 x 4     
+##    likert.centred         numeric       10        
+##    likert.ordinal         ordered       10        
+##    likert.raw             numeric       10        
+##    M                      matrix        2 x 3     
+##    makka.pakka            character     4         
+##    monkey                 character     1         
+##    monkey.1               list          1         
+##    month                  numeric       1         
+##    monthly.multiplier     numeric       1         
+##    msg                    character     1         
+##    my.var                 numeric       1         
+##    ng                     character     2         
+##    numbers                numeric       3         
+##    old                    list          66        
+##    old.text               character     1         
+##    oneCorPlot             function                
+##    opinion.dir            numeric       10        
+##    opinion.strength       numeric       10        
+##    out.0                  data.frame    100 x 2   
+##    out.1                  data.frame    100 x 2   
+##    out.2                  data.frame    100 x 2   
+##    parenthood             data.frame    100 x 4   
+##    payments               numeric       1         
+##    PJ                     character     1         
+##    plotOne                function                
+##    projecthome            character     1         
+##    quadruple              function                
+##    row.1                  numeric       3         
+##    row.2                  numeric       3         
+##    some.data              numeric       18        
+##    speaker                character     10        
+##    speech.by.char         list          3         
+##    suspicious.cases       logical       176       
+##    teams                  character     17        
+##    text                   character     2         
+##    today                  Date          1         
+##    tombliboo              character     2         
+##    total.paid             numeric       1         
+##    upsy.daisy             character     4         
+##    utterance              character     10        
+##    w                      character     1         
+##    W                      character     1         
+##    w.length               integer       1         
+##    width                  numeric       1         
+##    words                  character     7         
+##    x                      numeric       1         
+##    X1                     numeric       11        
+##    X2                     numeric       11        
+##    X3                     numeric       11        
+##    X4                     numeric       11        
+##    xtab.3d                table         3 x 4 x 2 
+##    y                      numeric       2         
+##    Y1                     numeric       11        
+##    Y2                     numeric       11        
+##    Y3                     numeric       11        
+##    Y4                     numeric       11</code></pre>
 <p>we see everything in our workspace from this chapter including the <code>quadruple()</code> function itself, as well as the <code>my.var</code> variable that we just created.</p>
 <p>Now that we know how to create our own functions in R, it’s probably a good idea to talk a little more about some of the other properties of functions that I’ve been glossing over. To start with, let’s take this opportunity to type the name of the function at the command line without the parentheses:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quadruple</code></pre></div>
@@ -1628,7 +1630,7 @@ doubleMax &lt;-<span class="st"> </span><span class="cf">function</span>( ... ) 
 </div>
 <div id="theres-more-to-functions-than-this" class="section level3">
 <h3><span class="header-section-number">8.4.2</span> There’s more to functions than this</h3>
-<p>There’s a lot of other details to functions that I’ve hidden in my description in this chapter. Experienced programmers will wonder exactly how the “scoping rules” work in R,<a href="#fn139" class="footnoteRef" id="fnref139"><sup>139</sup></a> or want to know how to use a function to create variables in other environments<a href="#fn140" class="footnoteRef" id="fnref140"><sup>140</sup></a>, or if function objects can be assigned as elements of a list<a href="#fn141" class="footnoteRef" id="fnref141"><sup>141</sup></a> and probably hundreds of other things besides. However, I don’t want to have this discussion get too cluttered with details, so I think it’s best – at least for the purposes of the current book – to stop here.</p>
+<p>There’s a lot of other details to functions that I’ve hidden in my description in this chapter. Experienced programmers will wonder exactly how the “scoping rules” work in R,<a href="#fn138" class="footnoteRef" id="fnref138"><sup>138</sup></a> or want to know how to use a function to create variables in other environments<a href="#fn139" class="footnoteRef" id="fnref139"><sup>139</sup></a>, or if function objects can be assigned as elements of a list<a href="#fn140" class="footnoteRef" id="fnref140"><sup>140</sup></a> and probably hundreds of other things besides. However, I don’t want to have this discussion get too cluttered with details, so I think it’s best – at least for the purposes of the current book – to stop here.</p>
 </div>
 </div>
 <div id="vectorised" class="section level2">
@@ -1640,7 +1642,7 @@ doubleMax &lt;-<span class="st"> </span><span class="cf">function</span>( ... ) 
 <pre><code>## along   the  loom    of   the  land 
 ##     5     3     4     2     3     4</code></pre>
 <p>Notice how similar this is to the second example of a <code>for</code> loop in Section <a href="scripting.html#for">8.2.2</a>. The <code>sapply()</code> function has implicitly looped over the elements of <code>words</code>, and for each such element applied the <code>nchar()</code> function to calculate the number of letters in the corresponding word.</p>
-<p>The second of these functions is <code>tapply()</code>, which has three key arguments. As before <code>X</code> specifies the data, and <code>FUN</code> specifies a function. However, there is also an <code>INDEX</code> argument which specifies a grouping variable.<a href="#fn142" class="footnoteRef" id="fnref142"><sup>142</sup></a> What the <code>tapply()</code> function does is loop over all of the different values that appear in the <code>INDEX</code> variable. Each such value defines a group: the <code>tapply()</code> function constructs the subset of <code>X</code> that corresponds to that group, and then applies the function <code>FUN</code> to that subset of the data. This probably sounds a little abstract, so let’s consider a specific example, using the <code>nightgarden.Rdata</code> file that we used in Chapter <a href="datahandling.html#datahandling">7</a>.</p>
+<p>The second of these functions is <code>tapply()</code>, which has three key arguments. As before <code>X</code> specifies the data, and <code>FUN</code> specifies a function. However, there is also an <code>INDEX</code> argument which specifies a grouping variable.<a href="#fn141" class="footnoteRef" id="fnref141"><sup>141</sup></a> What the <code>tapply()</code> function does is loop over all of the different values that appear in the <code>INDEX</code> variable. Each such value defines a group: the <code>tapply()</code> function constructs the subset of <code>X</code> that corresponds to that group, and then applies the function <code>FUN</code> to that subset of the data. This probably sounds a little abstract, so let’s consider a specific example, using the <code>nightgarden.Rdata</code> file that we used in Chapter <a href="datahandling.html#datahandling">7</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gender &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="st">&quot;male&quot;</span>,<span class="st">&quot;male&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;female&quot;</span>,<span class="st">&quot;male&quot;</span> )
 age &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">13</span> )
 <span class="kw">tapply</span>( <span class="dt">X =</span> age, <span class="dt">INDEX =</span> gender, <span class="dt">FUN =</span> mean )</code></pre></div>
@@ -1680,15 +1682,15 @@ age &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">10
 </div>
 <div class="footnotes">
 <hr />
-<ol start="135">
-<li id="fn135"><p>The quote comes from <em>Count Zero</em> (1986)<a href="scripting.html#fnref135">↩</a></p></li>
-<li id="fn136"><p>Okay, I lied. Sue me. One of the coolest features of Rstudio is the support for <em>R Markdown</em>, which lets you embed R code inside a Markdown document, and you can automatically publish your R Markdown to the web on Rstudio’s servers. If you’re the kind of nerd interested in this sort of thing, it’s really nice. And, yes, since I’m also that kind of nerd, of course I’m aware that iPython notebooks do the same thing and that R just nicked their idea. So what? It’s still cool. And anyway, this book isn’t called <em>Learning Statistics with Python</em> now, is it? Hm. Maybe I should write a Python version…<a href="scripting.html#fnref136">↩</a></p></li>
-<li id="fn137"><p>As an aside: if there’s only a single command that you want to include inside your loop, then you don’t actually need to bother including the curly braces at all. However, until you’re comfortable programming in R I’d advise <em>always</em> using them, even when you don’t have to.<a href="scripting.html#fnref137">↩</a></p></li>
-<li id="fn138"><p>Okay, fine. This example is still a bit ridiculous, in three respects. Firstly, the bank absolutely will not let the couple pay less than the amount required to terminate the loan in 30 years. Secondly, a constant interest rate of 30 years is hilarious. Thirdly, you can solve this much more efficiently than through brute force simulation. However, we’re not exactly in the business of being realistic or efficient here.<a href="scripting.html#fnref138">↩</a></p></li>
-<li id="fn139"><p>Lexical scope.<a href="scripting.html#fnref139">↩</a></p></li>
-<li id="fn140"><p>The <code>assign()</code> function.<a href="scripting.html#fnref140">↩</a></p></li>
-<li id="fn141"><p>Yes.<a href="scripting.html#fnref141">↩</a></p></li>
-<li id="fn142"><p>Or a list of such variables.<a href="scripting.html#fnref142">↩</a></p></li>
+<ol start="134">
+<li id="fn134"><p>The quote comes from <em>Count Zero</em> (1986)<a href="scripting.html#fnref134">↩</a></p></li>
+<li id="fn135"><p>Okay, I lied. Sue me. One of the coolest features of Rstudio is the support for <em>R Markdown</em>, which lets you embed R code inside a Markdown document, and you can automatically publish your R Markdown to the web on Rstudio’s servers. If you’re the kind of nerd interested in this sort of thing, it’s really nice. And, yes, since I’m also that kind of nerd, of course I’m aware that iPython notebooks do the same thing and that R just nicked their idea. So what? It’s still cool. And anyway, this book isn’t called <em>Learning Statistics with Python</em> now, is it? Hm. Maybe I should write a Python version…<a href="scripting.html#fnref135">↩</a></p></li>
+<li id="fn136"><p>As an aside: if there’s only a single command that you want to include inside your loop, then you don’t actually need to bother including the curly braces at all. However, until you’re comfortable programming in R I’d advise <em>always</em> using them, even when you don’t have to.<a href="scripting.html#fnref136">↩</a></p></li>
+<li id="fn137"><p>Okay, fine. This example is still a bit ridiculous, in three respects. Firstly, the bank absolutely will not let the couple pay less than the amount required to terminate the loan in 30 years. Secondly, a constant interest rate of 30 years is hilarious. Thirdly, you can solve this much more efficiently than through brute force simulation. However, we’re not exactly in the business of being realistic or efficient here.<a href="scripting.html#fnref137">↩</a></p></li>
+<li id="fn138"><p>Lexical scope.<a href="scripting.html#fnref138">↩</a></p></li>
+<li id="fn139"><p>The <code>assign()</code> function.<a href="scripting.html#fnref139">↩</a></p></li>
+<li id="fn140"><p>Yes.<a href="scripting.html#fnref140">↩</a></p></li>
+<li id="fn141"><p>Or a list of such variables.<a href="scripting.html#fnref141">↩</a></p></li>
 </ol>
 </div>
             </section>
