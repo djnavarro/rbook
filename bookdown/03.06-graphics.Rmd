@@ -12,7 +12,7 @@ projecthome <- here::here("bookdown")
 
 Visualising data is one of the most important tasks facing the data analyst. It's important for two distinct but closely related reasons. Firstly, there's the matter of drawing "presentation graphics": displaying your data in a clean, visually appealing fashion makes it easier for your reader to understand what you're trying to tell them. Equally important, perhaps even more important, is the fact that drawing graphs helps *you* to understand the data. To that end, it's important to draw "exploratory graphics" that help you learn about the data as you go about analysing it. These points might seem pretty obvious, but I cannot count the number of times I've seen people forget them. 
 
-```{r snowmap1, echo=FALSE, fig.cap="A stylised redrawing of John Snow\'s original cholera map. Each small dot represents the location of a cholera case, and each large circle shows the location of a well. As the plot makes clear, the cholera outbreak is centred very closely on the Broad St pump.  This image uses the data from the `HistData` package @[Friendly2011], and was drawn using minor alterations to the commands provided in the help files. Note that Snow\'s original hand drawn map used different symbols and labels, but you get the idea."}
+```{r snowmap1, echo=FALSE, fig.cap="A stylised redrawing of John Snow\'s original cholera map. Each small dot represents the location of a cholera case, and each large circle shows the location of a well. As the plot makes clear, the cholera outbreak is centred very closely on the Broad St pump.  This image uses the data from the `HistData` package, and was drawn using minor alterations to the commands provided in the help files. Note that Snow\'s original hand drawn map used different symbols and labels, but you get the idea."}
 
 library(HistData)
 
@@ -54,16 +54,10 @@ So let's start painting.
 
 ## An introduction to plotting{#introplotting}
 
-Before I discuss any specialised graphics, let's start by drawing a few very simple graphs just to get a feel for what it's like to draw pictures using R. To that end, let's create a small vector `Fibonacci` that contains a few numbers we'd like R to draw for us. Then, we'll ask R to `plot()` those numbers:
-```
-> Fibonacci <- c( 1,1,2,3,5,8,13 )
-> plot( Fibonacci )
-```
-The result is Figure \@ref(fig:firstplot).
-
-```{r firstplot, fig.cap="Our first plot", echo=FALSE}
-Fibonacci <- c( 1,1,2,3,5,8,13)
-plot(Fibonacci)
+Before I discuss any specialised graphics, let's start by drawing a few very simple graphs just to get a feel for what it's like to draw pictures using R. To that end, let's create a small vector `Fibonacci` that contains a few numbers we'd like R to draw for us. Then, we'll ask R to `plot()` those numbers. The result is Figure \@ref(fig:firstplot).
+```{r firstplot, fig.cap="Our first plot"}
+Fibonacci <- c( 1,1,2,3,5,8,13 )
+plot( Fibonacci )
 ```
 
 As you can see, what R has done is plot the *values* stored in the `Fibonacci` variable on the vertical axis (y-axis) and the corresponding *index* on the horizontal axis (x-axis). In other words, since the 4th element of the vector has a value of 3, we get a dot plotted at the location (4,3). That's pretty straightforward, and the image in Figure \@ref(fig:firstplot) is probably pretty close to what you would have had in mind when I suggested that we plot the `Fibonacci` data. However, there's quite a lot of customisation options available to you, so we should probably spend a bit of time looking at some of those options. So, be warned: this ends up being a fairly long section, because there's so many possibilities open to you. Don't let it overwhelm you though... while all of the options discussed here are handy to know about, you can get by just fine only knowing a few of them. The only reason I've included all this stuff right at the beginning is that it ends up making the rest of the chapter a lot more readable!
@@ -76,7 +70,7 @@ Before we go into any discussion of customising plots, we need a little more bac
 
 What kinds of customisations might we be interested in? If you look at the help documentation for the default plotting method (i.e., type `?plot.default` or `help("plot.default")`) you'll see a very long list of arguments that you can specify to customise your plot. I'll talk about several of them in a moment, but first I want to point out something that might seem quite wacky. When you look at all the different options that the help file talks about, you'll notice that *some* of the options that it refers to are "proper" arguments to the `plot.default()` function, but it also goes on to mention a bunch of things that *look* like they're supposed to be arguments, but they're not listed in the "Usage" section of the file, and the documentation calls them **_graphical parameters_** instead. Even so, it's usually possible to treat them as if they were arguments of the plotting function. Very odd. In order to stop my readers trying to find a brick and look up my home address, I'd better explain what's going on; or at least give the basic gist behind it. 
 
-What exactly is a graphical parameter? Basically, the idea is that there are some characteristics of a plot which are pretty universal: for instance, regardless of what kind of graph you're drawing, you probably need to specify what colour to use for the plot, right? So you'd expect there to be something like a `col` argument to every single graphics function in R? Well, sort of. In order to avoid having hundreds of arguments for every single function, what R does is refer to a bunch of these "graphical parameters" which are pretty general purpose. Graphical parameters can be changed directly by using the low-level `par()` function, which I discuss briefly in Section \@ref(sec:par) though not in a lot of detail. If you look at the help files for graphical parameters (i.e., type `?par`) you'll see that there's *lots* of them. Fortunately, (a) the default settings are generally pretty good so you can ignore the majority of the parameters, and (b) as you'll see as we go through this chapter, you very rarely need to use `par()` directly, because you can "pretend" that graphical parameters are just additional arguments to your high-level function (e.g. `plot.default()`). In short... yes, R does have these wacky "graphical parameters" which can be quite confusing. But in most basic uses of the plotting functions, you can act as if they were just undocumented additional arguments to your function.
+What exactly is a graphical parameter? Basically, the idea is that there are some characteristics of a plot which are pretty universal: for instance, regardless of what kind of graph you're drawing, you probably need to specify what colour to use for the plot, right? So you'd expect there to be something like a `col` argument to every single graphics function in R? Well, sort of. In order to avoid having hundreds of arguments for every single function, what R does is refer to a bunch of these "graphical parameters" which are pretty general purpose. Graphical parameters can be changed directly by using the low-level `par()` function, which I discuss briefly in Section \@ref(par) though not in a lot of detail. If you look at the help files for graphical parameters (i.e., type `?par`) you'll see that there's *lots* of them. Fortunately, (a) the default settings are generally pretty good so you can ignore the majority of the parameters, and (b) as you'll see as we go through this chapter, you very rarely need to use `par()` directly, because you can "pretend" that graphical parameters are just additional arguments to your high-level function (e.g. `plot.default()`). In short... yes, R does have these wacky "graphical parameters" which can be quite confusing. But in most basic uses of the plotting functions, you can act as if they were just undocumented additional arguments to your function.
 
 ### Customising the title and the axis labels{#figtitles}
 
@@ -87,18 +81,9 @@ One of the first things that you'll find yourself wanting to do when customising
 - `xlab`. A character string containing the x-axis label.
 - `ylab`. A character string containing the y-axis label.
 
-These aren't graphical parameters, they're arguments to the high-level function. However, because the high-level functions all rely on the same low-level function to do the drawing^[The low-level function that does this is called `title()` in case you ever need to know, and you can type `?title` to find out a bit more detail about what these arguments do.] the names of these arguments are identical for pretty much every high-level function I've come across. Let's have a look at what happens when we make use of all these arguments. Here's the command...
-```
-> plot( x = Fibonacci, 
-+       main = "You specify title using the 'main' argument",
-+       sub = "The subtitle appears here! (Use the 'sub' argument for this)",
-+       xlab = "The x-axis label is 'xlab'",
-+       ylab = "The y-axis label is 'ylab'"
-+ )
-```
-The picture that this draws is shown in Figure \@ref(fig:secondplot). 
+These aren't graphical parameters, they're arguments to the high-level function. However, because the high-level functions all rely on the same low-level function to do the drawing^[The low-level function that does this is called `title()` in case you ever need to know, and you can type `?title` to find out a bit more detail about what these arguments do.] the names of these arguments are identical for pretty much every high-level function I've come across. Let's have a look at what happens when we make use of all these arguments. Here's the command. The picture that this draws is shown in Figure \@ref(fig:secondplot). 
 
-```{r secondplot, fig.cap="How to add your own title, subtitle, x-axis label and y-axis label to the plot.", echo=FALSE}
+```{r secondplot, fig.cap="How to add your own title, subtitle, x-axis label and y-axis label to the plot."}
 plot( x = Fibonacci,
 	           main = "You specify title using the 'main' argument",
 	           sub = "The subtitle appears here! (Use the 'sub' argument for this)",
@@ -117,18 +102,8 @@ It's more or less as you'd expect. The plot itself is identical to the one we dr
 - *Font family:* `family`. This argument specifies a font family to use: the simplest way to use it is to set it to `"sans"`, `"serif"`, or `"mono"`, corresponding to a san serif font, a serif font, or a monospaced font. If you want to, you can give the name of a specific font, but keep in mind that different operating systems use different fonts, so it's probably safest to keep it simple. Better yet, unless you have some deep objections to the R defaults, just ignore this parameter entirely. That's what I usually do.
 
 To give you a sense of how you can use these parameters to customise your titles, the following command can be used to draw Figure \@ref(fig:thirdplot):
-```
-> plot( x = Fibonacci,                           # the data to plot
-+       main = "The first 7 Fibonacci numbers",  # the title 
-+       xlab = "Position in the sequence",       # x-axis label
-+       ylab = "The Fibonacci number",           # y-axis label
-+       font.main = 1,                           # plain text for title 
-+       cex.main = 1,                            # normal size for title
-+       font.axis = 2,                           # bold text for numbering
-+       col.lab = "gray50"                       # grey colour for labels
-+ )
-```
-```{r thirdplot, fig.cap="How to customise the appearance of the titles and labels.", echo=FALSE}
+
+```{r thirdplot, fig.cap="How to customise the appearance of the titles and labels."}
 plot( x = Fibonacci,                           # the data to plot
           main = "The first 7 Fibonacci numbers",  # the title
           xlab = "Position in the sequence",       # x-axis label
@@ -162,38 +137,100 @@ The simplest way to illustrate what each of these really looks like is just to d
 
 
 ```{r simpleplots, echo=FALSE, fig.cap="Changing the `type` of the plot."}
-knitr::include_graphics("./rbook-master/img/graphics2/simpleplot.png")
+
+par(mfrow=c(2,3))
+
+plot( x = Fibonacci,                           # the data to plot
+          main = "Type \"p\"",  # the title
+	      font.main = 1,
+	      cex.main = 1,
+	      font.axis = 2,
+ 		  col.lab = "gray50",
+      type  = "p")
+
+plot( x = Fibonacci,                           # the data to plot
+          main = "Type \"o\"",  # the title
+	      font.main = 1,
+	      cex.main = 1,
+	      font.axis = 2,
+ 		  col.lab = "gray50",
+      type  = "o")
+
+plot( x = Fibonacci,                           # the data to plot
+          main = "Type \"h\"",  # the title
+	      cex.main = 1,
+	      font.axis = 2,
+ 		  col.lab = "gray50",
+      type  = "h")
+
+plot( x = Fibonacci,                           # the data to plot
+          main = "Type \"l\"",  # the title
+	      font.main = 1,
+	      cex.main = 1,
+	      font.axis = 2,
+ 		  col.lab = "gray50",
+      type  = "l")
+
+plot( x = Fibonacci,                           # the data to plot
+          main = "Type \"b\"",  # the title
+	      font.main = 1,
+	      cex.main = 1,
+	      font.axis = 2,
+ 		  col.lab = "gray50",
+      type  = "b")
+
+plot( x = Fibonacci,                           # the data to plot
+          main = "Type \"s\"",  # the title
+	      font.main = 1,
+	      cex.main = 1,
+	      font.axis = 2,
+ 		  col.lab = "gray50",
+      type  = "s")
+
+par(mfrow=c(1,1))
 
 ```
 
 ### Changing other features of the plot
 
-```{r pch, echo=FALSE, fig.cap="Changing the line and plotted characters of the plot."}
-knitr::include_graphics("./rbook-master/img/graphics2/pchlty.png")
-
-```
-
-
-In Section \@ref(sec:figtitles) we talked about a group of graphical parameters that are related to the formatting of titles, axis labels etc. The second group of parameters I want to discuss are those related to the formatting of the plot itself:
+In Section \@ref(figtitles) we talked about a group of graphical parameters that are related to the formatting of titles, axis labels etc. The second group of parameters I want to discuss are those related to the formatting of the plot itself:
  
 - *Colour of the plot*: `col`. As we saw with the previous colour-related parameters, the simplest way to specify this parameter is using a character string: e.g., `col = "blue"`. It's a pretty straightforward parameter to specify: the only real subtlety is that every high-level function tends to draw a different "thing" as it's output, and so this parameter gets interpreted a little differently by different functions. However, for the `plot.default()` function it's pretty simple: the `col` argument refers to the colour of the points and/or lines that get drawn! 
-- *Character used to plot points*: `pch`. The **p**lot **ch**aracter parameter is a number, usually between 1 and 25. What it does is tell R what symbol to use to draw the points that it plots. The simplest way to illustrate what the different values do is with a picture. Figure \@ref(fig:pch)a shows the first 25 plotting characters. The default plotting character is a hollow circle (i.e., `pch = 1`).
+- *Character used to plot points*: `pch`. The **p**lot **ch**aracter parameter is a number, usually between 1 and 25. What it does is tell R what symbol to use to draw the points that it plots. The simplest way to illustrate what the different values do is with a picture. Figure \@ref(fig:pch) shows the first 25 plotting characters. The default plotting character is a hollow circle (i.e., `pch = 1`).
+
+```{r pch, echo=FALSE, fig.cap="Changing the plotted characters"}
+generateRPointShapes<-function(){
+  oldPar<-par()
+  par(font=2, mar=c(0.5,0,0,0))
+  y=rev(c(rep(1,5),rep(2,5), rep(3,5), rep(4,5), rep(5,5)))
+  x=c(rep(1:5,5))
+  plot(x, y, pch = 0:25, cex=1.5, ylim=c(1,5.5), xlim=c(1,6.5), 
+       axes=FALSE, xlab="", ylab="", bg="blue")
+  text(x, y, labels=0:24, pos=3)
+  par(mar=oldPar$mar,font=oldPar$font )
+}
+generateRPointShapes()
+```
+
 - *Plot size*: `cex`. This parameter describes a **c**haracter **ex**pansion factor (i.e., magnification) for the plotted characters. By default `cex=1`, but if you want bigger symbols in your graph you should specify a larger value.
-- *Line type*: `lty`. The **l**ine **ty**pe parameter describes the kind of line that R draws. It has seven values which you can specify using a number between `0` and `7`, or using a meaningful character string: `"blank"`, `"solid"`, `"dashed"`, `"dotted"`, `"dotdash"`, `"longdash"`, or `"twodash"`. Note that the "blank" version (value 0) just means that R doesn't draw the lines at all. The other six versions are shown in Figure \@ref(fig:pch)b.
+- *Line type*: `lty`. The **l**ine **ty**pe parameter describes the kind of line that R draws. It has seven values which you can specify using a number between `0` and `7`, or using a meaningful character string: `"blank"`, `"solid"`, `"dashed"`, `"dotted"`, `"dotdash"`, `"longdash"`, or `"twodash"`. Note that the "blank" version (value 0) just means that R doesn't draw the lines at all. The other six versions are shown in Figure \@ref(fig:lty).
+
+```{r lty, echo=FALSE, fig.cap="Line types"}
+generateRLineTypes<-function(){
+  oldPar<-par()
+  par(font=2, mar=c(0,0,0,0))
+  plot(1, pch="", ylim=c(0,6), xlim=c(0,0.7),  axes=FALSE,xlab="", ylab="")
+  for(i in 1:6) lines(c(0.3,0.7), c(i,i), lty=i, lwd=3)
+  text(rep(0.1,6), 1:6, labels=c("1", "2", "3",
+                                 "4", "5", "6"))
+  par(mar=oldPar$mar,font=oldPar$font )
+}
+generateRLineTypes()
+```
+
 - *Line width*: `lwd`. The last graphical parameter in this category that I want to mention is the **l**ine **w**i**d**th parameter, which is just a number specifying the width of the line. The default value is 1. Not surprisingly, larger values produce thicker lines and smaller values produce thinner lines. Try playing around with different values of `lwd` to see what happens.
 
-To illustrate what you can do by altering these parameters, let's try the following command:
-```
-> plot( x = Fibonacci,   # the data set
-+       type = "b",      # plot both points and lines
-+       col = "blue",    # change the plot colour to blue
-+       pch = 19,        # plotting character is a solid circle
-+       cex = 5,         # plot it at 5x the usual size
-+       lty = 2,         # change line type to dashed
-+       lwd = 4          # change line width to 4x the usual
-+ )
-```
-The output is shown in Figure \@ref(fig:fifthplot).
+To illustrate what you can do by altering these parameters, let's try the following command, the output is shown in Figure \@ref(fig:fifthplot).
 
 ```{r fifthplot, fig.cap="Customising various aspects to the plot itself."}
 plot( x = Fibonacci,
@@ -215,30 +252,16 @@ There are several other possibilities worth discussing. Ignoring graphical param
 - *Suppress axis drawing*: `axes`. Again, this is a logical valued argument. Suppose you don't want R to draw any axes at all. To suppress the axes, all you have to do is add `axes = FALSE`. This will remove the axes and the numbering, but not the axis labels (i.e. the `xlab` and `ylab` text). Note that you can get finer grain control over this by specifying the `xaxt` and `yaxt` graphical parameters instead (see below).
 - *Include a framing box*: `frame.plot`. Suppose you've removed the axes by setting `axes = FALSE`, but you still want to have a simple box drawn around the plot; that is, you only wanted to get rid of the numbering and the tick marks, but you want to keep the box. To do that, you set `frame.plot = TRUE`. 
 
-Note that this list isn't exhaustive. There are a few other arguments to the `plot.default` function that you can play with if you want to, but those are the ones you are probably most likely to want to use. As always, however, if these aren't enough options for you, there's also a number of other graphical parameters that you might want to play with as well. That's the focus of the next section. In the meantime, here's a command that makes use of all these different options:
-```
-> plot( x = Fibonacci,       # the data
-+       xlim = c(0, 15),     # expand the x-scale
-+       ylim = c(0, 15),     # expand the y-scale
-+       ann = FALSE,         # delete all annotations
-+       axes = FALSE,        # delete the axes
-+       frame.plot = TRUE    # but include a framing box
-+ )
-```
-The output is shown in Figure \@ref(fig:fourthplot), and it's pretty much exactly as you'd expect. The axis scales on both the horizontal and vertical dimensions have been expanded, the axes have been suppressed as have the annotations, but I've kept a box around the plot.
-
+Note that this list isn't exhaustive. There are a few other arguments to the `plot.default` function that you can play with if you want to, but those are the ones you are probably most likely to want to use. As always, however, if these aren't enough options for you, there's also a number of other graphical parameters that you might want to play with as well. That's the focus of the next section. In the meantime, here's a command that makes use of all these different options. The output is shown in Figure \@ref(fig:fourthplot), and it's pretty much exactly as you'd expect. The axis scales on both the horizontal and vertical dimensions have been expanded, the axes have been suppressed as have the annotations, but I've kept a box around the plot.
 ```{r fourthplot, fig.cap="Altering the scale and appearance of the plot axes."}
-	plot( x = Fibonacci,
-	      xlim = c(0, 15),
-	      ylim = c(0, 15),
-	 		  ann = FALSE,
-	      axes = FALSE,
-	 		frame.plot = TRUE)
+plot( x = Fibonacci,       # the data
+       xlim = c(0, 15),     # expand the x-scale
+       ylim = c(0, 15),     # expand the y-scale
+       ann = FALSE,         # delete all annotations
+       axes = FALSE,        # delete the axes
+       frame.plot = TRUE    # but include a framing box
+ )
 ```
-
-
-
-
 
 Before moving on, I should point out that there are several graphical parameters relating to the axes, the box, and the general appearance of the plot which allow finer grain control over the appearance of the axes and the annotations. 
 
@@ -246,21 +269,13 @@ Before moving on, I should point out that there are several graphical parameters
 - *Box type*: `bty`. In the same way that `xaxt`, `yaxt` are just fancy versions of `axes`, the **b**ox **ty**pe parameter is really just a fancier version of the `frame.plot` argument, allowing you to specify exactly which out of the four borders you want to keep. The way we specify this parameter is a bit stupid, in my opinion: the  possible values are `"o"` (the default), `"l"`, `"7"`, `"c"`, `"u"`, or `"]"`, each of which will draw only those edges that the corresponding character suggests. That is, the letter `"c"` has a top, a bottom and a left, but is blank on the right hand side, whereas `"7"` has a top and a right, but is blank on the left and the bottom. Alternatively a value of `"n"` means that no box will be drawn.
 - *Orientation of the axis labels* `las`. I presume that the name of this parameter is an acronym of **la**bel **s**tyle or something along those lines; but what it actually does is govern the orientation of the text used to label the individual tick marks (i.e., the numbering, not the `xlab` and `ylab` axis labels). There are four possible values for `las`: A value of 0 means that the labels of both axes are printed parallel to the axis itself (the default). A value of 1 means that the text is always horizontal. A value of 2 means that the labelling text is printed at right angles to the axis. Finally, a value of 3 means that the text is always vertical. 
 
-Again, these aren't the only possibilities. There are a few other graphical parameters that I haven't mentioned that you could use to customise the appearance of the axes,^[Also, there's a low level function called `axis()` that allows a lot more control over the appearance of the axes.] but that's probably enough (or more than enough) for now. To give a sense of how you could use these parameters, let's try the following command:
-```
-> plot( x = Fibonacci,   # the data
-+       xaxt = "n",      # don't draw the x-axis
-+       bty = "]",       # keep bottom, right and top of box only
-+       las = 1          # rotate the text
-+ )
-```
-The output is shown in Figure \@ref(fig:sixthplot). As you can see, this isn't a very useful plot at all. However, it does illustrate the graphical parameters we're talking about, so I suppose it serves its purpose.
+Again, these aren't the only possibilities. There are a few other graphical parameters that I haven't mentioned that you could use to customise the appearance of the axes,^[Also, there's a low level function called `axis()` that allows a lot more control over the appearance of the axes.] but that's probably enough (or more than enough) for now. To give a sense of how you could use these parameters, let's try the following command. The output is shown in Figure \@ref(fig:sixthplot). As you can see, this isn't a very useful plot at all. However, it does illustrate the graphical parameters we're talking about, so I suppose it serves its purpose.
 
 ```{r sixthplot, fig.cap="Other ways to customise the axes"}
-	plot( x = Fibonacci,
-		 xaxt = "n",
-		 bty = "]",
-		 las = 1 )
+	plot( x = Fibonacci, # the data
+		 xaxt = "n",       # don't draw the x-axis  
+		 bty = "]",        # keep bottom, right and top of box only
+		 las = 1 )         # rotate the text
 ```
 
 
@@ -272,11 +287,11 @@ At this point, a lot of readers will be probably be thinking something along the
 ## Histograms{#hist}
  
 Now that we've tamed (or possibly fled from) the beast that is R graphical parameters, let's talk more seriously about some real life graphics that you'll want to draw. We begin with the humble **_histogram_**. Histograms are one of the simplest and most useful ways of visualising data. They make most sense when you have an interval or ratio scale (e.g., the `afl.margins` data from Chapter \@ref(descriptives) and what you want to do is get an overall impression of the data. Most of you probably know how histograms work, since they're so widely used, but for the sake of completeness I'll describe them. All you do is divide up the possible values into **_bins_**, and then count the number of observations that fall within each bin. This count is referred to as the frequency of the bin, and is displayed as a bar: in the AFL winning margins data, there are 33 games in which the winning margin was less than 10 points, and it is this fact that is represented by the height of the leftmost bar in Figure \@ref(fig:hist1a). Drawing this histogram in R is pretty straightforward. The function you need to use is called `hist()`, and it has pretty reasonable default settings. In fact, Figure \@ref(fig:hist1a) is exactly what you get if you just type this:
-```
-> hist( afl.margins )   # panel a
+```{r eval=FALSE}
+hist( afl.margins )
 ```
 
-```{r hist1a, fig.cap="The default histogram that R produces"}
+```{r hist1a, fig.cap="The default histogram that R produces", echo=FALSE}
 load(file.path(projecthome,"data", "aflsmall.Rdata"))
 hist(afl.margins)   # panel a
 ```
@@ -288,11 +303,11 @@ The main subtlety that you need to be aware of when drawing histograms is determ
 
 
 ```{r hist1b, fig.cap="A histogram with too few bins"}
-hist( x = afl.margins, breaks = 3 )      # panel b
+hist( x = afl.margins, breaks = 3 )
 ```
 
 ```{r hist1c, fig.cap="A histogram with too many bins"}
-hist( x = afl.margins, breaks = 0:116 )  # panel c
+hist( x = afl.margins, breaks = 0:116 )
 ```
 
 
@@ -302,15 +317,15 @@ There is one fairly important thing to add regarding how the `breaks` argument w
 
 ### Visual style of your histogram
 
-Okay, so at this point we can draw a basic histogram, and we can alter the number and even the location of the `breaks`. However, the visual style of the histograms shown in Figure \@ref(fig:hist1a; hist1b; hist1c) could stand to be improved. We can fix this by making use of some of the other arguments to the `hist()` function. Most of the things you might want to try doing have already been covered in Section \@ref(introplotting), but there's a few new things: 
+Okay, so at this point we can draw a basic histogram, and we can alter the number and even the location of the `breaks`. However, the visual style of the histograms shown in Figures \@ref(fig:hist1a), \@ref(fig:hist1b), and \@ref(fig:hist1c) could stand to be improved. We can fix this by making use of some of the other arguments to the `hist()` function. Most of the things you might want to try doing have already been covered in Section \@ref(introplotting), but there's a few new things: 
 
 - *Shading lines*: `density`, `angle`. You can add diagonal lines to shade the bars: the `density` value is a number indicating how many lines per inch R should draw (the default value of `NULL` means no lines), and the `angle` is a number indicating how many degrees from horizontal the lines should be drawn at (default is `angle = 45` degrees). 
 - *Specifics regarding colours*: `col`, `border`. You can also change the colours: in this instance the `col` parameter sets the colour of the shading (either the shading lines if there are any, or else the colour of the interior of the bars if there are not), and the `border` argument sets the colour of the edges of the bars. 
 - *Labelling the bars*: `labels`.  You can also attach labels to each of the bars using the `labels` argument. The simplest way to do this is to set `labels = TRUE`, in which case R will add a number just above each bar, that number being the exact number of observations in the bin. Alternatively, you can choose the labels yourself, by inputting a vector of strings, e.g., `labels = c("label 1","label 2","etc")`
 
-Not surprisingly, this doesn't exhaust the possibilities. If you type `help("hist")` or `?hist` and have a look at the help documentation for histograms, you'll see a few more options. A histogram that makes use of the histogram-specific customisations as well as several of the options we discussed in Section \@ref(sec:introplotting) is shown in Figure \@ref(fig:hist1d). The R command that I used to draw it is this:
+Not surprisingly, this doesn't exhaust the possibilities. If you type `help("hist")` or `?hist` and have a look at the help documentation for histograms, you'll see a few more options. A histogram that makes use of the histogram-specific customisations as well as several of the options we discussed in Section \@ref(introplotting) is shown in Figure \@ref(fig:hist1d). The R command that I used to draw it is this:
 
-```{r hist1d}
+```{r hist1d, fig.cap="A histogram with histogram specific customisations"}
 hist( x = afl.margins, 
       main = "2010 AFL margins", # title of the plot
       xlab = "Margin",           # set the x-axis label
@@ -337,9 +352,8 @@ stem( afl.margins )
 ```
 
 The values to the left of the `|` are called **_stems_** and the values to the right are called **_leaves_**. If you just look at the shape that the leaves make, you can see something that looks a lot like a histogram made out of numbers, just rotated by 90 degrees. But if you know how to read the plot, there's  quite a lot of additional information here. In fact, it's also giving you the actual values of *all* of the observations in the data set. To illustrate, let's have a look at the last line in the stem and leaf plot, namely `11 | 6`. Specifically, let's compare this to the largest values of the `afl.margins` data set:
-```
-> max( afl.margins )
-[1] 116
+```{r}
+max( afl.margins )
 ```
 Hm... `11 | 6` versus `116`. Obviously the stem and leaf plot is trying to tell us that the largest value in the data set is 116. Similarly, when we look at the line that reads `10 | 148`, the way we interpret it to note that the stem and leaf plot is telling us that the data set contains observations with values 101, 104 and 108. Finally, when we see something like 
 `5 | 00002233445556667`
@@ -352,38 +366,36 @@ I won't talk about them in a lot of detail, but I should point out that some cus
 - `width`. The second way that to can customise a stem and leaf plot is to alter the `width` (default value is 80). Changing the width alters the maximum number of leaf values that can be displayed for any given stem. 
 
 However, since stem and leaf plots aren't as important as they used to be, I'll leave it to the interested reader to investigate these options. Try the following two commands to see what happens:
-```
-> stem( x = afl.margins, scale = .25 )
-> stem( x = afl.margins, width = 20 )
+```{r eval=FALSE}
+stem( x = afl.margins, scale = .25 )
+stem( x = afl.margins, width = 20 )
 ```
 The only other thing to note about stem and leaf plots is the line in which R tells you where the decimal point is. If our data set had included only the numbers .11, .15, .23, .35 and .59 and we'd drawn a stem and leaf plot of these data, then R would move the decimal point: the stem values would be 1,2,3,4 and 5, but R would tell you that the decimal point has moved to the left of the `|` symbol. If you want to see this in action, try the following command:
-```
-> stem( x = afl.margins / 1000 )
+```{r eval=FALSE}
+stem( x = afl.margins / 1000 )
 ```
 The stem and leaf plot itself will look identical to the original one we drew, except for the fact that R will tell you that the decimal point has moved.
 
 ## Boxplots{#boxplots}
 
-```{r boxplot1, fig.cap="A basic boxplot (panel a), plus the same plot with annotations added to explain what aspect of the data set each part of the boxplot corresponds to (panel b).", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/graphics2/boxplot1.png")
-
-```
-
 Another alternative to histograms is a **_boxplot_**, sometimes called a "box and whiskers" plot. Like histograms, they're most suited to interval or ratio scale data. The idea behind a boxplot is to provide a simple visual depiction of the median, the interquartile range, and the range of the data. And because they do so in a fairly compact way, boxplots have become a very popular statistical graphic, especially during the exploratory stage of data analysis when you're trying to understand the data yourself. Let's have a look at how they work, again using the `afl.margins` data as our example. Firstly, let's actually calculate these numbers ourselves using the `summary()` function:^[R being what it is, it's no great surprise that there's also a `fivenum()` function that does much the same thing.]
-```
-> summary( afl.margins )
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   0.00   12.75   30.50   35.30   50.50  116.00 
+```{r}
+summary( afl.margins )
 ```
 
 So how does a boxplot capture these numbers? The easiest way to describe what a boxplot looks like is just to draw one. The function for doing this in R is (surprise, surprise) `boxplot()`. As always there's a lot of optional arguments that you can specify if you want, but for the most part you can just let R choose the defaults for you. That said, I'm going to override one of the defaults to start with by specifying the `range` option, but for the most part you won't want to do this (I'll explain why in a minute). With that as preamble, let's try the following command:
-```{r boxplot1a}
+```{r boxplot1a, fig.cap="A basic boxplot"}
 boxplot( x = afl.margins, range = 100 )
 ```
 
 What R draws is shown in Figure \@ref(fig:boxplot1a), the most basic boxplot possible. When you look at this plot, this is how you should interpret it: the thick line in the middle of the box is the median; the box itself spans the range from the 25th percentile to the 75th percentile; and the "whiskers" cover the full range from the minimum value to the maximum value. This is summarised in the annotated plot in Figure \@ref(fig:boxplot1b).
 
-In practice, this isn't quite how boxplots usually work. In most applications, the "whiskers" don't cover the full range from minimum to maximum. Instead, they actually go out to the most extreme data point that doesn't exceed a certain bound. By default, this value is 1.5 times the interquartile range, corresponding to a `range` value of 1.5. Any observation whose value falls outside this range is plotted as a circle instead of being covered by the whiskers, and is commonly referred to as an **_outlier_**. For our AFL margins data, there is one observation (a game with a margin of 116 points) that falls outside this range. As a consequence, the upper whisker is pulled back to the next largest observation (a value of 108), and the observation at 116 is plotted as a circle. This is illustrated in Figure \@ref(fig:boxplot2a. Since the default value is `range = 1.5` we can draw this plot using the simple command
+```{r boxplot1b, fig.cap="An annotated boxplot", echo=FALSE}
+knitr::include_graphics(here::here("bookdown", "img", "graphics2", "boxplot1_annotated.png"))
+```
+
+
+In practice, this isn't quite how boxplots usually work. In most applications, the "whiskers" don't cover the full range from minimum to maximum. Instead, they actually go out to the most extreme data point that doesn't exceed a certain bound. By default, this value is 1.5 times the interquartile range, corresponding to a `range` value of 1.5. Any observation whose value falls outside this range is plotted as a circle instead of being covered by the whiskers, and is commonly referred to as an **_outlier_**. For our AFL margins data, there is one observation (a game with a margin of 116 points) that falls outside this range. As a consequence, the upper whisker is pulled back to the next largest observation (a value of 108), and the observation at 116 is plotted as a circle. This is illustrated in Figure \@ref(fig:boxplot2a). Since the default value is `range = 1.5` we can draw this plot using the simple command
 ```{r boxplot2a, fig.cap="By default, R will only extent the whiskers a distance of 1.5 times the interquartile range, and will plot any points that fall outside that range separately"}
 boxplot( afl.margins )
 ``` 
@@ -391,9 +403,9 @@ boxplot( afl.margins )
 
 ### Visual style of your boxplot
 
-I'll talk a little more about the relationship between boxplots and outliers in the Section \@ref(sec:boxplotoutliers), but before I do let's take the time to clean this figure up. Boxplots in R are extremely customisable. In addition to the usual range of graphical parameters that you can tweak to make the plot look nice, you can also exercise nearly complete control over every element to the plot. Consider the boxplot in Figure \@ref(fig:boxplot2b): in this version of the plot, not only have I added labels (`xlab`, `ylab`) and removed the stupid border (`frame.plot`), I've also dimmed all of the graphical elements of the boxplot except the central bar that plots the median (`border`) so as to draw more attention to the median rather than the rest of the boxplot. 
+I'll talk a little more about the relationship between boxplots and outliers in the Section \@ref(boxplotoutliers), but before I do let's take the time to clean this figure up. Boxplots in R are extremely customisable. In addition to the usual range of graphical parameters that you can tweak to make the plot look nice, you can also exercise nearly complete control over every element to the plot. Consider the boxplot in Figure \@ref(fig:boxplot2b): in this version of the plot, not only have I added labels (`xlab`, `ylab`) and removed the stupid border (`frame.plot`), I've also dimmed all of the graphical elements of the boxplot except the central bar that plots the median (`border`) so as to draw more attention to the median rather than the rest of the boxplot. 
 
-```{r boxplot2b, echo=FALSE}
+```{r boxplot2b, fig.cap="A boxplot with boxplot specific customisations", echo=FALSE}
 boxplot( x = afl.margins,           # the data
          xlab = "AFL games, 2010",  # x-axis label
          ylab = "Winning Margin",   # y-axis label
@@ -407,15 +419,15 @@ boxplot( x = afl.margins,           # the data
 You've seen all these options in previous sections in this chapter, so hopefully those customisations won't need any further explanation. However, I've done two new things as well: I've deleted the cross-bars at the top and bottom of the whiskers (known as the "staples" of the plot), and converted the whiskers themselves to solid lines. The arguments that I used to do this are called by the ridiculous names of `staplewex` and `whisklty`,^[I realise there's a kind of logic to the way R names are constructed, but they still sound dumb. When I typed this sentence, all I could think was that it sounded like the name of a kids movie if it had been written by Lewis Carroll: "The frabjous gambolles of Staplewex and Whisklty" or something along those lines.] and I'll explain these in a moment. 
 
 But first, here's the actual command I used to draw this figure:
-```
-> boxplot( x = afl.margins,           # the data
-+          xlab = "AFL games, 2010",  # x-axis label
-+          ylab = "Winning Margin",   # y-axis label
-+          border = "grey50",         # dim the border of the box
-+          frame.plot = FALSE,        # don't draw a frame
-+          staplewex = 0,             # don't draw staples
-+          whisklty = 1               # solid line for whisker 
-+ )
+```{r eval=FALSE}
+boxplot( x = afl.margins,           # the data
+          xlab = "AFL games, 2010",  # x-axis label
+          ylab = "Winning Margin",   # y-axis label
+          border = "grey50",         # dim the border of the box
+          frame.plot = FALSE,        # don't draw a frame
+          staplewex = 0,             # don't draw staples
+          whisklty = 1               # solid line for whisker 
+ )
 ```
 Overall, I think the resulting boxplot is a huge improvement in visual design over the default version. In my opinion at least, there's a fairly minimalist aesthetic that governs good statistical graphics. Ideally, every visual element that you add to a plot should convey part of the message. If your plot includes things that don't actually help the reader learn anything new, you should consider removing them. Personally, I can't see the point of the cross-bars on a standard boxplot, so I've deleted them.
 
@@ -453,30 +465,33 @@ Because the boxplot automatically (unless you change the `range` argument) separ
 
 
 ```{r boxplotoutlier, echo=FALSE, fig.cap="A boxplot showing one very suspicious outlier! I've drawn this plot in a similar, minimalist style to the one in Figure \\@ref(fig:boxplot2b), but I've used the `horizontal` argument to draw it sideways in order to save space."}
-afl.margins_out<-afl.margins
-afl.margins_out[137]<-333
-boxplot( x = afl.margins_out,           # the data
+afl.margins<-afl.margins
+afl.margins[137]<-333
+boxplot( x = afl.margins,                    # the data
          xlab = "Winning Margin, AFL 2010",  # x-axis label
-         ylab = "",   # y-axis label
-         frame.plot = FALSE,        # don't draw a frame
-         staplewex = 0,             # don't draw staples
-         whisklty = 1,               # solid line for whisker, 
+         ylab = "",                          # y-axis label
+         frame.plot = FALSE,                 # don't draw a frame
+         staplewex = 0,                      # don't draw staples
+         whisklty = 1,                       # solid line for whisker, 
          horizontal = TRUE
 )
 ```
 
 It's pretty clear that something funny is going on with one of the observations. Apparently, there was one game in which the margin was over 300 points! That doesn't sound right to me. Now that I've become suspicious, it's time to look a bit more closely at the data. One function that can be handy for this is the `which()` function; it takes as input a vector of logicals, and outputs the indices of the `TRUE` cases. This is particularly useful in the current context because it lets me do this:
-```
-> suspicious.cases <- afl.margins > 300
-> which( suspicious.cases )
-[1] 137
+```{r}
+suspicious.cases <- afl.margins > 300
+which( suspicious.cases )
 ```
 although in real life I probably wouldn't bother creating the `suspicious.cases` variable: I'd just cut out the middle man and use a command like `which( afl.margins > 300 )`. In any case, what this has done is shown me that the outlier corresponds to game 137. Then, I find the recorded margin for that game:
-```
-> afl.margins[137]
-[1] 333
+```{r}
+afl.margins[137]
 ```
 Hm. That definitely doesn't sound right. So then I go back to the original data source (the internet!) and I discover that the actual margin of that game was 33 points. Now it's pretty clear what happened. Someone must have typed in the wrong number. Easily fixed, just by typing `afl.margins[137] <- 33`.   While this might seem like a silly example, I should stress that this kind of thing actually happens a lot. Real world data sets are often riddled with stupid errors, especially when someone had to type something into a computer at some point. In fact, there's actually a name for this phase of data analysis, since in practice it can waste a huge chunk of our time: **_data cleaning_**. It involves searching for typos, missing data and all sorts of other obnoxious errors in raw data files.^[Sometimes it's convenient to have the boxplot automatically label the outliers for you. The original `boxplot()` function doesn't allow you to do this; however, the `Boxplot()` function in the `car` package does. The design of the `Boxplot()` function is very similar to `boxplot()`. It just adds a few new arguments that allow you to tweak the labelling scheme. I'll leave it to the reader to check this out.]  
+
+```{r echo=FALSE}
+afl.margins[137] <- 33
+```
+
 
 What about the real data? Does the value of 116 constitute a funny observation not? Possibly. As it turns out the game in question was Fremantle v Hawthorn, and was played in round 21 (the second last home and away round of the season). Fremantle had already qualified for the final series and for them the outcome of the game was irrelevant; and the team decided to rest several of their star players. As a consequence, Fremantle went into the game severely underpowered. In contrast, Hawthorn had started the season very poorly but had ended on a massive winning streak, and for them a win could secure a place in the finals. With the game played on Hawthorn's home turf^[Sort of. The game was played in Launceston, which is a de facto home away from home for Hawthorn.] and with so many unusual factors at play, it is perhaps no surprise that Hawthorn annihilated Fremantle by 116 points. Two weeks later, however, the two teams met again in an elimination final on Fremantle's home ground, and Fremantle won comfortably by 30 points.^[Contrast this situation with the next largest winning margin in the data set, which was Geelong's 108 point demolition of Richmond in round 6 at their home ground, Kardinia Park. Geelong have been one of the most dominant teams over the last several years, a period during which they strung together an incredible 29-game winning streak at Kardinia Park. Richmond have been useless for several years. This is in no meaningful sense an outlier. Geelong have been winning by these margins (and Richmond losing by them) for quite some time. Frankly I'm surprised that the result wasn't more lopsided: as happened to Melbourne in 2011 when Geelong won by a modest 186 points.]
 
@@ -486,39 +501,36 @@ So, should we exclude the game from subsequent analyses? If this were a psycholo
 ### Drawing multiple boxplots{#multipleboxplots}
 
 One last thing. What if you want to draw multiple boxplots at once? Suppose, for instance, I wanted separate boxplots showing the AFL margins not just for 2010, but for every year between 1987 and 2010. To do that, the first thing we'll have to do is find the data. These are stored in the `aflsmall2.Rdata` file. So let's load it and take a quick peek at what's inside:
+```{r echo=FALSE}
+load(file.path(projecthome,"data", "aflsmall2.Rdata"))
 ```
-> load( "aflsmall2.Rdata" )
-> who( TRUE )
-   -- Name --   -- Class --   -- Size --
-   afl2         data.frame    4296 x 2  
-    $margin     numeric       4296      
-    $year       numeric       4296     
+
+```{r eval=FALSE}
+load( "aflsmall2.Rdata" )
+who( TRUE )
+#   -- Name --   -- Class --   -- Size --
+#   afl2         data.frame    4296 x 2  
+#    $margin     numeric       4296      
+#    $year       numeric       4296     
 ```
 Notice that `afl2` data frame is pretty big. It contains 4296 games, which is far more than I want to see printed out on my computer screen. To that end, R provides you with a few useful functions to print out only a few of the row in the data frame. The first of these is `head()` which prints out the first 6 rows, of the data frame, like this:
-```           
-> head( afl2 )
-  margin year
-1     33 1987
-2     59 1987
-3     45 1987
-4     91 1987
-5     39 1987
-6      1 1987
+```{r}           
+head( afl2 )
 ```
 You can also use the `tail()` function to print out the last 6 rows. The `car` package also provides a handy little function called `some()` which prints out a random subset of the rows. 
 
-In any case, the important thing is that we have the `afl2` data frame which contains the variables that we're interested in. What we want to do is have R draw boxplots for the `margin` variable, plotted separately for each separate `year`. The way to do this using the `boxplot()` function is to input a `formula` rather than a variable as the input. In this case, the formula we want is `margin ~ year`. So our boxplot command now looks like this:
-```{r multipleboxplots, echo=FALSE, fig.cap="Boxplots showing the AFL winning margins for the 24 years from 1987 to 2010 inclusive. This is the default plot created by R, with no annotations added and no changes to the visual design. It's pretty readable, though at a minimum you'd want to include some basic annotations labelling the axes. Compare and contrast with Figure \\@ref(fig:multipleboxplots2)"}
-load("./data/aflsmall2.Rdata")
+In any case, the important thing is that we have the `afl2` data frame which contains the variables that we're interested in. What we want to do is have R draw boxplots for the `margin` variable, plotted separately for each separate `year`. The way to do this using the `boxplot()` function is to input a `formula` rather than a variable as the input. In this case, the formula we want is `margin ~ year`. So our boxplot command now looks like this. The result is shown in Figure \@ref(fig:multipleboxplots).^[Actually, there's other ways to do this. If the input argument `x` is a list object (see Section \@ref(lists), the `boxplot()` function will draw a separate boxplot for each variable in that list. Relatedly, since the `plot()` function -- which we'll discuss shortly -- is a generic (see Section \@ref(generics), you might not be surprised to learn that one of its special cases is a boxplot: specifically, if you use `plot()` where the first argument `x` is a factor and the second argument `y` is numeric, then the result will be a boxplot, showing the values in `y`, with a separate boxplot for each level. For instance, something like `plot(x = afl2\$year, y = afl2\$margin)` would work. ] 
+```{r multipleboxplots, fig.cap="Boxplots showing the AFL winning margins for the 24 years from 1987 to 2010 inclusive. This is the default plot created by R, with no annotations added and no changes to the visual design. It's pretty readable, though at a minimum you'd want to include some basic annotations labelling the axes. Compare and contrast with Figure \\@ref(fig:multipleboxplots2)"}
 boxplot( formula = margin ~ year,
          data = afl2
 )
 ```
 
-The result is shown in Figure \@ref(fig:multipleboxplots).^[Actually, there's other ways to do this. If the input argument `x` is a list object (see Section \@ref(lists), the `boxplot()` function will draw a separate boxplot for each variable in that list. Relatedly, since the `plot()` function -- which we'll discuss shortly -- is a generic (see Section \@ref(generics), you might not be surprised to learn that one of its special cases is a boxplot: specifically, if you use `plot()` where the first argument `x` is a factor and the second argument `y` is numeric, then the result will be a boxplot, showing the values in `y`, with a separate boxplot for each level. For instance, something like `plot(x = afl2\$year, y = afl2\$margin)` would work. ] Even this, the default version of the plot, gives a sense of why it's sometimes useful to choose boxplots instead of histograms. Even before taking the time to turn this basic output into something more readable, it's possible to get a good sense of what the data look like from year to year without getting overwhelmed with too much detail. Now imagine what would have happened if I'd tried to cram 24 histograms into this space: no chance at all that the reader is going to learn anything useful.
+Even this, the default version of the plot, gives a sense of why it's sometimes useful to choose boxplots instead of histograms. Even before taking the time to turn this basic output into something more readable, it's possible to get a good sense of what the data look like from year to year without getting overwhelmed with too much detail. Now imagine what would have happened if I'd tried to cram 24 histograms into this space: no chance at all that the reader is going to learn anything useful.
 
+That being said, the default boxplot leaves a great deal to be desired in terms of visual clarity. The outliers are too visually prominent, the dotted lines look messy, and the interesting content (i.e., the behaviour of the median and the interquartile range across years) gets a little obscured. Fortunately, this is easy to fix, since we've already covered a lot of tools you can use to customise your output. After playing around with several different versions of the plot, the one I settled on is shown in Figure \@ref(fig:multipleboxplots2). The command I used to produce it is long, but not complicated:
 
-```{r multipleboxplots2, echo=FALSE, fig.cap="A cleaned up version of Figure \\@ref(fig:multipleboxplots). Notice that I\'ve used a very minimalist design for the boxplots, so as to focus the eye on the medians. I\'ve also converted the medians to solid dots, to convey a sense that year to year variation in the median should be thought of as a single coherent plot (similar to what we did when plotting the `Fibonacci` variable earlier). The size of outliers has been shrunk, because they aren\'t actually very interesting. In contrast, I\'ve added a fill colour to the boxes, to make it easier to look at the trend in the interquartile range across years."}
+```{r multipleboxplots2, fig.cap="A cleaned up version of Figure \\@ref(fig:multipleboxplots). Notice that I\'ve used a very minimalist design for the boxplots, so as to focus the eye on the medians. I\'ve also converted the medians to solid dots, to convey a sense that year to year variation in the median should be thought of as a single coherent plot (similar to what we did when plotting the `Fibonacci` variable earlier). The size of outliers has been shrunk, because they aren\'t actually very interesting. In contrast, I\'ve added a fill colour to the boxes, to make it easier to look at the trend in the interquartile range across years."}
 boxplot( formula =  margin ~ year,   # the formula
            data = afl2,                # the data set
            xlab = "AFL season",        # x axis label
@@ -540,58 +552,24 @@ boxplot( formula =  margin ~ year,   # the formula
  )
 ```
 
-That being said, the default boxplot leaves a great deal to be desired in terms of visual clarity. The outliers are too visually prominent, the dotted lines look messy, and the interesting content (i.e., the behaviour of the median and the interquartile range across years) gets a little obscured. Fortunately, this is easy to fix, since we've already covered a lot of tools you can use to customise your output. After playing around with several different versions of the plot, the one I settled on is shown in Figure \@ref(fig:multipleboxplots2). The command I used to produce it is long, but not complicated:
-```
->  boxplot( formula =  margin ~ year,   # the formula
-+           data = afl2,                # the data set
-+           xlab = "AFL season",        # x axis label
-+           ylab = "Winning Margin",    # y axis label
-+           frame.plot = FALSE,         # don't draw a frame
-+           staplewex = 0,              # don't draw staples
-+           staplecol = "white",        # (fixes a tiny display issue)
-+           boxwex = .75,               # narrow the boxes slightly
-+           boxfill = "grey80",         # lightly shade the boxes
-+           whisklty = 1,               # solid line for whiskers 
-+           whiskcol = "grey70",        # dim the whiskers
-+           boxcol = "grey70",          # dim the box borders
-+           outcol = "grey70",          # dim the outliers
-+           outpch = 20,                # outliers as solid dots
-+           outcex = .5,                # shrink the outliers
-+           medlty = "blank",           # no line for the medians
-+           medpch = 20,                # instead, draw solid dots
-+           medlwd = 1.5                # make them larger
-+ )
-``` 
 Of course, given that the command is that long, you might have guessed that I didn't spend ages typing all that rubbish in over and over again. Instead, I wrote a script, which I kept tweaking until it produced the figure that I wanted. We'll talk about scripts later in Section \@ref(scripts), but given the length of the command I thought I'd remind you that there's an easier way of trying out different commands than typing them all in over and over.
-
-
 
 ## Scatterplots{#scatterplots}
 
 **_Scatterplots_** are a simple but effective tool for visualising data. We've already seen scatterplots in this chapter, when using the `plot()` function to draw the `Fibonacci` variable as a collection of dots (Section \@ref(introplotting). However, for the purposes of this section I have a slightly different notion in mind. Instead of just plotting one variable, what I want to do with my scatterplot is display the relationship between *two* variables, like we saw with the figures in the section on correlation (Section \@ref(correl). It's this latter application that we usually have in mind when we use the term "scatterplot". In this kind of plot, each observation corresponds to one dot: the horizontal location of the dot plots the value of the observation on one variable, and the vertical location displays its value on the other variable. In many situations you don't really have a clear opinions about what the *causal* relationship is (e.g., does A cause B, or does B cause A, or does some other variable C control both A and B). If that's the case, it doesn't really matter which variable you plot on the x-axis and which one you plot on the y-axis. However, in many situations you do have a pretty strong idea which variable you think is most likely to be causal, or at least you have some suspicions in that direction. If so, then it's conventional to plot the cause variable on the x-axis, and the effect variable on the y-axis. With that in mind, let's look at how to draw scatterplots in R, using the same `parenthood` data set (i.e. `parenthood.Rdata`) that I used when introducing the idea of correlations.
 
-```{r scatter, fig.cap="{Two different scatterplots: (a) the default scatterplot that R produces, (b) one that makes use of several options for fancier display.", echo=FALSE}
-knitr::include_graphics("./rbook-master/img/graphics2/scatter1.png")
-
-```
-
 Suppose my goal is to draw a scatterplot displaying the relationship between the amount of sleep that I get (`dan.sleep`) and how grumpy I am the next day (`dan.grump`). As you might expect given our earlier use of `plot()` to display the `Fibonacci` data, the function that we use is the `plot()` function, but because it's a generic function all the hard work is still being done by the `plot.default()` function. In any case, there are two different ways in which we can get the plot that we're after. The first way is to specify the name of the variable to be plotted on the `x` axis and the variable to be plotted on the `y` axis. When we do it this way, the command looks like this:
-```{r eval=FALSE} 
+
+```{r scattera, fig.cap="the default scatterplot that R produces", echo=2:4} 
+load(file.path(projecthome, "data", "parenthood.Rdata"))
 plot( x = parenthood$dan.sleep,   # data on the x-axis
       y = parenthood$dan.grump    # data on the y-axis
  )  
 ```
 
-```{r scattera, fig.cap="the default scatterplot that R produces", echo=FALSE} 
-load("./data/parenthood.Rdata")
-plot( x = parenthood$dan.sleep,   # data on the x-axis
-    y = parenthood$dan.grump    # data on the y-axis
- )  
-```
-
 The second way do to it is to use a "formula and data frame" format, but I'm going to avoid using it.^[The reason is that there's an annoying design flaw in the way the `plot()` function handles this situation. The problem is that the `plot.formula()` function uses different names to for the arguments than the `plot()` function expects. As a consequence, you can't specify the formula argument by name. If you just specify a formula as the first argument without using the name it works fine, because the `plot()` function thinks the formula corresponds to the `x` argument, and the `plot.formula()` function thinks it corresponds to the `formula` argument; and surprisingly, everything works nicely. But the moment that you, the user, tries to be unambiguous about the name, one of those two functions is going to cry.] For now, let's just stick with the `x` and `y` version. If we do this, the result is the very basic scatterplot shown in Figure \@ref(fig:scattera). This serves fairly well, but there's a few customisations that we probably want to make in order to have this work properly. As usual, we want to add some labels, but there's a few other things we might want to do as well. Firstly, it's sometimes useful to rescale the plots. In Figure \@ref(fig:scattera) R has selected the scales so that the data fall neatly in the middle. But, in this case, we happen to know that the grumpiness measure falls on a scale from 0 to 100, and the hours slept falls on a natural scale between 0 hours and about 12 or so hours (the longest I can sleep in real life). So the command I might use to draw this is:
 ```{r eval=FALSE}
-plot( x = parenthood$dan.sleep,         # data on the x-axis
+plot( x = parenthood$dan.sleep,          # data on the x-axis
        y = parenthood$dan.grump,         # data on the y-axis
        xlab = "My sleep (hours)",        # x-axis label
        ylab = "My grumpiness (0-100)",   # y-axis label
@@ -604,8 +582,8 @@ plot( x = parenthood$dan.sleep,         # data on the x-axis
 ```
 
 This command produces the scatterplot in Figure \@ref(fig:scatterb), or at least very nearly. What it doesn't do is draw the line through the middle of the points. Sometimes it can be very useful to do this, and I can do so using `lines()`, which is a low level plotting function. Better yet, the arguments that I need to specify are pretty much the exact same ones that I use when calling the `plot()` function. That is, suppose that I want to draw a line that goes from the point (4,93) to the point (9.5,37). Then the `x` locations can be specified by the vector `c(4,9.5)` and the `y` locations correspond to the vector `c(93,37)`. In other words, I use this command:
-```{r scatterb}
-plot( x = parenthood$dan.sleep,         # data on the x-axis
+```{r scatterb, fig.cap="A scatterplot with scatter plot specific customisations"}
+plot( x = parenthood$dan.sleep,          # data on the x-axis
        y = parenthood$dan.grump,         # data on the y-axis
        xlab = "My sleep (hours)",        # x-axis label
        ylab = "My grumpiness (0-100)",   # y-axis label
@@ -614,30 +592,28 @@ plot( x = parenthood$dan.sleep,         # data on the x-axis
        pch = 20,                         # change the plot type
        col = "gray50",                   # dim the dots slightly
        frame.plot = FALSE                # don't draw a box
- )
+)
  lines( x = c(4,9.5),   # the horizontal locations
         y = c(93,37),   # the vertical locations
         lwd = 2         # line width
- )
+)
 ```
 
 And when I do so, R plots the line over the top of the plot that I drew using the previous command. In most realistic data analysis situations you absolutely don't want to just guess where the line through the points goes, since there's about a billion different ways in which you can get R to do a better job. However, it does at least illustrate the basic idea. 
 
-
 One possibility, if you do want to get R to draw nice clean lines through the data for you, is to use the `scatterplot()` function in the `car` package. Before we can use `scatterplot()` we need to load the package:
-```
-> library( car )
+```{r}
+library( car )
 ```
 Having done so, we can now use the function. The command we need is this one:
-```
-> scatterplot( dan.grump ~ dan.sleep,
-+              data = parenthood, 
-+              smooth = FALSE
-+ )
+```{r eval=FALSE}
+scatterplot( dan.grump ~ dan.sleep,
+              data = parenthood, 
+              smooth = FALSE
+)
 ```
 
 ```{r fancyscatter, fig.cap="A fancy scatterplot drawn using the `scatterplot()` function in the `car` package.", echo=FALSE}
-library(car)
 
  scatterplot( dan.grump ~ dan.sleep,
               data = parenthood, 
@@ -653,52 +629,41 @@ The first two arguments should be familiar: the first input is a formula `dan.gr
 
 
 Often you find yourself wanting to look at the relationships between several variables at once. One useful tool for doing so is to produce a **_scatterplot matrix_**, analogous to the correlation matrix. 
-```
-> cor( x = parenthood ) # calculate correlation matrix
-             dan.sleep  baby.sleep   dan.grump         day
-dan.sleep   1.00000000  0.62794934 -0.90338404 -0.09840768
-baby.sleep  0.62794934  1.00000000 -0.56596373 -0.01043394
-dan.grump  -0.90338404 -0.56596373  1.00000000  0.07647926
-day        -0.09840768 -0.01043394  0.07647926  1.00000000
+```{r}
+cor( x = parenthood ) # calculate correlation matrix
 ```
 We can get a the corresponding scatterplot matrix by using the `pairs()` function:^[Yet again, we could have produced this output using the `plot()` function: when the `x` argument is a data frame containing numeric variables only, then the output is a scatterplot matrix. So, once again, what I could have done is just type `plot( parenthood )`.]
-```{r pairs}
+```{r pairs, fig.cap = "A scatterplot matrix from the `pairs() function"}
 pairs( x = parenthood ) # draw corresponding scatterplot matrix  
 ```
 
 The output of the `pairs()` command is shown in Figure \@ref(fig:pairs).  An alternative way of calling the `pairs()` function, which can be useful in some situations, is to specify the variables to include using a one-sided formula. For instance, this
-```
-> pairs( formula = ~ dan.sleep + baby.sleep + dan.grump,
-+        data = parenthood
-+ )
+```{r eval=FALSE}
+pairs( formula = ~ dan.sleep + baby.sleep + dan.grump,
+        data = parenthood
+)
 ```
 would produce a $3 \times 3$ scatterplot matrix that only compare `dan.sleep`, `dan.grump` and `baby.sleep`. Obviously, the first version is much easier, but there are cases where you really only want to look at a few of the variables, so it's nice to use the formula interface.
 
 ## Bar graphs{#bargraph}
 
-Another form of graph that you often want to plot is the **_bar graph_**. The main function that you can use in R to draw them is the `barplot()` function.^[Once again, it's worth noting the link to the generic `plot()` function. If the `x` argument to `plot()` is a factor (and no `y` argument is given), the result is a bar graph. So you could use `plot( afl.finalists )` and get the same output as `barplot( afl.finalists )`.] And to illustrate the use of the function, I'll use the `finalists` variable that I introduced in Section \@ref(mode). What I want to do is draw a bar graph that displays the number of finals that each team has played in over the time spanned by the `afl` data set. So, let's start by creating a vector that contains this information. I'll use the `tabulate()` function to do this (which will be discussed properly in Section \@ref(sec:freqtables), since it creates a simple numeric vector:
-```
-> freq <- tabulate( afl.finalists )
-> print( freq )
- [1] 26 25 26 28 32  0  6 39 27 28 28 17  6 24 26 39 24
+Another form of graph that you often want to plot is the **_bar graph_**. The main function that you can use in R to draw them is the `barplot()` function.^[Once again, it's worth noting the link to the generic `plot()` function. If the `x` argument to `plot()` is a factor (and no `y` argument is given), the result is a bar graph. So you could use `plot( afl.finalists )` and get the same output as `barplot( afl.finalists )`.] And to illustrate the use of the function, I'll use the `finalists` variable that I introduced in Section \@ref(mode). What I want to do is draw a bar graph that displays the number of finals that each team has played in over the time spanned by the `afl` data set. So, let's start by creating a vector that contains this information. I'll use the `tabulate()` function to do this (which will be discussed properly in Section \@ref(freqtables), since it creates a simple numeric vector:
+```{r}
+freq <- tabulate( afl.finalists )
+print( freq )
 ```
 This isn't exactly the prettiest of frequency tables, of course. I'm only doing it this way so that you can see the `barplot()` function in it's "purest" form: when the input is just an ordinary numeric vector. That being said, I'm obviously going to need the team names to create some labels, so let's create a variable with those. I'll do this using the `levels()` function, which outputs the names of all the levels of a factor (see Section \@ref(factors):
-```
-> teams <- levels( afl.finalists )
-> print( teams )
- [1] "Adelaide"         "Brisbane"         "Carlton"          "Collingwood"     
- [5] "Essendon"         "Fitzroy"          "Fremantle"        "Geelong"         
- [9] "Hawthorn"         "Melbourne"        "North Melbourne"  "Port Adelaide"   
-[13] "Richmond"         "St Kilda"         "Sydney"           "West Coast"      
-[17] "Western Bulldogs"
+```{r}
+teams <- levels( afl.finalists )
+print( teams )
 ```
 
 
 
 Okay, so now that we have the information we need, let's draw our bar graph. The main argument that you need to specify for a bar graph is the `height` of the bars, which in our case correspond to the values stored in the `freq` variable:
-```
-> barplot( height = freq )  # specifying the argument name (panel a)
-> barplot( freq )   # the lazier version (panel a)
+```{r eval=FALSE}
+barplot( height = freq )  # specifying the argument name
+barplot( freq )           # the lazier version
 ```
 Either of these two commands will produce the simple bar graph shown in Figure \@ref(fig:bar1a). 
 
@@ -719,7 +684,7 @@ As you can see, R has drawn a pretty minimal plot. It doesn't have any labels, o
 
 This is an improvement, but not much of an improvement. R has only included a few of the labels, because it can't fit them in the plot. This is the same behaviour we saw earlier with the multiple-boxplot graph in Figure \@ref(fig:multipleboxplots). However, in Figure \@ref(fig:multipleboxplots) it wasn't an issue: it's pretty obvious from inspection that the two unlabelled plots in between 1987 and 1990 must correspond to the data from 1988 and 1989. However, the fact that `barplot()` has omitted the names of every team in between Adelaide and Fitzroy is a lot more problematic. 
 
-The simplest way to fix this is to rotate the labels, so that the text runs vertically not horizontally. To do this, we need to alter set the `las` parameter, which I discussed briefly in  Section \@ref(sec:introplotting). What I'll do is tell R to rotate the text so that it's always perpendicular to the axes (i.e., I'll set `las = 2`). When I do that, as per the following command...
+The simplest way to fix this is to rotate the labels, so that the text runs vertically not horizontally. To do this, we need to alter set the `las` parameter, which I discussed briefly in  Section \@ref(introplotting). What I'll do is tell R to rotate the text so that it's always perpendicular to the axes (i.e., I'll set `las = 2`). When I do that, as per the following command...
 
 
 ```{r bar1c, fig.cap="we've rotated the labels, but now the text is too long to fit"}
@@ -730,17 +695,17 @@ The simplest way to fix this is to rotate the labels, so that the text runs vert
 
 ... the result is the bar graph shown in Figure \@ref(fig:bar1c). We've fixed the problem, but we've created a new one:  the axis labels don't quite fit anymore. To fix this, we have to be a bit cleverer again. A simple fix would be to use shorter names rather than the full name of all teams, and in many situations that's probably the right thing to do. However, at other times you really do need to create a bit more space to add your labels, so I'll show you how to do that.
 
-### Changing global settings using `par()`{#par}
+### Changing global settings using par(){#par}
 
-Altering the margins to the plot is actually a somewhat more complicated exercise than you might think. In principle it's a very simple thing to do: the size of the margins is governed by a graphical parameter called `mar`, so all we need to do is alter this parameter. First, let's look at what the `mar` argument specifies. The `mar` argument is a vector containing four numbers: specifying the amount of space at the bottom, the left, the top and then the right. The units are "number of `lines'". The default value for `mar` is `c(5.1, 4.1, 4.1, 2.1)`, meaning that R leaves 5.1 "lines" empty at the bottom, 4.1 lines on the left and the bottom, and only 2.1 lines on the right. In order to make more room at the bottom, what I need to do is change the first of these numbers. A value of 10.1 should do the trick. 
+Altering the margins to the plot is actually a somewhat more complicated exercise than you might think. In principle it's a very simple thing to do: the size of the margins is governed by a graphical parameter called `mar`, so all we need to do is alter this parameter. First, let's look at what the `mar` argument specifies. The `mar` argument is a vector containing four numbers: specifying the amount of space at the bottom, the left, the top and then the right. The units are "number of 'lines'". The default value for `mar` is `c(5.1, 4.1, 4.1, 2.1)`, meaning that R leaves 5.1 "lines" empty at the bottom, 4.1 lines on the left and the bottom, and only 2.1 lines on the right. In order to make more room at the bottom, what I need to do is change the first of these numbers. A value of 10.1 should do the trick. 
 
 So far this doesn't seem any different to the other graphical parameters that we've talked about. However, because of the way that the traditional graphics system in R works, you need to specify what the margins will be *before* calling your high-level plotting function. Unlike the other cases we've see, you can't treat `mar` as if it were just another argument in your plotting function. Instead, you have to use the `par()` function to change the graphical parameters beforehand, and only then try to draw your figure. In other words, the first thing I would do is this:
-``` 
-> par( mar = c( 10.1, 4.1, 4.1, 2.1) )
+``` {r eval=FALSE}
+par( mar = c( 10.1, 4.1, 4.1, 2.1) )
 ```
 There's no visible output here, but behind the scenes R has changed the graphical parameters associated with the current device (remember, in R terminology all graphics are drawn onto a "device"). Now that this is done, we could use the exact same command as before, but this time you'd see that the labels all fit, because R now leaves twice as much room for the labels at the bottom. However, since I've now figured out how to get the labels to display properly, I might as well play around with some of the other options, all of which are things you've seen before:
 
-```{r bar1d, fig.cap="we fix this by expanding the margin at the bottom, and add several other customisations to make the chart a bit nicer", echo=FALSE}
+```{r bar1d, fig.cap="we fix this by expanding the margin at the bottom, and add several other customisations to make the chart a bit nicer", echo=3:9}
 	  old <- par( no.readonly=TRUE )
 	  par( mar = c( 10.1, 4.1, 4.1, 2.1) )
 barplot( height = freq,
@@ -750,26 +715,18 @@ barplot( height = freq,
 		main = "Finals Played, 1987-2010",  
 		density = 10,
 		angle = 20)
-	par(old)
 ```
 
-
-```{r eval=FALSE}
-barplot( height = freq,
-		names.arg = teams,
-		las=2,
-		ylab = "Number of Finals",
-		main = "Finals Played, 1987-2010",  
-		density = 10,
-		angle = 20)
+```{r echo=FALSE}
+par(old)
 ```
-
-
 
 However, one thing to remember about the `par()` function is that it doesn't just change the graphical parameters for the current *plot*. Rather, the changes pertain to any subsequent plot that you draw onto the same *device*. This might be exactly what you want, in which case there's no problem. But if not, you need to reset the graphical parameters to their original settings. To do this, you can either close the device (e.g., close the window, or click the "Clear All" button in the Plots panel in Rstudio) or you can reset the graphical parameters to their original values, using a command like this:
 
-```
-> par( mar = c(5.1, 4.1, 4.1, 2.1) )
+
+
+```{r eval=FALSE}
+par( mar = c(5.1, 4.1, 4.1, 2.1) )
 ```
 
 
@@ -786,31 +743,31 @@ This works pretty nicely for most situations. So, unless you're filled with a bu
 As I say, the menu-based options should be good enough for most people most of the time. However, one day you might want to be a bit more sophisticated, and make use of R's image writing capabilities at a lower level. In this section I'll give you a very basic introduction to this. In all honesty, this barely scratches the surface, but it will help a little bit in getting you started if you want to learn the details. 
 
 Okay, as I hinted earlier, whenever you're drawing pictures in R you're deemed to be drawing *to* a device of some kind.  There are devices that correspond to a figure drawn on screen, and there are devices that correspond to graphics files that R will produce for you. For the purposes of this section I'll assume that you're using the default application in either Windows or Mac OS, not Rstudio. The reason for this is that my experience with the graphical device provided by Rstudio has led me to suspect that it still has a bunch on non-standard (or possibly just undocumented) features, and so I don't quite trust that it always does what I expect. I've no doubt they'll smooth it out later, but I can honestly say that I don't quite get what's going on with the `RStudioGD` device.  In any case, we can ask R to list all of the graphics devices that currently exist, simply by using the command `dev.list()`. If there are no figure windows open, then you'll see this:
-```
-> dev.list()
-NULL
+```{r eval=FALSE}
+dev.list()
+# NULL
 ```
 which just means that R doesn't have any graphics devices open. However, suppose if you've just drawn a histogram and you type the same command, R will now give you a different answer. For instance, if you're using Windows:
-```
-> hist( afl.margins )
-> dev.list()
-windows 
-      2
+```{r eval=FALSE}
+hist( afl.margins )
+dev.list()
+# windows 
+#      2
 ```
 What this means is that there is one graphics device (device 2) that is currently open, and it's a figure window. If you did the same thing on a Mac, you get basically the same answer, except that the name of the device would be `quartz` rather than `windows`. If you had several graphics windows open (which, incidentally, you can do by using the `dev.new()` command) then you'd see something like this:
-```
-> dev.list()
-windows windows windows  
-      2       3       4 
+```{r eval=FALSE}
+dev.list()
+# windows windows windows  
+#       2       3       4 
 ```
 Okay, so that's the basic idea behind graphics devices. The key idea here is that graphics files (like JPEG images etc) are *also* graphics devices as far as R is concerned. So what you want to do is to *copy* the contents of one graphics device to another one. There's a command called `dev.copy()` that does this, but what I'll explain to you is a simpler one called `dev.print()`. It's pretty simple:
 
-```
-> dev.print( device = jpeg,              # what are we printing to?
-+            filename = "thisfile.jpg",  # name of the image file
-+            width = 480,                # how many pixels wide should it be
-+            height = 300                # how many pixels high should it be
-+ )
+```{r eval=FALSE}
+dev.print( device = jpeg,              # what are we printing to?
+            filename = "thisfile.jpg",  # name of the image file
+            width = 480,                # how many pixels wide should it be
+            height = 300                # how many pixels high should it be
+)
 ```
 This takes the "active" figure window, copies it to a jpeg file (which R treats as a device) and then closes that device. The `filename = "thisfile.jpg"` part tells R what to name the graphics file, and the `width = 480` and `height = 300` arguments tell R to draw an image that is 300 pixels high and 480 pixels wide. If you want a different kind of file, just change the device argument from `jpeg` to something else. R has devices for `png`, `tiff` and `bmp` that all work in exactly the same way as the `jpeg` command, but produce different kinds of files. Actually, for simple cartoonish graphics like this histogram, you'd be better advised to use PNG or TIFF over JPEG. The JPEG format is very good for natural images, but is wasteful for simple line drawings. The information above probably covers most things you might want to. However, if you want more information about what kinds of options you can specify using R, have a look at the help documentation by typing `?jpeg` or `?tiff` or whatever.
 
@@ -821,12 +778,12 @@ Perhaps I'm a simple minded person, but I love pictures. Every time I write a ne
 
 
 - *Basic overview to R graphics*. In Section \@ref(rgraphics) we talked about how graphics in R are organised, and then moved on to the basics of how they're drawn in Section \@ref(introplotting).
-- *Common plots*. Much of the chapter was focused on standard graphs that statisticians like to produce: histograms (Section \@ref(hist), stem and leaf plots (Section \@ref(stem), boxplots (Section \@ref(boxplots), scatterplots (Section \@ref(scatterplots) and bar graphs (Section \@ref(bargraph).
-- *Saving image files*. The last part of the chapter talked about how to export your pictures (Section \@ref(saveimage)
+- *Common plots*. Much of the chapter was focused on standard graphs that statisticians like to produce: histograms (Section \@ref(hist)), stem and leaf plots (Section \@ref(stem)), boxplots (Section \@ref(boxplots)), scatterplots (Section \@ref(scatterplots)) and bar graphs (Section \@ref(bargraph)).
+- *Saving image files*. The last part of the chapter talked about how to export your pictures (Section \@ref(saveimage))
  
 
 
-One final thing to point out. At the start of the chapter I mentioned that R has several completely distinct systems for drawing figures. In this chapter I've focused on the *traditional* graphics system. It's the easiest one to get started with: you can draw a histogram with a command as simple as `hist(x)`. However, it's not the most powerful tool for the job, and after a while most R users start looking to shift to fancier systems. One of the most popular graphics systems is provided by the `ggplot2` package (see \url{http://ggplot2.org/}), which is loosely based on "The grammar of graphics" @[Wilkinson2006]. It's not for novices: you need to have a pretty good grasp of R before you can start using it, and even then it takes a while to really get the hang of it. But when you're finally at that stage, it's worth taking the time to teach yourself, because it's a much cleaner system.
+One final thing to point out. At the start of the chapter I mentioned that R has several completely distinct systems for drawing figures. In this chapter I've focused on the *traditional* graphics system. It's the easiest one to get started with: you can draw a histogram with a command as simple as `hist(x)`. However, it's not the most powerful tool for the job, and after a while most R users start looking to shift to fancier systems. One of the most popular graphics systems is provided by the `ggplot2` package (see \url{http://ggplot2.org/}), which is loosely based on "The grammar of graphics" [@Wilkinson2006]. It's not for novices: you need to have a pretty good grasp of R before you can start using it, and even then it takes a while to really get the hang of it. But when you're finally at that stage, it's worth taking the time to teach yourself, because it's a much cleaner system.
 
 
 
