@@ -415,7 +415,7 @@ load("~/Rbook/data/booksales.Rdata")
 and the new variables will appear in the workspace (you'll see them in the Environment panel in RStudio, or if you type `who()`). So easy it barely warrants having its own section.
 
 
-### Importing data from CSV files using `loadingcsv`{#loadingcsv}
+### Importing data from CSV files using loadingcsv{#loadingcsv}
 
 One quite commonly used data format is the humble "comma separated value" file, also called a CSV file, and usually bearing the file extension .csv. CSV files are just plain old-fashioned text files, and what they store is basically just a table of data. This is illustrated in Figure \@ref(fig:booksalescsv), which shows a file called booksales.csv that I've created. As you can see, each row corresponds to a variable, and each row represents the book sales data for one month. The first row doesn't contain actual data though: it has the names of the variables.
 

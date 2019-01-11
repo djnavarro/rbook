@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -1876,9 +1876,9 @@ Figure 13.19: A histogram of the 100 observations in a <em>heavy tailed</em>` da
 <p>One way to check whether a sample violates the normality assumption is to draw a <strong><em>“quantile-quantile” plot</em></strong> (QQ plot). This allows you to visually check whether you’re seeing any systematic violations. In a QQ plot, each observation is plotted as a single dot. The x co-ordinate is the theoretical quantile that the observation should fall in, if the data were normally distributed (with mean and variance estimated from the sample) and on the y co-ordinate is the actual quantile of the data within the sample. If the data are normal, the dots should form a straight line. For instance, lets see what happens if we generate data by sampling from a normal distribution, and then drawing a QQ plot using the R function <code>qqnorm()</code>. The <code>qqnorm()</code> function has a few arguments, but the only one we really need to care about here is <code>y</code>, a vector specifying the data whose normality we’re interested in checking. Here’s the R commands:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">normal.data &lt;-<span class="st"> </span><span class="kw">rnorm</span>( <span class="dt">n =</span> <span class="dv">100</span> )  <span class="co"># generate N = 100 normally distributed numbers</span>
 <span class="kw">hist</span>( <span class="dt">x =</span> normal.data )          <span class="co"># draw a histogram of these numbers</span></code></pre></div>
-<p><img src="lsr_files/figure-html/unnamed-chunk-587-1.png" width="672" /></p>
+<p><img src="lsr_files/figure-html/unnamed-chunk-604-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>( <span class="dt">y =</span> normal.data )        <span class="co"># draw the QQ plot</span></code></pre></div>
-<p><img src="lsr_files/figure-html/unnamed-chunk-587-2.png" width="672" /></p>
+<p><img src="lsr_files/figure-html/unnamed-chunk-604-2.png" width="672" /></p>
 </div>
 <div id="shapiro-wilk-tests" class="section level3">
 <h3><span class="header-section-number">13.9.2</span> Shapiro-Wilk tests</h3>

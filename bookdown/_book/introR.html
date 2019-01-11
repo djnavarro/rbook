@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -1511,6 +1511,7 @@ is.the.Party.correct</code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>but this doesn’t:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">is.the.Party.correct &lt;-<span class="st"> </span>f</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;f&#39; not found</code></pre>
 </div>
 <div id="vectors-of-logicals" class="section level3">
 <h3><span class="header-section-number">3.9.4</span> Vectors of logicals</h3>

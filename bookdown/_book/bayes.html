@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -1365,8 +1365,17 @@ crosstab</code></pre></div>
 <li><strong>Nothing is fixed</strong>. Finally, it might be the case that <em>nothing</em> is fixed. Not the row columns, not the column totals, and not the total sample size either. For instance, in the <code>chapek9</code> scenario, suppose what I’d done is run the study for a fixed length of <em>time</em>. By chance, it turned out that I got 180 people to turn up to study, but it could easily have been something else. This is referred to as “Poisson” sampling, and if that’s what you’ve done you should specify <code>sampleType=&quot;poisson&quot;</code>.</li>
 </ul>
 <p>Okay, so now we have enough knowledge to actually run a test. For the <code>chapek9</code> data, I implied that we designed the study such that the total sample size <span class="math inline">\(N\)</span> was fixed, so we should set <code>sampleType = &quot;jointMulti&quot;</code>. The command that we need is,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>( BayesFactor )
-<span class="kw">contingencyTableBF</span>( crosstab, <span class="dt">sampleType =</span> <span class="st">&quot;jointMulti&quot;</span> )</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>( BayesFactor )</code></pre></div>
+<pre><code>## Warning: package &#39;BayesFactor&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Loading required package: coda</code></pre>
+<pre><code>## Warning: package &#39;coda&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Loading required package: Matrix</code></pre>
+<pre><code>## ************
+## Welcome to BayesFactor 0.9.12-4.2. If you have questions, please contact Richard Morey (richarddmorey@gmail.com).
+## 
+## Type BFManual() to open the manual.
+## ************</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">contingencyTableBF</span>( crosstab, <span class="dt">sampleType =</span> <span class="st">&quot;jointMulti&quot;</span> )</code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
 ## [1] Non-indep. (a=1) : 15.92684 ±0%
@@ -1792,10 +1801,10 @@ model &lt;-<span class="st"> </span><span class="kw">aov</span>( mood.gain <span
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">models<span class="op">/</span><span class="kw">max</span>(models)</code></pre></div>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] drug                          : 0.3436062   ±1.34%
-## [2] therapy                       : 0.001022285 ±1.34%
+## [1] drug                          : 0.346168    ±1.34%
+## [2] therapy                       : 0.001029907 ±1.34%
 ## [3] drug + therapy                : 1           ±0%
-## [4] drug + therapy + drug:therapy : 0.954423    ±1.64%
+## [4] drug + therapy + drug:therapy : 0.9769504   ±1.99%
 ## 
 ## Against denominator:
 ##   mood.gain ~ drug + therapy 
@@ -1850,10 +1859,10 @@ model &lt;-<span class="st"> </span><span class="kw">aov</span>( mood.gain <span
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(models)<span class="op">/</span>models</code></pre></div>
 <pre><code>##                 denominator
 ## numerator            drug  therapy drug + therapy
-##   drug + therapy 2.910308 978.2007              1
+##   drug + therapy 2.888771 970.9615              1
 ##                 denominator
 ## numerator        drug + therapy + drug:therapy
-##   drug + therapy                      1.047753</code></pre>
+##   drug + therapy                      1.023593</code></pre>
 <p>The output isn’t quite so pretty as the last one, but the nice thing is that you can read off everything you need. The best model is <code>drug + therapy</code>, so all the other models are being compared to that. What’s the Bayes factor <em>for</em> the main effect of <code>drug</code>? The relevant null hypothesis is the one that contains only <code>therapy</code>, and the Bayes factor in question is 954:1. The main effect of <code>therapy</code> is weaker, and the evidence here is only 2.8:1. Finally, the evidence <em>against</em> an interaction is very weak, at 1.01:1.</p>
 <p>Reading the results off this table is sort of counterintuitive, because you have to read off the answers from the “wrong” part of the table. For instance, the evidence for an effect of <code>drug</code> can be read from the column labelled <code>therapy</code>, which is pretty damned weird. To be fair to the authors of the package, I don’t think they ever intended for the <code>anovaBF()</code> function to be used this way. My understanding<a href="#fn274" class="footnoteRef" id="fnref274"><sup>274</sup></a> is that their view is simply that you should find the best model and report that model: there’s no inherent reason why a Bayesian ANOVA should try to follow the exact same design as an orthodox ANOVA.<a href="#fn275" class="footnoteRef" id="fnref275"><sup>275</sup></a></p>
 <p>In any case, if you know what you’re looking for, you can look at this table and then report the results of the Bayesian analysis in a way that is pretty closely analogous to how you’d report a regular Type II ANOVA. As I mentioned earlier, there’s still no convention on how to do that, but I usually go for something like this:</p>
