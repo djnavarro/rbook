@@ -138,55 +138,13 @@ The simplest way to illustrate what each of these really looks like is just to d
 
 ```{r simpleplots, echo=FALSE, fig.cap="Changing the `type` of the plot."}
 
-par(mfrow=c(2,3))
+tp<-c("p","o","h","l","b","s")
 
-plot( x = Fibonacci,                           # the data to plot
-          main = "Type \"p\"",  # the title
-	      font.main = 1,
-	      cex.main = 1,
-	      font.axis = 2,
- 		  col.lab = "gray50",
-      type  = "p")
-
-plot( x = Fibonacci,                           # the data to plot
-          main = "Type \"o\"",  # the title
-	      font.main = 1,
-	      cex.main = 1,
-	      font.axis = 2,
- 		  col.lab = "gray50",
-      type  = "o")
-
-plot( x = Fibonacci,                           # the data to plot
-          main = "Type \"h\"",  # the title
-	      cex.main = 1,
-	      font.axis = 2,
- 		  col.lab = "gray50",
-      type  = "h")
-
-plot( x = Fibonacci,                           # the data to plot
-          main = "Type \"l\"",  # the title
-	      font.main = 1,
-	      cex.main = 1,
-	      font.axis = 2,
- 		  col.lab = "gray50",
-      type  = "l")
-
-plot( x = Fibonacci,                           # the data to plot
-          main = "Type \"b\"",  # the title
-	      font.main = 1,
-	      cex.main = 1,
-	      font.axis = 2,
- 		  col.lab = "gray50",
-      type  = "b")
-
-plot( x = Fibonacci,                           # the data to plot
-          main = "Type \"s\"",  # the title
-	      font.main = 1,
-	      cex.main = 1,
-	      font.axis = 2,
- 		  col.lab = "gray50",
-      type  = "s")
-
+Fibonacci <- c( 1,1,2,3,5,8,13 )
+par(mfrow=c(2,3), mar=c(1,1,2,1), mai=c(0.2,0.1,0.3,0.1))
+for(i in tp){
+plot(Fibonacci, type = i, col=4, lwd=2, main = paste0("type = '",i,"'"), axes = FALSE,  frame.plot = TRUE, xlab = "", ylab="")
+}
 par(mfrow=c(1,1))
 
 ```
