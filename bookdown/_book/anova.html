@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -907,6 +907,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
  )</code></pre></div>
 <p>The results are shown in Figure <a href="anova.html#fig:moodgain">14.1</a>, which plots the average mood gain for all three conditions; error bars show 95% confidence intervals. As the plot makes clear, there is a larger improvement in mood for participants in the Joyzepam group than for either the Anxifree group or the placebo group. The Anxifree group shows a larger mood gain than the control group, but the difference isn’t as large.</p>
 <p>The question that we want to answer is: are these difference “real”, or are they just due to chance?</p>
+<pre><code>## Warning: package &#39;gplots&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;gplots&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     lowess</code></pre>
 <div class="figure"><span id="fig:moodgain"></span>
 <img src="lsr_files/figure-html/moodgain-1.png" alt="Average mood gain as a function of drug administered. Error bars depict 95% confidence intervals associated with each of the group means." width="672" />
 <p class="caption">
@@ -1795,9 +1801,9 @@ Z &lt;-<span class="st"> </span><span class="kw">abs</span>(Y <span class="op">-
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my.anova.residuals &lt;-<span class="st"> </span><span class="kw">residuals</span>( <span class="dt">object =</span> my.anova )   <span class="co"># extract the residuals</span></code></pre></div>
 <p>We can print them out too, though it’s not exactly an edifying experience. In fact, given that I’m on the verge of putting <em>myself</em> to sleep just typing this, it might be a good idea to skip that step. Instead, let’s draw some pictures and run ourselves a hypothesis test:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>( <span class="dt">x =</span> my.anova.residuals )           <span class="co"># plot a histogram (similar to Figure @ref{fig:normalityanova}a)</span></code></pre></div>
-<p><img src="lsr_files/figure-html/unnamed-chunk-645-1.png" width="672" /></p>
+<p><img src="lsr_files/figure-html/unnamed-chunk-663-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>( <span class="dt">y =</span> my.anova.residuals )         <span class="co"># draw a QQ plot (similar to Figure @ref{fig:normalityanova}b)</span></code></pre></div>
-<p><img src="lsr_files/figure-html/unnamed-chunk-645-2.png" width="672" /></p>
+<p><img src="lsr_files/figure-html/unnamed-chunk-663-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shapiro.test</span>( <span class="dt">x =</span> my.anova.residuals )   <span class="co"># run Shapiro-Wilk test</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test

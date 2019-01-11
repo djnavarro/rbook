@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -1488,112 +1488,28 @@ quadruple &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
 <p>An important thing to recognise here is that the two internal variables that the <code>quadruple()</code> function makes use of, <code>x</code> and <code>y</code>, stay internal. That is, if we inspect the contents of the workspace,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lsr)
 <span class="kw">who</span>()</code></pre></div>
-<pre><code>##    -- Name --             -- Class --   -- Size --
-##    afl.finalists          factor        400       
-##    afl.margins            numeric       176       
-##    afl2                   data.frame    4296 x 2  
-##    age                    numeric       11        
-##    age.breaks             numeric       4         
-##    age.group              factor        11        
-##    age.group2             factor        11        
-##    age.group3             factor        11        
-##    age.labels             character     3         
-##    animals                character     4         
-##    balance                numeric       1         
-##    beers                  character     3         
-##    cake.1                 numeric       5         
-##    cake.2                 numeric       5         
-##    cake.df                data.frame    5 x 2     
-##    cake.mat1              matrix        5 x 2     
-##    cake.mat2              matrix        2 x 5     
-##    cakes                  matrix        4 x 5     
-##    cakes.flipped          matrix        5 x 4     
-##    choice                 data.frame    4 x 10    
-##    choice.2               data.frame    16 x 6    
-##    colour                 logical       1         
-##    d.cor                  numeric       1         
-##    dan.awake              logical       10        
-##    data                   data.frame    12 x 4    
-##    day                    character     1         
-##    describeImg            list          0         
-##    df                     data.frame    4 x 1     
-##    drugs                  data.frame    10 x 8    
-##    drugs.2                data.frame    30 x 5    
-##    effort                 data.frame    10 x 2    
-##    emphCol                character     1         
-##    emphColLight           character     1         
-##    emphGrey               character     1         
-##    eps                    logical       1         
-##    fac                    factor        3         
-##    fibonacci              numeric       6         
-##    Fibonacci              numeric       7         
-##    freq                   integer       17        
-##    garden                 data.frame    5 x 3     
-##    generateRLineTypes     function                
-##    generateRPointShapes   function                
-##    height                 numeric       1         
-##    hw                     character     2         
-##    i                      integer       1         
-##    interest               numeric       1         
-##    is.MP.speaking         logical       5         
-##    itng                   data.frame    10 x 2    
-##    itng.table             table         3 x 4     
-##    likert.centred         numeric       10        
-##    likert.ordinal         ordered       10        
-##    likert.raw             numeric       10        
-##    M                      matrix        2 x 3     
-##    makka.pakka            character     4         
-##    monkey                 character     1         
-##    monkey.1               list          1         
-##    month                  numeric       1         
-##    monthly.multiplier     numeric       1         
-##    msg                    character     1         
-##    my.var                 numeric       1         
-##    ng                     character     2         
-##    numbers                numeric       3         
-##    old                    list          66        
-##    old.text               character     1         
-##    oneCorPlot             function                
-##    opinion.dir            numeric       10        
-##    opinion.strength       numeric       10        
-##    out.0                  data.frame    100 x 2   
-##    out.1                  data.frame    100 x 2   
-##    out.2                  data.frame    100 x 2   
-##    parenthood             data.frame    100 x 4   
-##    payments               numeric       1         
-##    PJ                     character     1         
-##    plotOne                function                
-##    projecthome            character     1         
-##    quadruple              function                
-##    row.1                  numeric       3         
-##    row.2                  numeric       3         
-##    some.data              numeric       18        
-##    speaker                character     10        
-##    speech.by.char         list          3         
-##    suspicious.cases       logical       176       
-##    teams                  character     17        
-##    text                   character     2         
-##    today                  Date          1         
-##    tombliboo              character     2         
-##    total.paid             numeric       1         
-##    upsy.daisy             character     4         
-##    utterance              character     10        
-##    w                      character     1         
-##    W                      character     1         
-##    w.length               integer       1         
-##    width                  numeric       1         
-##    words                  character     7         
-##    x                      numeric       1         
-##    X1                     numeric       11        
-##    X2                     numeric       11        
-##    X3                     numeric       11        
-##    X4                     numeric       11        
-##    xtab.3d                table         3 x 4 x 2 
-##    y                      numeric       2         
-##    Y1                     numeric       11        
-##    Y2                     numeric       11        
-##    Y3                     numeric       11        
-##    Y4                     numeric       11</code></pre>
+<pre><code>##    -- Name --           -- Class --   -- Size --
+##    balance              numeric       1         
+##    day                  character     1         
+##    i                    integer       1         
+##    interest             numeric       1         
+##    itng.table           table         3 x 4     
+##    month                numeric       1         
+##    monthly.multiplier   numeric       1         
+##    msg                  character     1         
+##    my.var               numeric       1         
+##    payments             numeric       1         
+##    projecthome          character     1         
+##    quadruple            function                
+##    speaker              character     10        
+##    today                Date          1         
+##    total.paid           numeric       1         
+##    utterance            character     10        
+##    w                    character     1         
+##    W                    character     1         
+##    w.length             integer       1         
+##    words                character     7         
+##    x                    numeric       1</code></pre>
 <p>we see everything in our workspace from this chapter including the <code>quadruple()</code> function itself, as well as the <code>my.var</code> variable that we just created.</p>
 <p>Now that we know how to create our own functions in R, it’s probably a good idea to talk a little more about some of the other properties of functions that I’ve been glossing over. To start with, let’s take this opportunity to type the name of the function at the command line without the parentheses:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quadruple</code></pre></div>

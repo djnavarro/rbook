@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -877,44 +877,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lsr)
 <span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;nightgarden.Rdata&quot;</span>))
 <span class="kw">who</span>()</code></pre></div>
-<pre><code>##    -- Name --             -- Class --   -- Size --
-##    afl.finalists          factor        400       
-##    afl.margins            numeric       176       
-##    afl2                   data.frame    4296 x 2  
-##    colour                 logical       1         
-##    d.cor                  numeric       1         
-##    describeImg            list          0         
-##    effort                 data.frame    10 x 2    
-##    emphCol                character     1         
-##    emphColLight           character     1         
-##    emphGrey               character     1         
-##    eps                    logical       1         
-##    Fibonacci              numeric       7         
-##    freq                   integer       17        
-##    generateRLineTypes     function                
-##    generateRPointShapes   function                
-##    height                 numeric       1         
-##    old                    list          66        
-##    oneCorPlot             function                
-##    out.0                  data.frame    100 x 2   
-##    out.1                  data.frame    100 x 2   
-##    out.2                  data.frame    100 x 2   
-##    parenthood             data.frame    100 x 4   
-##    plotOne                function                
-##    projecthome            character     1         
-##    speaker                character     10        
-##    suspicious.cases       logical       176       
-##    teams                  character     17        
-##    utterance              character     10        
-##    width                  numeric       1         
-##    X1                     numeric       11        
-##    X2                     numeric       11        
-##    X3                     numeric       11        
-##    X4                     numeric       11        
-##    Y1                     numeric       11        
-##    Y2                     numeric       11        
-##    Y3                     numeric       11        
-##    Y4                     numeric       11</code></pre>
+<pre><code>##    -- Name --    -- Class --   -- Size --
+##    projecthome   character      1        
+##    speaker       character     10        
+##    utterance     character     10</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>( speaker )</code></pre></div>
 <pre><code>##  [1] &quot;upsy-daisy&quot;  &quot;upsy-daisy&quot;  &quot;upsy-daisy&quot;  &quot;upsy-daisy&quot;  &quot;tombliboo&quot;  
 ##  [6] &quot;tombliboo&quot;   &quot;makka-pakka&quot; &quot;makka-pakka&quot; &quot;makka-pakka&quot; &quot;makka-pakka&quot;</code></pre>
@@ -1323,121 +1289,53 @@ speech.by.char</code></pre></div>
 <p>Just remember that R does need you to add the quoting characters (i.e. <code>'</code>). Otherwise, there’s nothing particularly new or difficult here.</p>
 <p>However, sometimes – especially when you’re just starting out – it can be convenient to pull these variables out of the list, and into the workspace. This isn’t too difficult to do, though it can be a little daunting to novices. To that end, I’ve included a function called <code>importList()</code> in the <code>lsr</code> package that does this.<a href="#fn112" class="footnoteRef" id="fnref112"><sup>112</sup></a> First, here’s what you’d have if you had wiped the workspace before the start of this section:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">who</span>()</code></pre></div>
-<pre><code>##    -- Name --             -- Class --   -- Size --
-##    afl.finalists          factor        400       
-##    afl.margins            numeric       176       
-##    afl2                   data.frame    4296 x 2  
-##    age                    numeric       11        
-##    age.breaks             numeric       4         
-##    age.group              factor        11        
-##    age.group2             factor        11        
-##    age.group3             factor        11        
-##    age.labels             character     3         
-##    colour                 logical       1         
-##    d.cor                  numeric       1         
-##    describeImg            list          0         
-##    df                     data.frame    10 x 4    
-##    effort                 data.frame    10 x 2    
-##    emphCol                character     1         
-##    emphColLight           character     1         
-##    emphGrey               character     1         
-##    eps                    logical       1         
-##    Fibonacci              numeric       7         
-##    freq                   integer       17        
-##    generateRLineTypes     function                
-##    generateRPointShapes   function                
-##    height                 numeric       1         
-##    is.MP.speaking         logical       10        
-##    itng                   data.frame    10 x 2    
-##    itng.table             table         3 x 4     
-##    likert.centred         numeric       10        
-##    likert.raw             numeric       10        
-##    old                    list          66        
-##    oneCorPlot             function                
-##    opinion.dir            numeric       10        
-##    opinion.strength       numeric       10        
-##    out.0                  data.frame    100 x 2   
-##    out.1                  data.frame    100 x 2   
-##    out.2                  data.frame    100 x 2   
-##    parenthood             data.frame    100 x 4   
-##    plotOne                function                
-##    projecthome            character     1         
-##    some.data              numeric       18        
-##    speaker                character     10        
-##    speech.by.char         list          3         
-##    suspicious.cases       logical       176       
-##    teams                  character     17        
-##    utterance              character     10        
-##    width                  numeric       1         
-##    X1                     numeric       11        
-##    X2                     numeric       11        
-##    X3                     numeric       11        
-##    X4                     numeric       11        
-##    Y1                     numeric       11        
-##    Y2                     numeric       11        
-##    Y3                     numeric       11        
-##    Y4                     numeric       11</code></pre>
+<pre><code>##    -- Name --         -- Class --   -- Size --
+##    age                numeric       11        
+##    age.breaks         numeric       4         
+##    age.group          factor        11        
+##    age.group2         factor        11        
+##    age.group3         factor        11        
+##    age.labels         character     3         
+##    df                 data.frame    10 x 4    
+##    is.MP.speaking     logical       10        
+##    itng               data.frame    10 x 2    
+##    itng.table         table         3 x 4     
+##    likert.centred     numeric       10        
+##    likert.raw         numeric       10        
+##    opinion.dir        numeric       10        
+##    opinion.strength   numeric       10        
+##    projecthome        character     1         
+##    some.data          numeric       18        
+##    speaker            character     10        
+##    speech.by.char     list          3         
+##    utterance          character     10</code></pre>
 <p>Now we use the <code>importList()</code> function to copy all of the variables within the <code>speech.by.char</code> list:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">importList</span>( speech.by.char, <span class="dt">ask =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <p>Because the <code>importList()</code> function is attempting to create new variables based on the names of the elements of the list, it pauses to check that you’re okay with the variable names. The reason it does this is that, if one of the to-be-created variables has the same name as a variable that you already have in your workspace, that variable will end up being overwritten, so it’s a good idea to check. Assuming that you type <code>y</code>, it will go on to create the variables. Nothing <em>appears</em> to have happened, but if we look at our workspace now:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">who</span>()</code></pre></div>
-<pre><code>##    -- Name --             -- Class --   -- Size --
-##    afl.finalists          factor        400       
-##    afl.margins            numeric       176       
-##    afl2                   data.frame    4296 x 2  
-##    age                    numeric       11        
-##    age.breaks             numeric       4         
-##    age.group              factor        11        
-##    age.group2             factor        11        
-##    age.group3             factor        11        
-##    age.labels             character     3         
-##    colour                 logical       1         
-##    d.cor                  numeric       1         
-##    describeImg            list          0         
-##    df                     data.frame    10 x 4    
-##    effort                 data.frame    10 x 2    
-##    emphCol                character     1         
-##    emphColLight           character     1         
-##    emphGrey               character     1         
-##    eps                    logical       1         
-##    Fibonacci              numeric       7         
-##    freq                   integer       17        
-##    generateRLineTypes     function                
-##    generateRPointShapes   function                
-##    height                 numeric       1         
-##    is.MP.speaking         logical       10        
-##    itng                   data.frame    10 x 2    
-##    itng.table             table         3 x 4     
-##    likert.centred         numeric       10        
-##    likert.raw             numeric       10        
-##    makka.pakka            character     4         
-##    old                    list          66        
-##    oneCorPlot             function                
-##    opinion.dir            numeric       10        
-##    opinion.strength       numeric       10        
-##    out.0                  data.frame    100 x 2   
-##    out.1                  data.frame    100 x 2   
-##    out.2                  data.frame    100 x 2   
-##    parenthood             data.frame    100 x 4   
-##    plotOne                function                
-##    projecthome            character     1         
-##    some.data              numeric       18        
-##    speaker                character     10        
-##    speech.by.char         list          3         
-##    suspicious.cases       logical       176       
-##    teams                  character     17        
-##    tombliboo              character     2         
-##    upsy.daisy             character     4         
-##    utterance              character     10        
-##    width                  numeric       1         
-##    X1                     numeric       11        
-##    X2                     numeric       11        
-##    X3                     numeric       11        
-##    X4                     numeric       11        
-##    Y1                     numeric       11        
-##    Y2                     numeric       11        
-##    Y3                     numeric       11        
-##    Y4                     numeric       11</code></pre>
+<pre><code>##    -- Name --         -- Class --   -- Size --
+##    age                numeric       11        
+##    age.breaks         numeric       4         
+##    age.group          factor        11        
+##    age.group2         factor        11        
+##    age.group3         factor        11        
+##    age.labels         character     3         
+##    df                 data.frame    10 x 4    
+##    is.MP.speaking     logical       10        
+##    itng               data.frame    10 x 2    
+##    itng.table         table         3 x 4     
+##    likert.centred     numeric       10        
+##    likert.raw         numeric       10        
+##    makka.pakka        character     4         
+##    opinion.dir        numeric       10        
+##    opinion.strength   numeric       10        
+##    projecthome        character     1         
+##    some.data          numeric       18        
+##    speaker            character     10        
+##    speech.by.char     list          3         
+##    tombliboo          character     2         
+##    upsy.daisy         character     4         
+##    utterance          character     10</code></pre>
 <p>we see that there are three new variables, called <code>makka.pakka</code>, <code>tombliboo</code> and <code>upsy.daisy</code>. Notice that the <code>importList()</code> function has converted the original character strings into valid R variable names, so the variable corresponding to <code>&quot;makka-pakka&quot;</code> is actually <code>makka.pakka</code>.<a href="#fn113" class="footnoteRef" id="fnref113"><sup>113</sup></a> Nevertheless, even though the names can change, note that each of these variables contains the exact same information as the original elements of the list did. For example:</p>
 <pre><code>&gt; makka.pakka
 [1] &quot;pip&quot; &quot;pip&quot; &quot;onk&quot; &quot;onk&quot;</code></pre>
@@ -1875,77 +1773,43 @@ cakes.flipped</code></pre></div>
 <p>The most common format in which you might obtain data is as a “case by variable” layout, commonly known as the <strong><em>wide form</em></strong> of the data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome,<span class="st">&quot;data&quot;</span>,<span class="st">&quot;repeated.Rdata&quot;</span>))
 <span class="kw">who</span>()</code></pre></div>
-<pre><code>##    -- Name --             -- Class --   -- Size --
-##    afl.finalists          factor        400       
-##    afl.margins            numeric       176       
-##    afl2                   data.frame    4296 x 2  
-##    age                    numeric       11        
-##    age.breaks             numeric       4         
-##    age.group              factor        11        
-##    age.group2             factor        11        
-##    age.group3             factor        11        
-##    age.labels             character     3         
-##    cake.1                 numeric       5         
-##    cake.2                 numeric       5         
-##    cake.df                data.frame    5 x 2     
-##    cake.mat1              matrix        5 x 2     
-##    cake.mat2              matrix        2 x 5     
-##    cakes                  matrix        4 x 5     
-##    cakes.flipped          matrix        5 x 4     
-##    choice                 data.frame    4 x 10    
-##    colour                 logical       1         
-##    d.cor                  numeric       1         
-##    describeImg            list          0         
-##    df                     data.frame    4 x 1     
-##    drugs                  data.frame    10 x 8    
-##    effort                 data.frame    10 x 2    
-##    emphCol                character     1         
-##    emphColLight           character     1         
-##    emphGrey               character     1         
-##    eps                    logical       1         
-##    fac                    factor        3         
-##    fibonacci              numeric       6         
-##    Fibonacci              numeric       7         
-##    freq                   integer       17        
-##    garden                 data.frame    5 x 3     
-##    generateRLineTypes     function                
-##    generateRPointShapes   function                
-##    height                 numeric       1         
-##    is.MP.speaking         logical       5         
-##    itng                   data.frame    10 x 2    
-##    itng.table             table         3 x 4     
-##    likert.centred         numeric       10        
-##    likert.raw             numeric       10        
-##    makka.pakka            character     4         
-##    numbers                numeric       3         
-##    old                    list          66        
-##    oneCorPlot             function                
-##    opinion.dir            numeric       10        
-##    opinion.strength       numeric       10        
-##    out.0                  data.frame    100 x 2   
-##    out.1                  data.frame    100 x 2   
-##    out.2                  data.frame    100 x 2   
-##    parenthood             data.frame    100 x 4   
-##    plotOne                function                
-##    projecthome            character     1         
-##    some.data              numeric       18        
-##    speaker                character     10        
-##    speech.by.char         list          3         
-##    suspicious.cases       logical       176       
-##    teams                  character     17        
-##    text                   character     3         
-##    tombliboo              character     2         
-##    upsy.daisy             character     4         
-##    utterance              character     10        
-##    width                  numeric       1         
-##    X1                     numeric       11        
-##    X2                     numeric       11        
-##    X3                     numeric       11        
-##    X4                     numeric       11        
-##    Y1                     numeric       11        
-##    Y2                     numeric       11        
-##    Y3                     numeric       11        
-##    Y4                     numeric       11</code></pre>
+<pre><code>##    -- Name --         -- Class --   -- Size --
+##    age                numeric       11        
+##    age.breaks         numeric       4         
+##    age.group          factor        11        
+##    age.group2         factor        11        
+##    age.group3         factor        11        
+##    age.labels         character     3         
+##    cake.1             numeric       5         
+##    cake.2             numeric       5         
+##    cake.df            data.frame    5 x 2     
+##    cake.mat1          matrix        5 x 2     
+##    cake.mat2          matrix        2 x 5     
+##    cakes              matrix        4 x 5     
+##    cakes.flipped      matrix        5 x 4     
+##    choice             data.frame    4 x 10    
+##    df                 data.frame    4 x 1     
+##    drugs              data.frame    10 x 8    
+##    fac                factor        3         
+##    fibonacci          numeric       6         
+##    garden             data.frame    5 x 3     
+##    is.MP.speaking     logical       5         
+##    itng               data.frame    10 x 2    
+##    itng.table         table         3 x 4     
+##    likert.centred     numeric       10        
+##    likert.raw         numeric       10        
+##    makka.pakka        character     4         
+##    numbers            numeric       3         
+##    opinion.dir        numeric       10        
+##    opinion.strength   numeric       10        
+##    projecthome        character     1         
+##    some.data          numeric       18        
+##    speaker            character     10        
+##    speech.by.char     list          3         
+##    text               character     3         
+##    tombliboo          character     2         
+##    upsy.daisy         character     4         
+##    utterance          character     10</code></pre>
 <p>To get a sense of what I’m talking about, consider an experiment in which we are interested in the different effects that alcohol and and caffeine have on people’s working memory capacity (WMC) and reaction times (RT). We recruit 10 participants, and measure their WMC and RT under three different conditions: a “no drug” condition, in which they are not under the influence of either caffeine or alcohol, a “caffeine” condition, in which they are under the inflence of caffeine, and an “alcohol” condition, in which… well, you can probably guess. Ideally, I suppose, there would be a fourth condition in which both drugs are administered, but for the sake of simplicity let’s ignore that. The <code>drugs</code> data frame gives you a sense of what kind of data you might observe in an experiment like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">drugs</code></pre></div>
 <pre><code>##    id gender WMC_alcohol WMC_caffeine WMC_no.drug RT_alcohol RT_caffeine
@@ -2690,14 +2554,12 @@ Figure 7.2: The environment panel in Rstudio can actually show you the contents 
 </div>
 <p>In this section I want to ask a slightly different question: what <em>is</em> the workspace exactly? This question seems simple, but there’s a fair bit to it. This section can be skipped if you’re not really interested in the technical details. In the description I gave earlier, I talked about the workspace as an abstract location in which R variables are stored. That’s basically true, but it hides a couple of key details. For example, any time you have R open, it has to store <em>lots</em> of things in the computer’s memory, not just your variables. For example, the <code>who()</code> function that I wrote has to be stored in memory somewhere, right? If it weren’t I wouldn’t be able to use it. That’s pretty obvious. But equally obviously it’s not in the workspace either, otherwise you should have seen it! Here’s what’s happening. R needs to keep track of a lot of different things, so what it does is organise them into <strong><em>environments</em></strong>, each of which can contain lots of different variables and functions. Your workspace is one such environment. Every package that you have loaded is another environment. And every time you call a function, R briefly creates a temporary environment in which the function itself can work, which is then deleted after the calculations are complete. So, when I type in <code>search()</code> at the command line</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search</span>()</code></pre></div>
-<pre><code>##  [1] &quot;.GlobalEnv&quot;          &quot;package:BayesFactor&quot; &quot;package:Matrix&quot;     
-##  [4] &quot;package:coda&quot;        &quot;package:effects&quot;     &quot;package:lmtest&quot;     
-##  [7] &quot;package:zoo&quot;         &quot;package:gplots&quot;      &quot;package:sciplot&quot;    
-## [10] &quot;package:HistData&quot;    &quot;package:MASS&quot;        &quot;package:lsr&quot;        
-## [13] &quot;package:psych&quot;       &quot;package:car&quot;         &quot;package:carData&quot;    
-## [16] &quot;tools:rstudio&quot;       &quot;package:stats&quot;       &quot;package:graphics&quot;   
-## [19] &quot;package:grDevices&quot;   &quot;package:utils&quot;       &quot;package:datasets&quot;   
-## [22] &quot;package:methods&quot;     &quot;Autoloads&quot;           &quot;package:base&quot;</code></pre>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;        &quot;package:HistData&quot;  &quot;package:MASS&quot;     
+##  [4] &quot;package:lsr&quot;       &quot;package:psych&quot;     &quot;package:car&quot;      
+##  [7] &quot;package:carData&quot;   &quot;tools:rstudio&quot;     &quot;package:stats&quot;    
+## [10] &quot;package:graphics&quot;  &quot;package:grDevices&quot; &quot;package:utils&quot;    
+## [13] &quot;package:datasets&quot;  &quot;package:methods&quot;   &quot;Autoloads&quot;        
+## [16] &quot;package:base&quot;</code></pre>
 <p>what I’m actually looking at is a <em>sequence of environments</em>. The first one, <code>&quot;.GlobalEnv&quot;</code> is the technically-correct name for your workspace. No-one really calls it that: it’s either called the workspace or the global environment. And so when you type in <code>objects()</code> or <code>who()</code> what you’re really doing is listing the contents of <code>&quot;.GlobalEnv&quot;</code>. But there’s no reason why we can’t look up the contents of these other environments using the <code>objects()</code> function (currently <code>who()</code> doesn’t support this). You just have to be a bit more explicit in your command. If I wanted to find out what is in the <code>package:stats</code> environment (i.e., the environment into which the contents of the <code>stats</code> package have been loaded), here’s what I’d get</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">objects</span>(<span class="st">&quot;package:stats&quot;</span>))</code></pre></div>
 <pre><code>## [1] &quot;acf&quot;        &quot;acf2AR&quot;     &quot;add.scope&quot;  &quot;add1&quot;       &quot;addmargins&quot;

@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -852,308 +852,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>( <span class="st">&quot;./data/aflsmall.Rdata&quot;</span> )
 <span class="kw">library</span>(lsr)
 <span class="kw">who</span>()</code></pre></div>
-<pre><code>##    -- Name --             -- Class --     -- Size --
-##    a                      numeric         1         
-##    addArrow               function                  
-##    addDistPlot            function                  
-##    afl                    data.frame      4296 x 12 
-##    afl.finalists          factor          400       
-##    afl.margins            numeric         176       
-##    afl2                   data.frame      4296 x 2  
-##    age.breaks             numeric         4         
-##    age.group              factor          11        
-##    age.group2             factor          11        
-##    age.group3             factor          11        
-##    age.labels             character       3         
-##    agpp                   data.frame      100 x 3   
-##    animals                character       4         
-##    anova.model            aov             13        
-##    anovaImg               list            0         
-##    any.sales.this.month   logical         12        
-##    awesome                data.frame      10 x 2    
-##    b                      numeric         1         
-##    bad.coef               numeric         2         
-##    balance                numeric         1         
-##    beers                  character       3         
-##    berkeley               data.frame      39 x 3    
-##    berkeley.small         data.frame      46 x 2    
-##    binomPlot              function                  
-##    bw                     numeric         1         
-##    cake.1                 numeric         5         
-##    cake.2                 numeric         5         
-##    cake.df                data.frame      5 x 2     
-##    cake.mat1              matrix          5 x 2     
-##    cake.mat2              matrix          2 x 5     
-##    cakes                  matrix          4 x 5     
-##    cakes.flipped          matrix          5 x 4     
-##    cardChoices            xtabs           4 x 4     
-##    cards                  data.frame      200 x 3   
-##    chapek9                data.frame      180 x 2   
-##    chapekFrequencies      xtabs           3 x 2     
-##    chi.sq.20              numeric         1000      
-##    chi.sq.3               numeric         1000      
-##    chico                  data.frame      20 x 3    
-##    chico2                 data.frame      40 x 4    
-##    chico3                 data.frame      20 x 4    
-##    chiSqImg               list            0         
-##    choice                 data.frame      4 x 10    
-##    choice.2               data.frame      16 x 6    
-##    clin.trial             data.frame      18 x 3    
-##    clin.trial.2           data.frame      18 x 5    
-##    coef                   numeric         2         
-##    coffee                 data.frame      18 x 3    
-##    colour                 logical         1         
-##    crit                   numeric         1         
-##    crit.hi                numeric         1         
-##    crit.lo                numeric         1         
-##    crit.val               numeric         1         
-##    crosstab               xtabs           2 x 3     
-##    d.cor                  numeric         1         
-##    Dan                    list            4         
-##    dan.awake              logical         10        
-##    data                   data.frame      12 x 4    
-##    day                    character       1         
-##    days.per.month         numeric         12        
-##    def.par                list            66        
-##    describeImg            list            0         
-##    dev.from.gp.means      array           18        
-##    dev.from.grand.mean    array           3         
-##    df                     numeric         1         
-##    doubleMax              function                  
-##    drawBasicScatterplot   function                  
-##    drug.anova             aov             13        
-##    drug.lm                lm              13        
-##    drug.means             numeric         3         
-##    drug.regression        lm              12        
-##    druganxifree           numeric         18        
-##    drugs                  data.frame      10 x 8    
-##    drugs.2                data.frame      30 x 5    
-##    eff                    eff             22        
-##    effort                 data.frame      10 x 2    
-##    emphCol                character       1         
-##    emphColLight           character       1         
-##    emphGrey               character       1         
-##    eps                    logical         1         
-##    es                     matrix          4 x 7     
-##    estImg                 list            0         
-##    eta.squared            numeric         1         
-##    eventNames             character       5         
-##    expected               numeric         4         
-##    expt                   data.frame      9 x 4     
-##    f                      table           14        
-##    F.3.20                 numeric         1000      
-##    F.stat                 numeric         1         
-##    fac                    factor          3         
-##    february.sales         numeric         1         
-##    fibonacci              numeric         6         
-##    Fibonacci              numeric         7         
-##    fileName               character       1         
-##    formula1               formula                   
-##    formula2               formula                   
-##    formula3               formula                   
-##    formula4               formula                   
-##    freq                   integer         17        
-##    full.model             lm              12        
-##    G                      factor          18        
-##    garden                 data.frame      5 x 3     
-##    generateRLineTypes     function                  
-##    generateRPointShapes   function                  
-##    good.coef              numeric         2         
-##    gp.mean                array           3         
-##    gp.means               array           3         
-##    gp.sizes               array           3         
-##    grades                 numeric         20        
-##    grand.mean             numeric         1         
-##    greeting               character       1         
-##    h                      numeric         1         
-##    happiness              data.frame      10 x 3    
-##    harpo                  data.frame      33 x 2    
-##    heavy.tailed.data      numeric         100       
-##    height                 numeric         1         
-##    hw                     character       2         
-##    i                      integer         1         
-##    interest               numeric         1         
-##    IQ                     numeric         10000     
-##    is.MP.speaking         logical         5         
-##    is.the.Party.correct   table           14        
-##    itng                   data.frame      10 x 2    
-##    itng.table             table           3 x 4     
-##    likert.centred         numeric         10        
-##    likert.ordinal         ordered         10        
-##    likert.raw             numeric         10        
-##    lower.area             numeric         1         
-##    m                      numeric         1         
-##    M                      matrix          2 x 3     
-##    M0                     lm              12        
-##    M1                     lm              12        
-##    makka.pakka            character       4         
-##    max.val                numeric         1         
-##    mod                    lm              13        
-##    mod.1                  lm              11        
-##    mod.2                  lm              13        
-##    mod.3                  lm              13        
-##    mod.4                  lm              13        
-##    mod.H                  lm              13        
-##    mod.R                  lm              13        
-##    model                  aov             13        
-##    model.1                aov             13        
-##    model.2                aov             13        
-##    model.3                aov             13        
-##    models                 BFBayesFactor             
-##    monkey                 character       1         
-##    monkey.1               list            1         
-##    month                  numeric         1         
-##    monthly.multiplier     numeric         1         
-##    months                 character       12        
-##    ms.diff                numeric         1         
-##    ms.res                 numeric         1         
-##    msg                    character       1         
-##    mu                     numeric         3         
-##    mu.null                numeric         1         
-##    my.anova               aov             13        
-##    my.anova.residuals     numeric         18        
-##    my.contrasts           list            2         
-##    my.formula             formula                   
-##    my.var                 numeric         1         
-##    n                      numeric         1         
-##    N                      integer         1         
-##    ng                     character       2         
-##    nhstImg                list            0         
-##    nodrug.regression      lm              12        
-##    normal.a               numeric         1000      
-##    normal.b               numeric         1000      
-##    normal.c               numeric         1000      
-##    normal.d               numeric         1000      
-##    normal.data            numeric         100       
-##    null.model             lm              11        
-##    nullProbs              numeric         4         
-##    numbers                numeric         3         
-##    observed               table           4         
-##    old                    list            66        
-##    old.text               character       1         
-##    old_par                list            72        
-##    oneCorPlot             function                  
-##    opinion.dir            numeric         10        
-##    opinion.strength       numeric         10        
-##    out.0                  data.frame      100 x 2   
-##    out.1                  data.frame      100 x 2   
-##    out.2                  data.frame      100 x 2   
-##    outcome                numeric         18        
-##    p.value                numeric         1         
-##    parenthood             data.frame      100 x 4   
-##    payments               numeric         1         
-##    PJ                     character       1         
-##    plotHist               function                  
-##    plotOne                function                  
-##    plotSamples            function                  
-##    plotTwo                function                  
-##    pow                    numeric         100       
-##    probabilities          numeric         5         
-##    projecthome            character       1         
-##    quadruple              function                  
-##    r                      numeric         1         
-##    R.squared              numeric         1         
-##    random.contrasts       matrix          3 x 2     
-##    regression.1           lm              12        
-##    regression.2           lm              12        
-##    regression.3           lm              12        
-##    regression.model       lm              12        
-##    regression.model.2     lm              13        
-##    regression.model.3     lm              13        
-##    regressionImg          list            0         
-##    resid                  numeric         18        
-##    revenue                numeric         1         
-##    right.table            xtabs           2 x 2     
-##    row.1                  numeric         3         
-##    row.2                  numeric         3         
-##    royalty                numeric         1         
-##    rtfm.1                 data.frame      8 x 3     
-##    rtfm.2                 data.frame      8 x 3     
-##    rtfm.3                 data.frame      8 x 3     
-##    s                      numeric         1         
-##    salem.tabs             table           2 x 2     
-##    sales                  numeric         1         
-##    sales.by.month         numeric         12        
-##    sample.mean            numeric         1         
-##    scaled.chi.sq.20       numeric         1000      
-##    scaled.chi.sq.3        numeric         1000      
-##    score.A                numeric         5         
-##    score.B                numeric         5         
-##    sd.true                numeric         1         
-##    sd1                    numeric         2         
-##    sem.true               numeric         1         
-##    setUpPlot              function                  
-##    sig                    numeric         1         
-##    sigEx                  expression                
-##    simpson                matrix          6 x 5     
-##    skewed.data            numeric         100       
-##    some.data              numeric         18        
-##    speaker                character       10        
-##    speech.by.char         list            3         
-##    squared.devs           array           3         
-##    ss.diff                numeric         1         
-##    SS.drug                numeric         1         
-##    SS.res                 numeric         1         
-##    ss.res.full            numeric         1         
-##    ss.res.null            numeric         1         
-##    SS.resid               numeric         1         
-##    SS.therapy             numeric         1         
-##    ss.tot                 numeric         1         
-##    SS.tot                 numeric         1         
-##    SSb                    numeric         1         
-##    SStot                  numeric         1         
-##    SSw                    numeric         1         
-##    stock.levels           character       12        
-##    suspicious.cases       logical         176       
-##    t.3                    numeric         1000      
-##    teams                  character       17        
-##    text                   character       2         
-##    therapy.means          numeric         2         
-##    theta                  numeric         1         
-##    today                  Date            1         
-##    tombliboo              character       2         
-##    total.paid             numeric         1         
-##    trial                  data.frame      16 x 2    
-##    ttestImg               list            0         
-##    type.I.sum             numeric         1         
-##    type.II.sum            numeric         1         
-##    upper.area             numeric         1         
-##    upsy.daisy             character       4         
-##    utterance              character       10        
-##    w                      character       1         
-##    W                      character       1         
-##    w.length               integer         1         
-##    width                  numeric         1         
-##    words                  character       6         
-##    wt.squared.devs        array           3         
-##    X                      numeric         1000      
-##    x1                     numeric         61        
-##    X1                     numeric         11        
-##    x2                     numeric         61        
-##    X2                     numeric         11        
-##    x3                     numeric         61        
-##    X3                     numeric         11        
-##    X4                     numeric         11        
-##    xlu                    numeric         1         
-##    xtab.3d                table           3 x 4 x 2 
-##    xval                   numeric         1001      
-##    Y                      numeric         100       
-##    Y.pred                 numeric         100       
-##    y1                     numeric         61        
-##    Y1                     numeric         11        
-##    y2                     numeric         61        
-##    Y2                     numeric         11        
-##    y3                     numeric         61        
-##    Y3                     numeric         11        
-##    Y4                     numeric         11        
-##    Ybar                   array           18        
-##    yhat.2                 numeric         100       
-##    yval                   numeric         1001      
-##    yval.1                 numeric         1001      
-##    yval.2                 numeric         1001      
-##    z                      logical         101       
-##    Z                      array           18        
-##    z.score                numeric         1</code></pre>
+<pre><code>##    -- Name --      -- Class --   -- Size --
+##    afl.finalists   factor        400       
+##    afl.margins     numeric       176       
+##    projecthome     character       1</code></pre>
 <p>There are two variables here, <code>afl.finalists</code> and <code>afl.margins</code>. We’ll focus a bit on these two variables in this chapter, so I’d better tell you what they are. Unlike most of data sets in this book, these are actually real data, relating to the Australian Football League (AFL)<a href="#fn65" class="footnoteRef" id="fnref65"><sup>65</sup></a> The <code>afl.margins</code> variable contains the winning margin (number of points) for all 176 home and away games played during the 2010 season. The <code>afl.finalists</code> variable contains the names of all 400 teams that played in all 200 finals matches played during the period 1987 to 2010. Let’s have a look at the <code>afl.margins</code> variable:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(afl.margins)</code></pre></div>
 <pre><code>##   [1]  56  31  56   8  32  14  36  56  19   1   3 104  43  44  72   9  28
@@ -1472,7 +1174,7 @@ AAD &lt;-<span class="st"> </span><span class="kw">mean</span>( AD )        <spa
 \]</span> <span class="math display">\[\mbox{Var}(X) = \frac{\sum_{i=1}^N \left( X_i - \bar{X} \right)^2}{N}\]</span> As you can see, it’s basically the same formula that we used to calculate the mean absolute deviation, except that instead of using “absolute deviations” we use “squared deviations”. It is for this reason that the variance is sometimes referred to as the “mean square deviation”.</p>
 <p>Now that we’ve got the basic idea, let’s have a look at a concrete example. Once again, let’s use the first five AFL games as our data. If we follow the same approach that we took last time, we end up with the following table:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-194">Table 5.1: </span>Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it’s important to be familiar with them at the outset.</caption>
+<caption><span id="tab:unnamed-chunk-203">Table 5.1: </span>Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it’s important to be familiar with them at the outset.</caption>
 <thead>
 <tr class="header">
 <th align="left">Notation [English]</th>
@@ -1602,15 +1304,15 @@ Figure 5.3: An illustration of the standard deviation, applied to the AFL winnin
 <div id="skewandkurtosis" class="section level2">
 <h2><span class="header-section-number">5.3</span> Skew and kurtosis</h2>
 <p>There are two more descriptive statistics that you will sometimes see reported in the psychological literature, known as skew and kurtosis. In practice, neither one is used anywhere near as frequently as the measures of central tendency and variability that we’ve been talking about. Skew is pretty important, so you do see it mentioned a fair bit; but I’ve actually never seen kurtosis reported in a scientific article to date.</p>
-<pre><code>## [1] -0.9246796</code></pre>
-<pre><code>## [1] -0.00814197</code></pre>
+<pre><code>## [1] -0.913227</code></pre>
+<pre><code>## [1] -0.005611983</code></pre>
 <div class="figure"><span id="fig:skewness"></span>
 <img src="lsr_files/figure-html/skewness-1.png" alt="An illustration of skewness. On the left we have a negatively skewed data set (skewness $= -.93$), in the middle we have a data set with no skew (technically, skewness $= -.006$), and on the right we have a positively skewed data set (skewness $= .93$)." width="672" />
 <p class="caption">
 Figure 5.4: An illustration of skewness. On the left we have a negatively skewed data set (skewness <span class="math inline">\(= -.93\)</span>), in the middle we have a data set with no skew (technically, skewness <span class="math inline">\(= -.006\)</span>), and on the right we have a positively skewed data set (skewness <span class="math inline">\(= .93\)</span>).
 </p>
 </div>
-<pre><code>## [1] 0.9197452</code></pre>
+<pre><code>## [1] 0.9421993</code></pre>
 <p>Since it’s the more interesting of the two, let’s start by talking about the <strong><em>skewness</em></strong>. Skewness is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As Figure <a href="descriptives.html#fig:skewness">5.4</a> illustrates, if the data tend to have a lot of extreme small values (i.e., the lower tail is “longer” than the upper tail) and not so many extremely large values (left panel), then we say that the data are <em>negatively skewed</em>. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are <em>positively skewed</em>. That’s the qualitative idea behind skewness. The actual formula for the skewness of a data set is as follows <span class="math display">\[
 \mbox{skewness}(X) = \frac{1}{N \hat{\sigma}^3} \sum_{i=1}^N (X_i - \bar{X})^3
 \]</span> where <span class="math inline">\(N\)</span> is the number of observations, <span class="math inline">\(\bar{X}\)</span> is the sample mean, and <span class="math inline">\(\hat{\sigma}\)</span> is the standard deviation (the “divide by <span class="math inline">\(N-1\)</span>” version, that is). Perhaps more helpfully, it might be useful to point out that the <code>psych</code> package contains a <code>skew()</code> function that you can use to calculate skewness. So if we wanted to use this function to calculate the skewness of the <code>afl.margins</code> data, we’d first need to load the package</p>
@@ -1620,15 +1322,15 @@ Figure 5.4: An illustration of skewness. On the left we have a negatively skewed
 <pre><code>## [1] 0.7671555</code></pre>
 <p>Not surprisingly, it turns out that the AFL winning margins data is fairly skewed.</p>
 <p>The final measure that is sometimes referred to, though very rarely in practice, is the <strong><em>kurtosis</em></strong> of a data set. Put simply, kurtosis is a measure of the “pointiness” of a data set, as illustrated in Figure <a href="descriptives.html#fig:kurtosis">5.5</a>.</p>
-<pre><code>## [1] -0.9516587</code></pre>
-<pre><code>## [1] 0.006731404</code></pre>
+<pre><code>## [1] -0.954192</code></pre>
+<pre><code>## [1] 0.001879915</code></pre>
 <div class="figure"><span id="fig:kurtosis"></span>
 <img src="lsr_files/figure-html/kurtosis-1.png" alt="An illustration of kurtosis. On the left, we have a &quot;platykurtic&quot; data set (kurtosis = $-.95$), meaning that the data set is &quot;too flat&quot;. In the middle we have a &quot;mesokurtic&quot; data set (kurtosis is almost exactly 0), which means that the pointiness of the data is just about right. Finally, on the right, we have a &quot;leptokurtic&quot; data set (kurtosis $= 2.12$) indicating that the data set is &quot;too pointy&quot;. Note that kurtosis is measured with respect to a normal curve (black line)" width="672" />
 <p class="caption">
 Figure 5.5: An illustration of kurtosis. On the left, we have a “platykurtic” data set (kurtosis = <span class="math inline">\(-.95\)</span>), meaning that the data set is “too flat”. In the middle we have a “mesokurtic” data set (kurtosis is almost exactly 0), which means that the pointiness of the data is just about right. Finally, on the right, we have a “leptokurtic” data set (kurtosis <span class="math inline">\(= 2.12\)</span>) indicating that the data set is “too pointy”. Note that kurtosis is measured with respect to a normal curve (black line)
 </p>
 </div>
-<pre><code>## [1] 2.068523</code></pre>
+<pre><code>## [1] 2.055452</code></pre>
 <p>By convention, we say that the “normal curve” (black lines) has zero kurtosis, so the pointiness of a data set is assessed relative to this curve. In this Figure, the data on the left are not pointy enough, so the kurtosis is negative and we call the data <em>platykurtic</em>. The data on the right are too pointy, so the kurtosis is positive and we say that the data is <em>leptokurtic</em>. But the data in the middle are just pointy enough, so we say that it is <em>mesokurtic</em> and has kurtosis zero. This is summarised in the table below:</p>
 <table>
 <thead>
@@ -1921,7 +1623,7 @@ z = \frac{35 - 17}{5} = 3.6
 Figure 5.6: Histograms for the three interesting variables in the <code>parenthood</code> data set
 </p>
 </div>
-<p>One thing to note: just because R can calculate dozens of different statistics doesn’t mean you should report all of them. If I were writing this up for a report, I’d probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table <a href="#tab:parenthood"><strong>??</strong></a>.<a href="#fn80" class="footnoteRef" id="fnref80"><sup>80</sup></a> Notice that when I put it into a table, I gave everything “human readable” names. This is always good practice. Notice also that I’m not getting enough sleep. This isn’t good practice, but other parents tell me that it’s standard practice.</p>
+<p>One thing to note: just because R can calculate dozens of different statistics doesn’t mean you should report all of them. If I were writing this up for a report, I’d probably pick out those statistics that are of most interest to me (and to my readership), and then put them into a nice, simple table like the one in Table <a href="descriptives.html#tab:parenthoodtab">5.2</a>.<a href="#fn80" class="footnoteRef" id="fnref80"><sup>80</sup></a> Notice that when I put it into a table, I gave everything “human readable” names. This is always good practice. Notice also that I’m not getting enough sleep. This isn’t good practice, but other parents tell me that it’s standard practice.</p>
 <table>
 <caption><span id="tab:parenthoodtab">Table 5.2: </span>Descriptive statistics for the parenthood data.</caption>
 <thead>
@@ -2021,21 +1723,9 @@ r_{XY}  = \frac{\mbox{Cov}(X,Y)}{ \hat{\sigma}_X \ \hat{\sigma}_Y}
 </div>
 <div id="interpretingcorrelations" class="section level3">
 <h3><span class="header-section-number">5.7.5</span> Interpreting a correlation</h3>
-<p>Naturally, in real life you don’t see many correlations of 1. So how should you interpret a correlation of, say <span class="math inline">\(r= .4\)</span>? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A friend of mine in engineering once argued that any correlation less than <span class="math inline">\(.95\)</span> is completely useless (I think he was exaggerating, even for engineering). On the other hand there are real cases – even in psychology – where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can’t achieve a correlation of at least <span class="math inline">\(.9\)</span> really isn’t deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above <span class="math inline">\(.3\)</span> you’re doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in Table <a href="#tab:interpretingcorrelations"><strong>??</strong></a> is pretty typical.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(
-<span class="kw">rbind</span>(
-<span class="kw">c</span>(<span class="st">&quot;-1.0 to -0.9&quot;</span> ,<span class="st">&quot;Very strong&quot;</span>, <span class="st">&quot;Negative&quot;</span>),
-<span class="kw">c</span>(<span class="st">&quot;-0.9 to -0.7&quot;</span>, <span class="st">&quot;Strong&quot;</span>, <span class="st">&quot;Negative&quot;</span>) ,
-<span class="kw">c</span>(<span class="st">&quot;-0.7 to -0.4&quot;</span>, <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Negative&quot;</span>) ,
-<span class="kw">c</span>(<span class="st">&quot;-0.4 to -0.2&quot;</span>, <span class="st">&quot;Weak&quot;</span>, <span class="st">&quot;Negative&quot;</span>),
-<span class="kw">c</span>(<span class="st">&quot;-0.2 to 0&quot;</span>,<span class="st">&quot;Negligible&quot;</span>, <span class="st">&quot;Negative&quot;</span>) ,
-<span class="kw">c</span>(<span class="st">&quot;0 to 0.2&quot;</span>,<span class="st">&quot;Negligible&quot;</span>, <span class="st">&quot;Positive&quot;</span>),
-<span class="kw">c</span>(<span class="st">&quot;0.2 to 0.4&quot;</span>, <span class="st">&quot;Weak&quot;</span>, <span class="st">&quot;Positive&quot;</span>), 
-<span class="kw">c</span>(<span class="st">&quot;0.4 to 0.7&quot;</span>, <span class="st">&quot;Moderate&quot;</span>, <span class="st">&quot;Positive&quot;</span>), 
-<span class="kw">c</span>(<span class="st">&quot;0.7 to 0.9&quot;</span>, <span class="st">&quot;Strong&quot;</span>, <span class="st">&quot;Positive&quot;</span>), 
-<span class="kw">c</span>(<span class="st">&quot;0.9 to 1.0&quot;</span>, <span class="st">&quot;Very strong&quot;</span>, <span class="st">&quot;Positive&quot;</span>)), <span class="dt">col.names=</span><span class="kw">c</span>(<span class="st">&quot;Correlation&quot;</span>, <span class="st">&quot;Strength&quot;</span>, <span class="st">&quot;Direction&quot;</span>),
-  <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>Naturally, in real life you don’t see many correlations of 1. So how should you interpret a correlation of, say <span class="math inline">\(r= .4\)</span>? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A friend of mine in engineering once argued that any correlation less than <span class="math inline">\(.95\)</span> is completely useless (I think he was exaggerating, even for engineering). On the other hand there are real cases – even in psychology – where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can’t achieve a correlation of at least <span class="math inline">\(.9\)</span> really isn’t deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above <span class="math inline">\(.3\)</span> you’re doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in Table <a href="descriptives.html#tab:interpretingcorrelations">5.3</a> is pretty typical.</p>
 <table>
+<caption><span id="tab:interpretingcorrelations">Table 5.3: </span>Rough guide to interpreting correlations</caption>
 <thead>
 <tr class="header">
 <th align="left">Correlation</th>
@@ -2096,13 +1786,13 @@ r_{XY}  = \frac{\mbox{Cov}(X,Y)}{ \hat{\sigma}_X \ \hat{\sigma}_Y}
 </tr>
 </tbody>
 </table>
-<p>However, something that can never be stressed enough is that you should <em>always</em> look at the scatterplot before attaching any interpretation to the data. A correlation might not mean what you think it means. The classic illustration of this is “Anscombe’s Quartet” <span class="citation">(<span class="citeproc-not-found" data-reference-id="ref"><strong>???</strong></span> Anscombe1973)</span>, which is a collection of four data sets. Each data set has two variables, an <span class="math inline">\(X\)</span> and a <span class="math inline">\(Y\)</span>. For all four data sets the mean value for <span class="math inline">\(X\)</span> is 9 and the mean for <span class="math inline">\(Y\)</span> is 7.5. The, standard deviations for all <span class="math inline">\(X\)</span> variables are almost identical, as are those for the the <span class="math inline">\(Y\)</span> variables. And in each case the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is <span class="math inline">\(r = 0.816\)</span>. You can verify this yourself, since the dataset comes distributed with R. The commands would be:</p>
+<p>However, something that can never be stressed enough is that you should <em>always</em> look at the scatterplot before attaching any interpretation to the data. A correlation might not mean what you think it means. The classic illustration of this is “Anscombe’s Quartet” <span class="citation">(Anscombe <a href="#ref-Anscombe1973">1973</a>)</span>, which is a collection of four data sets. Each data set has two variables, an <span class="math inline">\(X\)</span> and a <span class="math inline">\(Y\)</span>. For all four data sets the mean value for <span class="math inline">\(X\)</span> is 9 and the mean for <span class="math inline">\(Y\)</span> is 7.5. The, standard deviations for all <span class="math inline">\(X\)</span> variables are almost identical, as are those for the the <span class="math inline">\(Y\)</span> variables. And in each case the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is <span class="math inline">\(r = 0.816\)</span>. You can verify this yourself, since the dataset comes distributed with R. The commands would be:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>( anscombe<span class="op">$</span>x1, anscombe<span class="op">$</span>y1 )</code></pre></div>
 <pre><code>## [1] 0.8164205</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>( anscombe<span class="op">$</span>x2, anscombe<span class="op">$</span>y2 )</code></pre></div>
 <pre><code>## [1] 0.8162365</code></pre>
 <p>and so on.</p>
-You’d think that these four data setswould look pretty similar to one another. They do not. If we draw scatterplots of <span class="math inline">\(X\)</span> against <span class="math inline">\(Y\)</span> for all four variables, as shown in Figure <a href="descriptives.html#fig:anscombe">5.11</a> we see that all four of these are <em>spectacularly</em> different to each other.
+You’d think that these four data sets would look pretty similar to one another. They do not. If we draw scatterplots of <span class="math inline">\(X\)</span> against <span class="math inline">\(Y\)</span> for all four variables, as shown in Figure <a href="descriptives.html#fig:anscombe">5.11</a> we see that all four of these are <em>spectacularly</em> different to each other.
 <div class="figure"><span id="fig:anscombe"></span>
 <img src="lsr_files/figure-html/anscombe-1.png" alt="Anscombe's quartet. All four of these data sets have a Pearson correlation of $r = .816$, but they are qualitatively different from one another." width="672" />
 <p class="caption">
@@ -2250,7 +1940,7 @@ Figure 5.12: The relationship between hours worked and grade received, for a toy
 <p>But what if I wanted a quick and easy way to calculate all pairwise correlations between the numeric variables? I can’t just input the <code>work</code> data frame, because it contains two factor variables, <code>weekday</code> and <code>day.type</code>. If I try this, I get an error:</p>
 <pre><code>&gt; cor(work)
 Error in cor(work) : &#39;x&#39; must be numeric</code></pre>
-<p>It order to get the correlations that I want using the <code>cor()</code> function, is create a new data frame that doesn’t contain the factor variables, and then feed that new data frame into the <code>cor()</code> function. It’s not actually very hard to do that, and I’ll talk about how to do it properly in <a href="mailto:Section@refsec">Section@refsec</a>:subsetdataframe. But it would be nice to have some function that is smart enough to just ignore the factor variables. That’s where the <code>correlate()</code> function in the <code>lsr</code> package can be handy. If you feed it a data frame that contains factors, it knows to ignore them, and returns the pairwise correlations only between the numeric variables:</p>
+<p>It order to get the correlations that I want using the <code>cor()</code> function, is create a new data frame that doesn’t contain the factor variables, and then feed that new data frame into the <code>cor()</code> function. It’s not actually very hard to do that, and I’ll talk about how to do it properly in Section <a href="datahandling.html#subsetdataframe">7.5</a>. But it would be nice to have some function that is smart enough to just ignore the factor variables. That’s where the <code>correlate()</code> function in the <code>lsr</code> package can be handy. If you feed it a data frame that contains factors, it knows to ignore them, and returns the pairwise correlations only between the numeric variables:</p>
 <pre><code>&gt; correlate(work)
 
 CORRELATIONS
@@ -2393,6 +2083,9 @@ day           -0.077      0.058     0.006      .</code></pre>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-Anscombe1973">
+<p>Anscombe, F. J. 1973. “Graphs in Statistical Analysis.” <em>American Statistician</em> 27: 17–21.</p>
+</div>
 <div id="ref-Ellman2002">
 <p>Ellman, Michael. 2002. “Soviet Repression Statistics: Some Comments.” <em>Europe-Asia Studies</em> 54 (7). Taylor &amp; Francis: 1151–72.</p>
 </div>

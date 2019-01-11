@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -1455,9 +1455,9 @@ df_{A:B} &amp;=&amp; (R\times C - 1) - (R - 1) - (C -1 ) \\
 <p>As with one-way ANOVA, we can test for the normality of residuals in a straightforward fashion (see Section <a href="anova.html#anovanormality">14.9</a>). First, we use the <code>residuals()</code> function to extract the residuals from the model itself, and then we can examine those residuals in a few different ways. It’s generally a good idea to examine them graphically, by drawing histograms (i.e., <code>hist()</code> function) and QQ plots (i.e., <code>qqnorm()</code> function. If you want a formal test for the normality of the residuals, then we can run the Shapiro-Wilk test (i.e., <code>shapiro.test()</code>). If we wanted to check the residuals with respect to <code>model.2</code> (i.e., the model with both main effects but no interactions) then we could do the following:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> resid &lt;-<span class="st"> </span><span class="kw">residuals</span>( model.<span class="dv">2</span> )  <span class="co"># pull the residuals</span>
  <span class="kw">hist</span>( resid )                  <span class="co"># draw a histogram</span></code></pre></div>
-<p><img src="lsr_files/figure-html/unnamed-chunk-723-1.png" width="672" /></p>
+<p><img src="lsr_files/figure-html/unnamed-chunk-743-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">qqnorm</span>( resid )                <span class="co"># draw a normal QQ plot</span></code></pre></div>
-<p><img src="lsr_files/figure-html/unnamed-chunk-723-2.png" width="672" /></p>
+<p><img src="lsr_files/figure-html/unnamed-chunk-743-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">shapiro.test</span>( resid )          <span class="co"># run the Shapiro-Wilk test</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
@@ -2124,7 +2124,8 @@ Y_{p} = b_1 X_{1p} + b_2 X_{2p} + b_0 + \epsilon_p
 <p>These are the same treatment contrast that we set up manually in Section <a href="anova2.html#anovalm">16.6</a>. How did R know to set up treatment contrasts, even though I never actually told it anything about what contrasts I wanted? The answer is that R has a hidden list of default “options” that it looks up to resolve situations like this. You can print out all of the options by typing <code>options()</code> at the command prompt, but it’s not a very enlightening read. There are a lot of options, and we’re only interested in contrasts right now. Instead of printing out all of the options, we can ask for just one, like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">options</span>( <span class="st">&quot;contrasts&quot;</span> )</code></pre></div>
 <pre><code>## $contrasts
-## [1] &quot;contr.treatment&quot; &quot;contr.poly&quot;</code></pre>
+##         unordered           ordered 
+## &quot;contr.treatment&quot;      &quot;contr.poly&quot;</code></pre>
 <p>What this is telling us is that the default contrasts for unordered factors (i.e., nominal scale variables) are treatment contrasts, and the default for ordered factors (i.e., interval scale variables) are “polynomial” contrasts. I don’t discuss ordered factors much in this book, and so I won’t go into what polynomial contrasts are all about. The key thing is that the <code>options()</code> function also allows you to reset these defaults (though only for the current session: they’ll revert to the original settings once you close R). Here’s the command:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">options</span>(<span class="dt">contrasts =</span> <span class="kw">c</span>(<span class="st">&quot;contr.helmert&quot;</span>, <span class="st">&quot;contr.poly&quot;</span>))</code></pre></div>
 <p>Once we’ve done this, we can inspect the contrast settings again:</p>
@@ -2275,16 +2276,16 @@ Y_{p} = b_1 X_{1p} + b_2 X_{2p} + b_0 + \epsilon_p
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">file.path</span>(projecthome, <span class="st">&quot;data&quot;</span>,<span class="st">&quot;coffee.Rdata&quot;</span>))
  <span class="kw">some</span>( coffee )</code></pre></div>
 <pre><code>##    milk sugar babble
-## 1   yes  real    4.6
 ## 2    no  fake    4.4
-## 3    no  fake    3.9
-## 6    no  real    5.5
+## 4   yes  real    5.6
+## 5   yes  real    5.1
 ## 7   yes  none    3.9
-## 8   yes  none    3.5
 ## 9   yes  none    3.7
 ## 10   no  fake    5.6
-## 17   no  none    5.3
-## 18  yes  fake    5.7</code></pre>
+## 12  yes  fake    5.9
+## 13   no  real    6.0
+## 14   no  real    5.4
+## 17   no  none    5.3</code></pre>
 <p>If we use the <code>aggregate()</code> function to quickly produce a table of means, we get a strong impression that there are differences between the groups:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">aggregate</span>( babble <span class="op">~</span><span class="st"> </span>milk <span class="op">+</span><span class="st"> </span>sugar, coffee, mean )</code></pre></div>
 <pre><code>##   milk sugar babble
@@ -2572,9 +2573,9 @@ Y_{p} = b_1 X_{1p} + b_2 X_{2p} + b_0 + \epsilon_p
  random.contrasts[, <span class="dv">2</span>] &lt;-<span class="st"> </span>random.contrasts[, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>( random.contrasts[, <span class="dv">2</span>] ) <span class="co"># contrast 2 sums to 0</span>
  random.contrasts  <span class="co"># print it to check that we really have an arbitrary contrast matrix...</span></code></pre></div>
 <pre><code>##            [,1]       [,2]
-## [1,]  0.2421359 -0.8168047
-## [2,]  0.5476197  0.9503084
-## [3,] -0.7897556 -0.1335037</code></pre>
+## [1,] -0.4340623 -0.9359380
+## [2,] -0.2459009  0.1507430
+## [3,]  0.6799632  0.7851949</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="kw">contrasts</span>( coffee<span class="op">$</span>sugar ) &lt;-<span class="st"> </span>random.contrasts <span class="co"># random contrasts for sugar</span>
  <span class="kw">contrasts</span>( coffee<span class="op">$</span>milk ) &lt;-<span class="st"> </span><span class="kw">contr.Helmert</span>(<span class="dv">2</span>)  <span class="co"># Helmert contrasts for the milk factor </span>
  mod.R &lt;-<span class="st"> </span><span class="kw">lm</span>( babble <span class="op">~</span><span class="st"> </span>sugar <span class="op">*</span><span class="st"> </span>milk, coffee )  <span class="co"># R will use the contrasts that we assigned</span>

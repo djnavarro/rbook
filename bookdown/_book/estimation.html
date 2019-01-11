@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="mechanics.html"><a href="mechanics.html#load"><i class="fa fa-check"></i><b>4.5</b> Loading and saving data</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-r"><i class="fa fa-check"></i><b>4.5.1</b> Loading workspace files using R</a></li>
 <li class="chapter" data-level="4.5.2" data-path="mechanics.html"><a href="mechanics.html#loading-workspace-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.2</b> Loading workspace files using RStudio</a></li>
-<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using <code id="loadingcsv">loadingcsv</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="mechanics.html"><a href="mechanics.html#loadingcsv"><i class="fa fa-check"></i><b>4.5.3</b> Importing data from CSV files using loadingcsv</a></li>
 <li class="chapter" data-level="4.5.4" data-path="mechanics.html"><a href="mechanics.html#importing-data-from-csv-files-using-rstudio"><i class="fa fa-check"></i><b>4.5.4</b> Importing data from CSV files using RStudio</a></li>
 <li class="chapter" data-level="4.5.5" data-path="mechanics.html"><a href="mechanics.html#saving-a-workspace-file-using-save"><i class="fa fa-check"></i><b>4.5.5</b> Saving a workspace file using <code>save</code></a></li>
 <li class="chapter" data-level="4.5.6" data-path="mechanics.html"><a href="mechanics.html#save1"><i class="fa fa-check"></i><b>4.5.6</b> Saving a workspace file using RStudio</a></li>
@@ -934,14 +934,14 @@ Figure 10.4: The population distribution of IQ scores (panel a) and two samples 
 Figure 10.4: The population distribution of IQ scores (panel a) and two samples drawn randomly from it. In panel b we have a sample of 100 observations, and panel c we have a sample of 10,000 observations.
 </p>
 </div>
-<pre><code>## [1] &quot;n= 100 mean= 100.553253383599 sd= 15.0078396909989&quot;</code></pre>
+<pre><code>## [1] &quot;n= 100 mean= 99.6818875076922 sd= 15.4862497436116&quot;</code></pre>
 <div class="figure"><span id="fig:IQdist"></span>
 <img src="lsr_files/figure-html/IQdist-3.png" alt="The population distribution of IQ scores (panel a) and two samples drawn randomly from it. In panel b we have a sample of 100 observations, and panel c we have a sample of 10,000 observations." width="672" />
 <p class="caption">
 Figure 10.4: The population distribution of IQ scores (panel a) and two samples drawn randomly from it. In panel b we have a sample of 100 observations, and panel c we have a sample of 10,000 observations.
 </p>
 </div>
-<pre><code>## [1] &quot;n= 10000 mean= 99.9199456720285 sd= 14.9487011509218&quot;</code></pre>
+<pre><code>## [1] &quot;n= 10000 mean= 100.04279577307 sd= 15.0444552812702&quot;</code></pre>
 <p>Now suppose I run an experiment. I select 100 people at random and administer an IQ test, giving me a simple random sample from the population. My sample would consist of a collection of numbers like this:</p>
 <pre><code>                          106 101 98 80 74 ... 107 72 100</code></pre>
 <p>Each of these IQ scores is sampled from a normal distribution with mean 100 and standard deviation 15. So if I plot a histogram of the sample, I get something like the one shown in Figure <a href="estimation.html#fig:IQdist">10.4</a>b. As you can see, the histogram is <em>roughly</em> the right shape, but it’s a very crude approximation to the true population distribution shown in Figure <a href="estimation.html#fig:IQdist">10.4</a>a. When I calculate the mean of my sample, I get a number that is fairly close to the population mean 100 but not identical. In this case, it turns out that the people in my sample have a mean IQ of 98.5, and the standard deviation of their IQ scores is 15.9. These <strong><em>sample statistics</em></strong> are properties of my data set, and although they are fairly similar to the true population values, they are not the same. In general, sample statistics are the things you can calculate from your data set, and the population parameters are the things you want to learn about. Later on in this chapter I’ll talk about how you can estimate population parameters using your sample statistics (Section <a href="estimation.html#pointestimates">10.4</a> and how to work out how confident you are in your estimates (Section <a href="estimation.html#ci">10.5</a> but before we get to that there’s a few more ideas in sampling theory that you need to know about.</p>
@@ -954,7 +954,7 @@ Figure 10.4: The population distribution of IQ scores (panel a) and two samples 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">IQ &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">15</span>) <span class="co"># generate IQ scores</span>
 IQ &lt;-<span class="st"> </span><span class="kw">round</span>(IQ) <span class="co"># IQs are whole numbers!</span>
 <span class="kw">print</span>(<span class="kw">head</span>(IQ))</code></pre></div>
-<pre><code>## [1] 113 104  64  89 101 100</code></pre>
+<pre><code>## [1] 106 104 118 126  73  79</code></pre>
 <p>I can compute the mean IQ using the command <code>mean(IQ)</code> and the standard deviation using the command <code>sd(IQ)</code>, and I can draw a histgram using <code>hist()</code>. The histogram of this much larger sample is shown in Figure <a href="estimation.html#fig:IQdist">10.4</a>c. Even a moment’s inspections makes clear that the larger sample is a much better approximation to the true population distribution than the smaller one. This is reflected in the sample statistics: the mean IQ for the larger sample turns out to be 99.9, and the standard deviation is 15.1. These values are now very close to the true population.</p>
 <p>I feel a bit silly saying this, but the thing I want you to take away from this is that large samples generally give you better information. I feel silly saying it because it’s so bloody obvious that it shouldn’t need to be said. In fact, it’s such an obvious point that when Jacob Bernoulli – one of the founders of probability theory – formalised this idea back in 1713, he was kind of a jerk about it. Here’s how he described the fact that we all share this intuition:</p>
 <blockquote>
