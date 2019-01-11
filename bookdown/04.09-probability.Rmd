@@ -155,7 +155,7 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 `Blue tracksuit` = c(  "$X_5$ ", "$P(X_5) = .1$")))
 ```
 
-Each of the events has a probability that lies between 0 and 1, and if we add up the probability of all events, they sum to 1. Awesome. We can even draw a nice bar graph (see Section \@ref(bargraph)) to visualise this distribution, as shown in Figure \@ref(pantsprob). And at this point, we've all achieved something. You've learned what a probability distribution is, and I've finally managed to find a way to create a graph that focuses entirely on my pants. Everyone wins!
+Each of the events has a probability that lies between 0 and 1, and if we add up the probability of all events, they sum to 1. Awesome. We can even draw a nice bar graph (see Section \@ref(bargraph)) to visualise this distribution, as shown in Figure \@ref(fig:pantsprob). And at this point, we've all achieved something. You've learned what a probability distribution is, and I've finally managed to find a way to create a graph that focuses entirely on my pants. Everyone wins!
 
 ```{r pantsprob, fig.cap="A visual depiction of the \"pants\" probability distribution. There are five \"elementary events\", corresponding to the five pairs of pants that I own. Each event has some probability of occurring: this probability is a number between 0 to 1. The sum of these probabilities is 1.", echo=FALSE}
 
@@ -214,6 +214,12 @@ X \sim \mbox{Binomial}(\theta, N)
 $$ 
 
 Yeah, yeah. I know what you're thinking: notation, notation, notation. Really, who cares? Very few readers of this book are here for the notation, so I should probably move on and talk about how to use the binomial distribution. I've included the formula for the binomial distribution in Table \@ref(tab:distformulas), since some readers may want to play with it themselves, but since most people probably don't care that much and because we don't need the formula in this book, I won't talk about it in any detail. Instead, I just want to show you what the binomial distribution looks like. To that end, Figure \@ref(fig:binomial1) plots the binomial probabilities for all possible values of $X$ for our dice rolling experiment, from $X=0$ (no skulls) all the way up to $X=20$ (all skulls). Note that this is basically a bar chart, and is no different to the "pants probability" plot I drew in Figure \@ref(fig:pantsprob). On the horizontal axis we have all the possible events, and on the vertical axis we can read off the probability of each of those events. So, the probability of rolling 4 skulls out of 20 times is about 0.20 (the actual answer is 0.2022036, as we'll see in a moment). In other words, you'd expect that to happen about 20\% of the times you repeated this experiment.
+
+```{r distformulas, echo=FALSE}
+knitr::kable(data.frame(stringsAsFactors=FALSE, Binomial = c("$P(X | \\theta, N) = \\displaystyle\\frac{N!}{X! (N-X)!}  \\theta^X (1-\\theta)^{N-X}$"), 
+Normal = c("$p(X | \\mu, \\sigma) = \\displaystyle\\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp \\left( -\\frac{(X - \\mu)^2}{2\\sigma^2} \\right)$ ")), caption = "Formulas for the binomial and normal distributions. We don't really use these formulas for anything in this book, but they're pretty important for more advanced work, so I thought it might be best to put them here in a table, where they can't get in the way of the text. In the equation for the binomial, $X!$ is the factorial function (i.e., multiply all whole numbers from 1 to $X$), and for the normal distribution \"exp\" refers to the exponential function, which we discussed in the Chapter on Data Handling. If these equations don't make a lot of sense to you, don't worry too much about them.") 
+
+```
 
 
 ```{r binomial1, fig.cap="The binomial distribution with size parameter of $N=20$ and an underlying success probability of $theta = 1/6$. Each vertical bar depicts the probability of one specific outcome (i.e., one possible value of $X$). Because this is a probability distribution, each of the probabilities must be a number between 0 and 1, and the heights of the bars must sum to 1 as well.", echo=FALSE}
@@ -321,11 +327,7 @@ To give you a feel for how the binomial distribution changes when we alter the v
 ```
 
 
-```{r distformulas}
-knitr::kable(data.frame(stringsAsFactors=FALSE, Binomial = c("$P(X | \\theta, N) = \\displaystyle\\frac{N!}{X! (N-X)!}  \\theta^X (1-\\theta)^{N-X}$"), 
-Normal = c("$p(X | \\mu, \\sigma) = \\displaystyle\\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp \\left( -\\frac{(X - \\mu)^2}{2\\sigma^2} \\right)$ ")), caption = "Formulas for the binomial and normal distributions. We don't really use these formulas for anything in this book, but they're pretty important for more advanced work, so I thought it might be best to put them here in a table, where they can't get in the way of the text. In the equation for the binomial, $X!$ is the factorial function (i.e., multiply all whole numbers from 1 to $X$), and for the normal distribution \"exp\" refers to the exponential function, which we discussed in the Chapter on Data Handling. If these equations don't make a lot of sense to you, don't worry too much about them.") 
-
-```
+At this point, I should probably explain the name of the `dbinom()` function. Obviously, the "binom" part comes from the fact that we're working with the binomial distribution, but the "d" prefix is probably a bit of a mystery. In this section I'll give a partial explanation: specifically, I'll explain why there is a prefix. As for why it's a "d" specifically, you'll have to wait until the next section. What's going on here is that R actually provides *four* functions in relation to the binomial distribution. These four functions are `dbinom()`, `pbinom()`, `rbinom()` and `qbinom()`, and each one calculates a different quantity of interest. Not only that, R does the same thing for *every* probability distribution that it implements. No matter what distribution you're talking about, there's a `d` function, a `p` function, a `q` function and a `r` function. This is illustrated in Table \@ref(tab:pdistnames), using the binomial distribution and the normal distribution as examples. 
 
 ```{r pdistnames, echo=FALSE}
 knitr::kable(data.frame(stringsAsFactors=FALSE,
@@ -340,8 +342,6 @@ knitr::kable(data.frame(stringsAsFactors=FALSE,
 ```
 
 
-
-At this point, I should probably explain the name of the `dbinom()` function. Obviously, the "binom" part comes from the fact that we're working with the binomial distribution, but the "d" prefix is probably a bit of a mystery. In this section I'll give a partial explanation: specifically, I'll explain why there is a prefix. As for why it's a "d" specifically, you'll have to wait until the next section. What's going on here is that R actually provides *four* functions in relation to the binomial distribution. These four functions are `dbinom()`, `pbinom()`, `rbinom()` and `qbinom()`, and each one calculates a different quantity of interest. Not only that, R does the same thing for *every* probability distribution that it implements. No matter what distribution you're talking about, there's a `d` function, a `p` function, a `q` function and a `r` function. This is illustrated in Table \@ref(tab:pdistnames), using the binomial distribution and the normal distribution as examples. 
 
 Let's have a look at what all four functions do. Firstly, all four versions of the function require you to specify the `size` and `prob` arguments: no matter what you're trying to get R to calculate, it needs to know what the parameters are. However, they differ in terms of what the other argument is, and what the output is. So let's look at them one at a time.
 
@@ -374,8 +374,16 @@ As you can see, these numbers are pretty much what you'd expect given the distri
 
 ## The normal distribution{#normal}
 
+While the binomial distribution is conceptually the simplest distribution to understand, it's not the most important one. That particular honour goes to the **_normal distribution_**, which is also referred to as "the bell curve" or a "Gaussian distribution". A normal distribution is described using two parameters, the mean of the distribution $\mu$ and the standard deviation of the distribution $\sigma$. The notation that we sometimes use to say that a variable $X$ is normally distributed is as follows:
+$$
+X \sim \mbox{Normal}(\mu,\sigma)
+$$
+Of course, that's just notation. It doesn't tell us anything interesting about the normal distribution itself. As was the case with the binomial distribution, I have included the formula for the normal distribution in this book, because I think it's important enough that everyone who learns statistics should at least look at it, but since this is an introductory text I don't want to focus on it, so I've tucked it away in Table \@ref(tab:distformulas). Similarly, the R functions for the normal distribution are `dnorm()`, `pnorm()`, `qnorm()` and `rnorm()`. However, they behave in pretty much exactly the same way as the corresponding functions for the binomial distribution, so there's not a lot that you need to know. The only thing that I should point out is that the argument names for the parameters are `mean` and `sd`. In pretty much every other respect, there's nothing else to add.
 
-```{r normdist, fig.cap="{The normal distribution with mean $mu = 0$ and standard deviation $sigma = 1$. The $x$-axis corresponds to the value of some variable, and the $y$-axis tells us something about how likely we are to observe that value. However, notice that the $y$-axis is labelled \"Probability Density\" and not \"Probability\". There is a subtle and somewhat frustrating characteristic of continuous distributions that makes the $y$ axis behave a bit oddly: the height of the curve here isn't actually the probability of observing a particular $x$ value. On the other hand, it *is* true that the heights of the curve tells you which $x$ values are more likely (the higher ones!).", echo=FALSE}
+Instead of focusing on the maths, let's try to get a sense for what it means for a variable to be normally distributed. To that end, have a look at Figure \@ref(fig:normdist), which plots a normal distribution with mean $\mu = 0$ and standard deviation $\sigma = 1$. You can see where the name "bell curve" comes from: it looks a bit like a bell. Notice that, unlike the plots that I drew to illustrate the binomial distribution, the picture of the normal distribution in Figure \@ref(fig:normdist) shows a smooth curve instead of "histogram-like" bars. This isn't an arbitrary choice: the normal distribution is continuous, whereas the binomial is discrete. For instance, in the die rolling example from the last section, it was possible to get 3 skulls or 4 skulls, but impossible to get 3.9 skulls. The figures that I drew in the previous section reflected this fact: in Figure \@ref(fig:binomial1), for instance, there's a bar located at $X=3$ and another one at $X=4$, but there's nothing in between. Continuous quantities don't have this constraint. For instance, suppose we're talking about the weather. The temperature on a pleasant Spring day could be 23 degrees, 24 degrees, 23.9 degrees, or anything in between since temperature is a continuous variable, and so a normal distribution might be quite appropriate for describing Spring temperatures.^[In practice, the normal distribution is so handy that people tend to use it even when the variable isn't actually continuous. As long as there are enough categories (e.g., Likert scale responses to a questionnaire), it's pretty standard practice to use the normal distribution as an approximation. This works out much better in practice than you'd think.] 
+
+
+```{r normdist, fig.cap="The normal distribution with mean $mu = 0$ and standard deviation $sigma = 1$. The $x$-axis corresponds to the value of some variable, and the $y$-axis tells us something about how likely we are to observe that value. However, notice that the $y$-axis is labelled \"Probability Density\" and not \"Probability\". There is a subtle and somewhat frustrating characteristic of continuous distributions that makes the $y$ axis behave a bit oddly: the height of the curve here isn't actually the probability of observing a particular $x$ value. On the other hand, it *is* true that the heights of the curve tells you which $x$ values are more likely (the higher ones!).", echo=FALSE}
 # plots the standard normal
 	
 	# needed for printing
@@ -392,12 +400,7 @@ As you can see, these numbers are pretty much what you'd expect given the distri
 
 ```
 
-While the binomial distribution is conceptually the simplest distribution to understand, it's not the most important one. That particular honour goes to the **_normal distribution_**, which is also referred to as "the bell curve" or a "Gaussian distribution". A normal distribution is described using two parameters, the mean of the distribution $\mu$ and the standard deviation of the distribution $\sigma$. The notation that we sometimes use to say that a variable $X$ is normally distributed is as follows:
-$$
-X \sim \mbox{Normal}(\mu,\sigma)
-$$
-Of course, that's just notation. It doesn't tell us anything interesting about the normal distribution itself. As was the case with the binomial distribution, I have included the formula for the normal distribution in this book, because I think it's important enough that everyone who learns statistics should at least look at it, but since this is an introductory text I don't want to focus on it, so I've tucked it away in Table \@ref(tab:distformulas). Similarly, the R functions for the normal distribution are `dnorm()`, `pnorm()`, `qnorm()` and `rnorm()`. However, they behave in pretty much exactly the same way as the corresponding functions for the binomial distribution, so there's not a lot that you need to know. The only thing that I should point out is that the argument names for the parameters are `mean` and `sd`. In pretty much every other respect, there's nothing else to add.
-
+With this in mind, let's see if we can't get an intuition for how the normal distribution works. Firstly, let's have a look at what happens when we play around with the parameters of the distribution. To that end, Figure \@ref(fig:normmean) plots normal distributions that have different means, but have the same standard deviation. As you might expect, all of these distributions have the same "width". The only difference between them is that they've been shifted to the left or to the right. In every other respect they're identical. In contrast, if we increase the standard deviation while keeping the mean constant, the peak of the distribution stays in the same place, but the distribution gets wider, as you can see in Figure \@ref(fig:normsd). Notice, though, that when we widen the distribution, the height of the peak shrinks. This has to happen: in the same way that the heights of the bars that we used to draw a discrete binomial distribution have to *sum* to 1, the total *area under the curve* for the normal distribution must equal 1. 
 
 ```{r normmean, fig.cap="An illustration of what happens when you change the mean of a normal distribution. The solid line depicts a normal distribution with a mean of $mu=4$. The dashed line shows a normal distribution with a mean of $mu=7$. In both cases, the standard deviation is $sigma=1$. Not surprisingly, the two distributions have the same shape, but the dashed line is shifted to the right.", echo=FALSE}
 	# draw the plot
@@ -424,12 +427,12 @@ Of course, that's just notation. It doesn't tell us anything interesting about t
 
 ```
 
-Instead of focusing on the maths, let's try to get a sense for what it means for a variable to be normally distributed. To that end, have a look at Figure \@ref(fig:normdist), which plots a normal distribution with mean $\mu = 0$ and standard deviation $\sigma = 1$. You can see where the name "bell curve" comes from: it looks a bit like a bell. Notice that, unlike the plots that I drew to illustrate the binomial distribution, the picture of the normal distribution in Figure \@ref(fig:normdist) shows a smooth curve instead of "histogram-like" bars. This isn't an arbitrary choice: the normal distribution is continuous, whereas the binomial is discrete. For instance, in the die rolling example from the last section, it was possible to get 3 skulls or 4 skulls, but impossible to get 3.9 skulls. The figures that I drew in the previous section reflected this fact: in Figure \@ref(fig:binomial1), for instance, there's a bar located at $X=3$ and another one at $X=4$, but there's nothing in between. Continuous quantities don't have this constraint. For instance, suppose we're talking about the weather. The temperature on a pleasant Spring day could be 23 degrees, 24 degrees, 23.9 degrees, or anything in between since temperature is a continuous variable, and so a normal distribution might be quite appropriate for describing Spring temperatures.^[In practice, the normal distribution is so handy that people tend to use it even when the variable isn't actually continuous. As long as there are enough categories (e.g., Likert scale responses to a questionnaire), it's pretty standard practice to use the normal distribution as an approximation. This works out much better in practice than you'd think.] 
+Before moving on, I want to point out one important characteristic of the normal distribution. Irrespective of what the actual mean and standard deviation are, 68.3\% of the area falls within 1 standard deviation of the mean. Similarly, 95.4\% of the distribution falls within 2 standard deviations of the mean, and 99.7\% of the distribution is within 3 standard deviations. This idea is illustrated in Figures \@ref(fig:sdnorm1) and \@ref(fig:sdnorm2).
 
-With this in mind, let's see if we can't get an intuition for how the normal distribution works. Firstly, let's have a look at what happens when we play around with the parameters of the distribution. To that end, Figure \@ref(fig:normmean) plots normal distributions that have different means, but have the same standard deviation. As you might expect, all of these distributions have the same "width". The only difference between them is that they've been shifted to the left or to the right. In every other respect they're identical. In contrast, if we increase the standard deviation while keeping the mean constant, the peak of the distribution stays in the same place, but the distribution gets wider, as you can see in Figure \@ref(fig:normsd). Notice, though, that when we widen the distribution, the height of the peak shrinks. This has to happen: in the same way that the heights of the bars that we used to draw a discrete binomial distribution have to *sum* to 1, the total *area under the curve* for the normal distribution must equal 1. Before moving on, I want to point out one important characteristic of the normal distribution. Irrespective of what the actual mean and standard deviation are, 68.3\% of the area falls within 1 standard deviation of the mean. Similarly, 95.4\% of the distribution falls within 2 standard deviations of the mean, and 99.7\% of the distribution is within 3 standard deviations. This idea is illustrated in Figure \@ref(fig:sdnorm).
+```{r sdnorm1, fig.cap="The area under the curve tells you the probability that an observation falls within a particular range. The solid lines plot normal distributions with mean $mu=0$ and standard deviation $sigma=1$ The shaded areas illustrate \"areas under the curve\" for two important cases. On the left, we can see that there is a 68.3% chance that an observation will fall within one standard deviation of the mean. On the right, we see that there is a 95.4% chance that an observation will fall within two standard deviations of the mean", echo=FALSE}
 
+par(mfrow=c(1,2))
 
-```{r sdnorm1a, fig.cap="The area under the curve tells you the probability that an observation falls within a particular range. The solid lines plot normal distributions with mean $mu=0$ and standard deviation $sigma=1$. The shaded areas illustrate \"areas under the curve\" for two important cases. Here we can see that there is a 68.3% chance that an observation will fall within one standard deviation of the mean", echo=FALSE}
 	plotOne <- function( a,b ) {
 		plot.new()
 		w<-4
@@ -451,27 +454,21 @@ With this in mind, let's see if we can't get an intuition for how the normal dis
 		
 	}
 	
-	# plot the 1 standard deviation figure
-	fileName <- "normArea1SD.eps"
-	plotOne(-1,1)
 
-```
-
-```{r sdnorm1b, fig.cap="The area under the curve tells you the probability that an observation falls within a particular range. The solid lines plot normal distributions with mean $mu=0$ and standard deviation $sigma=1$. The shaded areas illustrate \"areas under the curve\" for two important cases. Here we see that there is a 95.4% chance that an observation will fall within two standard deviations of the mean.", echo=FALSE}
+plotOne(-1,1)
 plotOne(-2,2)
 
-```
-
-
-
-```{r sdnorm2a, fig.cap="Two more examples of the \"area under the curve idea\". There is a 15.9% chance that an observation is one standard deviation below the mean or smaller", echo=FALSE}
-plotOne(-50,-1)
+par(mfrow=c(1,1))
 
 ```
 
-```{r sdnorm2b, fig.cap="There is a 34.1% chance that the observation is greater than one standard deviation below the mean but still below the mean. Notice that if you add these two numbers together you get $15.9 + 34.1 = 50$. For normally distributed data, there is a 50% chance that an observation falls below the mean. And of course that also implies that there is a 50% chance that it falls above the mean.", echo=FALSE}
+
+```{r sdnorm2, fig.cap="Two more examples of the \"area under the curve idea\". There is a 15.9% chance that an observation is one standard deviation below the mean or smaller (left), and a 34.1% chance that the observation is greater than one standard deviation below the mean but still below the mean (right). Notice that if you add these two numbers together you get 15.9% + 34.1% = 50%. For normally distributed data, there is a 50% chance that an observation falls below the mean. And of course that also implies that there is a 50% chance that it falls above the mean.", echo=FALSE}
+
+par(mfrow=c(1,2))
 plotOne(-1,0)
-
+plotOne(-50,-1)
+par(mfrow=c(1,1))
 ```
 
 ### Probability density{#density}
@@ -488,7 +485,7 @@ As it turns out, the second answer is correct. What we've calculated here isn't 
 
 Now think about what this implies when we talk about probabilities. Suppose that tomorrow's maximum temperature is sampled from a normal distribution with mean 23 and standard deviation 1. What's the probability that the temperature will be *exactly* 23 degrees? The answer is "zero", or possibly, "a number so close to zero that it might as well be zero". Why is this? It's like trying to throw a dart at an infinitely small dart board: no matter how good your aim, you'll never hit it. In real life you'll never get a value of exactly 23. It'll always be something like 23.1 or 22.99998 or something. In other words, it's completely meaningless to talk about the probability that the temperature is exactly 23 degrees. However, in everyday language, if I told you that it was 23 degrees outside and it turned out to be 22.9998 degrees, you probably wouldn't call me a liar. Because in everyday language, "23 degrees" usually means something like "somewhere between 22.5 and 23.5 degrees". And while it doesn't feel very meaningful to ask about the probability that the temperature is exactly 23 degrees, it does seem sensible to ask about the probability that the temperature lies between 22.5 and 23.5, or between 20 and 30, or any other range of temperatures. 
 
-The point of this discussion is to make clear that, when we're talking about continuous distributions, it's not meaningful to talk about the probability of a specific value. However, what we *can* talk about is the probability that the value lies within a particular range of values. To find out the probability associated with a particular range, what you need to do is calculate the "area under the curve". We've seen this concept already: in Figures \@ref(fig:sdnorm1a) and \ref(fig:sdnorm1b), the shaded areas shown depict genuine probabilities (e.g., in Figure \@ref(fig:sdnorm1a) it shows the probability of observing a value that falls within 1 standard deviation of the mean). 
+The point of this discussion is to make clear that, when we're talking about continuous distributions, it's not meaningful to talk about the probability of a specific value. However, what we *can* talk about is the probability that the value lies within a particular range of values. To find out the probability associated with a particular range, what you need to do is calculate the "area under the curve". We've seen this concept already: in Figure \@ref(fig:sdnorm1), the shaded areas shown depict genuine probabilities (e.g., in the left hand panel of Figure \@ref(fig:sdnorm1) it shows the probability of observing a value that falls within 1 standard deviation of the mean). 
 
 Okay, so that explains part of the story. I've explained a little bit about how continuous probability distributions should be interpreted (i.e., area under the curve is the key thing), but I haven't actually explained what the `dnorm()` function actually calculates. Equivalently, what does the formula for $p(x)$ that I described earlier actually mean? Obviously, $p(x)$ doesn't describe a probability, but what is it? The name for this quantity $p(x)$ is a **_probability density_**, and in terms of the plots we've been drawing, it corresponds to the *height* of the curve. The densities themselves aren't meaningful in and of themselves: but they're "rigged" to ensure that the *area* under the curve is always interpretable as genuine probabilities. To be honest, that's about as much as you really need to know for now.^[For those readers who know a little calculus, I'll give a slightly more precise explanation. In the same way that probabilities are non-negative numbers that must sum to 1, probability densities are non-negative numbers that must integrate to 1 (where the integral is taken across all possible values of $X$). To calculate the probability that $X$ falls between $a$ and $b$ we calculate the definite integral of the density function over the corresponding range, $\int_a^b p(x) \ dx$. If you don't remember or never learned calculus, don't worry about this. It's not needed for this book.]
 
@@ -499,6 +496,7 @@ Okay, so that explains part of the story. I've explained a little bit about how 
 
 The normal distribution is the distribution that statistics makes most use of (for reasons to be discussed shortly), and the binomial distribution is a very useful one for lots of purposes. But the world of statistics is filled with probability distributions, some of which we'll run into in passing. In particular, the three that will appear in this book are the $t$ distribution, the $\chi^2$ distribution and the $F$ distribution. I won't give formulas for any of these, or talk about them in too much detail, but I will show you some pictures. 
 
+-  The **_$t$ distribution_** is a continuous distribution that looks very similar to a normal distribution, but has heavier tails: see Figure \@ref(fig:tdist). This distribution tends to arise in situations where you think that the data actually follow a normal distribution, but you don't know the mean or standard deviation. As you might expect, the relevant R functions are `dt()`, `pt()`, `qt()` and `rt()`, and we'll run into this distribution again in Chapter \@ref(ttest). 
 
 ```{r tdist, fig.cap="A $t$ distribution with 3 degrees of freedom (solid line). It looks similar to a normal distribution, but it's not quite the same. For comparison purposes, I've plotted a standard normal distribution as the dashed line. Note that the \"tails\" of the $t$ distribution are \"heavier\" (i.e., extend further outwards) than the tails of the normal distribution? That's the important difference between the two. ", echo=FALSE}
 xval <- seq(-5,5,.01)
@@ -510,6 +508,7 @@ xval <- seq(-5,5,.01)
 
 ```
 
+- The **_$\chi^2$ distribution_** is another distribution that turns up in lots of different places. The situation in which we'll see it is when doing categorical data analysis (Chapter \@ref(chisquare)), but it's one of those things that actually pops up all over the place. When you dig into the maths (and who doesn't love doing that?), it turns out that the main reason why the $\chi^2$ distribution turns up all over the place is that, if you have a bunch of variables that are normally distributed, square their values and then add them up (a procedure referred to as taking a "sum of squares"), this sum has a $\chi^2$ distribution. You'd be amazed how often this fact turns out to be useful. Anyway, here's what a $\chi^2$ distribution looks like: Figure \@ref(fig:chisqdist).  Once again, the R commands for this one are pretty predictable: `dchisq()`,  `pchisq()`,  `qchisq()`, `rchisq()`.
 
 ```{r chisqdist, fig.cap="A $chi^2$ distribution with 3 degrees of freedom. Notice that the observed values must always be greater than zero, and that the distribution is pretty skewed. These are the key features of a chi-square distribution.", echo=FALSE}
 	xval <- seq(0,10,.01)
@@ -519,6 +518,8 @@ xval <- seq(-5,5,.01)
 	)
 
 ```
+
+- The **_$F$ distribution_** looks a bit like a $\chi^2$ distribution, and it arises whenever you need to compare two $\chi^2$ distributions to one another. Admittedly, this doesn't exactly sound like something that any sane person would want to do, but it turns out to be very important in real world data analysis. Remember when I said that $\chi^2$ turns out to be the key distribution when we're taking a "sum of squares"? Well, what that means is if you want to compare two different "sums of squares", you're probably talking about something that has an $F$ distribution. Of course, as yet I still haven't given you an example of anything that involves a sum of squares, but I will... in Chapter \@ref(anova). And that's where we'll run into the $F$ distribution. Oh, and here's a picture: Figure \@ref(fig:Fdist). And of course we can get R to do things with $F$ distributions just by using the commands `df()`, `pf()`, `qf()` and `rf()`.
 
 ```{r Fdist, fig.cap="An $F$ distribution with 3 and 5 degrees of freedom. Qualitatively speaking, it looks pretty similar to a chi-square distribution, but they're not quite the same in general.", echo=FALSE}
 	# draw the plot
@@ -530,13 +531,6 @@ xval <- seq(-5,5,.01)
 
 ```
 
--  The **_$t$ distribution_** is a continuous distribution that looks very similar to a normal distribution, but has heavier tails: see Figure \@ref(fig:tdist). This distribution tends to arise in situations where you think that the data actually follow a normal distribution, but you don't know the mean or standard deviation. As you might expect, the relevant R functions are `dt()`, `pt()`, `qt()` and `rt()`, and we'll run into this distribution again in Chapter \@ref(ttest). 
-
-- The **_$\chi^2$ distribution_** is another distribution that turns up in lots of different places. The situation in which we'll see it is when doing categorical data analysis (Chapter \@ref(chisquare)), but it's one of those things that actually pops up all over the place. When you dig into the maths (and who doesn't love doing that?), it turns out that the main reason why the $\chi^2$ distribution turns up all over the place is that, if you have a bunch of variables that are normally distributed, square their values and then add them up (a procedure referred to as taking a "sum of squares"), this sum has a $\chi^2$ distribution. You'd be amazed how often this fact turns out to be useful. Anyway, here's what a $\chi^2$ distribution looks like: Figure \@ref(fig:chisqdist).  Once again, the R commands for this one are pretty predictable: `dchisq()`,  `pchisq()`,  `qchisq()`, `rchisq()`.
-
-- The **_$F$ distribution_** looks a bit like a $\chi^2$ distribution, and it arises whenever you need to compare two $\chi^2$ distributions to one another. Admittedly, this doesn't exactly sound like something that any sane person would want to do, but it turns out to be very important in real world data analysis. Remember when I said that $\chi^2$ turns out to be the key distribution when we're taking a "sum of squares"? Well, what that means is if you want to compare two different "sums of squares", you're probably talking about something that has an $F$ distribution. Of course, as yet I still haven't given you an example of anything that involves a sum of squares, but I will... in Chapter \@ref(anova). And that's where we'll run into the $F$ distribution. Oh, and here's a picture: Figure \@ref(fig:Fdist). And of course we can get R to do things with $F$ distributions just by using the commands `df()`, `pf()`, `qf()` and `rf()`.
-
-
 
 Because these distributions are all tightly related to the normal distribution and to each other, and because they are will turn out to be the important distributions when doing inferential statistics later in this book, I think it's useful to do a little demonstration using R, just to "convince ourselves" that these distributions really are related to each other in the way that they're supposed to be. First, we'll use the `rnorm()` function to generate 1000 normally-distributed observations: 
 ```{r}
@@ -544,12 +538,15 @@ normal.a <- rnorm( n=1000, mean=0, sd=1 )
 print(head(normal.a))
 ```
 So the `normal.a` variable contains 1000 numbers that are normally distributed, and have mean 0 and standard deviation 1, and the actual print out of these numbers goes on for rather a long time. Note that, because the default parameters of the `rnorm()` function are `mean=0` and `sd=1`, I could have shortened the command to `rnorm( n=1000 )`. In any case, what we can do is use the `hist()` function to draw a histogram of the data, like so:
-```{r}
+```{r eval=FALSE}
 hist( normal.a ) 
 ```
-If you do this, you should see something similar to Figure \@ref(fig:variaterelationsa). Your plot won't look quite as pretty as the one in the figure, of course, because I've played around with all the formatting (see Chapter \@ref(graphics)), and I've also plotted the true distribution of the data as a solid black line (i.e., a normal distribution with mean 0 and standard deviation 1) so that you can compare the data that we just generated to the true distribution. 
 
-```{r variaterelations, echo=FALSE}
+If you do this, you should see something similar to Figure \@ref(fig:variaterelations). Your plot won't look quite as pretty as the one in the figure, of course, because I've played around with all the formatting (see Chapter \@ref(graphics)), and I've also plotted the true distribution of the data as a solid black line (i.e., a normal distribution with mean 0 and standard deviation 1) so that you can compare the data that we just generated to the true distribution. 
+
+```{r variaterelations, echo=FALSE, fig.cap="A histogram of different distributions with some advanced formatting"}
+old_par<-par()
+par(mfrow=c(2,2))
 	# generate the data 
 	n <- 1000
 	normal.a <- rnorm( n )
@@ -583,7 +580,6 @@ If you do this, you should see something similar to Figure \@ref(fig:variaterela
 	 		)
 	lines( x<-seq(0,16,.1), dchisq(x,3), lwd=3, col="black"  )	
 	axis(1)
-	
 	# histogram for the t data
 	bw <- .3
 	hist( 	t.3, seq(min(t.3)-bw,max(t.3)+bw,bw),
@@ -607,6 +603,8 @@ If you do this, you should see something similar to Figure \@ref(fig:variaterela
 	 		)
 	lines( x<-seq(0,6,.01), df(x,3,20), lwd=3, col="black"  )	
 	axis(1)
+
+par(mfrow=c(1,1))
 ```
 
 
@@ -620,7 +618,7 @@ Now that we've done that, the theory says we should square these and add them to
 chi.sq.3 <- (normal.a)^2 + (normal.b)^2 + (normal.c)^2	
 ```
 and the resulting `chi.sq.3` variable should contain 1000 observations that follow a chi-square distribution with 3 degrees of freedom. You can use the `hist()` function to have a look at these observations yourself, using a command like this,
-```{r}
+```{r eval=FALSE}
 hist( chi.sq.3 )  
 ```
 and you should obtain a result that looks pretty similar to the chi-square plot in Figure \@ref(fig:variaterelations). Once again, the plot that I've drawn is a little fancier: in addition to the histogram of `chi.sq.3`, I've also plotted a chi-square distribution with 3 degrees of freedom. It's pretty clear that -- even though I used `rnorm()` to do all the work rather than `rchisq()` -- the observations stored in the `chi.sq.3` variable really do follow a chi-square distribution. Admittedly, this probably doesn't seem all that interesting right now, but later on when we start encountering the chi-square distribution in Chapter \@ref(chisquare), it will be useful to understand the fact that these distributions are related to one another. 
@@ -629,23 +627,23 @@ We can extend this demonstration to the $t$ distribution and the $F$ distributio
 ```{r}
 scaled.chi.sq.3 <- chi.sq.3 / 3
 ```
-We then take a set of normally distributed variables and divide them by (the square root of) our scaled chi-square variable which had $df=3$, and the result is a $t$ distribution with 3 degrees of freedom:
-```{r}
-normal.d <- rnorm( n=1000 )  # yet another set of normally distributed data
+We then take a set of normally distributed variables and divide them by (the square root of) our scaled chi-square variable which had $df=3$, and the result is a $t$ distribution with 3 degrees of freedom. If we plot the histogram of `t.3`, we end up with something that looks very similar to the t distribution in Figure \@ref(fig:variaterelations). 
+```{r eval=FALSE}
+normal.d <- rnorm( n=1000 )                # yet another set of normally distributed data
 t.3 <- normal.d / sqrt( scaled.chi.sq.3 )  # divide by square root of scaled chi-square to get t
+hist (t.3)
 ```
-If we plot the histogram of `t.3`, we end up with something that looks very similar to the t distribution in Figure \@ref(fig:variaterelations). Similarly, we can obtain an $F$ distribution by taking the ratio between two scaled chi-square distributions. Suppose, for instance, we wanted to generate data from an $F$ distribution with 3 and 20 degrees of freedom. We could do this using `df()`, but we could also do the same thing by generating two chi-square variables, one with 3 degrees of freedom, and the other with 20 degrees of freedom. As the example with `chi.sq.3` illustrates, we can actually do this using `rnorm()` if we really want to, but this time I'll take a short cut:
-```{r}
-chi.sq.20 <- rchisq( 1000, 20)  # generate chi square data with df = 20...
-scaled.chi.sq.20 <- chi.sq.20 / 20  # scale the chi square variable...
+
+Similarly, we can obtain an $F$ distribution by taking the ratio between two scaled chi-square distributions. Suppose, for instance, we wanted to generate data from an $F$ distribution with 3 and 20 degrees of freedom. We could do this using `df()`, but we could also do the same thing by generating two chi-square variables, one with 3 degrees of freedom, and the other with 20 degrees of freedom. As the example with `chi.sq.3` illustrates, we can actually do this using `rnorm()` if we really want to, but this time I'll take a short cut:
+```{r eval = FALSE}
+chi.sq.20 <- rchisq( 1000, 20)                 # generate chi square data with df = 20...
+scaled.chi.sq.20 <- chi.sq.20 / 20             # scale the chi square variable...
 F.3.20 <-  scaled.chi.sq.3  / scaled.chi.sq.20 # take the ratio of the two chi squares...
-hist( F.3.20 ) # ... and draw a picture
+hist( F.3.20 )                                 # ... and draw a picture
 ```
 The resulting `F.3.20` variable does in fact store variables that follow an $F$ distribution with 3 and 20 degrees of freedom. This is illustrated in Figure \@ref(fig:variaterelations), which plots the histgram of the observations stored in `F.3.20` against the true $F$ distribution with $df_1 = 3$ and $df_2 = 20$. Again, they match. 
 
 Okay, time to wrap this section up. We've seen three new distributions: $\chi^2$, $t$ and $F$. They're all continuous distributions, and they're all closely related to the normal distribution. I've talked a little bit about the precise nature of this relationship, and shown you some R commands that illustrate this relationship. The key thing for our purposes, however, is not that you have a deep understanding of all these different distributions, nor that you remember the precise relationships between them. The main thing is that you grasp the basic idea that these distributions are all deeply related to one another, and to the normal distribution. Later on in this book, we're going to run into data that are normally distributed, or at least assumed to be normally distributed. What I want you to understand right now is that, if you make the assumption that your data are normally distributed, you shouldn't be surprised to see $\chi^2$, $t$ and $F$ distributions popping up all over the place when you start trying to do your data analysis. 
-
-
 
 
 ## Summary

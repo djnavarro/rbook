@@ -25,7 +25,7 @@
 <meta name="author" content="Danielle Navarro (bookdown translation: Emily Kothe)">
 
 
-<meta name="date" content="2019-01-09">
+<meta name="date" content="2019-01-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -2629,16 +2629,16 @@ xtab.3d</code></pre></div>
 <p>To start with, let’s talk about the date. As it happens, modern operating systems are very good at keeping track of the time and date, and can even handle all those annoying timezone issues and daylight savings pretty well. So R takes the quite sensible view that it can just ask the operating system what the date is. We can pull the date using the <code>Sys.Date()</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()  <span class="co"># ask the operating system for the date</span>
 <span class="kw">print</span>(today)         <span class="co"># display the date</span></code></pre></div>
-<pre><code>## [1] &quot;2019-01-09&quot;</code></pre>
+<pre><code>## [1] &quot;2019-01-11&quot;</code></pre>
 <p>Okay, that seems straightforward. But, it does rather look like <code>today</code> is just a character string, doesn’t it? That would be a problem, because dates really do have a numeric character to them, and it would be nice to be able to do basic addition and subtraction to them. Well, fear not. If you type in <code>class(today)</code>, R will tell you that the class of the <code>today</code> variable is <code>&quot;Date&quot;</code>. What this means is that, hidden underneath this text string that prints out an actual date, R actually has a numeric representation.<a href="#fn130" class="footnoteRef" id="fnref130"><sup>130</sup></a> What that means is that you actually can add and subtract days. For instance, if we add 1 to <code>today</code>, R will print out the date for tomorrow:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">today <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre></div>
-<pre><code>## [1] &quot;2019-01-10&quot;</code></pre>
+<pre><code>## [1] &quot;2019-01-12&quot;</code></pre>
 <p>Let’s see what happens when we add 365 days:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">today <span class="op">+</span><span class="st"> </span><span class="dv">365</span></code></pre></div>
-<pre><code>## [1] &quot;2020-01-09&quot;</code></pre>
+<pre><code>## [1] &quot;2020-01-11&quot;</code></pre>
 <p>This is particularly handy if you forget that a year is a leap year since in that case you’d probably get it wrong is doing this in your head. R provides a number of functions for working with dates, but I don’t want to talk about them in any detail. I will, however, make passing mention of the <code>weekdays()</code> function which will tell you what day of the week a particular date corresponded to, which is extremely convenient in some situations:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weekdays</span>( today )</code></pre></div>
-<pre><code>## [1] &quot;Wednesday&quot;</code></pre>
+<pre><code>## [1] &quot;Friday&quot;</code></pre>
 <p>I’ll also point out that you can use the <code>as.Date()</code> to convert various different kinds of data into dates. If the data happen to be strings formatted exactly according to the international standard notation (i.e., <code>yyyy-mm-dd</code>) then the conversion is straightforward, because that’s the format that R expects to see by default. You can convert dates from other formats too, but it’s slightly trickier, and beyond the scope of this book.</p>
 <p>What about times? Well, times are even more annoying, so much so that I don’t intend to talk about them at all in this book, other than to point you in the direction of some vaguely useful things. R itself does provide you with some tools for handling time data, and in fact there are two separate classes of data that are used to represent times, known by the odd names <code>POSIXct</code> and <code>POSIXlt</code>. You can use these to work with times if you want to, but for most applications you would probably be better off downloading the <code>chron</code> package, which provides some much more user friendly tools for working with times and dates.</p>
 </div>
