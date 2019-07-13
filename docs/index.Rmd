@@ -21,24 +21,21 @@ Back in the grimdark pre-Snapchat era of humanity (i.e. early 2011), I started t
 - [Data sets](./data.zip)
 - [Source on GitHub](https://github.com/djnavarro/rbook)
 
-Thanks to the incredible efforts of [Emily Kothe](https://twitter.com/emilyandthelime), there is a tentative bookdown adaptation (version 0.6.1) of the original LSR book. A little care is probably required because the translation from TeX to bookdown isn't perfect and there may be errors:
+The book is associated with the `lsr` package on CRAN and GitHub. The package is probably okay for many introductory teaching purposes, but some care is required. The package does have some limitations (e.g., the `etaSquared` function does strange things for unbalanced ANOVA designs), and it has not been updated in a while. 
 
-- [LSR version 0.6.1](./book/) (bookdown)
 
-The book is associated with the `lsr` package on CRAN and GitHub. The package is probably okay for many introductory teaching purposes, but some care is required. The package does have some limitations (e.g., the `etaSquared` function does strange things for unbalanced ANOVA designs), and I haven't updated it in a while. 
+There are now several variations of the original LSR book:
 
-There are a few projectsI'm aware of that adapt or extend content from LSR
+- [Emily Kothe](https://twitter.com/emilyandthelime) created a [bookdown adaptation](./book/) of LSR
+- Matt Crump's has incorporated some LSR content in [Answering Questions with Data](https://crumplab.github.io/statistics/)
+- My own R programming notes [R for Psychological Science](https://psyr.org/) adapt some LSR content
+- [David Foxcroft](https://twitter.com/davidfoxcroft) has adapted LSR to create [Learning Statistics with Jamovi](https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
+- [Tom Faulkenberry](https://twitter.com/tomfaulkenberry) has adapted David Foxcroft's version to create [Learning Statistics with JASP](http://learnstatswithjasp.com/)
 
-- Matt Crump has a lovely book-in-progress that uses some LSR content, [Answering Questions with Data](https://crumplab.github.io/statistics/)
-- David Foxcroft has produced a really slick adaptation to jamovi, [Learning Statistics with Jamovi]("https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
-- I made a first attempt at an adaptation, [R for Psychological Science](https://psyr.org/), though that has stalled for the moment
+I have suggested that someone write a *Learning Statistics with an Abacus* adaptation but so far there has been little interest. 
 
-Oh, also, I've started work on a Tidyverse-based update to *Learning Statistics with R*...
+Due to the lack of demand for the abacus version, I have started work on a [tidy version](https://djnavarro.github.io/tidylsrbook/) of the original LSR book, which will take a Tidyverse-oriented approach and rely on a new ["tidylsr"](https://github.com/djnavarro/tidylsr) package. It is early days in the revision, but if anyone has any suggestions for the new book, please feel free to open an issue on the [github page](https://github.com/djnavarro/tidylsrbook/issues)
 
-- The work in progress book: https://djnavarro.github.io/tidylsrbook/
-- The associated package: https://github.com/djnavarro/tidylsr
-
-It's early days though!
 
 ### Table of Contents
 
