@@ -68,8 +68,8 @@ At this point, we need to be a bit more precise about what we mean by "errors". 
 knitr::kable(data.frame(stringsAsFactors=FALSE,
 NANA = c("$H_0$ is true", "$H_0$ is false"),
 `retain.$H_0$` = c("correct decision", "error (type II)"),
-`retain.$H_0$` = c("error (type I)", "correct decision")
-), col.names = c("", "retain $H_0$", "retain $H_0$"))
+`reject.$H_0$` = c("error (type I)", "correct decision")
+), col.names = c("", "retain $H_0$", "reject $H_0$"))
 
 ```
 
