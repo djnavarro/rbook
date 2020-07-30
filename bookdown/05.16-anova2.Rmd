@@ -209,23 +209,23 @@ Now that we've seen *how* a factorial ANOVA works, it's worth taking a moment to
 Why does that happen? The answer lies in understanding how the *residuals* are calculated. Recall that the whole idea behind an $F$-test is to compare the variability that can be attributed to a particular factor with the variability that cannot be accounted for (the residuals). If you run a one-way ANOVA for `therapy`, and therefore ignore the effect of `drug`, the ANOVA will end up dumping all of the drug-induced variability into the residuals! This has the effect of making the data look more noisy than they really are, and the effect of `therapy` which is correctly found to be significant in the two-way ANOVA now becomes non-significant. If we ignore something that actually matters (e.g., `drug`) when trying to assess the contribution of something else (e.g., `therapy`) then our analysis will be distorted. Of course, it's perfectly okay to ignore variables that are genuinely irrelevant to the phenomenon of interest: if we had recorded the colour of the walls, and that turned out to be non-significant in a three-way ANOVA (i.e. `mood.gain ~ drug + therapy + wall.colour`), it would be perfectly okay to disregard it and just report the simpler two-way ANOVA that doesn't include this irrelevant factor. What you shouldn't do is drop variables that actually make a difference! 
 
 ```{r maineffectsa, fig.cap="A main effect of Factor A, and no effect of Factor B", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectA.png"))
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectA.eps"))
 
 ```
 
 ```{r maineffectsb, fig.cap="A main effect of Factor B but no effect of Factor A", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectB.png"))
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectB.eps"))
 
 ```
 
 ```{r maineffectsc, fig.cap="Main effects of both Factor A and Factor B", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectAB.png"))
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectAB.eps"))
 
 ```
 
 
 ```{r maineffectsd, fig.cap="No effect of either factor", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectAB.png"))
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","maineffectAB.eps"))
 
 ```
 
@@ -239,22 +239,22 @@ The ANOVA model that we've been talking about so far covers a range of different
 ## Factorial ANOVA 2: balanced designs, interactions allowed{#interactions}
 
 ```{r interaction1, fig.cap="Qualitatively different interactions for a $2 \times 2$ ANOVA", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction2.png"))
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction2.eps"))
 
 ```
 
 ```{r interaction2, fig.cap="Qualitatively different interactions for a $2 \times 2$ ANOVA", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction3.png"))
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction3.eps"))
 
 ```
 
 ```{r interaction3, fig.cap="Qualitatively different interactions for a $2 \times 2$ ANOVA", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction1.png"))
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction1.eps"))
 
 ```
 
 ```{r interaction4, fig.cap="Qualitatively different interactions for a $2 \times 2$ ANOVA", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction4.png"))
+knitr::include_graphics(file.path(projecthome, "img","factorialanova","interaction4.eps"))
 
 ```
 

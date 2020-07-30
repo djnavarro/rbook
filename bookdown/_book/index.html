@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</title>
-  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)" />
   <meta property="og:type" content="book" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="Learning Statistics with R covers the contents of an introductory statistics class, as typically taught to undergraduate psychology students, focusing on the use of the R statistical software." />
   
 
-<meta name="author" content="Danielle Navarro (bookdown translation: Emily Kothe)">
+<meta name="author" content="Danielle Navarro (bookdown translation: Emily Kothe)" />
 
 
-<meta name="date" content="2019-01-11">
+<meta name="date" content="2020-07-30" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 
-<link rel="next" href="licensing.html">
+<link rel="next" href="licensing.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -49,63 +49,9 @@
 
 
 
-<!-- ###### start inserted header ##### -->
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115940772-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-115940772-1');
-</script>
-
-<!-- add the twitter card and open graph tags -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:creator" content="@djnavarro">
-<meta property="og:image" content="http://learningstatisticswithr.com/images/jasmine-faint.jpg">
-<meta name="twitter:image" content="http://learningstatisticswithr.com/images/jasmine-faint.jpg">
-
-<!-- ###### end inserted header ##### -->
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -144,46 +90,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5" data-path="why-do-we-learn-statistics.html"><a href="why-do-we-learn-statistics.html#theres-more-to-research-methods-than-statistics"><i class="fa fa-check"></i><b>1.5</b> There’s more to research methods than statistics</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="studydesign.html"><a href="studydesign.html"><i class="fa fa-check"></i><b>2</b> A brief introduction to research design</a><ul>
-<li class="chapter" data-level="2.1" data-path="studydesign.html"><a href="studydesign.html#measurement"><i class="fa fa-check"></i><b>2.1</b> Introduction to psychological measurement</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="studydesign.html"><a href="studydesign.html#some-thoughts-about-psychological-measurement"><i class="fa fa-check"></i><b>2.1.1</b> Some thoughts about psychological measurement</a></li>
-<li class="chapter" data-level="2.1.2" data-path="studydesign.html"><a href="studydesign.html#operationalisation-defining-your-measurement"><i class="fa fa-check"></i><b>2.1.2</b> Operationalisation: defining your measurement</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="studydesign.html"><a href="studydesign.html#scales"><i class="fa fa-check"></i><b>2.2</b> Scales of measurement</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="studydesign.html"><a href="studydesign.html#nominal-scale"><i class="fa fa-check"></i><b>2.2.1</b> Nominal scale</a></li>
-<li class="chapter" data-level="2.2.2" data-path="studydesign.html"><a href="studydesign.html#ordinal-scale"><i class="fa fa-check"></i><b>2.2.2</b> Ordinal scale</a></li>
-<li class="chapter" data-level="2.2.3" data-path="studydesign.html"><a href="studydesign.html#interval-scale"><i class="fa fa-check"></i><b>2.2.3</b> Interval scale</a></li>
-<li class="chapter" data-level="2.2.4" data-path="studydesign.html"><a href="studydesign.html#ratio-scale"><i class="fa fa-check"></i><b>2.2.4</b> Ratio scale</a></li>
-<li class="chapter" data-level="2.2.5" data-path="studydesign.html"><a href="studydesign.html#continuousdiscrete"><i class="fa fa-check"></i><b>2.2.5</b> Continuous versus discrete variables</a></li>
-<li class="chapter" data-level="2.2.6" data-path="studydesign.html"><a href="studydesign.html#some-complexities"><i class="fa fa-check"></i><b>2.2.6</b> Some complexities</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="studydesign.html"><a href="studydesign.html#reliability"><i class="fa fa-check"></i><b>2.3</b> Assessing the reliability of a measurement</a></li>
-<li class="chapter" data-level="2.4" data-path="studydesign.html"><a href="studydesign.html#ivdv"><i class="fa fa-check"></i><b>2.4</b> The “role” of variables: predictors and outcomes</a></li>
-<li class="chapter" data-level="2.5" data-path="studydesign.html"><a href="studydesign.html#researchdesigns"><i class="fa fa-check"></i><b>2.5</b> Experimental and non-experimental research</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="studydesign.html"><a href="studydesign.html#experimental-research"><i class="fa fa-check"></i><b>2.5.1</b> Experimental research</a></li>
-<li class="chapter" data-level="2.5.2" data-path="studydesign.html"><a href="studydesign.html#non-experimental-research"><i class="fa fa-check"></i><b>2.5.2</b> Non-experimental research</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="studydesign.html"><a href="studydesign.html#validity"><i class="fa fa-check"></i><b>2.6</b> Assessing the validity of a study</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="studydesign.html"><a href="studydesign.html#internal-validity"><i class="fa fa-check"></i><b>2.6.1</b> Internal validity</a></li>
-<li class="chapter" data-level="2.6.2" data-path="studydesign.html"><a href="studydesign.html#external-validity"><i class="fa fa-check"></i><b>2.6.2</b> External validity</a></li>
-<li class="chapter" data-level="2.6.3" data-path="studydesign.html"><a href="studydesign.html#construct-validity"><i class="fa fa-check"></i><b>2.6.3</b> Construct validity</a></li>
-<li class="chapter" data-level="2.6.4" data-path="studydesign.html"><a href="studydesign.html#face-validity"><i class="fa fa-check"></i><b>2.6.4</b> Face validity</a></li>
-<li class="chapter" data-level="2.6.5" data-path="studydesign.html"><a href="studydesign.html#ecological-validity"><i class="fa fa-check"></i><b>2.6.5</b> Ecological validity</a></li>
-</ul></li>
-<li class="chapter" data-level="2.7" data-path="studydesign.html"><a href="studydesign.html#confounds-artifacts-and-other-threats-to-validity"><i class="fa fa-check"></i><b>2.7</b> Confounds, artifacts and other threats to validity</a><ul>
-<li class="chapter" data-level="2.7.1" data-path="studydesign.html"><a href="studydesign.html#history-effects"><i class="fa fa-check"></i><b>2.7.1</b> History effects</a></li>
-<li class="chapter" data-level="2.7.2" data-path="studydesign.html"><a href="studydesign.html#maturation-effects"><i class="fa fa-check"></i><b>2.7.2</b> Maturation effects</a></li>
-<li class="chapter" data-level="2.7.3" data-path="studydesign.html"><a href="studydesign.html#repeated-testing-effects"><i class="fa fa-check"></i><b>2.7.3</b> Repeated testing effects</a></li>
-<li class="chapter" data-level="2.7.4" data-path="studydesign.html"><a href="studydesign.html#selection-bias"><i class="fa fa-check"></i><b>2.7.4</b> Selection bias</a></li>
-<li class="chapter" data-level="2.7.5" data-path="studydesign.html"><a href="studydesign.html#differentialattrition"><i class="fa fa-check"></i><b>2.7.5</b> Differential attrition</a></li>
-<li class="chapter" data-level="2.7.6" data-path="studydesign.html"><a href="studydesign.html#non-response-bias"><i class="fa fa-check"></i><b>2.7.6</b> Non-response bias</a></li>
-<li class="chapter" data-level="2.7.7" data-path="studydesign.html"><a href="studydesign.html#regression-to-the-mean"><i class="fa fa-check"></i><b>2.7.7</b> Regression to the mean</a></li>
-<li class="chapter" data-level="2.7.8" data-path="studydesign.html"><a href="studydesign.html#experimenter-bias"><i class="fa fa-check"></i><b>2.7.8</b> Experimenter bias</a></li>
-<li class="chapter" data-level="2.7.9" data-path="studydesign.html"><a href="studydesign.html#demand-effects-and-reactivity"><i class="fa fa-check"></i><b>2.7.9</b> Demand effects and reactivity</a></li>
-<li class="chapter" data-level="2.7.10" data-path="studydesign.html"><a href="studydesign.html#placebo-effects"><i class="fa fa-check"></i><b>2.7.10</b> Placebo effects</a></li>
-<li class="chapter" data-level="2.7.11" data-path="studydesign.html"><a href="studydesign.html#situation-measurement-and-subpopulation-effects"><i class="fa fa-check"></i><b>2.7.11</b> Situation, measurement and subpopulation effects</a></li>
-<li class="chapter" data-level="2.7.12" data-path="studydesign.html"><a href="studydesign.html#fraud-deception-and-self-deception"><i class="fa fa-check"></i><b>2.7.12</b> Fraud, deception and self-deception</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="studydesign.html"><a href="studydesign.html#summary"><i class="fa fa-check"></i><b>2.8</b> Summary</a></li>
+<li class="chapter" data-level="2.0.1" data-path="studydesign.html"><a href="studydesign.html#continuousdiscrete"><i class="fa fa-check"></i><b>2.0.1</b> Continuous versus discrete variables</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-ii-an-introduction-to-r.html"><a href="part-ii-an-introduction-to-r.html"><i class="fa fa-check"></i>Part II. An introduction to R</a></li>
 <li class="chapter" data-level="3" data-path="introR.html"><a href="introR.html"><i class="fa fa-check"></i><b>3</b> Getting started with R</a><ul>
@@ -239,7 +146,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.10.2" data-path="introR.html"><a href="introR.html#logical-indexing"><i class="fa fa-check"></i><b>3.10.2</b> Logical indexing</a></li>
 </ul></li>
 <li class="chapter" data-level="3.11" data-path="introR.html"><a href="introR.html#quitting-r"><i class="fa fa-check"></i><b>3.11</b> Quitting R</a></li>
-<li class="chapter" data-level="3.12" data-path="introR.html"><a href="introR.html#summary-1"><i class="fa fa-check"></i><b>3.12</b> Summary</a></li>
+<li class="chapter" data-level="3.12" data-path="introR.html"><a href="introR.html#summary"><i class="fa fa-check"></i><b>3.12</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="mechanics.html"><a href="mechanics.html"><i class="fa fa-check"></i><b>4</b> Additional R concepts</a><ul>
 <li class="chapter" data-level="4.1" data-path="mechanics.html"><a href="mechanics.html#comments"><i class="fa fa-check"></i><b>4.1</b> Using comments</a></li>
@@ -294,7 +201,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.12.1" data-path="mechanics.html"><a href="mechanics.html#how-to-read-the-help-documentation"><i class="fa fa-check"></i><b>4.12.1</b> How to read the help documentation</a></li>
 <li class="chapter" data-level="4.12.2" data-path="mechanics.html"><a href="mechanics.html#other-resources"><i class="fa fa-check"></i><b>4.12.2</b> Other resources</a></li>
 </ul></li>
-<li class="chapter" data-level="4.13" data-path="mechanics.html"><a href="mechanics.html#summary-2"><i class="fa fa-check"></i><b>4.13</b> Summary</a></li>
+<li class="chapter" data-level="4.13" data-path="mechanics.html"><a href="mechanics.html#summary-1"><i class="fa fa-check"></i><b>4.13</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-iii-working-with-data.html"><a href="part-iii-working-with-data.html"><i class="fa fa-check"></i>Part III. Working with data</a></li>
 <li class="chapter" data-level="5" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>5</b> Descriptive statistics</a><ul>
@@ -317,7 +224,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.2.7" data-path="descriptives.html"><a href="descriptives.html#which-measure-to-use"><i class="fa fa-check"></i><b>5.2.7</b> Which measure to use?</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="descriptives.html"><a href="descriptives.html#skewandkurtosis"><i class="fa fa-check"></i><b>5.3</b> Skew and kurtosis</a></li>
-<li class="chapter" data-level="5.4" data-path="studydesign.html"><a href="studydesign.html#summary"><i class="fa fa-check"></i><b>5.4</b> Getting an overall summary of a variable</a><ul>
+<li class="chapter" data-level="5.4" data-path="introR.html"><a href="introR.html#summary"><i class="fa fa-check"></i><b>5.4</b> Getting an overall summary of a variable</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="descriptives.html"><a href="descriptives.html#summarising-a-variable"><i class="fa fa-check"></i><b>5.4.1</b> “Summarising” a variable</a></li>
 <li class="chapter" data-level="5.4.2" data-path="descriptives.html"><a href="descriptives.html#summarising-a-data-frame"><i class="fa fa-check"></i><b>5.4.2</b> “Summarising” a data frame</a></li>
 <li class="chapter" data-level="5.4.3" data-path="descriptives.html"><a href="descriptives.html#describing-a-data-frame"><i class="fa fa-check"></i><b>5.4.3</b> “Describing” a data frame</a></li>
@@ -337,7 +244,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.8.1" data-path="descriptives.html"><a href="descriptives.html#the-single-variable-case"><i class="fa fa-check"></i><b>5.8.1</b> The single variable case</a></li>
 <li class="chapter" data-level="5.8.2" data-path="descriptives.html"><a href="descriptives.html#missing-values-in-pairwise-calculations"><i class="fa fa-check"></i><b>5.8.2</b> Missing values in pairwise calculations</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="descriptives.html"><a href="descriptives.html#summary-3"><i class="fa fa-check"></i><b>5.9</b> Summary</a></li>
+<li class="chapter" data-level="5.9" data-path="descriptives.html"><a href="descriptives.html#summary-2"><i class="fa fa-check"></i><b>5.9</b> Summary</a></li>
 <li class="chapter" data-level="5.10" data-path="descriptives.html"><a href="descriptives.html#epilogue-good-descriptive-statistics-are-descriptive"><i class="fa fa-check"></i><b>5.10</b> Epilogue: Good descriptive statistics are descriptive!</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>6</b> Drawing graphs</a><ul>
@@ -368,7 +275,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.8" data-path="graphics.html"><a href="graphics.html#saveimage"><i class="fa fa-check"></i><b>6.8</b> Saving image files using R and Rstudio</a><ul>
 <li class="chapter" data-level="6.8.1" data-path="graphics.html"><a href="graphics.html#the-ugly-details-advanced"><i class="fa fa-check"></i><b>6.8.1</b> The ugly details (advanced)</a></li>
 </ul></li>
-<li class="chapter" data-level="6.9" data-path="graphics.html"><a href="graphics.html#summary-4"><i class="fa fa-check"></i><b>6.9</b> Summary</a></li>
+<li class="chapter" data-level="6.9" data-path="graphics.html"><a href="graphics.html#summary-3"><i class="fa fa-check"></i><b>6.9</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="datahandling.html"><a href="datahandling.html"><i class="fa fa-check"></i><b>7</b> Pragmatic matters</a><ul>
 <li class="chapter" data-level="7.1" data-path="datahandling.html"><a href="datahandling.html#freqtables"><i class="fa fa-check"></i><b>7.1</b> Tabulating and cross-tabulating data</a><ul>
@@ -445,7 +352,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.12.3" data-path="datahandling.html"><a href="datahandling.html#environments"><i class="fa fa-check"></i><b>7.12.3</b> An introduction to environments</a></li>
 <li class="chapter" data-level="7.12.4" data-path="datahandling.html"><a href="datahandling.html#attaching-a-data-frame"><i class="fa fa-check"></i><b>7.12.4</b> Attaching a data frame</a></li>
 </ul></li>
-<li class="chapter" data-level="7.13" data-path="datahandling.html"><a href="datahandling.html#summary-5"><i class="fa fa-check"></i><b>7.13</b> Summary</a></li>
+<li class="chapter" data-level="7.13" data-path="datahandling.html"><a href="datahandling.html#summary-4"><i class="fa fa-check"></i><b>7.13</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>8</b> Basic programming</a><ul>
 <li class="chapter" data-level="8.1" data-path="scripting.html"><a href="scripting.html#scripts"><i class="fa fa-check"></i><b>8.1</b> Scripts</a><ul>
@@ -467,7 +374,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4.2" data-path="scripting.html"><a href="scripting.html#theres-more-to-functions-than-this"><i class="fa fa-check"></i><b>8.4.2</b> There’s more to functions than this</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="scripting.html"><a href="scripting.html#vectorised"><i class="fa fa-check"></i><b>8.5</b> Implicit loops</a></li>
-<li class="chapter" data-level="8.6" data-path="scripting.html"><a href="scripting.html#summary-6"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
+<li class="chapter" data-level="8.6" data-path="scripting.html"><a href="scripting.html#summary-5"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-iv-statistical-theory.html"><a href="part-iv-statistical-theory.html"><i class="fa fa-check"></i>Part IV. Statistical theory</a><ul>
 <li class="chapter" data-level="" data-path="part-iv-statistical-theory.html"><a href="part-iv-statistical-theory.html#on-the-limits-of-logical-reasoning"><i class="fa fa-check"></i>On the limits of logical reasoning</a></li>
@@ -491,7 +398,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.5.1" data-path="probability.html"><a href="probability.html#density"><i class="fa fa-check"></i><b>9.5.1</b> Probability density</a></li>
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="probability.html"><a href="probability.html#otherdists"><i class="fa fa-check"></i><b>9.6</b> Other useful distributions</a></li>
-<li class="chapter" data-level="9.7" data-path="probability.html"><a href="probability.html#summary-7"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
+<li class="chapter" data-level="9.7" data-path="probability.html"><a href="probability.html#summary-6"><i class="fa fa-check"></i><b>9.7</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Estimating unknown quantities from a sample</a><ul>
 <li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#srs"><i class="fa fa-check"></i><b>10.1</b> Samples, populations and sampling</a><ul>
@@ -517,7 +424,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.5.3" data-path="estimation.html"><a href="estimation.html#calculating-confidence-intervals-in-r"><i class="fa fa-check"></i><b>10.5.3</b> Calculating confidence intervals in R</a></li>
 <li class="chapter" data-level="10.5.4" data-path="estimation.html"><a href="estimation.html#ciplots"><i class="fa fa-check"></i><b>10.5.4</b> Plotting confidence intervals in R</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#summary-8"><i class="fa fa-check"></i><b>10.6</b> Summary</a></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#summary-7"><i class="fa fa-check"></i><b>10.6</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="hypothesistesting.html"><a href="hypothesistesting.html"><i class="fa fa-check"></i><b>11</b> Hypothesis testing</a><ul>
 <li class="chapter" data-level="11.1" data-path="hypothesistesting.html"><a href="hypothesistesting.html#hypotheses"><i class="fa fa-check"></i><b>11.1</b> A menagerie of hypotheses</a><ul>
@@ -551,7 +458,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.9.2" data-path="hypothesistesting.html"><a href="hypothesistesting.html#bayesians-versus-frequentists"><i class="fa fa-check"></i><b>11.9.2</b> Bayesians versus frequentists</a></li>
 <li class="chapter" data-level="11.9.3" data-path="hypothesistesting.html"><a href="hypothesistesting.html#traps"><i class="fa fa-check"></i><b>11.9.3</b> Traps</a></li>
 </ul></li>
-<li class="chapter" data-level="11.10" data-path="hypothesistesting.html"><a href="hypothesistesting.html#summary-9"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
+<li class="chapter" data-level="11.10" data-path="hypothesistesting.html"><a href="hypothesistesting.html#summary-8"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-v-statistical-tools.html"><a href="part-v-statistical-tools.html"><i class="fa fa-check"></i>Part V. Statistical tools</a></li>
 <li class="chapter" data-level="12" data-path="chisquare.html"><a href="chisquare.html"><i class="fa fa-check"></i><b>12</b> Categorical data analysis</a><ul>
@@ -581,7 +488,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="12.8.1" data-path="chisquare.html"><a href="chisquare.html#doing-the-mcnemar-test-in-r"><i class="fa fa-check"></i><b>12.8.1</b> Doing the McNemar test in R</a></li>
 </ul></li>
 <li class="chapter" data-level="12.9" data-path="chisquare.html"><a href="chisquare.html#whats-the-difference-between-mcnemar-and-independence"><i class="fa fa-check"></i><b>12.9</b> What’s the difference between McNemar and independence?</a></li>
-<li class="chapter" data-level="12.10" data-path="chisquare.html"><a href="chisquare.html#summary-10"><i class="fa fa-check"></i><b>12.10</b> Summary</a></li>
+<li class="chapter" data-level="12.10" data-path="chisquare.html"><a href="chisquare.html#summary-9"><i class="fa fa-check"></i><b>12.10</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="ttest.html"><a href="ttest.html"><i class="fa fa-check"></i><b>13</b> Comparing two means</a><ul>
 <li class="chapter" data-level="13.1" data-path="ttest.html"><a href="ttest.html#the-one-sample-z-test"><i class="fa fa-check"></i><b>13.1</b> The one-sample <span class="math inline">\(z\)</span>-test</a><ul>
@@ -631,7 +538,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="13.10.1" data-path="ttest.html"><a href="ttest.html#two-sample-wilcoxon-test"><i class="fa fa-check"></i><b>13.10.1</b> Two sample Wilcoxon test</a></li>
 <li class="chapter" data-level="13.10.2" data-path="ttest.html"><a href="ttest.html#one-sample-wilcoxon-test"><i class="fa fa-check"></i><b>13.10.2</b> One sample Wilcoxon test</a></li>
 </ul></li>
-<li class="chapter" data-level="13.11" data-path="ttest.html"><a href="ttest.html#summary-11"><i class="fa fa-check"></i><b>13.11</b> Summary</a></li>
+<li class="chapter" data-level="13.11" data-path="ttest.html"><a href="ttest.html#summary-10"><i class="fa fa-check"></i><b>13.11</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> Comparing several means (one-way ANOVA)</a><ul>
 <li class="chapter" data-level="14.1" data-path="anova.html"><a href="anova.html#anxifree"><i class="fa fa-check"></i><b>14.1</b> An illustrative data set</a></li>
@@ -670,7 +577,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="14.10.3" data-path="anova.html"><a href="anova.html#how-to-run-the-kruskal-wallis-test-in-r"><i class="fa fa-check"></i><b>14.10.3</b> How to run the Kruskal-Wallis test in R</a></li>
 </ul></li>
 <li class="chapter" data-level="14.11" data-path="anova.html"><a href="anova.html#anovaandt"><i class="fa fa-check"></i><b>14.11</b> On the relationship between ANOVA and the Student <span class="math inline">\(t\)</span> test</a></li>
-<li class="chapter" data-level="14.12" data-path="anova.html"><a href="anova.html#summary-12"><i class="fa fa-check"></i><b>14.12</b> Summary</a></li>
+<li class="chapter" data-level="14.12" data-path="anova.html"><a href="anova.html#summary-11"><i class="fa fa-check"></i><b>14.12</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15</b> Linear regression</a><ul>
 <li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html#introregression"><i class="fa fa-check"></i><b>15.1</b> What is a linear regression model?</a></li>
@@ -715,7 +622,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.10.3" data-path="regression.html"><a href="regression.html#a-caveat"><i class="fa fa-check"></i><b>15.10.3</b> A caveat</a></li>
 <li class="chapter" data-level="15.10.4" data-path="regression.html"><a href="regression.html#comparing-two-regression-models"><i class="fa fa-check"></i><b>15.10.4</b> Comparing two regression models</a></li>
 </ul></li>
-<li class="chapter" data-level="15.11" data-path="regression.html"><a href="regression.html#summary-13"><i class="fa fa-check"></i><b>15.11</b> Summary</a></li>
+<li class="chapter" data-level="15.11" data-path="regression.html"><a href="regression.html#summary-12"><i class="fa fa-check"></i><b>15.11</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="anova2.html"><a href="anova2.html"><i class="fa fa-check"></i><b>16</b> Factorial ANOVA</a><ul>
 <li class="chapter" data-level="16.1" data-path="anova2.html"><a href="anova2.html#factorialanovasimple"><i class="fa fa-check"></i><b>16.1</b> Factorial ANOVA 1: balanced designs, no interactions</a><ul>
@@ -743,6 +650,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="16.5" data-path="anova2.html"><a href="anova2.html#omnibusF"><i class="fa fa-check"></i><b>16.5</b> The <span class="math inline">\(F\)</span> test as a model comparison</a><ul>
 <li class="chapter" data-level="16.5.1" data-path="anova2.html"><a href="anova2.html#the-f-test-comparing-two-models"><i class="fa fa-check"></i><b>16.5.1</b> The <span class="math inline">\(F\)</span> test comparing two models</a></li>
+<li class="chapter" data-level="16.5.2" data-path="anova2.html"><a href="anova2.html#running-the-test-in-r"><i class="fa fa-check"></i><b>16.5.2</b> Running the test in R</a></li>
 </ul></li>
 <li class="chapter" data-level="16.6" data-path="anova2.html"><a href="anova2.html#anovalm"><i class="fa fa-check"></i><b>16.6</b> ANOVA as a linear model</a><ul>
 <li class="chapter" data-level="16.6.1" data-path="anova2.html"><a href="anova2.html#some-data"><i class="fa fa-check"></i><b>16.6.1</b> Some data</a></li>
@@ -771,7 +679,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="16.10.5" data-path="anova2.html"><a href="anova2.html#type-ii-sum-of-squares"><i class="fa fa-check"></i><b>16.10.5</b> Type II sum of squares</a></li>
 <li class="chapter" data-level="16.10.6" data-path="anova2.html"><a href="anova2.html#effect-sizes-and-non-additive-sums-of-squares"><i class="fa fa-check"></i><b>16.10.6</b> Effect sizes (and non-additive sums of squares)</a></li>
 </ul></li>
-<li class="chapter" data-level="16.11" data-path="anova2.html"><a href="anova2.html#summary-14"><i class="fa fa-check"></i><b>16.11</b> Summary</a></li>
+<li class="chapter" data-level="16.11" data-path="anova2.html"><a href="anova2.html#summary-13"><i class="fa fa-check"></i><b>16.11</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-vi-endings-alternatives-and-prospects.html"><a href="part-vi-endings-alternatives-and-prospects.html"><i class="fa fa-check"></i>Part VI. Endings, alternatives and prospects</a></li>
 <li class="chapter" data-level="17" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>17</b> Bayesian statistics</a><ul>
@@ -813,7 +721,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="17.9.2" data-path="bayes.html"><a href="bayes.html#the-bayesian-version-1"><i class="fa fa-check"></i><b>17.9.2</b> The Bayesian version</a></li>
 <li class="chapter" data-level="17.9.3" data-path="bayes.html"><a href="bayes.html#constructing-bayesian-type-ii-tests"><i class="fa fa-check"></i><b>17.9.3</b> Constructing Bayesian Type II tests</a></li>
 </ul></li>
-<li class="chapter" data-level="17.10" data-path="bayes.html"><a href="bayes.html#summary-15"><i class="fa fa-check"></i><b>17.10</b> Summary</a></li>
+<li class="chapter" data-level="17.10" data-path="bayes.html"><a href="bayes.html#summary-14"><i class="fa fa-check"></i><b>17.10</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="epilogue.html"><a href="epilogue.html"><i class="fa fa-check"></i>Epilogue</a><ul>
 <li class="chapter" data-level="" data-path="epilogue.html"><a href="epilogue.html#the-undiscovered-statistics"><i class="fa fa-check"></i>The undiscovered statistics</a><ul>
@@ -849,7 +757,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="header">
 <h1 class="title">Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1)</h1>
 <p class="author"><em>Danielle Navarro (bookdown translation: Emily Kothe)</em></p>
-<p class="date"><em>2019-01-11</em></p>
+<p class="date"><em>2020-07-30</em></p>
 </div>
 <div id="overview" class="section level1 unnumbered">
 <h1>Overview</h1>
@@ -866,11 +774,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -878,12 +788,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -895,6 +804,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -911,10 +824,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

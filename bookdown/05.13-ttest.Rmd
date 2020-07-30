@@ -2,6 +2,7 @@
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 library(lsr)
+
 ```
 
 
@@ -398,7 +399,7 @@ $$
 The only thing that has changed in the equation is that instead of using the known true value $\sigma$, we use the estimate $\hat{\sigma}$. And if this estimate has been constructed from $N$ observations, then the sampling distribution turns into a $t$-distribution with $N-1$ **_degrees of freedom_** (df). The $t$ distribution is very similar to the normal distribution, but has "heavier" tails, as discussed earlier in Section \@ref(otherdists) and illustrated in Figure \@ref(fig:ttestdist). Notice, though, that as df gets larger, the $t$-distribution starts to look identical to the standard normal distribution. This is as it should be: if you have a sample size of $N = 70,000,000$ then your "estimate" of the standard deviation would be pretty much perfect, right? So, you should expect that for large $N$, the $t$-test would behave exactly the same way as a $z$-test. And that's exactly what happens!  
 
 ```{r ttestdist, fig.cap="The $t$ distribution with 2 degrees of freedom (left) and 10 degrees of freedom (right), with a standard normal distribution (i.e., mean 0 and std dev 1) plotted as dotted lines for comparison purposes. Notice that the $t$ distribution has heavier tails (higher kurtosis) than the normal distribution; this effect is quite exaggerated when the degrees of freedom are very small, but negligible for larger values. In other words, for large $df$ the $t$ distribution is essentially identical to a normal distribution.", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img/ttest2/tdist_3.png"))
+knitr::include_graphics(file.path(projecthome, "img/ttest2/tdist_3.eps"))
 
 ```
 
@@ -504,7 +505,7 @@ To give you a more detailed sense of what's going on here, I've plotted histogra
 Here is a simpler plot showing the means and corresponding confidence intervals for both groups of students (Figure \@ref(fig:ttestci)).
 
 ```{r ttestci, fig.cap="Plots showing the mean grade for the students in Anastasia's and Bernadette's tutorials. Error bars depict 95% confidence intervals around the mean. On the basis of visual inspection, it does look like there's a real difference between the groups, though it's hard to say for sure.", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img/ttest2/ttestci.png"))
+knitr::include_graphics(file.path(projecthome, "img/ttest2/ttestci.eps"))
 
 ```
 
@@ -1292,7 +1293,7 @@ where $\bar{X}$ is the mean of the observations, and the $a_i$ values are ... mu
 Because it's a little hard to explain the maths behind the $W$ statistic, a better idea is to give a broad brush description of how it behaves. Unlike most of the test statistics that we'll encounter in this book, it's actually *small* values of $W$ that indicated departure from normality. The $W$ statistic has a maximum value of 1, which arises when the data look "perfectly normal". The smaller the value of $W$, the less normal the data are. However, the sampling distribution for $W$  -- which is not one of the standard ones that I discussed in Chapter \@ref(probability) and is in fact a complete pain in the arse to work with -- does depend on the sample size $N$. To give you a feel for what these sampling distributions look like, I've plotted three of them in Figure \@ref(fig:swdist). Notice that, as the sample size starts to get large, the sampling distribution becomes very tightly clumped up near $W=1$, and as a consequence, for larger samples $W$ doesn't have to be very much smaller than 1 in order for the test to be significant. 
 
 ```{r swdist, fig.cap="Sampling distribution of the Shapiro-Wilk $W$ statistic, under the null hypothesis that the data are normally distributed, for samples of size 10, 20 and 50. Note that *small* values of $W$ indicate departure from normality.", echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img/ttest2/shapirowilkdist.png"))
+knitr::include_graphics(file.path(projecthome, "img/ttest2/shapirowilkdist.eps"))
 
 ```
 
@@ -1319,7 +1320,7 @@ print( awesome )
 As long as there are no ties (i.e., people with the exact same awesomeness score), then the test that we want to do is surprisingly simple. All we have to do is construct a table that compares every observation in group $A$ against every observation in group $B$. Whenever the group $A$ datum is larger, we place a check mark in the table:
 
 ```{r echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox1.png"))
+#knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox1.eps"))
 
 ```
 
@@ -1354,7 +1355,7 @@ print( happiness )
 What I've measured here is the happiness of each student `before` taking the class and `after` taking the class; the `change` score is the difference between the two. Just like we saw with the $t$-test, there's no fundamental difference between doing a paired-samples test using `before` and `after`, versus doing a one-sample test using the `change` scores. As before, the simplest way to think about the test is to construct a tabulation. The way to do it this time is to take those change scores that are positive valued, and tabulate them against all the complete sample. What you end up with is a table that looks like this:
 
 ```{r echo=FALSE}
-knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox2.png"))
+#knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox2.eps"))
 
 ```
 
