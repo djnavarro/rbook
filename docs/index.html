@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -108,7 +107,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -170,6 +168,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -227,7 +226,7 @@ by Danielle Navarro <a href="https://twitter.com/djnavarro"><i class="fab fa-twi
 <li>My own R programming notes <a href="https://psyr.org/">R for Psychological Science</a> adapt some LSR content</li>
 <li><a href="https://twitter.com/davidfoxcroft">David Foxcroft</a> has adapted LSR to create <a href="https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi">Learning Statistics with Jamovi</a></li>
 <li><a href="https://twitter.com/tomfaulkenberry">Tom Faulkenberry</a> has adapted David Foxcroft’s version to create <a href="http://learnstatswithjasp.com/">Learning Statistics with JASP</a></li>
-<li>Jean-Marc Meunier has translated <em>Learning Statistics with Jamovi</em> into <a href="https://hal.archives-ouvertes.fr/hal-02335912/document">French</a></li>
+<li>Jean-Marc Meunier has translated <em>Learning Statistics with Jamovi</em> into <a href="https://jmeunierp8.github.io/ManuelJamovi/">French</a></li>
 </ul>
 <p>I have suggested that someone write a <em>Learning Statistics with an Abacus</em> adaptation but so far there has been little interest.</p>
 <p>Due to the lack of demand for the abacus version, I have started work on a <a href="https://djnavarro.github.io/tidylsrbook/">tidy version</a> of the original LSR book, which will take a Tidyverse-oriented approach and rely on a new <a href="https://github.com/djnavarro/tidylsr">“tidylsr”</a> package. It is early days in the revision, but if anyone has any suggestions for the new book, please feel free to open an issue on the <a href="https://github.com/djnavarro/tidylsrbook/issues">github page</a></p>
@@ -269,7 +268,7 @@ by Danielle Navarro <a href="https://twitter.com/djnavarro"><i class="fab fa-twi
 <h4>V. Statistical tools</h4>
 <ul>
 <li><strong>Chapter 12: Categorical data analysis.</strong> Chi-square goodness of fit test. Chi-square test of independence. Yate’s continuity correction. Effect size with Cramer’s V. Assumptions of the tests. Other tests: Fisher exact test and McNemar’s test.</li>
-<li><strong>Chapter 13: Comparing two means.</strong> One sample z-test. One sample t-test. Student’s independent sample t-test. Welch’s independent samples t-test. Paired sample t-test. Effect size with Cohen’s d. Checking the normality assumption. Wilcoxon tests for non-normal data.</li>
+<li><strong>Chapter 13: Comparing two means.</strong> One sample z-test. One sample t-test. Student’s independent sample t-test. Welch’s independent samples t-test. Paired sample t-test. Effect size with Cohen’s d. Checking the normality assumption. Wilcoxon tests for non-normal data.</li>
 <li><strong>Chapter 14: Comparing several means (one-way ANOVA).</strong> Introduction to one-way ANOVA. Doing it in R. Effect size with eta-squared. Simple corrections for multiple comparisons (post hoc tests). Assumptions of one-way ANOVA. Checking homogeneity of variance using Levene tests. Avoiding the homogeneity of variance assumption. Checking and avoiding the normality assumption. Relationship between ANOVA and t-tests.</li>
 <li><strong>Chapter 15: Linear regression.</strong> Introduction to regression. Estimation by least squares. Multiple regression models. Measuring the fit of a regression model. Hypothesis tests for regression models. Standardised regression coefficient. Assumptions of regression models. Basic regression diagnostics. Model selection methods for regression.</li>
 <li><strong>Chapter 16: Factorial ANOVA.</strong> Factorial ANOVA without interactions. Factorial ANOVA with interactions. Effect sizes, estimated marginal means, confidence intervals for effects. Assumption checking. F-tests as model selection. Interpreting ANOVA as a linear model. Specifying contrasts. Post hoc testing via Tukey’s HSD. Factorial ANOVA with unbalanced data (Type I, III and III sums of squares)</li>

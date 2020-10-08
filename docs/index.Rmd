@@ -31,7 +31,7 @@ There are now several variations of the original LSR book:
 - My own R programming notes [R for Psychological Science](https://psyr.org/) adapt some LSR content
 - [David Foxcroft](https://twitter.com/davidfoxcroft) has adapted LSR to create [Learning Statistics with Jamovi](https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
 - [Tom Faulkenberry](https://twitter.com/tomfaulkenberry) has adapted David Foxcroft's version to create [Learning Statistics with JASP](http://learnstatswithjasp.com/)
-- Jean-Marc Meunier has translated *Learning Statistics with Jamovi* into [French](https://hal.archives-ouvertes.fr/hal-02335912/document) 
+- Jean-Marc Meunier has translated *Learning Statistics with Jamovi* into [French](https://jmeunierp8.github.io/ManuelJamovi/) 
 
 I have suggested that someone write a *Learning Statistics with an Abacus* adaptation but so far there has been little interest. 
 
