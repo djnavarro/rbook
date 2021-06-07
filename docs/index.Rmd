@@ -27,11 +27,12 @@ The book is associated with the `lsr` package on CRAN and GitHub. The package is
 There are now several variations of the original LSR book:
 
 - [Emily Kothe](https://twitter.com/emilyandthelime) created a [bookdown adaptation](./book/) of LSR
-- Matt Crump's has incorporated some LSR content in [Answering Questions with Data](https://crumplab.github.io/statistics/)
+- [Matt Crump](https://www.crumplab.com/) has incorporated some LSR content in [Answering Questions with Data](https://crumplab.github.io/statistics/)
 - My own R programming notes [R for Psychological Science](https://psyr.djnavarro.net/) adapt some LSR content
 - [David Foxcroft](https://twitter.com/davidfoxcroft) has adapted LSR to create [Learning Statistics with Jamovi](https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
 - [Tom Faulkenberry](https://twitter.com/tomfaulkenberry) has adapted David Foxcroft's version to create [Learning Statistics with JASP](http://learnstatswithjasp.com/)
 - Jean-Marc Meunier has translated *Learning Statistics with Jamovi* into [French](https://jmeunierp8.github.io/ManuelJamovi/) 
+- [Ethan Weed](https://ethanweed.github.io/) has started work on a [Learning Statistics with Python](https://ethanweed.github.io/pythonbook/) adaptation (this is a work in progress!)
 
 I have suggested that someone write a *Learning Statistics with an Abacus* adaptation but so far there has been little interest. 
 
