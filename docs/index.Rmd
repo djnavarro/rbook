@@ -33,10 +33,9 @@ There are now several variations of the original LSR book:
 - [Tom Faulkenberry](https://twitter.com/tomfaulkenberry) has adapted David Foxcroft's version to create [Learning Statistics with JASP](http://learnstatswithjasp.com/)
 - Jean-Marc Meunier has translated *Learning Statistics with Jamovi* into [French](https://jmeunierp8.github.io/ManuelJamovi/) 
 - [Ethan Weed](https://ethanweed.github.io/) has started work on a [Learning Statistics with Python](https://ethanweed.github.io/pythonbook/) adaptation (this is a work in progress!)
+- [Róbert Fodor](https://github.com/robertfodor/) is working on [Learning Statistics with Cogstat](https://learningstatisticswithcogstat.com/)
 
 I have suggested that someone write a *Learning Statistics with an Abacus* adaptation but so far there has been little interest. 
-
-Due to the lack of demand for the abacus version, I have started work on a [tidy version](https://djnavarro.github.io/tidylsrbook/) of the original LSR book, which will take a Tidyverse-oriented approach and rely on a new ["tidylsr"](https://github.com/djnavarro/tidylsr) package. It is early days in the revision, but if anyone has any suggestions for the new book, please feel free to open an issue on the [github page](https://github.com/djnavarro/tidylsrbook/issues)
 
 
 ### Table of Contents
