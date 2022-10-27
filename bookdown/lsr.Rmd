@@ -3617,7 +3617,7 @@ Again, this output is pretty easy to interpret. It's the output of the `summary(
 
 What if you have multiple grouping variables? Suppose, for example, you would like to look at the average mood gain separately for all possible combinations of drug and therapy. It is actually possible to do this using the `by()` and `describeBy()` functions, but I usually find it more convenient to use the `aggregate()` function in this situation. There are again three arguments that you need to specify. The `formula` argument is used to indicate which variable you want to analyse, and which variables are used to specify the groups. For instance, if you want to look at `mood.gain` separately for each possible combination of `drug` and `therapy`, the formula you want is `mood.gain ~ drug + therapy`. The `data` argument is used to specify the data frame containing all the data, and the `FUN` argument is used to indicate what function you want to calculate for each group (e.g., the `mean`). So, to obtain group means, use this command:
 ```{r}
- aggregate( formula = mood.gain ~ drug + therapy,  # mood.gain by drug/therapy combination
+ aggregate( mood.gain ~ drug + therapy,  # mood.gain by drug/therapy combination
             data = clin.trial,                     # data is in the clin.trial data frame
             FUN = mean                             # print out group means
  )
@@ -8030,9 +8030,6 @@ This intuition feels right, but it would be nice to demonstrate this somehow. Th
 Now let's extend the simulation. Instead of restricting ourselves to the situation where we have a sample size of $N=2$, let's repeat the exercise for sample sizes from 1 to 10. If we plot the average sample mean and average sample standard deviation as a function of sample size, you get the results shown in Figure \@ref(fig:estimatorbias). On the left hand side (panel a), I've plotted the average sample mean and on the right hand side (panel b), I've plotted the average standard deviation. The two plots are quite different: *on average*, the average sample mean is equal to the population mean. It is an **_unbiased estimator_**, which is essentially the reason why your best estimate for the population mean is the sample mean.^[I should note that I'm hiding something here. Unbiasedness is a desirable characteristic for an estimator, but there are other things that matter besides bias. However, it's beyond the scope of this book to discuss this in any detail. I just want to draw your attention to the fact that there's some hidden complexity here.] The plot on the right is quite different: on average, the sample standard deviation $s$ is *smaller* than the population standard deviation $\sigma$. It is a **_biased estimator_**. In other words, if we want to make a "best guess" $\hat\sigma$ about the value of the population standard deviation $\sigma$, we should make sure our guess is a little bit larger than the sample standard deviation $s$. 
 
 ```{r estimatorbias, fig.cap="An illustration of the fact that the sample mean is an unbiased estimator of the population mean (panel a), but the sample standard deviation is a biased estimator of the population standard deviation (panel b). To generate the figure, I generated 10,000 simulated data sets with 1 observation each, 10,000 more with 2 observations, and so on up to a sample size of 10. Each data set consisted of fake IQ data: that is, the data were normally distributed with a true population mean of 100 and standard deviation 15. *On average*, the sample means turn out to be 100, regardless of sample size (panel a). However, the sample standard deviations turn out to be systematically too small (panel b), especially for small sample sizes.", echo=FALSE}
-
-knitr::include_graphics(file.path(projecthome, "img/estimation/biasMean.png"))
-
 knitr::include_graphics(file.path(projecthome, "img/estimation/biasSD.png"))
 
 ```
@@ -10825,7 +10822,7 @@ print( awesome )
 ```
 As long as there are no ties (i.e., people with the exact same awesomeness score), then the test that we want to do is surprisingly simple. All we have to do is construct a table that compares every observation in group $A$ against every observation in group $B$. Whenever the group $A$ datum is larger, we place a check mark in the table:
 
-```{r echo=FALSE}
+```{r eval=FALSE, include=FALSE}
 knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox1.png"))
 
 ```
@@ -10860,7 +10857,7 @@ print( happiness )
 ```
 What I've measured here is the happiness of each student `before` taking the class and `after` taking the class; the `change` score is the difference between the two. Just like we saw with the $t$-test, there's no fundamental difference between doing a paired-samples test using `before` and `after`, versus doing a one-sample test using the `change` scores. As before, the simplest way to think about the test is to construct a tabulation. The way to do it this time is to take those change scores that are positive valued, and tabulate them against all the complete sample. What you end up with is a table that looks like this:
 
-```{r echo=FALSE}
+```{r eval=FALSE, include=FALSE}
 knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox2.png"))
 
 ```

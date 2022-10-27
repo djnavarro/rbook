@@ -1318,7 +1318,7 @@ print( awesome )
 ```
 As long as there are no ties (i.e., people with the exact same awesomeness score), then the test that we want to do is surprisingly simple. All we have to do is construct a table that compares every observation in group $A$ against every observation in group $B$. Whenever the group $A$ datum is larger, we place a check mark in the table:
 
-```{r echo=FALSE}
+```{r eval=FALSE, include=FALSE}
 knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox1.png"))
 
 ```
@@ -1353,7 +1353,7 @@ print( happiness )
 ```
 What I've measured here is the happiness of each student `before` taking the class and `after` taking the class; the `change` score is the difference between the two. Just like we saw with the $t$-test, there's no fundamental difference between doing a paired-samples test using `before` and `after`, versus doing a one-sample test using the `change` scores. As before, the simplest way to think about the test is to construct a tabulation. The way to do it this time is to take those change scores that are positive valued, and tabulate them against all the complete sample. What you end up with is a table that looks like this:
 
-```{r echo=FALSE}
+```{r eval=FALSE, include=FALSE}
 knitr::include_graphics(file.path(projecthome, "img/ttest2/wilcox2.png"))
 
 ```
