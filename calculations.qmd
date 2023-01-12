@@ -1,0 +1,265 @@
+# Doing calculations {#sec-calculations}
+
+`r source("common.R")`
+
+Okay, now that we've discussed some of the tedious details associated with typing R commands, let's get back to learning how to use the most powerful piece of statistical software in the world as a \$2 calculator. So far, all we know how to do is addition. Clearly, a calculator that only did addition would be a bit stupid, so I should tell you about how to perform other simple calculations using R. But first, some more terminology. Addition is an example of an "operation" that you can perform (specifically, an arithmetic operation), and the **operator** that performs it is `+`. 
+
+To people with a programming or mathematics background, this terminology probably feels pretty natural, but to other people it might feel like I'm trying to make something very simple (addition) sound more complicated than it is (by calling it an arithmetic operation). To some extent, that's true: if addition was the only operation that we were interested in, it'd be a bit silly to introduce all this extra terminology. However, as we go along, we'll start using more and more different kinds of operations, so it's probably a good idea to get the language straight now, while we're still talking about very familiar concepts like addition! 
+
+## Adding, subtracting, multiplying and dividing {#sec-arithmetic}
+
+So, now that we have the terminology, let's learn how to perform some arithmetic operations in R. To that end, the table below lists the operators that correspond to the basic arithmetic we learned in primary school: addition, subtraction, multiplication and division. 
+
+```{r arithmetic1, echo=FALSE}
+knitr::kable(rbind(
+              c("addition", "`+`", "10 + 2", 12),
+              c("subtraction", "`-`", "9 - 3", 6),
+              c("multiplication", "`*`", "5 * 5", 25),
+              c("division", "`/`", "10 / 3", 3),
+              c("power", "`^`", "5 ^ 2", 25)
+),
+caption = 'Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it\'s important to be familiar with them at the outset.',col.names = c("operation", "operator", "example input" , "example output"), align="lccc",
+  booktabs = TRUE)
+```
+
+As you can see, R uses fairly standard symbols to denote each of the different operations you might want to perform: addition is done using the `+` operator, subtraction is performed by the `-` operator, and so on. So if I wanted to find out what 57 times 61 is (and who wouldn't?), I can use R instead of a calculator, like so:
+```{r}
+57 * 61
+```
+
+So that's handy. 
+
+## Taking powers
+
+
+The first four operations listed in Table \@ref(tab:arithmetic1) are things we all learned in primary school, but they aren't the only arithmetic operations built into R. There are three other arithmetic operations that I should probably mention: taking powers, doing integer division, and calculating a modulus. Of the three, the only one that is of any real importance for the purposes of this book is taking powers, so I'll discuss that one here: the other two are discussed in @datahandling.
+
+For those of you who can still remember your high school maths, this should be familiar. But for some people high school maths was a long time ago, and others of us didn't listen very hard in high school. It's not complicated. As I'm sure everyone will probably remember the moment they read this, the act of multiplying a number $x$ by itself $n$ times is called "raising $x$ to the $n$-th power". Mathematically, this is written as $x^n$. Some values of $n$ have special names: in particular $x^2$ is called $x$-squared, and $x^3$ is called $x$-cubed. So, the 4th power of 5 is calculated like this:
+$$
+5^4 = 5 \times 5 \times 5 \times 5 
+$$
+
+One way that we could calculate $5^4$ in R would be to type in the complete multiplication as it is shown in the equation above. That is, we could do this
+
+```{r}
+5 * 5 * 5 * 5
+```
+
+but it does seem a bit tedious. It would be very annoying indeed if you wanted to calculate $5^{15}$, since the command would end up being quite long. Therefore, to make our lives easier, we use the power operator instead. When we do that, our command to calculate $5^4$ goes like this:
+```{r}
+5 ^ 4
+```
+Much easier.
+
+## Doing calculations in the right order{#bedmas}
+
+Okay. At this point, you know how to take one of the most powerful pieces of statistical software in the world, and use it as a \$2 calculator. And as a bonus, you've learned a few very basic programming concepts. That's not nothing (you could argue that you've just saved yourself \$2) but on the other hand, it's not very much either. In order to use R more effectively, we need to introduce more programming concepts.
+
+In most situations where you would want to use a calculator, you might want to do multiple calculations. R lets you do this, just by typing in longer commands.^[If you're reading this with R open, a good learning trick is to try typing in a few different variations on what I've done here. If you experiment with your commands, you'll quickly learn what works and what doesn't.] In fact, we've already seen an example of this earlier, when I typed in `5 * 5 * 5 * 5`. However, let's try a slightly different example:
+
+```{r}
+1 + 2 * 4
+```
+
+Clearly, this isn't a problem for R either. However, it's worth stopping for a second, and thinking about what R just did. Clearly, since it gave us an answer of `9` it must have multiplied `2 * 4` (to get an interim answer of 8) and then added 1 to that. But, suppose it had decided to just go from left to right: if R had decided instead to add `1 + 2` (to get an interim answer of 3) and then multiplied by 4, it would have come up with an answer of `12`. 
+
+To answer this, you need to know the **order of operations** that R uses. If you remember back to your high school maths classes, it's actually the same order that you got taught when you were at school: the "**BEDMAS**" order.^[For advanced users: if you want a table showing the complete order of operator precedence in R, type `?Syntax`. I haven't included it in this book since there are quite a few different operators, and we don't need that much detail. Besides, in practice most people seem to figure it out from seeing examples: until writing this book I never looked at the formal statement of operator precedence for any language I ever coded in, and never ran into any difficulties.] That is, first calculate things inside **B**rackets `()`, then calculate **E**xponents `^`, then **D**ivision `/` and **M**ultiplication `*`, then **A**ddition `+` and **S**ubtraction `-`. So, to continue the example above, if we want to force R to calculate the `1 + 2` part before the multiplication, all we would have to do is enclose it in brackets:
+
+```{r}
+(1 + 2) * 4 
+```
+
+This is a fairly useful thing to be able to do. The only other thing I should point out about order of operations is what to expect when you have two operations that have the same priority: that is, how does R resolve ties? For instance, multiplication and division are actually the same priority, but what should we expect when we give R a problem like `4 / 2 * 3` to solve? If it evaluates the multiplication first and then the division, it would calculate a value of two-thirds. But if it evaluates the division first it calculates a value of 6. The answer, in this case, is that R goes from *left to right*, so in this case the division step would come first:
+
+```{r}
+4 / 2 * 3
+```
+
+All of the above being said, it's helpful to remember that *brackets always come first*. So, if you're ever unsure about what order R will do things in, an easy solution is to enclose the thing *you* want it to do first in brackets.  There's nothing stopping you from typing `(4 / 2) * 3`. By enclosing the division in brackets we make it clear which thing is supposed to happen first. In this instance you wouldn't have needed to, since R would have done the division first anyway, but when you're first starting out it's better to make sure R does what you want!
+
+
+## Using functions to do calculations {#sec-usingfunctions}
+
+The symbols `+`, `-`, `*` and so on are examples of operators. As we've seen, you can do quite a lot of calculations just by using these operators. However, in order to do more advanced calculations (and later on, to do actual statistics), you're going to need to start using **functions**.^[A side note for students with a programming background. Technically speaking, operators *are* functions in R: the addition operator `+` is actually a convenient way of calling the addition function `` `+`() ``. Thus `10 + 20` is equivalent to the function call ```+`(20, 30)``. Not surprisingly, no-one ever uses this version. Because that would be stupid.] I'll talk in more detail about functions and how they work in @sec-functions, but for now let's just dive in and use a few. To get started, suppose I wanted to take the square root of 225. The  square root, in case your high school maths is a bit rusty, is just the opposite of squaring a number. So, for instance, since "5 squared is 25" I can say that "5 is the square root of 25". The usual notation for this is 
+
+$$
+\sqrt{25} = 5
+$$
+
+though sometimes you'll also see it written like this
+
+$25^{0.5} = 5.$
+
+This second way of writing it is kind of useful to "remind" you of the mathematical fact that "square root of $x$" is actually the same as "raising $x$ to the power of 0.5". Personally, I've never found this to be terribly meaningful psychologically, though I have to admit it's quite convenient mathematically. Anyway, it's not important. What is important is that you remember what a square root is, since we're going to need it later on.
+
+To calculate the square root of 25, I can do it in my head pretty easily, since I memorised my multiplication tables when I was a kid. It gets harder when the numbers get bigger, and pretty much impossible if they're not whole numbers. This is where something like R comes in very handy. Let's say I wanted to calculate $\sqrt{225}$, the square root of 225. There's two ways I could do this using R. Firstly, since the square root of 255 is the same thing as raising 225 to the power of 0.5, I could use the power operator `^`, just like we did earlier:
+
+```{r}
+225 ^ 0.5
+```
+
+However, there's a second way that we can do this, since R also provides a **square root function**, `sqrt()`. To calculate the square root of 255 using this function, what I do is insert the number `225` in the parentheses. That is, the command I type is this:
+
+```{r}
+sqrt(225)
+```
+
+When we use a function to do something, we generally refer to this as **calling** the function, and the values that we type into the function (there can be more than one) are referred to as the **arguments** of that function. 
+
+Obviously, the `sqrt()` function doesn't really give us any new functionality, since we already knew how to do square root calculations by using the power operator `^`, though I do think it looks nicer when we use `sqrt()`. However, there are lots of other functions in R: in fact, almost everything of interest that I'll talk about in this book is an R function of some kind. For example, one function that we will need to use in this book is the **absolute value function**. Compared to the square root function, it's extremely simple: it just converts negative numbers to positive numbers, and leaves positive numbers alone. Mathematically, the absolute value of $x$ is written $|x|$ or sometimes $\mbox{abs}(x)$. Calculating absolute values in R is pretty easy, since R provides the `abs()` function that you can use for this purpose. When you feed it a positive number...
+
+```{r}
+abs(21)
+```
+
+the absolute value function does nothing to it at all. But when you feed it a negative number, it spits out the positive version of the same number, like this:
+
+```{r}
+abs(-13)
+```
+
+In all honesty, there's nothing that the absolute value function does that you couldn't do just by looking at the number and erasing the minus sign if there is one. However, there's a few places later in the book where we have to use absolute values, so I thought it might be a good idea to explain the meaning of the term early on.
+
+Before moving on, it's worth noting that -- in the same way that R allows us to put multiple operations together into a longer command, like `1 + 2 * 4` for instance -- it also lets us put functions together and even combine functions with operators if we so desire. For example, the following is a perfectly legitimate command:
+
+```{r}
+sqrt(1 + abs(-8))
+```
+
+When R executes this command, starts out by calculating the value of `abs(-8)`, which produces an intermediate value of `8`. Having done so, the command simplifies to `sqrt(1 + 8)`. To solve the square root^[A note for the mathematically inclined: R does support complex numbers, but unless you explicitly specify that you want them it assumes all calculations must be real valued. By default, the square root of a negative number is treated as undefined: `sqrt(-9)` will produce `NaN` (not a number) as its output. To get complex numbers, you would type `sqrt(-9+0i)`  and R would now return `0+3i`. However, since we won't have any need for complex numbers in this book, I won't refer to them again.] it first needs to add `1 + 8` to get `9`, at which point it evaluates `sqrt(9)`, and so it finally outputs a value of `3`.
+
+## Assessing mathematical truths
+
+A key concept in that a lot of R relies on is the idea of a **logical value**. A logical value is an assertion about whether something is true or false. This is implemented in R in a pretty straightforward way. There are two logical values, namely `TRUE` and `FALSE`. Despite the simplicity, a logical values are very useful things. Let's see how they work.
+
+In George Orwell's classic book *1984*, one of the slogans used by the totalitarian Party was "two plus two equals five", the idea being that the political domination of human freedom becomes complete when it is possible to subvert even the most basic of truths. It's a terrifying thought, especially when the protagonist Winston Smith finally breaks down under torture and agrees to the proposition. "Man is infinitely malleable", the book says. I'm pretty sure that this isn't true of humans^[I offer up my youthful attempts to be "cool" as evidence that some things just can't be done.] but it's definitely not true of R. R is not infinitely malleable. It has rather firm opinions on the topic of what is and isn't true, at least as regards basic mathematics. If I ask it to calculate `2 + 2`, it always gives the same answer, and it's not bloody 5:
+
+```{r}
+2 + 2
+```
+
+Of course, so far R is just doing the calculations. I haven't asked it to explicitly assert that $2+2 = 4$ is a true statement. If I want R to make an explicit judgement, I can use a command like this: 
+
+```{r}
+2 + 2 == 4
+```
+
+What I've done here is use the **equality operator**, `==`, to force R to make a "true or false" judgement.^[Note that this is a very different operator to the assignment operator `=` that I talked about in @sec-assign. A common typo that people make when trying to write logical commands in R (or other languages, since the "`=` versus `==`" distinction is important in most programming languages) is to accidentally type `=` when you really mean `==`. Be especially cautious with this -- I've been programming in various languages since I was a teenager, and I *still* screw this up a lot. Hm. I think I see why I wasn't cool as a teenager. And why I'm still not cool.] Okay, let's see what R thinks of the Party slogan:
+
+```{r}
+2 + 2 == 5
+```
+
+Woohoo! Freedom and ponies for all! Or something like that. Anyway, it's worth having a look at what happens if I try to *force* R to believe that two plus two is five by making an assignment statement like  `2 + 2 = 5` or `2 + 2 <- 5`. When I do this, here's what happens:
+
+```{r error=TRUE}
+2 + 2 = 5
+```
+
+R doesn't like this very much. It recognises that `2 + 2` is *not* a variable (that's what the "non-language object" part is saying), and it won't let you try to "reassign" it. While R is pretty flexible, and actually does let you do some quite remarkable things to redefine parts of R itself, there are just some basic, primitive truths that it refuses to give up. It won't change the laws of addition, and it won't change the definition of the number `2`. 
+
+That's probably for the best.
+
+## Logical operations
+
+So now we've seen logical operations at work, but so far we've only seen the simplest possible example. You probably won't be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this:
+```{r}
+3*3 + 4*4 == 5*5
+
+``` 
+or this
+```{r}
+sqrt(25) == 5
+```
+Not only that, but as the table below illustrates, there are several other logical operators that you can use, corresponding to some basic mathematical concepts. 
+
+```{r logicals, echo=FALSE}
+knitr::kable(rbind(
+                    c("less than ", "`<`", "`2 < 3`", "`TRUE`"),
+                    c("less than or equal to", "`<=`", "`2 <= 2`", "`TRUE`"),
+                    c("greater than", "`>`", "`2 > 3`", "`FALSE`"),
+                    c("greater than or equal to", "`>=`", "`2 >= 2`" , "`TRUE`"), 
+                    c("equal to", "`==`", "`2 == 3`" , "`FALSE`"),
+                    c("not equal to", "`!=`", "`2 != 3`" , "`TRUE`")),
+              caption = 'Some logical operators. Technically I should be calling these "binary relational operators", but quite frankly I don\'t want to. It\'s my book so no-one can make me.',
+              col.names = c("operation", "operator", "example input", "answer"),
+  booktabs = TRUE
+)
+```
+
+Hopefully these are all pretty self-explanatory: for example, the **less than** operator `<` checks to see if the number on the left is less than the number on the right. If it's less, then R returns an answer of `TRUE`:
+
+```{r}
+99 < 100
+```
+
+but if the two numbers are equal, or if the one on the right is larger, then R returns an answer of `FALSE`, as the following two examples illustrate:
+
+```{r}
+100 < 100
+100 < 99
+```
+
+In contrast, the **less than or equal to** operator `<=` will do exactly what it says. It returns a value of `TRUE` if the number of the left hand side is less than or equal to the number on the right hand side. So if we repeat the previous two examples using `<=`, here's what we get: 
+
+```{r}
+100 <= 100
+100 <= 99
+```
+
+And at this point I hope it's pretty obvious what the **greater than** operator `>` and the **greater than or equal to** operator `>=` do! Next on the list of logical operators is the **not equal to** operator `!=` which -- as with all the others -- does what it says it does. It returns a value of `TRUE` when things on either side are not identical to each other. Therefore, since $2+2$ isn't equal to $5$, we get:
+
+```{r}
+2 + 2 != 5
+```
+
+We're not quite done yet. There are three more logical operations that are worth knowing about, listed below:
+
+```{r logicals2, echo=FALSE}
+knitr::kable(rbind(
+                    c("not", "`!`", "`!(1==1)`", "`FALSE`"),
+                    c("or", "`|`", "`(1==1) | (2==3)`", "`TRUE`"),
+                    c("and", "`&`", "`(1==1) & (2==3)`", "`FALSE`")),
+              caption = 'Some more logical operators.',
+              col.names = c("operation", "operator", "example input", "answer"),
+  booktabs = TRUE
+)
+```
+
+
+These are the **not** operator `!`, the **and** operator `&`, and the **or** operator `|`. Like the other logical operators, their behaviour is more or less exactly what you'd expect given their names. For instance, if I ask you to assess the claim that "either $2+2 = 4$ *or* $2+2 = 5$" you'd say that it's true. Since it's an "either-or" statement, all we need is for one of the two parts to be true. That's what the `|` operator does:
+
+```{r}
+(2+2 == 4) | (2+2 == 5)
+
+```
+
+On the other hand, if I ask you to assess the claim that "both $2+2 = 4$ *and* $2+2 = 5$" you'd say that it's false. Since this is an *and* statement we need both parts to be true. And that's what the `&` operator does:
+
+```{r}
+(2+2 == 4) & (2+2 == 5)
+```
+
+Finally, there's the *not* operator, which is simple but annoying to describe in English. If I ask you to assess my claim that "it is not true that $2+2 = 5$" then you would say that my claim is true; because my claim is that "$2+2 = 5$ is false". And I'm right. If we write this as an R command we get this:  
+
+```{r}
+!(2+2 == 5)
+```
+
+In other words, since `2+2 == 5` is a `FALSE` statement, it must be the case that `!(2+2 == 5)` is a `TRUE` one. Essentially, what we've really done is claim that "not false" is the same thing as "true". Obviously, this isn't really quite right in real life. But R lives in a much more black or white world: for R everything is either true or false. No shades of gray are allowed. We can actually see this much more explicitly, like this:
+
+```{r}
+!FALSE
+```
+
+Of course, in our $2+2 = 5$ example, we didn't really need to use "not" `!` and "equals to" `==` as two separate operators. We could have just used the "not equals to" operator `!=` like this:
+
+```{r}
+2+2 != 5
+```
+
+But there are many situations where you really do need to use the `!` operator. We'll see some later on.^[A note for those of you who have taken a computer science class: yes, R does have a function for exclusive-or, namely `xor()`. Also worth noting is the fact that R makes the distinction between element-wise operators `&` and `|` and operators that look only at the first element of the vector, namely `&&` and `||`. To see the distinction, compare the behaviour of a command like `c(FALSE,TRUE) & c(TRUE,TRUE)` to the behaviour of something like `c(FALSE,TRUE) && c(TRUE,TRUE)`. If this doesn't mean anything to you, ignore this footnote entirely. It's not important for the content of this book.]
+ 
+
+## Summary
+

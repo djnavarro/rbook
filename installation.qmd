@@ -1,32 +1,14 @@
-# Installation
+# Installing R {#sec-gettingR}
 
 `r source("common.R")`
 
-## Why use R?
-
-However, before going into any of the specifics, it's worth talking a little about why you might want to use R at all. Given that you're reading this, you've probably got your own reasons. However, if those reasons are "because that's what my stats class uses", it might be worth explaining a little why your lecturer has chosen to use R for the class. Of course, I don't really know why *other* people choose R, so I'm really talking about why I use it.
-
-- It's sort of obvious, but worth saying anyway: doing your statistics on a computer is faster, easier and more powerful than doing statistics by hand. Computers excel at mindless repetitive tasks, and a lot of statistical calculations are both mindless and repetitive. For most people, the only reason to ever do statistical calculations with pencil and paper is for learning purposes. In my class I do occasionally suggest doing some calculations that way, but the only real value to it is pedagogical. It does help you to get a "feel" for statistics to do some calculations yourself, so it's worth doing it once. But only once!
-
-- Doing statistics in a spreadsheet (e.g., Microsoft Excel) is generally a bad idea in the long run. Although many people are likely feel more familiar with them, spreadsheets are very limited in terms of what analyses they allow you do. If you get into the habit of trying to do your real life data analysis using spreadsheets, then you've dug yourself into a very deep hole.
-
-- Avoiding proprietary software is a very good idea. There are a lot of commercial packages out there that you can buy, some of which I like and some of which I don't. They're usually very glossy in their appearance, and generally very powerful (much more powerful than spreadsheets). However, they're also very expensive: usually, the company sells "student versions" (crippled versions of the real thing) very cheaply; they sell full powered "educational versions" at a price that makes me wince; and they sell commercial licences with a staggeringly high price tag. The business model here is to suck you in during your student days, and then leave you dependent on their tools when you go out into the real world. It's hard to blame them for trying, but personally I'm not in favour of shelling out thousands of dollars if I can avoid it. And you can avoid it: if you make use of packages like R that are open source and free, you never get trapped having to pay exorbitant licensing fees. 
-
-- Something that you might not appreciate now, but will love later on if you do anything involving data analysis, is the fact that R is highly extensible. When you download and install R, you get all the basic "packages", and those are very powerful on their own. However, because R is so open and so widely used, it's become something of a standard tool in statistics, and so lots of people write their own packages that extend the system. And these are freely available too. One of the consequences of this, I've noticed, is that if you open up an advanced textbook rather than introductory textbooks, is that a *lot* of them use R. In other words, if you learn how to do your basic statistics in R, then you're a lot closer to being able to use the state of the art methods than you would be if you'd started out with a "simpler" system: so if you want to become a genuine expert in psychological data analysis, learning R is a very good use of your time.
-
-- Related to the previous point: R is a real programming language. As you get better at using R for data analysis, you're also learning to program. To some people this might seem like a bad thing, but in truth, programming is a core research skill across a lot of the social and behavioural sciences. Think about how many surveys and experiments are done online, or presented on computers. Think about all those online social environments which you might be interested in studying; and maybe collecting data from in an automated fashion. Think about artificial intelligence systems, computer vision and speech recognition. If any of these are things that you think you might want to be involved in -- as someone "doing research in psychology", that is -- you'll need to know a bit of programming. And if you don't already know how to program, then learning how to do statistics using  R is a nice way to start.
-
-Those are the main reasons I use R. It's not without its flaws: it's not easy to learn, and it has a few very annoying quirks to it that we're all pretty much stuck with, but on the whole I think the strengths outweigh the weakness.
-
-## Installing R {#sec-gettingR}
-
-Okay, enough with the sales pitch. Let's get started. Just as with any piece of software,  R  needs to be installed on a "computer", which is a magical box that does cool things and delivers free ponies. Or something along those lines: I may be confusing computers with the ipad marketing campaigns. Anyway, R is freely distributed online, and you can download it here:
+Let's get started. Just as with any piece of software,  R  needs to be installed on a "computer", which is a magical box that does cool things and delivers free ponies. Or something along those lines: I may be confusing computers with the ipad marketing campaigns. Anyway, R is freely distributed online, and you can download it here:
 
 [https://cran.r-project.org](https://cran.r-project.org/)
 
 At the top of the page -- under the heading "Download and Install R" -- you'll see separate links for Windows users, Mac users, and Linux users. If you follow the relevant link, you'll see that the online instructions are pretty self-explanatory, but I'll walk you through the installation anyway. As of this writing, the current version of R is 4.2.2 but they usually issue updates every six months, so you'll probably have a newer version.
 
-### Windows installation
+## Windows installation
 
 The CRAN homepage changes from time to time, and it's not particularly pretty. But it's not difficult to find what you're after. Assuming it doesn't change, it's a three-step process:
 
@@ -36,7 +18,7 @@ The CRAN homepage changes from time to time, and it's not particularly pretty. B
 
 The file may take some time depending on how fast your internet connection is. Once you've downloaded the file, double click to install it. As with any software you download online, Windows will ask you some questions about whether you trust the file and so on. After you click through those, it'll ask you where you want to install it, and what components you want to install. The default values should be fine for most people, so again, just click through. Once all that is done, you should have R installed on your system. You can access it from the Start menu, or from the desktop if you asked it to add a shortcut there. You can now open up R in the usual way if you want to, but what I'm going to suggest is that instead of doing that you should now install RStudio (@sec-installingrstudio).
 
-### Mac OS installation
+## Mac OS installation
 
 When you click on the Mac OS link, you should find yourself on a page with the title "R for Mac OS". Here you'll see several different options. The exact option that you want depends on what kind of Mac you have, and what version of the operating system you're running. Most likely, however, what you'll want is one of the first two options:
 
@@ -47,7 +29,7 @@ Either way, your browser will start downloading the package file. Once it's comp
 
 Once it's finished, you'll find a file called `R.app` in the Applications folder. You can now open up R in the usual way if you want to, but what I'm going to suggest is that instead of doing that you should now install RStudio  (@sec-installingrstudio). 
 
-### Linux installation
+## Linux installation
 
 If you're successfully managing to run a Linux box, regardless of what distribution, then you should find the instructions on the website easy enough. You can compile R from source yourself if you want, or install it through your package management system, which will probably have R in it. 
 Alternatively, the CRAN site has precompiled binaries for Debian, Red Hat, Suse and Ubuntu and has separate instructions for each. Once you've got R installed, you can run it from the command line just by typing `R`. However, if you're feeling envious of Windows and Mac users for their fancy GUIs, you can download RStudio too (@sec-installingrstudio).
@@ -100,3 +82,32 @@ Most of this text is pretty uninteresting, and when doing real data analysis you
 ```
 
 ... which has a flashing cursor next to it. That's the **command prompt**. When you see this, it means that R is waiting patiently for you to do something! 
+
+## Quitting R
+
+There's one last thing I should cover in this chapter: how to quit R. When I say this, I'm not trying to imply that R is some kind of pathological addition and that you need to call the R QuitLine or wear patches to control the cravings.^[Although you certainly might argue that there's something seriously pathological about being addicted to R] I just mean how to exit the program. Assuming you're running R in the usual way (i.e., through RStudio or the default GUI on a Windows or Mac computer), then you can just shut down the application in the normal way. However, R also has a function, called `q()` that you can use to quit, which is pretty handy if you're running R in a terminal window.
+
+Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the "workspace image". We'll talk a lot more about loading and saving data in @sec-load, but I figured we'd better quickly cover this now otherwise you're going to get annoyed when you close R at the end of the chapter. If you're using RStudio, you'll see a dialog box with buttons to click. If you're using a text based interface you'll see this:
+
+```{r eval=FALSE}
+q()
+```
+```
+Save workspace image? [y/n/c]: 
+```
+
+The `y/n/c` part here is short for "yes / no / cancel". Type `y` if you want to save, `n` if you don't, and `c` if you've changed your mind and you don't want to quit after all. 
+
+What does this actually *mean*? What's going on is that R wants to know if you want to save all those variables that you've been creating, so that you can use them later. This sounds like a great idea, so it's really tempting to type `y` or click the "Save" button. To be honest though, I never do this, and it kind of annoys me a little bit... what R is *really* asking is if you want it to store these variables in a "default" data file, which it will automatically reload for you next time you open R. And quite frankly, if I'd wanted to save the variables, then I'd have already saved them before trying to quit. Not only that, I'd have saved them to a location of *my* choice, so that I can find it again later. So I personally never bother with this. 
+
+In fact, every time I install R on a new machine one of the first things I do is change the settings so that it never asks me again. You can do this in RStudio really easily: use the menu system to find the RStudio option. The window that comes up will give you an option to tell R never to whine about this again, as shown below:
+
+```{r}
+#| fig.cap: "The options window in RStudio. The highlighted settings are used to control the exit options"
+#| echo: false
+knitr::include_graphics("exit-options.png")
+```
+
+On a Mac, you can open this window by going to the "RStudio" menu and selecting "Preferences". On a Windows machine you go to the "Tools" menu and select "Global Options". Under the "General" tab you'll see an option that reads "Save workspace to .Rdata on exit". By default this is set to "ask". If you want R to stop asking, change it to "never".
+
+

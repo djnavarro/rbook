@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Danielle Navarro">
+
+<title>Learning Statistics with R - 8&nbsp; Loading and saving data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./data-objects.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<!-- add the twitter card and open graph tags -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@djnavarro">
+
+<!-- plausible analytics -->
+<script async="" defer="" data-domain="learningstatisticswithr.com" src="https://plausible.io/js/plausible.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Loading and saving data</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/djnavarro/rbook/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome!</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why statistics? Why R?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Getting started</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./commands.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Our first R commands</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calculations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Doing calculations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./variables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mechanics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional R concepts</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Working with data</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Representing data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reading-data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Loading and saving data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#loading-workspace-files-using-r" id="toc-loading-workspace-files-using-r" class="nav-link active" data-scroll-target="#loading-workspace-files-using-r"><span class="toc-section-number">8.1</span>  Loading workspace files using R</a></li>
+  <li><a href="#loading-workspace-files-using-rstudio" id="toc-loading-workspace-files-using-rstudio" class="nav-link" data-scroll-target="#loading-workspace-files-using-rstudio"><span class="toc-section-number">8.2</span>  Loading workspace files using RStudio</a></li>
+  <li><a href="#loadingcsv" id="toc-loadingcsv" class="nav-link" data-scroll-target="#loadingcsv"><span class="toc-section-number">8.3</span>  Importing data from CSV files using loadingcsv</a></li>
+  <li><a href="#importing-data-from-csv-files-using-rstudio" id="toc-importing-data-from-csv-files-using-rstudio" class="nav-link" data-scroll-target="#importing-data-from-csv-files-using-rstudio"><span class="toc-section-number">8.4</span>  Importing data from CSV files using RStudio</a></li>
+  <li><a href="#saving-a-workspace-file-using-save" id="toc-saving-a-workspace-file-using-save" class="nav-link" data-scroll-target="#saving-a-workspace-file-using-save"><span class="toc-section-number">8.5</span>  Saving a workspace file using <code>save</code></a></li>
+  <li><a href="#save1" id="toc-save1" class="nav-link" data-scroll-target="#save1"><span class="toc-section-number">8.6</span>  Saving a workspace file using RStudio</a></li>
+  <li><a href="#other-things-you-might-want-to-save" id="toc-other-things-you-might-want-to-save" class="nav-link" data-scroll-target="#other-things-you-might-want-to-save"><span class="toc-section-number">8.7</span>  Other things you might want to save</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">8.8</span>  Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="load" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>There are several different types of files that are likely to be relevant to us when doing data analysis. There are three in particular that are especially important from the perspective of this book:</p>
+<ul>
+<li><em>Workspace files</em> are those with a .Rdata file extension. This is the standard kind of file that R uses to store data and variables. They’re called “workspace files” because you can use them to save your whole workspace.</li>
+<li><em>Comma separated value (CSV) files</em> are those with a .csv file extension. These are just regular old text files, and they can be opened with almost any software. It’s quite typical for people to store data in CSV files, precisely because they’re so simple.</li>
+<li><em>Script files</em> are those with a .R file extension. These aren’t data files at all; rather, they’re used to save a collection of commands that you want R to execute later. They’re just text files, but we won’t make use of them until Chapter @ref(scripting).</li>
+</ul>
+<p>There are also several other types of file that R makes use of,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> but they’re not really all that central to our interests. There are also several other kinds of data file that you might want to import into R. For instance, you might want to open Microsoft Excel spreadsheets (.xlsx files), or data files that have been saved in the native file formats for other statistics software, such as SPSS, SAS, Minitab, Stata or Systat. Finally, you might have to handle databases. R tries hard to play nicely with other software, so it has tools that let you open and work with any of these and many others. I’ll discuss some of these other possibilities elsewhere in this book (Section @ref(importing)), but for now I want to focus primarily on the two kinds of data file that you’re most likely to need: .Rdata files and .csv files. In this section I’ll talk about how to load a workspace file, how to import data from a CSV file, and how to save your workspace to a workspace file. Throughout this section I’ll first describe the (sometimes awkward) R commands that do all the work, and then I’ll show you the (much easier) way to do it using RStudio.</p>
+<section id="loading-workspace-files-using-r" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="loading-workspace-files-using-r"><span class="header-section-number">8.1</span> Loading workspace files using R</h2>
+<p>When I used the <code>list.files()</code> command to list the contents of the <code>/Users/dan/Rbook/data</code> directory (in Section @ref(navigationR)), the output referred to a file called booksales.Rdata. Let’s say I want to load the data from this file into my workspace. The way I do this is with the <code>load()</code> function. There are two arguments to this function, but the only one we’re interested in is</p>
+<ul>
+<li><code>file</code>. This should be a character string that specifies a path to the file that needs to be loaded. You can use an absolute path or a relative path to do so.</li>
+</ul>
+<p>Using the absolute file path, the command would look like this:</p>
+<pre><code>load( file = "/Users/dan/Rbook/data/booksales.Rdata" )</code></pre>
+<p>but this is pretty lengthy. Given that the working directory (remember, we changed the directory at the end of Section @ref(nav3)) is <code>/Users/dan/Rbook/data</code>, I could use a relative file path, like so:</p>
+<pre><code>load( file = "../data/booksales.Rdata" )</code></pre>
+<p>However, my preference is usually to change the working directory first, and <em>then</em> load the file. What that would look like is this:</p>
+<pre><code>setwd( "../data" )         # move to the data directory
+load( "booksales.Rdata" )  # load the data</code></pre>
+<p>If I were then to type <code>who()</code> I’d see that there are several new variables in my workspace now. Throughout this book, whenever you see me loading a file, I will assume that the file is actually stored in the working directory, or that you’ve changed the working directory so that R is pointing at the directory that contains the file. Obviously, <em>you</em> don’t need type that command yourself: you can use the RStudio file panel to do the work.</p>
+</section>
+<section id="loading-workspace-files-using-rstudio" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="loading-workspace-files-using-rstudio"><span class="header-section-number">8.2</span> Loading workspace files using RStudio</h2>
+<p>Okay, so how do we open an .Rdata file using the RStudio file panel? It’s terribly simple. First, use the file panel to find the folder that contains the file you want to load. If you look at Figure @ref(fig:filepanel), you can see that there are several .Rdata files listed. Let’s say I want to load the <code>booksales.Rdata</code> file. All I have to do is click on the file name. RStudio brings up a little dialog box asking me to confirm that I do want to load this file. I click yes. The following command then turns up in the console,</p>
+<pre><code>load("~/Rbook/data/booksales.Rdata")</code></pre>
+<p>and the new variables will appear in the workspace (you’ll see them in the Environment panel in RStudio, or if you type <code>who()</code>). So easy it barely warrants having its own section.</p>
+</section>
+<section id="loadingcsv" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="loadingcsv"><span class="header-section-number">8.3</span> Importing data from CSV files using loadingcsv</h2>
+<p>One quite commonly used data format is the humble “comma separated value” file, also called a CSV file, and usually bearing the file extension .csv. CSV files are just plain old-fashioned text files, and what they store is basically just a table of data. This is illustrated in Figure @ref(fig:booksalescsv), which shows a file called booksales.csv that I’ve created. As you can see, each row corresponds to a variable, and each row represents the book sales data for one month. The first row doesn’t contain actual data though: it has the names of the variables.</p>
+<div class="cell">
+
+</div>
+<p>If RStudio were not available to you, the easiest way to open this file would be to use the <code>read.csv()</code> function.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> This function is pretty flexible, and I’ll talk a lot more about it’s capabilities in Section @ref(importing) for more details, but for now there’s only two arguments to the function that I’ll mention:</p>
+<ul>
+<li><code>file</code>. This should be a character string that specifies a path to the file that needs to be loaded. You can use an absolute path or a relative path to do so.</li>
+<li><code>header</code>. This is a logical value indicating whether or not the first row of the file contains variable names. The default value is <code>TRUE</code>.</li>
+</ul>
+<p>Therefore, to import the CSV file, the command I need is:</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>books <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="at">file =</span> <span class="st">"booksales.csv"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are two very important points to notice here. Firstly, notice that I <em>didn’t</em> try to use the <code>load()</code> function, because that function is only meant to be used for .Rdata files. If you try to use <code>load()</code> on other types of data, you get an error. Secondly, notice that when I imported the CSV file I assigned the result to a variable, which I imaginatively called <code>books</code>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> file. There’s a reason for this. The idea behind an <code>.Rdata</code> file is that it stores a whole workspace. So, if you had the ability to look inside the file yourself you’d see that the data file keeps track of all the variables and their names. So when you <code>load()</code> the file, R restores all those original names. CSV files are treated differently: as far as R is concerned, the CSV only stores <em>one</em> variable, but that variable is big table. So when you import that table into the workspace, R expects <em>you</em> to give it a name.] Let’s have a look at what we’ve got:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( books )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Month Days Sales Stock.Levels
+1    January   31     0         high
+2   February   28   100         high
+3      March   31   200          low
+4      April   30    50          out
+5        May   31     0          out
+6       June   30     0         high
+7       July   31     0         high
+8     August   31     0         high
+9  September   30     0         high
+10   October   31     0         high
+11  November   30     0         high
+12  December   31     0         high</code></pre>
+</div>
+</div>
+<p>Clearly, it’s worked, but the format of this output is a bit unfamiliar. We haven’t seen anything like this before. What you’re looking at is a <em>data frame</em>, which is a very important kind of variable in R, and one I’ll discuss in Section @ref(dataframes). For now, let’s just be happy that we imported the data and that it looks about right.</p>
+</section>
+<section id="importing-data-from-csv-files-using-rstudio" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="importing-data-from-csv-files-using-rstudio"><span class="header-section-number">8.4</span> Importing data from CSV files using RStudio</h2>
+<p>Yet again, it’s easier in RStudio. In the environment panel in RStudio you should see a button called “Import Dataset”. Click on that, and it will give you a couple of options: select the “From Text File…” option, and it will open up a very familiar dialog box asking you to select a file: if you’re on a Mac, it’ll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. An example of what it looks like on a Mac is shown in Figure @ref(fig:fileopen). I’m assuming that you’re familiar with your own computer, so you should have no problem finding the CSV file that you want to import! Find the one you want, then click on the “Open” button. When you do this, you’ll see a window that looks like the one in Figure @ref(fig:import).</p>
+<div class="cell">
+
+</div>
+<p>The import data set window is relatively straightforward to understand.</p>
+<div class="cell">
+
+</div>
+<p>In the top left corner, you need to type the name of the variable you R to create. By default, that will be the same as the file name: our file is called <code>booksales.csv</code>, so RStudio suggests the name <code>booksales</code>. If you’re happy with that, leave it alone. If not, type something else. Immediately below this are a few things that you can tweak to make sure that the data gets imported correctly:</p>
+<ul>
+<li>Heading. Does the first row of the file contain raw data, or does it contain headings for each variable? The <code>booksales.csv</code> file has a header at the top, so I selected “yes”.</li>
+<li>Separator. What character is used to separate different entries? In most CSV files this will be a comma (it is “comma separated” after all). But you can change this if your file is different.</li>
+<li>Decimal. What character is used to specify the decimal point? In English speaking countries, this is almost always a period (i.e., <code>.</code>). That’s not universally true: many European countries use a comma. So you can change that if you need to.</li>
+<li>Quote. What character is used to denote a block of text? That’s usually going to be a double quote mark. It is for the <code>booksales.csv</code> file, so that’s what I selected.</li>
+</ul>
+<p>The nice thing about the RStudio window is that it shows you the raw data file at the top of the window, and it shows you a preview of the data at the bottom. If the data at the bottom doesn’t look right, try changing some of the settings on the left hand side. Once you’re happy, click “Import”. When you do, two commands appear in the R console:</p>
+<pre><code>booksales &lt;- read.csv("~/Rbook/data/booksales.csv")
+View(booksales)</code></pre>
+<p>The first of these commands is the one that loads the data. The second one will display a pretty table showing the data in RStudio.</p>
+</section>
+<section id="saving-a-workspace-file-using-save" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="saving-a-workspace-file-using-save"><span class="header-section-number">8.5</span> Saving a workspace file using <code>save</code></h2>
+<p>Not surprisingly, saving data is very similar to loading data. Although RStudio provides a simple way to save files (see below), it’s worth understanding the actual commands involved. There are two commands you can use to do this, <code>save()</code> and <code>save.image()</code>. If you’re happy to save <em>all</em> of the variables in your workspace into the data file, then you should use <code>save.image()</code>. And if you’re happy for R to save the file into the current working directory, all you have to do is this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>( <span class="at">file =</span> <span class="st">"myfile.Rdata"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since <code>file</code> is the first argument, you can shorten this to <code>save.image("myfile.Rdata")</code>; and if you want to save to a different directory, then (as always) you need to be more explicit about specifying the path to the file, just as we discussed in Section @ref(navigation). Suppose, however, I have several variables in my workspace, and I only want to save some of them. For instance, I might have this as my workspace:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   -- Name --   -- Class --   -- Size --</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   data         data.frame    3 x 2     </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   handy        character     1         </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   junk         numeric       1        </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I want to save <code>data</code> and <code>handy</code>, but not <code>junk</code>. But I don’t want to delete <code>junk</code> right now, because I want to use it for something else later on. This is where the <code>save()</code> function is useful, since it lets me indicate exactly which variables I want to save. Here is one way I can use the <code>save</code> function to solve my problem:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(data, handy, <span class="at">file =</span> <span class="st">"myfile.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Importantly, you <em>must</em> specify the name of the <code>file</code> argument. The reason is that if you don’t do so, R will think that <code>"myfile.Rdata"</code> is actually a <em>variable</em> that you want to save, and you’ll get an error message. Finally, I should mention a second way to specify which variables the <code>save()</code> function should save, which is to use the <code>list</code> argument. You do so like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>save.me <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data"</span>, <span class="st">"handy"</span>)   <span class="co"># the variables to be saved</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>( <span class="at">file =</span> <span class="st">"booksales2.Rdata"</span>, <span class="at">list =</span> save.me )   <span class="co"># the command to save them</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="save1" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="save1"><span class="header-section-number">8.6</span> Saving a workspace file using RStudio</h2>
+<p>RStudio allows you to save the workspace pretty easily. In the environment panel (Figures @ref(fig:workspace) and @ref(fig:workspace2)) you can see the “save” button. There’s no text, but it’s the same icon that gets used on every computer everywhere: it’s the one that looks like a floppy disk. You know, those things that haven’t been used in about 20 years. Alternatively, go to the “Session” menu and click on the “Save Workspace As…” option.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> This will bring up the standard “save” dialog box for your operating system (e.g., on a Mac it’ll look a little bit like the loading dialog box in Figure @ref(fig:fileopen)). Type in the name of the file that you want to save it to, and all the variables in your workspace will be saved to disk. You’ll see an R command like this one</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="st">"~/Desktop/Untitled.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Pretty straightforward, really.</p>
+</section>
+<section id="other-things-you-might-want-to-save" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="other-things-you-might-want-to-save"><span class="header-section-number">8.7</span> Other things you might want to save</h2>
+<p>Until now, we’ve talked mostly about loading and saving <em>data</em>. Other things you might want to save include:</p>
+<ul>
+<li><p><em>The output</em>. Sometimes you might also want to keep a copy of all your interactions with R, including everything that you typed in and everything that R did in response. There are some functions that you can use to get R to write its output to a file rather than to print onscreen (e.g., <code>sink()</code>), but to be honest, if you do want to save the R output, the easiest thing to do is to use the mouse to select the relevant text in the R console, go to the “Edit” menu in RStudio and select “Copy”. The output has now been copied to the clipboard. Now open up your favourite text editor or word processing software, and paste it. And you’re done. However, this will only save the contents of the console, not the plots you’ve drawn (assuming you’ve drawn some). We’ll talk about saving images later on.</p></li>
+<li><p><em>A script</em>. While it is possible – and sometimes handy – to save the R output as a method for keeping a copy of your statistical analyses, another option that people use a lot (especially when you move beyond simple “toy” analyses) is to write <em>scripts</em>. A script is a text file in which you write out all the commands that you want R to run. You can write your script using whatever software you like. In real world data analysis writing scripts is a key skill – and as you become familiar with R you’ll probably find that most of what you do involves scripting rather than typing commands at the R prompt. However, you won’t need to do much scripting initially, so we’ll leave that until Chapter @ref(scripting).</p></li>
+</ul>
+</section>
+<section id="summary" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.8</span> Summary</h2>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Notably those with .rda, .Rd, .Rhistory, .rdb and .rdx extensions<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>In a lot of books you’ll see the <code>read.table()</code> function used for this purpose instead of <code>read.csv()</code>. They’re more or less identical functions, with the same arguments and everything. They differ only in the default values.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Note that I didn’t to this in my earlier example when loading the .Rdata<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>A word of warning: what you <em>don’t</em> want to do is use the “File” menu. If you look in the “File” menu you will see “Save” and “Save As…” options, but they don’t save the workspace. Those options are used for dealing with <em>scripts</em>, and so they’ll produce <code>.R</code> files. We won’t get to those until Chapter @ref(scripting).<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data-objects.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Representing data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Learning Statistics with R was written by <a href="https://djnavarro.net">Danielle Navarro</a>.</div>   
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

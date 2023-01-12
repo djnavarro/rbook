@@ -1,5 +1,21 @@
-# Welcome {.unnumbered}
+# Welcome! {.unnumbered}
 
-This is the work-in-progress revision for "Learning Statistics with R"
+You've discovered the work-in-progress revision for "Learning Statistics with R". 
+
+I'm so sorry.
+
+Perhaps I should explain. Back in the grimdark pre-Snapchat era of humanity (i.e. early 2011), I started teaching an introductory statistics class for psychology students offered at the University of Adelaide, using the R statistical package as the primary tool. I wrote my own lecture notes for the class, which have now expanded to the point of effectively being a book. The book is freely available, and released under a creative commons licence (CC BY-SA 4.0). Somehow the book turned out to be rather popular and there are now several variations of the original LSR book:
+
+- My original book was written in LaTeX, which makes it a little inaccessible. [Emily Kothe](https://twitter.com/emilyandthelime) kindly created a [bookdown adaptation](./book/) of LSR, which I'm now reworking in quarto
+- [Matt Crump](https://www.crumplab.com/) has incorporated some LSR content in [Answering Questions with Data](https://crumplab.github.io/statistics/)
+- My own R programming notes [R for Psychological Science](https://psyr.djnavarro.net/) adapt some LSR content
+- [David Foxcroft](https://twitter.com/davidfoxcroft) has adapted LSR to create [Learning Statistics with Jamovi](https://sites.google.com/brookes.ac.uk/learning-stats-with-jamovi)
+- [Tom Faulkenberry](https://twitter.com/tomfaulkenberry) has adapted David Foxcroft's version to create [Learning Statistics with JASP](http://learnstatswithjasp.com/)
+- Jean-Marc Meunier has translated *Learning Statistics with Jamovi* into [French](https://jmeunierp8.github.io/ManuelJamovi/) 
+- [Ethan Weed](https://ethanweed.github.io/) has started work on a [Learning Statistics with Python](https://ethanweed.github.io/pythonbook/) adaptation (this is a work in progress!)
+- [Róbert Fodor](https://github.com/robertfodor/) is working on [Learning Statistics with Cogstat](https://learningstatisticswithcogstat.com/)
+
+I have suggested that someone write a *Learning Statistics with an Abacus* adaptation but so far there has been little interest. 
+
 
 ![](cover.png)

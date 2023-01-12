@@ -1,16 +1,38 @@
 project:
   type: book
+  output-dir: _book
 
 book:
   title: "Learning Statistics with R"
   author: "Danielle Navarro"
-  date: "2023-01-12"
+  site-url: https://learningstatisticswithr.com/
+  repo-url: https://github.com/djnavarro/rbook/
+
+  page-footer:
+    left: |
+      Learning Statistics with R was written by <a href="https://djnavarro.net">Danielle Navarro</a>.
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  
   chapters:
     - index.qmd
     - preface.qmd
     - introduction.qmd
-    - installation.qmd
-    - commands.qmd
+    
+    - part: Getting started
+      chapters:
+        - installation.qmd
+        - commands.qmd
+        - calculations.qmd
+        - variables.qmd
+        - file-system.qmd
+        - packages.qmd
+        
+    - part: Working with data 
+      chapters:
+        - data-objects.qmd
+        - reading-data.qmd
+        
     - references.qmd
 
 bibliography: references.bib
@@ -18,8 +40,10 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
+    author-meta: "Danielle Navarro"
+    include-in-header: "header.html"
   pdf:
     documentclass: scrreprt
-
+  
 editor: source
 

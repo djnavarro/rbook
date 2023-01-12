@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Learning Statistics with R - 2&nbsp; Getting started with R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./introduction.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started with R</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Learning Statistics with R</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why do we learn statistics?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./starting_r.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started with R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-gettingR" id="toc-sec-gettingR" class="nav-link active" data-scroll-target="#sec-gettingR"><span class="toc-section-number">2.1</span>  Installing R</a>
+  <ul class="collapse">
+  <li><a href="#installing-r-on-a-windows-computer" id="toc-installing-r-on-a-windows-computer" class="nav-link" data-scroll-target="#installing-r-on-a-windows-computer"><span class="toc-section-number">2.1.1</span>  Installing R on a Windows computer</a></li>
+  <li><a href="#installing-r-on-a-mac" id="toc-installing-r-on-a-mac" class="nav-link" data-scroll-target="#installing-r-on-a-mac"><span class="toc-section-number">2.1.2</span>  Installing R on a Mac</a></li>
+  <li><a href="#installing-r-on-a-linux-computer" id="toc-installing-r-on-a-linux-computer" class="nav-link" data-scroll-target="#installing-r-on-a-linux-computer"><span class="toc-section-number">2.1.3</span>  Installing R on a Linux computer</a></li>
+  <li><a href="#sec-installingrstudio" id="toc-sec-installingrstudio" class="nav-link" data-scroll-target="#sec-installingrstudio"><span class="toc-section-number">2.1.4</span>  Downloading and installing RStudio</a></li>
+  <li><a href="#startingR" id="toc-startingR" class="nav-link" data-scroll-target="#startingR"><span class="toc-section-number">2.1.5</span>  Starting up R</a></li>
+  </ul></li>
+  <li><a href="#firstcommand" id="toc-firstcommand" class="nav-link" data-scroll-target="#firstcommand"><span class="toc-section-number">2.2</span>  Typing commands at the R console</a>
+  <ul class="collapse">
+  <li><a href="#an-important-digression-about-formatting" id="toc-an-important-digression-about-formatting" class="nav-link" data-scroll-target="#an-important-digression-about-formatting"><span class="toc-section-number">2.2.1</span>  An important digression about formatting</a></li>
+  <li><a href="#be-very-careful-to-avoid-typos" id="toc-be-very-careful-to-avoid-typos" class="nav-link" data-scroll-target="#be-very-careful-to-avoid-typos"><span class="toc-section-number">2.2.2</span>  Be very careful to avoid typos</a></li>
+  <li><a href="#r-is-a-bit-flexible-with-spacing" id="toc-r-is-a-bit-flexible-with-spacing" class="nav-link" data-scroll-target="#r-is-a-bit-flexible-with-spacing"><span class="toc-section-number">2.2.3</span>  R is (a bit) flexible with spacing</a></li>
+  <li><a href="#r-can-sometimes-tell-that-youre-not-finished-yet-but-not-often" id="toc-r-can-sometimes-tell-that-youre-not-finished-yet-but-not-often" class="nav-link" data-scroll-target="#r-can-sometimes-tell-that-youre-not-finished-yet-but-not-often"><span class="toc-section-number">2.2.4</span>  R can sometimes tell that you’re not finished yet (but not often)</a></li>
+  </ul></li>
+  <li><a href="#arithmetic" id="toc-arithmetic" class="nav-link" data-scroll-target="#arithmetic"><span class="toc-section-number">2.3</span>  Doing simple calculations with R</a>
+  <ul class="collapse">
+  <li><a href="#adding-subtracting-multiplying-and-dividing" id="toc-adding-subtracting-multiplying-and-dividing" class="nav-link" data-scroll-target="#adding-subtracting-multiplying-and-dividing"><span class="toc-section-number">2.3.1</span>  Adding, subtracting, multiplying and dividing</a></li>
+  <li><a href="#taking-powers" id="toc-taking-powers" class="nav-link" data-scroll-target="#taking-powers"><span class="toc-section-number">2.3.2</span>  Taking powers</a></li>
+  <li><a href="#bedmas" id="toc-bedmas" class="nav-link" data-scroll-target="#bedmas"><span class="toc-section-number">2.3.3</span>  Doing calculations in the right order</a></li>
+  </ul></li>
+  <li><a href="#assign" id="toc-assign" class="nav-link" data-scroll-target="#assign"><span class="toc-section-number">2.4</span>  Storing a number as a variable</a>
+  <ul class="collapse">
+  <li><a href="#variable-assignment-using---and--" id="toc-variable-assignment-using---and--" class="nav-link" data-scroll-target="#variable-assignment-using---and--"><span class="toc-section-number">2.4.1</span>  Variable assignment using <code>&lt;-</code> and <code>-&gt;</code></a></li>
+  <li><a href="#doing-calculations-using-variables" id="toc-doing-calculations-using-variables" class="nav-link" data-scroll-target="#doing-calculations-using-variables"><span class="toc-section-number">2.4.2</span>  Doing calculations using variables</a></li>
+  <li><a href="#rules-and-conventions-for-naming-variables" id="toc-rules-and-conventions-for-naming-variables" class="nav-link" data-scroll-target="#rules-and-conventions-for-naming-variables"><span class="toc-section-number">2.4.3</span>  Rules and conventions for naming variables</a></li>
+  </ul></li>
+  <li><a href="#usingfunctions" id="toc-usingfunctions" class="nav-link" data-scroll-target="#usingfunctions"><span class="toc-section-number">2.5</span>  Using functions to do calculations</a>
+  <ul class="collapse">
+  <li><a href="#functionarguments" id="toc-functionarguments" class="nav-link" data-scroll-target="#functionarguments"><span class="toc-section-number">2.5.1</span>  Function arguments, their names and their defaults</a></li>
+  </ul></li>
+  <li><a href="#RStudio1" id="toc-RStudio1" class="nav-link" data-scroll-target="#RStudio1"><span class="toc-section-number">2.6</span>  Letting RStudio help you with your commands</a>
+  <ul class="collapse">
+  <li><a href="#autocomplete-using-tab" id="toc-autocomplete-using-tab" class="nav-link" data-scroll-target="#autocomplete-using-tab"><span class="toc-section-number">2.6.1</span>  Autocomplete using “tab”</a></li>
+  <li><a href="#browsing-your-command-history" id="toc-browsing-your-command-history" class="nav-link" data-scroll-target="#browsing-your-command-history"><span class="toc-section-number">2.6.2</span>  Browsing your command history</a></li>
+  </ul></li>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors"><span class="toc-section-number">2.7</span>  Storing many numbers as a vector</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-vector" id="toc-creating-a-vector" class="nav-link" data-scroll-target="#creating-a-vector"><span class="toc-section-number">2.7.1</span>  Creating a vector</a></li>
+  <li><a href="#a-handy-digression" id="toc-a-handy-digression" class="nav-link" data-scroll-target="#a-handy-digression"><span class="toc-section-number">2.7.2</span>  A handy digression</a></li>
+  <li><a href="#vectorsubset" id="toc-vectorsubset" class="nav-link" data-scroll-target="#vectorsubset"><span class="toc-section-number">2.7.3</span>  Getting information out of vectors</a></li>
+  <li><a href="#altering-the-elements-of-a-vector" id="toc-altering-the-elements-of-a-vector" class="nav-link" data-scroll-target="#altering-the-elements-of-a-vector"><span class="toc-section-number">2.7.4</span>  Altering the elements of a vector</a></li>
+  <li><a href="#veclength" id="toc-veclength" class="nav-link" data-scroll-target="#veclength"><span class="toc-section-number">2.7.5</span>  Useful things to know about vectors</a></li>
+  </ul></li>
+  <li><a href="#text" id="toc-text" class="nav-link" data-scroll-target="#text"><span class="toc-section-number">2.8</span>  Storing text data</a>
+  <ul class="collapse">
+  <li><a href="#simpletext" id="toc-simpletext" class="nav-link" data-scroll-target="#simpletext"><span class="toc-section-number">2.8.1</span>  Working with text</a></li>
+  </ul></li>
+  <li><a href="#logicals" id="toc-logicals" class="nav-link" data-scroll-target="#logicals"><span class="toc-section-number">2.9</span>  Storing “true or false” data</a>
+  <ul class="collapse">
+  <li><a href="#assessing-mathematical-truths" id="toc-assessing-mathematical-truths" class="nav-link" data-scroll-target="#assessing-mathematical-truths"><span class="toc-section-number">2.9.1</span>  Assessing mathematical truths</a></li>
+  <li><a href="#logical-operations" id="toc-logical-operations" class="nav-link" data-scroll-target="#logical-operations"><span class="toc-section-number">2.9.2</span>  Logical operations</a></li>
+  <li><a href="#storing-and-using-logical-data" id="toc-storing-and-using-logical-data" class="nav-link" data-scroll-target="#storing-and-using-logical-data"><span class="toc-section-number">2.9.3</span>  Storing and using logical data</a></li>
+  <li><a href="#vectors-of-logicals" id="toc-vectors-of-logicals" class="nav-link" data-scroll-target="#vectors-of-logicals"><span class="toc-section-number">2.9.4</span>  Vectors of logicals</a></li>
+  <li><a href="#logictext" id="toc-logictext" class="nav-link" data-scroll-target="#logictext"><span class="toc-section-number">2.9.5</span>  Applying logical operation to text</a></li>
+  </ul></li>
+  <li><a href="#indexing" id="toc-indexing" class="nav-link" data-scroll-target="#indexing"><span class="toc-section-number">2.10</span>  Indexing vectors</a>
+  <ul class="collapse">
+  <li><a href="#extracting-multiple-elements" id="toc-extracting-multiple-elements" class="nav-link" data-scroll-target="#extracting-multiple-elements"><span class="toc-section-number">2.10.1</span>  Extracting multiple elements</a></li>
+  <li><a href="#logical-indexing" id="toc-logical-indexing" class="nav-link" data-scroll-target="#logical-indexing"><span class="toc-section-number">2.10.2</span>  Logical indexing</a></li>
+  </ul></li>
+  <li><a href="#quitting-r" id="toc-quitting-r" class="nav-link" data-scroll-target="#quitting-r"><span class="toc-section-number">2.11</span>  Quitting R</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">2.12</span>  Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="introR" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting started with R</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<blockquote class="blockquote">
+<p><em>Robots are nice to work with.</em></p>
+<p>–Roger Zelazny<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</blockquote>
+<p>In this chapter I’ll discuss how to get started in R. I’ll briefly talk about how to download and install R, but most of the chapter will be focused on getting you started typing R commands. Our goal in this chapter is not to learn any statistical concepts: we’re just trying to learn the basics of how R works and get comfortable interacting with the system. To do this, we’ll spend a bit of time using R as a simple calculator, since that’s the easiest thing to do with R. In doing so, you’ll get a bit of a feel for what it’s like to work in R. From there I’ll introduce some very basic programming ideas: in particular, I’ll talk about the idea of defining <em>variables</em> to store information, and a few things that you can do with these variables.</p>
+<p>However, before going into any of the specifics, it’s worth talking a little about why you might want to use R at all. Given that you’re reading this, you’ve probably got your own reasons. However, if those reasons are “because that’s what my stats class uses”, it might be worth explaining a little why your lecturer has chosen to use R for the class. Of course, I don’t really know why <em>other</em> people choose R, so I’m really talking about why I use it.</p>
+<ul>
+<li><p>It’s sort of obvious, but worth saying anyway: doing your statistics on a computer is faster, easier and more powerful than doing statistics by hand. Computers excel at mindless repetitive tasks, and a lot of statistical calculations are both mindless and repetitive. For most people, the only reason to ever do statistical calculations with pencil and paper is for learning purposes. In my class I do occasionally suggest doing some calculations that way, but the only real value to it is pedagogical. It does help you to get a “feel” for statistics to do some calculations yourself, so it’s worth doing it once. But only once!</p></li>
+<li><p>Doing statistics in a spreadsheet (e.g., Microsoft Excel) is generally a bad idea in the long run. Although many people are likely feel more familiar with them, spreadsheets are very limited in terms of what analyses they allow you do. If you get into the habit of trying to do your real life data analysis using spreadsheets, then you’ve dug yourself into a very deep hole.</p></li>
+<li><p>Avoiding proprietary software is a very good idea. There are a lot of commercial packages out there that you can buy, some of which I like and some of which I don’t. They’re usually very glossy in their appearance, and generally very powerful (much more powerful than spreadsheets). However, they’re also very expensive: usually, the company sells “student versions” (crippled versions of the real thing) very cheaply; they sell full powered “educational versions” at a price that makes me wince; and they sell commercial licences with a staggeringly high price tag. The business model here is to suck you in during your student days, and then leave you dependent on their tools when you go out into the real world. It’s hard to blame them for trying, but personally I’m not in favour of shelling out thousands of dollars if I can avoid it. And you can avoid it: if you make use of packages like R that are open source and free, you never get trapped having to pay exorbitant licensing fees.</p></li>
+<li><p>Something that you might not appreciate now, but will love later on if you do anything involving data analysis, is the fact that R is highly extensible. When you download and install R, you get all the basic “packages”, and those are very powerful on their own. However, because R is so open and so widely used, it’s become something of a standard tool in statistics, and so lots of people write their own packages that extend the system. And these are freely available too. One of the consequences of this, I’ve noticed, is that if you open up an advanced textbook rather than introductory textbooks, is that a <em>lot</em> of them use R. In other words, if you learn how to do your basic statistics in R, then you’re a lot closer to being able to use the state of the art methods than you would be if you’d started out with a “simpler” system: so if you want to become a genuine expert in psychological data analysis, learning R is a very good use of your time.</p></li>
+<li><p>Related to the previous point: R is a real programming language. As you get better at using R for data analysis, you’re also learning to program. To some people this might seem like a bad thing, but in truth, programming is a core research skill across a lot of the social and behavioural sciences. Think about how many surveys and experiments are done online, or presented on computers. Think about all those online social environments which you might be interested in studying; and maybe collecting data from in an automated fashion. Think about artificial intelligence systems, computer vision and speech recognition. If any of these are things that you think you might want to be involved in – as someone “doing research in psychology”, that is – you’ll need to know a bit of programming. And if you don’t already know how to program, then learning how to do statistics using R is a nice way to start.</p></li>
+</ul>
+<p>Those are the main reasons I use R. It’s not without its flaws: it’s not easy to learn, and it has a few very annoying quirks to it that we’re all pretty much stuck with, but on the whole I think the strengths outweigh the weakness.</p>
+<section id="sec-gettingR" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-gettingR"><span class="header-section-number">2.1</span> Installing R</h2>
+<p>Okay, enough with the sales pitch. Let’s get started. Just as with any piece of software, R needs to be installed on a “computer”, which is a magical box that does cool things and delivers free ponies. Or something along those lines: I may be confusing computers with the ipad marketing campaigns. Anyway, R is freely distributed online, and you can download it here:</p>
+<p><a href="https://cran.r-project.org/">https://cran.r-project.org</a></p>
+<p>At the top of the page – under the heading “Download and Install R” – you’ll see separate links for Windows users, Mac users, and Linux users. If you follow the relevant link, you’ll see that the online instructions are pretty self-explanatory, but I’ll walk you through the installation anyway. As of this writing, the current version of R is 4.2.2 but they usually issue updates every six months, so you’ll probably have a newer version.</p>
+<section id="installing-r-on-a-windows-computer" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="installing-r-on-a-windows-computer"><span class="header-section-number">2.1.1</span> Installing R on a Windows computer</h3>
+<p>The CRAN homepage changes from time to time, and it’s not particularly pretty. But it’s not difficult to find what you’re after. Assuming it doesn’t change, it’s a three-step process:</p>
+<ol type="1">
+<li>You’ll find a link at the top of the page with the text “Download R for Windows”. Click on that.</li>
+<li>This will take you to a page that offers you a few options. At the very top of the page you’ll see a link for folks installing R for the first time. Click on that.</li>
+<li>This will take you to a page that has a prominent link at the top called “Download R 4.2.2 for Windows”. Click on that and your browser should start downloading a file called <code>R-4.2.2-win.exe</code>.</li>
+</ol>
+<p>The file may take some time depending on how fast your internet connection is. Once you’ve downloaded the file, double click to install it. As with any software you download online, Windows will ask you some questions about whether you trust the file and so on. After you click through those, it’ll ask you where you want to install it, and what components you want to install. The default values should be fine for most people, so again, just click through. Once all that is done, you should have R installed on your system. You can access it from the Start menu, or from the desktop if you asked it to add a shortcut there. You can now open up R in the usual way if you want to, but what I’m going to suggest is that instead of doing that you should now install RStudio (<a href="#sec-installingrstudio"><span>Section&nbsp;2.1.4</span></a>).</p>
+</section>
+<section id="installing-r-on-a-mac" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="installing-r-on-a-mac"><span class="header-section-number">2.1.2</span> Installing R on a Mac</h3>
+<p>When you click on the Mac OS link, you should find yourself on a page with the title “R for Mac OS”. Here you’ll see several different options. The exact option that you want depends on what kind of Mac you have, and what version of the operating system you’re running. Most likely, however, what you’ll want is one of the first two options:</p>
+<ul>
+<li>If you’re using an M1 Mac or higher, select the <code>R-4.2.2-arm64.pkg</code> option</li>
+<li>If you’re using an Intel Mac, select the <code>R-4.2.2.pkg</code> option.</li>
+</ul>
+<p>Either way, your browser will start downloading the package file. Once it’s completed, all you need to do is open it by double clicking on the package file. The installation should go smoothly from there: just follow all the instructions just like you usually do when you install something.</p>
+<p>Once it’s finished, you’ll find a file called <code>R.app</code> in the Applications folder. You can now open up R in the usual way<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> if you want to, but what I’m going to suggest is that instead of doing that you should now install RStudio (<a href="#sec-installingrstudio"><span>Section&nbsp;2.1.4</span></a>).</p>
+</section>
+<section id="installing-r-on-a-linux-computer" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="installing-r-on-a-linux-computer"><span class="header-section-number">2.1.3</span> Installing R on a Linux computer</h3>
+<p>If you’re successfully managing to run a Linux box, regardless of what distribution, then you should find the instructions on the website easy enough. You can compile R from source yourself if you want, or install it through your package management system, which will probably have R in it. Alternatively, the CRAN site has precompiled binaries for Debian, Red Hat, Suse and Ubuntu and has separate instructions for each. Once you’ve got R installed, you can run it from the command line just by typing <code>R</code>. However, if you’re feeling envious of Windows and Mac users for their fancy GUIs, you can download RStudio too (<a href="#sec-installingrstudio"><span>Section&nbsp;2.1.4</span></a>).</p>
+</section>
+<section id="sec-installingrstudio" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="sec-installingrstudio"><span class="header-section-number">2.1.4</span> Downloading and installing RStudio</h3>
+<p>Okay, so regardless of what operating system you’re using, the last thing that I told you to do is to download RStudio. To understand why I’ve suggested this, you need to understand a little bit more about R itself. The term R doesn’t really refer to a specific application on your computer. Rather, it refers to the underlying statistical language. You can use this language through lots of different applications. When you install R initially, it comes with one application that lets you do this: it’s the R.exe application on a Windows machine, and the R.app application on a Mac. But that’s not the only way to do it. There are lots of different applications that you can use that will let you interact with R. One of those is called RStudio, and it’s the one I’m going to suggest that you use. RStudio provides a clean, professional interface to R that I find much nicer to work with than either the Windows or Mac defaults. Like R itself, RStudio is free software: you can find all the details on their webpage. In the meantime, you can download it here:</p>
+<p><a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a></p>
+<p>This link should take you to a page with several possible downloads: there’s a different one for each operating system. Click on the appropriate link, and the RStudio installer file will start downloading.</p>
+<p>Once it’s finished downloading, open the installer file in the usual way to install RStudio. After it’s finished installing, you can start R by opening RStudio. You don’t need to open R.app or R.exe in order to access R. RStudio will take care of that for you. To illustrate what RStudio looks like, the figure below shows a screenshot of an R session in progress. In this screenshot it happens to be running on linux, but it looks almost identical no matter what operating system you have.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rstudio.png" class="img-fluid figure-img" width="1239"></p>
+<p></p><figcaption class="figure-caption">An R session in progress running inside RStudio.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="startingR" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="startingR"><span class="header-section-number">2.1.5</span> Starting up R</h3>
+<p>One way or another, regardless of what operating system you’re using and regardless of whether you’re using RStudio, or the default GUI, or even the command line, it’s time to open R and get started. When you do that, the first thing you’ll see (assuming that you’re looking at the <strong><em>R console</em></strong>, that is) is a whole lot of text that doesn’t make much sense. It should look something like this:</p>
+<pre><code>R version 4.2.2 Patched (2022-11-10 r83330) -- "Innocent and Trusting"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+&gt; </code></pre>
+<p>Most of this text is pretty uninteresting, and when doing real data analysis you’ll never really pay much attention to it. The important part of it is this…</p>
+<pre><code>&gt;</code></pre>
+<p>… which has a flashing cursor next to it. That’s the <strong><em>command prompt</em></strong>. When you see this, it means that R is waiting patiently for you to do something!</p>
+</section>
+</section>
+<section id="firstcommand" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="firstcommand"><span class="header-section-number">2.2</span> Typing commands at the R console</h2>
+<p>One of the easiest things you can do with R is use it as a simple calculator, so it’s a good place to start. For instance, try typing <code>10 + 20</code>, and hitting enter.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> When you do this, you’ve entered a <strong><em>command</em></strong>, and R will “execute” that command. What you see on screen now will be this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">+</span> <span class="dv">20</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Not a lot of surprises in this extract. But there’s a few things worth talking about, even with such a simple example. Firstly, it’s important that you understand how to read the extract. In this example, what <em>I</em> typed was the <code>10 + 20</code> part. I didn’t type the <code>&gt;</code> symbol: that’s just the R command prompt and isn’t part of the actual command. And neither did I type the <code>[1] 30</code> part. That’s what R printed out in response to my command.</p>
+<p>Secondly, it’s important to understand how the output is formatted. Obviously, the correct answer to the sum <code>10 + 20</code> is <code>30</code>, and not surprisingly R has printed that out as part of its response. But it’s also printed out this <code>[1]</code> part, which probably doesn’t make a lot of sense to you right now. You’re going to see that a lot. I’ll talk about what this means in a bit more detail later on, but for now you can think of <code>[1] 30</code> as if R were saying “the answer to the 1st question you asked is 30”. That’s not quite the truth, but it’s close enough for now. And in any case it’s not really very interesting at the moment: we only asked R to calculate one thing, so obviously there’s only one answer printed on the screen. Later on this will change, and the <code>[1]</code> part will start to make a bit more sense. For now, I just don’t want you to get confused or concerned by it.</p>
+<section id="an-important-digression-about-formatting" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="an-important-digression-about-formatting"><span class="header-section-number">2.2.1</span> An important digression about formatting</h3>
+<p>Now that I’ve taught you these rules I’m going to change them pretty much immediately. That is because I want you to be able to copy code from the book directly into R if if you want to test things or conduct your own analyses. However, if you copy this kind of code (that shows the command prompt and the results) directly into R you will get an error</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">+</span> <span class="dv">20</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:1:1: unexpected '&gt;'
+1: &gt;
+    ^</code></pre>
+</div>
+</div>
+<p>So instead, I’m going to provide code in a slightly different format so that it looks like this…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+</div>
+<p>There are two main differences.</p>
+<ul>
+<li>In your console, you type after the &gt;, but from now I I won’t show the command prompt in the book.<br>
+</li>
+<li>In the book, output is commented out with ##, in your console it appears directly after your code.</li>
+</ul>
+<p>These two differences mean that if you’re working with an electronic version of the book, you can easily copy code out of the book and into the console.</p>
+<p>So for example if you copied the two lines of code from the book you’d get this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="be-very-careful-to-avoid-typos" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="be-very-careful-to-avoid-typos"><span class="header-section-number">2.2.2</span> Be very careful to avoid typos</h3>
+<p>Before we go on to talk about other types of calculations that we can do with R, there’s a few other things I want to point out. The first thing is that, while R is good software, it’s still software. It’s pretty stupid, and because it’s stupid it can’t handle typos. It takes it on faith that you meant to type <em>exactly</em> what you did type. For example, suppose that you forgot to hit the shift key when trying to type <code>+</code>, and as a result your command ended up being <code>10 = 20</code> rather than <code>10 + 20</code>. Here’s what happens:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="ot">=</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in 10 = 20: invalid (do_set) left-hand side to assignment</code></pre>
+</div>
+</div>
+<p>What’s happened here is that R has attempted to interpret <code>10 = 20</code> as a command, and spits out an error message because the command doesn’t make any sense to it. When a <em>human</em> looks at this, and then looks down at his or her keyboard and sees that <code>+</code> and <code>=</code> are on the same key, it’s pretty obvious that the command was a typo. But R doesn’t know this, so it gets upset. And, if you look at it from its perspective, this makes sense. All that R “knows” is that <code>10</code> is a legitimate number, <code>20</code> is a legitimate number, and <code>=</code> is a legitimate part of the language too. In other words, from its perspective this really does look like the user meant to type <code>10 = 20</code>, since all the individual parts of that statement are legitimate and it’s too stupid to realise that this is probably a typo. Therefore, R takes it on faith that this is exactly what you meant… it only “discovers” that the command is nonsense when it tries to follow your instructions, typo and all. And then it whinges, and spits out an error.</p>
+<p>Even more subtle is the fact that some typos won’t produce errors at all, because they happen to correspond to “well-formed” R commands. For instance, suppose that not only did I forget to hit the shift key when trying to type <code>10 + 20</code>, I also managed to press the key next to one I meant do. The resulting typo would produce the command <code>10 - 20</code>. Clearly, R has no way of knowing that you meant to <em>add</em> 20 to 10, not <em>subtract</em> 20 from 10, so what happens this time is this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -10</code></pre>
+</div>
+</div>
+<p>In this case, R produces the right answer, but to the the wrong question.</p>
+<p>To some extent, I’m stating the obvious here, but it’s important. The people who wrote R are smart. You, the user, are smart. But R itself is dumb. And because it’s dumb, it has to be mindlessly obedient. It does <em>exactly</em> what you ask it to do. There is no equivalent to “autocorrect” in R, and for good reason. When doing advanced stuff – and even the simplest of statistics is pretty advanced in a lot of ways – it’s dangerous to let a mindless automaton like R try to overrule the human user. But because of this, it’s your responsibility to be careful. Always make sure you type <em>exactly what you mean</em>. When dealing with computers, it’s not enough to type “approximately” the right thing. In general, you absolutely <em>must</em> be precise in what you say to R … like all machines it is too stupid to be anything other than absurdly literal in its interpretation.</p>
+</section>
+<section id="r-is-a-bit-flexible-with-spacing" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="r-is-a-bit-flexible-with-spacing"><span class="header-section-number">2.2.3</span> R is (a bit) flexible with spacing</h3>
+<p>Of course, now that I’ve been so uptight about the importance of always being precise, I should point out that there are some exceptions. Or, more accurately, there are some situations in which R does show a bit more flexibility than my previous description suggests. The first thing R is smart enough to do is ignore redundant spacing. What I mean by this is that, when I typed <code>10 + 20</code> before, I could equally have done this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span>    <span class="sc">+</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+</div>
+<p>or this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">+</span><span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+</div>
+<p>and I would get exactly the same answer. However, that doesn’t mean that you can insert spaces in any old place. When we looked at the startup documentation in Section @ref(startingR) it suggested that you could type <code>citation()</code> to get some information about how to cite R. If I do so…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+To cite R in publications use:
+
+  R Core Team (2022). R: A language and environment for statistical
+  computing. R Foundation for Statistical Computing, Vienna, Austria.
+  URL https://www.R-project.org/.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2022},
+    url = {https://www.R-project.org/},
+  }
+
+We have invested a lot of time and effort in creating R, please cite it
+when using it for data analysis. See also 'citation("pkgname")' for
+citing R packages.</code></pre>
+</div>
+</div>
+<p>… it tells me to cite the R manual <span class="citation" data-cites="R2013">(<a href="references.html#ref-R2013" role="doc-biblioref">R Core Team 2013</a>)</span>. Let’s see what happens when I try changing the spacing. If I insert spaces in between the word and the parentheses, or inside the parentheses themselves, then all is well. That is, either of these two commands</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>will produce exactly the same response. However, what I can’t do is insert spaces in the middle of the word. If I try to do this, R gets upset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>citat <span class="fu">ion</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:1:7: unexpected symbol
+1: citat ion
+          ^</code></pre>
+</div>
+</div>
+<p>Throughout this book I’ll vary the way I use spacing a little bit, just to give you a feel for the different ways in which spacing can be used. I’ll try not to do it too much though, since it’s generally considered to be good practice to be consistent in how you format your commands.</p>
+</section>
+<section id="r-can-sometimes-tell-that-youre-not-finished-yet-but-not-often" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="r-can-sometimes-tell-that-youre-not-finished-yet-but-not-often"><span class="header-section-number">2.2.4</span> R can sometimes tell that you’re not finished yet (but not often)</h3>
+<p>One more thing I should point out. If you hit enter in a situation where it’s “obvious” to R that you haven’t actually finished typing the command, R is just smart enough to keep waiting. For example, if you type <code>10 +</code> and then press enter, even R is smart enough to realise that you probably wanted to type in another number. So here’s what happens (for illustrative purposes I’m breaking my own code formatting rules in this section):</p>
+<pre><code>&gt; 10+
++ </code></pre>
+<p>and there’s a blinking cursor next to the plus sign. What this means is that R is still waiting for you to finish. It “thinks” you’re still typing your command, so it hasn’t tried to execute it yet. In other words, this plus sign is actually another command prompt. It’s different from the usual one (i.e., the <code>&gt;</code> symbol) to remind you that R is going to “add” whatever you type now to what you typed last time. For example, if I then go on to type <code>3</code> and hit enter, what I get is this:</p>
+<pre><code>&gt; 10 +
++ 20
+[1] 30</code></pre>
+<p>And as far as R is concerned, this is <em>exactly</em> the same as if you had typed <code>10 + 20</code>. Similarly, consider the <code>citation()</code> command that we talked about in the previous section. Suppose you hit enter after typing <code>citation(</code>. Once again, R is smart enough to realise that there must be more coming – since you need to add the <code>)</code> character – so it waits. I can even hit enter several times and it will keep waiting:</p>
+<pre><code>&gt; citation(
++ 
++ 
++ )</code></pre>
+<p>I’ll make use of this a lot in this book. A lot of the commands that we’ll have to type are pretty long, and they’re visually a bit easier to read if I break it up over several lines. If you start doing this yourself, you’ll eventually get yourself in trouble (it happens to us all). Maybe you start typing a command, and then you realise you’ve screwed up. For example,</p>
+<pre><code>&gt; citblation( 
++ 
++ </code></pre>
+<p>You’d probably prefer R not to try running this command, right? If you want to get out of this situation, just hit the ‘escape’ key.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> R will return you to the normal command prompt (i.e.&nbsp;<code>&gt;</code>) <em>without</em> attempting to execute the botched command.</p>
+<p>That being said, it’s not often the case that R is smart enough to tell that there’s more coming. For instance, in the same way that I can’t add a space in the middle of a word, I can’t hit enter in the middle of a word either. If I hit enter after typing <code>citat</code> I get an error, because R thinks I’m interested in an “object” called <code>citat</code> and can’t find it:</p>
+<pre><code>&gt; citat
+Error: object 'citat' not found</code></pre>
+<p>What about if I typed <code>citation</code> and hit enter? In this case we get something very odd, something that we definitely <em>don’t</em> want, at least at this stage. Here’s what happens:</p>
+<pre><code>citation
+## function (package = "base", lib.loc = NULL, auto = NULL) 
+## {
+##     dir &lt;- system.file(package = package, lib.loc = lib.loc)
+##     if (dir == "") 
+##         stop(gettextf("package '%s' not found", package), domain = NA)
+
+BLAH BLAH BLAH</code></pre>
+<p>where the <code>BLAH BLAH BLAH</code> goes on for rather a long time, and you don’t know enough R yet to understand what all this gibberish actually means (of course, it doesn’t actually say BLAH BLAH BLAH - it says some other things we don’t understand or need to know that I’ve edited for length) This incomprehensible output can be quite intimidating to novice users, and unfortunately it’s very easy to forget to type the parentheses; so almost certainly you’ll do this by accident. Do not panic when this happens. Simply ignore the gibberish. As you become more experienced this gibberish will start to make sense, and you’ll find it quite handy to print this stuff out.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> But for now just try to remember to add the parentheses when typing your commands.</p>
+</section>
+</section>
+<section id="arithmetic" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="arithmetic"><span class="header-section-number">2.3</span> Doing simple calculations with R</h2>
+<p>Okay, now that we’ve discussed some of the tedious details associated with typing R commands, let’s get back to learning how to use the most powerful piece of statistical software in the world as a $2 calculator. So far, all we know how to do is addition. Clearly, a calculator that only did addition would be a bit stupid, so I should tell you about how to perform other simple calculations using R. But first, some more terminology. Addition is an example of an “operation” that you can perform (specifically, an arithmetic operation), and the <strong><em>operator</em></strong> that performs it is <code>+</code>. To people with a programming or mathematics background, this terminology probably feels pretty natural, but to other people it might feel like I’m trying to make something very simple (addition) sound more complicated than it is (by calling it an arithmetic operation). To some extent, that’s true: if addition was the only operation that we were interested in, it’d be a bit silly to introduce all this extra terminology. However, as we go along, we’ll start using more and more different kinds of operations, so it’s probably a good idea to get the language straight now, while we’re still talking about very familiar concepts like addition!</p>
+<section id="adding-subtracting-multiplying-and-dividing" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="adding-subtracting-multiplying-and-dividing"><span class="header-section-number">2.3.1</span> Adding, subtracting, multiplying and dividing</h3>
+<p>So, now that we have the terminology, let’s learn how to perform some arithmetic operations in R. To that end, Table @ref(tab:arithmetic1) lists the operators that correspond to the basic arithmetic we learned in primary school: addition, subtraction, multiplication and division.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it’s important to be familiar with them at the outset.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operation</th>
+<th style="text-align: center;">operator</th>
+<th style="text-align: center;">example input</th>
+<th style="text-align: center;">example output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">addition</td>
+<td style="text-align: center;"><code>+</code></td>
+<td style="text-align: center;">10 + 2</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">subtraction</td>
+<td style="text-align: center;"><code>-</code></td>
+<td style="text-align: center;">9 - 3</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">multiplication</td>
+<td style="text-align: center;"><code>*</code></td>
+<td style="text-align: center;">5 * 5</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">division</td>
+<td style="text-align: center;"><code>/</code></td>
+<td style="text-align: center;">10 / 3</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">power</td>
+<td style="text-align: center;"><code>^</code></td>
+<td style="text-align: center;">5 ^ 2</td>
+<td style="text-align: center;">25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>As you can see, R uses fairly standard symbols to denote each of the different operations you might want to perform: addition is done using the <code>+</code> operator, subtraction is performed by the <code>-</code> operator, and so on. So if I wanted to find out what 57 times 61 is (and who wouldn’t?), I can use R instead of a calculator, like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dv">57</span> <span class="sc">*</span> <span class="dv">61</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3477</code></pre>
+</div>
+</div>
+<p>So that’s handy.</p>
+</section>
+<section id="taking-powers" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="taking-powers"><span class="header-section-number">2.3.2</span> Taking powers</h3>
+<p>The first four operations listed in Table @ref(tab:arithmetic1) are things we all learned in primary school, but they aren’t the only arithmetic operations built into R. There are three other arithmetic operations that I should probably mention: taking powers, doing integer division, and calculating a modulus. Of the three, the only one that is of any real importance for the purposes of this book is taking powers, so I’ll discuss that one here: the other two are discussed in Chapter @ref(datahandling).</p>
+<p>For those of you who can still remember your high school maths, this should be familiar. But for some people high school maths was a long time ago, and others of us didn’t listen very hard in high school. It’s not complicated. As I’m sure everyone will probably remember the moment they read this, the act of multiplying a number <span class="math inline">\(x\)</span> by itself <span class="math inline">\(n\)</span> times is called “raising <span class="math inline">\(x\)</span> to the <span class="math inline">\(n\)</span>-th power”. Mathematically, this is written as <span class="math inline">\(x^n\)</span>. Some values of <span class="math inline">\(n\)</span> have special names: in particular <span class="math inline">\(x^2\)</span> is called <span class="math inline">\(x\)</span>-squared, and <span class="math inline">\(x^3\)</span> is called <span class="math inline">\(x\)</span>-cubed. So, the 4th power of 5 is calculated like this: <span class="math display">\[
+5^4 = 5 \times 5 \times 5 \times 5
+\]</span></p>
+<p>One way that we could calculate <span class="math inline">\(5^4\)</span> in R would be to type in the complete multiplication as it is shown in the equation above. That is, we could do this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 625</code></pre>
+</div>
+</div>
+<p>but it does seem a bit tedious. It would be very annoying indeed if you wanted to calculate <span class="math inline">\(5^{15}\)</span>, since the command would end up being quite long. Therefore, to make our lives easier, we use the power operator instead. When we do that, our command to calculate <span class="math inline">\(5^4\)</span> goes like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">^</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 625</code></pre>
+</div>
+</div>
+<p>Much easier.</p>
+</section>
+<section id="bedmas" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="bedmas"><span class="header-section-number">2.3.3</span> Doing calculations in the right order</h3>
+<p>Okay. At this point, you know how to take one of the most powerful pieces of statistical software in the world, and use it as a $2 calculator. And as a bonus, you’ve learned a few very basic programming concepts. That’s not nothing (you could argue that you’ve just saved yourself $2) but on the other hand, it’s not very much either. In order to use R more effectively, we need to introduce more programming concepts.</p>
+<p>In most situations where you would want to use a calculator, you might want to do multiple calculations. R lets you do this, just by typing in longer commands. <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> In fact, we’ve already seen an example of this earlier, when I typed in <code>5 * 5 * 5 * 5</code>. However, let’s try a slightly different example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>Clearly, this isn’t a problem for R either. However, it’s worth stopping for a second, and thinking about what R just did. Clearly, since it gave us an answer of <code>9</code> it must have multiplied <code>2 * 4</code> (to get an interim answer of 8) and then added 1 to that. But, suppose it had decided to just go from left to right: if R had decided instead to add <code>1+2</code> (to get an interim answer of 3) and then multiplied by 4, it would have come up with an answer of <code>12</code>.</p>
+<p>To answer this, you need to know the <strong><em>order of operations</em></strong> that R uses. If you remember back to your high school maths classes, it’s actually the same order that you got taught when you were at school: the “<strong><em>BEDMAS</em></strong>” order.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> That is, first calculate things inside <strong>B</strong>rackets <code>()</code>, then calculate <strong>E</strong>xponents <code>^</code>, then <strong>D</strong>ivision <code>/</code> and <strong>M</strong>ultiplication <code>*</code>, then <strong>A</strong>ddition <code>+</code> and <strong>S</strong>ubtraction <code>-</code>. So, to continue the example above, if we want to force R to calculate the <code>1+2</code> part before the multiplication, all we would have to do is enclose it in brackets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">4</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+</div>
+<p>This is a fairly useful thing to be able to do. The only other thing I should point out about order of operations is what to expect when you have two operations that have the same priority: that is, how does R resolve ties? For instance, multiplication and division are actually the same priority, but what should we expect when we give R a problem like <code>4 / 2 * 3</code> to solve? If it evaluates the multiplication first and then the division, it would calculate a value of two-thirds. But if it evaluates the division first it calculates a value of 6. The answer, in this case, is that R goes from <em>left to right</em>, so in this case the division step would come first:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>All of the above being said, it’s helpful to remember that <em>brackets always come first</em>. So, if you’re ever unsure about what order R will do things in, an easy solution is to enclose the thing <em>you</em> want it to do first in brackets. There’s nothing stopping you from typing <code>(4 / 2) * 3</code>. By enclosing the division in brackets we make it clear which thing is supposed to happen first. In this instance you wouldn’t have needed to, since R would have done the division first anyway, but when you’re first starting out it’s better to make sure R does what you want!</p>
+</section>
+</section>
+<section id="assign" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="assign"><span class="header-section-number">2.4</span> Storing a number as a variable</h2>
+<p>One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in <strong><em>variables</em></strong>. Variables in R aren’t exactly the same thing as the variables we talked about in the last chapter on research methods, but they are similar. At a conceptual level you can think of a variable as <em>label</em> for a certain piece of information, or even several different pieces of information. When doing statistical analysis in R all of your data (the variables you measured in your study) will be stored as variables in R, but as well see later in the book you’ll find that you end up creating variables for other things too. However, before we delve into all the messy details of data sets and statistical analysis, let’s look at the very basics for how we create variables and work with them.</p>
+<section id="variable-assignment-using---and--" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="variable-assignment-using---and--"><span class="header-section-number">2.4.1</span> Variable assignment using <code>&lt;-</code> and <code>-&gt;</code></h3>
+<p>Since we’ve been working with numbers so far, let’s start by creating variables to store our numbers. And since most people like concrete examples, let’s invent one. Suppose I’m trying to calculate how much money I’m going to make from this book. There’s several different numbers I might want to store. Firstly, I need to figure out how many copies I’ll sell. This isn’t exactly <em>Harry Potter</em>, so let’s assume I’m only going to sell one copy per student in my class. That’s 350 sales, so let’s create a variable called <code>sales</code>. What I want to do is assign a <strong><em>value</em></strong> to my variable <code>sales</code>, and that value should be <code>350</code>. We do this by using the <strong><em>assignment operator</em></strong>, which is <code>&lt;-</code>. Here’s how we do it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="dv">350</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When you hit enter, R doesn’t print out any output.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> It just gives you another command prompt. However, behind the scenes R has created a variable called <code>sales</code> and given it a value of <code>350</code>. You can check that this has happened by asking R to print the variable on screen. And the simplest way to do <em>that</em> is to type the name of the variable and hit enter<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 350</code></pre>
+</div>
+</div>
+<p>So that’s nice to know. Anytime you can’t remember what R has got stored in a particular variable, you can just type the name of the variable and hit enter.</p>
+<p>Okay, so now we know how to assign variables. Actually, there’s a bit more you should know. Firstly, one of the curious features of R is that there are several different ways of making assignments. In addition to the <code>&lt;-</code> operator, we can also use <code>-&gt;</code> and <code>=</code>, and it’s pretty important to understand the differences between them.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> Let’s start by considering <code>-&gt;</code>, since that’s the easy one (we’ll discuss the use of <code>=</code> in Section @ref(functionarguments). As you might expect from just looking at the symbol, it’s almost identical to <code>&lt;-</code>. It’s just that the arrow (i.e., the assignment) goes from left to right. So if I wanted to define my <code>sales</code> variable using <code>-&gt;</code>, I would write it like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="dv">350</span> <span class="ot">-&gt;</span> sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This has the same effect: and it <em>still</em> means that I’m only going to sell <code>350</code> copies. Sigh. Apart from this superficial difference, <code>&lt;-</code> and <code>-&gt;</code> are identical. In fact, as far as R is concerned, they’re actually the same operator, just in a “left form” and a “right form”.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+</section>
+<section id="doing-calculations-using-variables" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="doing-calculations-using-variables"><span class="header-section-number">2.4.2</span> Doing calculations using variables</h3>
+<p>Okay, let’s get back to my original story. In my quest to become rich, I’ve written this textbook. To figure out how good a strategy is, I’ve started creating some variables in R. In addition to defining a <code>sales</code> variable that counts the number of copies I’m going to sell, I can also create a variable called <code>royalty</code>, indicating how much money I get per copy. Let’s say that my royalties are about $7 per book:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="dv">350</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>royalty <span class="ot">&lt;-</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The nice thing about variables (in fact, the whole point of having variables) is that we can do anything with a variable that we ought to be able to do with the information that it stores. That is, since R allows me to multiply <code>350</code> by <code>7</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="dv">350</span> <span class="sc">*</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2450</code></pre>
+</div>
+</div>
+<p>it also allows me to multiply <code>sales</code> by <code>royalty</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">*</span> royalty</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2450</code></pre>
+</div>
+</div>
+<p>As far as R is concerned, the <code>sales * royalty</code> command is the same as the <code>350 * 7</code> command. Not surprisingly, I can assign the output of this calculation to a new variable, which I’ll call <code>revenue</code>. And when we do this, the new variable <code>revenue</code> gets the value <code>2450</code>. So let’s do that, and then get R to print out the value of <code>revenue</code> so that we can verify that it’s done what we asked:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>revenue <span class="ot">&lt;-</span> sales <span class="sc">*</span> royalty</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>revenue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2450</code></pre>
+</div>
+</div>
+<p>That’s fairly straightforward. A slightly more subtle thing we can do is reassign the value of my variable, based on its current value. For instance, suppose that one of my students (no doubt under the influence of psychotropic drugs) loves the book so much that he or she donates me an extra $550. The simplest way to capture this is by a command like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>revenue <span class="ot">&lt;-</span> revenue <span class="sc">+</span> <span class="dv">550</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>revenue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3000</code></pre>
+</div>
+</div>
+<p>In this calculation, R has taken the old value of <code>revenue</code> (i.e., 2450) and added 550 to that value, producing a value of 3000. This new value is assigned to the <code>revenue</code> variable, overwriting its previous value. In any case, we now know that I’m expecting to make $3000 off this. Pretty sweet, I thinks to myself. Or at least, that’s what I thinks until I do a few more calculation and work out what the implied hourly wage I’m making off this looks like.</p>
+</section>
+<section id="rules-and-conventions-for-naming-variables" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="rules-and-conventions-for-naming-variables"><span class="header-section-number">2.4.3</span> Rules and conventions for naming variables</h3>
+<p>In the examples that we’ve seen so far, my variable names (<code>sales</code> and <code>revenue</code>) have just been English-language words written using lowercase letters. However, R allows a lot more flexibility when it comes to naming your variables, as the following list of rules<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> illustrates:</p>
+<ul>
+<li>Variable names can only use the upper case alphabetic characters <code>A</code>-<code>Z</code> as well as the lower case characters <code>a</code>-<code>z</code>. You can also include numeric characters <code>0</code>-<code>9</code> in the variable name, as well as the period <code>.</code> or underscore <code>_</code> character. In other words, you can use <code>SaL.e_s</code> as a variable name (though I can’t think why you would want to), but you can’t use <code>Sales?</code>.</li>
+<li>Variable names cannot include spaces: therefore <code>my sales</code> is not a valid name, but <code>my.sales</code> is.</li>
+<li>Variable names are case sensitive: that is, <code>Sales</code> and <code>sales</code> are <em>different</em> variable names.</li>
+<li>Variable names must start with a letter or a period. You can’t use something like <code>_sales</code> or <code>1sales</code> as a variable name. You can use <code>.sales</code> as a variable name if you want, but it’s not usually a good idea. By convention, variables starting with a <code>.</code> are used for special purposes, so you should avoid doing so.</li>
+<li>Variable names cannot be one of the reserved keywords. These are special names that R needs to keep “safe” from us mere users, so you can’t use them as the names of variables. The keywords are: <code>if</code>, <code>else</code>, <code>repeat</code>, <code>while</code>, <code>function</code>, <code>for</code>, <code>in</code>, <code>next</code>, <code>break</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>Inf</code>, <code>NaN</code>, <code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>, and finally, <code>NA_character_</code>. Don’t feel especially obliged to memorise these: if you make a mistake and try to use one of the keywords as a variable name, R will complain about it like the whiny little automaton it is.</li>
+</ul>
+<p>In addition to those rules that R enforces, there are some informal conventions that people tend to follow when naming variables. One of them you’ve already seen: i.e., don’t use variables that start with a period. But there are several others. You aren’t obliged to follow these conventions, and there are many situations in which it’s advisable to ignore them, but it’s generally a good idea to follow them when you can:</p>
+<ul>
+<li>Use informative variable names. As a general rule, using meaningful names like <code>sales</code> and <code>revenue</code> is preferred over arbitrary ones like <code>variable1</code> and <code>variable2</code>. Otherwise it’s very hard to remember what the contents of different variables are, and it becomes hard to understand what your commands actually do.</li>
+<li>Use short variable names. Typing is a pain and no-one likes doing it. So we much prefer to use a name like <code>sales</code> over a name like <code>sales.for.this.book.that.you.are.reading</code>. Obviously there’s a bit of a tension between using informative names (which tend to be long) and using short names (which tend to be meaningless), so use a bit of common sense when trading off these two conventions.</li>
+<li>Use one of the conventional naming styles for multi-word variable names. Suppose I want to name a variable that stores “my new salary”. Obviously I can’t include spaces in the variable name, so how should I do this? There are three different conventions that you sometimes see R users employing. Firstly, you can separate the words using periods, which would give you <code>my.new.salary</code> as the variable name. Alternatively, you could separate words using underscores, as in <code>my_new_salary</code>. Finally, you could use capital letters at the beginning of each word (except the first one), which gives you <code>myNewSalary</code> as the variable name. I don’t think there’s any strong reason to prefer one over the other,<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> but it’s important to be consistent.</li>
+</ul>
+</section>
+</section>
+<section id="usingfunctions" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="usingfunctions"><span class="header-section-number">2.5</span> Using functions to do calculations</h2>
+<p>The symbols <code>+</code>, <code>-</code>, <code>*</code> and so on are examples of operators. As we’ve seen, you can do quite a lot of calculations just by using these operators. However, in order to do more advanced calculations (and later on, to do actual statistics), you’re going to need to start using <strong><em>functions</em></strong>.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> I’ll talk in more detail about functions and how they work in Section @ref(functions), but for now let’s just dive in and use a few. To get started, suppose I wanted to take the square root of 225. The square root, in case your high school maths is a bit rusty, is just the opposite of squaring a number. So, for instance, since “5 squared is 25” I can say that “5 is the square root of 25”. The usual notation for this is</p>
+<p><span class="math display">\[
+\sqrt{25} = 5
+\]</span></p>
+<p>though sometimes you’ll also see it written like this <span class="math inline">\(25^{0.5} = 5.\)</span> This second way of writing it is kind of useful to “remind” you of the mathematical fact that “square root of <span class="math inline">\(x\)</span>” is actually the same as “raising <span class="math inline">\(x\)</span> to the power of 0.5”. Personally, I’ve never found this to be terribly meaningful psychologically, though I have to admit it’s quite convenient mathematically. Anyway, it’s not important. What is important is that you remember what a square root is, since we’re going to need it later on.</p>
+<p>To calculate the square root of 25, I can do it in my head pretty easily, since I memorised my multiplication tables when I was a kid. It gets harder when the numbers get bigger, and pretty much impossible if they’re not whole numbers. This is where something like R comes in very handy. Let’s say I wanted to calculate <span class="math inline">\(\sqrt{225}\)</span>, the square root of 225. There’s two ways I could do this using R. Firstly, since the square root of 255 is the same thing as raising 225 to the power of 0.5, I could use the power operator <code>^</code>, just like we did earlier:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="dv">225</span> <span class="sc">^</span> <span class="fl">0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<p>However, there’s a second way that we can do this, since R also provides a <strong><em>square root function</em></strong>, <code>sqrt()</code>. To calculate the square root of 255 using this function, what I do is insert the number <code>225</code> in the parentheses. That is, the command I type is this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( <span class="dv">225</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<p>and as you might expect from our previous discussion, the spaces in between the parentheses are purely cosmetic. I could have typed <code>sqrt(225)</code> or <code>sqrt( 225   )</code> and gotten the same result. When we use a function to do something, we generally refer to this as <strong><em>calling</em></strong> the function, and the values that we type into the function (there can be more than one) are referred to as the <strong><em>arguments</em></strong> of that function.</p>
+<p>Obviously, the <code>sqrt()</code> function doesn’t really give us any new functionality, since we already knew how to do square root calculations by using the power operator <code>^</code>, though I do think it looks nicer when we use <code>sqrt()</code>. However, there are lots of other functions in R: in fact, almost everything of interest that I’ll talk about in this book is an R function of some kind. For example, one function that we will need to use in this book is the <strong><em>absolute value function</em></strong>. Compared to the square root function, it’s extremely simple: it just converts negative numbers to positive numbers, and leaves positive numbers alone. Mathematically, the absolute value of <span class="math inline">\(x\)</span> is written <span class="math inline">\(|x|\)</span> or sometimes <span class="math inline">\(\mbox{abs}(x)\)</span>. Calculating absolute values in R is pretty easy, since R provides the <code>abs()</code> function that you can use for this purpose. When you feed it a positive number…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>( <span class="dv">21</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21</code></pre>
+</div>
+</div>
+<p>the absolute value function does nothing to it at all. But when you feed it a negative number, it spits out the positive version of the same number, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>( <span class="sc">-</span><span class="dv">13</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+</div>
+<p>In all honesty, there’s nothing that the absolute value function does that you couldn’t do just by looking at the number and erasing the minus sign if there is one. However, there’s a few places later in the book where we have to use absolute values, so I thought it might be a good idea to explain the meaning of the term early on.</p>
+<p>Before moving on, it’s worth noting that – in the same way that R allows us to put multiple operations together into a longer command, like <code>1 + 2*4</code> for instance – it also lets us put functions together and even combine functions with operators if we so desire. For example, the following is a perfectly legitimate command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">abs</span>(<span class="sc">-</span><span class="dv">8</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>When R executes this command, starts out by calculating the value of <code>abs(-8)</code>, which produces an intermediate value of <code>8</code>. Having done so, the command simplifies to <code>sqrt( 1 + 8 )</code>. To solve the square root<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> it first needs to add <code>1 + 8</code> to get <code>9</code>, at which point it evaluates <code>sqrt(9)</code>, and so it finally outputs a value of <code>3</code>.</p>
+<section id="functionarguments" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="functionarguments"><span class="header-section-number">2.5.1</span> Function arguments, their names and their defaults</h3>
+<p>There’s two more fairly important things that you need to understand about how functions work in R, and that’s the use of “named” arguments, and default values” for arguments. Not surprisingly, that’s not to say that this is the last we’ll hear about how functions work, but they are the last things we desperately need to discuss in order to get you started. To understand what these two concepts are all about, I’ll introduce another function. The <code>round()</code> function can be used to round some value to the nearest whole number. For example, I could type this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>( <span class="fl">3.1415</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>Pretty straightforward, really. However, suppose I only wanted to round it to two decimal places: that is, I want to get <code>3.14</code> as the output. The <code>round()</code> function supports this, by allowing you to input a second argument to the function that specifies the number of decimal places that you want to round the number to. In other words, I could do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>( <span class="fl">3.14165</span>, <span class="dv">2</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+</div>
+<p>What’s happening here is that I’ve specified <em>two</em> arguments: the first argument is the number that needs to be rounded (i.e., <code>3.1415</code>), the second argument is the number of decimal places that it should be rounded to (i.e., <code>2</code>), and the two arguments are separated by a comma. In this simple example, it’s quite easy to remember which one argument comes first and which one comes second, but for more complicated functions this is not easy. Fortunately, most R functions make use of <strong><em>argument names</em></strong>. For the <code>round()</code> function, for example the number that needs to be rounded is specified using the <code>x</code> argument, and the number of decimal points that you want it rounded to is specified using the <code>digits</code> argument. Because we have these names available to us, we can specify the arguments to the function by name. We do so like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>( <span class="at">x =</span> <span class="fl">3.1415</span>, <span class="at">digits =</span> <span class="dv">2</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+</div>
+<p>Notice that this is kind of similar in spirit to variable assignment (Section @ref(assign)), except that I used <code>=</code> here, rather than <code>&lt;-</code>. In both cases we’re specifying specific values to be associated with a label. However, there are some differences between what I was doing earlier on when creating variables, and what I’m doing here when specifying arguments, and so as a consequence it’s important that you use <code>=</code> in this context.</p>
+<p>As you can see, specifying the arguments by name involves a lot more typing, but it’s also a lot easier to read. Because of this, the commands in this book will usually specify arguments by name,<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> since that makes it clearer to you what I’m doing. However, one important thing to note is that when specifying the arguments using their names, it doesn’t matter what order you type them in. But if you don’t use the argument names, then you have to input the arguments in the correct order. In other words, these three commands all produce the same output…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>( <span class="fl">3.14165</span>, <span class="dv">2</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>( <span class="at">x =</span> <span class="fl">3.1415</span>, <span class="at">digits =</span> <span class="dv">2</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>( <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">x =</span> <span class="fl">3.1415</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+</div>
+<p>but this one does not…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>( <span class="dv">2</span>, <span class="fl">3.14165</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>How do you find out what the correct order is? There’s a few different ways, but the easiest one is to look at the help documentation for the function (see Section @ref(help). However, if you’re ever unsure, it’s probably best to actually type in the argument name.</p>
+<p>Okay, so that’s the first thing I said you’d need to know: argument names. The second thing you need to know about is default values. Notice that the first time I called the <code>round()</code> function I didn’t actually specify the <code>digits</code> argument at all, and yet R somehow knew that this meant it should round to the nearest whole number. How did that happen? The answer is that the <code>digits</code> argument has a <strong><em>default value</em></strong> of <code>0</code>, meaning that if you decide not to specify a value for <code>digits</code> then R will act as if you had typed <code>digits = 0</code>. This is quite handy: the vast majority of the time when you want to round a number you want to round it to the nearest whole number, and it would be pretty annoying to have to specify the <code>digits</code> argument every single time. On the other hand, sometimes you actually do want to round to something other than the nearest whole number, and it would be even more annoying if R didn’t allow this! Thus, by having <code>digits = 0</code> as the default value, we get the best of both worlds.</p>
+</section>
+</section>
+<section id="RStudio1" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="RStudio1"><span class="header-section-number">2.6</span> Letting RStudio help you with your commands</h2>
+<p>Time for a bit of a digression. At this stage you know how to type in basic commands, including how to use R functions. And it’s probably beginning to dawn on you that there are a <em>lot</em> of R functions, all of which have their own arguments. You’re probably also worried that you’re going to have to remember all of them! Thankfully, it’s not that bad. In fact, very few data analysts bother to try to remember all the commands. What they really do is use tricks to make their lives easier. The first (and arguably most important one) is to use the internet. If you don’t know how a particular R function works, Google it. Second, you can look up the R help documentation. I’ll talk more about these two tricks in Section @ref(help). But right now I want to call your attention to a couple of simple tricks that RStudio makes available to you.</p>
+<section id="autocomplete-using-tab" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="autocomplete-using-tab"><span class="header-section-number">2.6.1</span> Autocomplete using “tab”</h3>
+<p>The first thing I want to call your attention to is the <em>autocomplete</em> ability in RStudio.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></p>
+<p>Let’s stick to our example above and assume that what you want to do is to round a number. This time around, start typing the name of the function that you want, and then hit the “tab” key. RStudio will then display a little window like the one shown in Figure @ref(fig:RStudiotab). In this figure, I’ve typed the letters <code>ro</code> at the command line, and then hit tab. The window has two panels. On the left, there’s a list of variables and functions that start with the letters that I’ve typed shown in black text, and some grey text that tells you where that variable/function is stored. Ignore the grey text for now: it won’t make much sense to you until we’ve talked about packages in Section @ref(packageinstall). In Figure @ref(fig:RStudiotab) you can see that there’s quite a few things that start with the letters <code>ro</code>: there’s something called <code>rock</code>, something called <code>round</code>, something called <code>round.Date</code> and so on. The one we want is <code>round</code>, but if you’re typing this yourself you’ll notice that when you hit the tab key the window pops up with the top entry (i.e., <code>rock</code>) highlighted. You can use the up and down arrow keys to select the one that you want. Or, if none of the options look right to you, you can hit the escape key (“esc”) or the left arrow key to make the window go away.</p>
+<div class="cell">
+
+</div>
+<p>In our case, the thing we want is the <code>round</code> option, so we’ll select that. When you do this, you’ll see that the panel on the right changes. Previously, it had been telling us something about the <code>rock</code> data set (i.e., “Measurements on 48 rock samples…”) that is distributed as part of R. But when we select <code>round</code>, it displays information about the <code>round()</code> function, exactly as it is shown in Figure @ref(fig:RStudiotab). This display is really handy. The very first thing it says is <code>round(x, digits = 0)</code>: what this is telling you is that the <code>round()</code> function has two arguments. The first argument is called <code>x</code>, and it doesn’t have a default value. The second argument is <code>digits</code>, and it has a default value of 0. In a lot of situations, that’s all the information you need. But RStudio goes a bit further, and provides some additional information about the function underneath. Sometimes that additional information is very helpful, sometimes it’s not: RStudio pulls that text from the R help documentation, and my experience is that the helpfulness of that documentation varies wildly. Anyway, if you’ve decided that <code>round()</code> is the function that you want to use, you can hit the right arrow or the enter key, and RStudio will finish typing the rest of the function name for you.</p>
+<p>The RStudio autocomplete tool works slightly differently if you’ve already got the name of the function typed and you’re now trying to type the arguments. For instance, suppose I’ve typed <code>round(</code> into the console, and <em>then</em> I hit tab. RStudio is smart enough to recognise that I already know the name of the function that I want, because I’ve already typed it! Instead, it figures that what I’m interested in is the <em>arguments</em> to that function. So that’s what pops up in the little window. You can see this in Figure @ref(fig:RStudiotab2). Again, the window has two panels, and you can interact with this window in exactly the same way that you did with the window shown in Figure @ref(fig:RStudiotab). On the left hand panel, you can see a list of the argument names. On the right hand side, it displays some information about what the selected argument does.</p>
+<div class="cell">
+
+</div>
+</section>
+<section id="browsing-your-command-history" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="browsing-your-command-history"><span class="header-section-number">2.6.2</span> Browsing your command history</h3>
+<p>One thing that R does automatically is keep track of your “command history”. That is, it remembers all the commands that you’ve previously typed. You can access this history in a few different ways. The simplest way is to use the up and down arrow keys. If you hit the up key, the R console will show you the most recent command that you’ve typed. Hit it again, and it will show you the command before that. If you want the text on the screen to go away, hit escape<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> Using the up and down keys can be really handy if you’ve typed a long command that had one typo in it. Rather than having to type it all again from scratch, you can use the up key to bring up the command and fix it.</p>
+<p>The second way to get access to your command history is to look at the history panel in RStudio. On the upper right hand side of the RStudio window you’ll see a tab labelled “History”. Click on that, and you’ll see a list of all your recent commands displayed in that panel: it should look something like Figure @ref(fig:RStudiohistory). If you double click on one of the commands, it will be copied to the R console. (You can achieve the same result by selecting the command you want with the mouse and then clicking the “To Console” button).<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
+<div class="cell">
+
+</div>
+</section>
+</section>
+<section id="vectors" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="vectors"><span class="header-section-number">2.7</span> Storing many numbers as a vector</h2>
+<p>At this point we’ve covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see Section @ref(generics), so let’s return to our discussion of variables. When I introduced variables in Section @ref(assign) I showed you how we can use variables to store a single number. In this section, we’ll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a <strong><em>vector</em></strong>. So let’s create one.</p>
+<section id="creating-a-vector" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="creating-a-vector"><span class="header-section-number">2.7.1</span> Creating a vector</h3>
+<p>Let’s stick to my silly “get rich quick by textbook writing” example. Suppose the textbook company (if I actually had one, that is) sends me sales data on a monthly basis. Since my class start in late February, we might expect most of the sales to occur towards the start of the year. Let’s suppose that I have 100 sales in February, 200 sales in March and 50 sales in April, and no other sales for the rest of the year. What I would like to do is have a variable – let’s call it <code>sales.by.month</code> – that stores all this sales data. The first number stored should be <code>0</code> since I had no sales in January, the second should be <code>100</code>, and so on. The simplest way to do this in R is to use the <strong><em>combine</em></strong> function, <code>c()</code>. To do so, all we have to do is type all the numbers you want to store in a comma separated list, like this:<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>sales.by.month <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>sales.by.month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   0 100 200  50   0   0   0   0   0   0   0   0</code></pre>
+</div>
+</div>
+<p>To use the correct terminology here, we have a single variable here called <code>sales.by.month</code>: this variable is a vector that consists of 12 <strong><em>elements</em></strong>.</p>
+</section>
+<section id="a-handy-digression" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="a-handy-digression"><span class="header-section-number">2.7.2</span> A handy digression</h3>
+<p>Now that we’ve learned how to put information into a vector, the next thing to understand is how to pull that information back out again. However, before I do so it’s worth taking a slight detour. If you’ve been following along, typing all the commands into R yourself, it’s possible that the output that you saw when we printed out the <code>sales.by.month</code> vector was slightly different to what I showed above. This would have happened if the window (or the RStudio panel) that contains the R console is really, really narrow. If that were the case, you might have seen output that looks something like this:</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>sales.by.month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   0 100 200  50
+ [5]   0   0   0   0
+ [9]   0   0   0   0</code></pre>
+</div>
+</div>
+<p>Because there wasn’t much room on the screen, R has printed out the results over three lines. But that’s not the important thing to notice. The important point is that the first line has a <code>[1]</code> in front of it, whereas the second line starts with <code>[5]</code> and the third with <code>[9]</code>. It’s pretty clear what’s happening here. For the first row, R has printed out the 1st element through to the 4th element, so it starts that row with a <code>[1]</code>. For the second row, R has printed out the 5th element of the vector through to the 8th one, and so it begins that row with a <code>[5]</code> so that you can tell where it’s up to at a glance. It might seem a bit odd to you that R does this, but in some ways it’s a kindness, especially when dealing with larger data sets!</p>
+<div class="cell">
+
+</div>
+</section>
+<section id="vectorsubset" class="level3" data-number="2.7.3">
+<h3 data-number="2.7.3" class="anchored" data-anchor-id="vectorsubset"><span class="header-section-number">2.7.3</span> Getting information out of vectors</h3>
+<p>To get back to the main story, let’s consider the problem of how to get information out of a vector. At this point, you might have a sneaking suspicion that the answer has something to do with the <code>[1]</code> and <code>[9]</code> things that R has been printing out. And of course you are correct. Suppose I want to pull out the February sales data only. February is the second month of the year, so let’s try this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>sales.by.month[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+<p>Yep, that’s the February sales all right. But there’s a subtle detail to be aware of here: notice that R outputs <code>[1] 100</code>, <em>not</em> <code>[2] 100</code>. This is because R is being extremely literal. When we typed in <code>sales.by.month[2]</code>, we asked R to find exactly <em>one</em> thing, and that one thing happens to be the second element of our <code>sales.by.month</code> vector. So, when it outputs <code>[1] 100</code> what R is saying is that the first number <em>that we just asked for</em> is <code>100</code>. This behaviour makes more sense when you realise that we can use this trick to create new variables. For example, I could create a <code>february.sales</code> variable like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>february.sales <span class="ot">&lt;-</span> sales.by.month[<span class="dv">2</span>]</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>february.sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+<p>Obviously, the new variable <code>february.sales</code> should only have one element and so when I print it out this new variable, the R output begins with a <code>[1]</code> because <code>100</code> is the value of the first (and only) element of <code>february.sales</code>. The fact that this also happens to be the value of the second element of <code>sales.by.month</code> is irrelevant. We’ll pick this topic up again shortly (Section @ref(indexing)).</p>
+</section>
+<section id="altering-the-elements-of-a-vector" class="level3" data-number="2.7.4">
+<h3 data-number="2.7.4" class="anchored" data-anchor-id="altering-the-elements-of-a-vector"><span class="header-section-number">2.7.4</span> Altering the elements of a vector</h3>
+<p>Sometimes you’ll want to change the values stored in a vector. Imagine my surprise when the publisher rings me up to tell me that the sales data for May are wrong. There were actually an additional 25 books sold in May, but there was an error or something so they hadn’t told me about it. How can I fix my <code>sales.by.month</code> variable? One possibility would be to assign the whole vector again from the beginning, using <code>c()</code>. But that’s a lot of typing. Also, it’s a little wasteful: why should R have to redefine the sales figures for all 12 months, when only the 5th one is wrong? Fortunately, we can tell R to change only the 5th element, using this trick:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>sales.by.month[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>sales.by.month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   0 100 200  50  25   0   0   0   0   0   0   0</code></pre>
+</div>
+</div>
+<p>Another way to edit variables is to use the <code>edit()</code> or <code>fix()</code> functions. I won’t discuss them in detail right now, but you can check them out on your own.</p>
+</section>
+<section id="veclength" class="level3" data-number="2.7.5">
+<h3 data-number="2.7.5" class="anchored" data-anchor-id="veclength"><span class="header-section-number">2.7.5</span> Useful things to know about vectors</h3>
+<p>Before moving on, I want to mention a couple of other things about vectors. Firstly, you often find yourself wanting to know how many elements there are in a vector (usually because you’ve forgotten). You can use the <code>length()</code> function to do this. It’s quite straightforward:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>( <span class="at">x =</span> sales.by.month )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+</div>
+<p>Secondly, you often want to alter all of the elements of a vector at once. For instance, suppose I wanted to figure out how much money I made in each month. Since I’m earning an exciting $7 per book (no seriously, that’s actually pretty close to what authors get on the very expensive textbooks that you’re expected to purchase), what I want to do is multiply each element in the <code>sales.by.month</code> vector by <code>7</code>. R makes this pretty easy, as the following example shows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>sales.by.month <span class="sc">*</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]    0  700 1400  350  175    0    0    0    0    0    0    0</code></pre>
+</div>
+</div>
+<p>In other words, when you multiply a vector by a single number, all elements in the vector get multiplied. The same is true for addition, subtraction, division and taking powers. So that’s neat. On the other hand, suppose I wanted to know how much money I was making per day, rather than per month. Since not every month has the same number of days, I need to do something slightly different. Firstly, I’ll create two new vectors:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>days.per.month <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>)</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>profit <span class="ot">&lt;-</span> sales.by.month <span class="sc">*</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Obviously, the <code>profit</code> variable is the same one we created earlier, and the <code>days.per.month</code> variable is pretty straightforward. What I want to do is divide every element of <code>profit</code> by the <em>corresponding</em> element of <code>days.per.month</code>. Again, R makes this pretty easy:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>profit <span class="sc">/</span> days.per.month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0.000000 25.000000 45.161290 11.666667  5.645161  0.000000  0.000000
+ [8]  0.000000  0.000000  0.000000  0.000000  0.000000</code></pre>
+</div>
+</div>
+<p>I still don’t like all those zeros, but that’s not what matters here. Notice that the second element of the output is 25, because R has divided the second element of <code>profit</code> (i.e.&nbsp;700) by the second element of <code>days.per.month</code> (i.e.&nbsp;28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on. We’ll talk more about calculations involving vectors later on (and in particular a thing called the “recycling rule”; Section @ref(recycling)), but that’s enough detail for now.</p>
+</section>
+</section>
+<section id="text" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="text"><span class="header-section-number">2.8</span> Storing text data</h2>
+<p>A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To address this, we need to consider the situation where our variables store text. To create a variable that stores the word “hello”, we can type this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>greeting <span class="ot">&lt;-</span> <span class="st">"hello"</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>greeting</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello"</code></pre>
+</div>
+</div>
+<p>When interpreting this, it’s important to recognise that the quote marks here <em>aren’t</em> part of the string itself. They’re just something that we use to make sure that R knows to treat the characters that they enclose as a piece of text data, known as a <strong><em>character string</em></strong>. In other words, R treats <code>"hello"</code> as a string containing the word “hello”; but if I had typed <code>hello</code> instead, R would go looking for a variable by that name! You can also use <code>'hello'</code> to specify a character string.</p>
+<p>Okay, so that’s how we store the text. Next, it’s important to recognise that when we do this, R stores the entire word <code>"hello"</code> as a <em>single</em> element: our <code>greeting</code> variable is <em>not</em> a vector of five different letters. Rather, it has only the one element, and that element corresponds to the entire character string <code>"hello"</code>. To illustrate this, if I actually ask R to find the first element of <code>greeting</code>, it prints the whole string:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>greeting[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello"</code></pre>
+</div>
+</div>
+<p>Of course, there’s no reason why I can’t create a vector of character strings. For instance, if we were to continue with the example of my attempts to look at the monthly sales data for my book, one variable I might want would include the names of all 12 <code>months</code>.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> To do so, I could type in a command like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>months <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"January"</span>, <span class="st">"February"</span>, <span class="st">"March"</span>, <span class="st">"April"</span>, <span class="st">"May"</span>, <span class="st">"June"</span>,</span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"July"</span>, <span class="st">"August"</span>, <span class="st">"September"</span>, <span class="st">"October"</span>, <span class="st">"November"</span>, </span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">"December"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is a <strong><em>character vector</em></strong> containing 12 elements, each of which is the name of a month. So if I wanted R to tell me the name of the fourth month, all I would do is this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>months[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "April"</code></pre>
+</div>
+</div>
+<section id="simpletext" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="simpletext"><span class="header-section-number">2.8.1</span> Working with text</h3>
+<p>Working with text data is somewhat more complicated than working with numeric data, and I discuss some of the basic ideas in Section @ref(textprocessing), but for purposes of the current chapter we only need this bare bones sketch. The only other thing I want to do before moving on is show you an example of a function that can be applied to text data. So far, most of the functions that we have seen (i.e., <code>sqrt()</code>, <code>abs()</code> and <code>round()</code>) only make sense when applied to numeric data (e.g., you can’t calculate the square root of “hello”), and we’ve seen one function that can be applied to pretty much any variable or vector (i.e., <code>length()</code>). So it might be nice to see an example of a function that can be applied to text.</p>
+<p>The function I’m going to introduce you to is called <code>nchar()</code>, and what it does is count the number of individual characters that make up a string. Recall earlier that when we tried to calculate the <code>length()</code> of our <code>greeting</code> variable it returned a value of <code>1</code>: the <code>greeting</code> variable contains only the one string, which happens to be <code>"hello"</code>. But what if I want to know how many letters there are in the word? Sure, I could <em>count</em> them, but that’s boring, and more to the point it’s a terrible strategy if what I wanted to know was the number of letters in <em>War and Peace</em>. That’s where the <code>nchar()</code> function is helpful:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>( <span class="at">x =</span> greeting )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>That makes sense, since there are in fact 5 letters in the string <code>"hello"</code>. Better yet, you can apply <code>nchar()</code> to whole vectors. So, for instance, if I want R to tell me how many letters there are in the names of each of the 12 months, I can do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>( <span class="at">x =</span> months )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 7 8 5 5 3 4 4 6 9 7 8 8</code></pre>
+</div>
+</div>
+<p>So that’s nice to know. The <code>nchar()</code> function can do a bit more than this, and there’s a lot of other functions that you can do to extract more information from text or do all sorts of fancy things. However, the goal here is not to teach any of that! The goal right now is just to see an example of a function that actually does work when applied to text.</p>
+</section>
+</section>
+<section id="logicals" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="logicals"><span class="header-section-number">2.9</span> Storing “true or false” data</h2>
+<p>Time to move onto a third kind of data. A key concept in that a lot of R relies on is the idea of a <strong><em>logical value</em></strong>. A logical value is an assertion about whether something is true or false. This is implemented in R in a pretty straightforward way. There are two logical values, namely <code>TRUE</code> and <code>FALSE</code>. Despite the simplicity, a logical values are very useful things. Let’s see how they work.</p>
+<section id="assessing-mathematical-truths" class="level3" data-number="2.9.1">
+<h3 data-number="2.9.1" class="anchored" data-anchor-id="assessing-mathematical-truths"><span class="header-section-number">2.9.1</span> Assessing mathematical truths</h3>
+<p>In George Orwell’s classic book <em>1984</em>, one of the slogans used by the totalitarian Party was “two plus two equals five”, the idea being that the political domination of human freedom becomes complete when it is possible to subvert even the most basic of truths. It’s a terrifying thought, especially when the protagonist Winston Smith finally breaks down under torture and agrees to the proposition. “Man is infinitely malleable”, the book says. I’m pretty sure that this isn’t true of humans<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a> but it’s definitely not true of R. R is not infinitely malleable. It has rather firm opinions on the topic of what is and isn’t true, at least as regards basic mathematics. If I ask it to calculate <code>2 + 2</code>, it always gives the same answer, and it’s not bloody 5:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>Of course, so far R is just doing the calculations. I haven’t asked it to explicitly assert that <span class="math inline">\(2+2 = 4\)</span> is a true statement. If I want R to make an explicit judgement, I can use a command like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>What I’ve done here is use the <strong><em>equality operator</em></strong>, <code>==</code>, to force R to make a “true or false” judgement.<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a> Okay, let’s see what R thinks of the Party slogan:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Booyah! Freedom and ponies for all! Or something like that. Anyway, it’s worth having a look at what happens if I try to <em>force</em> R to believe that two plus two is five by making an assignment statement like <code>2 + 2 = 5</code> or <code>2 + 2 &lt;- 5</code>. When I do this, here’s what happens:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="ot">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in 2 + 2 = 5: target of assignment expands to non-language object</code></pre>
+</div>
+</div>
+<p>R doesn’t like this very much. It recognises that <code>2 + 2</code> is <em>not</em> a variable (that’s what the “non-language object” part is saying), and it won’t let you try to “reassign” it. While R is pretty flexible, and actually does let you do some quite remarkable things to redefine parts of R itself, there are just some basic, primitive truths that it refuses to give up. It won’t change the laws of addition, and it won’t change the definition of the number <code>2</code>.</p>
+<p>That’s probably for the best.</p>
+</section>
+<section id="logical-operations" class="level3" data-number="2.9.2">
+<h3 data-number="2.9.2" class="anchored" data-anchor-id="logical-operations"><span class="header-section-number">2.9.2</span> Logical operations</h3>
+<p>So now we’ve seen logical operations at work, but so far we’ve only seen the simplest possible example. You probably won’t be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span><span class="dv">4</span> <span class="sc">==</span> <span class="dv">5</span><span class="sc">*</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>or this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( <span class="dv">25</span> ) <span class="sc">==</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Not only that, but as Table @ref(tab:logicals) illustrates, there are several other logical operators that you can use, corresponding to some basic mathematical concepts.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Some logical operators. Technically I should be calling these “binary relational operators”, but quite frankly I don’t want to. It’s my book so no-one can make me.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operation</th>
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">example input</th>
+<th style="text-align: left;">answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">less than</td>
+<td style="text-align: left;">&lt;</td>
+<td style="text-align: left;">2 &lt; 3</td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">less than or equal to</td>
+<td style="text-align: left;">&lt;=</td>
+<td style="text-align: left;">2 &lt;= 2</td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">greater than</td>
+<td style="text-align: left;">&gt;</td>
+<td style="text-align: left;">2 &gt; 3</td>
+<td style="text-align: left;"><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">greater than or equal to</td>
+<td style="text-align: left;">&gt;=</td>
+<td style="text-align: left;">2 &gt;= 2</td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">equal to</td>
+<td style="text-align: left;">==</td>
+<td style="text-align: left;">2 == 3</td>
+<td style="text-align: left;"><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">not equal to</td>
+<td style="text-align: left;">!=</td>
+<td style="text-align: left;">2 != 3</td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Hopefully these are all pretty self-explanatory: for example, the <strong><em>less than</em></strong> operator <code>&lt;</code> checks to see if the number on the left is less than the number on the right. If it’s less, then R returns an answer of <code>TRUE</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="dv">99</span> <span class="sc">&lt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>but if the two numbers are equal, or if the one on the right is larger, then R returns an answer of <code>FALSE</code>, as the following two examples illustrate:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">&lt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">&lt;</span> <span class="dv">99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>In contrast, the <strong><em>less than or equal to</em></strong> operator <code>&lt;=</code> will do exactly what it says. It returns a value of <code>TRUE</code> if the number of the left hand side is less than or equal to the number on the right hand side. So if we repeat the previous two examples using <code>&lt;=</code>, here’s what we get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">&lt;=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">&lt;=</span> <span class="dv">99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>And at this point I hope it’s pretty obvious what the <strong><em>greater than</em></strong> operator <code>&gt;</code> and the <strong><em>greater than or equal to</em></strong> operator <code>&gt;=</code> do! Next on the list of logical operators is the <strong><em>not equal to</em></strong> operator <code>!=</code> which – as with all the others – does what it says it does. It returns a value of <code>TRUE</code> when things on either side are not identical to each other. Therefore, since <span class="math inline">\(2+2\)</span> isn’t equal to <span class="math inline">\(5\)</span>, we get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">!=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>We’re not quite done yet. There are three more logical operations that are worth knowing about, listed in Table @ref(tab:logicals2).</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Some more logical operators.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operation</th>
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">example input</th>
+<th style="text-align: left;">answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">not</td>
+<td style="text-align: left;">!</td>
+<td style="text-align: left;">!(1==1)</td>
+<td style="text-align: left;"><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">or</td>
+<td style="text-align: left;">|</td>
+<td style="text-align: left;">(1==1) | (2==3)</td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">and</td>
+<td style="text-align: left;">&amp;</td>
+<td style="text-align: left;">(1==1) &amp; (2==3)</td>
+<td style="text-align: left;"><code>FALSE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>These are the <strong><em>not</em></strong> operator <code>!</code>, the <strong><em>and</em></strong> operator <code>&amp;</code>, and the <strong><em>or</em></strong> operator <code>|</code>. Like the other logical operators, their behaviour is more or less exactly what you’d expect given their names. For instance, if I ask you to assess the claim that “either <span class="math inline">\(2+2 = 4\)</span> <em>or</em> <span class="math inline">\(2+2 = 5\)</span>” you’d say that it’s true. Since it’s an “either-or” statement, all we need is for one of the two parts to be true. That’s what the <code>|</code> operator does:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">|</span> (<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>On the other hand, if I ask you to assess the claim that “both <span class="math inline">\(2+2 = 4\)</span> <em>and</em> <span class="math inline">\(2+2 = 5\)</span>” you’d say that it’s false. Since this is an <em>and</em> statement we need both parts to be true. And that’s what the <code>&amp;</code> operator does:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">&amp;</span> (<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Finally, there’s the <em>not</em> operator, which is simple but annoying to describe in English. If I ask you to assess my claim that “it is not true that <span class="math inline">\(2+2 = 5\)</span>” then you would say that my claim is true; because my claim is that “<span class="math inline">\(2+2 = 5\)</span> is false”. And I’m right. If we write this as an R command we get this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span> (<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>In other words, since <code>2+2 == 5</code> is a <code>FALSE</code> statement, it must be the case that <code>!(2+2 == 5)</code> is a <code>TRUE</code> one. Essentially, what we’ve really done is claim that “not false” is the same thing as “true”. Obviously, this isn’t really quite right in real life. But R lives in a much more black or white world: for R everything is either true or false. No shades of gray are allowed. We can actually see this much more explicitly, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Of course, in our <span class="math inline">\(2+2 = 5\)</span> example, we didn’t really need to use “not” <code>!</code> and “equals to” <code>==</code> as two separate operators. We could have just used the “not equals to” operator <code>!=</code> like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">!=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>But there are many situations where you really do need to use the <code>!</code> operator. We’ll see some later on.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></p>
+</section>
+<section id="storing-and-using-logical-data" class="level3" data-number="2.9.3">
+<h3 data-number="2.9.3" class="anchored" data-anchor-id="storing-and-using-logical-data"><span class="header-section-number">2.9.3</span> Storing and using logical data</h3>
+<p>Up to this point, I’ve introduced <em>numeric data</em> (in Sections @ref(assign) and @ref(vectors)) and <em>character data</em> (in Section @ref(text)). So you might not be surprised to discover that these <code>TRUE</code> and <code>FALSE</code> values that R has been producing are actually a third kind of data, called <em>logical data</em>. That is, when I asked R if <code>2 + 2 == 5</code> and it said <code>[1] FALSE</code> in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called <code>is.the.Party.correct</code>, which would store R’s opinion:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>is.the.Party.correct <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a>is.the.Party.correct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Alternatively, you can assign the value directly, by typing <code>TRUE</code> or <code>FALSE</code> in your command. Like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>is.the.Party.correct <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>is.the.Party.correct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Better yet, because it’s kind of tedious to type <code>TRUE</code> or <code>FALSE</code> over and over again, R provides you with a shortcut: you can use <code>T</code> and <code>F</code> instead (but it’s case sensitive: <code>t</code> and <code>f</code> won’t work).<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a> So this works:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>is.the.Party.correct <span class="ot">&lt;-</span> F</span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>is.the.Party.correct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>but this doesn’t:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>is.the.Party.correct <span class="ot">&lt;-</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'f' not found</code></pre>
+</div>
+</div>
+</section>
+<section id="vectors-of-logicals" class="level3" data-number="2.9.4">
+<h3 data-number="2.9.4" class="anchored" data-anchor-id="vectors-of-logicals"><span class="header-section-number">2.9.4</span> Vectors of logicals</h3>
+<p>The next thing to mention is that you can store vectors of logical values in exactly the same way that you can store vectors of numbers (Section @ref(vectors)) and vectors of text data (Section @ref(text)). Again, we can define them directly via the <code>c()</code> function, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p>or you can produce a vector of logicals by applying a logical operator to a vector. This might not make a lot of sense to you, so let’s unpack it slowly. First, let’s suppose we have a vector of numbers (i.e., a “non-logical vector”). For instance, we could use the <code>sales.by.month</code> vector that we were using in Section @ref(vectors). Suppose I wanted R to tell me, for each month of the year, whether I actually sold a book in that month. I can do that by typing this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>sales.by.month <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE</code></pre>
+</div>
+</div>
+<p>and again, I can store this in a vector if I want, as the example below illustrates:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>any.sales.this.month <span class="ot">&lt;-</span> sales.by.month <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a>any.sales.this.month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE</code></pre>
+</div>
+</div>
+<p>In other words, <code>any.sales.this.month</code> is a logical vector whose elements are <code>TRUE</code> only if the corresponding element of <code>sales.by.month</code> is greater than zero. For instance, since I sold zero books in January, the first element is <code>FALSE</code>.</p>
+</section>
+<section id="logictext" class="level3" data-number="2.9.5">
+<h3 data-number="2.9.5" class="anchored" data-anchor-id="logictext"><span class="header-section-number">2.9.5</span> Applying logical operation to text</h3>
+<p>In a moment (Section @ref(indexing)) I’ll show you why these logical operations and logical vectors are so handy, but before I do so I want to very briefly point out that you can apply them to text as well as to logical data. It’s just that we need to be a bit more careful in understanding how R interprets the different operations. In this section I’ll talk about how the equal to operator <code>==</code> applies to text, since this is the most important one. Obviously, the not equal to operator <code>!=</code> gives the exact opposite answers to <code>==</code> so I’m implicitly talking about that one too, but I won’t give specific commands showing the use of <code>!=</code>. As for the other operators, I’ll defer a more detailed discussion of this topic to Section @ref(logictext2).</p>
+<p>Okay, let’s see how it works. In one sense, it’s very simple. For instance, I can ask R if the word <code>"cat"</code> is the same as the word <code>"dog"</code>, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"dog"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>That’s pretty obvious, and it’s good to know that even R can figure that out. Similarly, R does recognise that a <code>"cat"</code> is a <code>"cat"</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"cat"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Again, that’s exactly what we’d expect. However, what you need to keep in mind is that R is not at all tolerant when it comes to grammar and spacing. If two strings differ in any way whatsoever, R will say that they’re not equal to each other, as the following examples indicate:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="st">" cat"</span> <span class="sc">==</span> <span class="st">"cat"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"CAT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"c a t"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="indexing" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="indexing"><span class="header-section-number">2.10</span> Indexing vectors</h2>
+<p>One last thing to add before finishing up this chapter. So far, whenever I’ve had to get information out of a vector, all I’ve done is typed something like <code>months[4]</code>; and when I do this R prints out the fourth element of the <code>months</code> vector. In this section, I’ll show you two additional tricks for getting information out of the vector.</p>
+<section id="extracting-multiple-elements" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="extracting-multiple-elements"><span class="header-section-number">2.10.1</span> Extracting multiple elements</h3>
+<p>One very useful thing we can do is pull out more than one element at a time. In the previous example, we only used a single number (i.e., <code>2</code>) to indicate which element we wanted. Alternatively, we can use a vector. So, suppose I wanted the data for February, March and April. What I could do is use the vector <code>c(2,3,4)</code> to indicate which elements I want R to pull out. That is, I’d type this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>sales.by.month[ <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100 200  50</code></pre>
+</div>
+</div>
+<p>Notice that the order matters here. If I asked for the data in the reverse order (i.e., April first, then March, then February) by using the vector <code>c(4,3,2)</code>, then R outputs the data in the reverse order:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>sales.by.month[ <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>) ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  50 200 100</code></pre>
+</div>
+</div>
+<p>A second thing to be aware of is that R provides you with handy shortcuts for very common situations. For instance, suppose that I wanted to extract everything from the 2nd month through to the 8th month. One way to do this is to do the same thing I did above, and use the vector <code>c(2,3,4,5,6,7,8)</code> to indicate the elements that I want. That works just fine</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>sales.by.month[ <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>) ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100 200  50  25   0   0   0</code></pre>
+</div>
+</div>
+<p>but it’s kind of a lot of typing. To help make this easier, R lets you use <code>2:8</code> as shorthand for <code>c(2,3,4,5,6,7,8)</code>, which makes things a lot simpler. First, let’s just check that this is true:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span><span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 3 4 5 6 7 8</code></pre>
+</div>
+</div>
+<p>Next, let’s check that we can use the <code>2:8</code> shorthand as a way to pull out the 2nd through 8th elements of <code>sales.by.months</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a>sales.by.month[<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100 200  50  25   0   0   0</code></pre>
+</div>
+</div>
+<p>So that’s kind of neat.</p>
+</section>
+<section id="logical-indexing" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="logical-indexing"><span class="header-section-number">2.10.2</span> Logical indexing</h3>
+<p>At this point, I can introduce an extremely useful tool called <strong><em>logical indexing</em></strong>. In the last section, I created a logical vector <code>any.sales.this.month</code>, whose elements are <code>TRUE</code> for any month in which I sold at least one book, and <code>FALSE</code> for all the others. However, that big long list of <code>TRUE</code>s and <code>FALSE</code>s is a little bit hard to read, so what I’d like to do is to have R select the names of the <code>months</code> for which I sold any books. Earlier on, I created a vector <code>months</code> that contains the names of each of the months. This is where logical indexing is handy. What I need to do is this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb176"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a>months[ sales.by.month <span class="sc">&gt;</span> <span class="dv">0</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "February" "March"    "April"    "May"     </code></pre>
+</div>
+</div>
+<p>To understand what’s happening here, it’s helpful to notice that <code>sales.by.month &gt; 0</code> is the same logical expression that we used to create the <code>any.sales.this.month</code> vector in the last section. In fact, I could have just done this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb178"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a>months[ any.sales.this.month ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "February" "March"    "April"    "May"     </code></pre>
+</div>
+</div>
+<p>and gotten exactly the same result. In order to figure out which elements of <code>months</code> to include in the output, what R does is look to see if the corresponding element in <code>any.sales.this.month</code> is <code>TRUE</code>. Thus, since element 1 of <code>any.sales.this.month</code> is <code>FALSE</code>, R does not include <code>"January"</code> as part of the output; but since element 2 of <code>any.sales.this.month</code> is <code>TRUE</code>, R does include <code>"February"</code> in the output. Note that there’s no reason why I can’t use the same trick to find the actual sales numbers for those months. The command to do that would just be this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb180"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb180-1"><a href="#cb180-1" aria-hidden="true" tabindex="-1"></a>sales.by.month [ sales.by.month <span class="sc">&gt;</span> <span class="dv">0</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100 200  50  25</code></pre>
+</div>
+</div>
+<p>In fact, we can do the same thing with text. Here’s an example. Suppose that – to continue the saga of the textbook sales – I later find out that the bookshop only had sufficient stocks for a few months of the year. They tell me that early in the year they had <code>"high"</code> stocks, which then dropped to <code>"low"</code> levels, and in fact for one month they were <code>"out"</code> of copies of the book for a while before they were able to replenish them. Thus I might have a variable called <code>stock.levels</code> which looks like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb182"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb182-1"><a href="#cb182-1" aria-hidden="true" tabindex="-1"></a>stock.levels<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>, <span class="st">"out"</span>, <span class="st">"out"</span>, <span class="st">"high"</span>,</span>
+<span id="cb182-2"><a href="#cb182-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"high"</span>)</span>
+<span id="cb182-3"><a href="#cb182-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-4"><a href="#cb182-4" aria-hidden="true" tabindex="-1"></a>stock.levels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "high" "high" "low"  "out"  "out"  "high" "high" "high" "high" "high"
+[11] "high" "high"</code></pre>
+</div>
+</div>
+<p>Thus, if I want to know the months for which the bookshop was out of my book, I could apply the logical indexing trick, but with the character vector <code>stock.levels</code>, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb184"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb184-1"><a href="#cb184-1" aria-hidden="true" tabindex="-1"></a>months[stock.levels <span class="sc">==</span> <span class="st">"out"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "April" "May"  </code></pre>
+</div>
+</div>
+<p>Alternatively, if I want to know when the bookshop was either low on copies or out of copies, I could do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb186"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a>months[stock.levels <span class="sc">==</span> <span class="st">"out"</span> <span class="sc">|</span> stock.levels <span class="sc">==</span> <span class="st">"low"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "March" "April" "May"  </code></pre>
+</div>
+</div>
+<p>or this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a>months[stock.levels <span class="sc">!=</span> <span class="st">"high"</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "March" "April" "May"  </code></pre>
+</div>
+</div>
+<p>Either way, I get the answer I want.</p>
+<p>At this point, I hope you can see why logical indexing is such a useful thing. It’s a very basic, yet very powerful way to manipulate data. We’ll talk a lot more about how to manipulate data in Chapter @ref(datahandling), since it’s a critical skill for real world research that is often overlooked in introductory research methods classes (or at least, that’s been my experience). It does take a bit of practice to become completely comfortable using logical indexing, so it’s a good idea to play around with these sorts of commands. Try creating a few different variables of your own, and then ask yourself questions like “how do I get R to spit out all the elements that are [blah]”. Practice makes perfect, and it’s only by practicing logical indexing that you’ll perfect the art of yelling frustrated insults at your computer.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a></p>
+</section>
+</section>
+<section id="quitting-r" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="quitting-r"><span class="header-section-number">2.11</span> Quitting R</h2>
+<div class="cell">
+
+</div>
+<p>There’s one last thing I should cover in this chapter: how to quit R. When I say this, I’m not trying to imply that R is some kind of pathological addition and that you need to call the R QuitLine or wear patches to control the cravings (although you certainly might argue that there’s something seriously pathological about being addicted to R). I just mean how to exit the program. Assuming you’re running R in the usual way (i.e., through RStudio or the default GUI on a Windows or Mac computer), then you can just shut down the application in the normal way. However, R also has a function, called <code>q()</code> that you can use to quit, which is pretty handy if you’re running R in a terminal window.</p>
+<p>Regardless of what method you use to quit R, when you do so for the first time R will probably ask you if you want to save the “workspace image”. We’ll talk a lot more about loading and saving data in Section @ref(load), but I figured we’d better quickly cover this now otherwise you’re going to get annoyed when you close R at the end of the chapter. If you’re using RStudio, you’ll see a dialog box that looks like the one shown in Figure @ref(fig:quitR). If you’re using a text based interface you’ll see this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">q</span>()</span>
+<span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Save workspace image? [y/n/c]: </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>y/n/c</code> part here is short for “yes / no / cancel”. Type <code>y</code> if you want to save, <code>n</code> if you don’t, and <code>c</code> if you’ve changed your mind and you don’t want to quit after all.</p>
+<p>What does this actually <em>mean</em>? What’s going on is that R wants to know if you want to save all those variables that you’ve been creating, so that you can use them later. This sounds like a great idea, so it’s really tempting to type <code>y</code> or click the “Save” button. To be honest though, I very rarely do this, and it kind of annoys me a little bit… what R is <em>really</em> asking is if you want it to store these variables in a “default” data file, which it will automatically reload for you next time you open R. And quite frankly, if I’d wanted to save the variables, then I’d have already saved them before trying to quit. Not only that, I’d have saved them to a location of <em>my</em> choice, so that I can find it again later. So I personally never bother with this.</p>
+<p>In fact, every time I install R on a new machine one of the first things I do is change the settings so that it never asks me again. You can do this in RStudio really easily: use the menu system to find the RStudio option; the dialog box that comes up will give you an option to tell R never to whine about this again (see Figure @ref(fig:RStudiooptions). On a Mac, you can open this window by going to the “RStudio” menu and selecting “Preferences”. On a Windows machine you go to the “Tools” menu and select “Global Options”. Under the “General” tab you’ll see an option that reads “Save workspace to .Rdata on exit”. By default this is set to “ask”. If you want R to stop asking, change it to “never”.</p>
+<div class="cell">
+
+</div>
+</section>
+<section id="summary" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.12</span> Summary</h2>
+<p>Every book that tries to introduce basic programming ideas to novices has to cover roughly the same topics, and in roughly the same order. Mine is no exception, and so in the grand tradition of doing it just the same way everyone else did it, this chapter covered the following topics:</p>
+<ul>
+<li><a href="#gettingR">Getting started</a>. We downloaded and installed R and RStudio</li>
+<li><a href="#arithmetic">Basic commands</a>. We talked a bit about the logic of how R works and in particular how to type commands into the R console (Section @ref(#firstcommand), and in doing so learned how to perform basic calculations using the arithmetic operators <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> and <code>^</code>.</li>
+<li><a href="#usingfunctions">Introduction to functions</a>. We saw several different functions, three that are used to perform numeric calculations (<code>sqrt()</code>, <code>abs()</code>, <code>round()</code>, one that applies to text (<code>nchar()</code>; Section @ref(simpletext)), and one that works on any variable (<code>length()</code>; Section @ref(veclength)). In doing so, we talked a bit about how argument names work, and learned about default values for arguments. (Section @ref(functionarguments))</li>
+<li>Introduction to variables. We learned the basic idea behind variables, and how to assign values to variables using the assignment operator <code>&lt;-</code> (Section @ref(assign)). We also learned how to create vectors using the combine function <code>c()</code> (Section @ref(vectors)).</li>
+<li>Data types. Learned the distinction between numeric, character and logical data; including the basics of how to enter and use each of them. (Sections @ref(assign) to @ref(logicals))</li>
+<li><a href="#logicals">Logical operations</a>. Learned how to use the logical operators <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>=&gt;</code>, <code>!</code>, <code>&amp;</code> and <code>|</code>. And learned how to use logical indexing. (Section @ref(indexing))</li>
+</ul>
+<p>We still haven’t arrived at anything that resembles a “data set”, of course. Maybe the next Chapter will get us a bit closer…</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-R2013" class="csl-entry" role="doc-biblioentry">
+R Core Team. 2013. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Source: <em>Dismal Light</em> (1968).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Tip for advanced Mac users. You can run R from the terminal if you want to. The command is just “R”. It behaves like the normal desktop version, except that help documentation behaves like a “man” page instead of opening in a new window.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Seriously. If you’re in a position to do so, open up R and start typing. The simple act of typing it rather than “just reading” makes a big difference. It makes the concepts more concrete, and it ties the abstract ideas (programming and statistics) to the actual context in which you need to use them. Statistics is something you <em>do</em>, not just something you read about in a textbook.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>If you’re running R from the terminal rather than from RStudio, escape doesn’t work: use CTRL-C instead.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>For advanced users: yes, as you’ve probably guessed, R is printing out the source code for the function.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>If you’re reading this with R open, a good learning trick is to try typing in a few different variations on what I’ve done here. If you experiment with your commands, you’ll quickly learn what works and what doesn’t<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>For advanced users: if you want a table showing the complete order of operator precedence in R, type <code>?Syntax</code>. I haven’t included it in this book since there are quite a few different operators, and we don’t need that much detail. Besides, in practice most people seem to figure it out from seeing examples: until writing this book I never looked at the formal statement of operator precedence for any language I ever coded in, and never ran into any difficulties.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>If you are using RStudio, and the “environment” panel (formerly known as the “workspace” panel) is visible when you typed the command, then you probably saw something happening there. That’s to be expected, and is quite helpful. However, there’s two things to note here (1) I haven’t yet explained what that panel does, so for now just ignore it, and (2) this is one of the helpful things RStudio does, not a part of R itself.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>As we’ll discuss later, by doing this we are implicitly using the <code>print()</code> function<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Actually, in keeping with the R tradition of providing you with a billion different screwdrivers (even when you’re actually looking for a hammer) these aren’t the only options. There’s also the<code>assign()</code> function, and the <code>&lt;&lt;-</code> and <code>-&gt;&gt;</code> operators. However, we won’t be using these at all in this book.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>A quick reminder: when using operators like <code>&lt;-</code> and <code>-&gt;</code> that span multiple characters, you can’t insert spaces in the middle. That is, if you type <code>- &gt;</code> or <code>&lt; -</code>, R will interpret your command the wrong way. And I will cry.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Actually, you can override any of these rules if you want to, and quite easily. All you have to do is add quote marks or backticks around your non-standard variable name. For instance <code>`my sales ` &lt;- 350</code> would work just fine, but it’s almost never a good idea to do this.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>For very advanced users: there is one exception to this. If you’re naming a function, don’t use <code>.</code> in the name unless you are intending to make use of the S3 object oriented programming system in R. If you don’t know what S3 is, then you definitely don’t want to be using it! For function naming, there’s been a trend among R users to prefer <code>myFunctionName</code>.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>A side note for students with a programming background. Technically speaking, operators <em>are</em> functions in R: the addition operator <code>+</code> is actually a convenient way of calling the addition function <code>+()</code>. Thus <code>10+20</code> is equivalent to the function call <code>+(20, 30)</code>. Not surprisingly, no-one ever uses this version. Because that would be stupid.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>A note for the mathematically inclined: R does support complex numbers, but unless you explicitly specify that you want them it assumes all calculations must be real valued. By default, the square root of a negative number is treated as undefined: <code>sqrt(-9)</code> will produce <code>NaN</code> (not a number) as its output. To get complex numbers, you would type <code>sqrt(-9+0i)</code> and R would now return <code>0+3i</code>. However, since we won’t have any need for complex numbers in this book, I won’t refer to them again.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>The two functions discussed previously, <code>sqrt()</code> and <code>abs()</code>, both only have a single argument, <code>x</code>. So I could have typed something like <code>sqrt(x = 225)</code> or <code>abs(x = -13)</code> earlier. The fact that all these functions use <code>x</code> as the name of the argument that corresponds the “main” variable that you’re working with is no coincidence. That’s a fairly widely used convention. Quite often, the writers of R functions will try to use conventional names like this to make your life easier. Or at least that’s the theory. In practice it doesn’t always work as well as you’d hope.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>For advanced users: obviously, this isn’t just an RStudio thing. If you’re running R in a terminal window, tab autocomplete still works, and does so in exactly the way you’d expect. It’s not as visually pretty as the RStudio version, of course, and lacks some of the cooler features that RStudio provides. I don’t bother to document that here: my assumption is that if you are running R in the terminal then you’re already familiar with using tab autocomplete.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p>Incidentally, that always works: if you’ve started typing a command and you want to clear it and start again, hit escape.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p>Another method is to start typing some text and then hit the Control key and the up arrow together (on Windows or Linux) or the Command key and the up arrow together (on a Mac). This will bring up a window showing all your recent commands that started with the same text as what you’ve currently typed. That can come in quite handy sometimes.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p>Notice that I didn’t specify any argument names here. The <code>c()</code> function is one of those cases where we don’t use names. We just type all the numbers, and R just dumps them all in a single variable.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>Though actually there’s no real need to do this, since R has an inbuilt variable called <code>month.name</code> that you can use for this purpose.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p>I offer up my teenage attempts to be “cool” as evidence that some things just can’t be done.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>Note that this is a very different operator to the assignment operator <code>=</code> that I talked about in Section @ref(assign). A common typo that people make when trying to write logical commands in R (or other languages, since the “<code>=</code> versus <code>==</code>” distinction is important in most programming languages) is to accidentally type <code>=</code> when you really mean <code>==</code>. Be especially cautious with this – I’ve been programming in various languages since I was a teenager, and I <em>still</em> screw this up a lot. Hm. I think I see why I wasn’t cool as a teenager. And why I’m still not cool.<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p>A note for those of you who have taken a computer science class: yes, R does have a function for exclusive-or, namely <code>xor()</code>. Also worth noting is the fact that R makes the distinction between element-wise operators <code>&amp;</code> and <code>|</code> and operators that look only at the first element of the vector, namely <code>&amp;&amp;</code> and <code>||</code>. To see the distinction, compare the behaviour of a command like <code>c(FALSE,TRUE) &amp; c(TRUE,TRUE)</code> to the behaviour of something like <code>c(FALSE,TRUE) &amp;&amp; c(TRUE,TRUE)</code>. If this doesn’t mean anything to you, ignore this footnote entirely. It’s not important for the content of this book.<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p>Warning! <code>TRUE</code> and <code>FALSE</code> are reserved keywords in R, so you can trust that they always mean what they say they do. Unfortunately, the shortcut versions <code>T</code> and <code>F</code> do not have this property. It’s even possible to create variables that set up the reverse meanings, by typing commands like <code>T &lt;- FALSE</code> and <code>F &lt;- TRUE</code>. This is kind of insane, and something that is generally thought to be a design flaw in R. Anyway, the long and short of it is that it’s safer to use <code>TRUE</code> and <code>FALSE</code>.<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p>Well, I say that… but in my personal experience it wasn’t until I started learning “regular expressions” that my loathing of computers reached its peak.<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./introduction.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why do we learn statistics?</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
