@@ -1,0 +1,5 @@
+# Preface {.unnumbered}
+
+This is the work-in-progress revision for "Learning Statistics with R"
+
+![](cover.png)

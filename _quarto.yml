@@ -1,0 +1,22 @@
+project:
+  type: book
+
+book:
+  title: "Learning Statistics with R"
+  author: "Danielle Navarro"
+  date: "2023-01-12"
+  chapters:
+    - index.qmd
+    - introduction.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: source
+

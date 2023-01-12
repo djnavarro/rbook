@@ -1,6 +1,0 @@
-book_filename: "lsr"
-delete_merged_file: true
-language:
-  ui:
-    chapter_name: "Chapter "
-before_chapter_script: "pre-chapter.R"
