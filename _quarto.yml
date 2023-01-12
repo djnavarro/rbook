@@ -7,7 +7,10 @@ book:
   date: "2023-01-12"
   chapters:
     - index.qmd
+    - preface.qmd
     - introduction.qmd
+    - installation.qmd
+    - commands.qmd
     - references.qmd
 
 bibliography: references.bib

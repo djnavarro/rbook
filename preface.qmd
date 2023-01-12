@@ -1,0 +1,7 @@
+# Preface {.unnumbered}
+
+Changes since the previous edition:
+
+- notation uses snake case
+- chapter on research design removed
+- chapter introducing R split into multiple chapters

@@ -1,4 +1,4 @@
-# Preface {.unnumbered}
+# Welcome {.unnumbered}
 
 This is the work-in-progress revision for "Learning Statistics with R"
 
