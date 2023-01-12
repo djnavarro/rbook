@@ -213,7 +213,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional R concepts</span></a>
+  <a href="./file-system.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./packages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></a>
   </div>
 </li>
       </ul>
@@ -228,7 +233,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Representing data</span></a>
+  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reading-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></a>
   </div>
 </li>
       </ul>
@@ -340,7 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="taking-powers" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="taking-powers"><span class="header-section-number">4.2</span> Taking powers</h2>
-<p>The first four operations listed in Table @ref(tab:arithmetic1) are things we all learned in primary school, but they aren’t the only arithmetic operations built into R. There are three other arithmetic operations that I should probably mention: taking powers, doing integer division, and calculating a modulus. Of the three, the only one that is of any real importance for the purposes of this book is taking powers, so I’ll discuss that one here: the other two are discussed in <span class="citation" data-cites="datahandling">(<a href="references.html#ref-datahandling" role="doc-biblioref"><strong>datahandling?</strong></a>)</span>.</p>
+<p>The first four operations listed in Table @ref(tab:arithmetic1) are things we all learned in primary school, but they aren’t the only arithmetic operations built into R. There are three other arithmetic operations that I should probably mention: taking powers, doing integer division, and calculating a modulus. Of the three, the only one that is of any real importance for the purposes of this book is taking powers, so I’ll discuss that one here: the other two are discussed in <span class="citation" data-cites="datahandling">(<a href="#ref-datahandling" role="doc-biblioref"><strong>datahandling?</strong></a>)</span>.</p>
 <p>For those of you who can still remember your high school maths, this should be familiar. But for some people high school maths was a long time ago, and others of us didn’t listen very hard in high school. It’s not complicated. As I’m sure everyone will probably remember the moment they read this, the act of multiplying a number <span class="math inline">\(x\)</span> by itself <span class="math inline">\(n\)</span> times is called “raising <span class="math inline">\(x\)</span> to the <span class="math inline">\(n\)</span>-th power”. Mathematically, this is written as <span class="math inline">\(x^n\)</span>. Some values of <span class="math inline">\(n\)</span> have special names: in particular <span class="math inline">\(x^2\)</span> is called <span class="math inline">\(x\)</span>-squared, and <span class="math inline">\(x^3\)</span> is called <span class="math inline">\(x\)</span>-cubed. So, the 4th power of 5 is calculated like this: <span class="math display">\[
 5^4 = 5 \times 5 \times 5 \times 5
 \]</span></p>
@@ -389,7 +399,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sec-usingfunctions" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="sec-usingfunctions"><span class="header-section-number">4.4</span> Using functions to do calculations</h2>
-<p>The symbols <code>+</code>, <code>-</code>, <code>*</code> and so on are examples of operators. As we’ve seen, you can do quite a lot of calculations just by using these operators. However, in order to do more advanced calculations (and later on, to do actual statistics), you’re going to need to start using <strong>functions</strong>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> I’ll talk in more detail about functions and how they work in <span class="quarto-unresolved-ref">?sec-functions</span>, but for now let’s just dive in and use a few. To get started, suppose I wanted to take the square root of 225. The square root, in case your high school maths is a bit rusty, is just the opposite of squaring a number. So, for instance, since “5 squared is 25” I can say that “5 is the square root of 25”. The usual notation for this is</p>
+<p>The symbols <code>+</code>, <code>-</code>, <code>*</code> and so on are examples of operators. As we’ve seen, you can do quite a lot of calculations just by using these operators. However, in order to do more advanced calculations (and later on, to do actual statistics), you’re going to need to start using <strong>functions</strong>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> I’ll talk in more detail about functions and how they work in <a href="#sec-functions"><span class="quarto-unresolved-ref">sec-functions</span></a>, but for now let’s just dive in and use a few. To get started, suppose I wanted to take the square root of 225. The square root, in case your high school maths is a bit rusty, is just the opposite of squaring a number. So, for instance, since “5 squared is 25” I can say that “5 is the square root of 25”. The usual notation for this is</p>
 <p><span class="math display">\[
 \sqrt{25} = 5
 \]</span></p>
@@ -661,7 +671,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li id="fn3"><p>A side note for students with a programming background. Technically speaking, operators <em>are</em> functions in R: the addition operator <code>+</code> is actually a convenient way of calling the addition function <code>`+`()</code>. Thus <code>10 + 20</code> is equivalent to the function call `<code>+`(20, 30)</code>. Not surprisingly, no-one ever uses this version. Because that would be stupid.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>A note for the mathematically inclined: R does support complex numbers, but unless you explicitly specify that you want them it assumes all calculations must be real valued. By default, the square root of a negative number is treated as undefined: <code>sqrt(-9)</code> will produce <code>NaN</code> (not a number) as its output. To get complex numbers, you would type <code>sqrt(-9+0i)</code> and R would now return <code>0+3i</code>. However, since we won’t have any need for complex numbers in this book, I won’t refer to them again.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>I offer up my youthful attempts to be “cool” as evidence that some things just can’t be done.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Note that this is a very different operator to the assignment operator <code>=</code> that I talked about in <a href="variables.html#sec-assign"><span>Section&nbsp;5.1</span></a>. A common typo that people make when trying to write logical commands in R (or other languages, since the “<code>=</code> versus <code>==</code>” distinction is important in most programming languages) is to accidentally type <code>=</code> when you really mean <code>==</code>. Be especially cautious with this – I’ve been programming in various languages since I was a teenager, and I <em>still</em> screw this up a lot. Hm. I think I see why I wasn’t cool as a teenager. And why I’m still not cool.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Note that this is a very different operator to the assignment operator <code>=</code> that I talked about in <a href="#sec-assign"><span class="quarto-unresolved-ref">sec-assign</span></a>. A common typo that people make when trying to write logical commands in R (or other languages, since the “<code>=</code> versus <code>==</code>” distinction is important in most programming languages) is to accidentally type <code>=</code> when you really mean <code>==</code>. Be especially cautious with this – I’ve been programming in various languages since I was a teenager, and I <em>still</em> screw this up a lot. Hm. I think I see why I wasn’t cool as a teenager. And why I’m still not cool.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>A note for those of you who have taken a computer science class: yes, R does have a function for exclusive-or, namely <code>xor()</code>. Also worth noting is the fact that R makes the distinction between element-wise operators <code>&amp;</code> and <code>|</code> and operators that look only at the first element of the vector, namely <code>&amp;&amp;</code> and <code>||</code>. To see the distinction, compare the behaviour of a command like <code>c(FALSE,TRUE) &amp; c(TRUE,TRUE)</code> to the behaviour of something like <code>c(FALSE,TRUE) &amp;&amp; c(TRUE,TRUE)</code>. If this doesn’t mean anything to you, ignore this footnote entirely. It’s not important for the content of this book.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>

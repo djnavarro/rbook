@@ -8,7 +8,7 @@
 
 <meta name="author" content="Danielle Navarro">
 
-<title>Learning Statistics with R - 8&nbsp; Loading and saving data</title>
+<title>Learning Statistics with R - 9&nbsp; Loading and saving data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Loading and saving data</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -212,7 +212,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional R concepts</span></a>
+  <a href="./file-system.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./packages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></a>
   </div>
 </li>
       </ul>
@@ -227,12 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Representing data</span></a>
+  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reading-data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Loading and saving data</span></a>
+  <a href="./reading-data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></a>
   </div>
 </li>
       </ul>
@@ -251,14 +256,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#loading-workspace-files-using-r" id="toc-loading-workspace-files-using-r" class="nav-link active" data-scroll-target="#loading-workspace-files-using-r"><span class="toc-section-number">8.1</span>  Loading workspace files using R</a></li>
-  <li><a href="#loading-workspace-files-using-rstudio" id="toc-loading-workspace-files-using-rstudio" class="nav-link" data-scroll-target="#loading-workspace-files-using-rstudio"><span class="toc-section-number">8.2</span>  Loading workspace files using RStudio</a></li>
-  <li><a href="#loadingcsv" id="toc-loadingcsv" class="nav-link" data-scroll-target="#loadingcsv"><span class="toc-section-number">8.3</span>  Importing data from CSV files using loadingcsv</a></li>
-  <li><a href="#importing-data-from-csv-files-using-rstudio" id="toc-importing-data-from-csv-files-using-rstudio" class="nav-link" data-scroll-target="#importing-data-from-csv-files-using-rstudio"><span class="toc-section-number">8.4</span>  Importing data from CSV files using RStudio</a></li>
-  <li><a href="#saving-a-workspace-file-using-save" id="toc-saving-a-workspace-file-using-save" class="nav-link" data-scroll-target="#saving-a-workspace-file-using-save"><span class="toc-section-number">8.5</span>  Saving a workspace file using <code>save</code></a></li>
-  <li><a href="#save1" id="toc-save1" class="nav-link" data-scroll-target="#save1"><span class="toc-section-number">8.6</span>  Saving a workspace file using RStudio</a></li>
-  <li><a href="#other-things-you-might-want-to-save" id="toc-other-things-you-might-want-to-save" class="nav-link" data-scroll-target="#other-things-you-might-want-to-save"><span class="toc-section-number">8.7</span>  Other things you might want to save</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">8.8</span>  Summary</a></li>
+  <li><a href="#loading-workspace-files-using-r" id="toc-loading-workspace-files-using-r" class="nav-link active" data-scroll-target="#loading-workspace-files-using-r"><span class="toc-section-number">9.1</span>  Loading workspace files using R</a></li>
+  <li><a href="#loading-workspace-files-using-rstudio" id="toc-loading-workspace-files-using-rstudio" class="nav-link" data-scroll-target="#loading-workspace-files-using-rstudio"><span class="toc-section-number">9.2</span>  Loading workspace files using RStudio</a></li>
+  <li><a href="#loadingcsv" id="toc-loadingcsv" class="nav-link" data-scroll-target="#loadingcsv"><span class="toc-section-number">9.3</span>  Importing data from CSV files using loadingcsv</a></li>
+  <li><a href="#importing-data-from-csv-files-using-rstudio" id="toc-importing-data-from-csv-files-using-rstudio" class="nav-link" data-scroll-target="#importing-data-from-csv-files-using-rstudio"><span class="toc-section-number">9.4</span>  Importing data from CSV files using RStudio</a></li>
+  <li><a href="#saving-a-workspace-file-using-save" id="toc-saving-a-workspace-file-using-save" class="nav-link" data-scroll-target="#saving-a-workspace-file-using-save"><span class="toc-section-number">9.5</span>  Saving a workspace file using <code>save</code></a></li>
+  <li><a href="#save1" id="toc-save1" class="nav-link" data-scroll-target="#save1"><span class="toc-section-number">9.6</span>  Saving a workspace file using RStudio</a></li>
+  <li><a href="#other-things-you-might-want-to-save" id="toc-other-things-you-might-want-to-save" class="nav-link" data-scroll-target="#other-things-you-might-want-to-save"><span class="toc-section-number">9.7</span>  Other things you might want to save</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">9.8</span>  Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -267,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="load" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span></h1>
+<h1 class="title"><span id="load" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span></h1>
 </div>
 
 
@@ -289,8 +294,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><em>Script files</em> are those with a .R file extension. These aren’t data files at all; rather, they’re used to save a collection of commands that you want R to execute later. They’re just text files, but we won’t make use of them until Chapter @ref(scripting).</li>
 </ul>
 <p>There are also several other types of file that R makes use of,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> but they’re not really all that central to our interests. There are also several other kinds of data file that you might want to import into R. For instance, you might want to open Microsoft Excel spreadsheets (.xlsx files), or data files that have been saved in the native file formats for other statistics software, such as SPSS, SAS, Minitab, Stata or Systat. Finally, you might have to handle databases. R tries hard to play nicely with other software, so it has tools that let you open and work with any of these and many others. I’ll discuss some of these other possibilities elsewhere in this book (Section @ref(importing)), but for now I want to focus primarily on the two kinds of data file that you’re most likely to need: .Rdata files and .csv files. In this section I’ll talk about how to load a workspace file, how to import data from a CSV file, and how to save your workspace to a workspace file. Throughout this section I’ll first describe the (sometimes awkward) R commands that do all the work, and then I’ll show you the (much easier) way to do it using RStudio.</p>
-<section id="loading-workspace-files-using-r" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="loading-workspace-files-using-r"><span class="header-section-number">8.1</span> Loading workspace files using R</h2>
+<section id="loading-workspace-files-using-r" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="loading-workspace-files-using-r"><span class="header-section-number">9.1</span> Loading workspace files using R</h2>
 <p>When I used the <code>list.files()</code> command to list the contents of the <code>/Users/dan/Rbook/data</code> directory (in Section @ref(navigationR)), the output referred to a file called booksales.Rdata. Let’s say I want to load the data from this file into my workspace. The way I do this is with the <code>load()</code> function. There are two arguments to this function, but the only one we’re interested in is</p>
 <ul>
 <li><code>file</code>. This should be a character string that specifies a path to the file that needs to be loaded. You can use an absolute path or a relative path to do so.</li>
@@ -304,14 +309,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 load( "booksales.Rdata" )  # load the data</code></pre>
 <p>If I were then to type <code>who()</code> I’d see that there are several new variables in my workspace now. Throughout this book, whenever you see me loading a file, I will assume that the file is actually stored in the working directory, or that you’ve changed the working directory so that R is pointing at the directory that contains the file. Obviously, <em>you</em> don’t need type that command yourself: you can use the RStudio file panel to do the work.</p>
 </section>
-<section id="loading-workspace-files-using-rstudio" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="loading-workspace-files-using-rstudio"><span class="header-section-number">8.2</span> Loading workspace files using RStudio</h2>
+<section id="loading-workspace-files-using-rstudio" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="loading-workspace-files-using-rstudio"><span class="header-section-number">9.2</span> Loading workspace files using RStudio</h2>
 <p>Okay, so how do we open an .Rdata file using the RStudio file panel? It’s terribly simple. First, use the file panel to find the folder that contains the file you want to load. If you look at Figure @ref(fig:filepanel), you can see that there are several .Rdata files listed. Let’s say I want to load the <code>booksales.Rdata</code> file. All I have to do is click on the file name. RStudio brings up a little dialog box asking me to confirm that I do want to load this file. I click yes. The following command then turns up in the console,</p>
 <pre><code>load("~/Rbook/data/booksales.Rdata")</code></pre>
 <p>and the new variables will appear in the workspace (you’ll see them in the Environment panel in RStudio, or if you type <code>who()</code>). So easy it barely warrants having its own section.</p>
 </section>
-<section id="loadingcsv" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="loadingcsv"><span class="header-section-number">8.3</span> Importing data from CSV files using loadingcsv</h2>
+<section id="loadingcsv" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="loadingcsv"><span class="header-section-number">9.3</span> Importing data from CSV files using loadingcsv</h2>
 <p>One quite commonly used data format is the humble “comma separated value” file, also called a CSV file, and usually bearing the file extension .csv. CSV files are just plain old-fashioned text files, and what they store is basically just a table of data. This is illustrated in Figure @ref(fig:booksalescsv), which shows a file called booksales.csv that I’ve created. As you can see, each row corresponds to a variable, and each row represents the book sales data for one month. The first row doesn’t contain actual data though: it has the names of the variables.</p>
 <div class="cell">
 
@@ -349,8 +354,8 @@ load( "booksales.Rdata" )  # load the data</code></pre>
 </div>
 <p>Clearly, it’s worked, but the format of this output is a bit unfamiliar. We haven’t seen anything like this before. What you’re looking at is a <em>data frame</em>, which is a very important kind of variable in R, and one I’ll discuss in Section @ref(dataframes). For now, let’s just be happy that we imported the data and that it looks about right.</p>
 </section>
-<section id="importing-data-from-csv-files-using-rstudio" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="importing-data-from-csv-files-using-rstudio"><span class="header-section-number">8.4</span> Importing data from CSV files using RStudio</h2>
+<section id="importing-data-from-csv-files-using-rstudio" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="importing-data-from-csv-files-using-rstudio"><span class="header-section-number">9.4</span> Importing data from CSV files using RStudio</h2>
 <p>Yet again, it’s easier in RStudio. In the environment panel in RStudio you should see a button called “Import Dataset”. Click on that, and it will give you a couple of options: select the “From Text File…” option, and it will open up a very familiar dialog box asking you to select a file: if you’re on a Mac, it’ll look like the usual Finder window that you use to choose a file; on Windows it looks like an Explorer window. An example of what it looks like on a Mac is shown in Figure @ref(fig:fileopen). I’m assuming that you’re familiar with your own computer, so you should have no problem finding the CSV file that you want to import! Find the one you want, then click on the “Open” button. When you do this, you’ll see a window that looks like the one in Figure @ref(fig:import).</p>
 <div class="cell">
 
@@ -371,8 +376,8 @@ load( "booksales.Rdata" )  # load the data</code></pre>
 View(booksales)</code></pre>
 <p>The first of these commands is the one that loads the data. The second one will display a pretty table showing the data in RStudio.</p>
 </section>
-<section id="saving-a-workspace-file-using-save" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="saving-a-workspace-file-using-save"><span class="header-section-number">8.5</span> Saving a workspace file using <code>save</code></h2>
+<section id="saving-a-workspace-file-using-save" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="saving-a-workspace-file-using-save"><span class="header-section-number">9.5</span> Saving a workspace file using <code>save</code></h2>
 <p>Not surprisingly, saving data is very similar to loading data. Although RStudio provides a simple way to save files (see below), it’s worth understanding the actual commands involved. There are two commands you can use to do this, <code>save()</code> and <code>save.image()</code>. If you’re happy to save <em>all</em> of the variables in your workspace into the data file, then you should use <code>save.image()</code>. And if you’re happy for R to save the file into the current working directory, all you have to do is this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>( <span class="at">file =</span> <span class="st">"myfile.Rdata"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -395,24 +400,24 @@ View(booksales)</code></pre>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>( <span class="at">file =</span> <span class="st">"booksales2.Rdata"</span>, <span class="at">list =</span> save.me )   <span class="co"># the command to save them</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="save1" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="save1"><span class="header-section-number">8.6</span> Saving a workspace file using RStudio</h2>
+<section id="save1" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="save1"><span class="header-section-number">9.6</span> Saving a workspace file using RStudio</h2>
 <p>RStudio allows you to save the workspace pretty easily. In the environment panel (Figures @ref(fig:workspace) and @ref(fig:workspace2)) you can see the “save” button. There’s no text, but it’s the same icon that gets used on every computer everywhere: it’s the one that looks like a floppy disk. You know, those things that haven’t been used in about 20 years. Alternatively, go to the “Session” menu and click on the “Save Workspace As…” option.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> This will bring up the standard “save” dialog box for your operating system (e.g., on a Mac it’ll look a little bit like the loading dialog box in Figure @ref(fig:fileopen)). Type in the name of the file that you want to save it to, and all the variables in your workspace will be saved to disk. You’ll see an R command like this one</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save.image</span>(<span class="st">"~/Desktop/Untitled.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Pretty straightforward, really.</p>
 </section>
-<section id="other-things-you-might-want-to-save" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="other-things-you-might-want-to-save"><span class="header-section-number">8.7</span> Other things you might want to save</h2>
+<section id="other-things-you-might-want-to-save" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="other-things-you-might-want-to-save"><span class="header-section-number">9.7</span> Other things you might want to save</h2>
 <p>Until now, we’ve talked mostly about loading and saving <em>data</em>. Other things you might want to save include:</p>
 <ul>
 <li><p><em>The output</em>. Sometimes you might also want to keep a copy of all your interactions with R, including everything that you typed in and everything that R did in response. There are some functions that you can use to get R to write its output to a file rather than to print onscreen (e.g., <code>sink()</code>), but to be honest, if you do want to save the R output, the easiest thing to do is to use the mouse to select the relevant text in the R console, go to the “Edit” menu in RStudio and select “Copy”. The output has now been copied to the clipboard. Now open up your favourite text editor or word processing software, and paste it. And you’re done. However, this will only save the contents of the console, not the plots you’ve drawn (assuming you’ve drawn some). We’ll talk about saving images later on.</p></li>
 <li><p><em>A script</em>. While it is possible – and sometimes handy – to save the R output as a method for keeping a copy of your statistical analyses, another option that people use a lot (especially when you move beyond simple “toy” analyses) is to write <em>scripts</em>. A script is a text file in which you write out all the commands that you want R to run. You can write your script using whatever software you like. In real world data analysis writing scripts is a key skill – and as you become familiar with R you’ll probably find that most of what you do involves scripting rather than typing commands at the R prompt. However, you won’t need to do much scripting initially, so we’ll leave that until Chapter @ref(scripting).</p></li>
 </ul>
 </section>
-<section id="summary" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.8</span> Summary</h2>
+<section id="summary" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">9.8</span> Summary</h2>
 
 
 </section>
@@ -563,7 +568,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./data-objects.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Representing data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

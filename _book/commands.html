@@ -212,7 +212,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional R concepts</span></a>
+  <a href="./file-system.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./packages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></a>
   </div>
 </li>
       </ul>
@@ -227,7 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Representing data</span></a>
+  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reading-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></a>
   </div>
 </li>
       </ul>
@@ -455,7 +465,7 @@ BLAH BLAH BLAH</code></pre>
 <pre><code>[1] 3.14</code></pre>
 </div>
 </div>
-<p>Notice that this is kind of similar in spirit to variable assignment (<a href="variables.html#sec-assign"><span>Section&nbsp;5.1</span></a>), except that I used <code>=</code> here, rather than <code>&lt;-</code>. In both cases we’re specifying values to be associated with a label. However, there are some differences between what I was doing earlier on when creating variables, and what I’m doing here when specifying arguments, and so as a consequence it’s important that you use <code>=</code> in this context.</p>
+<p>Notice that this is kind of similar in spirit to variable assignment (<a href="#sec-assign"><span class="quarto-unresolved-ref">sec-assign</span></a>), except that I used <code>=</code> here, rather than <code>&lt;-</code>. In both cases we’re specifying values to be associated with a label. However, there are some differences between what I was doing earlier on when creating variables, and what I’m doing here when specifying arguments, and so as a consequence it’s important that you use <code>=</code> in this context.</p>
 <p>As you can see, specifying the arguments by name involves a lot more typing, but it’s also a lot easier to read. Because of this, the commands in this book will usually specify arguments by name,<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> since that makes it clearer to you what I’m doing. However, one important thing to note is that when specifying the arguments using their names, it doesn’t matter what order you type them in. But if you don’t use the argument names, then you have to input the arguments in the correct order. In other words, these three commands all produce the same output…</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.14165</span>, <span class="dv">2</span>)</span>
@@ -492,7 +502,7 @@ BLAH BLAH BLAH</code></pre>
 </div>
 </div>
 </div>
-<p>The window has two panels. On the left, there’s a list of variables and functions that start with the letters that I’ve typed shown in black text, and some grey text that tells you where that variable/function is stored. Ignore the grey text for now: it won’t make much sense to you until we’ve talked about packages in <span class="quarto-unresolved-ref">?sec-packageinstall</span>.</p>
+<p>The window has two panels. On the left, there’s a list of variables and functions that start with the letters that I’ve typed shown in black text, and some grey text that tells you where that variable/function is stored. Ignore the grey text for now: it won’t make much sense to you until we’ve talked about packages in <a href="#sec-packageinstall"><span class="quarto-unresolved-ref">sec-packageinstall</span></a>.</p>
 <p>As you can see from the screenshot, there’s quite a few things that start with the letters <code>ro</code>: there’s something called <code>rock</code>, something called <code>round</code>, something called <code>round.Date</code> and so on. The one we want is <code>round</code>, but if you’re typing this yourself you’ll notice that when you hit the tab key the window pops up with the top entry (i.e., <code>rock</code>) highlighted. You can use the up and down arrow keys to select the one that you want. Or, if none of the options look right to you, you can hit the escape key (“esc”) or the left arrow key to make the window go away.</p>
 <p>In our case, the thing we want is the <code>round</code> option, so we’ll select that. When you do this, you’ll see that the panel on the right changes. Previously, it had been telling us something about the <code>rock</code> data set (i.e., “Measurements on 48 rock samples…”) that is distributed as part of R. But when we select <code>round</code>, it displays information about the <code>round()</code> function, exactly as it is shown in the screenshot.</p>
 <p>This display is really handy. The very first thing it says is <code>round(x, digits = 0)</code>: what this is telling you is that the <code>round()</code> function has two arguments. The first argument is called <code>x</code>, and it doesn’t have a default value. The second argument is <code>digits</code>, and it has a default value of 0. In a lot of situations, that’s all the information you need. But RStudio goes a bit further, and provides some additional information about the function underneath. Sometimes that additional information is very helpful, sometimes it’s not: RStudio pulls that text from the R help documentation, and my experience is that the helpfulness of that documentation varies wildly. Anyway, if you’ve decided that <code>round()</code> is the function that you want to use, you can hit the right arrow or the enter key, and RStudio will finish typing the rest of the function name for you.</p>

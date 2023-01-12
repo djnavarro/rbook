@@ -94,7 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mechanics.html" rel="next">
+<link href="./file-system.html" rel="next">
 <link href="./calculations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -213,7 +213,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional R concepts</span></a>
+  <a href="./file-system.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./packages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></a>
   </div>
 </li>
       </ul>
@@ -228,12 +233,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Representing data</span></a>
+  <a href="./data-objects.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./reading-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Loading and saving data</span></a>
+  <a href="./reading-data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></a>
   </div>
 </li>
       </ul>
@@ -334,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>So that’s nice to know. Anytime you can’t remember what R has got stored in a particular variable, you can just type the name of the variable and hit enter.</p>
 <p>Okay, so now we know how to assign variables. Actually, there’s a bit more you should know. Firstly, one of the curious features of R is that there are several different ways of making assignments. In addition to the <code>&lt;-</code> operator, we can also use <code>-&gt;</code> and <code>=</code>, and it’s pretty important to understand the differences between them.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p>Let’s start by considering <code>-&gt;</code>, since that’s the easy one (we’ll discuss <code>=</code> in <a href="commands.html#sec-functionarguments"><span>Section&nbsp;3.1.5</span></a>). As you might expect from just looking at the symbol, it’s almost identical to <code>&lt;-</code>. It’s just that the arrow (i.e., the assignment) goes from left to right. So if I wanted to define my <code>sales</code> variable using <code>-&gt;</code>, I would write it like this:</p>
+<p>Let’s start by considering <code>-&gt;</code>, since that’s the easy one (we’ll discuss <code>=</code> in <a href="#sec-functionarguments"><span class="quarto-unresolved-ref">sec-functionarguments</span></a>). As you might expect from just looking at the symbol, it’s almost identical to <code>&lt;-</code>. It’s just that the arrow (i.e., the assignment) goes from left to right. So if I wanted to define my <code>sales</code> variable using <code>-&gt;</code>, I would write it like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">350</span> <span class="ot">-&gt;</span> sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -400,7 +405,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sec-vectors" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="sec-vectors"><span class="header-section-number">5.2</span> Storing many numbers as a vector</h2>
-<p>At this point we’ve covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see <span class="quarto-unresolved-ref">?sec-generics</span>, so let’s return to our discussion of variables. When I introduced variables in <a href="#sec-assign"><span>Section&nbsp;5.1</span></a> I showed you how we can use variables to store a single number. In this section, we’ll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a <strong>vector</strong>. So let’s create one.</p>
+<p>At this point we’ve covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see <a href="#sec-generics"><span class="quarto-unresolved-ref">sec-generics</span></a>, so let’s return to our discussion of variables. When I introduced variables in <a href="#sec-assign"><span class="quarto-unresolved-ref">sec-assign</span></a> I showed you how we can use variables to store a single number. In this section, we’ll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a <strong>vector</strong>. So let’s create one.</p>
 <section id="creating-a-vector" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="creating-a-vector"><span class="header-section-number">5.2.1</span> Creating a vector</h3>
 <p>Let’s stick to my silly “get rich quick by textbook writing” example. Suppose the textbook company (if I actually had one, that is) sends me sales data on a monthly basis. Since my class start in late February, we might expect most of the sales to occur towards the start of the year. Let’s suppose that I have 100 sales in February, 200 sales in March and 50 sales in April, and no other sales for the rest of the year. What I would like to do is have a variable – let’s call it <code>sales_by_month</code> – that stores all this sales data. The first number stored should be <code>0</code> since I had no sales in January, the second should be <code>100</code>, and so on. The simplest way to do this in R is to use the <strong>combine</strong> function, <code>c()</code>. To do so, all we have to do is type all the numbers you want to store in a comma separated list, like this:<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
@@ -449,7 +454,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1] 100</code></pre>
 </div>
 </div>
-<p>Obviously, the new variable <code>february_sales</code> should only have one element and so when I print it out this new variable, the R output begins with a <code>[1]</code> because <code>100</code> is the value of the first (and only) element of <code>february_sales</code>. The fact that this also happens to be the value of the second element of <code>sales_by_month</code> is irrelevant. We’ll pick this topic up again in <a href="#sec-indexing"><span>Section&nbsp;5.5</span></a>.</p>
+<p>Obviously, the new variable <code>february_sales</code> should only have one element and so when I print it out this new variable, the R output begins with a <code>[1]</code> because <code>100</code> is the value of the first (and only) element of <code>february_sales</code>. The fact that this also happens to be the value of the second element of <code>sales_by_month</code> is irrelevant. We’ll pick this topic up again in <a href="#sec-indexing"><span class="quarto-unresolved-ref">sec-indexing</span></a>.</p>
 </section>
 <section id="altering-the-elements-of-a-vector" class="level3" data-number="5.2.4">
 <h3 data-number="5.2.4" class="anchored" data-anchor-id="altering-the-elements-of-a-vector"><span class="header-section-number">5.2.4</span> Altering the elements of a vector</h3>
@@ -529,7 +534,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="sec-simpletext" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="sec-simpletext"><span class="header-section-number">5.3.1</span> Working with text</h3>
-<p>Working with text data is somewhat more complicated than working with numeric data, and I discuss some of the basic ideas in <span class="quarto-unresolved-ref">?sec-textprocessing</span>, but for purposes of the current chapter we only need this bare bones sketch. The only other thing I want to do before moving on is show you an example of a function that can be applied to text data. So far, most of the functions that we have seen (i.e., <code>sqrt()</code>, <code>abs()</code> and <code>round()</code>) only make sense when applied to numeric data (e.g., you can’t calculate the square root of “hello”), and we’ve seen one function that can be applied to pretty much any variable or vector (i.e., <code>length()</code>). So it might be nice to see an example of a function that can be applied to text.</p>
+<p>Working with text data is somewhat more complicated than working with numeric data, and I discuss some of the basic ideas in <a href="#sec-textprocessing"><span class="quarto-unresolved-ref">sec-textprocessing</span></a>, but for purposes of the current chapter we only need this bare bones sketch. The only other thing I want to do before moving on is show you an example of a function that can be applied to text data. So far, most of the functions that we have seen (i.e., <code>sqrt()</code>, <code>abs()</code> and <code>round()</code>) only make sense when applied to numeric data (e.g., you can’t calculate the square root of “hello”), and we’ve seen one function that can be applied to pretty much any variable or vector (i.e., <code>length()</code>). So it might be nice to see an example of a function that can be applied to text.</p>
 <p>The function I’m going to introduce you to is called <code>nchar()</code>, and what it does is count the number of individual characters that make up a string. Recall earlier that when we tried to calculate the <code>length()</code> of our <code>greeting</code> variable it returned a value of <code>1</code>: the <code>greeting</code> variable contains only the one string, which happens to be <code>"hello"</code>. But what if I want to know how many letters there are in the word? Sure, I could <em>count</em> them, but that’s boring, and more to the point it’s a terrible strategy if what I wanted to know was the number of letters in <em>War and Peace</em>. That’s where the <code>nchar()</code> function is helpful:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(greeting)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -549,7 +554,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sec-logicals" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="sec-logicals"><span class="header-section-number">5.4</span> Logical values as data</h2>
-<p>Up to this point, I’ve introduced <em>numeric data</em> (<a href="#sec-assign"><span>Section&nbsp;5.1</span></a> and <a href="#sec-vectors"><span>Section&nbsp;5.2</span></a>) and <em>character data</em> (<a href="#sec-text"><span>Section&nbsp;5.3</span></a>). So you might not be surprised to discover that these <code>TRUE</code> and <code>FALSE</code> values that R has been producing are actually a third kind of data, called <em>logical data</em>. That is, when I asked R if <code>2 + 2 == 5</code> and it said <code>[1] FALSE</code> in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called <code>is_the_party_correct</code>, which would store R’s opinion:</p>
+<p>Up to this point, I’ve introduced <em>numeric data</em> (<a href="#sec-assign"><span class="quarto-unresolved-ref">sec-assign</span></a> and <a href="#sec-vectors"><span class="quarto-unresolved-ref">sec-vectors</span></a>) and <em>character data</em> (<a href="#sec-text"><span class="quarto-unresolved-ref">sec-text</span></a>). So you might not be surprised to discover that these <code>TRUE</code> and <code>FALSE</code> values that R has been producing are actually a third kind of data, called <em>logical data</em>. That is, when I asked R if <code>2 + 2 == 5</code> and it said <code>[1] FALSE</code> in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called <code>is_the_party_correct</code>, which would store R’s opinion:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>is_the_party_correct <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>is_the_party_correct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -568,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As an aside, because it’s kind of tedious to type <code>TRUE</code> or <code>FALSE</code> over and over again, R provides you with a shortcut: you can use <code>T</code> and <code>F</code> instead. However, it’s generally not recommended because it’s possible for the values of <code>T</code> and <code>F</code> to be changed. In contrast <code>TRUE</code> and <code>FALSE</code> cannot be changed or overwritten.</p>
 <section id="vectors-of-logicals" class="level3" data-number="5.4.1">
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="vectors-of-logicals"><span class="header-section-number">5.4.1</span> Vectors of logicals</h3>
-<p>The next thing to mention is that you can store vectors of logical values in exactly the same way that you can store vectors of numbers (<a href="#sec-vectors"><span>Section&nbsp;5.2</span></a>) and vectors of text data (<a href="#sec-text"><span>Section&nbsp;5.3</span></a>). Again, we can define them directly via the <code>c()</code> function, like this:</p>
+<p>The next thing to mention is that you can store vectors of logical values in exactly the same way that you can store vectors of numbers (<a href="#sec-vectors"><span class="quarto-unresolved-ref">sec-vectors</span></a>) and vectors of text data (<a href="#sec-text"><span class="quarto-unresolved-ref">sec-text</span></a>). Again, we can define them directly via the <code>c()</code> function, like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -576,7 +581,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1]  TRUE  TRUE FALSE</code></pre>
 </div>
 </div>
-<p>or you can produce a vector of logicals by applying a logical operator to a vector. This might not make a lot of sense to you, so let’s unpack it slowly. First, let’s suppose we have a vector of numbers (i.e., a “non-logical vector”). For instance, we could use the <code>sales_by_month</code> vector that we were using in <a href="#sec-vectors"><span>Section&nbsp;5.2</span></a>. Suppose I wanted R to tell me, for each month of the year, whether I actually sold a book in that month. I can do that by typing this:</p>
+<p>or you can produce a vector of logicals by applying a logical operator to a vector. This might not make a lot of sense to you, so let’s unpack it slowly. First, let’s suppose we have a vector of numbers (i.e., a “non-logical vector”). For instance, we could use the <code>sales_by_month</code> vector that we were using in <a href="#sec-vectors"><span class="quarto-unresolved-ref">sec-vectors</span></a>. Suppose I wanted R to tell me, for each month of the year, whether I actually sold a book in that month. I can do that by typing this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>sales_by_month <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -597,7 +602,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="sec-logictext" class="level3" data-number="5.4.2">
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="sec-logictext"><span class="header-section-number">5.4.2</span> Applying logical operation to text</h3>
-<p>In a moment (<a href="#sec-indexing"><span>Section&nbsp;5.5</span></a>) I’ll show you why these logical operations and logical vectors are so handy, but before I do so I want to very briefly point out that you can apply them to text as well as to logical data. It’s just that we need to be a bit more careful in understanding how R interprets the different operations. In this section I’ll talk about how the equal to operator <code>==</code> applies to text, since this is the most important one. Obviously, the not equal to operator <code>!=</code> gives the exact opposite answers to <code>==</code> so I’m implicitly talking about that one too, but I won’t give specific commands showing the use of <code>!=</code>. As for the other operators, I’ll defer a more detailed discussion of this topic to <span class="quarto-unresolved-ref">?sec-logictext2</span>.</p>
+<p>In a moment (<a href="#sec-indexing"><span class="quarto-unresolved-ref">sec-indexing</span></a>) I’ll show you why these logical operations and logical vectors are so handy, but before I do so I want to very briefly point out that you can apply them to text as well as to logical data. It’s just that we need to be a bit more careful in understanding how R interprets the different operations. In this section I’ll talk about how the equal to operator <code>==</code> applies to text, since this is the most important one. Obviously, the not equal to operator <code>!=</code> gives the exact opposite answers to <code>==</code> so I’m implicitly talking about that one too, but I won’t give specific commands showing the use of <code>!=</code>. As for the other operators, I’ll defer a more detailed discussion of this topic to <a href="#sec-logictext2"><span class="quarto-unresolved-ref">sec-logictext2</span></a>.</p>
 <p>Okay, let’s see how it works. In one sense, it’s very simple. For instance, I can ask R if the word <code>"cat"</code> is the same as the word <code>"dog"</code>, like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"dog"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -722,7 +727,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Either way, I get the answer I want.</p>
-<p>At this point, I hope you can see why logical indexing is such a useful thing. It’s a very basic, yet very powerful way to manipulate data. We’ll talk a lot more about how to manipulate data in <span class="citation" data-cites="datahandling">(<a href="references.html#ref-datahandling" role="doc-biblioref"><strong>datahandling?</strong></a>)</span>, since it’s a critical skill for real world research that is often overlooked in introductory research methods classes (or at least, that’s been my experience). It does take a bit of practice to become completely comfortable using logical indexing, so it’s a good idea to play around with these sorts of commands. Try creating a few different variables of your own, and then ask yourself questions like “how do I get R to spit out all the elements that are [blah]”. Practice makes perfect, and it’s only by practicing logical indexing that you’ll perfect the art of yelling frustrated insults at your computer.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p>At this point, I hope you can see why logical indexing is such a useful thing. It’s a very basic, yet very powerful way to manipulate data. We’ll talk a lot more about how to manipulate data in <span class="citation" data-cites="datahandling">(<a href="#ref-datahandling" role="doc-biblioref"><strong>datahandling?</strong></a>)</span>, since it’s a critical skill for real world research that is often overlooked in introductory research methods classes (or at least, that’s been my experience). It does take a bit of practice to become completely comfortable using logical indexing, so it’s a good idea to play around with these sorts of commands. Try creating a few different variables of your own, and then ask yourself questions like “how do I get R to spit out all the elements that are [blah]”. Practice makes perfect, and it’s only by practicing logical indexing that you’ll perfect the art of yelling frustrated insults at your computer.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
 </section>
 </section>
 <section id="useful" class="level2" data-number="5.6">
@@ -1106,8 +1111,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mechanics.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional R concepts</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./file-system.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
