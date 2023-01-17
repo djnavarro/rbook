@@ -196,7 +196,17 @@ But note that "urgent" is different from "important" -- they both matter. I real
 
 ## Why use R?
 
-However, before going into any of the specifics, it's worth talking a little about why you might want to use R at all. Given that you're reading this, you've probably got your own reasons. However, if those reasons are "because that's what my stats class uses", it might be worth explaining a little why your lecturer has chosen to use R for the class. Of course, I don't really know why *other* people choose R, so I'm really talking about why I use it.
+> R, the mysterious and powerful language of the statisticians, holds secrets beyond the realm of mortal understanding. As a data scientist, I delve into its dark depths, unearthing hidden truths buried deep within the data.
+>
+> But be warned, for R is not for the faint of heart. Its community is vast and ancient, with thousands of packages available for use, each holding its own eldritch power. These packages, written in a language known only to the initiated, can save one from certain doom by providing pre-written code for common tasks. But beware, for to gaze upon the ggplot2 package is to behold true terror, as it unveils the horrors of the data in a manner both beautiful and terrifying.
+>
+> In the end, R is a tool to be respected and feared, for it holds the power to unveil the hidden mysteries of the data, but at what cost? Only the bravest of souls should dare to tread its path.
+> 
+> -- The ChatGPT model, when I asked it to write about R in a gothic horror style
+
+Before starting any discussion of how R works, I ought to talk a bit about why you might want to want to use R at all. If you're approaching R as a complete novice, your mental model of R might look quite similar to the output of ChatGPT in the quote above. So let's take a moment to reassure you that a dive into R is not in face a descent into a Lovecraftian nightmare.
+
+Why use R? Given that you're reading this, you've probably got your own reasons. However, if those reasons are "because that's what my stats class uses", it might be worth explaining a little why your lecturer has chosen to use R for the class. Of course, I don't really know why *other* people choose R, so I'm really talking about why I use it.
 
 - It's sort of obvious, but worth saying anyway: doing your statistics on a computer is faster, easier and more powerful than doing statistics by hand. Computers excel at mindless repetitive tasks, and a lot of statistical calculations are both mindless and repetitive. For most people, the only reason to ever do statistical calculations with pencil and paper is for learning purposes. In my class I do occasionally suggest doing some calculations that way, but the only real value to it is pedagogical. It does help you to get a "feel" for statistics to do some calculations yourself, so it's worth doing it once. But only once!
 
