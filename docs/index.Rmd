@@ -1,5 +1,5 @@
 ---
-title: '<div class="jumbotron"><h1 class="title toc-ignore display-3" align="center">Learning Statistics with R</h1><p class="lead" align="center">by Danielle Navarro <a href="https://twitter.com/djnavarro"><i class="fab fa-twitter"></i></a></p></div>'
+title: '<div class="jumbotron"><h1 class="title toc-ignore display-3" align="center">Learning Statistics with R</h1><p class="lead" align="center">by Danielle Navarro <a href="https://fosstodon.org/@djnavarro"><i class="fab fa-mastodon"></i></a></p></div>'
 output:
   html_document:
     includes:
@@ -81,10 +81,10 @@ I have suggested that someone write a *Learning Statistics with an Abacus* adapt
 <br>
 <center>
 ---- &nbsp;&nbsp;
-<a href="https://twitter.com/djnavarro"><i class="fab fa-twitter"></i></a> &nbsp;
-<a href="https://compcogscisydney.org"><i class="fas fa-home"></i></a> &nbsp;
+<a href="https://fosstodon.org/@djnavarro"><i class="fab fa-mastodon"></i></a> &nbsp;
+<a href="https://djnavarro.net"><i class="fas fa-home"></i></a> &nbsp;
 <a href="https://github.com/djnavarro"><i class="fab fa-github"></i></a> &nbsp;
-<a href="mailto:d.navarro@unsw.edu.au"><i class="fas fa-paper-plane"></i></a>
+<a href="mailto:djnavarro@protonmail.com"><i class="fas fa-paper-plane"></i></a>
 &nbsp;&nbsp; ----
 </center>
 <br>
