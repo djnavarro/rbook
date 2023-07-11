@@ -48,3 +48,7 @@ rsconnect/
 
 # Mac OS files to ignore
 .DS_Store
+
+# Files that pop up from dev
+.quarto
+_old
