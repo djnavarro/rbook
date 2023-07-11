@@ -304,7 +304,7 @@ Important
 </div>
 <p>In this chapter, I’ll talk more about what kinds of variables exist in R, and introduce three new kinds of variables: factors, data frames and formulas. I’ll finish up by talking a little bit about the help documentation in R as well as some other avenues for finding assistance. In general, I’m not trying to be comprehensive in this chapter, I’m trying to make sure that you’ve got the basic foundations needed to tackle the content that comes later in the book. However, a lot of the topics are revisited in more detail later, especially in Chapters @ref(datahandling) and @ref(scripting).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsrbook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="factors" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="factors"><span class="header-section-number">8.1</span> Factors</h2>
@@ -425,18 +425,20 @@ Levels: male female</code></pre>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">37</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">47</span>, <span class="dv">18</span>, <span class="dv">19</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>score <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">14</span>, <span class="dv">25</span>, <span class="dv">21</span>, <span class="dv">29</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Assuming no other variables are in the workspace, if I type <code>who()</code> I get this:</p>
+<p>Assuming no other variables are in the workspace, if I type <code>show_environment()</code> I get this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_environment</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --        -- Class --   -- Size --
-   age               numeric       9         
-   gender            factor        9         
-   group             factor        9         
-   has_annotations   function                
-   hook_output       function                
-   score             numeric       9         
-   status            function                </code></pre>
+<pre><code># A tibble: 7 × 3
+  variable        class    size     
+  &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;    
+1 age             numeric  length: 9
+2 gender          factor   length: 9
+3 group           factor   length: 9
+4 has_annotations function &lt;NA&gt;     
+5 hook_output     function &lt;NA&gt;     
+6 score           numeric  length: 9
+7 status          function &lt;NA&gt;     </code></pre>
 </div>
 </div>
 <p>So there are four variables in the workspace, <code>age</code>, <code>gender</code>, <code>group</code> and <code>score</code>. And it just so happens that all four of them are the same size (i.e., they’re all vectors with 9 elements). Aaaand it just so happens that <code>age[1]</code> corresponds to the age of the first person, and <code>gender[1]</code> is the gender of that very same person, etc. In other words, you and I both know that all four of these variables correspond to the <em>same</em> data set, and all four of them are organised in exactly the same way.</p>
@@ -480,29 +482,13 @@ Levels: male female</code></pre>
 </section>
 <section id="getting-information-about-a-data-frame" class="level3" data-number="8.2.3">
 <h3 data-number="8.2.3" class="anchored" data-anchor-id="getting-information-about-a-data-frame"><span class="header-section-number">8.2.3</span> Getting information about a data frame</h3>
-<p>One problem that sometimes comes up in practice is that you forget what you called all your variables. Normally you might try to type <code>objects()</code> or <code>who()</code>, but neither of those commands will tell you what the names are for those variables inside a data frame! One way is to ask R to tell you what the <em>names</em> of all the variables stored in the data frame are, which you can do using the <code>names()</code> function:</p>
+<p>One problem that sometimes comes up in practice is that you forget what you called all your variables. Normally you might try to type <code>objects()</code> or <code>show_environment()</code>, but neither of those commands will tell you what the names are for those variables inside a data frame! One way is to ask R to tell you what the <em>names</em> of all the variables stored in the data frame are, which you can do using the <code>names()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(expt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "age"    "gender" "group"  "score" </code></pre>
 </div>
 </div>
-<p>An alternative method is to use the <code>who()</code> function, as long as you tell it to look at the variables inside data frames. If you set <code>expand = TRUE</code> then it will not only list the variables in the workspace, but it will “expand” any data frames that you’ve got in the workspace, so that you can see what they look like. That is:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="at">expand =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --        -- Class --   -- Size --
-   expt              data.frame    9 x 4     
-    $age             numeric       9         
-    $gender          factor        9         
-    $group           factor        9         
-    $score           numeric       9         
-   has_annotations   function                
-   hook_output       function                
-   status            function                </code></pre>
-</div>
-</div>
-<p>or, since <code>expand</code> is the first argument in the <code>who()</code> function you can just type <code>who(TRUE)</code>. I’ll do that a lot in this book.</p>
 </section>
 <section id="looking-for-more-on-data-frames" class="level3" data-number="8.2.4">
 <h3 data-number="8.2.4" class="anchored" data-anchor-id="looking-for-more-on-data-frames"><span class="header-section-number">8.2.4</span> Looking for more on data frames?</h3>
@@ -513,14 +499,14 @@ Levels: male female</code></pre>
 <h2 data-number="8.3" class="anchored" data-anchor-id="lists"><span class="header-section-number">8.3</span> Lists</h2>
 <p>The next kind of data I want to mention are <strong><em>lists</em></strong>. Lists are an extremely fundamental data structure in R, and as you start making the transition from a novice to a savvy R user you will use lists all the time. I don’t use lists very often in this book – not directly – but most of the advanced data structures in R are built from lists (e.g., data frames are actually a specific type of list). Because lists are so important to how R stores things, it’s useful to have a basic understanding of them. Okay, so what is a list, exactly? Like data frames, lists are just “collections of variables.” However, unlike data frames – which are basically supposed to look like a nice “rectangular” table of data – there are no constraints on what kinds of variables we include, and no requirement that the variables have any particular relationship to one another. In order to understand what this actually <em>means</em>, the best thing to do is create a list, which we can do using the <code>list()</code> function. If I type this as my command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Dan <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">age =</span> <span class="dv">34</span>,</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">nerd =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">parents =</span> <span class="fu">c</span>(<span class="st">"Joe"</span>,<span class="st">"Liz"</span>) </span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>Dan <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">age =</span> <span class="dv">34</span>,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">nerd =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">parents =</span> <span class="fu">c</span>(<span class="st">"Joe"</span>,<span class="st">"Liz"</span>) </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>R creates a new list variable called <code>Dan</code>, which is a bundle of three different variables: <code>age</code>, <code>nerd</code> and <code>parents</code>. Notice, that the <code>parents</code> variable is longer than the others. This is perfectly acceptable for a list, but it wouldn’t be for a data frame. If we now print out the variable, you can see the way that R stores the list:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( Dan )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( Dan )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$age
 [1] 34
@@ -534,14 +520,14 @@ $parents
 </div>
 <p>As you might have guessed from those <code>$</code> symbols everywhere, the variables are stored in exactly the same way that they are for a data frame (again, this is not surprising: data frames <em>are</em> a type of list). So you will (I hope) be entirely unsurprised and probably quite bored when I tell you that you can extract the variables from the list using the <code>$</code> operator, like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Dan<span class="sc">$</span>nerd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>Dan<span class="sc">$</span>nerd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 <p>If you need to add new entries to the list, the easiest way to do so is to again use <code>$</code>, as the following example illustrates. If I type a command like this</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>Dan<span class="sc">$</span>children <span class="ot">&lt;-</span> <span class="st">"Alex"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Dan<span class="sc">$</span>children <span class="ot">&lt;-</span> <span class="st">"Alex"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>then R creates a new entry to the end of the list called <code>children</code>, and assigns it a value of <code>"Alex"</code>. If I were now to <code>print()</code> this list out, you’d see a new entry at the bottom of the printout. Finally, it’s actually possible for lists to contain other lists, so it’s quite possible that I would end up using a command like <code>Dan$children$age</code> to find out how old my son is. Or I could try to remember it myself I suppose.</p>
 </section>
@@ -550,17 +536,17 @@ $parents
 <p>The last kind of variable that I want to introduce before finally being able to start talking about statistics is the <strong><em>formula</em></strong>. Formulas were originally introduced into R as a convenient way to specify a particular type of statistical model (see Chapter @ref(regression)) but they’re such handy things that they’ve spread. Formulas are now used in a lot of different contexts, so it makes sense to introduce them early.</p>
 <p>Stated simply, a formula object is a variable, but it’s a special type of variable that specifies a relationship between other variables. A formula is specified using the “tilde operator” <code>~</code>. A very simple example of a formula is shown below:<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>formula1 <span class="ot">&lt;-</span> out <span class="sc">~</span> pred</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>formula1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>formula1 <span class="ot">&lt;-</span> out <span class="sc">~</span> pred</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>formula1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>out ~ pred</code></pre>
 </div>
 </div>
 <p>The <em>precise</em> meaning of this formula depends on exactly what you want to do with it, but in broad terms it means “the <code>out</code> (outcome) variable, analysed in terms of the <code>pred</code> (predictor) variable”. That said, although the simplest and most common form of a formula uses the “one variable on the left, one variable on the right” format, there are others. For instance, the following examples are all reasonably common</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>formula2 <span class="ot">&lt;-</span>  out <span class="sc">~</span> pred1 <span class="sc">+</span> pred2   <span class="co"># more than one variable on the right</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>formula3 <span class="ot">&lt;-</span>  out <span class="sc">~</span> pred1 <span class="sc">*</span> pred2   <span class="co"># different relationship between predictors </span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>formula4 <span class="ot">&lt;-</span>  <span class="er">~</span> var1 <span class="sc">+</span> var2         <span class="co"># a 'one-sided' formula</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>formula2 <span class="ot">&lt;-</span>  out <span class="sc">~</span> pred1 <span class="sc">+</span> pred2   <span class="co"># more than one variable on the right</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>formula3 <span class="ot">&lt;-</span>  out <span class="sc">~</span> pred1 <span class="sc">*</span> pred2   <span class="co"># different relationship between predictors </span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>formula4 <span class="ot">&lt;-</span>  <span class="er">~</span> var1 <span class="sc">+</span> var2         <span class="co"># a 'one-sided' formula</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and there are many more variants besides. Formulas are pretty flexible things, and so different functions will make use of different formats, depending on what the function is intended to do.</p>
 </section>
@@ -568,22 +554,22 @@ $parents
 <h2 data-number="8.5" class="anchored" data-anchor-id="generics"><span class="header-section-number">8.5</span> Generic functions</h2>
 <p>There’s one really important thing that I omitted when I discussed functions earlier on in Section @ref(usingfunctions), and that’s the concept of a <strong><em>generic function</em></strong>. The two most notable examples that you’ll see in the next few chapters are <code>summary()</code> and <code>plot()</code>, although you’ve already seen an example of one working behind the scenes, and that’s the <code>print()</code> function. The thing that makes generics different from the other functions is that their behaviour changes, often quite dramatically, depending on the <code>class()</code> of the input you give it. The easiest way to explain the concept is with an example. With that in mind, lets take a closer look at what the <code>print()</code> function actually does. I’ll do this by creating a formula, and printing it out in a few different ways. First, let’s stick with what we know:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>my.formula <span class="ot">&lt;-</span> blah <span class="sc">~</span> blah.blah    <span class="co"># create a variable of class "formula"</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( my.formula )               <span class="co"># print it out using the generic print() function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>my.formula <span class="ot">&lt;-</span> blah <span class="sc">~</span> blah.blah    <span class="co"># create a variable of class "formula"</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( my.formula )               <span class="co"># print it out using the generic print() function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>blah ~ blah.blah</code></pre>
 </div>
 </div>
 <p>So far, there’s nothing very surprising here. But there’s actually a lot going on behind the scenes here. When I type <code>print( my.formula )</code>, what actually happens is the <code>print()</code> function checks the class of the <code>my.formula</code> variable. When the function discovers that the variable it’s been given is a formula, it goes looking for a function called <code>print.formula()</code>, and then delegates the whole business of printing out the variable to the <code>print.formula()</code> function.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> For what it’s worth, the name for a “dedicated” function like <code>print.formula()</code> that exists only to be a special case of a generic function like <code>print()</code> is a <strong><em>method</em></strong>, and the name for the process in which the generic function passes off all the hard work onto a method is called <strong><em>method dispatch</em></strong>. You won’t need to understand the details at all for this book, but you do need to know the gist of it; if only because a lot of the functions we’ll use are actually generics. Anyway, to help expose a little more of the workings to you, let’s bypass the <code>print()</code> function entirely and call the formula method directly:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print.formula</span>( my.formula )       <span class="co"># print it out using the print.formula() method</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Appears to be deprecated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print.formula</span>( my.formula )       <span class="co"># print it out using the print.formula() method</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Appears to be deprecated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There’s no difference in the output at all. But this shouldn’t surprise you because it was actually the <code>print.formula()</code> method that was doing all the hard work in the first place. The <code>print()</code> function itself is a lazy bastard that doesn’t do anything other than select which of the methods is going to do the actual printing.</p>
 <p>Okay, fair enough, but you might be wondering what would have happened if <code>print.formula()</code> didn’t exist? That is, what happens if there isn’t a specific method defined for the class of variable that you’re using? In that case, the generic function passes off the hard work to a “default” method, whose name in this case would be <code>print.default()</code>. Let’s see what happens if we bypass the <code>print()</code> formula, and try to print out <code>my.formula</code> using the <code>print.default()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print.default</span>( my.formula )      <span class="co"># print it out using the print.default() method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print.default</span>( my.formula )      <span class="co"># print it out using the print.default() method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>blah ~ blah.blah
 attr(,"class")

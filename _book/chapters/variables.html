@@ -874,38 +874,40 @@ Important
 </div>
 <p>Of course, in the true R tradition, the <code>objects()</code> function has a lot of fancy capabilities that I’m glossing over in this example. Moreover there are also several other functions that you can use, including <code>ls()</code> which is pretty much identical to <code>objects()</code>, and <code>ls.str()</code> which you can use to get a fairly detailed description of all the variables in the workspace. In fact, the <code>lsr</code> package actually includes its own function that you can use for this purpose, called <code>who()</code>. The reason for using the <code>who()</code> function is pretty straightforward: in my everyday work I find that the output produced by the <code>objects()</code> command isn’t <em>quite</em> informative enough, because the only thing it prints out is the name of each variable; but the <code>ls.str()</code> function is <em>too</em> informative, because it prints out a lot of additional information that I really don’t like to look at. The <code>who()</code> function is a compromise between the two. First, now that we’ve got the <code>lsr</code> package installed, we need to load it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsrbook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>and now we can use the <code>who()</code> function:</p>
+<p>and now we can use the <code>show_environment()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_environment</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --             -- Class --   -- Size --
-   any_sales_this_month   logical       12        
-   days_per_month         numeric       12        
-   february_sales         numeric       1         
-   greeting               character     1         
-   has_annotations        function                
-   hook_output            function                
-   is_the_party_correct   logical       1         
-   months                 character     12        
-   profit                 numeric       4         
-   revenue                numeric       1         
-   royalty                numeric       1         
-   sales                  numeric       1         
-   sales_by_month         numeric       12        
-   status                 function                
-   stock_levels           character     12        
-   x                      numeric       1         
-   y                      character     1         </code></pre>
+<pre><code># A tibble: 17 × 3
+   variable             class     size      
+   &lt;chr&gt;                &lt;chr&gt;     &lt;chr&gt;     
+ 1 any_sales_this_month logical   length: 12
+ 2 days_per_month       numeric   length: 12
+ 3 february_sales       numeric   length: 1 
+ 4 greeting             character length: 1 
+ 5 has_annotations      function  &lt;NA&gt;      
+ 6 hook_output          function  &lt;NA&gt;      
+ 7 is_the_party_correct logical   length: 1 
+ 8 months               character length: 12
+ 9 profit               numeric   length: 4 
+10 revenue              numeric   length: 1 
+11 royalty              numeric   length: 1 
+12 sales                numeric   length: 1 
+13 sales_by_month       numeric   length: 12
+14 status               function  &lt;NA&gt;      
+15 stock_levels         character length: 12
+16 x                    numeric   length: 1 
+17 y                    character length: 1 </code></pre>
 </div>
 </div>
-<p>As you can see, the <code>who()</code> function lists all the variables and provides some basic information about what kind of variable each one is and how many elements it contains. Personally, I find this output much easier more useful than the very compact output of the <code>objects()</code> function, but less overwhelming than the extremely verbose <code>ls.str()</code> function. Throughout this book you’ll see me using the <code>who()</code> function a lot. You don’t have to use it yourself: in fact, I suspect you’ll find it easier to look at the RStudio environment panel. But for the purposes of writing a textbook I found it handy to have a nice text based description: otherwise there would be about another 100 or so screenshots added to the book.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+<p>As you can see, the <code>show_environment()</code> function lists all the variables and provides some basic information about what kind of variable each one is and how many elements it contains. Personally, I find this output much easier more useful than the very compact output of the <code>objects()</code> function, but less overwhelming than the extremely verbose <code>ls.str()</code> function. Throughout this book you’ll see me using the <code>show_environment()</code> function a lot. You don’t have to use it yourself: in fact, I suspect you’ll find it easier to look at the RStudio environment panel. But for the purposes of writing a textbook I found it handy to have a nice text based description: otherwise there would be about another 100 or so screenshots added to the book.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
 </section>
 <section id="removing-variables" class="level3" data-number="5.7.2">
 <h3 data-number="5.7.2" class="anchored" data-anchor-id="removing-variables"><span class="header-section-number">5.7.2</span> Removing variables</h3>
 <p>Looking over that list of variables, it occurs to me that I really don’t need them any more. I created them originally just to make a point, but they don’t serve any useful purpose anymore, and now I want to get rid of them. I’ll show you how to do this, but first I want to warn you – there’s no “undo” option for variable removal. Once a variable is removed, it’s gone forever unless you save it to disk. I’ll show you how to do <em>that</em> in Section @ref(load), but quite clearly we have no need for these variables at all, so we can safely get rid of them.</p>
-<p>In RStudio, the easiest way to remove variables is to use the environment panel. Assuming that you’re in grid view (i.e., Figure @ref(fig:workspace2)), check the boxes next to the variables that you want to delete, then click on the “Clear” button at the top of the panel. When you do this, RStudio will show a dialog box asking you to confirm that you really do want to delete the variables. It’s always worth checking that you really do, because as RStudio is at pains to point out, you can’t undo this. Once a variable is deleted, it’s gone.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> In any case, if you click “yes”, that variable will disappear from the workspace: it will no longer appear in the environment panel, and it won’t show up when you use the <code>who()</code> command.</p>
+<p>In RStudio, the easiest way to remove variables is to use the environment panel. Assuming that you’re in grid view (i.e., Figure @ref(fig:workspace2)), check the boxes next to the variables that you want to delete, then click on the “Clear” button at the top of the panel. When you do this, RStudio will show a dialog box asking you to confirm that you really do want to delete the variables. It’s always worth checking that you really do, because as RStudio is at pains to point out, you can’t undo this. Once a variable is deleted, it’s gone.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> In any case, if you click “yes”, that variable will disappear from the workspace: it will no longer appear in the environment panel, and it won’t show up when you use the <code>show_environment()</code> command.</p>
 <p>Suppose you don’t access to RStudio, and you still want to remove variables. This is where the <strong><em>remove</em></strong> function <code>rm()</code> comes in handy. The simplest way to use <code>rm()</code> is just to type in a (comma separated) list of all the variables you want to remove. Let’s say I want to get rid of <code>seeker</code> and <code>lover</code>, but I would like to keep <code>keeper</code>. To do this, all I have to do is type:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>( seeker, lover )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -918,26 +920,28 @@ Important
 </div>
 <p>There’s no visible output, but if I now inspect the workspace</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_environment</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --             -- Class --   -- Size --
-   any_sales_this_month   logical       12        
-   days_per_month         numeric       12        
-   february_sales         numeric       1         
-   greeting               character     1         
-   has_annotations        function                
-   hook_output            function                
-   is_the_party_correct   logical       1         
-   months                 character     12        
-   profit                 numeric       4         
-   revenue                numeric       1         
-   royalty                numeric       1         
-   sales                  numeric       1         
-   sales_by_month         numeric       12        
-   status                 function                
-   stock_levels           character     12        
-   x                      numeric       1         
-   y                      character     1         </code></pre>
+<pre><code># A tibble: 17 × 3
+   variable             class     size      
+   &lt;chr&gt;                &lt;chr&gt;     &lt;chr&gt;     
+ 1 any_sales_this_month logical   length: 12
+ 2 days_per_month       numeric   length: 12
+ 3 february_sales       numeric   length: 1 
+ 4 greeting             character length: 1 
+ 5 has_annotations      function  &lt;NA&gt;      
+ 6 hook_output          function  &lt;NA&gt;      
+ 7 is_the_party_correct logical   length: 1 
+ 8 months               character length: 12
+ 9 profit               numeric   length: 4 
+10 revenue              numeric   length: 1 
+11 royalty              numeric   length: 1 
+12 sales                numeric   length: 1 
+13 sales_by_month       numeric   length: 12
+14 status               function  &lt;NA&gt;      
+15 stock_levels         character length: 12
+16 x                    numeric   length: 1 
+17 y                    character length: 1 </code></pre>
 </div>
 </div>
 <p>I see that there’s only the <code>keeper</code> variable left. As you can see, <code>rm()</code> can be very handy for keeping the workspace tidy.</p>
@@ -963,7 +967,7 @@ Important
 <li id="fn10"><p>Well, I say that… but in my personal experience it wasn’t until I started learning “regular expressions” that my loathing of computers reached its peak.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>Or functions. But let’s ignore functions for the moment.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12"><p>Actually, I don’t think I <em>ever</em> use this in practice. I don’t know why I bother to talk about it in the book anymore.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p>This would be especially annoying if you’re reading an electronic copy of the book because the text displayed by the <code>who()</code> function is searchable, whereas text shown in a screen shot isn’t!<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>This would be especially annoying if you’re reading an electronic copy of the book because the text displayed by the <code>show_environment()</code> function is searchable, whereas text shown in a screen shot isn’t!<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn14"><p>Mind you, all that means is that it’s been removed from the workspace. If you’ve got the data saved to file somewhere, then that <em>file</em> is perfectly safe.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>

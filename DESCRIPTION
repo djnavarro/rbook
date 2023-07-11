@@ -18,3 +18,5 @@ Suggests:
     knitr,
     png,
     sysfonts
+Remotes:
+    djnavarro/lsrbook

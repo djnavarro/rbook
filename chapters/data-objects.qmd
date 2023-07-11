@@ -11,7 +11,7 @@ status("drafting")
 In this chapter, I'll talk more about what kinds of variables exist in R, and introduce three new kinds of variables: factors, data frames and formulas. I'll finish up by talking a little bit about the help documentation in R as well as some other avenues for finding assistance. In general, I'm not trying to be comprehensive in this chapter, I'm trying to make sure that you've got the basic foundations needed to tackle the content that comes later in the book. However, a lot of the topics are revisited in more detail later, especially in Chapters \@ref(datahandling) and \@ref(scripting). 
 
 ```{r}
-library(lsr)
+library(lsrbook)
 ```
 
 
@@ -111,9 +111,9 @@ In order to understand why R has created this funny thing called a data frame, i
 age <- c(17, 19, 21, 37, 18, 19, 47, 18, 19)
 score <- c(12, 10, 11, 15, 16, 14, 25, 21, 29)
 ```
-Assuming no other variables are in the workspace, if I type `who()` I get this:
+Assuming no other variables are in the workspace, if I type `show_environment()` I get this:
 ```{r}
-who()
+show_environment()
 ```
 So there are four variables in the workspace, `age`, `gender`, `group` and `score`. And it just so happens that all four of them are the same size (i.e., they're all vectors with 9 elements). Aaaand it just so happens that `age[1]` corresponds to the age of the first person, and `gender[1]` is the gender of that very same person, etc. In other words, you and I both know that all four of these variables correspond to the *same* data set, and all four of them are organised in exactly the same way. 
 
@@ -150,25 +150,15 @@ expt$score
 
 ### Getting information about a data frame
 
-One problem that sometimes comes up in practice is that you forget what you called all your variables. Normally you might try to type `objects()` or `who()`, but neither of those commands will tell you what the names are for those variables inside a data frame! One way is to ask R to tell you what the *names* of all the variables stored in the data frame are, which you can do using the `names()` function:
+One problem that sometimes comes up in practice is that you forget what you called all your variables. Normally you might try to type `objects()` or `show_environment()`, but neither of those commands will tell you what the names are for those variables inside a data frame! One way is to ask R to tell you what the *names* of all the variables stored in the data frame are, which you can do using the `names()` function:
 ```{r}
 names(expt)
 ```
-An alternative method is to use the `who()` function, as long as you tell it to look at the variables inside data frames. If you set `expand = TRUE` then it will not only list the variables in the workspace, but it will "expand" any data frames that you've got in the workspace, so that you can see what they look like. That is:
-```{r}
-who(expand = TRUE)
-```
-or, since `expand` is the first argument in the `who()` function you can just type `who(TRUE)`. I'll do that a lot in this book.
 
 
 ### Looking for more on data frames?
 
 There's a lot more that can be said about data frames: they're fairly complicated beasts, and the longer you use R the more important it is to make sure you really understand them. We'll talk a lot more about them in Chapter \@ref(datahandling).
-
-
-
-
-
 
 
 ## Lists{#lists}
