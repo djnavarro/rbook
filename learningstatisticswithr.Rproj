@@ -12,5 +12,4 @@ Encoding: UTF-8
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
-BuildType: Website
-WebsitePath: bookdown
+BuildType: Makefile
