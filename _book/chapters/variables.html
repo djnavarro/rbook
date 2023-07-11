@@ -312,6 +312,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are, I’m sorry to inform you, reading the work-in-progress revision of “Learning Statistics with R”. This chapter is currently a mess, and I don’t recommend reading it.</p>
+</div>
+</div>
 <section id="sec-assign" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="sec-assign"><span class="header-section-number">5.1</span> Storing a number as a variable</h2>
 <p>One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in <strong>variables</strong>. Variables in R aren’t exactly the same thing as the variables we talked about in the last chapter on research methods, but they are similar. At a conceptual level you can think of a variable as “label” for a certain piece of information, or even several different pieces of information. When doing statistical analysis in R all of your data (the variables you measured in your study) will be stored as variables in R, but as well see later in the book you’ll find that you end up creating variables for other things too. However, before we delve into all the messy details of data sets and statistical analysis, let’s look at the very basics for how we create variables and work with them.</p>
@@ -855,8 +868,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  [4] "greeting"             "has_annotations"      "hook_output"         
  [7] "is_the_party_correct" "months"               "profit"              
 [10] "revenue"              "royalty"              "sales"               
-[13] "sales_by_month"       "stock_levels"         "x"                   
-[16] "y"                   </code></pre>
+[13] "sales_by_month"       "status"               "stock_levels"        
+[16] "x"                    "y"                   </code></pre>
 </div>
 </div>
 <p>Of course, in the true R tradition, the <code>objects()</code> function has a lot of fancy capabilities that I’m glossing over in this example. Moreover there are also several other functions that you can use, including <code>ls()</code> which is pretty much identical to <code>objects()</code>, and <code>ls.str()</code> which you can use to get a fairly detailed description of all the variables in the workspace. In fact, the <code>lsr</code> package actually includes its own function that you can use for this purpose, called <code>who()</code>. The reason for using the <code>who()</code> function is pretty straightforward: in my everyday work I find that the output produced by the <code>objects()</code> command isn’t <em>quite</em> informative enough, because the only thing it prints out is the name of each variable; but the <code>ls.str()</code> function is <em>too</em> informative, because it prints out a lot of additional information that I really don’t like to look at. The <code>who()</code> function is a compromise between the two. First, now that we’ve got the <code>lsr</code> package installed, we need to load it:</p>
@@ -881,6 +894,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    royalty                numeric       1         
    sales                  numeric       1         
    sales_by_month         numeric       12        
+   status                 function                
    stock_levels           character     12        
    x                      numeric       1         
    y                      character     1         </code></pre>
@@ -920,6 +934,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    royalty                numeric       1         
    sales                  numeric       1         
    sales_by_month         numeric       12        
+   status                 function                
    stock_levels           character     12        
    x                      numeric       1         
    y                      character     1         </code></pre>

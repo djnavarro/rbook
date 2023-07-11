@@ -297,6 +297,19 @@ div.csl-indent {
 
 </header>
 
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are, I’m sorry to inform you, reading the work-in-progress revision of “Learning Statistics with R”. This chapter is currently a mess, and I don’t recommend reading it.</p>
+</div>
+</div>
 <p>In this section I discuss R <strong><em>packages</em></strong>, since almost all of the functions you might want to use in R come in packages. A package is basically just a big collection of functions, data sets and other R objects that are all grouped together under a common name. Some packages are already installed when you put R on your computer, but the vast majority of them of R packages are out there on the internet, waiting for you to download, install and use them.</p>
 <p>When I first started writing this book, RStudio didn’t really exist as a viable option for using R, and as a consequence I wrote a very lengthy section that explained how to do package management using raw R commands. It’s not actually terribly hard to work with packages that way, but it’s clunky and unpleasant. Fortunately, we don’t have to do things that way anymore. In this section, I’ll describe how to work with packages using the RStudio tools, because they’re so much simpler. Along the way, you’ll see that whenever you get RStudio to do something (e.g., install a package), you’ll actually see the R commands that get created. I’ll explain them as we go, because I think that helps you understand what’s going on.</p>
 <p>However, before we get started, there’s a critical distinction that you need to understand, which is the difference between having a package <strong><em>installed</em></strong> on your computer, and having a package <strong><em>loaded</em></strong> in R. As of this writing, there are just over 5000 R packages freely available “out there” on the internet.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> When you install R on your computer, you don’t get all of them: only about 30 or so come bundled with the basic R installation. So right now there are about 30 packages “installed” on your computer, and another 5000 or so that are not installed. So that’s what installed means: it means “it’s on your computer somewhere”. The critical thing to remember is that just because something is on your computer doesn’t mean R can use it. In order for R to be able to <em>use</em> one of your 30 or so installed packages, that package must also be “loaded”. Generally, when you open up R, only a few of these packages (about 7 or 8) are actually loaded. Basically what it boils down to is this:</p>
