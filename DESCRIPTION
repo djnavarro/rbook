@@ -1,0 +1,20 @@
+Package: lsrbook
+Title: Learning Statistics With R
+Version: 0.8.0.9000
+Authors@R: 
+    person("Danielle", "Navarro", , "djnavarro@protonmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-7648-6578"))
+Description: "Learning statistics with R" is a book aimed at teaching new
+    users how to use R for descriptive statistics, data wrangling, data 
+    visualisation, and basic inferential statstics. It is not an R package,
+    but a DESCRIPTION file is included to make it easier to install 
+    dependencies.
+License: CC BY 4.0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Suggests: 
+    here,
+    knitr,
+    png,
+    sysfonts

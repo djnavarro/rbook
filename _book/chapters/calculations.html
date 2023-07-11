@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Danielle Navarro">
+
+<title>Learning Statistics with R - 4&nbsp; Doing calculations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/variables.html" rel="next">
+<link href="../chapters/commands.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<!-- add the twitter card and open graph tags -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@djnavarro">
+
+<!-- plausible analytics -->
+<script async="" defer="" data-domain="learningstatisticswithr.com" src="https://plausible.io/js/plausible.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/installation.html">Getting started</a></li><li class="breadcrumb-item"><a href="../chapters/calculations.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Doing calculations</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/djnavarro/rbook/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why statistics? Why R?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Getting started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Our first R commands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/calculations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Doing calculations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/file-system.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Working with data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/data-objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/reading-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-arithmetic" id="toc-sec-arithmetic" class="nav-link active" data-scroll-target="#sec-arithmetic"><span class="header-section-number">4.1</span> Adding, subtracting, multiplying and dividing</a></li>
+  <li><a href="#taking-powers" id="toc-taking-powers" class="nav-link" data-scroll-target="#taking-powers"><span class="header-section-number">4.2</span> Taking powers</a></li>
+  <li><a href="#bedmas" id="toc-bedmas" class="nav-link" data-scroll-target="#bedmas"><span class="header-section-number">4.3</span> Doing calculations in the right order</a></li>
+  <li><a href="#sec-usingfunctions" id="toc-sec-usingfunctions" class="nav-link" data-scroll-target="#sec-usingfunctions"><span class="header-section-number">4.4</span> Using functions to do calculations</a></li>
+  <li><a href="#assessing-mathematical-truths" id="toc-assessing-mathematical-truths" class="nav-link" data-scroll-target="#assessing-mathematical-truths"><span class="header-section-number">4.5</span> Assessing mathematical truths</a></li>
+  <li><a href="#logical-operations" id="toc-logical-operations" class="nav-link" data-scroll-target="#logical-operations"><span class="header-section-number">4.6</span> Logical operations</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.7</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-calculations" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Doing calculations</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Okay, now that we’ve discussed some of the tedious details associated with typing R commands, let’s get back to learning how to use the most powerful piece of statistical software in the world as a $2 calculator. So far, all we know how to do is addition. Clearly, a calculator that only did addition would be a bit stupid, so I should tell you about how to perform other simple calculations using R. But first, some more terminology. Addition is an example of an “operation” that you can perform (specifically, an arithmetic operation), and the <strong>operator</strong> that performs it is <code>+</code>.</p>
+<p>To people with a programming or mathematics background, this terminology probably feels pretty natural, but to other people it might feel like I’m trying to make something very simple (addition) sound more complicated than it is (by calling it an arithmetic operation). To some extent, that’s true: if addition was the only operation that we were interested in, it’d be a bit silly to introduce all this extra terminology. However, as we go along, we’ll start using more and more different kinds of operations, so it’s probably a good idea to get the language straight now, while we’re still talking about very familiar concepts like addition!</p>
+<section id="sec-arithmetic" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-arithmetic"><span class="header-section-number">4.1</span> Adding, subtracting, multiplying and dividing</h2>
+<p>So, now that we have the terminology, let’s learn how to perform some arithmetic operations in R. To that end, the table below lists the operators that correspond to the basic arithmetic we learned in primary school: addition, subtraction, multiplication and division.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Basic arithmetic operations in R. These five operators are used very frequently throughout the text, so it’s important to be familiar with them at the outset.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operation</th>
+<th style="text-align: center;">operator</th>
+<th style="text-align: center;">example input</th>
+<th style="text-align: center;">example output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">addition</td>
+<td style="text-align: center;"><code>+</code></td>
+<td style="text-align: center;">10 + 2</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">subtraction</td>
+<td style="text-align: center;"><code>-</code></td>
+<td style="text-align: center;">9 - 3</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">multiplication</td>
+<td style="text-align: center;"><code>*</code></td>
+<td style="text-align: center;">5 * 5</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">division</td>
+<td style="text-align: center;"><code>/</code></td>
+<td style="text-align: center;">10 / 3</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">power</td>
+<td style="text-align: center;"><code>^</code></td>
+<td style="text-align: center;">5 ^ 2</td>
+<td style="text-align: center;">25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>As you can see, R uses fairly standard symbols to denote each of the different operations you might want to perform: addition is done using the <code>+</code> operator, subtraction is performed by the <code>-</code> operator, and so on. So if I wanted to find out what 57 times 61 is (and who wouldn’t?), I can use R instead of a calculator, like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">57</span> <span class="sc">*</span> <span class="dv">61</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3477</code></pre>
+</div>
+</div>
+<p>So that’s handy.</p>
+</section>
+<section id="taking-powers" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="taking-powers"><span class="header-section-number">4.2</span> Taking powers</h2>
+<p>The first four operations listed in Table @ref(tab:arithmetic1) are things we all learned in primary school, but they aren’t the only arithmetic operations built into R. There are three other arithmetic operations that I should probably mention: taking powers, doing integer division, and calculating a modulus. Of the three, the only one that is of any real importance for the purposes of this book is taking powers, so I’ll discuss that one here: the other two are discussed in <span class="citation" data-cites="datahandling">(<a href="references.html#ref-datahandling" role="doc-biblioref"><strong>datahandling?</strong></a>)</span>.</p>
+<p>For those of you who can still remember your high school maths, this should be familiar. But for some people high school maths was a long time ago, and others of us didn’t listen very hard in high school. It’s not complicated. As I’m sure everyone will probably remember the moment they read this, the act of multiplying a number <span class="math inline">\(x\)</span> by itself <span class="math inline">\(n\)</span> times is called “raising <span class="math inline">\(x\)</span> to the <span class="math inline">\(n\)</span>-th power”. Mathematically, this is written as <span class="math inline">\(x^n\)</span>. Some values of <span class="math inline">\(n\)</span> have special names: in particular <span class="math inline">\(x^2\)</span> is called <span class="math inline">\(x\)</span>-squared, and <span class="math inline">\(x^3\)</span> is called <span class="math inline">\(x\)</span>-cubed. So, the 4th power of 5 is calculated like this: <span class="math display">\[
+5^4 = 5 \times 5 \times 5 \times 5
+\]</span></p>
+<p>One way that we could calculate <span class="math inline">\(5^4\)</span> in R would be to type in the complete multiplication as it is shown in the equation above. That is, we could do this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">*</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 625</code></pre>
+</div>
+</div>
+<p>but it does seem a bit tedious. It would be very annoying indeed if you wanted to calculate <span class="math inline">\(5^{15}\)</span>, since the command would end up being quite long. Therefore, to make our lives easier, we use the power operator instead. When we do that, our command to calculate <span class="math inline">\(5^4\)</span> goes like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">^</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 625</code></pre>
+</div>
+</div>
+<p>Much easier.</p>
+</section>
+<section id="bedmas" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="bedmas"><span class="header-section-number">4.3</span> Doing calculations in the right order</h2>
+<p>Okay. At this point, you know how to take one of the most powerful pieces of statistical software in the world, and use it as a $2 calculator. And as a bonus, you’ve learned a few very basic programming concepts. That’s not nothing (you could argue that you’ve just saved yourself $2) but on the other hand, it’s not very much either. In order to use R more effectively, we need to introduce more programming concepts.</p>
+<p>In most situations where you would want to use a calculator, you might want to do multiple calculations. R lets you do this, just by typing in longer commands.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> In fact, we’ve already seen an example of this earlier, when I typed in <code>5 * 5 * 5 * 5</code>. However, let’s try a slightly different example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>Clearly, this isn’t a problem for R either. However, it’s worth stopping for a second, and thinking about what R just did. Clearly, since it gave us an answer of <code>9</code> it must have multiplied <code>2 * 4</code> (to get an interim answer of 8) and then added 1 to that. But, suppose it had decided to just go from left to right: if R had decided instead to add <code>1 + 2</code> (to get an interim answer of 3) and then multiplied by 4, it would have come up with an answer of <code>12</code>.</p>
+<p>To answer this, you need to know the <strong>order of operations</strong> that R uses. If you remember back to your high school maths classes, it’s actually the same order that you got taught when you were at school: the “<strong>BEDMAS</strong>” order.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> That is, first calculate things inside <strong>B</strong>rackets <code>()</code>, then calculate <strong>E</strong>xponents <code>^</code>, then <strong>D</strong>ivision <code>/</code> and <strong>M</strong>ultiplication <code>*</code>, then <strong>A</strong>ddition <code>+</code> and <strong>S</strong>ubtraction <code>-</code>. So, to continue the example above, if we want to force R to calculate the <code>1 + 2</code> part before the multiplication, all we would have to do is enclose it in brackets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">4</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+</div>
+<p>This is a fairly useful thing to be able to do. The only other thing I should point out about order of operations is what to expect when you have two operations that have the same priority: that is, how does R resolve ties? For instance, multiplication and division are actually the same priority, but what should we expect when we give R a problem like <code>4 / 2 * 3</code> to solve? If it evaluates the multiplication first and then the division, it would calculate a value of two-thirds. But if it evaluates the division first it calculates a value of 6. The answer, in this case, is that R goes from <em>left to right</em>, so in this case the division step would come first:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>All of the above being said, it’s helpful to remember that <em>brackets always come first</em>. So, if you’re ever unsure about what order R will do things in, an easy solution is to enclose the thing <em>you</em> want it to do first in brackets. There’s nothing stopping you from typing <code>(4 / 2) * 3</code>. By enclosing the division in brackets we make it clear which thing is supposed to happen first. In this instance you wouldn’t have needed to, since R would have done the division first anyway, but when you’re first starting out it’s better to make sure R does what you want!</p>
+</section>
+<section id="sec-usingfunctions" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sec-usingfunctions"><span class="header-section-number">4.4</span> Using functions to do calculations</h2>
+<p>The symbols <code>+</code>, <code>-</code>, <code>*</code> and so on are examples of operators. As we’ve seen, you can do quite a lot of calculations just by using these operators. However, in order to do more advanced calculations (and later on, to do actual statistics), you’re going to need to start using <strong>functions</strong>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> I’ll talk in more detail about functions and how they work in <span class="quarto-unresolved-ref">?sec-functions</span>, but for now let’s just dive in and use a few. To get started, suppose I wanted to take the square root of 225. The square root, in case your high school maths is a bit rusty, is just the opposite of squaring a number. So, for instance, since “5 squared is 25” I can say that “5 is the square root of 25”. The usual notation for this is</p>
+<p><span class="math display">\[
+\sqrt{25} = 5
+\]</span></p>
+<p>though sometimes you’ll also see it written like this</p>
+<p><span class="math inline">\(25^{0.5} = 5.\)</span></p>
+<p>This second way of writing it is kind of useful to “remind” you of the mathematical fact that “square root of <span class="math inline">\(x\)</span>” is actually the same as “raising <span class="math inline">\(x\)</span> to the power of 0.5”. Personally, I’ve never found this to be terribly meaningful psychologically, though I have to admit it’s quite convenient mathematically. Anyway, it’s not important. What is important is that you remember what a square root is, since we’re going to need it later on.</p>
+<p>To calculate the square root of 25, I can do it in my head pretty easily, since I memorised my multiplication tables when I was a kid. It gets harder when the numbers get bigger, and pretty much impossible if they’re not whole numbers. This is where something like R comes in very handy. Let’s say I wanted to calculate <span class="math inline">\(\sqrt{225}\)</span>, the square root of 225. There’s two ways I could do this using R. Firstly, since the square root of 255 is the same thing as raising 225 to the power of 0.5, I could use the power operator <code>^</code>, just like we did earlier:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">225</span> <span class="sc">^</span> <span class="fl">0.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<p>However, there’s a second way that we can do this, since R also provides a <strong>square root function</strong>, <code>sqrt()</code>. To calculate the square root of 255 using this function, what I do is insert the number <code>225</code> in the parentheses. That is, the command I type is this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">225</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<p>When we use a function to do something, we generally refer to this as <strong>calling</strong> the function, and the values that we type into the function (there can be more than one) are referred to as the <strong>arguments</strong> of that function.</p>
+<p>Obviously, the <code>sqrt()</code> function doesn’t really give us any new functionality, since we already knew how to do square root calculations by using the power operator <code>^</code>, though I do think it looks nicer when we use <code>sqrt()</code>. However, there are lots of other functions in R: in fact, almost everything of interest that I’ll talk about in this book is an R function of some kind. For example, one function that we will need to use in this book is the <strong>absolute value function</strong>. Compared to the square root function, it’s extremely simple: it just converts negative numbers to positive numbers, and leaves positive numbers alone. Mathematically, the absolute value of <span class="math inline">\(x\)</span> is written <span class="math inline">\(|x|\)</span> or sometimes <span class="math inline">\(\mbox{abs}(x)\)</span>. Calculating absolute values in R is pretty easy, since R provides the <code>abs()</code> function that you can use for this purpose. When you feed it a positive number…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21</code></pre>
+</div>
+</div>
+<p>the absolute value function does nothing to it at all. But when you feed it a negative number, it spits out the positive version of the same number, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="sc">-</span><span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+</div>
+<p>In all honesty, there’s nothing that the absolute value function does that you couldn’t do just by looking at the number and erasing the minus sign if there is one. However, there’s a few places later in the book where we have to use absolute values, so I thought it might be a good idea to explain the meaning of the term early on.</p>
+<p>Before moving on, it’s worth noting that – in the same way that R allows us to put multiple operations together into a longer command, like <code>1 + 2 * 4</code> for instance – it also lets us put functions together and even combine functions with operators if we so desire. For example, the following is a perfectly legitimate command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">abs</span>(<span class="sc">-</span><span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>When R executes this command, starts out by calculating the value of <code>abs(-8)</code>, which produces an intermediate value of <code>8</code>. Having done so, the command simplifies to <code>sqrt(1 + 8)</code>. To solve the square root<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> it first needs to add <code>1 + 8</code> to get <code>9</code>, at which point it evaluates <code>sqrt(9)</code>, and so it finally outputs a value of <code>3</code>.</p>
+</section>
+<section id="assessing-mathematical-truths" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="assessing-mathematical-truths"><span class="header-section-number">4.5</span> Assessing mathematical truths</h2>
+<p>A key concept in that a lot of R relies on is the idea of a <strong>logical value</strong>. A logical value is an assertion about whether something is true or false. This is implemented in R in a pretty straightforward way. There are two logical values, namely <code>TRUE</code> and <code>FALSE</code>. Despite the simplicity, a logical values are very useful things. Let’s see how they work.</p>
+<p>In George Orwell’s classic book <em>1984</em>, one of the slogans used by the totalitarian Party was “two plus two equals five”, the idea being that the political domination of human freedom becomes complete when it is possible to subvert even the most basic of truths. It’s a terrifying thought, especially when the protagonist Winston Smith finally breaks down under torture and agrees to the proposition. “Man is infinitely malleable”, the book says. I’m pretty sure that this isn’t true of humans<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> but it’s definitely not true of R. R is not infinitely malleable. It has rather firm opinions on the topic of what is and isn’t true, at least as regards basic mathematics. If I ask it to calculate <code>2 + 2</code>, it always gives the same answer, and it’s not bloody 5:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>Of course, so far R is just doing the calculations. I haven’t asked it to explicitly assert that <span class="math inline">\(2+2 = 4\)</span> is a true statement. If I want R to make an explicit judgement, I can use a command like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>What I’ve done here is use the <strong>equality operator</strong>, <code>==</code>, to force R to make a “true or false” judgement.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Okay, let’s see what R thinks of the Party slogan:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Woohoo! Freedom and ponies for all! Or something like that. Anyway, it’s worth having a look at what happens if I try to <em>force</em> R to believe that two plus two is five by making an assignment statement like <code>2 + 2 = 5</code> or <code>2 + 2 &lt;- 5</code>. When I do this, here’s what happens:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="ot">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in 2 + 2 = 5: target of assignment expands to non-language object</code></pre>
+</div>
+</div>
+<p>R doesn’t like this very much. It recognises that <code>2 + 2</code> is <em>not</em> a variable (that’s what the “non-language object” part is saying), and it won’t let you try to “reassign” it. While R is pretty flexible, and actually does let you do some quite remarkable things to redefine parts of R itself, there are just some basic, primitive truths that it refuses to give up. It won’t change the laws of addition, and it won’t change the definition of the number <code>2</code>.</p>
+<p>That’s probably for the best.</p>
+</section>
+<section id="logical-operations" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="logical-operations"><span class="header-section-number">4.6</span> Logical operations</h2>
+<p>So now we’ve seen logical operations at work, but so far we’ve only seen the simplest possible example. You probably won’t be surprised to discover that we can combine logical operations with other operations and functions in a more complicated way, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">*</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">4</span><span class="sc">*</span><span class="dv">4</span> <span class="sc">==</span> <span class="dv">5</span><span class="sc">*</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>or this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">25</span>) <span class="sc">==</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Not only that, but as the table below illustrates, there are several other logical operators that you can use, corresponding to some basic mathematical concepts.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Some logical operators. Technically I should be calling these “binary relational operators”, but quite frankly I don’t want to. It’s my book so no-one can make me.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operation</th>
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">example input</th>
+<th style="text-align: left;">answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">less than</td>
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;"><code>2 &lt; 3</code></td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">less than or equal to</td>
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;"><code>2 &lt;= 2</code></td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">greater than</td>
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;"><code>2 &gt; 3</code></td>
+<td style="text-align: left;"><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">greater than or equal to</td>
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;"><code>2 &gt;= 2</code></td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">equal to</td>
+<td style="text-align: left;"><code>==</code></td>
+<td style="text-align: left;"><code>2 == 3</code></td>
+<td style="text-align: left;"><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">not equal to</td>
+<td style="text-align: left;"><code>!=</code></td>
+<td style="text-align: left;"><code>2 != 3</code></td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Hopefully these are all pretty self-explanatory: for example, the <strong>less than</strong> operator <code>&lt;</code> checks to see if the number on the left is less than the number on the right. If it’s less, then R returns an answer of <code>TRUE</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dv">99</span> <span class="sc">&lt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>but if the two numbers are equal, or if the one on the right is larger, then R returns an answer of <code>FALSE</code>, as the following two examples illustrate:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">&lt;</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">&lt;</span> <span class="dv">99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>In contrast, the <strong>less than or equal to</strong> operator <code>&lt;=</code> will do exactly what it says. It returns a value of <code>TRUE</code> if the number of the left hand side is less than or equal to the number on the right hand side. So if we repeat the previous two examples using <code>&lt;=</code>, here’s what we get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">&lt;=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">&lt;=</span> <span class="dv">99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>And at this point I hope it’s pretty obvious what the <strong>greater than</strong> operator <code>&gt;</code> and the <strong>greater than or equal to</strong> operator <code>&gt;=</code> do! Next on the list of logical operators is the <strong>not equal to</strong> operator <code>!=</code> which – as with all the others – does what it says it does. It returns a value of <code>TRUE</code> when things on either side are not identical to each other. Therefore, since <span class="math inline">\(2+2\)</span> isn’t equal to <span class="math inline">\(5\)</span>, we get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">!=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>We’re not quite done yet. There are three more logical operations that are worth knowing about, listed below:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Some more logical operators.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operation</th>
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">example input</th>
+<th style="text-align: left;">answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">not</td>
+<td style="text-align: left;"><code>!</code></td>
+<td style="text-align: left;"><code>!(1==1)</code></td>
+<td style="text-align: left;"><code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">or</td>
+<td style="text-align: left;"><code>&amp;#124;</code></td>
+<td style="text-align: left;"><code>(1==1) &amp;#124; (2==3)</code></td>
+<td style="text-align: left;"><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">and</td>
+<td style="text-align: left;"><code>&amp;</code></td>
+<td style="text-align: left;"><code>(1==1) &amp; (2==3)</code></td>
+<td style="text-align: left;"><code>FALSE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>These are the <strong>not</strong> operator <code>!</code>, the <strong>and</strong> operator <code>&amp;</code>, and the <strong>or</strong> operator <code>|</code>. Like the other logical operators, their behaviour is more or less exactly what you’d expect given their names. For instance, if I ask you to assess the claim that “either <span class="math inline">\(2+2 = 4\)</span> <em>or</em> <span class="math inline">\(2+2 = 5\)</span>” you’d say that it’s true. Since it’s an “either-or” statement, all we need is for one of the two parts to be true. That’s what the <code>|</code> operator does:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">|</span> (<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>On the other hand, if I ask you to assess the claim that “both <span class="math inline">\(2+2 = 4\)</span> <em>and</em> <span class="math inline">\(2+2 = 5\)</span>” you’d say that it’s false. Since this is an <em>and</em> statement we need both parts to be true. And that’s what the <code>&amp;</code> operator does:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">&amp;</span> (<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Finally, there’s the <em>not</em> operator, which is simple but annoying to describe in English. If I ask you to assess my claim that “it is not true that <span class="math inline">\(2+2 = 5\)</span>” then you would say that my claim is true; because my claim is that “<span class="math inline">\(2+2 = 5\)</span> is false”. And I’m right. If we write this as an R command we get this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>In other words, since <code>2+2 == 5</code> is a <code>FALSE</code> statement, it must be the case that <code>!(2+2 == 5)</code> is a <code>TRUE</code> one. Essentially, what we’ve really done is claim that “not false” is the same thing as “true”. Obviously, this isn’t really quite right in real life. But R lives in a much more black or white world: for R everything is either true or false. No shades of gray are allowed. We can actually see this much more explicitly, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Of course, in our <span class="math inline">\(2+2 = 5\)</span> example, we didn’t really need to use “not” <code>!</code> and “equals to” <code>==</code> as two separate operators. We could have just used the “not equals to” operator <code>!=</code> like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="sc">!=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>But there are many situations where you really do need to use the <code>!</code> operator. We’ll see some later on.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+</section>
+<section id="summary" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.7</span> Summary</h2>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>If you’re reading this with R open, a good learning trick is to try typing in a few different variations on what I’ve done here. If you experiment with your commands, you’ll quickly learn what works and what doesn’t.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>For advanced users: if you want a table showing the complete order of operator precedence in R, type <code>?Syntax</code>. I haven’t included it in this book since there are quite a few different operators, and we don’t need that much detail. Besides, in practice most people seem to figure it out from seeing examples: until writing this book I never looked at the formal statement of operator precedence for any language I ever coded in, and never ran into any difficulties.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>A side note for students with a programming background. Technically speaking, operators <em>are</em> functions in R: the addition operator <code>+</code> is actually a convenient way of calling the addition function <code>`+`()</code>. Thus <code>10 + 20</code> is equivalent to the function call `<code>+`(20, 30)</code>. Not surprisingly, no-one ever uses this version. Because that would be stupid.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>A note for the mathematically inclined: R does support complex numbers, but unless you explicitly specify that you want them it assumes all calculations must be real valued. By default, the square root of a negative number is treated as undefined: <code>sqrt(-9)</code> will produce <code>NaN</code> (not a number) as its output. To get complex numbers, you would type <code>sqrt(-9+0i)</code> and R would now return <code>0+3i</code>. However, since we won’t have any need for complex numbers in this book, I won’t refer to them again.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>I offer up my youthful attempts to be “cool” as evidence that some things just can’t be done.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Note that this is a very different operator to the assignment operator <code>=</code> that I talked about in <a href="variables.html#sec-assign"><span>Section&nbsp;5.1</span></a>. A common typo that people make when trying to write logical commands in R (or other languages, since the “<code>=</code> versus <code>==</code>” distinction is important in most programming languages) is to accidentally type <code>=</code> when you really mean <code>==</code>. Be especially cautious with this – I’ve been programming in various languages since I was a teenager, and I <em>still</em> screw this up a lot. Hm. I think I see why I wasn’t cool as a teenager. And why I’m still not cool.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>A note for those of you who have taken a computer science class: yes, R does have a function for exclusive-or, namely <code>xor()</code>. Also worth noting is the fact that R makes the distinction between element-wise operators <code>&amp;</code> and <code>|</code> and operators that look only at the first element of the vector, namely <code>&amp;&amp;</code> and <code>||</code>. To see the distinction, compare the behaviour of a command like <code>c(FALSE,TRUE) &amp; c(TRUE,TRUE)</code> to the behaviour of something like <code>c(FALSE,TRUE) &amp;&amp; c(TRUE,TRUE)</code>. If this doesn’t mean anything to you, ignore this footnote entirely. It’s not important for the content of this book.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/commands.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Our first R commands</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/variables.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Learning Statistics with R was written by <a href="https://djnavarro.net">Danielle Navarro</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

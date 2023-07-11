@@ -1,0 +1,541 @@
+# Variables {#sec-variables}
+
+`r source(here::here("build", "common.R"))`
+
+## Storing a number as a variable {#sec-assign}
+
+One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in **variables**. Variables in R aren't exactly the same thing as the variables we talked about in the last chapter on research methods, but they are similar. At a conceptual level you can think of a variable as "label" for a certain piece of information, or even several different pieces of information. When doing statistical analysis in R all of your data (the variables you measured in your study) will be stored as variables in R, but as well see later in the book you'll find that you end up creating variables for other things too. However, before we delve into all the messy details of data sets and statistical analysis, let's look at the very basics for how we create variables and work with them. 
+
+### Variable assignment using `<-` and `->`
+
+Since we've been working with numbers so far, let's start by creating variables to store our numbers. And since most people like concrete examples, let's invent one. Suppose I'm trying to calculate how much money I'm going to make from this book. There's several different numbers I might want to store. Firstly, I need to figure out how many copies I'll sell. Given that I don't actually sell copies of the book, the correct answer to this is zero, but once upon a time I did sell hard copies so let's guess that the answer is 350. 
+
+Let's create a variable called `sales` to keep track of this number. What I want to do is assign a **value** to my variable `sales`, and that value should be `350`. We do this by using the **assignment operator**, which is `<-`. Here's how we do it:
+
+```{r}
+sales <- 350
+```
+
+When you hit enter, R doesn't print out any output.^[If you are using RStudio, and the "environment" panel is visible when you typed the command, then you probably saw something happening there. That's to be expected, and is quite helpful. However, there's two things to note here (1) I haven't yet explained what that panel does, so for now just ignore it, and (2) this is one of the helpful things RStudio does, not a part of R itself.] It just gives you another command prompt. However, behind the scenes R has created a variable called `sales` and given it a value of `350`. You can check that this has happened by asking R to print the variable on screen. And the simplest way to do *that* is to type the name of the variable and hit enter^[As we'll discuss later, by doing this we are implicitly using the `print()` function].
+
+```{r}
+sales
+```
+
+So that's nice to know. Anytime you can't remember what R has got stored in a particular variable, you can just type the name of the variable and hit enter. 
+
+Okay, so now we know how to assign variables. Actually, there's a bit more you should know. Firstly, one of the curious features of R is that there are several different ways of making assignments. In addition to the `<-` operator, we can also use `->` and `=`, and it's pretty important to understand the differences between them.^[Actually, in keeping with the R tradition of providing you with a billion different screwdrivers (even when you're actually looking for a hammer) these aren't the only options. There's also the`assign()` function, and the `<<-` and `->>` operators. However, we won't be using these at all in this book.] 
+
+Let's start by considering `->`, since that's the easy one (we'll discuss `=` in @sec-functionarguments). As you might expect from just looking at the symbol, it's almost identical to `<-`. It's just that the arrow (i.e., the assignment) goes from left to right. So if I wanted to define my `sales` variable using `->`, I would write it like this:
+
+```{r}
+350 -> sales
+```
+
+This has the same effect: and it *still* means that I'm only going to sell `350` copies. Sigh. Apart from this superficial difference, `<-` and `->` are identical. In fact, as far as R is concerned, they're actually the same operator, just in a "left form" and a "right form".^[A quick reminder: when using operators like `<-` and `->` that span multiple characters, you can't insert spaces in the middle. That is, if you type `- >` or `< -`, R will interpret your command the wrong way. And I will cry.]
+
+### Doing calculations using variables
+
+Okay, let's get back to my original story. In my quest to become rich, I've written this book. To figure out how good a strategy is, I've started creating some variables in R. In addition to defining a `sales` variable that counts the number of copies I'm going to sell, I can also create a variable called `royalty`, indicating how much money I get per copy. Let's say that my royalties are about $7 per book:
+
+```{r}
+sales <- 350
+royalty <- 7
+```
+
+The nice thing about variables (in fact, the whole point of having variables) is that we can do anything with a variable that we ought to be able to do with the information that it stores. That is, since R allows me to multiply `350` by `7`
+
+```{r}
+350 * 7
+```
+
+it also allows me to multiply `sales` by `royalty`
+
+```{r}
+sales * royalty
+```
+
+As far as R is concerned, the `sales * royalty` command is the same as the `350 * 7` command. Not surprisingly, I can assign the output of this calculation to a new variable, which I'll call `revenue`. And when we do this, the new variable `revenue` gets the value `2450`. So let's do that, and then get R to print out the value of `revenue` so that we can verify that it's done what we asked:
+
+```{r}
+revenue <- sales * royalty
+revenue
+```
+
+That's fairly straightforward. 
+
+A slightly more subtle thing we can do is reassign the value of my variable, based on its current value. For instance, suppose that one of my readers, no doubt under the influence of psychotropic drugs loves the book so much that they donate me an extra \$550. The simplest way to capture this is by a command like this:
+
+```{r}
+revenue <- revenue + 550
+revenue
+```
+
+In this calculation, R has taken the old value of `revenue` (i.e., 2450) and added 550 to that value, producing a value of 3000. This new value is assigned to the `revenue` variable, overwriting its previous value. In any case, we now know that I'm expecting to make $3000 off this. Pretty sweet, I thinks to myself. Or at least, that's what I thinks until I do a few more calculation and work out what the implied hourly wage I'm making off this looks like. 
+
+### Rules and conventions for naming variables
+
+In the examples that we've seen so far, my variable names (`sales` and `revenue`) have just been English-language words written using lowercase letters. However, R allows a lot more flexibility when it comes to naming your variables, as the following list of rules^[Actually, you can override any of these rules if you want to, and quite easily. All you have to do is add quote marks or backticks around your non-standard variable name. For instance ``` `my sales ` <- 350 ``` would work just fine, but it's almost never a good idea to do this.] illustrates:
+
+
+- Variable names can only use the upper case alphabetic characters `A`-`Z` as well as the lower case characters `a`-`z`. You can also include numeric characters `0`-`9` in the variable name, as well as the period `.` or underscore `_` character. In other words, you can use `SaL.e_s` as a variable name (though I can't think why you would want to), but you can't use `Sales?`. 
+- Variable names cannot include spaces: therefore `my sales` is not a valid name, but `my.sales` is.
+- Variable names are case sensitive: that is, `Sales` and `sales` are *different* variable names.
+- Variable names must start with a letter or a period. You can't use something like `_sales` or `1sales` as a variable name. You can use `.sales` as a variable name if you want, but it's not usually a good idea. By convention, variables starting with a `.` are used for special purposes, so you should avoid doing so. 
+- Variable names cannot be one of the reserved keywords. These are special names that R needs to keep "safe" from us mere users, so you can't use them as the names of variables. The keywords are: `if`, `else`, `repeat`, `while`, `function`, `for`, `in`, `next`, `break`, `TRUE`, `FALSE`, `NULL`, `Inf`, `NaN`, `NA`, `NA_integer_`, `NA_real_`, `NA_complex_`, and finally,  `NA_character_`. Don't feel especially obliged to memorise these: if you make a mistake and try to use one of the keywords as a variable name, R will complain about it like the whiny little automaton it is.
+
+In addition to those rules that R enforces, there are some informal conventions that people tend to follow when naming variables. One of them you've already seen: i.e., don't use variables that start with a period. But there are several others. You aren't obliged to follow these conventions, and there are many situations in which it's advisable to ignore them, but it's generally a good idea to follow them when you can:
+
+- Use informative variable names. As a general rule, using meaningful names like `sales` and `revenue` is preferred over arbitrary ones like `variable1` and `variable2`. Otherwise it's very hard to remember what the contents of different variables are, and it becomes hard to understand what your commands actually do. 
+- Use short variable names. Typing is a pain and no-one likes doing it. So we much prefer to use a name like `sales` over a name like `sales_for_this_book_that_you_are_reading`. Obviously there's a bit of a tension between using informative names (which tend to be long) and using short names (which tend to be meaningless), so use a bit of common sense when trading off these two conventions.
+- Use one of the conventional naming styles for multi-word variable names. Suppose I want to name a variable that stores "my new salary". Obviously I can't include spaces in the variable name, so how should I do this? There are three different conventions that you sometimes see R users employing. Firstly, you can separate the words using underscores, which would give you `my_new_salary` as the variable name. Alternatively, you could use capital letters at the beginning of each word (except the first one), which gives you `myNewSalary` as the variable name. I don't think there's any strong reason to prefer one over the other,^[For advanced users: there is one exception to this. If you're naming a function, don't use `.` in the name unless you are intending to use the S3 object oriented programming system. If you don't know what S3 is, then you definitely don't want to be using it!] but it's important to be consistent.
+
+
+## Storing many numbers as a vector {#sec-vectors}
+
+At this point we've covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see @sec-generics, so let's return to our discussion of variables. When I introduced variables in @sec-assign I showed you how we can use variables to store a single number. In this section, we'll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a **vector**. So let's create one. 
+
+### Creating a vector
+
+Let's stick to my silly "get rich quick by textbook writing" example. Suppose the textbook company (if I actually had one, that is) sends me sales data on a monthly basis. Since my class start in late February, we might expect most of the sales to occur towards the start of the year. Let's suppose that I have 100 sales in February, 200 sales in March and 50 sales in April, and no other sales for the rest of the year. What I would like to do is have a variable -- let's call it `sales_by_month` -- that stores all this sales data. The first number stored should be `0` since I had no sales in January, the second should be `100`, and so on. The simplest way to do this in R is to use the **combine** function, `c()`. To do so, all we have to do is type all the numbers you want to store in a comma separated list, like this:^[Notice that I didn't specify any argument names here. The `c()` function is one of those cases where we don't use names. We just type all the numbers, and R just dumps them all in a single variable.]
+
+```{r}
+sales_by_month <- c(0, 100, 200, 50, 0, 0, 0, 0, 0, 0, 0, 0)
+sales_by_month
+```
+To use the correct terminology here, we have a single variable here called `sales_by_month`: this variable is a vector that consists of 12 **elements**. 
+
+### A handy digression
+
+Now that we've learned how to put information into a vector, the next  thing to understand is how to pull that information back out again. However, before I do so it's worth taking a slight detour. If you've been following along, typing all the commands into R yourself, it's possible that the output that you saw when we printed out the `sales_by_month` vector was slightly different to what I showed above. This would have happened if the window (or the RStudio panel) that contains the R console is really, really narrow. If that were the case, you might have seen output that looks something like this:
+
+```{r set-options1, echo=FALSE, cache=FALSE}
+options(width = 20)
+```
+
+```{r}
+sales_by_month
+```
+
+Because there wasn't much room on the screen, R has printed out the results over three lines. But that's not the important thing to notice. The important point is that the first line has a `[1]` in front of it, whereas the second line starts with `[5]` and the third with `[9]`. It's pretty clear what's happening here. For the first row, R has printed out the 1st element through to the 4th element, so it starts that row with a `[1]`. For the second row, R has printed out the 5th element of the vector through to the 8th one, and so it begins that row with a `[5]` so that you can tell where it's up to at a glance. It might seem a bit odd to you that R does this, but in some ways it's a kindness, especially when dealing with larger data sets!
+
+```{r set-options2, echo=FALSE, cache=FALSE}
+options(width = 75)
+```
+
+### Getting information out of vectors {#sec-vectorsubset}
+
+To get back to the main story, let's consider the problem of how to get information out of a vector. At this point, you might have a sneaking suspicion that the answer has something to do with the `[1]` and `[9]` things that R has been printing out. And of course you are correct. Suppose I want to pull out the February sales data only. February is the second month of the year, so let's try this:
+
+```{r}
+sales_by_month[2]
+```
+Yep, that's the February sales all right. But there's a subtle detail to be aware of here: notice that R outputs `[1] 100`, *not* `[2] 100`. This is because R is being extremely literal. When we typed in `sales_by_month[2]`, we asked R to find exactly *one* thing, and that one thing happens to be the second element of our `sales_by_month` vector. So, when it outputs `[1] 100` what R is saying is that the first number *that we just asked for* is `100`. This behaviour makes more sense when you realise that we can use this trick to create new variables. For example, I could create a `february_sales` variable like this:
+
+```{r}
+february_sales <- sales_by_month[2]
+february_sales
+```
+Obviously, the new variable `february_sales` should only have one element and so when I print it out this new variable, the R output begins with a `[1]` because `100` is the value of the first (and only) element of `february_sales`. The fact that this also happens to be the value of the second element of `sales_by_month` is irrelevant. We'll pick this topic up again in @sec-indexing. 
+
+### Altering the elements of a vector
+
+Sometimes you'll want to change the values stored in a vector. Imagine my surprise when the publisher rings me up to tell me that the sales data for May are wrong. There were actually an additional 25 books sold in May, but there was an error or something so they hadn't told me about it. How can I fix my `sales_by_month` variable? One possibility would be to assign the whole vector again from the beginning, using `c()`. But that's a lot of typing. Also, it's a little wasteful: why should R have to redefine the sales figures for all 12 months, when only the 5th one is wrong? Fortunately, we can tell R to change only the 5th element, using this trick:
+
+```{r}
+sales_by_month[5] <- 25
+sales_by_month
+```
+
+Another way to edit variables is to use the `edit()` or `fix()` functions. I won't discuss them in detail right now, but you can check them out on your own. 
+
+### Useful things to know about vectors {#sec-veclength}
+
+Before moving on, I want to mention a couple of other things about vectors. Firstly, you often find yourself wanting to know how many elements there are in a vector (usually because you've forgotten). You can use the `length()` function to do this. It's quite straightforward:
+
+```{r}
+length(sales_by_month)
+```
+
+Secondly, you often want to alter all of the elements of a vector at once. For instance, suppose I wanted to figure out how much money I made in each month. Since I'm earning an exciting \$7 per book,^[No seriously, that's actually pretty close to what authors get on the very expensive textbooks that you're expected to purchase... if they are lucky.] what I want to do is multiply each element in the `sales_by_month` vector by `7`. 
+
+R makes this pretty easy, as the following example shows:
+
+```{r}
+sales_by_month * 7
+```
+
+In other words, when you multiply a vector by a single number, all elements in the vector get multiplied. The same is true for addition, subtraction, division and taking powers. So that's neat. On the other hand, suppose I wanted to know how much money I was making per day, rather than per month. Since not every month has the same number of days, I need to do something slightly different. Firstly, I'll create two new vectors:
+
+```{r}
+days_per_month <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+profit <- sales_by_month * 7
+```
+
+Obviously, the `profit` variable is the same one we created earlier, and the `days_per_month` variable is pretty straightforward. What I want to do is divide every element of `profit` by the *corresponding* element of `days_per_month`. Again, R makes this pretty easy:
+
+```{r}
+profit / days_per_month
+```
+
+I still don't like all those zeros, but that's not what matters here. Notice that the second element of the output is 25, because R has divided the second element of `profit` (i.e. 700) by the second element of `days_per_month` (i.e. 28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on. We'll talk more about calculations involving vectors later on, but that's enough detail for now.
+
+## Storing text data {#sec-text}
+
+A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To address this, we need to consider the situation where our variables store text. To create a variable that stores the word "hello", we can type this:
+
+```{r}
+greeting <- "hello"
+greeting
+```
+
+When interpreting this, it's important to recognise that the quote marks here *aren't* part of the string itself. They're just something that we use to make sure that R knows to treat the characters that they enclose as a piece of text data, known as a **character string**. In other words, R treats `"hello"` as a string containing the word "hello"; but if I had typed `hello` instead, R would go looking for a variable by that name! You can also use `'hello'` to specify a character string.
+
+Okay, so that's how we store the text. Next, it's important to recognise that when we do this, R stores the entire word `"hello"` as a *single* element: our `greeting` variable is *not* a vector of five different letters. Rather, it has only the one element, and that element corresponds to the entire character string `"hello"`. To illustrate this, if I actually ask R to find the first element of `greeting`, it prints the whole string:
+
+```{r}
+greeting[1]
+```
+
+Of course, there's no reason why I can't create a vector of character strings. For instance, if we were to continue with the example of my attempts to look at the monthly sales data for my book, one variable I might want would include the names of all 12 `months`.^[Though actually there's no real need to do this, since R has an inbuilt variable called `month.name` that you can use for this purpose.] To do so, I could type in a command like this
+```{r}
+months <- c("January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", 
+            "December")
+```
+
+This is a **character vector** containing 12 elements, each of which is the name of a month. So if I wanted R to tell me the name of the fourth month, all I would do is this:
+
+```{r}
+months[4]
+```
+
+### Working with text {#sec-simpletext}
+
+Working with text data is somewhat more complicated than working with numeric data, and I discuss some of the basic ideas in @sec-textprocessing, but for purposes of the current chapter we only need this bare bones sketch. The only other thing I want to do before moving on is show you an example of a function that can be applied to text data. So far, most of the functions that we have seen (i.e., `sqrt()`, `abs()` and `round()`) only make sense when applied to numeric data (e.g., you can't calculate the square root of "hello"), and we've seen one function that can be applied to pretty much any variable or vector (i.e., `length()`). So it might be nice to see an example of a function that can be applied to text. 
+
+The function I'm going to introduce you to is called `nchar()`, and what it does is count the number of individual characters that make up a string. Recall earlier that when we tried to calculate the `length()` of our `greeting` variable it returned a value of `1`: the `greeting` variable contains only the one string, which happens to be `"hello"`. But what if I want to know how many letters there are in the word? Sure, I could *count* them, but that's boring, and more to the point it's a terrible strategy if what I wanted to know was the number of letters in *War and Peace*. That's where the `nchar()` function is helpful:
+
+```{r}
+nchar(greeting)
+```
+
+That makes sense, since there are in fact 5 letters in the string `"hello"`. Better yet, you can apply `nchar()` to whole vectors. So, for instance, if I want R to tell me how many letters there are in the names of each of the 12 months, I can do this:
+
+```{r}
+nchar(months)
+```
+
+So that's nice to know. The `nchar()` function can do a bit more than this, and there's a lot of other functions that you can do to extract more information from text or do all sorts of fancy things. However, the goal here is not to teach any of that! The goal right now is just to see an example of a function that actually does work when applied to text. 
+
+## Logical values as data {#sec-logicals}
+
+Up to this point, I've introduced *numeric data* (@sec-assign and @sec-vectors) and *character data* (@sec-text). So you might not be surprised to discover that these `TRUE` and `FALSE` values that R has been producing are actually a third kind of data, called *logical data*. That is, when I asked R if `2 + 2 == 5` and it said `[1] FALSE` in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called `is_the_party_correct`, which would store R's opinion:
+
+```{r}
+is_the_party_correct <- 2 + 2 == 5
+is_the_party_correct
+```
+
+Alternatively, you can assign the value directly, by typing `TRUE` or `FALSE` in your command. Like this:
+
+```{r}
+is_the_party_correct <- FALSE
+is_the_party_correct
+```
+
+As an aside, because it's kind of tedious to type `TRUE` or `FALSE` over and over again, R provides you with a shortcut: you can use `T` and `F` instead. However, it's generally not recommended because it's possible for the values of `T` and `F` to be changed. In contrast `TRUE` and `FALSE` cannot be changed or overwritten.  
+
+### Vectors of logicals
+
+The next thing to mention is that you can store vectors of logical values in exactly the same way that you can store vectors of numbers (@sec-vectors) and vectors of text data (@sec-text). Again, we can define them directly via the `c()` function, like this:
+
+```{r}
+x <- c(TRUE, TRUE, FALSE)
+x
+```
+
+or you can produce a vector of logicals by applying a logical operator to a vector. This might not make a lot of sense to you, so let's unpack it slowly. First, let's suppose we have a vector of numbers (i.e., a "non-logical vector"). For instance, we could use the `sales_by_month` vector that we were using in @sec-vectors. Suppose I wanted R to tell me, for each month of the year, whether I actually sold a book in that month. I can do that by typing this: 
+
+```{r}
+sales_by_month > 0
+```
+
+and again, I can store this in a vector if I want, as the example below illustrates:
+
+```{r}
+any_sales_this_month <- sales_by_month > 0
+any_sales_this_month
+```
+
+In other words, `any_sales_this_month` is a logical vector whose elements are `TRUE` only if the corresponding element of `sales_by_month` is greater than zero. For instance, since I sold zero books in January, the first element is `FALSE`. 
+
+### Applying logical operation to text {#sec-logictext}
+
+In a moment (@sec-indexing) I'll show you why these logical operations and logical vectors are so handy, but before I do so I want to very briefly point out that you can apply them to text as well as to logical data. It's just that we need to be a bit more careful in understanding how R interprets the different operations. In this section I'll talk about how the equal to operator `==` applies to text, since this is the most important one. Obviously, the not equal to operator `!=` gives the exact opposite answers to `==` so I'm implicitly talking about that one too, but I won't give specific commands showing the use of `!=`. As for the other operators, I'll defer a more detailed discussion of this topic to @sec-logictext2. 
+
+Okay, let's see how it works. In one sense, it's very simple. For instance, I can ask R if the word `"cat"` is the same as the word `"dog"`, like this:
+
+```{r}
+"cat" == "dog"
+```
+
+That's pretty obvious, and it's good to know that even R can figure that out. Similarly, R does recognise that a `"cat"` is a `"cat"`:
+
+```{r}
+"cat" == "cat"
+```
+
+Again, that's exactly what we'd expect. However, what you need to keep in mind is that R is not at all tolerant when it comes to grammar and spacing. If two strings differ in any way whatsoever, R will say that they're not equal to each other, as the following examples indicate:
+
+```{r}
+#| results: hold
+"cat" == " cat"
+"cat" == "CAT"
+"cat" == "c a t"
+```
+
+
+## Indexing vectors {#sec-indexing} 
+
+One last thing to add before finishing up this chapter. So far, whenever I've had to get information out of a vector, all I've done is typed something like `months[4]`; and when I do this R prints out the fourth element of the `months` vector. In this section, I'll show you two additional tricks for getting information out of the vector.
+
+### Extracting multiple elements
+
+One very useful thing we can do is pull out more than one element at a time. In the previous example, we only used a single number (i.e., `2`) to indicate which element we wanted. Alternatively, we can use a vector. So, suppose I wanted the data for February, March and April. What I could do is use the vector `c(2,3,4)` to indicate which elements I want R to pull out. That is, I'd type this:
+
+```{r}
+sales_by_month[c(2, 3, 4)]
+```
+
+Notice that the order matters here. If I asked for the data in the reverse order (i.e., April first, then March, then February) by using the vector `c(4,3,2)`, then R outputs the data in the reverse order:
+
+```{r}
+sales_by_month[c(4, 3, 2)]
+```
+
+A second thing to be aware of is that R provides you with handy shortcuts for very common situations. For instance, suppose that I wanted to extract everything from the 2nd month through to the 8th month. One way to do this is to do the same thing I did above, and use the vector `c(2,3,4,5,6,7,8)` to indicate the elements that I want. That works just fine
+
+```{r}
+sales_by_month[c(2, 3, 4, 5, 6, 7, 8)]
+```
+but it's kind of a lot of typing. To help make this easier, R lets you use `2:8` as shorthand for `c(2,3,4,5,6,7,8)`, which makes things a lot simpler. First, let's just check that this is true:
+
+```{r}
+2:8
+```
+
+Next, let's check that we can use the `2:8` shorthand as a way to pull out the 2nd through 8th elements of `sales_by_months`:
+
+```{r}
+sales_by_month[2:8]
+```
+
+So that's kind of neat.
+
+### Logical indexing
+
+At this point, I can introduce an extremely useful tool called **logical indexing**. In the last section, I created a logical vector `any_sales_this_month`, whose elements are `TRUE` for any month in which I sold at least one book, and `FALSE` for all the others. However, that big long list of `TRUE`s and `FALSE`s is a little bit hard to read, so what I'd like to do is to have R select the names of the `months` for which I sold any books. Earlier on, I created a vector `months` that contains the names of each of the months. This is where logical indexing is handy. What I need to do is this:
+
+```{r}
+months[sales_by_month > 0]
+```
+
+To understand what's happening here, it's helpful to notice that `sales_by_month > 0` is the same logical expression that we used to create the `any_sales_this_month` vector in the last section. In fact, I could have just done this:
+
+```{r}
+months[any_sales_this_month]
+```
+
+and gotten exactly the same result. In order to figure out which elements of `months` to include in the output, what R does is look to see if the corresponding element in `any_sales_this_month` is `TRUE`. Thus, since element 1 of `any_sales_this_month` is `FALSE`, R does not include `"January"` as part of the output; but since element 2 of `any_sales_this_month` is `TRUE`, R does include `"February"` in the output. Note that there's no reason why I can't use the same trick to find the actual sales numbers for those months. The command to do that would just be this:
+
+```{r}
+sales_by_month[sales_by_month > 0]
+```
+
+In fact, we can do the same thing with text. Here's an example. Suppose that -- to continue the saga of the textbook sales -- I later find out that the bookshop only had sufficient stocks for a few months of the year. They tell me that early in the year they had `"high"` stocks, which then dropped to `"low"` levels, and in fact for one month they were `"out"` of copies of the book for a while before they were able to replenish them. Thus I might have a variable called `stock_levels` which looks like this:
+
+```{r}
+stock_levels<-c("high", "high", "low", "out", "out", "high",
+                "high", "high", "high", "high", "high", "high")
+stock_levels
+```
+
+Thus, if I want to know the months for which the bookshop was out of my book, I could apply the logical indexing trick, but with the character vector `stock_levels`, like this:
+
+```{r}
+months[stock_levels == "out"]
+```
+
+Alternatively, if I want to know when the bookshop was either low on copies or out of copies, I could do this:
+
+```{r}
+months[stock_levels == "out" | stock_levels == "low"]
+```
+
+or this
+
+```{r}
+months[stock_levels != "high"]
+```
+
+Either way, I get the answer I want.
+
+At this point, I hope you can see why logical indexing is such a useful thing. It's a very basic, yet very powerful way to manipulate data. We'll talk a lot more about how to manipulate data in @datahandling, since it's a critical skill for real world research that is often overlooked in introductory research methods classes (or at least, that's been my experience). It does take a bit of practice to become completely comfortable using logical indexing, so it's a good idea to play around with these sorts of commands. Try creating a few different variables of your own, and then ask yourself questions like "how do I get R to spit out all the elements that are [blah]". Practice makes perfect, and it's only by practicing logical indexing that you'll perfect the art of yelling frustrated insults at your computer.^[Well, I say that... but in my personal experience it wasn't until I started learning "regular expressions" that my loathing of computers reached its peak.]
+
+
+## Useful things to know about variables{#useful}
+
+In Chapter \@ref(introR) I talked a lot about variables, how they're assigned and some of the things you can do with them, but there's a lot of additional complexities. That's not a surprise of course. However, some of those issues are worth drawing your attention to now. So that's the goal of this section; to cover a few extra topics. As a consequence, this section is basically a bunch of things that I want to briefly mention, but don't really fit in anywhere else. In short, I'll talk about several different issues in this section, which are only loosely connected to one another.
+
+
+
+### Special values{#specials}
+
+The first thing I want to mention are some of the "special" values that you might see R produce. Most likely you'll see them in situations where you were expecting a number, but there are quite a few other ways you can encounter them. These values are `Inf`, `NaN`, `NA` and `NULL`. These values can crop up in various different places, and so it's important to understand what they mean. 
+
+
+- *Infinity* (`Inf`). The easiest of the special values to explain is `Inf`, since it corresponds to a value that is infinitely large. You can also have `-Inf`. The easiest way to get `Inf` is to divide a positive number by 0:
+```{r}
+1 / 0
+```
+In most real world data analysis situations, if you're ending up with infinite numbers in your data, then something has gone awry. Hopefully you'll never have to see them.
+
+
+- *Not a Number* (`NaN`). The special value of `NaN` is short for "not a number", and it's basically a reserved keyword that means "there isn't a mathematically defined number for this". If you can remember your high school maths, remember that it is conventional to say that $0/0$ doesn't have a proper answer: mathematicians would say that $0/0$ is *undefined*. R says that it's not a number:
+```{r}
+ 0 / 0
+```
+Nevertheless, it's still treated as a "numeric" value. To oversimplify, `NaN` corresponds to cases where you asked a proper numerical question that genuinely has *no meaningful answer*. 
+
+- *Not available* (`NA`). 
+`NA` indicates that the value that is "supposed" to be stored here is missing. To understand what this means, it helps to recognise that the `NA` value is something that you're most likely to see when analysing data from real world experiments. Sometimes you get equipment failures, or you lose some of the data, or whatever. The point is that some of the information that you were "expecting" to get from your study is just plain missing. Note the difference between `NA` and `NaN`. For `NaN`, we really do know what's supposed to be stored; it's just that it happens to correspond to something like $0/0$ that doesn't make any sense at all. In contrast, `NA` indicates that we actually don't know what was supposed to be there. The information is *missing*.
+
+- *No value* (`NULL`).
+The `NULL` value takes this "absence" concept even further. It basically asserts that the variable genuinely has no value whatsoever. This is quite different to both `NaN` and `NA`. For `NaN` we actually know what the value is, because it's something insane like $0/0$. For `NA`, we believe that there is supposed to be a value "out there", but a dog ate our homework and so we don't quite know what it is. But for `NULL` we strongly believe that there is *no value at all*.  
+
+
+### Assigning names to vector elements{#names}
+
+One thing that is sometimes a little unsatisfying about the way that R prints out a vector is that the elements come out unlabelled. Here's what I mean. Suppose I've got data reporting the quarterly profits for some company. If I just create a no-frills vector, I have to rely on memory to know which element corresponds to which event. That is:
+```{r}
+profit <- c( 3.1, 0.1, -1.4, 1.1 )
+profit
+
+```
+You can probably guess that the first element corresponds to the first quarter, the second element to the second quarter, and so on, but that's only because I've told you the back story and because this happens to be a very simple example. In general, it can be quite difficult. This is where it can be helpful to assign `names` to each of the elements. Here's how you do it:
+```{r}
+names(profit) <- c("Q1","Q2","Q3","Q4")
+profit
+```
+This is a slightly odd looking command, admittedly, but it's not too difficult to follow. All we're doing is assigning a vector of labels (character strings) to `names(profit)`. You can always delete the names again by using the command `names(profit) <- NULL`. It's also worth noting that you don't have to do this as a two stage process. You can get the same result with this command:
+```{r}
+profit <- c( "Q1" = 3.1, "Q2" = 0.1, "Q3" = -1.4, "Q4" = 1.1 )
+profit
+```
+The important things to notice are that (a) this does make things much easier to read, but (b) the names at the top aren't the "real" data. The *value* of `profit[1]` is still `3.1`; all I've done is added a *name* to `profit[1]` as well. Nevertheless, names aren't purely cosmetic, since R allows you to pull out particular elements of the vector by referring to their names:
+```{r}
+profit["Q1"]
+```
+And if I ever need to pull out the names themselves, then I just type `names(profit)`. 
+
+### Variable classes
+
+As we've seen, R allows you to store different kinds of data. In particular, the variables we've defined so far have either been character data (text), numeric data, or logical data.^[Or functions. But let's ignore functions for the moment.] It's important that we remember what kind of information each variable stores (and even more important that R remembers) since different kinds of variables allow you to do different things to them. For instance, if your variables have numerical information in them, then it's okay to multiply them together:
+```{r}
+x <- 5   # x is numeric
+y <- 4   # y is numeric
+x * y    
+```
+But if they contain character data, multiplication makes no sense whatsoever, and R will complain if you try to do it:
+```{r error=TRUE}
+x <- "apples"   # x is character
+y <- "oranges"  # y is character
+x * y           
+```
+Even R is smart enough to know you can't multiply `"apples"` by `"oranges"`. It knows this because the quote marks are indicators that the variable is supposed to be treated as text, not as a number. 
+
+This is quite useful, but notice that it means that R makes a big distinction between `5` and `"5"`. Without quote marks, R treats `5` as the number five, and will allow you to do calculations with it. With the quote marks, R treats `"5"` as the textual character five, and doesn't recognise it as a number any more than it recognises `"p"` or `"five"` as numbers.  As a consequence, there's a big difference between typing `x <- 5` and typing `x <- "5"`. In the former, we're storing the number `5`; in the latter, we're storing the character `"5"`. Thus, if we try to do multiplication with the character versions, R gets stroppy:
+```{r error=TRUE}
+x <- "5"   # x is character
+y <- "4"   # y is character
+x * y     
+
+```
+
+Okay, let's suppose that I've forgotten what kind of data I stored in the variable `x` (which happens depressingly often). R provides a function that will let us find out. Or, more precisely, it provides *three* functions: `class()`, `mode()` and `typeof()`. Why the heck does it provide three functions, you might be wondering? Basically, because R actually keeps track of three different kinds of information about a variable:
+
+1. The **_class_** of a variable is a "high level" classification, and it captures psychologically (or statistically) meaningful distinctions. For instance `"2011-09-12"` and `"my birthday"` are both text strings, but there's an important difference between the two: one of them is a date. So it would be nice if we could get R to recognise that `"2011-09-12"` is a date, and allow us to do things like add or subtract from it. The class of a variable is what R uses to keep track of things like that. Because the class of a variable is critical for determining what R can or can't do with it, the `class()` function is very handy.
+2. The **_mode_** of a variable refers to the format of the information that the variable stores. It tells you whether R has stored text data or numeric data, for instance, which is kind of useful, but it only makes these "simple" distinctions. It can be useful to know about, but it's not the main thing we care about. So I'm not going to use the `mode()` function very much.^[Actually, I don't think I *ever* use this in practice. I don't know why I bother to talk about it in the book anymore.] 
+3. The **_type_** of a variable is a very low level classification. We won't use it in this book, but (for those of you that care about these details) this is where you can see the distinction between integer data, double precision numeric, etc. Almost none of you actually will care about this, so I'm not even going to bother demonstrating the `typeof()` function.
+
+For purposes, it's the `class()` of the variable that we care most about. Later on, I'll talk a bit about how you can convince R to "coerce" a variable to change from one class to another (Section \@ref(coercion)). That's a useful skill for real world data analysis, but it's not something that we need right now. In the meantime, the following examples illustrate the use of the `class()` function:
+```{r}
+x <- "hello world"     # x is text
+class(x)
+
+
+x <- TRUE     # x is logical 
+class(x)
+
+x <- 100     # x is a number
+class(x)
+```
+Exciting, no?
+
+
+
+
+## Managing the workspace{#workspace}
+
+Let's suppose that you're reading through this book, and what you're doing is sitting down with it once a week and working through a whole chapter in each sitting. Not only that, you've been following my advice and typing in all these commands into R. So far during this chapter, you'd have typed quite a few commands, although the only ones that actually involved creating variables were the ones you typed during Section \@ref(comments). As a result, you currently have three variables; `seeker`, `lover`, and `keeper`. These three variables are the contents of your **_workspace_**, also referred to as the **global environment**. The workspace is a key concept in R, so in this section we'll talk a lot about what it is and how to manage its contents.
+
+
+
+### Listing variables
+
+
+```{r workspace, fig.cap="The RStudio Environment panel shows you the contents of the workspace. The view shown above is the list view. To switch to the grid view, click on the menu item on the top right that currently reads list. Select grid from the dropdown menu, and then it will switch to a view like the one shown in the other workspace figure", echo=FALSE}
+#knitr::include_graphics(here::here("bookdown", "img", "mechanics", "workspacepanel.png"))
+
+```
+
+```{r workspace2, fig.cap="The RStudio \"Environment\" panel shows you the contents of the workspace. Compare this \"grid\" view to the \"list\" earlier", echo=FALSE}
+#knitr::include_graphics(here::here("bookdown", "img", "mechanics", "workspacepanel2.png"))
+
+```
+
+
+The first thing that you need to know how to do is examine the contents of the workspace. If you're using RStudio, you will probably find that the easiest way to do this is to use the "Environment" panel in the top right hand corner. Click on that, and you'll see a list that looks very much like the one shown in Figures \@ref(fig:workspace) and \@ref(fig:workspace2).  If you're using the commmand line, then the `objects()` function may come in handy:
+```{r}
+objects()
+```
+Of course, in the true R tradition, the `objects()` function has a lot of fancy capabilities that I'm glossing over in this example. Moreover there are also several other functions that you can use, including `ls()` which is pretty much identical to `objects()`, and `ls.str()` which you can use to get a fairly detailed description of all the variables in the workspace. In fact, the `lsr` package actually includes its own function that you can use for this purpose, called `who()`. The reason for using the `who()` function is pretty straightforward: in my everyday work I find that the output produced by the `objects()` command isn't *quite* informative enough, because the only thing it prints out is the name of each variable; but the `ls.str()` function is *too* informative, because it prints out a lot of additional information that I really don't like to look at. The `who()` function is a compromise between the two. First, now that we've got the `lsr` package installed, we need to load it:
+```{r}
+library(lsr)
+```
+and now we can use the `who()` function:
+```{r}
+who()
+```
+As you can see, the `who()` function lists all the variables and provides some basic information about what kind of variable each one is and how many elements it contains. Personally, I find this output much easier more useful than the very compact output of the `objects()` function, but less overwhelming than the extremely verbose `ls.str()` function. Throughout this book you'll see me using the `who()` function a lot. You don't have to use it yourself: in fact, I suspect you'll find it easier to look at the RStudio environment panel. But for the purposes of writing a textbook I found it handy to have a nice text based description: otherwise there would be about another 100 or so screenshots added to the book.^[This would be especially annoying if you're reading an electronic copy of the book because the text displayed by the `who()` function is searchable, whereas text shown in a screen shot isn't!]
+
+
+### Removing variables
+
+Looking over that list of variables, it occurs to me that I really don't need them any more. I created them originally just to make a point, but they don't serve any useful purpose anymore, and now I want to get rid of them.  I'll show you how to do this, but first I want to warn you -- there's no "undo" option for variable removal. Once a variable is removed, it's gone forever unless you save it to disk. I'll show you how to do *that* in Section \@ref(load), but quite clearly we have no need for these variables at all, so we can safely get rid of them.
+
+In RStudio, the easiest way to remove variables is to use the environment panel. Assuming that you're in grid view (i.e., Figure \@ref(fig:workspace2)), check the boxes next to the variables that you want to delete, then click on the "Clear" button at the top of the panel. When you do this, RStudio will show a dialog box asking you to confirm that you really do want to delete the variables. It's always worth checking that you really do, because as RStudio is at pains to point out, you can't undo this. Once a variable is deleted, it's gone.^[Mind you, all that means is that it's been removed from the workspace. If you've got the data saved to file somewhere, then that *file* is perfectly safe.] In any case, if you click "yes", that variable will disappear from the workspace: it will no longer appear in the environment panel, and it won't show up when you use the `who()` command.
+
+Suppose you don't access to RStudio, and you still want to remove variables. This is where the **_remove_** function `rm()` comes in handy. The simplest way to use `rm()` is just to type in a (comma separated) list of all the variables you want to remove. Let's say I want to get rid of `seeker` and `lover`, but I would like to keep `keeper`. To do this, all I have to do is type:
+```{r}
+rm( seeker, lover )
+```
+There's no visible output, but if I now inspect the workspace
+```{r}
+who()
+```
+I see that there's only the `keeper` variable left. As you can see, `rm()` can be very handy for keeping the workspace tidy. 
+
+
+## Summary

@@ -2,14 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://learningstatisticswithr.com/index.html</loc>
-    <lastmod>2023-01-14T02:35:36.002Z</lastmod>
+    <lastmod>2023-07-11T05:03:32.616Z</lastmod>
   </url>
   <url>
-    <loc>https://learningstatisticswithr.com/installation.html</loc>
-    <lastmod>2023-01-13T01:25:08.745Z</lastmod>
+    <loc>https://learningstatisticswithr.com/chapters/preface.html</loc>
+    <lastmod>2023-07-11T05:03:32.620Z</lastmod>
   </url>
   <url>
-    <loc>https://learningstatisticswithr.com/introduction.html</loc>
-    <lastmod>2023-01-17T03:09:59.193Z</lastmod>
+    <loc>https://learningstatisticswithr.com/chapters/introduction.html</loc>
+    <lastmod>2023-07-11T05:03:32.636Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/installation.html</loc>
+    <lastmod>2023-07-11T05:03:32.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/commands.html</loc>
+    <lastmod>2023-07-11T05:03:32.668Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/calculations.html</loc>
+    <lastmod>2023-07-11T05:03:32.688Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/variables.html</loc>
+    <lastmod>2023-07-11T05:03:32.764Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/file-system.html</loc>
+    <lastmod>2023-07-11T05:03:32.780Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/packages.html</loc>
+    <lastmod>2023-07-11T05:03:32.816Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/data-objects.html</loc>
+    <lastmod>2023-07-11T05:03:32.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/reading-data.html</loc>
+    <lastmod>2023-07-11T05:03:32.856Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/references.html</loc>
+    <lastmod>2023-07-11T05:03:32.860Z</lastmod>
   </url>
 </urlset>

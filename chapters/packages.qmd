@@ -1,0 +1,164 @@
+# R packages {#packageinstall}
+
+In this section I discuss R **_packages_**, since almost all of the functions you might want to use in R come in packages. A package is basically just a big collection of functions, data sets and other R objects that are all grouped together under a common name. Some packages are already installed when you put R on your computer, but the vast majority of them of R packages are out there on the internet, waiting for you to download, install and use them. 
+
+When I first started writing this book, RStudio didn't really exist as a viable option for using R, and as a consequence I wrote a very lengthy section that explained how to do package management using raw R commands. It's not actually terribly hard to work with packages that way, but it's clunky and unpleasant. Fortunately, we don't have to do things that way anymore. In this section, I'll describe how to work with packages using the RStudio tools, because they're so much simpler. Along the way, you'll see that whenever you get RStudio to do something (e.g., install a package), you'll actually see the R commands that get created. I'll explain them as we go, because I think that helps you understand what's going on. 
+
+However, before we get started, there's a critical distinction that you need to understand, which is the difference between having a package **_installed_** on your computer, and having a package **_loaded_** in R. As of this writing, there are just over 5000 R packages freely available "out there" on the internet.^[More precisely, there are 5000 or so packages on CRAN, the Comprehensive R Archive Network.] When you install R on your computer, you don't get all of them: only about 30 or so come bundled with the basic R installation. So right now there are about 30 packages "installed" on your computer, and another 5000 or so that are not installed. So that's what installed means: it means "it's on your computer somewhere". The critical thing to remember is that just because something is on your computer doesn't mean R can use it. In order for R to be able to *use* one of your 30 or so installed packages, that package must also be "loaded". Generally, when you open up R, only a few of these packages (about 7 or 8) are actually loaded. Basically what it boils down to is this:
+
+>A package must be installed before it can be loaded.
+
+>A package must be loaded before it can be used.
+
+This two step process might seem a little odd at first, but the designers of R had very good reasons to do it this way,^[Basically, the reason is that there are 5000 packages, and probably about 4000 authors of packages, and no-one really knows what all of them do. Keeping the installation separate from the loading minimizes the chances that two packages will interact with each other in a nasty way.] and you get the hang of it pretty quickly.
+
+
+## The package panel in RStudio
+
+
+```{r packagepanel, fig.cap="The packages panel.", echo=FALSE}
+#knitr::include_graphics(here::here("bookdown", "img", "mechanics", "Rstudiopackages.png"))
+```
+
+Right, lets get started. The first thing you need to do is look in the lower right hand panel in RStudio. You'll see a tab labelled "Packages". Click on the tab, and you'll see a list of packages that looks something like Figure \@ref(fig:packagepanel). Every row in the panel corresponds to a different package, and every column is a useful piece of information about that package.^[If you're using the command line, you can get the same information by typing `library()` at the command line.] Going from left to right, here's what each column is telling you:
+
+
+- The check box on the far left column indicates whether or not the package is loaded.
+- The one word of text immediately to the right of the check box is the name of the package.
+- The short passage of text next to the name is a brief description of the package.
+- The number next to the description tells you what version of the package you have installed.
+- The little x-mark next to the version number is a button that you can push to uninstall the package from your computer (you almost never need this).
+
+
+## Loading a package{#packageload}
+
+That seems straightforward enough, so let's try loading and unloading packades. For this example, I'll use the `foreign` package. The `foreign` package is a collection of tools that are very handy when R needs to interact with files that are produced by other software packages (e.g., SPSS). It comes bundled with R, so it's one of the ones that you have installed already, but it won't be one of the ones loaded. Inside the `foreign` package is a function called `read.spss()`. It's a handy little function that you can use to import an SPSS data file into R, so let's pretend we want to use it. Currently, the `foreign` package isn't loaded, so if I ask R to tell me if it knows about a function called `read.spss()` it tells me that there's no such thing...
+```{r}
+exists( "read.spss" )
+```
+Now let's load the package. In RStudio, the process is dead simple: go to the package tab, find the entry for the `foreign` package, and check the box on the left hand side. The moment that you do this, you'll see a command like this appear in the R console:
+```{r eval=FALSE}
+library("foreign", lib.loc="/Library/Frameworks/R.framework/Versions/3.0/Resources/library")
+```
+The `lib.loc` bit will look slightly different on Macs versus on Windows, because that part of the command is just RStudio telling R where to look to find the installed packages. What I've shown you above is the Mac version. On a Windows machine, you'll probably see something that looks like this:
+```{r eval=FALSE}
+library("foreign", lib.loc="C:/Program Files/R/R-3.0.2/library")
+```
+But actually it doesn't matter much. The `lib.loc` bit is almost always unnecessary. Unless you've taken to installing packages in idiosyncratic places (which is something that you can do if you really want) R already knows where to look. So in the vast majority of cases, the command to load the `foreign` package is just this:
+```{r}
+library("foreign")
+```
+Throughout this book, you'll often see me typing in `library()` commands. You don't actually have to type them in yourself: you can use the RStudio package panel to do all your package loading for you. The only reason I include the `library()` commands sometimes is as a reminder to you to make sure that you have the relevant package loaded. Oh, and I suppose we should check to see if our attempt to load the package actually worked. Let's see if R now knows about the existence of the `read.spss()` function...
+```{r}
+exists( "read.spss" )
+```
+Yep. All good.
+
+
+
+## Unloading a package{#packageunload}
+
+
+Sometimes, especially after a long session of working with R, you find yourself wanting to get rid of some of those packages that you've loaded. The RStudio package panel makes this exactly as easy as loading the package in the first place. Find the entry corresponding to the package you want to unload, and uncheck the box. When you do that for the `foreign` package, you'll see this command appear on screen:
+```{r}
+detach("package:foreign", unload=TRUE)
+```
+And the package is unloaded. We can verify this by seeing if the `read.spss()` function still `exists()`: 
+```{r}
+exists( "read.spss" )
+```
+Nope. Definitely gone. 
+
+
+
+## A few extra comments
+
+Sections \@ref(packageload) and \@ref(packageunload) cover the main things you need to know about loading and unloading packages. However, there's a couple of other details that I want to draw your attention to. A concrete example is the best way to illustrate. One of the other packages that you already have installed on your computer is the `Matrix` package, so let's load that one and see what happens:
+```{r eval=FALSE}
+library( Matrix )
+
+## Loading required package: lattice
+```
+This is slightly more complex than the output that we got last time, but it's not too complicated. The `Matrix` package makes use of some of the tools in the `lattice` package, and R has kept track of this dependency. So when you try to load the `Matrix` package, R recognises that you're also going to need to have the `lattice` package loaded too. As a consequence, *both* packages get loaded, and R prints out a helpful little note on screen to tell you that it's done so. 
+
+R is pretty aggressive about enforcing these dependencies. Suppose, for example, I try to unload the `lattice` package while the `Matrix` package is still loaded. This is easy enough to try: all I have to do is uncheck the box next to "lattice" in the packages panel. But if I try this, here's what happens:
+```{r eval=FALSE}
+detach("package:lattice", unload=TRUE)
+
+## Error: package `lattice' is required by `Matrix' so will not be detached
+```
+R refuses to do it. This can be quite useful, since it stops you from accidentally removing something that you still need. So, if I want to remove both `Matrix` and `lattice`, I need to do it in the correct order
+
+
+Something else you should be aware of. Sometimes you'll attempt to load a package, and R will print out a message on screen telling you that something or other has been "masked". This will be confusing to you if I don't explain it now, and it actually ties very closely to the whole reason why R forces you to load packages separately from installing them. Here's an example. Two of the package that I'll refer to a lot in this book are called `car` and `psych`. The `car` package is short for "Companion to Applied Regression" (which is a really great book, I'll add), and it has a lot of tools that I'm quite fond of. The `car` package was written by a guy called John Fox, who has written a lot of great statistical tools for social science applications. The `psych` package was written by William Revelle, and it has a lot of functions that are very useful for psychologists in particular, especially in regards to psychometric techniques. For the most part, `car` and `psych` are quite unrelated to each other. They do different things, so not surprisingly almost all of the function names are different. But... there's one exception to that. The `car` package and the `psych` package *both* contain a function called `logit()`.^[The logit function a simple mathematical function that happens not to have been included in the basic R distribution.] This creates a naming conflict. If I load both packages into R, an ambiguity is created. If the user types in `logit(100)`, should R use the `logit()` function in the `car` package, or the one in the `psych` package? The answer is: R uses whichever package you loaded most recently, and it tells you this very explicitly. Here's what happens when I load the `car` package, and then afterwards load the `psych` package: 
+```{r}
+library(car)
+library(psych)
+```
+The output here is telling you that the `logit` object (i.e., function) in the `car` package is no longer accessible to you. It's been hidden (or "masked") from you by the one in the `psych` package.^[Tip for advanced users. You can get R to use the one from the `car` package by using `car::logit()` as your command rather than `logit()`, since the `car::` part tells R explicitly which package to use. See also `:::` if you're especially keen to force R to use functions it otherwise wouldn't, but take care, since `:::` can be dangerous.]
+
+## Downloading new packages
+
+One of the main selling points for R is that there are thousands of packages that have been written for it, and these are all available online. So whereabouts online are these packages to be found, and how do we download and install them?  There is a big repository of packages called the "Comprehensive R Archive Network" (CRAN), and the easiest way of getting and installing a new package is from one of the many CRAN mirror sites. Conveniently for us, R provides a function called `install.packages()` that you can use to do this. Even *more* conveniently, the RStudio team runs its own CRAN mirror and RStudio has a clean interface that lets you install packages without having to learn how to use the `install.packages()` command^[It is not very difficult.]
+
+Using the RStudio tools is, again, dead simple. In the top left hand corner of the packages panel (Figure \@ref(fig:packagepanel)) you'll see a button called "Install Packages". If you click on that, it will bring up a window like the one shown in Figure \@ref(fig:packageinstalla).
+
+```{r packageinstalla, fig.cap=c("The package installation dialog box in RStudio"), echo=FALSE}
+
+#knitr::include_graphics(here::here("bookdown", "img", "mechanics", "installpackage.png"))
+
+```
+
+There are a few different buttons and boxes you can play with. Ignore most of them. Just go to the line that says "Packages" and start typing the name of the package that you want. As you type, you'll see a dropdown menu appear (Figure \@ref(fig:packageinstallb)), listing names of packages that start with the letters that you've typed so far. 
+
+```{r packageinstallb, fig.cap="When you start typing, you\'ll see a dropdown menu suggest a list of possible packages that you might want to install", echo=FALSE}
+
+#knitr::include_graphics(here::here("bookdown", "img", "mechanics", "installpackage2.png"))
+
+```
+
+You can select from this list, or just keep typing. Either way, once you've got the package name that you want, click on the install button at the bottom of the window. When you do, you'll see the following command appear in the R console:
+```{r eval=FALSE}
+install.packages("psych")
+```
+This is the R command that does all the work. R then goes off to the internet, has a conversation with CRAN, downloads some stuff, and installs it on your computer. You probably don't care about all the details of R's little adventure on the web, but the `install.packages()` function is rather chatty, so it reports a bunch of gibberish that you really aren't all that interested in:
+```
+trying URL 'http://cran.rstudio.com/bin/macosx/contrib/3.0/psych_1.4.1.tgz'
+Content type 'application/x-gzip' length 2737873 bytes (2.6 Mb)
+opened URL
+==================================================
+downloaded 2.6 Mb
+
+
+The downloaded binary packages are in
+	/var/folders/cl/thhsyrz53g73q0w1kb5z3l_80000gn/T//RtmpmQ9VT3/downloaded_packages
+```
+Despite the long and tedious response, all thar really means is "I've installed the psych package". I find it best to humour the talkative little automaton. I don't actually read any of this garbage, I just politely say "thanks" and go back to whatever I was doing.  
+
+
+
+
+
+## Updating R and R packages
+
+Every now and then the authors of packages release updated versions. The updated versions often add new functionality, fix bugs, and so on. It's generally a good idea to update your packages periodically. There's an `update.packages()` function that you can use to do this, but it's probably easier to stick with the RStudio tool. In the packages panel, click on the "Update Packages" button. This will bring up a window that looks like the one shown in Figure \@ref(fig:updatepackages). In this window, each row refers to a package that needs to be updated. You can to tell R which updates you want to install by checking the boxes on the left. If you're feeling lazy and just want to update everything, click the "Select All" button, and then click the "Install Updates" button. R then prints out a *lot* of garbage on the screen, individually downloading and installing all the new packages. This might take a while to complete depending on how good your internet connection is. Go make a cup of coffee. Come back, and all will be well. 
+
+```{r updatepackages, fig.cap="The RStudio dialog box for updating packages", echo=FALSE}
+#knitr::include_graphics(here::here("bookdown", "img", "mechanics", "updatepackages.png"))
+```
+
+About every six months or so, a new version of R is released. You can't update R from within RStudio (not to my knowledge, at least): to get the new version you can go to the CRAN website and download the most recent version of R, and install it in the same way you did when you originally installed R on your computer. This used to be a slightly frustrating event, because whenever you downloaded the new version of R, you would lose all the packages that you'd downloaded and installed, and would have to repeat the process of re-installing them. This was pretty annoying, and there were some neat tricks you could use to get around this. However, newer versions of R don't have this problem so I no longer bother explaining the workarounds for that issue.
+
+## What packages does this book use?
+
+
+There are several packages that I make use of in this book. The most prominent ones are:
+
+
+- `lsr`. This is the *Learning Statistics with R* package that accompanies this book. It doesn't have a lot of interesting high-powered tools: it's just a small collection of handy little things that I think can be useful to novice users. As you get more comfortable with R this package should start to feel pretty useless to you.
+- `psych`. This package, written by William Revelle, includes a lot of tools that are of particular use to psychologists. In particular, there's several functions that are particularly convenient for producing analyses or summaries that are very common in psych, but less common in other disciplines. 
+- `car`. This is the *Companion to Applied Regression* package, which accompanies the excellent book of the same name by [@Fox2011]. It provides a lot of very powerful tools, only some of which we'll touch in this book.
+
+## Summary
+
+

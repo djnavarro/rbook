@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Danielle Navarro">
+
+<title>Learning Statistics with R - 1&nbsp; Why statistics? Why R?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/installation.html" rel="next">
+<link href="../chapters/preface.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<!-- add the twitter card and open graph tags -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@djnavarro">
+
+<!-- plausible analytics -->
+<script async="" defer="" data-domain="learningstatisticswithr.com" src="https://plausible.io/js/plausible.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why statistics? Why R?</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/djnavarro/rbook/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/introduction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why statistics? Why R?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Getting started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Our first R commands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/calculations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Doing calculations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/file-system.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Working with data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/data-objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/reading-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-whywhywhy" id="toc-sec-whywhywhy" class="nav-link active" data-scroll-target="#sec-whywhywhy"><span class="header-section-number">1.1</span> On the psychology of statistics</a>
+  <ul class="collapse">
+  <li><a href="#the-curse-of-belief-bias" id="toc-the-curse-of-belief-bias" class="nav-link" data-scroll-target="#the-curse-of-belief-bias"><span class="header-section-number">1.1.1</span> The curse of belief bias</a></li>
+  </ul></li>
+  <li><a href="#the-cautionary-tale-of-simpsons-paradox" id="toc-the-cautionary-tale-of-simpsons-paradox" class="nav-link" data-scroll-target="#the-cautionary-tale-of-simpsons-paradox"><span class="header-section-number">1.2</span> The cautionary tale of Simpson’s paradox</a></li>
+  <li><a href="#statistics-in-psychology" id="toc-statistics-in-psychology" class="nav-link" data-scroll-target="#statistics-in-psychology"><span class="header-section-number">1.3</span> Statistics in psychology</a>
+  <ul class="collapse">
+  <li><a href="#why-does-psychology-have-so-much-statistics" id="toc-why-does-psychology-have-so-much-statistics" class="nav-link" data-scroll-target="#why-does-psychology-have-so-much-statistics"><span class="header-section-number">1.3.1</span> Why does psychology have so much statistics?</a></li>
+  <li><a href="#cant-someone-else-do-the-statistics" id="toc-cant-someone-else-do-the-statistics" class="nav-link" data-scroll-target="#cant-someone-else-do-the-statistics"><span class="header-section-number">1.3.2</span> Can’t someone else do the statistics?</a></li>
+  <li><a href="#i-dont-care-about-jobs-research-or-clinical-work.-do-i-need-statistics" id="toc-i-dont-care-about-jobs-research-or-clinical-work.-do-i-need-statistics" class="nav-link" data-scroll-target="#i-dont-care-about-jobs-research-or-clinical-work.-do-i-need-statistics"><span class="header-section-number">1.3.3</span> I don’t care about jobs, research, or clinical work. Do I need statistics?</a></li>
+  </ul></li>
+  <li><a href="#statistics-in-everyday-life" id="toc-statistics-in-everyday-life" class="nav-link" data-scroll-target="#statistics-in-everyday-life"><span class="header-section-number">1.4</span> Statistics in everyday life</a></li>
+  <li><a href="#theres-more-to-research-methods-than-statistics" id="toc-theres-more-to-research-methods-than-statistics" class="nav-link" data-scroll-target="#theres-more-to-research-methods-than-statistics"><span class="header-section-number">1.5</span> There’s more to research methods than statistics</a></li>
+  <li><a href="#why-use-r" id="toc-why-use-r" class="nav-link" data-scroll-target="#why-use-r"><span class="header-section-number">1.6</span> Why use R?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why statistics? Why R?</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>To the surprise of many students, statistics is a fairly large part of a psychological education. To the surprise of no-one, statistics is very rarely the <em>favourite</em> part of one’s psychological education. After all, if you really loved the idea of doing statistics, you’d probably be enrolled in a statistics class right now, not a psychology class. So, not surprisingly, there’s a pretty large proportion of the student base that isn’t happy about the fact that psychology has so much statistics in it. In view of this, I thought that the right place to start a book like this might be to answer some of the more common questions that people have about stats…</p>
+<p>A big part of this issue at hand relates to the very idea of statistics. What is it? What’s it there for? And why are scientists so terribly obsessed with it? These are all good questions, when you think about it. So let’s start with the last one. As a group, scientists seem to be bizarrely fixated on doing statistical analyses for everything. In fact, we use statistics so often that we sometimes forget to explain to people why we do. It’s a kind of article of faith among scientists that your findings can’t be trusted until you’ve done some stats. Undergraduate students might be forgiven for being a little confused, because no-one takes the time to answer one very simple question:</p>
+<blockquote class="blockquote">
+<p>Why do you do statistics? Why don’t scientists just use <strong>common sense?</strong></p>
+</blockquote>
+<p>It’s a naive question in some ways, but most good questions are. There’s a lot of good answers to it,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> but for my money, the best answer is a really simple one: we don’t trust ourselves enough. We worry that we’re human, and susceptible to all of the biases, temptations and frailties that humans suffer from. Much of statistics is basically a safeguard. Using “common sense” to evaluate evidence means trusting gut instincts, relying on verbal arguments and on using the raw power of human reason to come up with the right answer. Most scientists don’t think this approach is likely to work.</p>
+<section id="sec-whywhywhy" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-whywhywhy"><span class="header-section-number">1.1</span> On the psychology of statistics</h2>
+<p>In fact, come to think of it, this sounds a lot like a psychological question. And since I used to work in a psychology department, it seems like a good idea to dig a little deeper here. Is it really plausible to think that this “common sense” approach is very trustworthy? Verbal arguments have to be constructed in language, and all languages have biases – some things are harder to say than others, and not necessarily because they’re false (e.g., quantum electrodynamics is a good theory, but hard to explain in words). Human intuitions aren’t built to solve scientific problems, they’re built to handle day to day inferences. Most fundamentally, reasoning sensibly requires people to engage in “induction”, making wise guesses and going beyond the immediate evidence of the senses to make generalisations about the world. It’s more or less impossible to do this without being influenced by other sources. Heck, as the next section shows, we can’t even solve “deductive” problems (ones where no guessing is required) without being influenced by our pre-existing biases.</p>
+<section id="the-curse-of-belief-bias" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="the-curse-of-belief-bias"><span class="header-section-number">1.1.1</span> The curse of belief bias</h3>
+<p>People are pretty smart. Our minds are quite amazing things, and we seem to be capable of the most incredible feats of thought and reason. That doesn’t make us perfect though. And among the many things that psychologists have shown over the years is that we really do find it hard to be neutral, to evaluate evidence impartially and without being swayed by pre-existing biases. A good example of this is the “belief bias” effect in logical reasoning: if you ask people to decide whether a particular argument is logically valid (i.e., conclusion would be true if the premises were true), we tend to be influenced by the believability of the conclusion, even when we shouldn’t. For instance, here’s a valid argument where the conclusion is believable:</p>
+<blockquote class="blockquote">
+<p>No cigarettes are inexpensive (Premise 1)<br>
+Some addictive things are inexpensive (Premise 2)<br>
+Therefore, some addictive things are not cigarettes (Conclusion)</p>
+</blockquote>
+<p>And here’s a valid argument where the conclusion is not believable:</p>
+<blockquote class="blockquote">
+<p>No addictive things are inexpensive (Premise 1)<br>
+Some cigarettes are inexpensive (Premise 2)<br>
+Therefore, some cigarettes are not addictive (Conclusion)</p>
+</blockquote>
+<p>The logical <em>structure</em> of argument #2 is identical to the structure of argument #1, and they’re both valid. However, in the second argument, there are good reasons to think that premise 1 is incorrect, and as a result it’s probably the case that the conclusion is also incorrect. But that’s entirely irrelevant to the topic at hand: an argument is deductively valid if the conclusion is a logical consequence of the premises. That is, a valid argument doesn’t have to involve true statements.</p>
+<p>On the other hand, here’s an invalid argument that has a believable conclusion:</p>
+<blockquote class="blockquote">
+<p>No addictive things are inexpensive (Premise 1)<br>
+Some cigarettes are inexpensive (Premise 2)<br>
+Therefore, some addictive things are not cigarettes (Conclusion)</p>
+</blockquote>
+<p>And finally, an invalid argument with an unbelievable conclusion:</p>
+<blockquote class="blockquote">
+<p>No cigarettes are inexpensive (Premise 1)<br>
+Some addictive things are inexpensive (Premise 2)<br>
+Therefore, some cigarettes are not addictive (Conclusion)</p>
+</blockquote>
+<p>Now, suppose that people really are perfectly able to set aside their pre-existing biases about what is true and what isn’t, and purely evaluate an argument on its logical merits. We’d expect 100% of people to say that the valid arguments are valid, and 0% of people to say that the invalid arguments are valid. So if you ran an experiment looking at this, you’d expect to see data like this:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Conclusion feels true</th>
+<th style="text-align: center;">Conclusion feels false</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Argument is valid</td>
+<td style="text-align: center;">100% say “valid”</td>
+<td style="text-align: center;">100% say “valid”</td>
+</tr>
+<tr class="even">
+<td>Argument is invalid</td>
+<td style="text-align: center;">0% say “valid”</td>
+<td style="text-align: center;">0% say “valid”</td>
+</tr>
+</tbody>
+</table>
+<p>If the psychological data looked like this – or even a good approximation to this – we might feel safe in just trusting our gut instincts. That is, it’d be perfectly okay just to let scientists evaluate data based on their common sense, and not bother with all this murky statistics stuff. However, you guys have taken psych classes, and by now you probably know where this is going…</p>
+<p>In a classic study, <span class="citation" data-cites="Evans1983">Evans, Barston, and Pollard (<a href="references.html#ref-Evans1983" role="doc-biblioref">1983</a>)</span> ran an experiment looking at exactly this. What they found is that when pre-existing biases (i.e., beliefs) were in agreement with the structure of the data, everything went the way you’d hope:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Conclusion feels true</th>
+<th style="text-align: center;">Conclusion feels false</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Argument is valid</td>
+<td style="text-align: center;">92% say “valid”</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td>Argument is invalid</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">8% say “valid”</td>
+</tr>
+</tbody>
+</table>
+<p>Not perfect, but that’s pretty good. But look what happens when our intuitive feelings about the truth of the conclusion run against the logical structure of the argument:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Conclusion feels true</th>
+<th style="text-align: center;">Conclusion feels false</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Argument is valid</td>
+<td style="text-align: center;">92% say “valid”</td>
+<td style="text-align: center;"><strong>46% say “valid”</strong></td>
+</tr>
+<tr class="even">
+<td>Argument is invalid</td>
+<td style="text-align: center;"><strong>92% say “valid”</strong></td>
+<td style="text-align: center;">8% say “valid”</td>
+</tr>
+</tbody>
+</table>
+<p>Oh dear, that’s not as good. Apparently, when people are presented with a strong argument that contradicts our pre-existing beliefs, we find it pretty hard to even perceive it to be a strong argument (people only did so 46% of the time). Even worse, when people are presented with a weak argument that agrees with our pre-existing biases, almost no-one can see that the argument is weak (people got that one wrong 92% of the time!)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Data like these suggest that we ought to be cautious about trusting our intuitions too much. If you were a professional evaluator of evidence, and someone came along and offered you a magic tool that improves your chances of making the right decision, you’d probably jump at it, right? Of course you would. Thankfully, we actually do have a tool that can do this. But it’s not magic, it’s statistics. So that’s the first reason why scientists love statistics. It’s just too easy for us to believe what we want to believe; so if we want to follow the data instead, we’re going to need a bit of help to keep our personal biases under control. That’s what statistics does: when done properly, it helps keep us honest.</p>
+</section>
+</section>
+<section id="the-cautionary-tale-of-simpsons-paradox" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="the-cautionary-tale-of-simpsons-paradox"><span class="header-section-number">1.2</span> The cautionary tale of Simpson’s paradox</h2>
+<p>The following is a true story (I think…). In 1973, the University of California, Berkeley had some worries about the admissions of students into their postgraduate courses. Specifically, the thing that caused the problem was that the gender breakdown of their admissions, which looked like this…</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Number of applicants</th>
+<th style="text-align: center;">Percent admitted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Males</td>
+<td style="text-align: center;">8442</td>
+<td style="text-align: center;">46%</td>
+</tr>
+<tr class="even">
+<td>Females</td>
+<td style="text-align: center;">4321</td>
+<td style="text-align: center;">35%</td>
+</tr>
+</tbody>
+</table>
+<p>…and they were worried about being sued.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Given that there were nearly 13,000 applicants, a difference of 9% in admission rates between males and females is just way too big to be a coincidence.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Pretty compelling data, right?</p>
+<p>Well, maybe. Maybe not.</p>
+<p>When people started looking more carefully at the admissions data <span class="citation" data-cites="Bickel1975">(<a href="references.html#ref-Bickel1975" role="doc-biblioref">Bickel, Hammel, and O’Connell 1975</a>)</span> they told a rather different story. Specifically, when they looked at it on a department by department basis, it turned out that most of the departments actually had a slightly <em>higher</em> success rate for female applicants than for male applicants. The table below shows the admission figures for the six largest departments:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Admission figures for the six largest departments by gender</caption>
+<colgroup>
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Department</th>
+<th style="text-align: center;">Male Applicants</th>
+<th style="text-align: center;">Male Percent Admitted</th>
+<th style="text-align: center;">Female Applicants</th>
+<th style="text-align: center;">Female Percent admitted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">825</td>
+<td style="text-align: center;">62%</td>
+<td style="text-align: center;">108</td>
+<td style="text-align: center;">82%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">560</td>
+<td style="text-align: center;">63%</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">68%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">325</td>
+<td style="text-align: center;">37%</td>
+<td style="text-align: center;">593</td>
+<td style="text-align: center;">34%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">417</td>
+<td style="text-align: center;">33%</td>
+<td style="text-align: center;">375</td>
+<td style="text-align: center;">35%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">191</td>
+<td style="text-align: center;">28%</td>
+<td style="text-align: center;">393</td>
+<td style="text-align: center;">24%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">272</td>
+<td style="text-align: center;">6%</td>
+<td style="text-align: center;">341</td>
+<td style="text-align: center;">7%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Remarkably, most departments had a higher rate of admissions for females than for males! Yet the overall rate of admission across the university for females was lower than for males. How can this be? How can both of these statements be true at the same time?</p>
+<p>Here’s what’s going on. Firstly, notice that the departments are not equal to one another in terms of their admission percentages: some departments (e.g., engineering, chemistry) tended to admit a high percentage of the qualified applicants, whereas others (e.g., English) tended to reject most of the candidates, even if they were high quality. So, among the six departments shown above, notice that department A is the most generous, followed by B, C, D, E and F in that order. Next, notice that males and females tended to apply to different departments. If we rank the departments in terms of the total number of male applicants, we get <strong>A</strong>&gt;<strong>B</strong>&gt;D&gt;C&gt;F&gt;E (the “easy” departments are in bold). On the whole, males tended to apply to the departments that had high admission rates. Now compare this to how the female applicants distributed themselves. Ranking the departments in terms of the total number of female applicants produces a quite different ordering C&gt;E&gt;D&gt;F&gt;<strong>A</strong>&gt;<strong>B</strong>. In other words, what these data seem to be suggesting is that the female applicants tended to apply to “harder” departments. And in fact, if we look at all Figure @ref(fig:berkeley) we see that this trend is systematic, and quite striking. This effect is known as Simpson’s paradox. It’s not common, but it does happen in real life, and most people are very surprised by it when they first encounter it, and many people refuse to even believe that it’s real. It is very real. And while there are lots of very subtle statistical lessons buried in there, I want to use it to make a much more important point …doing research is hard, and there are <em>lots</em> of subtle, counterintuitive traps lying in wait for the unwary. That’s reason #2 why scientists love statistics, and why we teach research methods. Because science is hard, and the truth is sometimes cunningly hidden in the nooks and crannies of complicated data.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="introduction_files/figure-html/berkeley-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">The Berkeley 1973 college admissions data. This figure plots the admission rate for the 85 departments that had at least one female applicant, as a function of the percentage of applicants that were female. The plot is a redrawing of Figure 1 from <span class="citation" data-cites="Bickel1975">Bickel, Hammel, and O’Connell (<a href="references.html#ref-Bickel1975" role="doc-biblioref">1975</a>)</span>. Circles plot departments with more than 40 applicants; the area of the circle is proportional to the total number of applicants. The crosses plot department with fewer than 40 applicants.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Before leaving this topic entirely, I want to point out something else really critical that is often overlooked in a research methods class. Statistics only solves <em>part</em> of the problem. Remember that we started all this with the concern that Berkeley’s admissions processes might be unfairly biased against female applicants. When we looked at the “aggregated” data, it did seem like the university was discriminating against women, but when we “disaggregate” and looked at the individual behaviour of all the departments it doesn’t seem like any such bias existed. The gender bias in total admissions was caused by the fact that women tended to apply to departments with stricter admission standards.</p>
+<p>From a legal perspective, that would probably put the university in the clear. Postgraduate admissions are determined at the level of the individual department, and at the level of individual departments, the decisions are more or less unbiased. Since the university can’t dictate which departments people choose to apply to, and the decision making takes place at the level of the department it can hardly be held accountable for any biases that those choices produce.</p>
+<p>However that’s not the whole story, is it?</p>
+<p>After all, if we’re interested in this from a more sociological and psychological perspective, we might want to ask <em>why</em> there are such strong gender differences in applications. Why do males tend to apply to engineering more often than females, and why is this reversed for the English department? And why is it it the case that the departments that tend to have a female-application bias tend to have lower overall admission rates than those departments that have a male-application bias? Might this not still reflect a gender bias, even though every single department is itself unbiased? It might. Suppose, hypothetically, that males preferred to apply to “hard sciences” and females prefer “humanities”. And suppose further that the reason for why the humanities departments have low admission rates is because the government doesn’t want to fund the humanities (Ph.D.&nbsp;places, for instance, are often tied to government funded research projects). Does that constitute a gender bias? Or just an unenlightened view of the value of the humanities? What if someone at a high level in the government cut the humanities funds because they felt that the humanities are ’too feminine”. That seems pretty blatantly gender biased.</p>
+<p>None of this falls within the purview of the statistical analysis, but it matters to the research project. If you’re interested in the overall structural effects of subtle gender biases, then you probably want to look at both the aggregated and disaggregated data. If you’re interested in the decision making process at Berkeley itself then you’re probably only interested in the disaggregated data.</p>
+<p>In short there are a lot of critical questions that you can’t answer with statistics, but the answers to those questions will have a huge impact on how you analyse and interpret data. And this is the reason why you should always think of statistics as a <em>tool</em> to help you learn about your data, no more and no less. It’s a powerful tool to that end, but there’s no substitute for careful thought.</p>
+</section>
+<section id="statistics-in-psychology" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="statistics-in-psychology"><span class="header-section-number">1.3</span> Statistics in psychology</h2>
+<p>I hope that the discussion above helped explain why science in general is so focused on statistics. But I’m guessing that you have a lot more questions about what role statistics plays in psychology, and specifically why psychology classes always devote so many lectures to stats. So here’s my attempt to answer a few of them…</p>
+<section id="why-does-psychology-have-so-much-statistics" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="why-does-psychology-have-so-much-statistics"><span class="header-section-number">1.3.1</span> Why does psychology have so much statistics?</h3>
+<p>To be perfectly honest, there’s a few different reasons, some of which are better than others. The most important reason is that psychology is a statistical science. What I mean by that is that the “things” that we study are <em>people</em>. Real, complicated, gloriously messy, infuriatingly perverse people. The “things” of physics include object like electrons, and while there are all sorts of complexities that arise in physics, electrons don’t have minds of their own. They don’t have opinions, they don’t differ from each other in weird and arbitrary ways, they don’t get bored in the middle of an experiment, and they don’t get angry at the experimenter and then deliberately try to sabotage the data set (not that I’ve ever done that…). At a fundamental level psychology is harder than physics.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>Basically, we teach statistics to you as psychologists because you need to be better at stats than physicists. There’s actually a saying used sometimes in physics, to the effect that “if your experiment needs statistics, you should have done a better experiment”. They have the luxury of being able to say that because their objects of study are pathetically simple in comparison to the vast mess that confronts social scientists. It’s not just psychology, really: most social sciences are desperately reliant on statistics. Not because we’re bad experimenters, but because we’ve picked a harder problem to solve. We teach you stats because you really, really need it.</p>
+</section>
+<section id="cant-someone-else-do-the-statistics" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="cant-someone-else-do-the-statistics"><span class="header-section-number">1.3.2</span> Can’t someone else do the statistics?</h3>
+<p>To some extent, but not completely. It’s true that you don’t need to become a fully trained statistician just to do psychology, but you do need to reach a certain level of statistical competence. In my view, there’s three reasons that every psychological researcher ought to be able to do basic statistics:</p>
+<ul>
+<li>Firstly, there’s the fundamental reason: statistics is deeply intertwined with research design. If you want to be good at designing psychological studies, you need to at least understand the basics of stats.</li>
+<li>Secondly, if you want to be good at the psychological side of the research, then you need to be able to understand the psychological literature, right? But almost every paper in the psychological literature reports the results of statistical analyses. So if you really want to understand the psychology, you need to be able to understand what other people did with their data. And that means understanding a certain amount of statistics.</li>
+<li>Thirdly, there’s a big practical problem with being dependent on other people to do all your statistics: statistical analysis is expensive. You may not be in a financial position to be able to afford a statistician. That’s not at all uncommon!</li>
+</ul>
+<p>Note that a lot of these reasons generalise beyond researchers. If you want to be a practicing psychologist and stay on top of the field, it helps to be able to read the scientific literature, which relies pretty heavily on statistics.</p>
+</section>
+<section id="i-dont-care-about-jobs-research-or-clinical-work.-do-i-need-statistics" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="i-dont-care-about-jobs-research-or-clinical-work.-do-i-need-statistics"><span class="header-section-number">1.3.3</span> I don’t care about jobs, research, or clinical work. Do I need statistics?</h3>
+<p>Okay, now you’re just messing with me. Still, I think it should matter to you too. Statistics should matter to you in the same way that statistics should matter to <em>everyone</em>: we live in the 21st century, and data are <em>everywhere</em>. Frankly, given the world in which we live these days, a basic knowledge of statistics is pretty damn close to a survival tool! Which is the topic of the next section…</p>
+</section>
+</section>
+<section id="statistics-in-everyday-life" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="statistics-in-everyday-life"><span class="header-section-number">1.4</span> Statistics in everyday life</h2>
+<p>When I started writing up my lecture notes I took the 20 most recent news articles posted to the ABC news website. Of those 20 articles, it turned out that 8 of them involved a discussion of something that I would call a statistical topic; 6 of those made a mistake. The most common error, if you’re curious, was failing to report baseline data (e.g., the article mentions that 5% of people in situation X have some characteristic Y, but doesn’t say how common the characteristic is for everyone else!) The point I’m trying to make here isn’t that journalists are bad at statistics (though they almost always are), it’s that a basic knowledge of statistics is very helpful for trying to figure out when someone else is either making a mistake or even lying to you. In fact, one of the biggest things that a knowledge of statistics does to you is cause you to get angry at the newspaper or the internet on a far more frequent basis.</p>
+</section>
+<section id="theres-more-to-research-methods-than-statistics" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="theres-more-to-research-methods-than-statistics"><span class="header-section-number">1.5</span> There’s more to research methods than statistics</h2>
+<p>So far, most of what I’ve talked about is statistics, and so you’d be forgiven for thinking that statistics is all I care about in life. To be fair, you wouldn’t be far wrong, but research methodology is a broader concept than statistics. So most research methods courses will cover a lot of topics that relate much more to the pragmatics of research design, and in particular the issues that you encounter when trying to do research with humans. However, about 99% of student <em>fears</em> relate to the statistics part of the course, so I’ve focused on the stats in this discussion, and hopefully I’ve convinced you that statistics matters, and more importantly, that it’s not to be feared.</p>
+<p>That being said, it’s pretty typical for introductory research methods classes to be very stats-heavy. This is not (usually) because the lecturers are evil people. Quite the contrary, in fact. Introductory classes focus a lot on the statistics because you almost always find yourself needing statistics before you need the other research methods training. Why? Because almost all of your assignments in other classes will rely on statistical training, to a much greater extent than they rely on other methodological tools. It’s not common for undergraduate assignments to require you to design your own study from the ground up (in which case you would need to know a lot about research design), but it <em>is</em> common for assignments to ask you to analyse and interpret data that were collected in a study that someone else designed (in which case you need statistics). In that sense, from the perspective of allowing you to do well in all your other classes, the statistics is more urgent.</p>
+<p>But note that “urgent” is different from “important” – they both matter. I really do want to stress that research design is just as important as data analysis, and this book does spend a fair amount of time on it. However, while statistics has a kind of universality, and provides a set of core tools that are useful for most types of psychological research, the research methods side isn’t quite so universal. There are some general principles that everyone should think about, but a lot of research design is very idiosyncratic, and is specific to the area of research that you want to engage in. To the extent that it’s the details that matter, those details don’t usually show up in an introductory stats and research methods class.</p>
+</section>
+<section id="why-use-r" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="why-use-r"><span class="header-section-number">1.6</span> Why use R?</h2>
+<blockquote class="blockquote">
+<p>R, the mysterious and powerful language of the statisticians, holds secrets beyond the realm of mortal understanding. As a data scientist, I delve into its dark depths, unearthing hidden truths buried deep within the data.</p>
+<p>But be warned, for R is not for the faint of heart. Its community is vast and ancient, with thousands of packages available for use, each holding its own eldritch power. These packages, written in a language known only to the initiated, can save one from certain doom by providing pre-written code for common tasks. But beware, for to gaze upon the ggplot2 package is to behold true terror, as it unveils the horrors of the data in a manner both beautiful and terrifying.</p>
+<p>In the end, R is a tool to be respected and feared, for it holds the power to unveil the hidden mysteries of the data, but at what cost? Only the bravest of souls should dare to tread its path.</p>
+<p>– The ChatGPT model, when I asked it to write about R in a gothic horror style</p>
+</blockquote>
+<p>Before starting any discussion of how R works, I ought to talk a bit about why you might want to want to use R at all. If you’re approaching R as a complete novice, your mental model of R might look quite similar to the output of ChatGPT in the quote above. So let’s take a moment to reassure you that a dive into R is not in face a descent into a Lovecraftian nightmare.</p>
+<p>Why use R? Given that you’re reading this, you’ve probably got your own reasons. However, if those reasons are “because that’s what my stats class uses”, it might be worth explaining a little why your lecturer has chosen to use R for the class. Of course, I don’t really know why <em>other</em> people choose R, so I’m really talking about why I use it.</p>
+<ul>
+<li><p>It’s sort of obvious, but worth saying anyway: doing your statistics on a computer is faster, easier and more powerful than doing statistics by hand. Computers excel at mindless repetitive tasks, and a lot of statistical calculations are both mindless and repetitive. For most people, the only reason to ever do statistical calculations with pencil and paper is for learning purposes. In my class I do occasionally suggest doing some calculations that way, but the only real value to it is pedagogical. It does help you to get a “feel” for statistics to do some calculations yourself, so it’s worth doing it once. But only once!</p></li>
+<li><p>Doing statistics in a spreadsheet (e.g., Microsoft Excel) is generally a bad idea in the long run. Although many people are likely feel more familiar with them, spreadsheets are very limited in terms of what analyses they allow you do. If you get into the habit of trying to do your real life data analysis using spreadsheets, then you’ve dug yourself into a very deep hole.</p></li>
+<li><p>Avoiding proprietary software is a very good idea. There are a lot of commercial packages out there that you can buy, some of which I like and some of which I don’t. They’re usually very glossy in their appearance, and generally very powerful (much more powerful than spreadsheets). However, they’re also very expensive: usually, the company sells “student versions” (crippled versions of the real thing) very cheaply; they sell full powered “educational versions” at a price that makes me wince; and they sell commercial licences with a staggeringly high price tag. The business model here is to suck you in during your student days, and then leave you dependent on their tools when you go out into the real world. It’s hard to blame them for trying, but personally I’m not in favour of shelling out thousands of dollars if I can avoid it. And you can avoid it: if you make use of packages like R that are open source and free, you never get trapped having to pay exorbitant licensing fees.</p></li>
+<li><p>Something that you might not appreciate now, but will love later on if you do anything involving data analysis, is the fact that R is highly extensible. When you download and install R, you get all the basic “packages”, and those are very powerful on their own. However, because R is so open and so widely used, it’s become something of a standard tool in statistics, and so lots of people write their own packages that extend the system. And these are freely available too. One of the consequences of this, I’ve noticed, is that if you open up an advanced textbook rather than introductory textbooks, is that a <em>lot</em> of them use R. In other words, if you learn how to do your basic statistics in R, then you’re a lot closer to being able to use the state of the art methods than you would be if you’d started out with a “simpler” system: so if you want to become a genuine expert in psychological data analysis, learning R is a very good use of your time.</p></li>
+<li><p>Related to the previous point: R is a real programming language. As you get better at using R for data analysis, you’re also learning to program. To some people this might seem like a bad thing, but in truth, programming is a core research skill across a lot of the social and behavioural sciences. Think about how many surveys and experiments are done online, or presented on computers. Think about all those online social environments which you might be interested in studying; and maybe collecting data from in an automated fashion. Think about artificial intelligence systems, computer vision and speech recognition. If any of these are things that you think you might want to be involved in – as someone “doing research in psychology”, that is – you’ll need to know a bit of programming. And if you don’t already know how to program, then learning how to do statistics using R is a nice way to start.</p></li>
+</ul>
+<p>Those are the main reasons I use R. It’s not without its flaws: it’s not easy to learn, and it has a few very annoying quirks to it that we’re all pretty much stuck with, but on the whole I think the strengths outweigh the weakness.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Bickel1975" class="csl-entry" role="listitem">
+Bickel, P. J., E. A. Hammel, and J. W. O’Connell. 1975. <span>“Sex Bias in Graduate Admissions: Data from <span>B</span>erkeley.”</span> <em>Science</em> 187: 398–404.
+</div>
+<div id="ref-Evans1983" class="csl-entry" role="listitem">
+Evans, J. St. B. T., J. L. Barston, and P. Pollard. 1983. <span>“On the Conflict Between Logic and Belief in Syllogistic Reasoning.”</span> <em>Memory and Cognition</em> 11: 295–306.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Including the suggestion that common sense is in short supply among scientists.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>In my more cynical moments I feel like this fact alone explains most of what I read on the internet.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Earlier versions of these notes incorrectly suggested that they actually were sued – apparently that’s not true. There’s a nice commentary on this here: <a href="https://www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html">www.refsmmat.com/posts/2016-05-08-simpsons-paradox-berkeley.html</a>. A big thank you to Wilfried Van Hirtum for pointing this out to me!<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Revisiting these notes in 2023, I find myself slightly irritated by the way this example doesn’t clearly articulate what is intended when gender categories are used. It is a data set of its time, and I suppose very few researchers in 1973 would have thought carefully about sex, gender, and gender identity. Perhaps in a future revision I will find a better example.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Which might explain why physics is just a teensy bit further advanced as a science.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/preface.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/installation.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Learning Statistics with R was written by <a href="https://djnavarro.net">Danielle Navarro</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

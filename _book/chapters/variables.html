@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Danielle Navarro">
+
+<title>Learning Statistics with R - 5&nbsp; Variables</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/file-system.html" rel="next">
+<link href="../chapters/calculations.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<!-- add the twitter card and open graph tags -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@djnavarro">
+
+<!-- plausible analytics -->
+<script async="" defer="" data-domain="learningstatisticswithr.com" src="https://plausible.io/js/plausible.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/installation.html">Getting started</a></li><li class="breadcrumb-item"><a href="../chapters/variables.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/djnavarro/rbook/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why statistics? Why R?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Getting started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Our first R commands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/calculations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Doing calculations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/variables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/file-system.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Working with data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/data-objects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/reading-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-assign" id="toc-sec-assign" class="nav-link active" data-scroll-target="#sec-assign"><span class="header-section-number">5.1</span> Storing a number as a variable</a>
+  <ul class="collapse">
+  <li><a href="#variable-assignment-using---and--" id="toc-variable-assignment-using---and--" class="nav-link" data-scroll-target="#variable-assignment-using---and--"><span class="header-section-number">5.1.1</span> Variable assignment using <code>&lt;-</code> and <code>-&gt;</code></a></li>
+  <li><a href="#doing-calculations-using-variables" id="toc-doing-calculations-using-variables" class="nav-link" data-scroll-target="#doing-calculations-using-variables"><span class="header-section-number">5.1.2</span> Doing calculations using variables</a></li>
+  <li><a href="#rules-and-conventions-for-naming-variables" id="toc-rules-and-conventions-for-naming-variables" class="nav-link" data-scroll-target="#rules-and-conventions-for-naming-variables"><span class="header-section-number">5.1.3</span> Rules and conventions for naming variables</a></li>
+  </ul></li>
+  <li><a href="#sec-vectors" id="toc-sec-vectors" class="nav-link" data-scroll-target="#sec-vectors"><span class="header-section-number">5.2</span> Storing many numbers as a vector</a>
+  <ul class="collapse">
+  <li><a href="#creating-a-vector" id="toc-creating-a-vector" class="nav-link" data-scroll-target="#creating-a-vector"><span class="header-section-number">5.2.1</span> Creating a vector</a></li>
+  <li><a href="#a-handy-digression" id="toc-a-handy-digression" class="nav-link" data-scroll-target="#a-handy-digression"><span class="header-section-number">5.2.2</span> A handy digression</a></li>
+  <li><a href="#sec-vectorsubset" id="toc-sec-vectorsubset" class="nav-link" data-scroll-target="#sec-vectorsubset"><span class="header-section-number">5.2.3</span> Getting information out of vectors</a></li>
+  <li><a href="#altering-the-elements-of-a-vector" id="toc-altering-the-elements-of-a-vector" class="nav-link" data-scroll-target="#altering-the-elements-of-a-vector"><span class="header-section-number">5.2.4</span> Altering the elements of a vector</a></li>
+  <li><a href="#sec-veclength" id="toc-sec-veclength" class="nav-link" data-scroll-target="#sec-veclength"><span class="header-section-number">5.2.5</span> Useful things to know about vectors</a></li>
+  </ul></li>
+  <li><a href="#sec-text" id="toc-sec-text" class="nav-link" data-scroll-target="#sec-text"><span class="header-section-number">5.3</span> Storing text data</a>
+  <ul class="collapse">
+  <li><a href="#sec-simpletext" id="toc-sec-simpletext" class="nav-link" data-scroll-target="#sec-simpletext"><span class="header-section-number">5.3.1</span> Working with text</a></li>
+  </ul></li>
+  <li><a href="#sec-logicals" id="toc-sec-logicals" class="nav-link" data-scroll-target="#sec-logicals"><span class="header-section-number">5.4</span> Logical values as data</a>
+  <ul class="collapse">
+  <li><a href="#vectors-of-logicals" id="toc-vectors-of-logicals" class="nav-link" data-scroll-target="#vectors-of-logicals"><span class="header-section-number">5.4.1</span> Vectors of logicals</a></li>
+  <li><a href="#sec-logictext" id="toc-sec-logictext" class="nav-link" data-scroll-target="#sec-logictext"><span class="header-section-number">5.4.2</span> Applying logical operation to text</a></li>
+  </ul></li>
+  <li><a href="#sec-indexing" id="toc-sec-indexing" class="nav-link" data-scroll-target="#sec-indexing"><span class="header-section-number">5.5</span> Indexing vectors</a>
+  <ul class="collapse">
+  <li><a href="#extracting-multiple-elements" id="toc-extracting-multiple-elements" class="nav-link" data-scroll-target="#extracting-multiple-elements"><span class="header-section-number">5.5.1</span> Extracting multiple elements</a></li>
+  <li><a href="#logical-indexing" id="toc-logical-indexing" class="nav-link" data-scroll-target="#logical-indexing"><span class="header-section-number">5.5.2</span> Logical indexing</a></li>
+  </ul></li>
+  <li><a href="#useful" id="toc-useful" class="nav-link" data-scroll-target="#useful"><span class="header-section-number">5.6</span> Useful things to know about variables</a>
+  <ul class="collapse">
+  <li><a href="#specials" id="toc-specials" class="nav-link" data-scroll-target="#specials"><span class="header-section-number">5.6.1</span> Special values</a></li>
+  <li><a href="#names" id="toc-names" class="nav-link" data-scroll-target="#names"><span class="header-section-number">5.6.2</span> Assigning names to vector elements</a></li>
+  <li><a href="#variable-classes" id="toc-variable-classes" class="nav-link" data-scroll-target="#variable-classes"><span class="header-section-number">5.6.3</span> Variable classes</a></li>
+  </ul></li>
+  <li><a href="#workspace" id="toc-workspace" class="nav-link" data-scroll-target="#workspace"><span class="header-section-number">5.7</span> Managing the workspace</a>
+  <ul class="collapse">
+  <li><a href="#listing-variables" id="toc-listing-variables" class="nav-link" data-scroll-target="#listing-variables"><span class="header-section-number">5.7.1</span> Listing variables</a></li>
+  <li><a href="#removing-variables" id="toc-removing-variables" class="nav-link" data-scroll-target="#removing-variables"><span class="header-section-number">5.7.2</span> Removing variables</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">5.8</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-variables" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="sec-assign" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-assign"><span class="header-section-number">5.1</span> Storing a number as a variable</h2>
+<p>One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in <strong>variables</strong>. Variables in R aren’t exactly the same thing as the variables we talked about in the last chapter on research methods, but they are similar. At a conceptual level you can think of a variable as “label” for a certain piece of information, or even several different pieces of information. When doing statistical analysis in R all of your data (the variables you measured in your study) will be stored as variables in R, but as well see later in the book you’ll find that you end up creating variables for other things too. However, before we delve into all the messy details of data sets and statistical analysis, let’s look at the very basics for how we create variables and work with them.</p>
+<section id="variable-assignment-using---and--" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="variable-assignment-using---and--"><span class="header-section-number">5.1.1</span> Variable assignment using <code>&lt;-</code> and <code>-&gt;</code></h3>
+<p>Since we’ve been working with numbers so far, let’s start by creating variables to store our numbers. And since most people like concrete examples, let’s invent one. Suppose I’m trying to calculate how much money I’m going to make from this book. There’s several different numbers I might want to store. Firstly, I need to figure out how many copies I’ll sell. Given that I don’t actually sell copies of the book, the correct answer to this is zero, but once upon a time I did sell hard copies so let’s guess that the answer is 350.</p>
+<p>Let’s create a variable called <code>sales</code> to keep track of this number. What I want to do is assign a <strong>value</strong> to my variable <code>sales</code>, and that value should be <code>350</code>. We do this by using the <strong>assignment operator</strong>, which is <code>&lt;-</code>. Here’s how we do it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="dv">350</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When you hit enter, R doesn’t print out any output.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> It just gives you another command prompt. However, behind the scenes R has created a variable called <code>sales</code> and given it a value of <code>350</code>. You can check that this has happened by asking R to print the variable on screen. And the simplest way to do <em>that</em> is to type the name of the variable and hit enter<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 350</code></pre>
+</div>
+</div>
+<p>So that’s nice to know. Anytime you can’t remember what R has got stored in a particular variable, you can just type the name of the variable and hit enter.</p>
+<p>Okay, so now we know how to assign variables. Actually, there’s a bit more you should know. Firstly, one of the curious features of R is that there are several different ways of making assignments. In addition to the <code>&lt;-</code> operator, we can also use <code>-&gt;</code> and <code>=</code>, and it’s pretty important to understand the differences between them.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Let’s start by considering <code>-&gt;</code>, since that’s the easy one (we’ll discuss <code>=</code> in <a href="commands.html#sec-functionarguments"><span>Section&nbsp;3.1.5</span></a>). As you might expect from just looking at the symbol, it’s almost identical to <code>&lt;-</code>. It’s just that the arrow (i.e., the assignment) goes from left to right. So if I wanted to define my <code>sales</code> variable using <code>-&gt;</code>, I would write it like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">350</span> <span class="ot">-&gt;</span> sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This has the same effect: and it <em>still</em> means that I’m only going to sell <code>350</code> copies. Sigh. Apart from this superficial difference, <code>&lt;-</code> and <code>-&gt;</code> are identical. In fact, as far as R is concerned, they’re actually the same operator, just in a “left form” and a “right form”.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+</section>
+<section id="doing-calculations-using-variables" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="doing-calculations-using-variables"><span class="header-section-number">5.1.2</span> Doing calculations using variables</h3>
+<p>Okay, let’s get back to my original story. In my quest to become rich, I’ve written this book. To figure out how good a strategy is, I’ve started creating some variables in R. In addition to defining a <code>sales</code> variable that counts the number of copies I’m going to sell, I can also create a variable called <code>royalty</code>, indicating how much money I get per copy. Let’s say that my royalties are about $7 per book:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="dv">350</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>royalty <span class="ot">&lt;-</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The nice thing about variables (in fact, the whole point of having variables) is that we can do anything with a variable that we ought to be able to do with the information that it stores. That is, since R allows me to multiply <code>350</code> by <code>7</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">350</span> <span class="sc">*</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2450</code></pre>
+</div>
+</div>
+<p>it also allows me to multiply <code>sales</code> by <code>royalty</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">*</span> royalty</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2450</code></pre>
+</div>
+</div>
+<p>As far as R is concerned, the <code>sales * royalty</code> command is the same as the <code>350 * 7</code> command. Not surprisingly, I can assign the output of this calculation to a new variable, which I’ll call <code>revenue</code>. And when we do this, the new variable <code>revenue</code> gets the value <code>2450</code>. So let’s do that, and then get R to print out the value of <code>revenue</code> so that we can verify that it’s done what we asked:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>revenue <span class="ot">&lt;-</span> sales <span class="sc">*</span> royalty</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>revenue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2450</code></pre>
+</div>
+</div>
+<p>That’s fairly straightforward.</p>
+<p>A slightly more subtle thing we can do is reassign the value of my variable, based on its current value. For instance, suppose that one of my readers, no doubt under the influence of psychotropic drugs loves the book so much that they donate me an extra $550. The simplest way to capture this is by a command like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>revenue <span class="ot">&lt;-</span> revenue <span class="sc">+</span> <span class="dv">550</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>revenue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3000</code></pre>
+</div>
+</div>
+<p>In this calculation, R has taken the old value of <code>revenue</code> (i.e., 2450) and added 550 to that value, producing a value of 3000. This new value is assigned to the <code>revenue</code> variable, overwriting its previous value. In any case, we now know that I’m expecting to make $3000 off this. Pretty sweet, I thinks to myself. Or at least, that’s what I thinks until I do a few more calculation and work out what the implied hourly wage I’m making off this looks like.</p>
+</section>
+<section id="rules-and-conventions-for-naming-variables" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="rules-and-conventions-for-naming-variables"><span class="header-section-number">5.1.3</span> Rules and conventions for naming variables</h3>
+<p>In the examples that we’ve seen so far, my variable names (<code>sales</code> and <code>revenue</code>) have just been English-language words written using lowercase letters. However, R allows a lot more flexibility when it comes to naming your variables, as the following list of rules<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> illustrates:</p>
+<ul>
+<li>Variable names can only use the upper case alphabetic characters <code>A</code>-<code>Z</code> as well as the lower case characters <code>a</code>-<code>z</code>. You can also include numeric characters <code>0</code>-<code>9</code> in the variable name, as well as the period <code>.</code> or underscore <code>_</code> character. In other words, you can use <code>SaL.e_s</code> as a variable name (though I can’t think why you would want to), but you can’t use <code>Sales?</code>.</li>
+<li>Variable names cannot include spaces: therefore <code>my sales</code> is not a valid name, but <code>my.sales</code> is.</li>
+<li>Variable names are case sensitive: that is, <code>Sales</code> and <code>sales</code> are <em>different</em> variable names.</li>
+<li>Variable names must start with a letter or a period. You can’t use something like <code>_sales</code> or <code>1sales</code> as a variable name. You can use <code>.sales</code> as a variable name if you want, but it’s not usually a good idea. By convention, variables starting with a <code>.</code> are used for special purposes, so you should avoid doing so.</li>
+<li>Variable names cannot be one of the reserved keywords. These are special names that R needs to keep “safe” from us mere users, so you can’t use them as the names of variables. The keywords are: <code>if</code>, <code>else</code>, <code>repeat</code>, <code>while</code>, <code>function</code>, <code>for</code>, <code>in</code>, <code>next</code>, <code>break</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>Inf</code>, <code>NaN</code>, <code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>, and finally, <code>NA_character_</code>. Don’t feel especially obliged to memorise these: if you make a mistake and try to use one of the keywords as a variable name, R will complain about it like the whiny little automaton it is.</li>
+</ul>
+<p>In addition to those rules that R enforces, there are some informal conventions that people tend to follow when naming variables. One of them you’ve already seen: i.e., don’t use variables that start with a period. But there are several others. You aren’t obliged to follow these conventions, and there are many situations in which it’s advisable to ignore them, but it’s generally a good idea to follow them when you can:</p>
+<ul>
+<li>Use informative variable names. As a general rule, using meaningful names like <code>sales</code> and <code>revenue</code> is preferred over arbitrary ones like <code>variable1</code> and <code>variable2</code>. Otherwise it’s very hard to remember what the contents of different variables are, and it becomes hard to understand what your commands actually do.</li>
+<li>Use short variable names. Typing is a pain and no-one likes doing it. So we much prefer to use a name like <code>sales</code> over a name like <code>sales_for_this_book_that_you_are_reading</code>. Obviously there’s a bit of a tension between using informative names (which tend to be long) and using short names (which tend to be meaningless), so use a bit of common sense when trading off these two conventions.</li>
+<li>Use one of the conventional naming styles for multi-word variable names. Suppose I want to name a variable that stores “my new salary”. Obviously I can’t include spaces in the variable name, so how should I do this? There are three different conventions that you sometimes see R users employing. Firstly, you can separate the words using underscores, which would give you <code>my_new_salary</code> as the variable name. Alternatively, you could use capital letters at the beginning of each word (except the first one), which gives you <code>myNewSalary</code> as the variable name. I don’t think there’s any strong reason to prefer one over the other,<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> but it’s important to be consistent.</li>
+</ul>
+</section>
+</section>
+<section id="sec-vectors" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-vectors"><span class="header-section-number">5.2</span> Storing many numbers as a vector</h2>
+<p>At this point we’ve covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see <span class="quarto-unresolved-ref">?sec-generics</span>, so let’s return to our discussion of variables. When I introduced variables in <a href="#sec-assign"><span>Section&nbsp;5.1</span></a> I showed you how we can use variables to store a single number. In this section, we’ll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a <strong>vector</strong>. So let’s create one.</p>
+<section id="creating-a-vector" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="creating-a-vector"><span class="header-section-number">5.2.1</span> Creating a vector</h3>
+<p>Let’s stick to my silly “get rich quick by textbook writing” example. Suppose the textbook company (if I actually had one, that is) sends me sales data on a monthly basis. Since my class start in late February, we might expect most of the sales to occur towards the start of the year. Let’s suppose that I have 100 sales in February, 200 sales in March and 50 sales in April, and no other sales for the rest of the year. What I would like to do is have a variable – let’s call it <code>sales_by_month</code> – that stores all this sales data. The first number stored should be <code>0</code> since I had no sales in January, the second should be <code>100</code>, and so on. The simplest way to do this in R is to use the <strong>combine</strong> function, <code>c()</code>. To do so, all we have to do is type all the numbers you want to store in a comma separated list, like this:<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sales_by_month <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sales_by_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   0 100 200  50   0   0   0   0   0   0   0   0</code></pre>
+</div>
+</div>
+<p>To use the correct terminology here, we have a single variable here called <code>sales_by_month</code>: this variable is a vector that consists of 12 <strong>elements</strong>.</p>
+</section>
+<section id="a-handy-digression" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="a-handy-digression"><span class="header-section-number">5.2.2</span> A handy digression</h3>
+<p>Now that we’ve learned how to put information into a vector, the next thing to understand is how to pull that information back out again. However, before I do so it’s worth taking a slight detour. If you’ve been following along, typing all the commands into R yourself, it’s possible that the output that you saw when we printed out the <code>sales_by_month</code> vector was slightly different to what I showed above. This would have happened if the window (or the RStudio panel) that contains the R console is really, really narrow. If that were the case, you might have seen output that looks something like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sales_by_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   0 100 200  50
+ [5]   0   0   0   0
+ [9]   0   0   0   0</code></pre>
+</div>
+</div>
+<p>Because there wasn’t much room on the screen, R has printed out the results over three lines. But that’s not the important thing to notice. The important point is that the first line has a <code>[1]</code> in front of it, whereas the second line starts with <code>[5]</code> and the third with <code>[9]</code>. It’s pretty clear what’s happening here. For the first row, R has printed out the 1st element through to the 4th element, so it starts that row with a <code>[1]</code>. For the second row, R has printed out the 5th element of the vector through to the 8th one, and so it begins that row with a <code>[5]</code> so that you can tell where it’s up to at a glance. It might seem a bit odd to you that R does this, but in some ways it’s a kindness, especially when dealing with larger data sets!</p>
+</section>
+<section id="sec-vectorsubset" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="sec-vectorsubset"><span class="header-section-number">5.2.3</span> Getting information out of vectors</h3>
+<p>To get back to the main story, let’s consider the problem of how to get information out of a vector. At this point, you might have a sneaking suspicion that the answer has something to do with the <code>[1]</code> and <code>[9]</code> things that R has been printing out. And of course you are correct. Suppose I want to pull out the February sales data only. February is the second month of the year, so let’s try this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sales_by_month[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+<p>Yep, that’s the February sales all right. But there’s a subtle detail to be aware of here: notice that R outputs <code>[1] 100</code>, <em>not</em> <code>[2] 100</code>. This is because R is being extremely literal. When we typed in <code>sales_by_month[2]</code>, we asked R to find exactly <em>one</em> thing, and that one thing happens to be the second element of our <code>sales_by_month</code> vector. So, when it outputs <code>[1] 100</code> what R is saying is that the first number <em>that we just asked for</em> is <code>100</code>. This behaviour makes more sense when you realise that we can use this trick to create new variables. For example, I could create a <code>february_sales</code> variable like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>february_sales <span class="ot">&lt;-</span> sales_by_month[<span class="dv">2</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>february_sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+<p>Obviously, the new variable <code>february_sales</code> should only have one element and so when I print it out this new variable, the R output begins with a <code>[1]</code> because <code>100</code> is the value of the first (and only) element of <code>february_sales</code>. The fact that this also happens to be the value of the second element of <code>sales_by_month</code> is irrelevant. We’ll pick this topic up again in <a href="#sec-indexing"><span>Section&nbsp;5.5</span></a>.</p>
+</section>
+<section id="altering-the-elements-of-a-vector" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="altering-the-elements-of-a-vector"><span class="header-section-number">5.2.4</span> Altering the elements of a vector</h3>
+<p>Sometimes you’ll want to change the values stored in a vector. Imagine my surprise when the publisher rings me up to tell me that the sales data for May are wrong. There were actually an additional 25 books sold in May, but there was an error or something so they hadn’t told me about it. How can I fix my <code>sales_by_month</code> variable? One possibility would be to assign the whole vector again from the beginning, using <code>c()</code>. But that’s a lot of typing. Also, it’s a little wasteful: why should R have to redefine the sales figures for all 12 months, when only the 5th one is wrong? Fortunately, we can tell R to change only the 5th element, using this trick:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sales_by_month[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sales_by_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   0 100 200  50  25   0   0   0   0   0   0   0</code></pre>
+</div>
+</div>
+<p>Another way to edit variables is to use the <code>edit()</code> or <code>fix()</code> functions. I won’t discuss them in detail right now, but you can check them out on your own.</p>
+</section>
+<section id="sec-veclength" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="sec-veclength"><span class="header-section-number">5.2.5</span> Useful things to know about vectors</h3>
+<p>Before moving on, I want to mention a couple of other things about vectors. Firstly, you often find yourself wanting to know how many elements there are in a vector (usually because you’ve forgotten). You can use the <code>length()</code> function to do this. It’s quite straightforward:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sales_by_month)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12</code></pre>
+</div>
+</div>
+<p>Secondly, you often want to alter all of the elements of a vector at once. For instance, suppose I wanted to figure out how much money I made in each month. Since I’m earning an exciting $7 per book,<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> what I want to do is multiply each element in the <code>sales_by_month</code> vector by <code>7</code>.</p>
+<p>R makes this pretty easy, as the following example shows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sales_by_month <span class="sc">*</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]    0  700 1400  350  175    0    0    0    0    0    0    0</code></pre>
+</div>
+</div>
+<p>In other words, when you multiply a vector by a single number, all elements in the vector get multiplied. The same is true for addition, subtraction, division and taking powers. So that’s neat. On the other hand, suppose I wanted to know how much money I was making per day, rather than per month. Since not every month has the same number of days, I need to do something slightly different. Firstly, I’ll create two new vectors:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>days_per_month <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>, <span class="dv">30</span>, <span class="dv">31</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>profit <span class="ot">&lt;-</span> sales_by_month <span class="sc">*</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Obviously, the <code>profit</code> variable is the same one we created earlier, and the <code>days_per_month</code> variable is pretty straightforward. What I want to do is divide every element of <code>profit</code> by the <em>corresponding</em> element of <code>days_per_month</code>. Again, R makes this pretty easy:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>profit <span class="sc">/</span> days_per_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0.000000 25.000000 45.161290 11.666667  5.645161  0.000000  0.000000
+ [8]  0.000000  0.000000  0.000000  0.000000  0.000000</code></pre>
+</div>
+</div>
+<p>I still don’t like all those zeros, but that’s not what matters here. Notice that the second element of the output is 25, because R has divided the second element of <code>profit</code> (i.e.&nbsp;700) by the second element of <code>days_per_month</code> (i.e.&nbsp;28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on. We’ll talk more about calculations involving vectors later on, but that’s enough detail for now.</p>
+</section>
+</section>
+<section id="sec-text" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-text"><span class="header-section-number">5.3</span> Storing text data</h2>
+<p>A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To address this, we need to consider the situation where our variables store text. To create a variable that stores the word “hello”, we can type this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>greeting <span class="ot">&lt;-</span> <span class="st">"hello"</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>greeting</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello"</code></pre>
+</div>
+</div>
+<p>When interpreting this, it’s important to recognise that the quote marks here <em>aren’t</em> part of the string itself. They’re just something that we use to make sure that R knows to treat the characters that they enclose as a piece of text data, known as a <strong>character string</strong>. In other words, R treats <code>"hello"</code> as a string containing the word “hello”; but if I had typed <code>hello</code> instead, R would go looking for a variable by that name! You can also use <code>'hello'</code> to specify a character string.</p>
+<p>Okay, so that’s how we store the text. Next, it’s important to recognise that when we do this, R stores the entire word <code>"hello"</code> as a <em>single</em> element: our <code>greeting</code> variable is <em>not</em> a vector of five different letters. Rather, it has only the one element, and that element corresponds to the entire character string <code>"hello"</code>. To illustrate this, if I actually ask R to find the first element of <code>greeting</code>, it prints the whole string:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>greeting[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello"</code></pre>
+</div>
+</div>
+<p>Of course, there’s no reason why I can’t create a vector of character strings. For instance, if we were to continue with the example of my attempts to look at the monthly sales data for my book, one variable I might want would include the names of all 12 <code>months</code>.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> To do so, I could type in a command like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>months <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"January"</span>, <span class="st">"February"</span>, <span class="st">"March"</span>, <span class="st">"April"</span>, <span class="st">"May"</span>, <span class="st">"June"</span>,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"July"</span>, <span class="st">"August"</span>, <span class="st">"September"</span>, <span class="st">"October"</span>, <span class="st">"November"</span>, </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">"December"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is a <strong>character vector</strong> containing 12 elements, each of which is the name of a month. So if I wanted R to tell me the name of the fourth month, all I would do is this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>months[<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "April"</code></pre>
+</div>
+</div>
+<section id="sec-simpletext" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="sec-simpletext"><span class="header-section-number">5.3.1</span> Working with text</h3>
+<p>Working with text data is somewhat more complicated than working with numeric data, and I discuss some of the basic ideas in <span class="quarto-unresolved-ref">?sec-textprocessing</span>, but for purposes of the current chapter we only need this bare bones sketch. The only other thing I want to do before moving on is show you an example of a function that can be applied to text data. So far, most of the functions that we have seen (i.e., <code>sqrt()</code>, <code>abs()</code> and <code>round()</code>) only make sense when applied to numeric data (e.g., you can’t calculate the square root of “hello”), and we’ve seen one function that can be applied to pretty much any variable or vector (i.e., <code>length()</code>). So it might be nice to see an example of a function that can be applied to text.</p>
+<p>The function I’m going to introduce you to is called <code>nchar()</code>, and what it does is count the number of individual characters that make up a string. Recall earlier that when we tried to calculate the <code>length()</code> of our <code>greeting</code> variable it returned a value of <code>1</code>: the <code>greeting</code> variable contains only the one string, which happens to be <code>"hello"</code>. But what if I want to know how many letters there are in the word? Sure, I could <em>count</em> them, but that’s boring, and more to the point it’s a terrible strategy if what I wanted to know was the number of letters in <em>War and Peace</em>. That’s where the <code>nchar()</code> function is helpful:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(greeting)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>That makes sense, since there are in fact 5 letters in the string <code>"hello"</code>. Better yet, you can apply <code>nchar()</code> to whole vectors. So, for instance, if I want R to tell me how many letters there are in the names of each of the 12 months, I can do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(months)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 7 8 5 5 3 4 4 6 9 7 8 8</code></pre>
+</div>
+</div>
+<p>So that’s nice to know. The <code>nchar()</code> function can do a bit more than this, and there’s a lot of other functions that you can do to extract more information from text or do all sorts of fancy things. However, the goal here is not to teach any of that! The goal right now is just to see an example of a function that actually does work when applied to text.</p>
+</section>
+</section>
+<section id="sec-logicals" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-logicals"><span class="header-section-number">5.4</span> Logical values as data</h2>
+<p>Up to this point, I’ve introduced <em>numeric data</em> (<a href="#sec-assign"><span>Section&nbsp;5.1</span></a> and <a href="#sec-vectors"><span>Section&nbsp;5.2</span></a>) and <em>character data</em> (<a href="#sec-text"><span>Section&nbsp;5.3</span></a>). So you might not be surprised to discover that these <code>TRUE</code> and <code>FALSE</code> values that R has been producing are actually a third kind of data, called <em>logical data</em>. That is, when I asked R if <code>2 + 2 == 5</code> and it said <code>[1] FALSE</code> in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called <code>is_the_party_correct</code>, which would store R’s opinion:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>is_the_party_correct <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>is_the_party_correct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>Alternatively, you can assign the value directly, by typing <code>TRUE</code> or <code>FALSE</code> in your command. Like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>is_the_party_correct <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>is_the_party_correct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>As an aside, because it’s kind of tedious to type <code>TRUE</code> or <code>FALSE</code> over and over again, R provides you with a shortcut: you can use <code>T</code> and <code>F</code> instead. However, it’s generally not recommended because it’s possible for the values of <code>T</code> and <code>F</code> to be changed. In contrast <code>TRUE</code> and <code>FALSE</code> cannot be changed or overwritten.</p>
+<section id="vectors-of-logicals" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="vectors-of-logicals"><span class="header-section-number">5.4.1</span> Vectors of logicals</h3>
+<p>The next thing to mention is that you can store vectors of logical values in exactly the same way that you can store vectors of numbers (<a href="#sec-vectors"><span>Section&nbsp;5.2</span></a>) and vectors of text data (<a href="#sec-text"><span>Section&nbsp;5.3</span></a>). Again, we can define them directly via the <code>c()</code> function, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p>or you can produce a vector of logicals by applying a logical operator to a vector. This might not make a lot of sense to you, so let’s unpack it slowly. First, let’s suppose we have a vector of numbers (i.e., a “non-logical vector”). For instance, we could use the <code>sales_by_month</code> vector that we were using in <a href="#sec-vectors"><span>Section&nbsp;5.2</span></a>. Suppose I wanted R to tell me, for each month of the year, whether I actually sold a book in that month. I can do that by typing this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>sales_by_month <span class="sc">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE</code></pre>
+</div>
+</div>
+<p>and again, I can store this in a vector if I want, as the example below illustrates:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>any_sales_this_month <span class="ot">&lt;-</span> sales_by_month <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>any_sales_this_month</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[12] FALSE</code></pre>
+</div>
+</div>
+<p>In other words, <code>any_sales_this_month</code> is a logical vector whose elements are <code>TRUE</code> only if the corresponding element of <code>sales_by_month</code> is greater than zero. For instance, since I sold zero books in January, the first element is <code>FALSE</code>.</p>
+</section>
+<section id="sec-logictext" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="sec-logictext"><span class="header-section-number">5.4.2</span> Applying logical operation to text</h3>
+<p>In a moment (<a href="#sec-indexing"><span>Section&nbsp;5.5</span></a>) I’ll show you why these logical operations and logical vectors are so handy, but before I do so I want to very briefly point out that you can apply them to text as well as to logical data. It’s just that we need to be a bit more careful in understanding how R interprets the different operations. In this section I’ll talk about how the equal to operator <code>==</code> applies to text, since this is the most important one. Obviously, the not equal to operator <code>!=</code> gives the exact opposite answers to <code>==</code> so I’m implicitly talking about that one too, but I won’t give specific commands showing the use of <code>!=</code>. As for the other operators, I’ll defer a more detailed discussion of this topic to <span class="quarto-unresolved-ref">?sec-logictext2</span>.</p>
+<p>Okay, let’s see how it works. In one sense, it’s very simple. For instance, I can ask R if the word <code>"cat"</code> is the same as the word <code>"dog"</code>, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"dog"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>That’s pretty obvious, and it’s good to know that even R can figure that out. Similarly, R does recognise that a <code>"cat"</code> is a <code>"cat"</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"cat"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Again, that’s exactly what we’d expect. However, what you need to keep in mind is that R is not at all tolerant when it comes to grammar and spacing. If two strings differ in any way whatsoever, R will say that they’re not equal to each other, as the following examples indicate:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">" cat"</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"CAT"</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="st">"cat"</span> <span class="sc">==</span> <span class="st">"c a t"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE
+[1] FALSE
+[1] FALSE</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-indexing" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="sec-indexing"><span class="header-section-number">5.5</span> Indexing vectors</h2>
+<p>One last thing to add before finishing up this chapter. So far, whenever I’ve had to get information out of a vector, all I’ve done is typed something like <code>months[4]</code>; and when I do this R prints out the fourth element of the <code>months</code> vector. In this section, I’ll show you two additional tricks for getting information out of the vector.</p>
+<section id="extracting-multiple-elements" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="extracting-multiple-elements"><span class="header-section-number">5.5.1</span> Extracting multiple elements</h3>
+<p>One very useful thing we can do is pull out more than one element at a time. In the previous example, we only used a single number (i.e., <code>2</code>) to indicate which element we wanted. Alternatively, we can use a vector. So, suppose I wanted the data for February, March and April. What I could do is use the vector <code>c(2,3,4)</code> to indicate which elements I want R to pull out. That is, I’d type this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>sales_by_month[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100 200  50</code></pre>
+</div>
+</div>
+<p>Notice that the order matters here. If I asked for the data in the reverse order (i.e., April first, then March, then February) by using the vector <code>c(4,3,2)</code>, then R outputs the data in the reverse order:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>sales_by_month[<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  50 200 100</code></pre>
+</div>
+</div>
+<p>A second thing to be aware of is that R provides you with handy shortcuts for very common situations. For instance, suppose that I wanted to extract everything from the 2nd month through to the 8th month. One way to do this is to do the same thing I did above, and use the vector <code>c(2,3,4,5,6,7,8)</code> to indicate the elements that I want. That works just fine</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>sales_by_month[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100 200  50  25   0   0   0</code></pre>
+</div>
+</div>
+<p>but it’s kind of a lot of typing. To help make this easier, R lets you use <code>2:8</code> as shorthand for <code>c(2,3,4,5,6,7,8)</code>, which makes things a lot simpler. First, let’s just check that this is true:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span><span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 3 4 5 6 7 8</code></pre>
+</div>
+</div>
+<p>Next, let’s check that we can use the <code>2:8</code> shorthand as a way to pull out the 2nd through 8th elements of <code>sales_by_months</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>sales_by_month[<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100 200  50  25   0   0   0</code></pre>
+</div>
+</div>
+<p>So that’s kind of neat.</p>
+</section>
+<section id="logical-indexing" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="logical-indexing"><span class="header-section-number">5.5.2</span> Logical indexing</h3>
+<p>At this point, I can introduce an extremely useful tool called <strong>logical indexing</strong>. In the last section, I created a logical vector <code>any_sales_this_month</code>, whose elements are <code>TRUE</code> for any month in which I sold at least one book, and <code>FALSE</code> for all the others. However, that big long list of <code>TRUE</code>s and <code>FALSE</code>s is a little bit hard to read, so what I’d like to do is to have R select the names of the <code>months</code> for which I sold any books. Earlier on, I created a vector <code>months</code> that contains the names of each of the months. This is where logical indexing is handy. What I need to do is this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>months[sales_by_month <span class="sc">&gt;</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "February" "March"    "April"    "May"     </code></pre>
+</div>
+</div>
+<p>To understand what’s happening here, it’s helpful to notice that <code>sales_by_month &gt; 0</code> is the same logical expression that we used to create the <code>any_sales_this_month</code> vector in the last section. In fact, I could have just done this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>months[any_sales_this_month]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "February" "March"    "April"    "May"     </code></pre>
+</div>
+</div>
+<p>and gotten exactly the same result. In order to figure out which elements of <code>months</code> to include in the output, what R does is look to see if the corresponding element in <code>any_sales_this_month</code> is <code>TRUE</code>. Thus, since element 1 of <code>any_sales_this_month</code> is <code>FALSE</code>, R does not include <code>"January"</code> as part of the output; but since element 2 of <code>any_sales_this_month</code> is <code>TRUE</code>, R does include <code>"February"</code> in the output. Note that there’s no reason why I can’t use the same trick to find the actual sales numbers for those months. The command to do that would just be this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>sales_by_month[sales_by_month <span class="sc">&gt;</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100 200  50  25</code></pre>
+</div>
+</div>
+<p>In fact, we can do the same thing with text. Here’s an example. Suppose that – to continue the saga of the textbook sales – I later find out that the bookshop only had sufficient stocks for a few months of the year. They tell me that early in the year they had <code>"high"</code> stocks, which then dropped to <code>"low"</code> levels, and in fact for one month they were <code>"out"</code> of copies of the book for a while before they were able to replenish them. Thus I might have a variable called <code>stock_levels</code> which looks like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>stock_levels<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>, <span class="st">"out"</span>, <span class="st">"out"</span>, <span class="st">"high"</span>,</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"high"</span>, <span class="st">"high"</span>)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>stock_levels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "high" "high" "low"  "out"  "out"  "high" "high" "high" "high" "high"
+[11] "high" "high"</code></pre>
+</div>
+</div>
+<p>Thus, if I want to know the months for which the bookshop was out of my book, I could apply the logical indexing trick, but with the character vector <code>stock_levels</code>, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>months[stock_levels <span class="sc">==</span> <span class="st">"out"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "April" "May"  </code></pre>
+</div>
+</div>
+<p>Alternatively, if I want to know when the bookshop was either low on copies or out of copies, I could do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>months[stock_levels <span class="sc">==</span> <span class="st">"out"</span> <span class="sc">|</span> stock_levels <span class="sc">==</span> <span class="st">"low"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "March" "April" "May"  </code></pre>
+</div>
+</div>
+<p>or this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>months[stock_levels <span class="sc">!=</span> <span class="st">"high"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "March" "April" "May"  </code></pre>
+</div>
+</div>
+<p>Either way, I get the answer I want.</p>
+<p>At this point, I hope you can see why logical indexing is such a useful thing. It’s a very basic, yet very powerful way to manipulate data. We’ll talk a lot more about how to manipulate data in <span class="citation" data-cites="datahandling">(<a href="references.html#ref-datahandling" role="doc-biblioref"><strong>datahandling?</strong></a>)</span>, since it’s a critical skill for real world research that is often overlooked in introductory research methods classes (or at least, that’s been my experience). It does take a bit of practice to become completely comfortable using logical indexing, so it’s a good idea to play around with these sorts of commands. Try creating a few different variables of your own, and then ask yourself questions like “how do I get R to spit out all the elements that are [blah]”. Practice makes perfect, and it’s only by practicing logical indexing that you’ll perfect the art of yelling frustrated insults at your computer.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+</section>
+</section>
+<section id="useful" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="useful"><span class="header-section-number">5.6</span> Useful things to know about variables</h2>
+<p>In Chapter @ref(introR) I talked a lot about variables, how they’re assigned and some of the things you can do with them, but there’s a lot of additional complexities. That’s not a surprise of course. However, some of those issues are worth drawing your attention to now. So that’s the goal of this section; to cover a few extra topics. As a consequence, this section is basically a bunch of things that I want to briefly mention, but don’t really fit in anywhere else. In short, I’ll talk about several different issues in this section, which are only loosely connected to one another.</p>
+<section id="specials" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="specials"><span class="header-section-number">5.6.1</span> Special values</h3>
+<p>The first thing I want to mention are some of the “special” values that you might see R produce. Most likely you’ll see them in situations where you were expecting a number, but there are quite a few other ways you can encounter them. These values are <code>Inf</code>, <code>NaN</code>, <code>NA</code> and <code>NULL</code>. These values can crop up in various different places, and so it’s important to understand what they mean.</p>
+<ul>
+<li><em>Infinity</em> (<code>Inf</code>). The easiest of the special values to explain is <code>Inf</code>, since it corresponds to a value that is infinitely large. You can also have <code>-Inf</code>. The easiest way to get <code>Inf</code> is to divide a positive number by 0:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Inf</code></pre>
+</div>
+</div>
+<p>In most real world data analysis situations, if you’re ending up with infinite numbers in your data, then something has gone awry. Hopefully you’ll never have to see them.</p>
+<ul>
+<li><em>Not a Number</em> (<code>NaN</code>). The special value of <code>NaN</code> is short for “not a number”, and it’s basically a reserved keyword that means “there isn’t a mathematically defined number for this”. If you can remember your high school maths, remember that it is conventional to say that <span class="math inline">\(0/0\)</span> doesn’t have a proper answer: mathematicians would say that <span class="math inline">\(0/0\)</span> is <em>undefined</em>. R says that it’s not a number:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a> <span class="dv">0</span> <span class="sc">/</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NaN</code></pre>
+</div>
+</div>
+<p>Nevertheless, it’s still treated as a “numeric” value. To oversimplify, <code>NaN</code> corresponds to cases where you asked a proper numerical question that genuinely has <em>no meaningful answer</em>.</p>
+<ul>
+<li><p><em>Not available</em> (<code>NA</code>). <code>NA</code> indicates that the value that is “supposed” to be stored here is missing. To understand what this means, it helps to recognise that the <code>NA</code> value is something that you’re most likely to see when analysing data from real world experiments. Sometimes you get equipment failures, or you lose some of the data, or whatever. The point is that some of the information that you were “expecting” to get from your study is just plain missing. Note the difference between <code>NA</code> and <code>NaN</code>. For <code>NaN</code>, we really do know what’s supposed to be stored; it’s just that it happens to correspond to something like <span class="math inline">\(0/0\)</span> that doesn’t make any sense at all. In contrast, <code>NA</code> indicates that we actually don’t know what was supposed to be there. The information is <em>missing</em>.</p></li>
+<li><p><em>No value</em> (<code>NULL</code>). The <code>NULL</code> value takes this “absence” concept even further. It basically asserts that the variable genuinely has no value whatsoever. This is quite different to both <code>NaN</code> and <code>NA</code>. For <code>NaN</code> we actually know what the value is, because it’s something insane like <span class="math inline">\(0/0\)</span>. For <code>NA</code>, we believe that there is supposed to be a value “out there”, but a dog ate our homework and so we don’t quite know what it is. But for <code>NULL</code> we strongly believe that there is <em>no value at all</em>.</p></li>
+</ul>
+</section>
+<section id="names" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="names"><span class="header-section-number">5.6.2</span> Assigning names to vector elements</h3>
+<p>One thing that is sometimes a little unsatisfying about the way that R prints out a vector is that the elements come out unlabelled. Here’s what I mean. Suppose I’ve got data reporting the quarterly profits for some company. If I just create a no-frills vector, I have to rely on memory to know which element corresponds to which event. That is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>profit <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="fl">3.1</span>, <span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">1.4</span>, <span class="fl">1.1</span> )</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>profit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  3.1  0.1 -1.4  1.1</code></pre>
+</div>
+</div>
+<p>You can probably guess that the first element corresponds to the first quarter, the second element to the second quarter, and so on, but that’s only because I’ve told you the back story and because this happens to be a very simple example. In general, it can be quite difficult. This is where it can be helpful to assign <code>names</code> to each of the elements. Here’s how you do it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(profit) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Q1"</span>,<span class="st">"Q2"</span>,<span class="st">"Q3"</span>,<span class="st">"Q4"</span>)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>profit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Q1   Q2   Q3   Q4 
+ 3.1  0.1 -1.4  1.1 </code></pre>
+</div>
+</div>
+<p>This is a slightly odd looking command, admittedly, but it’s not too difficult to follow. All we’re doing is assigning a vector of labels (character strings) to <code>names(profit)</code>. You can always delete the names again by using the command <code>names(profit) &lt;- NULL</code>. It’s also worth noting that you don’t have to do this as a two stage process. You can get the same result with this command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>profit <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"Q1"</span> <span class="ot">=</span> <span class="fl">3.1</span>, <span class="st">"Q2"</span> <span class="ot">=</span> <span class="fl">0.1</span>, <span class="st">"Q3"</span> <span class="ot">=</span> <span class="sc">-</span><span class="fl">1.4</span>, <span class="st">"Q4"</span> <span class="ot">=</span> <span class="fl">1.1</span> )</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>profit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Q1   Q2   Q3   Q4 
+ 3.1  0.1 -1.4  1.1 </code></pre>
+</div>
+</div>
+<p>The important things to notice are that (a) this does make things much easier to read, but (b) the names at the top aren’t the “real” data. The <em>value</em> of <code>profit[1]</code> is still <code>3.1</code>; all I’ve done is added a <em>name</em> to <code>profit[1]</code> as well. Nevertheless, names aren’t purely cosmetic, since R allows you to pull out particular elements of the vector by referring to their names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>profit[<span class="st">"Q1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Q1 
+3.1 </code></pre>
+</div>
+</div>
+<p>And if I ever need to pull out the names themselves, then I just type <code>names(profit)</code>.</p>
+</section>
+<section id="variable-classes" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="variable-classes"><span class="header-section-number">5.6.3</span> Variable classes</h3>
+<p>As we’ve seen, R allows you to store different kinds of data. In particular, the variables we’ve defined so far have either been character data (text), numeric data, or logical data.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> It’s important that we remember what kind of information each variable stores (and even more important that R remembers) since different kinds of variables allow you to do different things to them. For instance, if your variables have numerical information in them, then it’s okay to multiply them together:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span>   <span class="co"># x is numeric</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">4</span>   <span class="co"># y is numeric</span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+</div>
+<p>But if they contain character data, multiplication makes no sense whatsoever, and R will complain if you try to do it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"apples"</span>   <span class="co"># x is character</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">"oranges"</span>  <span class="co"># y is character</span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y           </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in x * y: non-numeric argument to binary operator</code></pre>
+</div>
+</div>
+<p>Even R is smart enough to know you can’t multiply <code>"apples"</code> by <code>"oranges"</code>. It knows this because the quote marks are indicators that the variable is supposed to be treated as text, not as a number.</p>
+<p>This is quite useful, but notice that it means that R makes a big distinction between <code>5</code> and <code>"5"</code>. Without quote marks, R treats <code>5</code> as the number five, and will allow you to do calculations with it. With the quote marks, R treats <code>"5"</code> as the textual character five, and doesn’t recognise it as a number any more than it recognises <code>"p"</code> or <code>"five"</code> as numbers. As a consequence, there’s a big difference between typing <code>x &lt;- 5</code> and typing <code>x &lt;- "5"</code>. In the former, we’re storing the number <code>5</code>; in the latter, we’re storing the character <code>"5"</code>. Thus, if we try to do multiplication with the character versions, R gets stroppy:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"5"</span>   <span class="co"># x is character</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">"4"</span>   <span class="co"># y is character</span></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in x * y: non-numeric argument to binary operator</code></pre>
+</div>
+</div>
+<p>Okay, let’s suppose that I’ve forgotten what kind of data I stored in the variable <code>x</code> (which happens depressingly often). R provides a function that will let us find out. Or, more precisely, it provides <em>three</em> functions: <code>class()</code>, <code>mode()</code> and <code>typeof()</code>. Why the heck does it provide three functions, you might be wondering? Basically, because R actually keeps track of three different kinds of information about a variable:</p>
+<ol type="1">
+<li>The <strong><em>class</em></strong> of a variable is a “high level” classification, and it captures psychologically (or statistically) meaningful distinctions. For instance <code>"2011-09-12"</code> and <code>"my birthday"</code> are both text strings, but there’s an important difference between the two: one of them is a date. So it would be nice if we could get R to recognise that <code>"2011-09-12"</code> is a date, and allow us to do things like add or subtract from it. The class of a variable is what R uses to keep track of things like that. Because the class of a variable is critical for determining what R can or can’t do with it, the <code>class()</code> function is very handy.</li>
+<li>The <strong><em>mode</em></strong> of a variable refers to the format of the information that the variable stores. It tells you whether R has stored text data or numeric data, for instance, which is kind of useful, but it only makes these “simple” distinctions. It can be useful to know about, but it’s not the main thing we care about. So I’m not going to use the <code>mode()</code> function very much.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></li>
+<li>The <strong><em>type</em></strong> of a variable is a very low level classification. We won’t use it in this book, but (for those of you that care about these details) this is where you can see the distinction between integer data, double precision numeric, etc. Almost none of you actually will care about this, so I’m not even going to bother demonstrating the <code>typeof()</code> function.</li>
+</ol>
+<p>For purposes, it’s the <code>class()</code> of the variable that we care most about. Later on, I’ll talk a bit about how you can convince R to “coerce” a variable to change from one class to another (Section @ref(coercion)). That’s a useful skill for real world data analysis, but it’s not something that we need right now. In the meantime, the following examples illustrate the use of the <code>class()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"hello world"</span>     <span class="co"># x is text</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">TRUE</span>     <span class="co"># x is logical </span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">100</span>     <span class="co"># x is a number</span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+<p>Exciting, no?</p>
+</section>
+</section>
+<section id="workspace" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="workspace"><span class="header-section-number">5.7</span> Managing the workspace</h2>
+<p>Let’s suppose that you’re reading through this book, and what you’re doing is sitting down with it once a week and working through a whole chapter in each sitting. Not only that, you’ve been following my advice and typing in all these commands into R. So far during this chapter, you’d have typed quite a few commands, although the only ones that actually involved creating variables were the ones you typed during Section @ref(comments). As a result, you currently have three variables; <code>seeker</code>, <code>lover</code>, and <code>keeper</code>. These three variables are the contents of your <strong><em>workspace</em></strong>, also referred to as the <strong>global environment</strong>. The workspace is a key concept in R, so in this section we’ll talk a lot about what it is and how to manage its contents.</p>
+<section id="listing-variables" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="listing-variables"><span class="header-section-number">5.7.1</span> Listing variables</h3>
+<p>The first thing that you need to know how to do is examine the contents of the workspace. If you’re using RStudio, you will probably find that the easiest way to do this is to use the “Environment” panel in the top right hand corner. Click on that, and you’ll see a list that looks very much like the one shown in Figures @ref(fig:workspace) and @ref(fig:workspace2). If you’re using the commmand line, then the <code>objects()</code> function may come in handy:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "any_sales_this_month" "days_per_month"       "february_sales"      
+ [4] "greeting"             "has_annotations"      "hook_output"         
+ [7] "is_the_party_correct" "months"               "profit"              
+[10] "revenue"              "royalty"              "sales"               
+[13] "sales_by_month"       "stock_levels"         "x"                   
+[16] "y"                   </code></pre>
+</div>
+</div>
+<p>Of course, in the true R tradition, the <code>objects()</code> function has a lot of fancy capabilities that I’m glossing over in this example. Moreover there are also several other functions that you can use, including <code>ls()</code> which is pretty much identical to <code>objects()</code>, and <code>ls.str()</code> which you can use to get a fairly detailed description of all the variables in the workspace. In fact, the <code>lsr</code> package actually includes its own function that you can use for this purpose, called <code>who()</code>. The reason for using the <code>who()</code> function is pretty straightforward: in my everyday work I find that the output produced by the <code>objects()</code> command isn’t <em>quite</em> informative enough, because the only thing it prints out is the name of each variable; but the <code>ls.str()</code> function is <em>too</em> informative, because it prints out a lot of additional information that I really don’t like to look at. The <code>who()</code> function is a compromise between the two. First, now that we’ve got the <code>lsr</code> package installed, we need to load it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and now we can use the <code>who()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   -- Name --             -- Class --   -- Size --
+   any_sales_this_month   logical       12        
+   days_per_month         numeric       12        
+   february_sales         numeric       1         
+   greeting               character     1         
+   has_annotations        function                
+   hook_output            function                
+   is_the_party_correct   logical       1         
+   months                 character     12        
+   profit                 numeric       4         
+   revenue                numeric       1         
+   royalty                numeric       1         
+   sales                  numeric       1         
+   sales_by_month         numeric       12        
+   stock_levels           character     12        
+   x                      numeric       1         
+   y                      character     1         </code></pre>
+</div>
+</div>
+<p>As you can see, the <code>who()</code> function lists all the variables and provides some basic information about what kind of variable each one is and how many elements it contains. Personally, I find this output much easier more useful than the very compact output of the <code>objects()</code> function, but less overwhelming than the extremely verbose <code>ls.str()</code> function. Throughout this book you’ll see me using the <code>who()</code> function a lot. You don’t have to use it yourself: in fact, I suspect you’ll find it easier to look at the RStudio environment panel. But for the purposes of writing a textbook I found it handy to have a nice text based description: otherwise there would be about another 100 or so screenshots added to the book.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+</section>
+<section id="removing-variables" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="removing-variables"><span class="header-section-number">5.7.2</span> Removing variables</h3>
+<p>Looking over that list of variables, it occurs to me that I really don’t need them any more. I created them originally just to make a point, but they don’t serve any useful purpose anymore, and now I want to get rid of them. I’ll show you how to do this, but first I want to warn you – there’s no “undo” option for variable removal. Once a variable is removed, it’s gone forever unless you save it to disk. I’ll show you how to do <em>that</em> in Section @ref(load), but quite clearly we have no need for these variables at all, so we can safely get rid of them.</p>
+<p>In RStudio, the easiest way to remove variables is to use the environment panel. Assuming that you’re in grid view (i.e., Figure @ref(fig:workspace2)), check the boxes next to the variables that you want to delete, then click on the “Clear” button at the top of the panel. When you do this, RStudio will show a dialog box asking you to confirm that you really do want to delete the variables. It’s always worth checking that you really do, because as RStudio is at pains to point out, you can’t undo this. Once a variable is deleted, it’s gone.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> In any case, if you click “yes”, that variable will disappear from the workspace: it will no longer appear in the environment panel, and it won’t show up when you use the <code>who()</code> command.</p>
+<p>Suppose you don’t access to RStudio, and you still want to remove variables. This is where the <strong><em>remove</em></strong> function <code>rm()</code> comes in handy. The simplest way to use <code>rm()</code> is just to type in a (comma separated) list of all the variables you want to remove. Let’s say I want to get rid of <code>seeker</code> and <code>lover</code>, but I would like to keep <code>keeper</code>. To do this, all I have to do is type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>( seeker, lover )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in rm(seeker, lover): object 'seeker' not found</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in rm(seeker, lover): object 'lover' not found</code></pre>
+</div>
+</div>
+<p>There’s no visible output, but if I now inspect the workspace</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   -- Name --             -- Class --   -- Size --
+   any_sales_this_month   logical       12        
+   days_per_month         numeric       12        
+   february_sales         numeric       1         
+   greeting               character     1         
+   has_annotations        function                
+   hook_output            function                
+   is_the_party_correct   logical       1         
+   months                 character     12        
+   profit                 numeric       4         
+   revenue                numeric       1         
+   royalty                numeric       1         
+   sales                  numeric       1         
+   sales_by_month         numeric       12        
+   stock_levels           character     12        
+   x                      numeric       1         
+   y                      character     1         </code></pre>
+</div>
+</div>
+<p>I see that there’s only the <code>keeper</code> variable left. As you can see, <code>rm()</code> can be very handy for keeping the workspace tidy.</p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.8</span> Summary</h2>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>If you are using RStudio, and the “environment” panel is visible when you typed the command, then you probably saw something happening there. That’s to be expected, and is quite helpful. However, there’s two things to note here (1) I haven’t yet explained what that panel does, so for now just ignore it, and (2) this is one of the helpful things RStudio does, not a part of R itself.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>As we’ll discuss later, by doing this we are implicitly using the <code>print()</code> function<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Actually, in keeping with the R tradition of providing you with a billion different screwdrivers (even when you’re actually looking for a hammer) these aren’t the only options. There’s also the<code>assign()</code> function, and the <code>&lt;&lt;-</code> and <code>-&gt;&gt;</code> operators. However, we won’t be using these at all in this book.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>A quick reminder: when using operators like <code>&lt;-</code> and <code>-&gt;</code> that span multiple characters, you can’t insert spaces in the middle. That is, if you type <code>- &gt;</code> or <code>&lt; -</code>, R will interpret your command the wrong way. And I will cry.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Actually, you can override any of these rules if you want to, and quite easily. All you have to do is add quote marks or backticks around your non-standard variable name. For instance <code>`my sales ` &lt;- 350</code> would work just fine, but it’s almost never a good idea to do this.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>For advanced users: there is one exception to this. If you’re naming a function, don’t use <code>.</code> in the name unless you are intending to use the S3 object oriented programming system. If you don’t know what S3 is, then you definitely don’t want to be using it!<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Notice that I didn’t specify any argument names here. The <code>c()</code> function is one of those cases where we don’t use names. We just type all the numbers, and R just dumps them all in a single variable.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>No seriously, that’s actually pretty close to what authors get on the very expensive textbooks that you’re expected to purchase… if they are lucky.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Though actually there’s no real need to do this, since R has an inbuilt variable called <code>month.name</code> that you can use for this purpose.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Well, I say that… but in my personal experience it wasn’t until I started learning “regular expressions” that my loathing of computers reached its peak.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Or functions. But let’s ignore functions for the moment.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Actually, I don’t think I <em>ever</em> use this in practice. I don’t know why I bother to talk about it in the book anymore.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>This would be especially annoying if you’re reading an electronic copy of the book because the text displayed by the <code>who()</code> function is searchable, whereas text shown in a screen shot isn’t!<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>Mind you, all that means is that it’s been removed from the workspace. If you’ve got the data saved to file somewhere, then that <em>file</em> is perfectly safe.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/calculations.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Doing calculations</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/file-system.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">The file system</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Learning Statistics with R was written by <a href="https://djnavarro.net">Danielle Navarro</a>.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

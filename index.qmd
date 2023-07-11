@@ -18,4 +18,4 @@ Perhaps I should explain. Back in the grimdark pre-Snapchat era of humanity (i.e
 I have suggested that someone write a *Learning Statistics with an Abacus* adaptation but so far there has been little interest. 
 
 
-![](cover.png)
+![](images/cover.png)

@@ -16,34 +16,34 @@ book:
   
   chapters:
     - index.qmd
-    - preface.qmd
-    - introduction.qmd
+    - chapters/preface.qmd
+    - chapters/introduction.qmd
     
     - part: Getting started
       chapters:
-        - installation.qmd
-        - commands.qmd
-        - calculations.qmd
-        - variables.qmd
-        - file-system.qmd
-        - packages.qmd
+        - chapters/installation.qmd
+        - chapters/commands.qmd
+        - chapters/calculations.qmd
+        - chapters/variables.qmd
+        - chapters/file-system.qmd
+        - chapters/packages.qmd
         
     - part: Working with data 
       chapters:
-        - data-objects.qmd
-        - reading-data.qmd
+        - chapters/data-objects.qmd
+        - chapters/reading-data.qmd
         
-    - references.qmd
+    - chapters/references.qmd
 
-bibliography: references.bib
+bibliography: build/references.bib
 
 format:
   html:
     theme: cosmo
     author-meta: "Danielle Navarro"
-    include-in-header: "header.html"
-  pdf:
-    documentclass: scrreprt
+    include-in-header: "build/header.html"
+  #pdf:
+  #  documentclass: scrreprt
   
 editor: source
 
