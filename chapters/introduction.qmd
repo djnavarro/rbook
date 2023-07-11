@@ -1,6 +1,12 @@
 # Why statistics? Why R?
 
-`r source(here::here("build", "common.R"))`
+```{r}
+#| echo: false
+#| message: false
+#| results: asis
+source(here::here("build", "common.R"))
+status("drafting")
+```
 
 To the surprise of many students, statistics is a fairly large part of a psychological education. To the surprise of no-one, statistics is very rarely the *favourite* part of one's psychological education. After all, if you really loved the idea of doing statistics, you'd probably be enrolled in a statistics class right now, not a psychology class. So, not surprisingly, there's a pretty large proportion of the student base that isn't happy about the fact that psychology has so much statistics in it. In view of this, I thought that the right place to start a book like this might be to answer some of the more common questions that people have about stats...
 

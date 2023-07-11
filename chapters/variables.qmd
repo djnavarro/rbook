@@ -1,6 +1,12 @@
 # Variables {#sec-variables}
 
-`r source(here::here("build", "common.R"))`
+```{r}
+#| echo: false
+#| message: false
+#| results: asis
+source(here::here("build", "common.R"))
+status("drafting")
+```
 
 ## Storing a number as a variable {#sec-assign}
 

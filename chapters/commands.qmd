@@ -1,6 +1,12 @@
 # Our first R commands {#sec-commands}
 
-`r source(here::here("build", "common.R"))`
+```{r}
+#| echo: false
+#| message: false
+#| results: asis
+source(here::here("build", "common.R"))
+status("drafting")
+```
 
 Where we left off at the end of the last chapter we'd just finished installing R (and probably RStudio too), and I'd introduced you to the command prompt. Most likely, you have R open at the moment and you're looking at a console that looks like this...
 

@@ -1,6 +1,12 @@
 # Installing R {#sec-gettingR}
 
-`r source(here::here("build", "common.R"))`
+```{r}
+#| echo: false
+#| message: false
+#| results: asis
+source(here::here("build", "common.R"))
+status("drafting")
+```
 
 Let's get started. Just as with any piece of software,  R  needs to be installed on a "computer", which is a magical box that does cool things and delivers free ponies. Or something along those lines: I may be confusing computers with the ipad marketing campaigns. Anyway, R is freely distributed online, and you can download it here:
 

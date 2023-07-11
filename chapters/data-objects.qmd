@@ -1,5 +1,13 @@
 # Representing data {#sec-data-objects}
 
+```{r}
+#| echo: false
+#| message: false
+#| results: asis
+source(here::here("build", "common.R"))
+status("drafting")
+```
+
 In this chapter, I'll talk more about what kinds of variables exist in R, and introduce three new kinds of variables: factors, data frames and formulas. I'll finish up by talking a little bit about the help documentation in R as well as some other avenues for finding assistance. In general, I'm not trying to be comprehensive in this chapter, I'm trying to make sure that you've got the basic foundations needed to tackle the content that comes later in the book. However, a lot of the topics are revisited in more detail later, especially in Chapters \@ref(datahandling) and \@ref(scripting). 
 
 ```{r}

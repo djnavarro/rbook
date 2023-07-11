@@ -1,6 +1,13 @@
 
 # The file system {#navigation}
 
+```{r}
+#| echo: false
+#| message: false
+#| results: asis
+source(here::here("build", "common.R"))
+status("drafting")
+```
 
 In this section I talk a little about how R interacts with the file system on your computer. It's not a terribly interesting topic, but it's useful.  As background to this discussion, I'll talk a bit about how file system locations work in Section \@ref(filesystem). Once upon a time *everyone* who used computers could safely be assumed to understand how the file system worked, because it was impossible to successfully use a computer if you didn't! However, modern operating systems are much more "user friendly", and as a consequence of this they go to great lengths to hide the file system from users. So these days it's not at all uncommon for people to have used computers most of their life and not be familiar with the way that computers organise files. If you already know this stuff, skip straight to Section \@ref(navigationR). Otherwise, read on. I'll try to give a brief introduction that will be useful for those of you who have never been forced to learn how to navigate around a computer using a DOS or UNIX shell. 
 
