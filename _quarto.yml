@@ -32,7 +32,7 @@ book:
       chapters:
         - chapters/data-objects.qmd
         - chapters/reading-data.qmd
-        #- chapters/descriptive-statistics.qmd
+        - chapters/descriptive-statistics.qmd
         #- chapters/data-visualisation.qmd
         #- chapters/data-wrangling.qmd
         #- chapters/basic-programming.qmd
