@@ -1,13 +1,4 @@
 
-
-  
-
-
-
-
-
-
-
 ## Measures of variability{#var}
 
 The statistics that we've discussed so far all relate to *central tendency*. That is, they all talk about which values are "in the middle" or "popular" in the data. However, central tendency is not the only type of summary statistic that we want to calculate. The second thing that we really want is a measure of the **_variability_** of the data. That is, how "spread out" are the data? How "far" away from the mean or median do the observed values tend to be? For now, let's assume that the data are interval or ratio scale, so we'll continue to use the `afl.margins` data.  We'll use this data to discuss several different measures of spread, each with different strengths and weaknesses. 
