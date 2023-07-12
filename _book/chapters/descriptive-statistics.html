@@ -261,6 +261,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"><span class="header-section-number">10.1.1</span> The mean</a></li>
   <li><a href="#calculating-the-mean-in-r" id="toc-calculating-the-mean-in-r" class="nav-link" data-scroll-target="#calculating-the-mean-in-r"><span class="header-section-number">10.1.2</span> Calculating the mean in R</a></li>
   <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"><span class="header-section-number">10.1.3</span> The median</a></li>
+  <li><a href="#mean-or-median-whats-the-difference" id="toc-mean-or-median-whats-the-difference" class="nav-link" data-scroll-target="#mean-or-median-whats-the-difference"><span class="header-section-number">10.1.4</span> Mean or median? What’s the difference?</a></li>
+  <li><a href="#trimmedmean" id="toc-trimmedmean" class="nav-link" data-scroll-target="#trimmedmean"><span class="header-section-number">10.1.5</span> Trimmed mean</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -298,11 +300,14 @@ Important
 <p>You are, I’m sorry to inform you, reading the work-in-progress revision of “Learning Statistics with R”. This chapter is currently a mess, and I don’t recommend reading it.</p>
 </div>
 </div>
-<p>Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what <strong>descriptive statistics</strong> (as opposed to inferential statistics) is all about. In fact, to many people the term “statistics” is synonymous with descriptive statistics. It is this topic that we’ll consider in this chapter, but before going into any details, let’s take a moment to get a sense of why we need descriptive statistics. To get started, let’s take a look at the <code>southern_slam</code> data that is bundled as part of the lsrbook package:</p>
+<p>Any time that you get a new data set to look at, one of the first tasks that you have to do is find ways of summarising the data in a compact, easily understood fashion. This is what <strong>descriptive statistics</strong> (as opposed to inferential statistics) is all about. In fact, to many people the term “statistics” is synonymous with descriptive statistics. It is this topic that we’ll consider in this chapter, but before going into any details, let’s take a moment to get a sense of why we need descriptive statistics. To get started, let’s take a look at the <code>southern_slam</code> data that is bundled as part of the lsrbook package. First, let’s load the packages that we’ll need:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsrbook)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>southern_slam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsrbook)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The reason for loading the lsrbook package is probably obvious: that’s the package that provides the data set! The reason for loading tibble is probably less obvious, so I’d better explain: now that I’ve loaded the tibble package, the <code>southern_slam</code> data set will be interpreted as a tibble rather than a “vanilla” data frame. As a consequence, when I print the <code>southern_slam</code> data I get some slightly nicer looking output:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>southern_slam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 43 × 10
    time                home_team    home_score visitor_team visitor_score margin
@@ -321,10 +326,11 @@ Important
 # ℹ 4 more variables: track &lt;dbl&gt;, division &lt;dbl&gt;, pool &lt;chr&gt;, type &lt;chr&gt;</code></pre>
 </div>
 </div>
+<p>So what is this data set anyway?</p>
 <p>The <code>southern_slam</code> data set contains the results from 43 roller derby bouts that took place as part of the 2022 “Great Southern Slam” tournament held in Adelaide, Australia. I’ll talk more about this data set later, but for now it’s enough to note that we have columns specifying the names of the <code>home_team</code> and the <code>visitor_team</code>, columns storing the <code>home_score</code> and <code>visitor_score</code>, and another column called <code>margin</code> that contains the winning margin for each game.</p>
 <p>Let’s have a look at the <code>margins</code> variable:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>southern_slam<span class="sc">$</span>margin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>southern_slam<span class="sc">$</span>margin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 196  51  23 106 219  60 286 110 143 159  45  21  81  19 235  71 239 108  11
 [20] 178 348 397 173 204   0  72 126  82 266  75 225  48  99 492 120   4  22 164
@@ -395,35 +401,35 @@ Important
 <h3 data-number="10.1.2" class="anchored" data-anchor-id="calculating-the-mean-in-r"><span class="header-section-number">10.1.2</span> Calculating the mean in R</h3>
 <p>Okay that’s the maths, how do we get the magic computing box to do the work for us? If you really wanted to, you could do this calculation directly in R. For the first <code>southern_slam</code> games, do this just by typing it in as if R were a calculator…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">196</span> <span class="sc">+</span> <span class="dv">51</span> <span class="sc">+</span> <span class="dv">23</span> <span class="sc">+</span> <span class="dv">106</span> <span class="sc">+</span> <span class="dv">219</span>) <span class="sc">/</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">196</span> <span class="sc">+</span> <span class="dv">51</span> <span class="sc">+</span> <span class="dv">23</span> <span class="sc">+</span> <span class="dv">106</span> <span class="sc">+</span> <span class="dv">219</span>) <span class="sc">/</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 119</code></pre>
 </div>
 </div>
 <p>… in which case R outputs the answer 595, just as if it were a calculator. However, that’s not the only way to do the calculations, and when the number of observations starts to become large, it’s easily the most tedious. Besides, in almost every real world scenario, you’ve already got the actual numbers stored in a variable of some kind, just like we have with the <code>afl.margins</code> variable. Under those circumstances, what you want is a function that will just add up all the values stored in a numeric vector. That’s what the <code>sum()</code> function does. If we want to add up all 43 winning margins in the data set, we can do so using the following command:<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5825</code></pre>
 </div>
 </div>
 <p>If we only want the sum of the first five observations, then we can use square brackets to pull out only the first five elements of the vector. So the command would now be:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 595</code></pre>
 </div>
 </div>
 <p>To calculate the mean, we now tell R to divide the output of this summation by five, so the command that we need to type now becomes the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">/</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">/</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 119</code></pre>
 </div>
 </div>
 <p>Although it’s pretty easy to calculate the mean using the <code>sum()</code> function, we can do it in an even easier way, since R also provides us with the <code>mean()</code> function. To calculate the mean for all 176 games, we would use the following command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 119</code></pre>
 </div>
@@ -441,21 +447,80 @@ Important
 \]</span></p>
 <p>and there are <em>two</em> middle numbers, 60 and 106. The median is defined as the average of those two numbers, which in this case is 83. As before, it’s very tedious to do this by hand when you’ve got lots of numbers. To illustrate this, here’s what happens when you use R to sort all 43 winning margins. First, I’ll use the <code>sort()</code> function (discussed in Chapter @ref(datahandling)) to display the winning margins in increasing numerical order:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]   0   2   4  11  19  21  22  23  45  48  51  60  69  71  72  75  81  82  95
 [20]  99 106 108 110 120 126 143 159 164 173 178 180 196 201 204 219 225 235 239
 [39] 266 286 348 397 492</code></pre>
 </div>
 </div>
-<p>As we have 43 observations in our data, the median value corresponds to item 22 in the sorted list of numbers. When we look up that observation in the list, we find that the median winning was 108. In real life, of course, we don’t actually calculate the median by sorting the data and then looking for the middle value by searching it manuallt. In real life, we use the <code>median()</code> command:</p>
+<p>As we have 43 observations in our data, the median value corresponds to item 22 in the sorted list of numbers. When we look up that observation in the list, we find that the median winning was 108. In real life, of course, we don’t actually calculate the median by sorting the data and then looking for the middle value by searching it manually. In real life, we use the <code>median()</code> command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 108</code></pre>
 </div>
 </div>
 <p>Much nicer.</p>
+</section>
+<section id="mean-or-median-whats-the-difference" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="mean-or-median-whats-the-difference"><span class="header-section-number">10.1.4</span> Mean or median? What’s the difference?</h3>
+<p>Knowing how to calculate means and medians is only a part of the story. You also need to understand what each one is saying about the data, and what that implies for when you should use each one. The basic idea is illustrated in the figure below. The mean is basically the "centre of gravity" of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="../images/meanmedian.png" class="img-fluid" width="463"></p>
+</div>
+</div>
+<p>What this implies, as far as which one you should use, depends a little on what type of data you’ve got and what you’re trying to achieve. As a rough guide:</p>
+<ul>
+<li>If your data are nominal scale, you probably shouldn’t be using either the mean or the median. Both the mean and the median rely on the idea that the numbers assigned to values are meaningful. If the numbering scheme is arbitrary, then it’s probably best to use the mode (Section @ref(mode)) instead.</li>
+<li>If your data are ordinal scale, you’re more likely to want to use the median than the mean. The median only makes use of the order information in your data (i.e., which numbers are bigger), but doesn’t depend on the precise numbers involved. That’s exactly the situation that applies when your data are ordinal scale. The mean, on the other hand, makes use of the precise numeric values assigned to the observations, so it’s not really appropriate for ordinal data.</li>
+<li>For interval and ratio scale data, either one is generally acceptable. Which one you pick depends a bit on what you’re trying to achieve. The mean has the advantage that it uses all the information in the data (which is useful when you don’t have a lot of data), but it’s very sensitive to extreme values, as we’ll see in Section @ref(trimmedmean).</li>
+</ul>
+<p>Let’s expand on that last part a little. One consequence is that there’s systematic differences between the mean and the median when the histogram is asymmetric (skewed; see Section @ref(skewandkurtosis)). This is illustrated in Figure @ref(fig:meanmedian) notice that the median (right hand side) is located closer to the “body” of the histogram, whereas the mean (left hand side) gets dragged towards the “tail” (where the extreme values are).</p>
+<p>To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.</p>
+</section>
+<section id="trimmedmean" class="level3" data-number="10.1.5">
+<h3 data-number="10.1.5" class="anchored" data-anchor-id="trimmedmean"><span class="header-section-number">10.1.5</span> Trimmed mean</h3>
+<p>One of the fundamental rules of applied statistics is that the data are messy. Real life is never simple, and so the data sets that you obtain are never as straightforward as the statistical theory says.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This can have awkward consequences. To illustrate, consider this rather strange looking data set:</p>
+<p><span class="math display">\[
+-100, 2, 3, 4, 5, 6, 7, 8, 9, 10
+\]</span></p>
+<p>If you were to observe this in a real life data set, you’d probably suspect that something funny was going on with the <span class="math inline">\(-100\)</span> value. It’s probably an <strong>outlier</strong>, a value that doesn’t really belong with the others. You might consider removing it from the data set entirely, and in this particular case I’d probably agree with that course of action. In real life, however, you don’t always get such cut-and-dried examples. For instance, you might get this instead:</p>
+<p><span class="math display">\[
+-15, 2, 3, 4, 5, 6, 7, 8, 9, 12
+\]</span></p>
+<p>The <span class="math inline">\(-15\)</span> looks a bit suspicious, but not anywhere near as much as that <span class="math inline">\(-100\)</span> did. In this case, it’s a little trickier. It <em>might</em> be a legitimate observation, it might not.</p>
+<p>When faced with a situation where some of the most extreme-valued observations might not be quite trustworthy, the mean is not necessarily a good measure of central tendency. It is highly sensitive to one or two extreme values, and is thus not considered to be a <strong>robust</strong> measure. One remedy that we’ve seen is to use the median. A more general solution is to use a “trimmed mean”. To calculate a trimmed mean, what you do is “discard” the most extreme examples on both ends (i.e., the largest and the smallest), and then take the mean of everything else. The goal is to preserve the best characteristics of the mean and the median: just like a median, you aren’t highly influenced by extreme outliers, but like the mean, you “use” more than one of the observations. Generally, we describe a trimmed mean in terms of the percentage of observation on either side that are discarded. So, for instance, a 10% trimmed mean discards the largest 10% of the observations <em>and</em> the smallest 10% of the observations, and then takes the mean of the remaining 80% of the observations. Not surprisingly, the 0% trimmed mean is just the regular mean, and the 50% trimmed mean is the median. In that sense, trimmed means provide a whole family of central tendency measures that span the range from the mean to the median.</p>
+<p>For our toy example above, we have 10 observations, and so a 10% trimmed mean is calculated by ignoring the largest value (i.e., 12) and the smallest value (i.e., -15) and taking the mean of the remaining values. First, let’s enter the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">15</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, let’s calculate means and medians:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+</div>
+<p>That’s a fairly substantial difference, but I’m tempted to think that the mean is being influenced a bit too much by the extreme values at either end of the data set, especially the -15 one. So let’s just try trimming the mean a bit. If I take a 10% trimmed mean, we’ll drop the extreme values on either side, and take the mean of the rest:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dataset, <span class="at">trim =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.5</code></pre>
+</div>
+</div>
+<p>which in this case gives exactly the same answer as the median. Note that, to get a 10% trimmed mean you write <code>trim = .1</code>, not <code>trim = 10</code>. In any case, let’s finish up by calculating the 5% trimmed mean for the <code>southern_slam$margin</code> data,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(southern_slam<span class="sc">$</span>margin, <span class="at">trim =</span> .<span class="dv">05</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 126.5128</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -465,6 +530,7 @@ Important
 <ol>
 <li id="fn1"><p>The choice to use <span class="math inline">\(\sum\)</span> to denote summation isn’t entirely arbitrary. It’s essentially identical the Greek upper case letter sigma, which is the analogue of the letter S. I do realise that “S is for sum” is a bit silly, but life is like that I’m afraid. Mathematical fonts will usually have some subtle differences between the summation symbol <span class="math inline">\(\sum\)</span> and the upper case sigma <span class="math inline">\(\displaystyle\Sigma\)</span>, but as you can see those differences are minor. Along similar lines, there’s a “product” symbol <span class="math inline">\(\prod\)</span> used to denote the multiplication of lots of numbers, and it very closely resembles the upper case Greek letter pi (the Greek analog of P). Again, there are usually minor differences in how they look in a font: <span class="math inline">\(\prod\)</span> is a product symbol, whereas <span class="math inline">\(\displaystyle\Pi\)</span> is the upper case pi… and oh my god this footnote is boring.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Note that, just as we saw with the combine function <code>c()</code> and the remove function <code>rm()</code>, the <code>sum()</code> function has unnamed arguments. I’ll talk about unnamed arguments later in Section @ref(dotsargument), but for now let’s just ignore this detail.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Or at least, the basic statistical theory – these days there is a whole subfield of statistics called <strong>robust statistics</strong> that tries to grapple with the messiness of real data and develop theory that can cope with it.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
