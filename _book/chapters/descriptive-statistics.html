@@ -263,6 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"><span class="header-section-number">10.1.3</span> The median</a></li>
   <li><a href="#mean-or-median-whats-the-difference" id="toc-mean-or-median-whats-the-difference" class="nav-link" data-scroll-target="#mean-or-median-whats-the-difference"><span class="header-section-number">10.1.4</span> Mean or median? What’s the difference?</a></li>
   <li><a href="#trimmedmean" id="toc-trimmedmean" class="nav-link" data-scroll-target="#trimmedmean"><span class="header-section-number">10.1.5</span> Trimmed mean</a></li>
+  <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode"><span class="header-section-number">10.1.6</span> Mode</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -521,6 +522,132 @@ Important
 <pre><code>[1] 126.5128</code></pre>
 </div>
 </div>
+</section>
+<section id="mode" class="level3" data-number="10.1.6">
+<h3 data-number="10.1.6" class="anchored" data-anchor-id="mode"><span class="header-section-number">10.1.6</span> Mode</h3>
+<p>The mode of a sample is very simple: it is the value that occurs most frequently. It’s most often used for categorical variables, for which the mean and median don’t really make sense. We’ll use a different data set for this. The <code>archibald</code> data set supplied by the lsrbook package contains a table listing the winners of the Archibald Prize for Portraiture from 1921 to 2023.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>archibald</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 166 × 6
+   prize           year  artist            title             subject n_finalists
+   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt;             &lt;chr&gt;         &lt;dbl&gt;
+ 1 Archibald Prize 1921  William McInnes   Desbrowe Annear   Harold…          45
+ 2 Archibald Prize 1922  William McInnes   Professor Harris… Willia…          53
+ 3 Archibald Prize 1923  William McInnes   Portrait of a La… Violet…          50
+ 4 Archibald Prize 1924  William McInnes   Miss Collins      Gladys…          40
+ 5 Archibald Prize 1925  John Longstaff    Maurice Moscovit… Mauric…          74
+ 6 Archibald Prize 1926  William McInnes   Silk and Lace (M… Esther…          58
+ 7 Archibald Prize 1927  George W. Lambert Mrs Annie Murdoch Annie …          56
+ 8 Archibald Prize 1928  John Longstaff    Dr Alexander Lee… Alexan…          66
+ 9 Archibald Prize 1929  John Longstaff    The Hon W A Holm… Willia…          75
+10 Archibald Prize 1930  William McInnes   Drum-Major Harry… Harry …          67
+# ℹ 156 more rows</code></pre>
+</div>
+</div>
+<p>There are actually three separate prizes included in this data set. In addition to the Archibald Prize itself, there’s data for the Packing Room Prize (awarded by the staff who install the portraits in the gallery) and the People’s Choice Award (voted on by the general public). Let’s find the winners of the Archibald Prize only:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>archibald_winners <span class="ot">&lt;-</span> archibald<span class="sc">$</span>artist[archibald<span class="sc">$</span>prize <span class="sc">==</span> <span class="st">"Archibald Prize"</span>]</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>archibald_winners</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "William McInnes"      "William McInnes"      "William McInnes"     
+  [4] "William McInnes"      "John Longstaff"       "William McInnes"     
+  [7] "George W. Lambert"    "John Longstaff"       "John Longstaff"      
+ [10] "William McInnes"      "John Longstaff"       "Ernest Buckmaster"   
+ [13] "Charles Wheeler"      "Henry Hanke"          "John Longstaff"      
+ [16] "William McInnes"      "Normand Baker"        "Nora Heysen"         
+ [19] "Max Meldrum"          "Max Meldrum"          "William Dargie"      
+ [22] "William Dargie"       "William Dobell"       "Joshua Smith"        
+ [25] "William Dargie"       "William Dargie"       "William Dargie"      
+ [28] "William Dobell"       "Arthur Murch"         "William Dargie"      
+ [31] "Ivor Hele"            "William Dargie"       "Ivor Hele"           
+ [34] "Ivor Hele"            "Ivor Hele"            "William Dargie"      
+ [37] "Ivor Hele"            "William Pidgeon"      "William Dobell"      
+ [40] "Judy Cassab"          "William Pidgeon"      "Louis Kahan"         
+ [43] "Jack Carington Smith" "Clifton Pugh"         "Jon Molvig"          
+ [46] "Judy Cassab"          "William Pidgeon"      "Ray Crooke"          
+ [49] "Eric Smith"           "Clifton Pugh"         "Clifton Pugh"        
+ [52] "Janet Dawson"         "Sam Fullbrook"        "Kevin Connor"        
+ [55] "Brett Whiteley"       "Kevin Connor"         "Brett Whiteley"      
+ [58] "Wes Walters"          "Eric Smith"           "Eric Smith"          
+ [61] "Nigel Thomson"        "Keith Looby"          "Guy Warren"          
+ [64] "Davida Allen"         "William Robinson"     "Fred Cress"          
+ [67] "Bryan Westwood"       "Geoffrey Proud"       "Bryan Westwood"      
+ [70] "Garry Shead"          "Francis Giacco"       "William Robinson"    
+ [73] "Wendy Sharpe"         "Nigel Thomson"        "Lewis Miller"        
+ [76] "Euan Macleod"         "Adam Cullen"          "Nicholas Harding"    
+ [79] "Cherry Hood"          "Geoffrey Dyer"        "Craig Ruddy"         
+ [82] "John Olsen"           "Marcus Wills"         "John Beard"          
+ [85] "Del Kathryn Barton"   "Guy Maestri"          "Sam Leach"           
+ [88] "Ben Quilty"           "Tim Storrier"         "Del Kathryn Barton"  
+ [91] "Fiona Lowry"          "Nigel Milsom"         "Louise Hearman"      
+ [94] "Mitch Cairns"         "Yvette Coppersmith"   "Tony Costa"          
+ [97] "Vincent Namatjira"    "Peter Wegner"         "Blak Douglas"        
+[100] "Julia Gutman"        </code></pre>
+</div>
+</div>
+<p>Although the time period for the data spans 103 years, there are only 100 winners: no prizes were awarded in 1964 and 1980, and there was only a single combined prize awarded for the years 1991-1992.</p>
+<p>We <em>could</em> read through all 100 entries, and count the number of occasions on which each artist appears in our list of winners, thereby producing a <strong>frequency table</strong>. However, that would be mindless and boring: exactly the sort of task that computers are great at. So let’s use the <code>table()</code> function (discussed in more detail in Section @ref(freqtables)) to do this task for us:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>archibald_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(archibald_winners)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>archibald_counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>archibald_winners
+         Adam Cullen         Arthur Murch           Ben Quilty 
+                   1                    1                    1 
+        Blak Douglas       Brett Whiteley       Bryan Westwood 
+                   1                    2                    2 
+     Charles Wheeler          Cherry Hood         Clifton Pugh 
+                   1                    1                    3 
+         Craig Ruddy         Davida Allen   Del Kathryn Barton 
+                   1                    1                    2 
+          Eric Smith    Ernest Buckmaster         Euan Macleod 
+                   3                    1                    1 
+         Fiona Lowry       Francis Giacco           Fred Cress 
+                   1                    1                    1 
+         Garry Shead        Geoffrey Dyer       Geoffrey Proud 
+                   1                    1                    1 
+   George W. Lambert          Guy Maestri           Guy Warren 
+                   1                    1                    1 
+         Henry Hanke            Ivor Hele Jack Carington Smith 
+                   1                    5                    1 
+        Janet Dawson           John Beard       John Longstaff 
+                   1                    1                    5 
+          John Olsen           Jon Molvig         Joshua Smith 
+                   1                    1                    1 
+         Judy Cassab         Julia Gutman          Keith Looby 
+                   2                    1                    1 
+        Kevin Connor         Lewis Miller          Louis Kahan 
+                   2                    1                    1 
+      Louise Hearman         Marcus Wills          Max Meldrum 
+                   1                    1                    2 
+        Mitch Cairns     Nicholas Harding         Nigel Milsom 
+                   1                    1                    1 
+       Nigel Thomson          Nora Heysen        Normand Baker 
+                   2                    1                    1 
+        Peter Wegner           Ray Crooke        Sam Fullbrook 
+                   1                    1                    1 
+           Sam Leach         Tim Storrier           Tony Costa 
+                   1                    1                    1 
+   Vincent Namatjira         Wendy Sharpe          Wes Walters 
+                   1                    1                    1 
+      William Dargie       William Dobell      William McInnes 
+                   8                    3                    7 
+     William Pidgeon     William Robinson   Yvette Coppersmith 
+                   3                    2                    1 </code></pre>
+</div>
+</div>
+<p>This is a bit hard to scan, so why don’t we simplify it a bit? What I’ll do is use the <code>sort()</code> function to arrange the table of winning artists order of frequency, and then show only the first few entries of the sorted table:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sorted_archibald_counts <span class="ot">&lt;-</span> <span class="fu">sort</span>(archibald_counts, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>sorted_archibald_counts[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>archibald_winners
+ William Dargie William McInnes       Ivor Hele  John Longstaff 
+              8               7               5               5 </code></pre>
+</div>
+</div>
+<p>The winner of the most Archibald prizes in the 1921-2023 time frame of the data set was William Dargie. Or, to frame it in more statistical terms <code>"William Dargie"</code> is the modal value of the <code>archibald_winners</code> variable.</p>
 
 
 </section>

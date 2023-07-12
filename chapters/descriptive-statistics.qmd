@@ -209,3 +209,35 @@ which in this case gives exactly the same answer as the median. Note that, to ge
 mean(southern_slam$margin, trim = .05)  
 ```
  
+
+### Mode {#mode}
+
+The mode of a sample is very simple: it is the value that occurs most frequently. It's most often used for categorical variables, for which the mean and median don't really make sense. We'll use a different data set for this. The `archibald` data set supplied by the lsrbook package contains a table listing the winners of the Archibald Prize for Portraiture from 1921 to 2023. 
+
+```{r}
+archibald
+```
+
+There are actually three separate prizes included in this data set. In addition to the Archibald Prize itself, there's data for the Packing Room Prize (awarded by the staff who install the portraits in the gallery) and the People's Choice Award (voted on by the general public). Let's find the winners of the Archibald Prize only:
+
+```{r}
+archibald_winners <- archibald$artist[archibald$prize == "Archibald Prize"]
+archibald_winners
+```
+
+Although the time period for the data spans 103 years, there are only 100 winners: no prizes were awarded in 1964 and 1980, and there was only a single combined prize awarded for the years 1991-1992.
+
+We *could* read through all 100 entries, and count the number of occasions on which each artist appears in our list of winners, thereby producing a **frequency table**. However, that would be mindless and boring: exactly the sort of task that computers are great at. So let's use the `table()` function (discussed in more detail in Section \@ref(freqtables)) to do this task for us:
+```{r}
+archibald_counts <- table(archibald_winners)
+archibald_counts
+```
+
+This is a bit hard to scan, so why don't we simplify it a bit? What I'll do is use the `sort()` function to arrange the table of winning artists order of frequency, and then show only the first few entries of the sorted table:
+
+```{r}
+sorted_archibald_counts <- sort(archibald_counts, decreasing = TRUE)
+sorted_archibald_counts[1:4]
+```
+
+The winner of the most Archibald prizes in the 1921-2023 time frame of the data set was William Dargie. Or, to frame it in more statistical terms `"William Dargie"` is the modal value of the `archibald_winners` variable.
