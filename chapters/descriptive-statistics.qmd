@@ -129,10 +129,26 @@ and there are *two* middle numbers, `r sort(southern_slam$margin[1:6])[3]` and `
 sort(southern_slam$margin)
 ```
 
-As we have `r nrow(southern_slam)` observations in our data, the median value corresponds to item `r (nrow(southern_slam) + 1)/2` in the sorted list of numbers. When we look up that observation in the list, we find that the median winning was `r sort(southern_slam$margin)[(nrow(southern_slam) + 1) / 2]`. In real life, of course, we don't actually calculate the median by sorting the data and then looking for the middle value by searching it manuallt. In real life, we use the `median()` command:
+As we have `r nrow(southern_slam)` observations in our data, the median value corresponds to item `r (nrow(southern_slam) + 1)/2` in the sorted list of numbers. When we look up that observation in the list, we find that the median winning was `r sort(southern_slam$margin)[(nrow(southern_slam) + 1) / 2]`. In real life, of course, we don't actually calculate the median by sorting the data and then looking for the middle value by searching it manually. In real life, we use the `median()` command:
 
 ```{r}
 median(southern_slam$margin)
 ```
 
 Much nicer. 
+
+
+### Mean or median? What's the difference?
+
+
+```{r meanmedian, echo=FALSE, fig.cap="An illustration of the difference between how the mean and the median should be interpreted. The mean is basically the \"centre of gravity\" of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger."}
+knitr::include_graphics(here::here("images", "meanmedian.png")
+```
+
+Knowing how to calculate means and medians is only a part of the story. You also need to understand what each one is saying about the data, and what that implies for when you should use each one. This is illustrated in Figure \@ref(fig:meanmedian) the mean is kind of like the "centre of gravity" of the data set, whereas the median is the "middle value" in the data. What this implies, as far as which one you should use, depends a little on what type of data you've got and what you're trying to achieve. As a rough guide:
+ 
+- If your data are nominal scale, you probably shouldn't be using either the mean or the median. Both the mean and the median rely on the idea that the numbers assigned to values are meaningful. If the numbering scheme is arbitrary, then it's probably best to use the mode (Section \@ref(mode)) instead. 
+- If your data are ordinal scale, you're more likely to want to use the median than the mean. The median only makes use of the order information in your data (i.e., which numbers are bigger), but doesn't depend on the precise numbers involved. That's exactly the situation that applies when your data are ordinal scale. The mean, on the other hand, makes use of the precise numeric values assigned to the observations, so it's not really appropriate for ordinal data.
+- For interval and ratio scale data, either one is generally acceptable. Which one you pick depends a bit on what you're trying to achieve. The mean has the advantage that it uses all the information in the data (which is useful when you don't have a lot of data), but it's very sensitive to extreme values, as we'll see in Section \@ref(trimmedmean).  
+
+Let's expand on that last part a little. One consequence is that there's systematic differences between the mean and the median when the histogram is asymmetric (skewed; see Section \@ref(skewandkurtosis)). This is illustrated in Figure \@ref(fig:meanmedian) notice that the median (right hand side) is located closer to the "body" of the histogram, whereas the mean (left hand side) gets dragged towards the "tail" (where the extreme values are). To give a concrete example, suppose Bob (income \$50,000), Kate (income \$60,000) and Jane (income \$65,000) are sitting at a table: the average income at the table is \$58,333 and the median income is \$60,000. Then Bill sits down with them (income \$100,000,000). The average income has now jumped to \$25,043,750 but the median rises only to \$62,500. If you're interested in looking at the overall income at the table, the mean might be the right answer; but if you're interested in what counts as a typical income at the table, the median would be a better choice here.
