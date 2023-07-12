@@ -1,4 +1,4 @@
-Package: lsrbook
+Package: rbook
 Title: Learning Statistics With R
 Version: 0.8.0.9000
 Authors@R: 
@@ -17,6 +17,7 @@ Suggests:
     here,
     knitr,
     png,
-    sysfonts
+    sysfonts,
+    lsrbook
 Remotes:
     djnavarro/lsrbook
