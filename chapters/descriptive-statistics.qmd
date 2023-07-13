@@ -241,3 +241,99 @@ sorted_archibald_counts[1:4]
 ```
 
 The winner of the most Archibald prizes in the 1921-2023 time frame of the data set was William Dargie. Or, to frame it in more statistical terms `"William Dargie"` is the modal value of the `archibald_winners` variable.
+
+
+
+## Measures of variability {#var}
+
+The statistics that we've discussed so far all relate to **central tendency**. That is, they all talk about which values are "in the middle" or "popular" in the data. However, central tendency is not the only type of summary statistic that we want to calculate. The second thing that we really want is a measure of the **variability** of the data. That is, how "spread out" are the data? How "far" away from the mean or median do the observed values tend to be? For now, let's assume that the data are interval or ratio scale, so we'll continue to use the `southern_slam` data.  We'll use this data to discuss several different measures of spread, each with different strengths and weaknesses. 
+
+### Range {#range}
+
+The **range** of a variable is very simple: it's the biggest value minus the smallest value. For the Southern Slam winning margins data, the maximum value is `r max(southern_slam$margin)`, and the minimum value is `r min(southern_slam$margin)`. We can calculate these values in R using the `max()` and `min()` functions:
+
+```{r}
+#| results: hide
+max(southern_slam$margin)
+min(southern_slam$margin)
+```
+
+where I've omitted the output because it's not interesting. The other possibility is to use the `range()` function; which outputs both the minimum value and the maximum value in a vector, like this:
+
+```{r}
+range(southern_slam$margin)
+```
+
+Although the range is the simplest way to quantify the notion of "variability", it's one of the worst. Recall from our discussion of the mean that we want our summary measure to be robust. If the data set has one or two extremely bad values in it, we'd like our statistics not to be unduly influenced by these cases. If we look once again at our toy example of a data set containing very extreme outliers...
+
+$$
+-100, 2, 3, 4, 5, 6, 7, 8, 9, 10
+$$
+
+...it is clear that the range is not robust, since this has a range of 110, but if the outlier were removed we would have a range of only 8.
+
+### Interquartile range
+
+The **interquartile range** is like the range, but instead of calculating the difference between the biggest and smallest value, it calculates the difference between the 25th quantile and the 75th quantile. Probably you already know what a **quantile** is (they're more commonly called percentiles), but if not: the 10th percentile of a data set is the smallest number $x$ such that 10% of the data is less than $x$. In fact, we've already come across the idea: the median of a data set is its 50th quantile / percentile! R actually provides you with a way of calculating quantiles, using the (surprise, surprise) `quantile()` function. Let's use it to calculate the median winning margin in the `southern_slam` data:
+
+```{r}
+quantile(southern_slam$margin, probs = .5)
+```
+
+Not surprisingly, this agrees with the answer that we saw earlier with the `median()` function. Now, we can actually input lots of quantiles at once, by specifying a vector for the `probs` argument. So lets do that, and get the 25th and 75th percentile:
+
+```{r}
+quantile(southern_slam$margin, probs = c(.25, .75))
+```
+
+And just like that, we have our interquartile range.^[There is also an `IQR()` function in R that will compute the difference between the 75th and 25th percentiles, and in earlier versions of this book I used it, but honestly the `quantile()` function does the job that needs doing so why complicate things?]
+
+While it's obvious how to interpret the range, it's a little less obvious how to interpret the IQR. The simplest way to think about it is like this: the interquartile range is the range spanned by the "middle half" of the data. That is, one quarter of the data falls below the 25th percentile, one quarter of the data is above the 75th percentile, leaving the "middle half" of the data lying in between the two. And the IQR is the range covered by that middle half.
+
+### Typical deviations from a typical value {#aad}
+
+The two measures we've looked at so far both describe the spread of the data by examining the quantiles of the data. However, this isn't the only way to think about the problem. A different approach is to select a meaningful reference point to describe the "middle" of the data (i.e., a measure of central tendency like the mean or the median), and then ask how far away are the *actual* observations from this middle value?
+
+This approach suggests the following approaches: if we decide that we're interested in averages, we could calculate the mean deviation from the mean value. Alternatively, if we want middle values, we could calcualte the median deviation from the median.^[To be honest, I don't see either of these measures used much in practice, but they're conceptually useful as stepping stones to understanding variance and standard deviations. (The median deviation from the mean is also a useful tool for constructing robust estimates for population standard deviations, but that's a very different topic)]
+
+Since the previous paragraph might sound a little abstract, let's go through the **mean deviation from the mean** a little more slowly. One useful thing about this measure is that the name actually tells you exactly how to calculate it. Let's think about our AFL winning margins data, and once again we'll start by pretending that there's only 5 games in total, with winning margins of 56, 31, 56, 8 and 32. Since our calculations rely on an examination of the deviation from some reference point (in this case the mean), the first thing we need to calculate is the mean, $\bar{X}$. For these five observations, our mean is $\bar{X} = 36.6$. The next step is to convert each of our observations $X_i$ into a deviation score. We do this by calculating the difference between the observation $X_i$ and the mean $\bar{X}$. That is, the deviation score is defined to be $X_i - \bar{X}$. For the first observation in our sample, this is equal to $56 - 36.6 = 19.4$. Okay, that's simple enough. The next step in the process is to convert these deviations to absolute deviations. As we discussed earlier when talking about  the `abs()` function in R (Section \@ref(usingfunctions)), we do this by converting any negative values to positive ones. Mathematically, we would denote the absolute value of $-3$ as $|-3|$, and so we say that $|-3| = 3$. We use the absolute value function here because we don't really care whether the value is higher than the mean or lower than the mean, we're just interested in how *close* it is to the mean. To help make this process as obvious as possible, the table below shows these calculations for all five observations:
+
+[Insert table, or possibly more helpfully, a figure]
+
+
+Now that we have calculated the absolute deviation score for every observation in the data set, all that we have to do to calculate the mean of these scores. Let's do that:
+$$
+\frac{19.4 + 5.6 + 19.4 + 28.6 + 4.6}{5} = 15.52
+$$
+And we're done. The mean absolute deviation for these five scores is 15.52. 
+
+For what it's worth, we can express this as a mathematical formula:
+$$
+\frac{1}{N} \sum_{i = 1}^N |X_i - \bar{X}|
+$$
+
+The last thing we need to talk about is how to calculate this in R. Doing it in a sequence of steps you get this:
+
+```{r}
+# some data!
+value <- c(56, 31, 56, 8, 32)
+
+# step 1: calculate the mean value
+mean_value <- mean(value)
+
+# step 2: calculate the absolute deviations from the mean
+absolute_deviation <- abs(value - mean_value)
+
+# step 3: calculate the average of these absolute deviations
+average_absolute_deviation <- mean(absolute_deviation)
+
+# profit!
+average_absolute_deviation
+```
+
+But once you're comfortable writing R commands it's just easier to do this:
+
+```{r}
+mean(abs(value - mean(value)))
+```
+
