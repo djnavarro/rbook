@@ -363,9 +363,16 @@ The last thing we need to talk about is how to calculate this in R, because as i
 mean(abs(five_margins - mean(five_margins)))
 ```
 
+Finally, notice that there is nothing stopping us from using different measures of central tendency. Instead of calculating the "mean absolute deviation from the mean", we could instead calculate the median absolute deviation from the median. Here's both versions, applied to the winning margins for all bouts in the Southern Slam data:
+
+```{r}
+mean(abs(southern_slam$margin - mean(southern_slam$margin)))
+median(abs(southern_slam$margin - median(southern_slam$margin)))
+```
+
 ### Variance 
 
-Although the mean absolute deviation measure has its uses, it's not the best measure of variability to use. From a purely mathematical perspective, there are some solid reasons to prefer squared deviations rather than absolute deviations. If we do that, we obtain a measure is called the **variance**, which has a lot of really nice statistical properties that I'm going to ignore,^[Well, I will very briefly mention the one that I think is coolest, for a very particular definition of "cool", that is. Variances are *additive*. Here's what that means: suppose I have two variables $X$ and $Y$, whose variances are $\mbox{Var}](X)$ and $\mbox{Var}(Y)$ respectively. Now imagine I want to define a new variable $Z$ that is the sum of the two, $Z = X+Y$. As it turns out, the variance of $Z$ is equal to $\mbox{Var}(X) + \mbox{Var}(Y)$. This is a *very* useful property, but it's not true of the other measures that I talk about in this section.] and one massive psychological flaw that I'm going to make a big deal out of in a moment. The variance of a data set $X$ is sometimes written as $\mbox{Var}(X)$, but it's more commonly denoted $s^2$ (the reason for this will become clearer shortly). The formula that we use to calculate the variance of a set of observations is as follows:
+Although the mean absolute deviation measure has its uses, it's not the best measure of variability to use. From a purely mathematical perspective, there are some solid reasons to prefer squared deviations rather than absolute deviations. If we do that, we obtain a measure is called the **variance**, which has a lot of really nice statistical properties that I'm going to ignore,^[Well, I will very briefly mention the one that I think is coolest, for a very particular definition of "cool", that is. Variances are *additive*. Here's what that means: suppose I have two variables $X$ and $Y$, whose variances are $\mbox{Var}(X)$ and $\mbox{Var}(Y)$ respectively. Now imagine I want to define a new variable $Z$ that is the sum of the two, $Z = X+Y$. As it turns out, the variance of $Z$ is equal to $\mbox{Var}(X) + \mbox{Var}(Y)$. This is a *very* useful property, but it's not true of the other measures that I talk about in this section.] and one massive psychological flaw that I'm going to make a big deal out of in a moment. The variance of a data set $X$ is sometimes written as $\mbox{Var}(X)$, but it's more commonly denoted $s^2$ (the reason for this will become clearer shortly). The formula that we use to calculate the variance of a set of observations is as follows:
 
 $$
 \mbox{Var}(X) = \frac{1}{N} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2
@@ -444,4 +451,168 @@ Okay, one last thing. This section so far has read a bit like a mystery novel. I
 This is the most serious problem with the variance. Although it has some elegant mathematical properties that suggest that it really is a fundamental quantity for expressing variation, it's completely useless if you want to communicate with an actual human... variances are completely uninterpretable in terms of the original variable! All the numbers have been squared, and they don't mean anything anymore. This is a huge issue. For instance, according to the table presented earlier, the margin in bout 1 was "5952 points-squared higher than the average margin". This is *exactly* as stupid as it sounds; nobody cares about "points-squared". It's not a meaningful unit of measurement, so talking about variation in those terms is utter gibberish.
 
 We're going to need something better than this. 
+
+
+### Standard deviation {#sd}
+
+Okay, suppose that you like the idea of using the variance because of those nice mathematical properties that I haven't talked about, but -- since you're a human and not a robot -- you'd like to have a measure that is expressed in the same units as the data itself (i.e., points, not points-squared). What should you do? The solution to the problem is obvious: take the square root of the variance, known as the **standard deviation**, also called the "root mean squared deviation", or RMSD. This solves out problem fairly neatly: while nobody has a clue what "a variance of 324.68 points-squared" really means, it's much easier to understand "a standard deviation of 18.01 points", since it's expressed in the original units. It is traditional to refer to the standard deviation of a sample of data as $s$, though 	"sd" and "std dev." are also used at times. Because the standard deviation is equal to the square root of the variance, you probably won't be surprised to see that the formula is:
+$$
+s = \sqrt{ \frac{1}{N} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2 }
+$$
+and the R function that we use to calculate it is `sd()`. However, as you might have guessed from our discussion of the variance, what R actually calculates is slightly different to the formula given above. Just like the we saw with the variance, what R calculates is a version that divides by $N-1$ rather than $N$. For reasons that will make sense when we return to this topic in Chapter@refch:estimation I'll refer to this new quantity as $\hat\sigma$ (read as: "sigma hat"), and the formula for this is
+$$
+\hat\sigma = \sqrt{ \frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2 }
+$$
+With that in mind, calculating standard deviations in R is simple:
+```{r}
+sd(southern_slam$margin)
+```
+
+Interpreting standard deviations is slightly more complex. Because the standard deviation is derived from the variance, and the variance is a quantity that has little to no meaning that makes sense to us humans, the standard deviation doesn't have a simple interpretation. As a consequence, most of us just rely on a simple rule of thumb: in general, you should expect 68% of the data to fall within 1 standard deviation of the mean, 95% of the data to fall within 2 standard deviation of the mean, and 99.7% of the data to fall within 3 standard deviations of the mean.^[It's waaaaaay beyond the scope of this book, but there's a mathematical result called Chebyshev's inequality that tells us that *at an absolute minimum*, 75% of the observations *must* fall within 2 standard deviations of tge mean and 89% of observations *must* fall within 3 standard deviations. These Chebyshev bounds aren't used much in pratice because real world data tend to adhere reasonably closely to the "68-95-99" rule that applies to data that are well-described by a normal distribution. However, it's still useful to know that there really are some absolute rules. No matter how bizarre your data turn out to be, *at least* 75% of the observations are guaranteed as a mathematical law to fall within 2 standard deviations of the mean.]
+
+This rule tends to work pretty well most of the time, but it's not exact: it's actually calculated based on an *assumption* that the histogram is symmetric and "bell shaped".^[Strictly, the assumption is that the data are *normally* distributed, which is an important concept that we'll discuss more in Chapter \@ref(probability), and will turn up over and over again later in the book.] As you can tell from looking at the winning margins histogram, this isn't exactly true of our data! Even so, the rule is approximately correct. As it turns out, `r round(mean(with(southern_slam, margin > mean(margin) - sd(margin) & margin < mean(margin) + sd(margin))) * 100, 1)`% of the Southern Slam margins data fall within one standard deviation of the mean. This is shown visually below
+
+```{r}
+#| echo: false
+southern_slam |> 
+	dplyr::mutate(
+		within_sd = margin > mean(margin) - sd(margin) & margin < mean(margin) + sd(margin)
+	) |>
+	ggplot2::ggplot() + 
+	ggplot2::geom_histogram(
+		mapping = ggplot2::aes(x = margin, fill = within_sd), 
+		alpha = .5,
+		breaks = c(0, 35, 100, 150, 200, 250, 350, 500),
+		show.legend = FALSE
+	) +
+	ggplot2::geom_segment(
+		mapping = ggplot2::aes(
+			x = margin,
+			y = -.25,
+			yend = -.75,
+			xend = margin, 
+			colour = within_sd
+		),
+		linewidth = 1,
+		show.legend = FALSE
+	) +
+	ggplot2::labs(x = "Winning margin") + 
+	ggplot2::scale_y_continuous(name = NULL, breaks = NULL) +
+	ggplot2::scale_fill_manual(values = c("#800080", "#222222")) + 
+	ggplot2::scale_colour_manual(values = c("#800080", "#222222")) + 
+	ggplot2::theme_minimal()
+```
+
+
+### Which measure to use?
+
+We've discussed quite a few measures of spread (range, IQR, MAD, variance and standard deviation), and hinted at their strengths and weaknesses. Here's a quick summary:
+
+
+- *Range*. Gives you the full spread of the data. It's very vulnerable to outliers, and as a consequence it isn't often used unless you have good reasons to care about the extremes in the data.
+- *Interquartile range*. Tells you where the "middle half" of the data sits. It's pretty robust, and complements the median nicely. This is used a lot.
+- *Mean absolute deviation*. Tells you how far "on average" the observations are from the mean. It's very interpretable, but has a few minor issues (not discussed here) that make it less attractive to statisticians than the standard deviation. Used sometimes, but not often.
+- *Median absolute deviation*. The typical (i.e., median) deviation from the median value. It's simple and interpretable, and although I don't talk about it in this book, you can use a "corrected" version of it as a robust way to estimate the standard deviation, which is sometimes handy. Not used very often, but it does get reported sometimes.
+- *Variance*. Tells you the average squared deviation from the mean. It's mathematically elegant, and is probably the "right" way to describe variation around the mean, but it's completely uninterpretable because it doesn't use the same units as the data. Almost never used except as a mathematical tool; but it's buried "under the hood" of a very large number of statistical tools.
+- *Standard deviation*. This is the square root of the variance. It's fairly elegant mathematically, and it's expressed in the same units as the data so it can be interpreted pretty well. In situations where the mean is the measure of central tendency, this is the default. This is by far the most popular measure of variation. 
+
+
+
+## Skewness
+
+Another descriptive statistic that you'll sometimes see reported is the **skewness** of a set of observations.
+
+Skewness is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As Figure \@ref(fig:skewness) illustrates, if the data tend to have a lot of extreme small values (i.e., the lower tail is "longer" than the upper tail) and not so many extremely large values (left panel), then we say that the data are *negatively skewed*. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are *positively skewed*. That's the qualitative idea behind skewness. The actual formula for the skewness of a data set is as follows
+$$
+\mbox{skewness}(X) = \frac{1}{N} \sum_{i=1}^N \left(\frac{X_i - \bar{X}}{s}\right)^3
+$$
+where $N$ is the number of observations, $\bar{X}$ is the sample mean, and $\hat{\sigma}$ is the standard deviation (the "divide by $N-1$" version, that is). 
+
+
+```{r}
+#| echo: false
+skew <- function(x) {
+	mean(((x - mean(x)) / sd(x))^3) 
+}
+
+x1 <- rbeta(n = 100000, shape1= 10, shape2 = 2)
+x2 <- rbeta(n = 100000, shape1= 10, shape2 = 10)
+x3 <- rbeta(n = 100000, shape1= 2, shape2 = 10)
+X <- list(x1,x2,x3)
+
+plot.new()
+old <- par(no.readonly = TRUE)
+par(mfrow=c(1,3))
+
+ttl = c("Negative Skew", "No Skew", "Positive Skew")
+
+for (i in 1:3) {
+
+	hist(
+		x = X[[i]],
+	    breaks = seq(0,1,.05),
+	    xlab = "",
+	    ylab = "",
+	    main = ttl[i],
+	    axes = FALSE,
+	    col = "cornflowerblue",
+	    border = "white",
+		font.main = 1
+	)
+}
+par( old )
+```
+
+Perhaps more helpfully, it might be useful to point out that the `psych` package contains a `skew()` function that you can use to calculate skewness. So if we wanted to use this function to calculate the skewness of the `afl.margins` data, we'd first need to load the package
+```{r}
+skew <- function(x) {
+	mean(((x - mean(x)) / sd(x))^3) 
+}
+```
+which now makes it possible to use the following command:
+```{r}
+skew(southern_slam$margin)
+```
+Not surprisingly, it turns out that the winning margins data is fairly skewed.
+
+
+
+
+## Skimming a data set {#skim}
+
+### Basic use
+
+```{r}
+#| message: false
+library(skimr)
+library(dplyr)
+```
+
+```{r}
+skim(southern_slam)
+```
+
+### Computing statistics by group
+
+```{r}
+southern_slam |>
+	group_by(division) |>
+	skim(home_score, visitor_score, margin)
+```
+
+## Correlations {#correl}
+
+Up to this point we have focused entirely on how to construct descriptive statistics for a single variable. What we haven't done is talked about how to describe the relationships *between* variables in the data. To do that, we want to talk mostly about the **correlation** between variables. 
+
+
+```{r}
+#| echo: false
+southern_slam2 <- southern_slam |> 
+	dplyr::mutate(
+		winning_score = dplyr::if_else(home_score > visitor_score, home_score, visitor_score), 
+		losing_score = dplyr::if_else(home_score <= visitor_score, home_score, visitor_score)
+	)
+ggplot2::ggplot(southern_slam2, ggplot2::aes(losing_score, winning_score)) + 
+	ggplot2::geom_point()
+```
 
