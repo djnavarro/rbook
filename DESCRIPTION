@@ -22,4 +22,5 @@ Remotes:
     djnavarro/lsrbook
 Imports: 
     lsrbook,
+    skimr,
     tibble
