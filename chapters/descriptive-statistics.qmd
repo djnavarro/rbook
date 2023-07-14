@@ -103,16 +103,23 @@ If we only want the sum of the first five observations, then we can use square b
 sum(southern_slam$margin[1:5])
 ```
 
+Actually, because we're going to reuse the miniature data set containing only the first five winning margines several times in this chapter, let's save ourselves some typing and store it as its own variable:
+
+```{r}
+five_margins <- southern_slam$margin[1:5]
+five_margins
+```
+
 To calculate the mean, we now tell R to divide the output of this summation by five, so the command that we need to type now becomes the following:
 
 ```{r}
-sum(southern_slam$margin[1:5]) / 5
+sum(five_margins) / 5
 ```
 
 Although it's pretty easy to calculate the mean using the `sum()` function, we can do it in an even easier way, since R also provides us with the `mean()` function. To calculate the mean for all 176 games, we would use the following command:
 
 ```{r}
-mean(southern_slam$margin[1:5])
+mean(five_margins)
 ```
 
 As you can see, this gives exactly the same answers as the previous calculations.
@@ -274,66 +281,167 @@ $$
 
 ### Interquartile range
 
-The **interquartile range** is like the range, but instead of calculating the difference between the biggest and smallest value, it calculates the difference between the 25th quantile and the 75th quantile. Probably you already know what a **quantile** is (they're more commonly called percentiles), but if not: the 10th percentile of a data set is the smallest number $x$ such that 10% of the data is less than $x$. In fact, we've already come across the idea: the median of a data set is its 50th quantile / percentile! R actually provides you with a way of calculating quantiles, using the (surprise, surprise) `quantile()` function. Let's use it to calculate the median winning margin in the `southern_slam` data:
+The **interquartile range** is like the range, but instead of calculating the difference between the biggest and smallest value, it calculates the difference between the 25th quantile and the 75th quantile. Probably you already know what a **quantile** is (they're more commonly called percentiles), but if not: the 10th percentile of a data set is the smallest number $x$ such that 10% of the data is less than $x$. In fact, we've already come across the idea: the median of a data set is its 50th quantile / percentile! R actually provides you with a way of calculating quantiles, using the (surprise, surprise) `quantile()` function. Let's use it to calculate the median winning margin  (50th percentile) in the `southern_slam` data, along with the 25th and 75th percentiles:
 
 ```{r}
-quantile(southern_slam$margin, probs = .5)
+quantile(southern_slam$margin, probs = c(.25, .5, .75))
 ```
 
-Not surprisingly, this agrees with the answer that we saw earlier with the `median()` function. Now, we can actually input lots of quantiles at once, by specifying a vector for the `probs` argument. So lets do that, and get the 25th and 75th percentile:
+Not surprisingly, the 50th percentile in the `southern_slam` wining mardins data is `r median(southern_slam$margin)`, the exact same number we obtained when we used the `median()` function earlier. However, this time around we have the extra information provide by the two values that make up the interquartile range. Taken together, this output is telling us that the middle value (the median) in the data is `r median(southern_slam$margin)`, and half of all our data values are somewhere between `r quantile(southern_slam$margin, .25)` and `r quantile(southern_slam$margin, .75)`.
 
-```{r}
-quantile(southern_slam$margin, probs = c(.25, .75))
-```
-
-And just like that, we have our interquartile range.^[There is also an `IQR()` function in R that will compute the difference between the 75th and 25th percentiles, and in earlier versions of this book I used it, but honestly the `quantile()` function does the job that needs doing so why complicate things?]
-
-While it's obvious how to interpret the range, it's a little less obvious how to interpret the IQR. The simplest way to think about it is like this: the interquartile range is the range spanned by the "middle half" of the data. That is, one quarter of the data falls below the 25th percentile, one quarter of the data is above the 75th percentile, leaving the "middle half" of the data lying in between the two. And the IQR is the range covered by that middle half.
+This leads us pretty naturally to the interpretation of the interquartile range: it's the range spanned by the "middle half" of the data. One quarter of the data falls below the interquartile range, one quarter of the data falls above the interquartile range, and one half of the data falls within it.
 
 ### Typical deviations from a typical value {#aad}
 
 The two measures we've looked at so far both describe the spread of the data by examining the quantiles of the data. However, this isn't the only way to think about the problem. A different approach is to select a meaningful reference point to describe the "middle" of the data (i.e., a measure of central tendency like the mean or the median), and then ask how far away are the *actual* observations from this middle value?
 
-This approach suggests the following approaches: if we decide that we're interested in averages, we could calculate the mean deviation from the mean value. Alternatively, if we want middle values, we could calcualte the median deviation from the median.^[To be honest, I don't see either of these measures used much in practice, but they're conceptually useful as stepping stones to understanding variance and standard deviations. (The median deviation from the mean is also a useful tool for constructing robust estimates for population standard deviations, but that's a very different topic)]
+This approach suggests the following approaches: if we decide that we're interested in averages, we could calculate the mean deviation from the mean value. Alternatively, if we want middle values, we could calculate the median deviation from the median.^[To be honest, I don't see either of these measures used much in practice, but they're conceptually useful as stepping stones to understanding variance and standard deviations. (The median deviation from the mean is also a useful tool for constructing robust estimates for population standard deviations, but that's a very different topic)]
 
-Since the previous paragraph might sound a little abstract, let's go through the **mean deviation from the mean** a little more slowly. One useful thing about this measure is that the name actually tells you exactly how to calculate it. Let's think about our AFL winning margins data, and once again we'll start by pretending that there's only 5 games in total, with winning margins of 56, 31, 56, 8 and 32. Since our calculations rely on an examination of the deviation from some reference point (in this case the mean), the first thing we need to calculate is the mean, $\bar{X}$. For these five observations, our mean is $\bar{X} = 36.6$. The next step is to convert each of our observations $X_i$ into a deviation score. We do this by calculating the difference between the observation $X_i$ and the mean $\bar{X}$. That is, the deviation score is defined to be $X_i - \bar{X}$. For the first observation in our sample, this is equal to $56 - 36.6 = 19.4$. Okay, that's simple enough. The next step in the process is to convert these deviations to absolute deviations. As we discussed earlier when talking about  the `abs()` function in R (Section \@ref(usingfunctions)), we do this by converting any negative values to positive ones. Mathematically, we would denote the absolute value of $-3$ as $|-3|$, and so we say that $|-3| = 3$. We use the absolute value function here because we don't really care whether the value is higher than the mean or lower than the mean, we're just interested in how *close* it is to the mean. To help make this process as obvious as possible, the table below shows these calculations for all five observations:
+Since the previous paragraph might sound a little abstract, let's go through the **mean deviation from the mean** a little more slowly. One useful thing about this measure is that the name actually tells you exactly how to calculate it. Let's return to the `southern_slam` data, and -- for the sake of our sanity -- we'll keep things simple by using the `five_margins` variable that stores the first five winning margins:
 
-[Insert table, or possibly more helpfully, a figure]
+```{r}
+five_margins
+```
 
+Since our calculations rely on an examination of the deviation from some reference point (in this case the mean), the first thing we need to calculate is the mean. In real life we would -- and in a moment, we will -- do this with R, but let's party like its 1899 and we have no computers. As usual, we'll refer to the mean of our $X$ values by placing a cute little bar over the top, $\bar{X}$. 
 
-Now that we have calculated the absolute deviation score for every observation in the data set, all that we have to do to calculate the mean of these scores. Let's do that:
 $$
-\frac{19.4 + 5.6 + 19.4 + 28.6 + 4.6}{5} = 15.52
+\bar{X} = \frac{196 + 51 + 23 + 106 + 219}{5} = \frac{595}{5} = 119
 $$
-And we're done. The mean absolute deviation for these five scores is 15.52. 
 
-For what it's worth, we can express this as a mathematical formula:
+Yeah, I know, we did that earlier. Sorry. Anway, the point here is we now have the mean value 119. So now, for each of these five observations we can calculate a **deviation score**, which... yeah, we just subtract the mean. Nothing fancy:
+
+::: {.grid}
+::: {.g-col-6}
+
+| Value | Deviation       |
+|------:|----------------:|
+| $X_i$ | $X_i-\bar{X}$   |
+|   196 |  196 - 119 = 77 |
+|    51 |  51 - 119 = -68 |
+|    23 |  23 - 119 = -96 |
+|   106 | 106 - 119 = -13 |
+|   219 | 219 - 119 = 100 |
+
+:::
+:::
+
+The next step in the process is to convert these deviations to absolute deviations. That's straightfoward too: all we do is ignore the minus signs:
+
+::: {.grid}
+::: {.g-col-6}
+
+| Value | Deviation     | Absolute deviation |
+|------:|--------------:|-------------------:|
+| $X_i$ | $X_i-\bar{X}$ | $|X_i-\bar{X}|$    |
+|   196 |            77 |                 77 |
+|    51 |           -68 |                 68 |
+|    23 |           -96 |                 96 |
+|   106 |           -13 |                 13 |
+|   219 |           100 |                100 |
+
+:::
+:::
+
+Now that we have calculated the absolute deviation-from-the-mean score for all five observations in the data set, all that we have to do to calculate the mean of *those* scores. Notice that in these tables I've been adding the notation as I add columns. The absolute deviation from the mean is written $|X_i - \bar{X}|$, so if we were really, really excited about formulas we could use this formula to mathematically describe the calculation we're making:
+
 $$
 \frac{1}{N} \sum_{i = 1}^N |X_i - \bar{X}|
 $$
 
-The last thing we need to talk about is how to calculate this in R. Doing it in a sequence of steps you get this:
+Sure, Danielle, okay. Whatever. Just calculate the thing, would you? Fair point. Let's do that:
+
+$$
+\frac{77 + 68 + 96 + 13 + 100}{5} = \frac{354}{5} = 70.8
+$$
+
+And there we have it. The mean absolute deviation for the first five winning margins in our `southern_slam` data set is 70.8. Honestly I only *imagine* how thrilling this is to you. 
+
+The last thing we need to talk about is how to calculate this in R, because as it turns out, this is considerably easier than doing all the calculations with pencil and paper:
 
 ```{r}
-# some data!
-value <- c(56, 31, 56, 8, 32)
-
-# step 1: calculate the mean value
-mean_value <- mean(value)
-
-# step 2: calculate the absolute deviations from the mean
-absolute_deviation <- abs(value - mean_value)
-
-# step 3: calculate the average of these absolute deviations
-average_absolute_deviation <- mean(absolute_deviation)
-
-# profit!
-average_absolute_deviation
+mean(abs(five_margins - mean(five_margins)))
 ```
 
-But once you're comfortable writing R commands it's just easier to do this:
+### Variance 
+
+Although the mean absolute deviation measure has its uses, it's not the best measure of variability to use. From a purely mathematical perspective, there are some solid reasons to prefer squared deviations rather than absolute deviations. If we do that, we obtain a measure is called the **variance**, which has a lot of really nice statistical properties that I'm going to ignore,^[Well, I will very briefly mention the one that I think is coolest, for a very particular definition of "cool", that is. Variances are *additive*. Here's what that means: suppose I have two variables $X$ and $Y$, whose variances are $\mbox{Var}](X)$ and $\mbox{Var}(Y)$ respectively. Now imagine I want to define a new variable $Z$ that is the sum of the two, $Z = X+Y$. As it turns out, the variance of $Z$ is equal to $\mbox{Var}(X) + \mbox{Var}(Y)$. This is a *very* useful property, but it's not true of the other measures that I talk about in this section.] and one massive psychological flaw that I'm going to make a big deal out of in a moment. The variance of a data set $X$ is sometimes written as $\mbox{Var}(X)$, but it's more commonly denoted $s^2$ (the reason for this will become clearer shortly). The formula that we use to calculate the variance of a set of observations is as follows:
+
+$$
+\mbox{Var}(X) = \frac{1}{N} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2
+$$
+
+As you can see, it's basically the same formula that we used to calculate the mean absolute deviation, except that instead of using "absolute deviations" we use "squared deviations". It is for this reason that the variance is sometimes referred to as the "mean square deviation".
+
+Now that we've got the basic idea, let's have a look at a concrete example. Once again, let's use the first five Southern Slam bouts as our data. If we follow the same approach that we took last time, we end up with the following table:
+
+::: {.grid}
+::: {.g-col-6}
+
+| Value | Deviation     | Squared deviation |
+|------:|--------------:|------------------:|
+| $X_i$ | $X_i-\bar{X}$ | $(X_i-\bar{X})^2$ |
+|   196 |            77 |              5929 |
+|    51 |           -68 |              4624 |
+|    23 |           -96 |              9216 |
+|   106 |           -13 |               169 |
+|   219 |           100 |             10000 |
+
+:::
+:::
+
+
+That last column contains all of our squared deviations, so all we have to do is average them:
+
+$$
+\frac{5929 + 4624 + 9216 + 169 + 10000}{5} = \frac{29938}{5} = 5987.6
+$$
+
+The variance of these observations, then, is 5987.6. Exciting, isn't it? For the moment, let's ignore the burning question that you're all probably wondering about -- i.e., what the heck does a variance of 324.64 actually mean? -- and instead talk a bit more about how to do the calculations in R, because this will reveal something very weird.
+
+As always, we want to avoid having to type in a whole lot of numbers ourselves. And as it happens, we have the vector `five_margins` lying around, which we created in the previous section. With this in mind, we can calculate the variance of `five_margins` by using the following command:
 
 ```{r}
-mean(abs(value - mean(value)))
+mean((five_margins - mean(five_margins))^2)
 ```
+
+This is essentially the same command we used when computing the mean absolute deviation, but instead of applying the `abs()` function to each of the deviation scores, we're squaring those devation scores and then taking the mean. Conveniently for us, R has a a built in function called `var()`, so we can simplify our R command a lot by doing this...
+
+```{r}
+var(five_margins)
+```
+
+and you get the same... no, wait... you get a completely *different* answer. That's just weird. Is R broken? Is this a typo? Is Danielle an idiot? As it happens, the answer is no.^[With the possible exception of the third question.] It's not a typo, and R is not making a mistake. What's happened here is that instead of dividing the sum squared deviation (i.e. 29938) by 5, the `var()` function has in fact divides it by 4. We can verify that ourselves, like this:
+
+```{r}
+sum((five_margins - mean(five_margins))^2) / 4
+```
+
+In other words, the formula for the variance that R actually uses in the `var()` is this:
+
+$$
+\frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2
+$$
+
+If you're feeling confused, and wondering why the heck R would do something like this, well... you're completely justified. It's confusing. I promise I'll explain it in a moment, but for now let's take a look at what happens when we do the same comparison using the full version of the `southern_slam` data we get this:
+
+```{r}
+mean((southern_slam$margin - mean(southern_slam$margin))^2)
+```
+
+```{r}
+var(southern_slam$margin)
+```
+
+The difference between these two versions of the variance calculation becomes less inportant as the number of observations $N$ in your data set gets larger. There's a big difference between "dividing by 5" and dividing by 4". There's not much difference at all between "dividing by 43" and "dividing by 42". And the difference between "dividing by 1,000,043" and "dividing by 1,000,042" is minuscule.
+
+Okay, so that's the "what". What about the "why". *Why* does R compute the variance by dividing by $N - 1$ and not by $N$. After all, the variance is supposed to be the *mean* squared deviation, right? That's what I told you at the start of this section, and I wasn't lying. So shouldn't we be taking the sum squared deviation and then dividing by $N$, the *actual* number of observations in the sample? Well, yes, we should. 
+
+However, as we'll discuss in Chapter \@ref(estimation), there's a subtle distinction between "describing a sample" and "making guesses about the population from which the sample came". Up to this point, it's been a distinction without a difference. Regardless of whether you're describing a sample or drawing inferences about the population, the mean is calculated exactly the same way. Not so for the variance, or the standard deviation, or for many other measures besides. What I outlined to you initially (i.e., take the actual average, and thus divide by $N$) assumes that you literally intend to calculate the variance of the sample. Most of the time, however, you're not terribly interested in the sample *in and of itself*. Rather, the sample exists to tell you something about the world. If so, you're actually starting to move away from calculating a "sample statistic", and towards the idea of estimating a "population parameter". However, I'm getting ahead of myself. For now, let's just take it on faith that R knows what it's doing, and we'll revisit the question later on when we talk about estimation in Chapter \@ref(estimation). 
+
+Okay, one last thing. This section so far has read a bit like a mystery novel. I've shown you how to calculate the variance, described the weird "$N - 1$" thing that R does and hinted at the reason why it's there, but I haven't mentioned the single most important thing... how do you *interpret* the variance? Descriptive statistics are supposed to describe things, after all, and right now the variance is really just a gibberish number. Unfortunately, the reason why I haven't given you the human-friendly interpretation of the variance is that... there really isn't one. 
+
+This is the most serious problem with the variance. Although it has some elegant mathematical properties that suggest that it really is a fundamental quantity for expressing variation, it's completely useless if you want to communicate with an actual human... variances are completely uninterpretable in terms of the original variable! All the numbers have been squared, and they don't mean anything anymore. This is a huge issue. For instance, according to the table presented earlier, the margin in bout 1 was "5952 points-squared higher than the average margin". This is *exactly* as stupid as it sounds; nobody cares about "points-squared". It's not a meaningful unit of measurement, so talking about variation in those terms is utter gibberish.
+
+We're going to need something better than this. 
 
