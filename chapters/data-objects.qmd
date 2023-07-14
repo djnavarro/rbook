@@ -1,4 +1,4 @@
-# Representing data {#sec-data-objects}
+# How does R store data? {#sec-data-objects}
 
 ```{r}
 #| echo: false

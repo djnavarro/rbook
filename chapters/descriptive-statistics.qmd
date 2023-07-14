@@ -616,3 +616,199 @@ ggplot2::ggplot(southern_slam2, ggplot2::aes(losing_score, winning_score)) +
 	ggplot2::geom_point()
 ```
 
+
+
+### The correlation coefficient
+
+We can make these ideas a bit more explicit by introducing the idea of a **correlation coefficient** (or, more specifically, Pearson's correlation coefficient), which is traditionally denoted by $r$. The correlation coefficient between two variables $X$ and $Y$ (sometimes denoted $r_{XY}$), which we'll define more precisely in the next section, is a measure that varies from $-1$ to $1$. When $r = -1$ it means that we have a perfect negative relationship, and when $r = 1$ it means we have a perfect positive relationship. When $r = 0$, there's no relationship at all. If you look at the plots below, you can see what different correlations look like.
+
+```{r}
+#| echo: false
+#| fig-height: 16
+#| fig-width: 8
+
+par(mfcol = c(4, 2)) # Create a 2 x 2 plotting matrix
+# The next 4 plots created will be plotted next to each other
+
+
+d.cor <- 0.0
+out.0 <- as.data.frame(MASS::mvrnorm(100, mu = c(0,0), 
+                             Sigma = matrix(c(1,d.cor,d.cor,1), ncol = 2), 
+                             empirical = TRUE))
+
+plot(out.0,frame.plot=FALSE, axes=FALSE,xlab=paste("r =",d.cor),ylab="")
+
+d.cor <- 0.33
+out.1 <- as.data.frame(MASS::mvrnorm(100, mu = c(0,0), 
+                             Sigma = matrix(c(1,d.cor,d.cor,1), ncol = 2), 
+                             empirical = TRUE))
+plot(out.1,frame.plot=FALSE, axes=FALSE,xlab=paste("r =",d.cor),ylab="")
+
+d.cor <- 0.66
+out.2 <- as.data.frame(MASS::mvrnorm(100, mu = c(0,0), 
+                             Sigma = matrix(c(1,d.cor,d.cor,1), ncol = 2), 
+                             empirical = TRUE))
+plot(out.2,frame.plot=FALSE, axes=FALSE,xlab=paste("r =",d.cor),ylab="")
+
+d.cor <- 0.99
+out.2 <- as.data.frame(MASS::mvrnorm(100, mu = c(0,0), 
+                             Sigma = matrix(c(1,d.cor,d.cor,1), ncol = 2), 
+                             empirical = TRUE))
+plot(out.2,frame.plot=FALSE, axes=FALSE,xlab=paste("r =",d.cor),ylab="")
+
+d.cor <- 0.0
+out.0 <- as.data.frame(MASS::mvrnorm(100, mu = c(0,0), 
+                             Sigma = matrix(c(1,d.cor,d.cor,1), ncol = 2), 
+                             empirical = TRUE))
+
+plot(out.0,frame.plot=FALSE, axes=FALSE,xlab=paste("r =",d.cor),ylab="")
+
+d.cor <- -0.33
+out.1 <- as.data.frame(MASS::mvrnorm(100, mu = c(0,0), 
+                             Sigma = matrix(c(1,d.cor,d.cor,1), ncol = 2), 
+                             empirical = TRUE))
+plot(out.1,frame.plot=FALSE, axes=FALSE,xlab=paste("r =",d.cor),ylab="")
+
+d.cor <- -0.66
+out.2 <- as.data.frame(MASS::mvrnorm(100, mu = c(0,0), 
+                             Sigma = matrix(c(1,d.cor,d.cor,1), ncol = 2), 
+                             empirical = TRUE))
+plot(out.2,frame.plot=FALSE, axes=FALSE,xlab=paste("r =",d.cor),ylab="")
+
+d.cor <- -0.99
+out.2 <- as.data.frame(MASS::mvrnorm(100, mu = c(0,0), 
+                             Sigma = matrix(c(1,d.cor,d.cor,1), ncol = 2), 
+                             empirical = TRUE))
+plot(out.2,frame.plot=FALSE, axes=FALSE,xlab=paste("r =",d.cor),ylab="")
+
+```
+
+
+The formula for the Pearson's correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let's introduce the idea of a **covariance**. The covariance between two variables $X$ and $Y$ is a generalisation of the notion of the variance; it's a mathematically simple way of describing the relationship between two variables that isn't terribly informative to humans:
+
+$$
+\mbox{Cov}(X,Y) = \frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right) \left( Y_i - \bar{Y} \right)
+$$
+
+Because we're multiplying (i.e., taking the "product" of) a quantity that depends on $X$ by a quantity that depends on $Y$ and then averaging^[Just like we saw with the variance and the standard deviation, in practice we divide by $N-1$ rather than $N$.], you can think of the formula for the covariance as an "average cross product" between $X$ and $Y$. The covariance has the nice property that, if $X$ and $Y$ are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in Figure@reffig:corr) then the covariance is also positive; and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn't easy to interpret: it depends on the units in which $X$ and $Y$ are expressed, and worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if $X$ refers to the `dan.sleep` variable (units: hours) and $Y$ refers to the `dan.grump` variable (units: grumps), then the units for their covariance are "hours $\times$ grumps". And I have no freaking idea what that would even mean. 
+
+The Pearson correlation coefficient $r$ fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the $z$-score standardises a raw score: by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.^[This is an oversimplification, but it'll do for our purposes.]  In other words, the correlation between $X$ and $Y$ can be written as follows:
+
+$$
+r_{XY}  = \frac{\mbox{Cov}(X,Y)}{ \hat{\sigma}_X \ \hat{\sigma}_Y}
+$$
+
+By doing this standardisation, not only do we keep all of the nice properties of the covariance discussed earlier, but the actual values of $r$ are on a meaningful scale: $r= 1$ implies a perfect positive relationship, and $r = -1$ implies a perfect negative relationship. I'll expand a little more on this point later, in Section@refsec:interpretingcorrelations. But before I do, let's look at how to calculate correlations in R.
+
+
+### Calculating correlations in R
+
+Calculating correlations in R can be done using the `cor()` command. The simplest way to use the command is to specify two input arguments `x` and `y`, each one corresponding to one of the variables. The following extract illustrates the basic usage of the function:^[If you are reading this after having already completed Chapter \@ref(hypothesistesting) you might be wondering about hypothesis tests for correlations. R has a function called `cor.test()` that runs a hypothesis test for a single correlation: hypothesis tests for correlations are discussed in more detail in Section \@ref(corrhyp).]
+
+```{r}
+cor(southern_slam$home_score, southern_slam$visitor_score)
+```
+
+
+### Interpreting a correlation {#interpretingcorrelations}
+ 
+Naturally, in real life you don't see many correlations of 1. So how should you interpret a correlation of, say $r= .4$? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A  friend of mine in engineering once argued that any correlation less than $.95$ is completely useless (I think he was exaggerating, even for engineering). On the other hand there are real cases -- even in psychology -- where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can't achieve a correlation of at least $.9$ really isn't deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above $.3$ you're doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in Table \@ref(tab:interpretingcorrelations) is pretty typical.
+
+```{r interpretingcorrelations, echo=FALSE}
+knitr::kable(
+rbind(
+c("-1.0 to -0.9" ,"Very strong", "Negative"),
+c("-0.9 to -0.7", "Strong", "Negative") ,
+c("-0.7 to -0.4", "Moderate", "Negative") ,
+c("-0.4 to -0.2", "Weak", "Negative"),
+c("-0.2 to 0","Negligible", "Negative") ,
+c("0 to 0.2","Negligible", "Positive"),
+c("0.2 to 0.4", "Weak", "Positive"), 
+c("0.4 to 0.7", "Moderate", "Positive"), 
+c("0.7 to 0.9", "Strong", "Positive"), 
+c("0.9 to 1.0", "Very strong", "Positive")), col.names=c("Correlation", "Strength", "Direction"),
+  booktabs = TRUE, caption = "Rough guide to interpreting correlations")
+```
+
+However, something that can never be stressed enough is that you should *always* look at the scatterplot before attaching any interpretation to the data. A correlation might not mean what you think it means. The classic illustration of this is "Anscombe's Quartet" [@Anscombe1973], which is a collection of four data sets. Each data set has two variables, an $X$ and a $Y$. For all four data sets the mean value for $X$ is 9 and the mean for $Y$ is 7.5. The, standard deviations for all $X$ variables are almost identical, as are those for the the $Y$ variables. And in each case the correlation between $X$ and $Y$ is $r = 0.816$. You can verify this yourself, since the dataset comes distributed with R. The commands would be:
+
+```{r}
+#| results: hold
+cor(anscombe$x1, anscombe$y1)
+cor(anscombe$x2, anscombe$y2)
+cor(anscombe$x3, anscombe$y3)
+cor(anscombe$x4, anscombe$y4)
+```
+
+You'd think that these four data sets would look pretty similar to one another. They do not. If we draw scatterplots of $X$ against $Y$ for all four variables, as shown in Figure \@ref(fig:anscombe) we see that all four of these are *spectacularly* different to each other. 
+
+```{r}
+#| label: anscombe
+#| echo: false
+#| fig-height: 8
+op <- par(mfcol = c(2, 2)) # Create a 2 x 2 plotting matrix
+plot(anscombe$x1, anscombe$y1)
+plot(anscombe$x2, anscombe$y2)
+plot(anscombe$x3, anscombe$y3)
+plot(anscombe$x4, anscombe$y4)
+par(op)
+```
+
+The lesson here, which so very many people seem to forget in real life is "*always graph your raw data*". This will be the focus of Chapter \@ref(graphics).
+
+
+
+### Spearman's rank correlations
+
+The Pearson correlation coefficient is useful for a lot of things, but it does have shortcomings. One issue in particular stands out: what it actually measures is the strength of the *linear* relationship between two variables. In other words, what it gives you is a measure of the extent to which the data all tend to fall on a single, perfectly straight line. Often, this is a pretty good approximation to what we mean when we say "relationship", and so the Pearson correlation is a good thing to calculation. Sometimes, it isn't. 
+
+One very common situation where the Pearson correlation isn't quite the right thing to use arises when an increase in one variable $X$ really is reflected in an increase in another variable $Y$, but the nature of the relationship isn't necessarily linear. An example of this might be [INSERT DESCRIPTION]...
+
+If I've got data where the relationship isn't linear, there's a pretty good chance that Pearson correlations will be misleading. 
+
+
+To illustrate, consider the data plotted in [PICTURE]... What we're looking for is something that describes the strength of the **ordinal relationship** here.
+
+How should we address this? Actually, it's really easy: if we're looking for ordinal relationships, all we have to do is treat the data as if it were ordinal scale! So, instead of using the raw values, we rank the raw values and then compute the correlation between the ranks. 
+
+[SHOW TABLES OF RANKS]
+
+[CALL `cor()` ON RANKED DATA]
+
+What we've just re-invented is **Spearman's rank order correlation**, usually denoted $\rho$ to distinguish it from the Pearson correlation $r$. We can calculate Spearman's $\rho$ using R in two different ways. Firstly we could do it the way I just showed, using the `rank()` function to construct the rankings, and then calculate the Pearson correlation on these ranks. However, that's way too much effort to do every time. It's much easier to just specify the `method` argument of the `cor()` function. 
+
+[SHOW COR WITH METHOD ARGUMENT]
+
+The default value of the `method` argument is `"pearson"`, which is why we didn't have to specify it earlier on when we were doing Pearson correlations. 
+
+
+## Summary
+
+Calculating some basic descriptive statistics is one of the very first things you do when analysing real data, and descriptive statistics are much simpler to understand than inferential statistics, so like every other statistics textbook I've started with descriptives. In this chapter, we talked about the following topics:
+
+- *Measures of central tendency*. Broadly speaking, central tendency measures tell you where the data are. There's three measures that are typically reported in the literature: the mean, median and mode. (Section \@ref(centraltendency))
+- *Measures of variability*. In contrast, measures of variability tell you about how "spread out" the data are. The key measures are: range, standard deviation, interquartile reange (Section \@ref(var))
+- *Getting summaries of variables in R*. Since this book focuses on doing data analysis in R, we spent a bit of time talking about how descriptive statistics are computed in R. (Section \@ref(summary) and \@ref(groupdescriptives))
+- *Standard scores*. The $z$-score is a slightly unusual beast. It's not quite a descriptive statistic, and not quite an inference. We talked about it in Section \@ref(zscore). Make sure you understand that section: it'll come up again later. 
+- *Correlations*. Want to know how strong the relationship is between two variables? Calculate a correlation. (Section \@ref(correl))
+- *Missing data*. Dealing with missing data is one of those frustrating things that data analysts really wish the didn't have to think about. In real life it can be hard to do well. For the purpose of this book, we only touched on the basics in Section \@ref(missing)
+
+In the next section we'll move on to a discussion of how to draw pictures! Everyone loves a pretty picture, right? But before we do, I want to end on an important point. A traditional first course in statistics spends only a small proportion of the class on descriptive statistics, maybe one or two lectures at most. The vast majority of the lecturer's time is spent on inferential statistics, because that's where all the hard stuff is. That makes sense, but it hides the practical everyday importance of choosing good descriptives. With that in mind...
+
+## Epilogue: Good descriptive statistics are descriptive!
+
+>*The death of one man is a tragedy.
+>The death of millions is a statistic.*
+>
+>-- Josef Stalin, Potsdam 1945
+
+>*950,000 -- 1,200,000*
+>
+>-- Estimate of Soviet repression deaths, 
+> 1937-1938 [@Ellman2002]
+
+Stalin's infamous quote about the statistical character death of millions is worth giving some thought. The clear intent of his statement is that the death of an individual touches us personally and its force cannot be denied, but that the deaths of a multitude are incomprehensible, and as a consequence mere statistics, more easily ignored. I'd argue that Stalin was half right. A statistic is an abstraction, a description of events beyond our personal experience, and so hard to visualise. Few if any of us can imagine what the deaths of millions is "really" like, but we can imagine one death, and this gives the lone death its feeling of immediate tragedy, a feeling that is missing from Ellman's cold statistical description.
+
+Yet it is not so simple: without numbers, without counts, without a description of what happened, we have *no chance* of understanding what really happened, no opportunity event to try to summon the missing feeling. And in truth, as I write this, sitting in comfort on a Saturday morning, half a world and a whole lifetime away from the Gulags, when I put the Ellman estimate next to the Stalin quote a dull dread settles in my stomach and a chill settles over me. The Stalinist repression is something truly beyond my experience, but with a combination of statistical data and those recorded personal histories that have come down to us, it is not entirely beyond my comprehension. Because what Ellman's numbers tell us is this: over a two year period, Stalinist repression wiped out the equivalent of every man, woman and child currently alive in the city where I live. Each one of those deaths had it's own story, was it's own tragedy, and only some of those are known to us now. Even so, with a few carefully chosen statistics, the scale of the atrocity starts to come into focus.  
+
+Thus it is no small thing to say that the first task of the statistician and the scientist is to summarise the data, to find some collection of numbers that can convey to an audience a sense of what has happened. This is the job of descriptive statistics, but it's not a job that can be told solely using the numbers. You are a data analyst, not a statistical software package. Part of your job is to take these *statistics* and turn them into a *description*. When you analyse data, it is not sufficient to list off a collection of numbers. Always remember that what you're really trying to do is communicate with a human audience. The numbers are important, but they need to be put together into a meaningful story that your audience can interpret. That means you need to think about framing. You need to think about context. And you need to think about the individual events that your statistics are summarising. 

@@ -8,7 +8,7 @@ source(here::here("build", "common.R"))
 status("drafting")
 ```
 
-## Storing a number as a variable {#sec-assign}
+## Storing a number {#sec-assign}
 
 One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in **variables**. Variables in R aren't exactly the same thing as the variables we talked about in the last chapter on research methods, but they are similar. At a conceptual level you can think of a variable as "label" for a certain piece of information, or even several different pieces of information. When doing statistical analysis in R all of your data (the variables you measured in your study) will be stored as variables in R, but as well see later in the book you'll find that you end up creating variables for other things too. However, before we delve into all the messy details of data sets and statistical analysis, let's look at the very basics for how we create variables and work with them. 
 
@@ -97,7 +97,7 @@ In addition to those rules that R enforces, there are some informal conventions 
 - Use one of the conventional naming styles for multi-word variable names. Suppose I want to name a variable that stores "my new salary". Obviously I can't include spaces in the variable name, so how should I do this? There are three different conventions that you sometimes see R users employing. Firstly, you can separate the words using underscores, which would give you `my_new_salary` as the variable name. Alternatively, you could use capital letters at the beginning of each word (except the first one), which gives you `myNewSalary` as the variable name. I don't think there's any strong reason to prefer one over the other,^[For advanced users: there is one exception to this. If you're naming a function, don't use `.` in the name unless you are intending to use the S3 object oriented programming system. If you don't know what S3 is, then you definitely don't want to be using it!] but it's important to be consistent.
 
 
-## Storing many numbers as a vector {#sec-vectors}
+## Storing many numbers {#sec-vectors}
 
 At this point we've covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see @sec-generics, so let's return to our discussion of variables. When I introduced variables in @sec-assign I showed you how we can use variables to store a single number. In this section, we'll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a **vector**. So let's create one. 
 
@@ -186,7 +186,7 @@ profit / days_per_month
 
 I still don't like all those zeros, but that's not what matters here. Notice that the second element of the output is 25, because R has divided the second element of `profit` (i.e. 700) by the second element of `days_per_month` (i.e. 28). Similarly, the third element of the output is equal to 1400 divided by 31, and so on. We'll talk more about calculations involving vectors later on, but that's enough detail for now.
 
-## Storing text data {#sec-text}
+## Storing text {#sec-text}
 
 A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To address this, we need to consider the situation where our variables store text. To create a variable that stores the word "hello", we can type this:
 
@@ -234,7 +234,7 @@ nchar(months)
 
 So that's nice to know. The `nchar()` function can do a bit more than this, and there's a lot of other functions that you can do to extract more information from text or do all sorts of fancy things. However, the goal here is not to teach any of that! The goal right now is just to see an example of a function that actually does work when applied to text. 
 
-## Logical values as data {#sec-logicals}
+## Logical values {#sec-logicals}
 
 Up to this point, I've introduced *numeric data* (@sec-assign and @sec-vectors) and *character data* (@sec-text). So you might not be surprised to discover that these `TRUE` and `FALSE` values that R has been producing are actually a third kind of data, called *logical data*. That is, when I asked R if `2 + 2 == 5` and it said `[1] FALSE` in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called `is_the_party_correct`, which would store R's opinion:
 
@@ -390,13 +390,11 @@ Either way, I get the answer I want.
 At this point, I hope you can see why logical indexing is such a useful thing. It's a very basic, yet very powerful way to manipulate data. We'll talk a lot more about how to manipulate data in @datahandling, since it's a critical skill for real world research that is often overlooked in introductory research methods classes (or at least, that's been my experience). It does take a bit of practice to become completely comfortable using logical indexing, so it's a good idea to play around with these sorts of commands. Try creating a few different variables of your own, and then ask yourself questions like "how do I get R to spit out all the elements that are [blah]". Practice makes perfect, and it's only by practicing logical indexing that you'll perfect the art of yelling frustrated insults at your computer.^[Well, I say that... but in my personal experience it wasn't until I started learning "regular expressions" that my loathing of computers reached its peak.]
 
 
-## Useful things to know about variables{#useful}
+## More about variables {#useful}
 
 In Chapter \@ref(introR) I talked a lot about variables, how they're assigned and some of the things you can do with them, but there's a lot of additional complexities. That's not a surprise of course. However, some of those issues are worth drawing your attention to now. So that's the goal of this section; to cover a few extra topics. As a consequence, this section is basically a bunch of things that I want to briefly mention, but don't really fit in anywhere else. In short, I'll talk about several different issues in this section, which are only loosely connected to one another.
 
-
-
-### Special values{#specials}
+### Special values {#specials}
 
 The first thing I want to mention are some of the "special" values that you might see R produce. Most likely you'll see them in situations where you were expecting a number, but there are quite a few other ways you can encounter them. These values are `Inf`, `NaN`, `NA` and `NULL`. These values can crop up in various different places, and so it's important to understand what they mean. 
 
@@ -421,7 +419,7 @@ Nevertheless, it's still treated as a "numeric" value. To oversimplify, `NaN` co
 The `NULL` value takes this "absence" concept even further. It basically asserts that the variable genuinely has no value whatsoever. This is quite different to both `NaN` and `NA`. For `NaN` we actually know what the value is, because it's something insane like $0/0$. For `NA`, we believe that there is supposed to be a value "out there", but a dog ate our homework and so we don't quite know what it is. But for `NULL` we strongly believe that there is *no value at all*.  
 
 
-### Assigning names to vector elements{#names}
+### Names {#names}
 
 One thing that is sometimes a little unsatisfying about the way that R prints out a vector is that the elements come out unlabelled. Here's what I mean. Suppose I've got data reporting the quarterly profits for some company. If I just create a no-frills vector, I have to rely on memory to know which element corresponds to which event. That is:
 ```{r}
@@ -445,7 +443,7 @@ profit["Q1"]
 ```
 And if I ever need to pull out the names themselves, then I just type `names(profit)`. 
 
-### Variable classes
+### Class
 
 As we've seen, R allows you to store different kinds of data. In particular, the variables we've defined so far have either been character data (text), numeric data, or logical data.^[Or functions. But let's ignore functions for the moment.] It's important that we remember what kind of information each variable stores (and even more important that R remembers) since different kinds of variables allow you to do different things to them. For instance, if your variables have numerical information in them, then it's okay to multiply them together:
 ```{r}
@@ -492,7 +490,7 @@ Exciting, no?
 
 
 
-## Managing the workspace{#workspace}
+## The workspace {#workspace}
 
 Let's suppose that you're reading through this book, and what you're doing is sitting down with it once a week and working through a whole chapter in each sitting. Not only that, you've been following my advice and typing in all these commands into R. So far during this chapter, you'd have typed quite a few commands, although the only ones that actually involved creating variables were the ones you typed during Section \@ref(comments). As a result, you currently have three variables; `seeker`, `lover`, and `keeper`. These three variables are the contents of your **_workspace_**, also referred to as the **global environment**. The workspace is a key concept in R, so in this section we'll talk a lot about what it is and how to manage its contents.
 

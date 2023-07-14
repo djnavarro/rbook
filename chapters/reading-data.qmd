@@ -1,4 +1,4 @@
-# Loading and saving data {#load}
+# Reading and writing data {#load}
 
 ```{r}
 #| echo: false
