@@ -19,7 +19,7 @@ book:
     - chapters/preface.qmd
     - chapters/introduction.qmd
     
-    - part: Getting started
+    - part: Getting started with R
       chapters:
         - chapters/installation.qmd
         - chapters/commands.qmd
@@ -27,31 +27,33 @@ book:
         - chapters/variables.qmd
         - chapters/file-system.qmd
         - chapters/packages.qmd
+        - chapters/scripts.qmd
         
     - part: Working with data 
       chapters:
         - chapters/data-objects.qmd
         - chapters/reading-data.qmd
-        - chapters/descriptive-statistics.qmd
         #- chapters/data-visualisation.qmd
         #- chapters/data-wrangling.qmd
         #- chapters/basic-programming.qmd
-        
-    # - part: Statistical theory
-    #   chapters:
-    #     - chapters/prelude-to-inference.qmd
+
+    - part: Statistical ideas and tools
+      chapters:
+        - chapters/descriptive-statistics.qmd
+    #    - chapters/prelude-to-inference.qmd
     #     - chapters/probability.qmd
     #     - chapters/estimation.qmd
     #     - chapters/hypothesis-testing.qmd
+    #     - chapters/categorical-data-analysis.qmd
+    #     - chapters/comparing-two-group-means.qmd
+    #     - chapters/one-way-anova.qmd
+    #     - chapters/linear-regression.qmd
+    #     - chapters/factorial-anova.qmd
     
-    # - part: Statistical tools
-    #   chapters:
-    #       - chapters/categorical-data-analysis.qmd
-    #       - chapters/comparing-two-group-means.qmd
-    #       - chapters/one-way-anova.qmd
-    #       - chapters/linear-regression.qmd
-    #       - chapters/factorial-anova.qmd
-        
+    #- part: Programs and projects
+    #  chapters:
+    #    - chapters/basic-programming.qmd
+
     - chapters/references.qmd
 
 bibliography: build/references.bib
