@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/installation.html">Getting started</a></li><li class="breadcrumb-item"><a href="../chapters/variables.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/installation.html">Getting started with R</a></li><li class="breadcrumb-item"><a href="../chapters/variables.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Variables</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Getting started</span></a>
+ <span class="menu-text">Getting started with R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -209,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R scripts</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -223,19 +229,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/data-objects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How does R store data?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reading-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading and writing data</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Statistical ideas and tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/descriptive-statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -256,13 +273,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-assign" id="toc-sec-assign" class="nav-link active" data-scroll-target="#sec-assign"><span class="header-section-number">5.1</span> Storing a number as a variable</a>
+  <li><a href="#sec-assign" id="toc-sec-assign" class="nav-link active" data-scroll-target="#sec-assign"><span class="header-section-number">5.1</span> Storing a number</a>
   <ul class="collapse">
   <li><a href="#variable-assignment-using---and--" id="toc-variable-assignment-using---and--" class="nav-link" data-scroll-target="#variable-assignment-using---and--"><span class="header-section-number">5.1.1</span> Variable assignment using <code>&lt;-</code> and <code>-&gt;</code></a></li>
   <li><a href="#doing-calculations-using-variables" id="toc-doing-calculations-using-variables" class="nav-link" data-scroll-target="#doing-calculations-using-variables"><span class="header-section-number">5.1.2</span> Doing calculations using variables</a></li>
   <li><a href="#rules-and-conventions-for-naming-variables" id="toc-rules-and-conventions-for-naming-variables" class="nav-link" data-scroll-target="#rules-and-conventions-for-naming-variables"><span class="header-section-number">5.1.3</span> Rules and conventions for naming variables</a></li>
   </ul></li>
-  <li><a href="#sec-vectors" id="toc-sec-vectors" class="nav-link" data-scroll-target="#sec-vectors"><span class="header-section-number">5.2</span> Storing many numbers as a vector</a>
+  <li><a href="#sec-vectors" id="toc-sec-vectors" class="nav-link" data-scroll-target="#sec-vectors"><span class="header-section-number">5.2</span> Storing many numbers</a>
   <ul class="collapse">
   <li><a href="#creating-a-vector" id="toc-creating-a-vector" class="nav-link" data-scroll-target="#creating-a-vector"><span class="header-section-number">5.2.1</span> Creating a vector</a></li>
   <li><a href="#a-handy-digression" id="toc-a-handy-digression" class="nav-link" data-scroll-target="#a-handy-digression"><span class="header-section-number">5.2.2</span> A handy digression</a></li>
@@ -270,11 +287,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#altering-the-elements-of-a-vector" id="toc-altering-the-elements-of-a-vector" class="nav-link" data-scroll-target="#altering-the-elements-of-a-vector"><span class="header-section-number">5.2.4</span> Altering the elements of a vector</a></li>
   <li><a href="#sec-veclength" id="toc-sec-veclength" class="nav-link" data-scroll-target="#sec-veclength"><span class="header-section-number">5.2.5</span> Useful things to know about vectors</a></li>
   </ul></li>
-  <li><a href="#sec-text" id="toc-sec-text" class="nav-link" data-scroll-target="#sec-text"><span class="header-section-number">5.3</span> Storing text data</a>
+  <li><a href="#sec-text" id="toc-sec-text" class="nav-link" data-scroll-target="#sec-text"><span class="header-section-number">5.3</span> Storing text</a>
   <ul class="collapse">
   <li><a href="#sec-simpletext" id="toc-sec-simpletext" class="nav-link" data-scroll-target="#sec-simpletext"><span class="header-section-number">5.3.1</span> Working with text</a></li>
   </ul></li>
-  <li><a href="#sec-logicals" id="toc-sec-logicals" class="nav-link" data-scroll-target="#sec-logicals"><span class="header-section-number">5.4</span> Logical values as data</a>
+  <li><a href="#sec-logicals" id="toc-sec-logicals" class="nav-link" data-scroll-target="#sec-logicals"><span class="header-section-number">5.4</span> Logical values</a>
   <ul class="collapse">
   <li><a href="#vectors-of-logicals" id="toc-vectors-of-logicals" class="nav-link" data-scroll-target="#vectors-of-logicals"><span class="header-section-number">5.4.1</span> Vectors of logicals</a></li>
   <li><a href="#sec-logictext" id="toc-sec-logictext" class="nav-link" data-scroll-target="#sec-logictext"><span class="header-section-number">5.4.2</span> Applying logical operation to text</a></li>
@@ -284,13 +301,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#extracting-multiple-elements" id="toc-extracting-multiple-elements" class="nav-link" data-scroll-target="#extracting-multiple-elements"><span class="header-section-number">5.5.1</span> Extracting multiple elements</a></li>
   <li><a href="#logical-indexing" id="toc-logical-indexing" class="nav-link" data-scroll-target="#logical-indexing"><span class="header-section-number">5.5.2</span> Logical indexing</a></li>
   </ul></li>
-  <li><a href="#useful" id="toc-useful" class="nav-link" data-scroll-target="#useful"><span class="header-section-number">5.6</span> Useful things to know about variables</a>
+  <li><a href="#useful" id="toc-useful" class="nav-link" data-scroll-target="#useful"><span class="header-section-number">5.6</span> More about variables</a>
   <ul class="collapse">
   <li><a href="#specials" id="toc-specials" class="nav-link" data-scroll-target="#specials"><span class="header-section-number">5.6.1</span> Special values</a></li>
-  <li><a href="#names" id="toc-names" class="nav-link" data-scroll-target="#names"><span class="header-section-number">5.6.2</span> Assigning names to vector elements</a></li>
-  <li><a href="#variable-classes" id="toc-variable-classes" class="nav-link" data-scroll-target="#variable-classes"><span class="header-section-number">5.6.3</span> Variable classes</a></li>
+  <li><a href="#names" id="toc-names" class="nav-link" data-scroll-target="#names"><span class="header-section-number">5.6.2</span> Names</a></li>
+  <li><a href="#class" id="toc-class" class="nav-link" data-scroll-target="#class"><span class="header-section-number">5.6.3</span> Class</a></li>
   </ul></li>
-  <li><a href="#workspace" id="toc-workspace" class="nav-link" data-scroll-target="#workspace"><span class="header-section-number">5.7</span> Managing the workspace</a>
+  <li><a href="#workspace" id="toc-workspace" class="nav-link" data-scroll-target="#workspace"><span class="header-section-number">5.7</span> The workspace</a>
   <ul class="collapse">
   <li><a href="#listing-variables" id="toc-listing-variables" class="nav-link" data-scroll-target="#listing-variables"><span class="header-section-number">5.7.1</span> Listing variables</a></li>
   <li><a href="#removing-variables" id="toc-removing-variables" class="nav-link" data-scroll-target="#removing-variables"><span class="header-section-number">5.7.2</span> Removing variables</a></li>
@@ -333,7 +350,7 @@ Important
 </div>
 </div>
 <section id="sec-assign" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="sec-assign"><span class="header-section-number">5.1</span> Storing a number as a variable</h2>
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-assign"><span class="header-section-number">5.1</span> Storing a number</h2>
 <p>One of the most important things to be able to do in R (or any programming language, for that matter) is to store information in <strong>variables</strong>. Variables in R aren’t exactly the same thing as the variables we talked about in the last chapter on research methods, but they are similar. At a conceptual level you can think of a variable as “label” for a certain piece of information, or even several different pieces of information. When doing statistical analysis in R all of your data (the variables you measured in your study) will be stored as variables in R, but as well see later in the book you’ll find that you end up creating variables for other things too. However, before we delve into all the messy details of data sets and statistical analysis, let’s look at the very basics for how we create variables and work with them.</p>
 <section id="variable-assignment-using---and--" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="variable-assignment-using---and--"><span class="header-section-number">5.1.1</span> Variable assignment using <code>&lt;-</code> and <code>-&gt;</code></h3>
@@ -416,7 +433,7 @@ Important
 </section>
 </section>
 <section id="sec-vectors" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="sec-vectors"><span class="header-section-number">5.2</span> Storing many numbers as a vector</h2>
+<h2 data-number="5.2" class="anchored" data-anchor-id="sec-vectors"><span class="header-section-number">5.2</span> Storing many numbers</h2>
 <p>At this point we’ve covered functions in enough detail to get us safely through the next couple of chapters (with one small exception: see <span class="quarto-unresolved-ref">?sec-generics</span>, so let’s return to our discussion of variables. When I introduced variables in <a href="#sec-assign"><span>Section&nbsp;5.1</span></a> I showed you how we can use variables to store a single number. In this section, we’ll extend this idea and look at how to store multiple numbers within the one variable. In R, the name for a variable that can store multiple values is a <strong>vector</strong>. So let’s create one.</p>
 <section id="creating-a-vector" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="creating-a-vector"><span class="header-section-number">5.2.1</span> Creating a vector</h3>
@@ -508,7 +525,7 @@ Important
 </section>
 </section>
 <section id="sec-text" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="sec-text"><span class="header-section-number">5.3</span> Storing text data</h2>
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-text"><span class="header-section-number">5.3</span> Storing text</h2>
 <p>A lot of the time your data will be numeric in nature, but not always. Sometimes your data really needs to be described using text, not using numbers. To address this, we need to consider the situation where our variables store text. To create a variable that stores the word “hello”, we can type this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>greeting <span class="ot">&lt;-</span> <span class="st">"hello"</span></span>
@@ -559,7 +576,7 @@ Important
 </section>
 </section>
 <section id="sec-logicals" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="sec-logicals"><span class="header-section-number">5.4</span> Logical values as data</h2>
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-logicals"><span class="header-section-number">5.4</span> Logical values</h2>
 <p>Up to this point, I’ve introduced <em>numeric data</em> (<a href="#sec-assign"><span>Section&nbsp;5.1</span></a> and <a href="#sec-vectors"><span>Section&nbsp;5.2</span></a>) and <em>character data</em> (<a href="#sec-text"><span>Section&nbsp;5.3</span></a>). So you might not be surprised to discover that these <code>TRUE</code> and <code>FALSE</code> values that R has been producing are actually a third kind of data, called <em>logical data</em>. That is, when I asked R if <code>2 + 2 == 5</code> and it said <code>[1] FALSE</code> in reply, it was actually producing information that we can store in variables. For instance, I could create a variable called <code>is_the_party_correct</code>, which would store R’s opinion:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>is_the_party_correct <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">5</span></span>
@@ -737,7 +754,7 @@ Important
 </section>
 </section>
 <section id="useful" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="useful"><span class="header-section-number">5.6</span> Useful things to know about variables</h2>
+<h2 data-number="5.6" class="anchored" data-anchor-id="useful"><span class="header-section-number">5.6</span> More about variables</h2>
 <p>In Chapter @ref(introR) I talked a lot about variables, how they’re assigned and some of the things you can do with them, but there’s a lot of additional complexities. That’s not a surprise of course. However, some of those issues are worth drawing your attention to now. So that’s the goal of this section; to cover a few extra topics. As a consequence, this section is basically a bunch of things that I want to briefly mention, but don’t really fit in anywhere else. In short, I’ll talk about several different issues in this section, which are only loosely connected to one another.</p>
 <section id="specials" class="level3" data-number="5.6.1">
 <h3 data-number="5.6.1" class="anchored" data-anchor-id="specials"><span class="header-section-number">5.6.1</span> Special values</h3>
@@ -768,7 +785,7 @@ Important
 </ul>
 </section>
 <section id="names" class="level3" data-number="5.6.2">
-<h3 data-number="5.6.2" class="anchored" data-anchor-id="names"><span class="header-section-number">5.6.2</span> Assigning names to vector elements</h3>
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="names"><span class="header-section-number">5.6.2</span> Names</h3>
 <p>One thing that is sometimes a little unsatisfying about the way that R prints out a vector is that the elements come out unlabelled. Here’s what I mean. Suppose I’ve got data reporting the quarterly profits for some company. If I just create a no-frills vector, I have to rely on memory to know which element corresponds to which event. That is:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>profit <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="fl">3.1</span>, <span class="fl">0.1</span>, <span class="sc">-</span><span class="fl">1.4</span>, <span class="fl">1.1</span> )</span>
@@ -805,8 +822,8 @@ Important
 </div>
 <p>And if I ever need to pull out the names themselves, then I just type <code>names(profit)</code>.</p>
 </section>
-<section id="variable-classes" class="level3" data-number="5.6.3">
-<h3 data-number="5.6.3" class="anchored" data-anchor-id="variable-classes"><span class="header-section-number">5.6.3</span> Variable classes</h3>
+<section id="class" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="class"><span class="header-section-number">5.6.3</span> Class</h3>
 <p>As we’ve seen, R allows you to store different kinds of data. In particular, the variables we’ve defined so far have either been character data (text), numeric data, or logical data.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> It’s important that we remember what kind of information each variable stores (and even more important that R remembers) since different kinds of variables allow you to do different things to them. For instance, if your variables have numerical information in them, then it’s okay to multiply them together:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span>   <span class="co"># x is numeric</span></span>
@@ -863,7 +880,7 @@ Important
 </section>
 </section>
 <section id="workspace" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="workspace"><span class="header-section-number">5.7</span> Managing the workspace</h2>
+<h2 data-number="5.7" class="anchored" data-anchor-id="workspace"><span class="header-section-number">5.7</span> The workspace</h2>
 <p>Let’s suppose that you’re reading through this book, and what you’re doing is sitting down with it once a week and working through a whole chapter in each sitting. Not only that, you’ve been following my advice and typing in all these commands into R. So far during this chapter, you’d have typed quite a few commands, although the only ones that actually involved creating variables were the ones you typed during Section @ref(comments). As a result, you currently have three variables; <code>seeker</code>, <code>lover</code>, and <code>keeper</code>. These three variables are the contents of your <strong><em>workspace</em></strong>, also referred to as the <strong>global environment</strong>. The workspace is a key concept in R, so in this section we’ll talk a lot about what it is and how to manage its contents.</p>
 <section id="listing-variables" class="level3" data-number="5.7.1">
 <h3 data-number="5.7.1" class="anchored" data-anchor-id="listing-variables"><span class="header-section-number">5.7.1</span> Listing variables</h3>

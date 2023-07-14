@@ -8,7 +8,7 @@
 
 <meta name="author" content="Danielle Navarro">
 
-<title>Learning Statistics with R - 10&nbsp; Descriptive statistics</title>
+<title>Learning Statistics with R - 11&nbsp; Descriptive statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,7 +55,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -118,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/data-objects.html">Working with data</a></li><li class="breadcrumb-item"><a href="../chapters/descriptive-statistics.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/descriptive-statistics.html">Statistical ideas and tools</a></li><li class="breadcrumb-item"><a href="../chapters/descriptive-statistics.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -167,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Getting started</span></a>
+ <span class="menu-text">Getting started with R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -209,6 +228,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">R packages</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R scripts</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -223,19 +248,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/data-objects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Representing data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">How does R store data?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/reading-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading and writing data</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Statistical ideas and tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/descriptive-statistics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -256,15 +292,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#centraltendency" id="toc-centraltendency" class="nav-link active" data-scroll-target="#centraltendency"><span class="header-section-number">10.1</span> Measures of central tendency</a>
+  <li><a href="#centraltendency" id="toc-centraltendency" class="nav-link active" data-scroll-target="#centraltendency"><span class="header-section-number">11.1</span> Measures of central tendency</a>
   <ul class="collapse">
-  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"><span class="header-section-number">10.1.1</span> The mean</a></li>
-  <li><a href="#calculating-the-mean-in-r" id="toc-calculating-the-mean-in-r" class="nav-link" data-scroll-target="#calculating-the-mean-in-r"><span class="header-section-number">10.1.2</span> Calculating the mean in R</a></li>
-  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"><span class="header-section-number">10.1.3</span> The median</a></li>
-  <li><a href="#mean-or-median-whats-the-difference" id="toc-mean-or-median-whats-the-difference" class="nav-link" data-scroll-target="#mean-or-median-whats-the-difference"><span class="header-section-number">10.1.4</span> Mean or median? What’s the difference?</a></li>
-  <li><a href="#trimmedmean" id="toc-trimmedmean" class="nav-link" data-scroll-target="#trimmedmean"><span class="header-section-number">10.1.5</span> Trimmed mean</a></li>
-  <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode"><span class="header-section-number">10.1.6</span> Mode</a></li>
+  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean"><span class="header-section-number">11.1.1</span> The mean</a></li>
+  <li><a href="#calculating-the-mean-in-r" id="toc-calculating-the-mean-in-r" class="nav-link" data-scroll-target="#calculating-the-mean-in-r"><span class="header-section-number">11.1.2</span> Calculating the mean in R</a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"><span class="header-section-number">11.1.3</span> The median</a></li>
+  <li><a href="#mean-or-median-whats-the-difference" id="toc-mean-or-median-whats-the-difference" class="nav-link" data-scroll-target="#mean-or-median-whats-the-difference"><span class="header-section-number">11.1.4</span> Mean or median? What’s the difference?</a></li>
+  <li><a href="#trimmedmean" id="toc-trimmedmean" class="nav-link" data-scroll-target="#trimmedmean"><span class="header-section-number">11.1.5</span> Trimmed mean</a></li>
+  <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode"><span class="header-section-number">11.1.6</span> Mode</a></li>
   </ul></li>
+  <li><a href="#var" id="toc-var" class="nav-link" data-scroll-target="#var"><span class="header-section-number">11.2</span> Measures of variability</a>
+  <ul class="collapse">
+  <li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range"><span class="header-section-number">11.2.1</span> Range</a></li>
+  <li><a href="#interquartile-range" id="toc-interquartile-range" class="nav-link" data-scroll-target="#interquartile-range"><span class="header-section-number">11.2.2</span> Interquartile range</a></li>
+  <li><a href="#aad" id="toc-aad" class="nav-link" data-scroll-target="#aad"><span class="header-section-number">11.2.3</span> Typical deviations from a typical value</a></li>
+  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance"><span class="header-section-number">11.2.4</span> Variance</a></li>
+  <li><a href="#sd" id="toc-sd" class="nav-link" data-scroll-target="#sd"><span class="header-section-number">11.2.5</span> Standard deviation</a></li>
+  <li><a href="#which-measure-to-use" id="toc-which-measure-to-use" class="nav-link" data-scroll-target="#which-measure-to-use"><span class="header-section-number">11.2.6</span> Which measure to use?</a></li>
+  </ul></li>
+  <li><a href="#skewness" id="toc-skewness" class="nav-link" data-scroll-target="#skewness"><span class="header-section-number">11.3</span> Skewness</a></li>
+  <li><a href="#skim" id="toc-skim" class="nav-link" data-scroll-target="#skim"><span class="header-section-number">11.4</span> Skimming a data set</a>
+  <ul class="collapse">
+  <li><a href="#basic-use" id="toc-basic-use" class="nav-link" data-scroll-target="#basic-use"><span class="header-section-number">11.4.1</span> Basic use</a></li>
+  <li><a href="#computing-statistics-by-group" id="toc-computing-statistics-by-group" class="nav-link" data-scroll-target="#computing-statistics-by-group"><span class="header-section-number">11.4.2</span> Computing statistics by group</a></li>
+  </ul></li>
+  <li><a href="#correl" id="toc-correl" class="nav-link" data-scroll-target="#correl"><span class="header-section-number">11.5</span> Correlations</a>
+  <ul class="collapse">
+  <li><a href="#the-correlation-coefficient" id="toc-the-correlation-coefficient" class="nav-link" data-scroll-target="#the-correlation-coefficient"><span class="header-section-number">11.5.1</span> The correlation coefficient</a></li>
+  <li><a href="#calculating-correlations-in-r" id="toc-calculating-correlations-in-r" class="nav-link" data-scroll-target="#calculating-correlations-in-r"><span class="header-section-number">11.5.2</span> Calculating correlations in R</a></li>
+  <li><a href="#interpretingcorrelations" id="toc-interpretingcorrelations" class="nav-link" data-scroll-target="#interpretingcorrelations"><span class="header-section-number">11.5.3</span> Interpreting a correlation</a></li>
+  <li><a href="#spearmans-rank-correlations" id="toc-spearmans-rank-correlations" class="nav-link" data-scroll-target="#spearmans-rank-correlations"><span class="header-section-number">11.5.4</span> Spearman’s rank correlations</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">11.6</span> Summary</a></li>
+  <li><a href="#epilogue-good-descriptive-statistics-are-descriptive" id="toc-epilogue-good-descriptive-statistics-are-descriptive" class="nav-link" data-scroll-target="#epilogue-good-descriptive-statistics-are-descriptive"><span class="header-section-number">11.7</span> Epilogue: Good descriptive statistics are descriptive!</a></li>
   </ul>
 </nav>
     </div>
@@ -273,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="descriptives" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></h1>
+<h1 class="title"><span id="descriptives" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></h1>
 </div>
 
 
@@ -344,11 +404,11 @@ Important
 <p><img src="descriptive-statistics_files/figure-html/southern_slam_margins-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<section id="centraltendency" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="centraltendency"><span class="header-section-number">10.1</span> Measures of central tendency</h2>
+<section id="centraltendency" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="centraltendency"><span class="header-section-number">11.1</span> Measures of central tendency</h2>
 <p>Drawing pictures of the data is an excellent way to convey the “gist” of what the data is trying to tell you. Another approach that can be helpful is to condense the data into a few simple “summary” statistics. In most situations, the first thing that you’ll want to calculate is a measure of <strong>central tendency</strong>. That is, you’d like to know something about the “average” or “middle” of your data lies. The two most commonly used measures are the mean, median and mode; occasionally people will also report a trimmed mean. I’ll explain each of these in turn, and then discuss when each of them is useful.</p>
-<section id="mean" class="level3" data-number="10.1.1">
-<h3 data-number="10.1.1" class="anchored" data-anchor-id="mean"><span class="header-section-number">10.1.1</span> The mean</h3>
+<section id="mean" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="mean"><span class="header-section-number">11.1.1</span> The mean</h3>
 <p>The <strong>mean</strong> of a set of observations is just a normal, old-fashioned average: add all of the values up, and then divide by the total number of values. The first five winning margins in the <code>southern_slam</code> data are 196, 51, 23, 106 and 219, so the mean of these observations is just: <span class="math display">\[
 \frac{196 + 51 + 23 + 106 + 219}{5} = \frac{595}{5} = 119
 \]</span> Of course, this definition of the mean isn’t news to anyone: averages (i.e., means) are used so often in everyday life that this is pretty familiar stuff. However, since the concept of a mean is something that everyone already understands, I’ll use this as an excuse to start introducing some of the mathematical notation that statisticians use to describe this calculation, and talk about how the calculations would be done in R.</p>
@@ -398,8 +458,8 @@ Important
 \]</span></p>
 <p>In all honesty, I can’t imagine that all this mathematical notation helps clarify the concept of the mean at all. In fact, it’s really just a fancy way of writing out the same thing I said in words: add all the values up, and then divide by the total number of items. However, that’s not really the reason I went into all that detail. My goal was to try to make sure that everyone reading this book is clear on the notation that we’ll be using throughout the book: <span class="math inline">\(\bar{X}\)</span> for the mean, <span class="math inline">\(\scriptstyle\sum\)</span> for the idea of summation, <span class="math inline">\(X_i\)</span> for the <span class="math inline">\(i\)</span>th observation, and <span class="math inline">\(N\)</span> for the total number of observations. We’re going to be re-using these symbols a fair bit, so it’s important that you understand them well enough to be able to “read” the equations, and to be able to see that it’s just saying “add up lots of things and then divide by another thing”.</p>
 </section>
-<section id="calculating-the-mean-in-r" class="level3" data-number="10.1.2">
-<h3 data-number="10.1.2" class="anchored" data-anchor-id="calculating-the-mean-in-r"><span class="header-section-number">10.1.2</span> Calculating the mean in R</h3>
+<section id="calculating-the-mean-in-r" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="calculating-the-mean-in-r"><span class="header-section-number">11.1.2</span> Calculating the mean in R</h3>
 <p>Okay that’s the maths, how do we get the magic computing box to do the work for us? If you really wanted to, you could do this calculation directly in R. For the first <code>southern_slam</code> games, do this just by typing it in as if R were a calculator…</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">196</span> <span class="sc">+</span> <span class="dv">51</span> <span class="sc">+</span> <span class="dv">23</span> <span class="sc">+</span> <span class="dv">106</span> <span class="sc">+</span> <span class="dv">219</span>) <span class="sc">/</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -421,24 +481,32 @@ Important
 <pre><code>[1] 595</code></pre>
 </div>
 </div>
+<p>Actually, because we’re going to reuse the miniature data set containing only the first five winning margines several times in this chapter, let’s save ourselves some typing and store it as its own variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>five_margins <span class="ot">&lt;-</span> southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>five_margins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 196  51  23 106 219</code></pre>
+</div>
+</div>
 <p>To calculate the mean, we now tell R to divide the output of this summation by five, so the command that we need to type now becomes the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]) <span class="sc">/</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(five_margins) <span class="sc">/</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 119</code></pre>
 </div>
 </div>
 <p>Although it’s pretty easy to calculate the mean using the <code>sum()</code> function, we can do it in an even easier way, since R also provides us with the <code>mean()</code> function. To calculate the mean for all 176 games, we would use the following command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(southern_slam<span class="sc">$</span>margin[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(five_margins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 119</code></pre>
 </div>
 </div>
 <p>As you can see, this gives exactly the same answers as the previous calculations.</p>
 </section>
-<section id="median" class="level3" data-number="10.1.3">
-<h3 data-number="10.1.3" class="anchored" data-anchor-id="median"><span class="header-section-number">10.1.3</span> The median</h3>
+<section id="median" class="level3" data-number="11.1.3">
+<h3 data-number="11.1.3" class="anchored" data-anchor-id="median"><span class="header-section-number">11.1.3</span> The median</h3>
 <p>The second measure of central tendency that people use a lot is the <strong>median</strong>, and it’s even easier to describe than the mean. The median of a set of observations is just the middle value. As before let’s imagine we were interested only in the first five winning margins: 196, 51, 23, 106, and 219. To figure out the median, we sort these numbers into ascending order:</p>
 <p><span class="math display">\[
 23, 51, \mathbf{106}, 196, 219
@@ -448,7 +516,7 @@ Important
 \]</span></p>
 <p>and there are <em>two</em> middle numbers, 60 and 106. The median is defined as the average of those two numbers, which in this case is 83. As before, it’s very tedious to do this by hand when you’ve got lots of numbers. To illustrate this, here’s what happens when you use R to sort all 43 winning margins. First, I’ll use the <code>sort()</code> function (discussed in Chapter @ref(datahandling)) to display the winning margins in increasing numerical order:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]   0   2   4  11  19  21  22  23  45  48  51  60  69  71  72  75  81  82  95
 [20]  99 106 108 110 120 126 143 159 164 173 178 180 196 201 204 219 225 235 239
@@ -457,15 +525,15 @@ Important
 </div>
 <p>As we have 43 observations in our data, the median value corresponds to item 22 in the sorted list of numbers. When we look up that observation in the list, we find that the median winning was 108. In real life, of course, we don’t actually calculate the median by sorting the data and then looking for the middle value by searching it manually. In real life, we use the <code>median()</code> command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 108</code></pre>
 </div>
 </div>
 <p>Much nicer.</p>
 </section>
-<section id="mean-or-median-whats-the-difference" class="level3" data-number="10.1.4">
-<h3 data-number="10.1.4" class="anchored" data-anchor-id="mean-or-median-whats-the-difference"><span class="header-section-number">10.1.4</span> Mean or median? What’s the difference?</h3>
+<section id="mean-or-median-whats-the-difference" class="level3" data-number="11.1.4">
+<h3 data-number="11.1.4" class="anchored" data-anchor-id="mean-or-median-whats-the-difference"><span class="header-section-number">11.1.4</span> Mean or median? What’s the difference?</h3>
 <p>Knowing how to calculate means and medians is only a part of the story. You also need to understand what each one is saying about the data, and what that implies for when you should use each one. The basic idea is illustrated in the figure below. The mean is basically the "centre of gravity" of the data set: if you imagine that the histogram of the data is a solid object, then the point on which you could balance it (as if on a see-saw) is the mean. In contrast, the median is the middle observation. Half of the observations are smaller, and half of the observations are larger.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -481,8 +549,8 @@ Important
 <p>Let’s expand on that last part a little. One consequence is that there’s systematic differences between the mean and the median when the histogram is asymmetric (skewed; see Section @ref(skewandkurtosis)). This is illustrated in Figure @ref(fig:meanmedian) notice that the median (right hand side) is located closer to the “body” of the histogram, whereas the mean (left hand side) gets dragged towards the “tail” (where the extreme values are).</p>
 <p>To give a concrete example, suppose Bob (income $50,000), Kate (income $60,000) and Jane (income $65,000) are sitting at a table: the average income at the table is $58,333 and the median income is $60,000. Then Bill sits down with them (income $100,000,000). The average income has now jumped to $25,043,750 but the median rises only to $62,500. If you’re interested in looking at the overall income at the table, the mean might be the right answer; but if you’re interested in what counts as a typical income at the table, the median would be a better choice here.</p>
 </section>
-<section id="trimmedmean" class="level3" data-number="10.1.5">
-<h3 data-number="10.1.5" class="anchored" data-anchor-id="trimmedmean"><span class="header-section-number">10.1.5</span> Trimmed mean</h3>
+<section id="trimmedmean" class="level3" data-number="11.1.5">
+<h3 data-number="11.1.5" class="anchored" data-anchor-id="trimmedmean"><span class="header-section-number">11.1.5</span> Trimmed mean</h3>
 <p>One of the fundamental rules of applied statistics is that the data are messy. Real life is never simple, and so the data sets that you obtain are never as straightforward as the statistical theory says.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This can have awkward consequences. To illustrate, consider this rather strange looking data set:</p>
 <p><span class="math display">\[
 -100, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -495,39 +563,39 @@ Important
 <p>When faced with a situation where some of the most extreme-valued observations might not be quite trustworthy, the mean is not necessarily a good measure of central tendency. It is highly sensitive to one or two extreme values, and is thus not considered to be a <strong>robust</strong> measure. One remedy that we’ve seen is to use the median. A more general solution is to use a “trimmed mean”. To calculate a trimmed mean, what you do is “discard” the most extreme examples on both ends (i.e., the largest and the smallest), and then take the mean of everything else. The goal is to preserve the best characteristics of the mean and the median: just like a median, you aren’t highly influenced by extreme outliers, but like the mean, you “use” more than one of the observations. Generally, we describe a trimmed mean in terms of the percentage of observation on either side that are discarded. So, for instance, a 10% trimmed mean discards the largest 10% of the observations <em>and</em> the smallest 10% of the observations, and then takes the mean of the remaining 80% of the observations. Not surprisingly, the 0% trimmed mean is just the regular mean, and the 50% trimmed mean is the median. In that sense, trimmed means provide a whole family of central tendency measures that span the range from the mean to the median.</p>
 <p>For our toy example above, we have 10 observations, and so a 10% trimmed mean is calculated by ignoring the largest value (i.e., 12) and the smallest value (i.e., -15) and taking the mean of the remaining values. First, let’s enter the data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">15</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">15</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, let’s calculate means and medians:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5</code></pre>
 </div>
 </div>
 <p>That’s a fairly substantial difference, but I’m tempted to think that the mean is being influenced a bit too much by the extreme values at either end of the data set, especially the -15 one. So let’s just try trimming the mean a bit. If I take a 10% trimmed mean, we’ll drop the extreme values on either side, and take the mean of the rest:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dataset, <span class="at">trim =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dataset, <span class="at">trim =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5</code></pre>
 </div>
 </div>
 <p>which in this case gives exactly the same answer as the median. Note that, to get a 10% trimmed mean you write <code>trim = .1</code>, not <code>trim = 10</code>. In any case, let’s finish up by calculating the 5% trimmed mean for the <code>southern_slam$margin</code> data,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(southern_slam<span class="sc">$</span>margin, <span class="at">trim =</span> .<span class="dv">05</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(southern_slam<span class="sc">$</span>margin, <span class="at">trim =</span> .<span class="dv">05</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 126.5128</code></pre>
 </div>
 </div>
 </section>
-<section id="mode" class="level3" data-number="10.1.6">
-<h3 data-number="10.1.6" class="anchored" data-anchor-id="mode"><span class="header-section-number">10.1.6</span> Mode</h3>
+<section id="mode" class="level3" data-number="11.1.6">
+<h3 data-number="11.1.6" class="anchored" data-anchor-id="mode"><span class="header-section-number">11.1.6</span> Mode</h3>
 <p>The mode of a sample is very simple: it is the value that occurs most frequently. It’s most often used for categorical variables, for which the mean and median don’t really make sense. We’ll use a different data set for this. The <code>archibald</code> data set supplied by the lsrbook package contains a table listing the winners of the Archibald Prize for Portraiture from 1921 to 2023.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>archibald</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>archibald</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 166 × 6
    prize           year  artist            title             subject n_finalists
@@ -547,8 +615,8 @@ Important
 </div>
 <p>There are actually three separate prizes included in this data set. In addition to the Archibald Prize itself, there’s data for the Packing Room Prize (awarded by the staff who install the portraits in the gallery) and the People’s Choice Award (voted on by the general public). Let’s find the winners of the Archibald Prize only:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>archibald_winners <span class="ot">&lt;-</span> archibald<span class="sc">$</span>artist[archibald<span class="sc">$</span>prize <span class="sc">==</span> <span class="st">"Archibald Prize"</span>]</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>archibald_winners</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>archibald_winners <span class="ot">&lt;-</span> archibald<span class="sc">$</span>artist[archibald<span class="sc">$</span>prize <span class="sc">==</span> <span class="st">"Archibald Prize"</span>]</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>archibald_winners</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] "William McInnes"      "William McInnes"      "William McInnes"     
   [4] "William McInnes"      "John Longstaff"       "William McInnes"     
@@ -589,8 +657,8 @@ Important
 <p>Although the time period for the data spans 103 years, there are only 100 winners: no prizes were awarded in 1964 and 1980, and there was only a single combined prize awarded for the years 1991-1992.</p>
 <p>We <em>could</em> read through all 100 entries, and count the number of occasions on which each artist appears in our list of winners, thereby producing a <strong>frequency table</strong>. However, that would be mindless and boring: exactly the sort of task that computers are great at. So let’s use the <code>table()</code> function (discussed in more detail in Section @ref(freqtables)) to do this task for us:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>archibald_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(archibald_winners)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>archibald_counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>archibald_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(archibald_winners)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>archibald_counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>archibald_winners
          Adam Cullen         Arthur Murch           Ben Quilty 
@@ -639,8 +707,8 @@ Important
 </div>
 <p>This is a bit hard to scan, so why don’t we simplify it a bit? What I’ll do is use the <code>sort()</code> function to arrange the table of winning artists order of frequency, and then show only the first few entries of the sorted table:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sorted_archibald_counts <span class="ot">&lt;-</span> <span class="fu">sort</span>(archibald_counts, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>sorted_archibald_counts[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>sorted_archibald_counts <span class="ot">&lt;-</span> <span class="fu">sort</span>(archibald_counts, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>sorted_archibald_counts[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>archibald_winners
  William Dargie William McInnes       Ivor Hele  John Longstaff 
@@ -648,9 +716,979 @@ Important
 </div>
 </div>
 <p>The winner of the most Archibald prizes in the 1921-2023 time frame of the data set was William Dargie. Or, to frame it in more statistical terms <code>"William Dargie"</code> is the modal value of the <code>archibald_winners</code> variable.</p>
-
-
 </section>
+</section>
+<section id="var" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="var"><span class="header-section-number">11.2</span> Measures of variability</h2>
+<p>The statistics that we’ve discussed so far all relate to <strong>central tendency</strong>. That is, they all talk about which values are “in the middle” or “popular” in the data. However, central tendency is not the only type of summary statistic that we want to calculate. The second thing that we really want is a measure of the <strong>variability</strong> of the data. That is, how “spread out” are the data? How “far” away from the mean or median do the observed values tend to be? For now, let’s assume that the data are interval or ratio scale, so we’ll continue to use the <code>southern_slam</code> data. We’ll use this data to discuss several different measures of spread, each with different strengths and weaknesses.</p>
+<section id="range" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="range"><span class="header-section-number">11.2.1</span> Range</h3>
+<p>The <strong>range</strong> of a variable is very simple: it’s the biggest value minus the smallest value. For the Southern Slam winning margins data, the maximum value is 492, and the minimum value is 0. We can calculate these values in R using the <code>max()</code> and <code>min()</code> functions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(southern_slam<span class="sc">$</span>margin)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>where I’ve omitted the output because it’s not interesting. The other possibility is to use the <code>range()</code> function; which outputs both the minimum value and the maximum value in a vector, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]   0 492</code></pre>
+</div>
+</div>
+<p>Although the range is the simplest way to quantify the notion of “variability”, it’s one of the worst. Recall from our discussion of the mean that we want our summary measure to be robust. If the data set has one or two extremely bad values in it, we’d like our statistics not to be unduly influenced by these cases. If we look once again at our toy example of a data set containing very extreme outliers…</p>
+<p><span class="math display">\[
+-100, 2, 3, 4, 5, 6, 7, 8, 9, 10
+\]</span></p>
+<p>…it is clear that the range is not robust, since this has a range of 110, but if the outlier were removed we would have a range of only 8.</p>
+</section>
+<section id="interquartile-range" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="interquartile-range"><span class="header-section-number">11.2.2</span> Interquartile range</h3>
+<p>The <strong>interquartile range</strong> is like the range, but instead of calculating the difference between the biggest and smallest value, it calculates the difference between the 25th quantile and the 75th quantile. Probably you already know what a <strong>quantile</strong> is (they’re more commonly called percentiles), but if not: the 10th percentile of a data set is the smallest number <span class="math inline">\(x\)</span> such that 10% of the data is less than <span class="math inline">\(x\)</span>. In fact, we’ve already come across the idea: the median of a data set is its 50th quantile / percentile! R actually provides you with a way of calculating quantiles, using the (surprise, surprise) <code>quantile()</code> function. Let’s use it to calculate the median winning margin (50th percentile) in the <code>southern_slam</code> data, along with the 25th and 75th percentiles:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(southern_slam<span class="sc">$</span>margin, <span class="at">probs =</span> <span class="fu">c</span>(.<span class="dv">25</span>, .<span class="dv">5</span>, .<span class="dv">75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  25%   50%   75% 
+ 55.5 108.0 198.5 </code></pre>
+</div>
+</div>
+<p>Not surprisingly, the 50th percentile in the <code>southern_slam</code> wining mardins data is 108, the exact same number we obtained when we used the <code>median()</code> function earlier. However, this time around we have the extra information provide by the two values that make up the interquartile range. Taken together, this output is telling us that the middle value (the median) in the data is 108, and half of all our data values are somewhere between 55.5 and 198.5.</p>
+<p>This leads us pretty naturally to the interpretation of the interquartile range: it’s the range spanned by the “middle half” of the data. One quarter of the data falls below the interquartile range, one quarter of the data falls above the interquartile range, and one half of the data falls within it.</p>
+</section>
+<section id="aad" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="aad"><span class="header-section-number">11.2.3</span> Typical deviations from a typical value</h3>
+<p>The two measures we’ve looked at so far both describe the spread of the data by examining the quantiles of the data. However, this isn’t the only way to think about the problem. A different approach is to select a meaningful reference point to describe the “middle” of the data (i.e., a measure of central tendency like the mean or the median), and then ask how far away are the <em>actual</em> observations from this middle value?</p>
+<p>This approach suggests the following approaches: if we decide that we’re interested in averages, we could calculate the mean deviation from the mean value. Alternatively, if we want middle values, we could calculate the median deviation from the median.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>Since the previous paragraph might sound a little abstract, let’s go through the <strong>mean deviation from the mean</strong> a little more slowly. One useful thing about this measure is that the name actually tells you exactly how to calculate it. Let’s return to the <code>southern_slam</code> data, and – for the sake of our sanity – we’ll keep things simple by using the <code>five_margins</code> variable that stores the first five winning margins:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>five_margins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 196  51  23 106 219</code></pre>
+</div>
+</div>
+<p>Since our calculations rely on an examination of the deviation from some reference point (in this case the mean), the first thing we need to calculate is the mean. In real life we would – and in a moment, we will – do this with R, but let’s party like its 1899 and we have no computers. As usual, we’ll refer to the mean of our <span class="math inline">\(X\)</span> values by placing a cute little bar over the top, <span class="math inline">\(\bar{X}\)</span>.</p>
+<p><span class="math display">\[
+\bar{X} = \frac{196 + 51 + 23 + 106 + 219}{5} = \frac{595}{5} = 119
+\]</span></p>
+<p>Yeah, I know, we did that earlier. Sorry. Anway, the point here is we now have the mean value 119. So now, for each of these five observations we can calculate a <strong>deviation score</strong>, which… yeah, we just subtract the mean. Nothing fancy:</p>
+<div class="grid">
+<div class="g-col-6">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Value</th>
+<th style="text-align: right;">Deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(X_i\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(X_i-\bar{X}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">196 - 119 = 77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">51 - 119 = -68</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">23 - 119 = -96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">106 - 119 = -13</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">219 - 119 = 100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The next step in the process is to convert these deviations to absolute deviations. That’s straightfoward too: all we do is ignore the minus signs:</p>
+<div class="grid">
+<div class="g-col-6">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Value</th>
+<th style="text-align: right;">Deviation</th>
+<th style="text-align: right;">Absolute deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(X_i\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(X_i-\bar{X}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(|X_i-\bar{X}|\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">-68</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">-96</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">-13</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now that we have calculated the absolute deviation-from-the-mean score for all five observations in the data set, all that we have to do to calculate the mean of <em>those</em> scores. Notice that in these tables I’ve been adding the notation as I add columns. The absolute deviation from the mean is written <span class="math inline">\(|X_i - \bar{X}|\)</span>, so if we were really, really excited about formulas we could use this formula to mathematically describe the calculation we’re making:</p>
+<p><span class="math display">\[
+\frac{1}{N} \sum_{i = 1}^N |X_i - \bar{X}|
+\]</span></p>
+<p>Sure, Danielle, okay. Whatever. Just calculate the thing, would you? Fair point. Let’s do that:</p>
+<p><span class="math display">\[
+\frac{77 + 68 + 96 + 13 + 100}{5} = \frac{354}{5} = 70.8
+\]</span></p>
+<p>And there we have it. The mean absolute deviation for the first five winning margins in our <code>southern_slam</code> data set is 70.8. Honestly I only <em>imagine</em> how thrilling this is to you.</p>
+<p>The last thing we need to talk about is how to calculate this in R, because as it turns out, this is considerably easier than doing all the calculations with pencil and paper:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(five_margins <span class="sc">-</span> <span class="fu">mean</span>(five_margins)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70.8</code></pre>
+</div>
+</div>
+<p>Finally, notice that there is nothing stopping us from using different measures of central tendency. Instead of calculating the “mean absolute deviation from the mean”, we could instead calculate the median absolute deviation from the median. Here’s both versions, applied to the winning margins for all bouts in the Southern Slam data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(southern_slam<span class="sc">$</span>margin <span class="sc">-</span> <span class="fu">mean</span>(southern_slam<span class="sc">$</span>margin)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 86.8199</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">abs</span>(southern_slam<span class="sc">$</span>margin <span class="sc">-</span> <span class="fu">median</span>(southern_slam<span class="sc">$</span>margin)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70</code></pre>
+</div>
+</div>
+</section>
+<section id="variance" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="variance"><span class="header-section-number">11.2.4</span> Variance</h3>
+<p>Although the mean absolute deviation measure has its uses, it’s not the best measure of variability to use. From a purely mathematical perspective, there are some solid reasons to prefer squared deviations rather than absolute deviations. If we do that, we obtain a measure is called the <strong>variance</strong>, which has a lot of really nice statistical properties that I’m going to ignore,<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> and one massive psychological flaw that I’m going to make a big deal out of in a moment. The variance of a data set <span class="math inline">\(X\)</span> is sometimes written as <span class="math inline">\(\mbox{Var}(X)\)</span>, but it’s more commonly denoted <span class="math inline">\(s^2\)</span> (the reason for this will become clearer shortly). The formula that we use to calculate the variance of a set of observations is as follows:</p>
+<p><span class="math display">\[
+\mbox{Var}(X) = \frac{1}{N} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2
+\]</span></p>
+<p>As you can see, it’s basically the same formula that we used to calculate the mean absolute deviation, except that instead of using “absolute deviations” we use “squared deviations”. It is for this reason that the variance is sometimes referred to as the “mean square deviation”.</p>
+<p>Now that we’ve got the basic idea, let’s have a look at a concrete example. Once again, let’s use the first five Southern Slam bouts as our data. If we follow the same approach that we took last time, we end up with the following table:</p>
+<div class="grid">
+<div class="g-col-6">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Value</th>
+<th style="text-align: right;">Deviation</th>
+<th style="text-align: right;">Squared deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(X_i\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(X_i-\bar{X}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\((X_i-\bar{X})^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">5929</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">-68</td>
+<td style="text-align: right;">4624</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">-96</td>
+<td style="text-align: right;">9216</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">-13</td>
+<td style="text-align: right;">169</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">219</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">10000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>That last column contains all of our squared deviations, so all we have to do is average them:</p>
+<p><span class="math display">\[
+\frac{5929 + 4624 + 9216 + 169 + 10000}{5} = \frac{29938}{5} = 5987.6
+\]</span></p>
+<p>The variance of these observations, then, is 5987.6. Exciting, isn’t it? For the moment, let’s ignore the burning question that you’re all probably wondering about – i.e., what the heck does a variance of 324.64 actually mean? – and instead talk a bit more about how to do the calculations in R, because this will reveal something very weird.</p>
+<p>As always, we want to avoid having to type in a whole lot of numbers ourselves. And as it happens, we have the vector <code>five_margins</code> lying around, which we created in the previous section. With this in mind, we can calculate the variance of <code>five_margins</code> by using the following command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((five_margins <span class="sc">-</span> <span class="fu">mean</span>(five_margins))<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5987.6</code></pre>
+</div>
+</div>
+<p>This is essentially the same command we used when computing the mean absolute deviation, but instead of applying the <code>abs()</code> function to each of the deviation scores, we’re squaring those devation scores and then taking the mean. Conveniently for us, R has a a built in function called <code>var()</code>, so we can simplify our R command a lot by doing this…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(five_margins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7484.5</code></pre>
+</div>
+</div>
+<p>and you get the same… no, wait… you get a completely <em>different</em> answer. That’s just weird. Is R broken? Is this a typo? Is Danielle an idiot? As it happens, the answer is no.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> It’s not a typo, and R is not making a mistake. What’s happened here is that instead of dividing the sum squared deviation (i.e.&nbsp;29938) by 5, the <code>var()</code> function has in fact divides it by 4. We can verify that ourselves, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((five_margins <span class="sc">-</span> <span class="fu">mean</span>(five_margins))<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7484.5</code></pre>
+</div>
+</div>
+<p>In other words, the formula for the variance that R actually uses in the <code>var()</code> is this:</p>
+<p><span class="math display">\[
+\frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2
+\]</span></p>
+<p>If you’re feeling confused, and wondering why the heck R would do something like this, well… you’re completely justified. It’s confusing. I promise I’ll explain it in a moment, but for now let’s take a look at what happens when we do the same comparison using the full version of the <code>southern_slam</code> data we get this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((southern_slam<span class="sc">$</span>margin <span class="sc">-</span> <span class="fu">mean</span>(southern_slam<span class="sc">$</span>margin))<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11924.02</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12207.92</code></pre>
+</div>
+</div>
+<p>The difference between these two versions of the variance calculation becomes less inportant as the number of observations <span class="math inline">\(N\)</span> in your data set gets larger. There’s a big difference between “dividing by 5” and dividing by 4”. There’s not much difference at all between “dividing by 43” and “dividing by 42”. And the difference between “dividing by 1,000,043” and “dividing by 1,000,042” is minuscule.</p>
+<p>Okay, so that’s the “what”. What about the “why”. <em>Why</em> does R compute the variance by dividing by <span class="math inline">\(N - 1\)</span> and not by <span class="math inline">\(N\)</span>. After all, the variance is supposed to be the <em>mean</em> squared deviation, right? That’s what I told you at the start of this section, and I wasn’t lying. So shouldn’t we be taking the sum squared deviation and then dividing by <span class="math inline">\(N\)</span>, the <em>actual</em> number of observations in the sample? Well, yes, we should.</p>
+<p>However, as we’ll discuss in Chapter @ref(estimation), there’s a subtle distinction between “describing a sample” and “making guesses about the population from which the sample came”. Up to this point, it’s been a distinction without a difference. Regardless of whether you’re describing a sample or drawing inferences about the population, the mean is calculated exactly the same way. Not so for the variance, or the standard deviation, or for many other measures besides. What I outlined to you initially (i.e., take the actual average, and thus divide by <span class="math inline">\(N\)</span>) assumes that you literally intend to calculate the variance of the sample. Most of the time, however, you’re not terribly interested in the sample <em>in and of itself</em>. Rather, the sample exists to tell you something about the world. If so, you’re actually starting to move away from calculating a “sample statistic”, and towards the idea of estimating a “population parameter”. However, I’m getting ahead of myself. For now, let’s just take it on faith that R knows what it’s doing, and we’ll revisit the question later on when we talk about estimation in Chapter @ref(estimation).</p>
+<p>Okay, one last thing. This section so far has read a bit like a mystery novel. I’ve shown you how to calculate the variance, described the weird “<span class="math inline">\(N - 1\)</span>” thing that R does and hinted at the reason why it’s there, but I haven’t mentioned the single most important thing… how do you <em>interpret</em> the variance? Descriptive statistics are supposed to describe things, after all, and right now the variance is really just a gibberish number. Unfortunately, the reason why I haven’t given you the human-friendly interpretation of the variance is that… there really isn’t one.</p>
+<p>This is the most serious problem with the variance. Although it has some elegant mathematical properties that suggest that it really is a fundamental quantity for expressing variation, it’s completely useless if you want to communicate with an actual human… variances are completely uninterpretable in terms of the original variable! All the numbers have been squared, and they don’t mean anything anymore. This is a huge issue. For instance, according to the table presented earlier, the margin in bout 1 was “5952 points-squared higher than the average margin”. This is <em>exactly</em> as stupid as it sounds; nobody cares about “points-squared”. It’s not a meaningful unit of measurement, so talking about variation in those terms is utter gibberish.</p>
+<p>We’re going to need something better than this.</p>
+</section>
+<section id="sd" class="level3" data-number="11.2.5">
+<h3 data-number="11.2.5" class="anchored" data-anchor-id="sd"><span class="header-section-number">11.2.5</span> Standard deviation</h3>
+<p>Okay, suppose that you like the idea of using the variance because of those nice mathematical properties that I haven’t talked about, but – since you’re a human and not a robot – you’d like to have a measure that is expressed in the same units as the data itself (i.e., points, not points-squared). What should you do? The solution to the problem is obvious: take the square root of the variance, known as the <strong>standard deviation</strong>, also called the “root mean squared deviation”, or RMSD. This solves out problem fairly neatly: while nobody has a clue what “a variance of 324.68 points-squared” really means, it’s much easier to understand “a standard deviation of 18.01 points”, since it’s expressed in the original units. It is traditional to refer to the standard deviation of a sample of data as <span class="math inline">\(s\)</span>, though “sd” and “std dev.” are also used at times. Because the standard deviation is equal to the square root of the variance, you probably won’t be surprised to see that the formula is: <span class="math display">\[
+s = \sqrt{ \frac{1}{N} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2 }
+\]</span> and the R function that we use to calculate it is <code>sd()</code>. However, as you might have guessed from our discussion of the variance, what R actually calculates is slightly different to the formula given above. Just like the we saw with the variance, what R calculates is a version that divides by <span class="math inline">\(N-1\)</span> rather than <span class="math inline">\(N\)</span>. For reasons that will make sense when we return to this topic in Chapter@refch:estimation I’ll refer to this new quantity as <span class="math inline">\(\hat\sigma\)</span> (read as: “sigma hat”), and the formula for this is <span class="math display">\[
+\hat\sigma = \sqrt{ \frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2 }
+\]</span> With that in mind, calculating standard deviations in R is simple:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 110.4895</code></pre>
+</div>
+</div>
+<p>Interpreting standard deviations is slightly more complex. Because the standard deviation is derived from the variance, and the variance is a quantity that has little to no meaning that makes sense to us humans, the standard deviation doesn’t have a simple interpretation. As a consequence, most of us just rely on a simple rule of thumb: in general, you should expect 68% of the data to fall within 1 standard deviation of the mean, 95% of the data to fall within 2 standard deviation of the mean, and 99.7% of the data to fall within 3 standard deviations of the mean.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>This rule tends to work pretty well most of the time, but it’s not exact: it’s actually calculated based on an <em>assumption</em> that the histogram is symmetric and “bell shaped”.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> As you can tell from looking at the winning margins histogram, this isn’t exactly true of our data! Even so, the rule is approximately correct. As it turns out, 69.8% of the Southern Slam margins data fall within one standard deviation of the mean. This is shown visually below</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="descriptive-statistics_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="which-measure-to-use" class="level3" data-number="11.2.6">
+<h3 data-number="11.2.6" class="anchored" data-anchor-id="which-measure-to-use"><span class="header-section-number">11.2.6</span> Which measure to use?</h3>
+<p>We’ve discussed quite a few measures of spread (range, IQR, MAD, variance and standard deviation), and hinted at their strengths and weaknesses. Here’s a quick summary:</p>
+<ul>
+<li><em>Range</em>. Gives you the full spread of the data. It’s very vulnerable to outliers, and as a consequence it isn’t often used unless you have good reasons to care about the extremes in the data.</li>
+<li><em>Interquartile range</em>. Tells you where the “middle half” of the data sits. It’s pretty robust, and complements the median nicely. This is used a lot.</li>
+<li><em>Mean absolute deviation</em>. Tells you how far “on average” the observations are from the mean. It’s very interpretable, but has a few minor issues (not discussed here) that make it less attractive to statisticians than the standard deviation. Used sometimes, but not often.</li>
+<li><em>Median absolute deviation</em>. The typical (i.e., median) deviation from the median value. It’s simple and interpretable, and although I don’t talk about it in this book, you can use a “corrected” version of it as a robust way to estimate the standard deviation, which is sometimes handy. Not used very often, but it does get reported sometimes.</li>
+<li><em>Variance</em>. Tells you the average squared deviation from the mean. It’s mathematically elegant, and is probably the “right” way to describe variation around the mean, but it’s completely uninterpretable because it doesn’t use the same units as the data. Almost never used except as a mathematical tool; but it’s buried “under the hood” of a very large number of statistical tools.</li>
+<li><em>Standard deviation</em>. This is the square root of the variance. It’s fairly elegant mathematically, and it’s expressed in the same units as the data so it can be interpreted pretty well. In situations where the mean is the measure of central tendency, this is the default. This is by far the most popular measure of variation.</li>
+</ul>
+</section>
+</section>
+<section id="skewness" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="skewness"><span class="header-section-number">11.3</span> Skewness</h2>
+<p>Another descriptive statistic that you’ll sometimes see reported is the <strong>skewness</strong> of a set of observations.</p>
+<p>Skewness is basically a measure of asymmetry, and the easiest way to explain it is by drawing some pictures. As Figure @ref(fig:skewness) illustrates, if the data tend to have a lot of extreme small values (i.e., the lower tail is “longer” than the upper tail) and not so many extremely large values (left panel), then we say that the data are <em>negatively skewed</em>. On the other hand, if there are more extremely large values than extremely small ones (right panel) we say that the data are <em>positively skewed</em>. That’s the qualitative idea behind skewness. The actual formula for the skewness of a data set is as follows <span class="math display">\[
+\mbox{skewness}(X) = \frac{1}{N} \sum_{i=1}^N \left(\frac{X_i - \bar{X}}{s}\right)^3
+\]</span> where <span class="math inline">\(N\)</span> is the number of observations, <span class="math inline">\(\bar{X}\)</span> is the sample mean, and <span class="math inline">\(\hat{\sigma}\)</span> is the standard deviation (the “divide by <span class="math inline">\(N-1\)</span>” version, that is).</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="descriptive-statistics_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Perhaps more helpfully, it might be useful to point out that the <code>psych</code> package contains a <code>skew()</code> function that you can use to calculate skewness. So if we wanted to use this function to calculate the skewness of the <code>afl.margins</code> data, we’d first need to load the package</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>skew <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(((x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x))<span class="sc">^</span><span class="dv">3</span>) </span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>which now makes it possible to use the following command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skew</span>(southern_slam<span class="sc">$</span>margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.102069</code></pre>
+</div>
+</div>
+<p>Not surprisingly, it turns out that the winning margins data is fairly skewed.</p>
+</section>
+<section id="skim" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="skim"><span class="header-section-number">11.4</span> Skimming a data set</h2>
+<section id="basic-use" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="basic-use"><span class="header-section-number">11.4.1</span> Basic use</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(southern_slam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">southern_slam</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">POSIXct</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">home_team</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">visitor_team</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pool</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">type</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 12%">
+<col style="width: 17%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">home_score</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">206.60</td>
+<td style="text-align: right;">106.09</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">127.5</td>
+<td style="text-align: right;">179</td>
+<td style="text-align: right;">257.0</td>
+<td style="text-align: right;">511</td>
+<td style="text-align: left;">▇▇▆▁▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">visitor_score</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">140.30</td>
+<td style="text-align: right;">72.01</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">79.5</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">196.5</td>
+<td style="text-align: right;">369</td>
+<td style="text-align: left;">▆▇▅▂▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">margin</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">135.47</td>
+<td style="text-align: right;">110.49</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">55.5</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">198.5</td>
+<td style="text-align: right;">492</td>
+<td style="text-align: left;">▇▆▃▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">track</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">▇▁▇▁▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">division</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.12</td>
+<td style="text-align: right;">0.79</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">▆▁▇▁▇</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: POSIXct</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">min</th>
+<th style="text-align: left;">max</th>
+<th style="text-align: left;">median</th>
+<th style="text-align: right;">n_unique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">time</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">2022-06-11 09:00:00</td>
+<td style="text-align: left;">2022-06-13 17:45:00</td>
+<td style="text-align: left;">2022-06-12 10:45:00</td>
+<td style="text-align: right;">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="computing-statistics-by-group" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="computing-statistics-by-group"><span class="header-section-number">11.4.2</span> Computing statistics by group</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>southern_slam <span class="sc">|&gt;</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(division) <span class="sc">|&gt;</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">skim</span>(home_score, visitor_score, margin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">group_by(southern_slam, d…</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">division</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">division</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">home_score</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">231.27</td>
+<td style="text-align: right;">96.35</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">164.50</td>
+<td style="text-align: right;">239.0</td>
+<td style="text-align: right;">276.50</td>
+<td style="text-align: right;">426</td>
+<td style="text-align: left;">▆▂▇▃▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">home_score</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">162.38</td>
+<td style="text-align: right;">71.64</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">105.50</td>
+<td style="text-align: right;">139.0</td>
+<td style="text-align: right;">190.25</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: left;">▇▂▂▂▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">home_score</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">233.88</td>
+<td style="text-align: right;">129.88</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">142.25</td>
+<td style="text-align: right;">213.5</td>
+<td style="text-align: right;">299.00</td>
+<td style="text-align: right;">511</td>
+<td style="text-align: left;">▅▇▃▁▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">visitor_score</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">100.91</td>
+<td style="text-align: right;">68.76</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">66.00</td>
+<td style="text-align: right;">71.0</td>
+<td style="text-align: right;">125.00</td>
+<td style="text-align: right;">232</td>
+<td style="text-align: left;">▇▃▃▁▃</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">visitor_score</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">137.94</td>
+<td style="text-align: right;">54.74</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">87.00</td>
+<td style="text-align: right;">138.0</td>
+<td style="text-align: right;">190.00</td>
+<td style="text-align: right;">224</td>
+<td style="text-align: left;">▇▂▇▂▆</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">visitor_score</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">169.75</td>
+<td style="text-align: right;">79.39</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">126.25</td>
+<td style="text-align: right;">150.0</td>
+<td style="text-align: right;">203.00</td>
+<td style="text-align: right;">369</td>
+<td style="text-align: left;">▁▇▃▂▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">margin</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">174.73</td>
+<td style="text-align: right;">101.75</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">121.00</td>
+<td style="text-align: right;">173.0</td>
+<td style="text-align: right;">222.00</td>
+<td style="text-align: right;">397</td>
+<td style="text-align: left;">▂▂▇▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">margin</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">92.69</td>
+<td style="text-align: right;">72.19</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">41.50</td>
+<td style="text-align: right;">73.5</td>
+<td style="text-align: right;">122.25</td>
+<td style="text-align: right;">235</td>
+<td style="text-align: left;">▆▇▅▂▅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">margin</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">151.25</td>
+<td style="text-align: right;">136.83</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">49.50</td>
+<td style="text-align: right;">114.0</td>
+<td style="text-align: right;">217.25</td>
+<td style="text-align: right;">492</td>
+<td style="text-align: left;">▇▅▃▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="correl" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="correl"><span class="header-section-number">11.5</span> Correlations</h2>
+<p>Up to this point we have focused entirely on how to construct descriptive statistics for a single variable. What we haven’t done is talked about how to describe the relationships <em>between</em> variables in the data. To do that, we want to talk mostly about the <strong>correlation</strong> between variables.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="descriptive-statistics_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="the-correlation-coefficient" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="the-correlation-coefficient"><span class="header-section-number">11.5.1</span> The correlation coefficient</h3>
+<p>We can make these ideas a bit more explicit by introducing the idea of a <strong>correlation coefficient</strong> (or, more specifically, Pearson’s correlation coefficient), which is traditionally denoted by <span class="math inline">\(r\)</span>. The correlation coefficient between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> (sometimes denoted <span class="math inline">\(r_{XY}\)</span>), which we’ll define more precisely in the next section, is a measure that varies from <span class="math inline">\(-1\)</span> to <span class="math inline">\(1\)</span>. When <span class="math inline">\(r = -1\)</span> it means that we have a perfect negative relationship, and when <span class="math inline">\(r = 1\)</span> it means we have a perfect positive relationship. When <span class="math inline">\(r = 0\)</span>, there’s no relationship at all. If you look at the plots below, you can see what different correlations look like.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="descriptive-statistics_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>The formula for the Pearson’s correlation coefficient can be written in several different ways. I think the simplest way to write down the formula is to break it into two steps. Firstly, let’s introduce the idea of a <strong>covariance</strong>. The covariance between two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a generalisation of the notion of the variance; it’s a mathematically simple way of describing the relationship between two variables that isn’t terribly informative to humans:</p>
+<p><span class="math display">\[
+\mbox{Cov}(X,Y) = \frac{1}{N-1} \sum_{i=1}^N \left( X_i - \bar{X} \right) \left( Y_i - \bar{Y} \right)
+\]</span></p>
+<p>Because we’re multiplying (i.e., taking the “product” of) a quantity that depends on <span class="math inline">\(X\)</span> by a quantity that depends on <span class="math inline">\(Y\)</span> and then averaging<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>, you can think of the formula for the covariance as an “average cross product” between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. The covariance has the nice property that, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are entirely unrelated, then the covariance is exactly zero. If the relationship between them is positive (in the sense shown in Figure@reffig:corr) then the covariance is also positive; and if the relationship is negative then the covariance is also negative. In other words, the covariance captures the basic qualitative idea of correlation. Unfortunately, the raw magnitude of the covariance isn’t easy to interpret: it depends on the units in which <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are expressed, and worse yet, the actual units that the covariance itself is expressed in are really weird. For instance, if <span class="math inline">\(X\)</span> refers to the <code>dan.sleep</code> variable (units: hours) and <span class="math inline">\(Y\)</span> refers to the <code>dan.grump</code> variable (units: grumps), then the units for their covariance are “hours <span class="math inline">\(\times\)</span> grumps”. And I have no freaking idea what that would even mean.</p>
+<p>The Pearson correlation coefficient <span class="math inline">\(r\)</span> fixes this interpretation problem by standardising the covariance, in pretty much the exact same way that the <span class="math inline">\(z\)</span>-score standardises a raw score: by dividing by the standard deviation. However, because we have two variables that contribute to the covariance, the standardisation only works if we divide by both standard deviations.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> In other words, the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be written as follows:</p>
+<p><span class="math display">\[
+r_{XY}  = \frac{\mbox{Cov}(X,Y)}{ \hat{\sigma}_X \ \hat{\sigma}_Y}
+\]</span></p>
+<p>By doing this standardisation, not only do we keep all of the nice properties of the covariance discussed earlier, but the actual values of <span class="math inline">\(r\)</span> are on a meaningful scale: <span class="math inline">\(r= 1\)</span> implies a perfect positive relationship, and <span class="math inline">\(r = -1\)</span> implies a perfect negative relationship. I’ll expand a little more on this point later, in Section@refsec:interpretingcorrelations. But before I do, let’s look at how to calculate correlations in R.</p>
+</section>
+<section id="calculating-correlations-in-r" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="calculating-correlations-in-r"><span class="header-section-number">11.5.2</span> Calculating correlations in R</h3>
+<p>Calculating correlations in R can be done using the <code>cor()</code> command. The simplest way to use the command is to specify two input arguments <code>x</code> and <code>y</code>, each one corresponding to one of the variables. The following extract illustrates the basic usage of the function:<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(southern_slam<span class="sc">$</span>home_score, southern_slam<span class="sc">$</span>visitor_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.6579093</code></pre>
+</div>
+</div>
+</section>
+<section id="interpretingcorrelations" class="level3" data-number="11.5.3">
+<h3 data-number="11.5.3" class="anchored" data-anchor-id="interpretingcorrelations"><span class="header-section-number">11.5.3</span> Interpreting a correlation</h3>
+<p>Naturally, in real life you don’t see many correlations of 1. So how should you interpret a correlation of, say <span class="math inline">\(r= .4\)</span>? The honest answer is that it really depends on what you want to use the data for, and on how strong the correlations in your field tend to be. A friend of mine in engineering once argued that any correlation less than <span class="math inline">\(.95\)</span> is completely useless (I think he was exaggerating, even for engineering). On the other hand there are real cases – even in psychology – where you should really expect correlations that strong. For instance, one of the benchmark data sets used to test theories of how people judge similarities is so clean that any theory that can’t achieve a correlation of at least <span class="math inline">\(.9\)</span> really isn’t deemed to be successful. However, when looking for (say) elementary correlates of intelligence (e.g., inspection time, response time), if you get a correlation above <span class="math inline">\(.3\)</span> you’re doing very very well. In short, the interpretation of a correlation depends a lot on the context. That said, the rough guide in Table @ref(tab:interpretingcorrelations) is pretty typical.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Rough guide to interpreting correlations</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Correlation</th>
+<th style="text-align: left;">Strength</th>
+<th style="text-align: left;">Direction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">-1.0 to -0.9</td>
+<td style="text-align: left;">Very strong</td>
+<td style="text-align: left;">Negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-0.9 to -0.7</td>
+<td style="text-align: left;">Strong</td>
+<td style="text-align: left;">Negative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-0.7 to -0.4</td>
+<td style="text-align: left;">Moderate</td>
+<td style="text-align: left;">Negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-0.4 to -0.2</td>
+<td style="text-align: left;">Weak</td>
+<td style="text-align: left;">Negative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-0.2 to 0</td>
+<td style="text-align: left;">Negligible</td>
+<td style="text-align: left;">Negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0 to 0.2</td>
+<td style="text-align: left;">Negligible</td>
+<td style="text-align: left;">Positive</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.2 to 0.4</td>
+<td style="text-align: left;">Weak</td>
+<td style="text-align: left;">Positive</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.4 to 0.7</td>
+<td style="text-align: left;">Moderate</td>
+<td style="text-align: left;">Positive</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.7 to 0.9</td>
+<td style="text-align: left;">Strong</td>
+<td style="text-align: left;">Positive</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.9 to 1.0</td>
+<td style="text-align: left;">Very strong</td>
+<td style="text-align: left;">Positive</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>However, something that can never be stressed enough is that you should <em>always</em> look at the scatterplot before attaching any interpretation to the data. A correlation might not mean what you think it means. The classic illustration of this is “Anscombe’s Quartet” <span class="citation" data-cites="Anscombe1973">(<a href="references.html#ref-Anscombe1973" role="doc-biblioref">Anscombe 1973</a>)</span>, which is a collection of four data sets. Each data set has two variables, an <span class="math inline">\(X\)</span> and a <span class="math inline">\(Y\)</span>. For all four data sets the mean value for <span class="math inline">\(X\)</span> is 9 and the mean for <span class="math inline">\(Y\)</span> is 7.5. The, standard deviations for all <span class="math inline">\(X\)</span> variables are almost identical, as are those for the the <span class="math inline">\(Y\)</span> variables. And in each case the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is <span class="math inline">\(r = 0.816\)</span>. You can verify this yourself, since the dataset comes distributed with R. The commands would be:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x1, anscombe<span class="sc">$</span>y1)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x2, anscombe<span class="sc">$</span>y2)</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x3, anscombe<span class="sc">$</span>y3)</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x4, anscombe<span class="sc">$</span>y4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8164205
+[1] 0.8162365
+[1] 0.8162867
+[1] 0.8165214</code></pre>
+</div>
+</div>
+<p>You’d think that these four data sets would look pretty similar to one another. They do not. If we draw scatterplots of <span class="math inline">\(X\)</span> against <span class="math inline">\(Y\)</span> for all four variables, as shown in Figure @ref(fig:anscombe) we see that all four of these are <em>spectacularly</em> different to each other.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="descriptive-statistics_files/figure-html/anscombe-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The lesson here, which so very many people seem to forget in real life is “<em>always graph your raw data</em>”. This will be the focus of Chapter @ref(graphics).</p>
+</section>
+<section id="spearmans-rank-correlations" class="level3" data-number="11.5.4">
+<h3 data-number="11.5.4" class="anchored" data-anchor-id="spearmans-rank-correlations"><span class="header-section-number">11.5.4</span> Spearman’s rank correlations</h3>
+<p>The Pearson correlation coefficient is useful for a lot of things, but it does have shortcomings. One issue in particular stands out: what it actually measures is the strength of the <em>linear</em> relationship between two variables. In other words, what it gives you is a measure of the extent to which the data all tend to fall on a single, perfectly straight line. Often, this is a pretty good approximation to what we mean when we say “relationship”, and so the Pearson correlation is a good thing to calculation. Sometimes, it isn’t.</p>
+<p>One very common situation where the Pearson correlation isn’t quite the right thing to use arises when an increase in one variable <span class="math inline">\(X\)</span> really is reflected in an increase in another variable <span class="math inline">\(Y\)</span>, but the nature of the relationship isn’t necessarily linear. An example of this might be [INSERT DESCRIPTION]…</p>
+<p>If I’ve got data where the relationship isn’t linear, there’s a pretty good chance that Pearson correlations will be misleading.</p>
+<p>To illustrate, consider the data plotted in [PICTURE]… What we’re looking for is something that describes the strength of the <strong>ordinal relationship</strong> here.</p>
+<p>How should we address this? Actually, it’s really easy: if we’re looking for ordinal relationships, all we have to do is treat the data as if it were ordinal scale! So, instead of using the raw values, we rank the raw values and then compute the correlation between the ranks.</p>
+<p>[SHOW TABLES OF RANKS]</p>
+<p>[CALL <code>cor()</code> ON RANKED DATA]</p>
+<p>What we’ve just re-invented is <strong>Spearman’s rank order correlation</strong>, usually denoted <span class="math inline">\(\rho\)</span> to distinguish it from the Pearson correlation <span class="math inline">\(r\)</span>. We can calculate Spearman’s <span class="math inline">\(\rho\)</span> using R in two different ways. Firstly we could do it the way I just showed, using the <code>rank()</code> function to construct the rankings, and then calculate the Pearson correlation on these ranks. However, that’s way too much effort to do every time. It’s much easier to just specify the <code>method</code> argument of the <code>cor()</code> function.</p>
+<p>[SHOW COR WITH METHOD ARGUMENT]</p>
+<p>The default value of the <code>method</code> argument is <code>"pearson"</code>, which is why we didn’t have to specify it earlier on when we were doing Pearson correlations.</p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">11.6</span> Summary</h2>
+<p>Calculating some basic descriptive statistics is one of the very first things you do when analysing real data, and descriptive statistics are much simpler to understand than inferential statistics, so like every other statistics textbook I’ve started with descriptives. In this chapter, we talked about the following topics:</p>
+<ul>
+<li><em>Measures of central tendency</em>. Broadly speaking, central tendency measures tell you where the data are. There’s three measures that are typically reported in the literature: the mean, median and mode. (Section @ref(centraltendency))</li>
+<li><em>Measures of variability</em>. In contrast, measures of variability tell you about how “spread out” the data are. The key measures are: range, standard deviation, interquartile reange (Section @ref(var))</li>
+<li><em>Getting summaries of variables in R</em>. Since this book focuses on doing data analysis in R, we spent a bit of time talking about how descriptive statistics are computed in R. (Section @ref(summary) and @ref(groupdescriptives))</li>
+<li><em>Standard scores</em>. The <span class="math inline">\(z\)</span>-score is a slightly unusual beast. It’s not quite a descriptive statistic, and not quite an inference. We talked about it in Section @ref(zscore). Make sure you understand that section: it’ll come up again later.</li>
+<li><em>Correlations</em>. Want to know how strong the relationship is between two variables? Calculate a correlation. (Section @ref(correl))</li>
+<li><em>Missing data</em>. Dealing with missing data is one of those frustrating things that data analysts really wish the didn’t have to think about. In real life it can be hard to do well. For the purpose of this book, we only touched on the basics in Section @ref(missing)</li>
+</ul>
+<p>In the next section we’ll move on to a discussion of how to draw pictures! Everyone loves a pretty picture, right? But before we do, I want to end on an important point. A traditional first course in statistics spends only a small proportion of the class on descriptive statistics, maybe one or two lectures at most. The vast majority of the lecturer’s time is spent on inferential statistics, because that’s where all the hard stuff is. That makes sense, but it hides the practical everyday importance of choosing good descriptives. With that in mind…</p>
+</section>
+<section id="epilogue-good-descriptive-statistics-are-descriptive" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="epilogue-good-descriptive-statistics-are-descriptive"><span class="header-section-number">11.7</span> Epilogue: Good descriptive statistics are descriptive!</h2>
+<blockquote class="blockquote">
+<p><em>The death of one man is a tragedy. The death of millions is a statistic.</em></p>
+<p>– Josef Stalin, Potsdam 1945</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>950,000 – 1,200,000</em></p>
+<p>– Estimate of Soviet repression deaths, 1937-1938 <span class="citation" data-cites="Ellman2002">(<a href="references.html#ref-Ellman2002" role="doc-biblioref">Ellman 2002</a>)</span></p>
+</blockquote>
+<p>Stalin’s infamous quote about the statistical character death of millions is worth giving some thought. The clear intent of his statement is that the death of an individual touches us personally and its force cannot be denied, but that the deaths of a multitude are incomprehensible, and as a consequence mere statistics, more easily ignored. I’d argue that Stalin was half right. A statistic is an abstraction, a description of events beyond our personal experience, and so hard to visualise. Few if any of us can imagine what the deaths of millions is “really” like, but we can imagine one death, and this gives the lone death its feeling of immediate tragedy, a feeling that is missing from Ellman’s cold statistical description.</p>
+<p>Yet it is not so simple: without numbers, without counts, without a description of what happened, we have <em>no chance</em> of understanding what really happened, no opportunity event to try to summon the missing feeling. And in truth, as I write this, sitting in comfort on a Saturday morning, half a world and a whole lifetime away from the Gulags, when I put the Ellman estimate next to the Stalin quote a dull dread settles in my stomach and a chill settles over me. The Stalinist repression is something truly beyond my experience, but with a combination of statistical data and those recorded personal histories that have come down to us, it is not entirely beyond my comprehension. Because what Ellman’s numbers tell us is this: over a two year period, Stalinist repression wiped out the equivalent of every man, woman and child currently alive in the city where I live. Each one of those deaths had it’s own story, was it’s own tragedy, and only some of those are known to us now. Even so, with a few carefully chosen statistics, the scale of the atrocity starts to come into focus.</p>
+<p>Thus it is no small thing to say that the first task of the statistician and the scientist is to summarise the data, to find some collection of numbers that can convey to an audience a sense of what has happened. This is the job of descriptive statistics, but it’s not a job that can be told solely using the numbers. You are a data analyst, not a statistical software package. Part of your job is to take these <em>statistics</em> and turn them into a <em>description</em>. When you analyse data, it is not sufficient to list off a collection of numbers. Always remember that what you’re really trying to do is communicate with a human audience. The numbers are important, but they need to be put together into a meaningful story that your audience can interpret. That means you need to think about framing. You need to think about context. And you need to think about the individual events that your statistics are summarising.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Anscombe1973" class="csl-entry" role="listitem">
+Anscombe, F. J. 1973. <span>“Graphs in Statistical Analysis.”</span> <em>American Statistician</em> 27: 17–21.
+</div>
+<div id="ref-Ellman2002" class="csl-entry" role="listitem">
+Ellman, Michael. 2002. <span>“Soviet Repression Statistics: Some Comments.”</span> <em>Europe-Asia Studies</em> 54 (7): 1151–72.
+</div>
+</div>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
@@ -658,6 +1696,14 @@ Important
 <li id="fn1"><p>The choice to use <span class="math inline">\(\sum\)</span> to denote summation isn’t entirely arbitrary. It’s essentially identical the Greek upper case letter sigma, which is the analogue of the letter S. I do realise that “S is for sum” is a bit silly, but life is like that I’m afraid. Mathematical fonts will usually have some subtle differences between the summation symbol <span class="math inline">\(\sum\)</span> and the upper case sigma <span class="math inline">\(\displaystyle\Sigma\)</span>, but as you can see those differences are minor. Along similar lines, there’s a “product” symbol <span class="math inline">\(\prod\)</span> used to denote the multiplication of lots of numbers, and it very closely resembles the upper case Greek letter pi (the Greek analog of P). Again, there are usually minor differences in how they look in a font: <span class="math inline">\(\prod\)</span> is a product symbol, whereas <span class="math inline">\(\displaystyle\Pi\)</span> is the upper case pi… and oh my god this footnote is boring.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Note that, just as we saw with the combine function <code>c()</code> and the remove function <code>rm()</code>, the <code>sum()</code> function has unnamed arguments. I’ll talk about unnamed arguments later in Section @ref(dotsargument), but for now let’s just ignore this detail.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Or at least, the basic statistical theory – these days there is a whole subfield of statistics called <strong>robust statistics</strong> that tries to grapple with the messiness of real data and develop theory that can cope with it.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>To be honest, I don’t see either of these measures used much in practice, but they’re conceptually useful as stepping stones to understanding variance and standard deviations. (The median deviation from the mean is also a useful tool for constructing robust estimates for population standard deviations, but that’s a very different topic)<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Well, I will very briefly mention the one that I think is coolest, for a very particular definition of “cool”, that is. Variances are <em>additive</em>. Here’s what that means: suppose I have two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, whose variances are <span class="math inline">\(\mbox{Var}(X)\)</span> and <span class="math inline">\(\mbox{Var}(Y)\)</span> respectively. Now imagine I want to define a new variable <span class="math inline">\(Z\)</span> that is the sum of the two, <span class="math inline">\(Z = X+Y\)</span>. As it turns out, the variance of <span class="math inline">\(Z\)</span> is equal to <span class="math inline">\(\mbox{Var}(X) + \mbox{Var}(Y)\)</span>. This is a <em>very</em> useful property, but it’s not true of the other measures that I talk about in this section.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>With the possible exception of the third question.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>It’s waaaaaay beyond the scope of this book, but there’s a mathematical result called Chebyshev’s inequality that tells us that <em>at an absolute minimum</em>, 75% of the observations <em>must</em> fall within 2 standard deviations of tge mean and 89% of observations <em>must</em> fall within 3 standard deviations. These Chebyshev bounds aren’t used much in pratice because real world data tend to adhere reasonably closely to the “68-95-99” rule that applies to data that are well-described by a normal distribution. However, it’s still useful to know that there really are some absolute rules. No matter how bizarre your data turn out to be, <em>at least</em> 75% of the observations are guaranteed as a mathematical law to fall within 2 standard deviations of the mean.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Strictly, the assumption is that the data are <em>normally</em> distributed, which is an important concept that we’ll discuss more in Chapter @ref(probability), and will turn up over and over again later in the book.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Just like we saw with the variance and the standard deviation, in practice we divide by <span class="math inline">\(N-1\)</span> rather than <span class="math inline">\(N\)</span>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>This is an oversimplification, but it’ll do for our purposes.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>If you are reading this after having already completed Chapter @ref(hypothesistesting) you might be wondering about hypothesis tests for correlations. R has a function called <code>cor.test()</code> that runs a hypothesis test for a single correlation: hypothesis tests for correlations are discussed in more detail in Section @ref(corrhyp).<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -898,7 +1944,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../chapters/reading-data.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Loading and saving data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Reading and writing data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

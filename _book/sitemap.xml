@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://learningstatisticswithr.com/index.html</loc>
-    <lastmod>2023-07-12T12:50:13.576Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.339Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/preface.html</loc>
-    <lastmod>2023-07-12T12:50:14.756Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.339Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/introduction.html</loc>
-    <lastmod>2023-07-12T12:49:40.036Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.349Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/installation.html</loc>
-    <lastmod>2023-07-12T12:49:40.046Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.349Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/commands.html</loc>
-    <lastmod>2023-07-12T12:49:40.056Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.369Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/calculations.html</loc>
-    <lastmod>2023-07-12T12:49:40.076Z</lastmod>
+    <lastmod>2023-07-14T09:31:03.539Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/variables.html</loc>
-    <lastmod>2023-07-12T12:49:40.106Z</lastmod>
+    <lastmod>2023-07-14T09:31:06.539Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/file-system.html</loc>
-    <lastmod>2023-07-12T12:49:40.116Z</lastmod>
+    <lastmod>2023-07-14T09:31:16.389Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/packages.html</loc>
-    <lastmod>2023-07-12T12:49:40.116Z</lastmod>
+    <lastmod>2023-07-14T09:31:17.819Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/chapters/scripts.html</loc>
+    <lastmod>2023-07-14T09:30:51.439Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/data-objects.html</loc>
-    <lastmod>2023-07-12T12:56:18.576Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.449Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/reading-data.html</loc>
-    <lastmod>2023-07-12T12:56:19.936Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.459Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/descriptive-statistics.html</loc>
-    <lastmod>2023-07-12T12:55:51.376Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.489Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/chapters/references.html</loc>
-    <lastmod>2023-07-12T12:50:19.056Z</lastmod>
+    <lastmod>2023-07-14T09:30:51.489Z</lastmod>
   </url>
 </urlset>
