@@ -333,9 +333,10 @@ At this point, I should probably explain the name of the `dbinom()` function. Ob
 knitr::kable(data.frame(stringsAsFactors=FALSE,
             What.it.does = c("probability (density) of",
                              "cumulative probability of",
-                             "generate random number from", "q qnorm() qbinom()"),
+                             "generate random number from", 
+                             "quantile of"),
                   Prefix = c("d", "p", "r", "q"),
-     Normal.distribution = c("dnorm()", "dnorm()", "rnorm()", "qnorm()"),
+     Normal.distribution = c("dnorm()", "pnorm()", "rnorm()", "qnorm()"),
    Binomial.distribution = c("dbinom()", "pbinom()", "rbinom()", "qbinom(")
 ), caption= "The naming system for R probability distribution functions. Every probability distribution implemented in R is actually associated with four separate functions, and there is a pretty standardised way for naming these functions.")
 
