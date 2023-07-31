@@ -52,7 +52,7 @@ I have suggested that someone write a *Learning Statistics with an Abacus* adapt
 
 #### III. Working with data
 
-- **Chapter 5: Descriptive statistics.** Mean, median and mode. Range, interquartile range and standard deviations. Skew and kurtosis. Standard scores. Correlations. Tools for computing these things in R. Brief comments missing data.
+- **Chapter 5: Descriptive statistics.** Mean, median and mode. Range, interquartile range and standard deviations. Skew. Standard scores. Correlations. Tools for computing these things in R. Brief comments missing data.
 - **Chapter 6: Drawing graphs.** Discussion of R graphics. Histograms. Stem and leaf plots. Boxplots. Scatterplots. Bar graphs.
 - **Chapter 7: Pragmatic matters.** Tabulating data. Transforming a variable. Subsetting vectors and data frames. Sorting, transposing and merging data. Reshaping a data frame. Basics of text processing. Reading unusual data files. Basics of variable coercion. Even more data structures. Other miscellaneous topics, including floating point arithmetic.
 - **Chapter 8: Basic programming.** Scripts. Loops. Conditionals. Writing functions. Implicit loops.
