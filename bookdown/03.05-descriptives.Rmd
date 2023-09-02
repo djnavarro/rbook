@@ -732,7 +732,7 @@ Again, this output is pretty easy to interpret. It's the output of the `summary(
 
 What if you have multiple grouping variables? Suppose, for example, you would like to look at the average mood gain separately for all possible combinations of drug and therapy. It is actually possible to do this using the `by()` and `describeBy()` functions, but I usually find it more convenient to use the `aggregate()` function in this situation. There are again three arguments that you need to specify. The `formula` argument is used to indicate which variable you want to analyse, and which variables are used to specify the groups. For instance, if you want to look at `mood.gain` separately for each possible combination of `drug` and `therapy`, the formula you want is `mood.gain ~ drug + therapy`. The `data` argument is used to specify the data frame containing all the data, and the `FUN` argument is used to indicate what function you want to calculate for each group (e.g., the `mean`). So, to obtain group means, use this command:
 ```{r}
- aggregate( formula = mood.gain ~ drug + therapy,  # mood.gain by drug/therapy combination
+ aggregate( mood.gain ~ drug + therapy,  # mood.gain by drug/therapy combination
             data = clin.trial,                     # data is in the clin.trial data frame
             FUN = mean                             # print out group means
  )
