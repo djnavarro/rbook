@@ -1342,7 +1342,7 @@ Calculating some basic descriptive statistics is one of the very first things yo
 
 
 - *Measures of central tendency*. Broadly speaking, central tendency measures tell you where the data are. There's three measures that are typically reported in the literature: the mean, median and mode. (Section \@ref(centraltendency))
-- *Measures of variability*. In contrast, measures of variability tell you about how "spread out" the data are. The key measures are: range, standard deviation, interquartile reange (Section \@ref(var))
+- *Measures of variability*. In contrast, measures of variability tell you about how "spread out" the data are. The key measures are: range, standard deviation, interquartile range (Section \@ref(var))
 - *Getting summaries of variables in R*. Since this book focuses on doing data analysis in R, we spent a bit of time talking about how descriptive statistics are computed in R. (Section \@ref(summary) and \@ref(groupdescriptives))
 - *Standard scores*. The $z$-score is a slightly unusual beast. It's not quite a descriptive statistic, and not quite an inference. We talked about it in Section \@ref(zscore). Make sure you understand that section: it'll come up again later. 
 - *Correlations*. Want to know how strong the relationship is between two variables? Calculate a correlation. (Section \@ref(correl))
