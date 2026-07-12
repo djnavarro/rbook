@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.52">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; Introduction to probability – Learning Statistics with R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./10-estimation.html" rel="next">
+<link href="./theory-preamble.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="9&nbsp; Introduction to probability – Learning Statistics with R">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta property="og:site_name" content="Learning Statistics with R">
+<meta name="twitter:title" content="9&nbsp; Introduction to probability – Learning Statistics with R">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./theory-preamble.html">Statistical theory</a></li><li class="breadcrumb-item"><a href="./09-probability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to probability</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Learning Statistics with R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Background</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-whystats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why do we learn statistics?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-studydesign.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A brief introduction to research design</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">An introduction to R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-introR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Getting started with R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R mechanics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Working with data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-descriptives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Descriptive statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-graphics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Drawing graphs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-datahandling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Pragmatic matters</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-scripting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic programming</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Statistical theory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory-preamble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preamble</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-probability.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimating unknown quantities from a sample</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-hypothesistesting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Statistical tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-chisquare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Categorical data analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-ttest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The <span class="math inline">\(t\)</span>-test</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Comparing several means (one-way ANOVA)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-anova2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Factorial ANOVA</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Endings, alternatives and prospects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Bayesian statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epilogue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Epilogue</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-probstats" id="toc-sec-probstats" class="nav-link active" data-scroll-target="#sec-probstats"><span class="header-section-number">9.1</span> How are probability and statistics different?</a></li>
+  <li><a href="#sec-probmeaning" id="toc-sec-probmeaning" class="nav-link" data-scroll-target="#sec-probmeaning"><span class="header-section-number">9.2</span> What does probability mean?</a>
+  <ul class="collapse">
+  <li><a href="#the-frequentist-view" id="toc-the-frequentist-view" class="nav-link" data-scroll-target="#the-frequentist-view"><span class="header-section-number">9.2.1</span> The frequentist view</a></li>
+  <li><a href="#the-bayesian-view" id="toc-the-bayesian-view" class="nav-link" data-scroll-target="#the-bayesian-view"><span class="header-section-number">9.2.2</span> The Bayesian view</a></li>
+  <li><a href="#whats-the-difference-and-who-is-right" id="toc-whats-the-difference-and-who-is-right" class="nav-link" data-scroll-target="#whats-the-difference-and-who-is-right"><span class="header-section-number">9.2.3</span> What’s the difference? And who is right?</a></li>
+  </ul></li>
+  <li><a href="#sec-basicprobability" id="toc-sec-basicprobability" class="nav-link" data-scroll-target="#sec-basicprobability"><span class="header-section-number">9.3</span> Basic probability theory</a>
+  <ul class="collapse">
+  <li><a href="#introducing-probability-distributions" id="toc-introducing-probability-distributions" class="nav-link" data-scroll-target="#introducing-probability-distributions"><span class="header-section-number">9.3.1</span> Introducing probability distributions</a></li>
+  </ul></li>
+  <li><a href="#sec-binomial" id="toc-sec-binomial" class="nav-link" data-scroll-target="#sec-binomial"><span class="header-section-number">9.4</span> The binomial distribution</a>
+  <ul class="collapse">
+  <li><a href="#introducing-the-binomial" id="toc-introducing-the-binomial" class="nav-link" data-scroll-target="#introducing-the-binomial"><span class="header-section-number">9.4.1</span> Introducing the binomial</a></li>
+  <li><a href="#working-with-the-binomial-distribution-in-r" id="toc-working-with-the-binomial-distribution-in-r" class="nav-link" data-scroll-target="#working-with-the-binomial-distribution-in-r"><span class="header-section-number">9.4.2</span> Working with the binomial distribution in R</a></li>
+  </ul></li>
+  <li><a href="#sec-normal" id="toc-sec-normal" class="nav-link" data-scroll-target="#sec-normal"><span class="header-section-number">9.5</span> The normal distribution</a>
+  <ul class="collapse">
+  <li><a href="#sec-density" id="toc-sec-density" class="nav-link" data-scroll-target="#sec-density"><span class="header-section-number">9.5.1</span> Probability density (advanced)</a></li>
+  </ul></li>
+  <li><a href="#sec-otherdists" id="toc-sec-otherdists" class="nav-link" data-scroll-target="#sec-otherdists"><span class="header-section-number">9.6</span> Other useful distributions</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">9.7</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./theory-preamble.html">Statistical theory</a></li><li class="breadcrumb-item"><a href="./09-probability.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to probability</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-probability" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introduction to probability</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p><em>[God] has afforded us only the twilight … of Probability.</em></p>
+<p>— John Locke</p>
+</blockquote>
+<p>Up to this point in the book, we’ve discussed some of the key ideas in experimental design, and we’ve talked a little about how you can summarise a data set. To a lot of people, this is all there is to statistics: it’s about calculating averages, collecting all the numbers, drawing pictures, and putting them all in a report somewhere. Kind of like stamp collecting, but with numbers. However, statistics covers much more than that. In fact, descriptive statistics is one of the smallest parts of statistics, and one of the least powerful. The bigger and more useful part of statistics is that it provides tools that let you make <em>inferences</em> about data.</p>
+<p>Once you start thinking about statistics in these terms – that statistics is there to help us draw inferences from data – you start seeing examples of it everywhere. For instance, here’s a tiny extract from a newspaper article in the Sydney Morning Herald (30 Oct 2010):</p>
+<blockquote class="blockquote">
+<p>“I have a tough job,” the Premier said in response to a poll which found her government is now the most unpopular Labor administration in polling history, with a primary vote of just 23 per cent.</p>
+</blockquote>
+<p>This kind of remark is entirely unremarkable in the papers or in everyday life, but let’s have a think about what it entails. A polling company has conducted a survey, usually a pretty big one because they can afford it. I’m too lazy to track down the original survey, so let’s just imagine that they called 1000 NSW voters at random, and 230 (23%) of those claimed that they intended to vote for the ALP. For the 2010 Federal election, the Australian Electoral Commission reported 4,610,795 enrolled voters in NSW; so the opinions of the remaining 4,609,795 voters (about 99.98% of voters) remain unknown to us. Even assuming that no-one lied to the polling company the only thing we can say with 100% confidence is that the true ALP primary vote is somewhere between 230/4610795 (about 0.005%) and 4610025/4610795 (about 99.83%). So, on what basis is it legitimate for the polling company, the newspaper, and the readership to conclude that the ALP primary vote is only about 23%?</p>
+<p>The answer to the question is pretty obvious: if I call 1000 people at random, and 230 of them say they intend to vote for the ALP, then it seems very unlikely that these are the <em>only</em> 230 people out of the entire voting public who actually intend to do so. In other words, we assume that the data collected by the polling company is pretty representative of the population at large. But how representative? Would we be surprised to discover that the true ALP primary vote is actually 24%? 29%? 37%? At this point everyday intuition starts to break down a bit. No-one would be surprised by 24%, and everybody would be surprised by 37%, but it’s a bit hard to say whether 29% is plausible. We need some more powerful tools than just looking at the numbers and guessing.</p>
+<p><strong><em>Inferential statistics</em></strong> provides the tools that we need to answer these sorts of questions, and since these kinds of questions lie at the heart of the scientific enterprise, they take up the lion’s share of every introductory course on statistics and research methods. However, the theory of statistical inference is built on top of <strong><em>probability theory</em></strong>. And it is to probability theory that we must now turn. This discussion of probability theory is basically background: there’s not a lot of statistics per se in this chapter, and you don’t need to understand this material in as much depth as the other chapters in this part of the book. Nevertheless, because probability theory does underpin so much of statistics, it’s worth covering some of the basics.</p>
+<section id="sec-probstats" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="sec-probstats"><span class="header-section-number">9.1</span> How are probability and statistics different?</h2>
+<p>Before we start talking about probability theory, it’s helpful to spend a moment thinking about the relationship between probability and statistics. The two disciplines are closely related but they’re not identical. Probability theory is “the doctrine of chances”. It’s a branch of mathematics that tells you how often different kinds of events will happen. For example, all of these questions are things you can answer using probability theory:</p>
+<ul>
+<li>What are the chances of a fair coin coming up heads 10 times in a row?</li>
+<li>If I roll two six sided dice, how likely is it that I’ll roll two sixes?</li>
+<li>How likely is it that five cards drawn from a perfectly shuffled deck will all be hearts?</li>
+<li>What are the chances that I’ll win the lottery?</li>
+</ul>
+<p>Notice that all of these questions have something in common. In each case the “truth of the world” is known, and my question relates to the “what kind of events” will happen. In the first question I <em>know</em> that the coin is fair, so there’s a 50% chance that any individual coin flip will come up heads. In the second question, I <em>know</em> that the chance of rolling a 6 on a single die is 1 in 6. In the third question I <em>know</em> that the deck is shuffled properly. And in the fourth question, I <em>know</em> that the lottery follows specific rules. You get the idea. The critical point is that probabilistic questions start with a known <strong><em>model</em></strong> of the world, and we use that model to do some calculations. The underlying model can be quite simple. For instance, in the coin flipping example, we can write down the model like this: <span class="math display">\[
+P(\text{heads}) = 0.5
+\]</span> which you can read as “the probability of heads is 0.5”. As we’ll see later, in the same way that percentages are numbers that range from 0% to 100%, probabilities are just numbers that range from 0 to 1. When using this probability model to answer the first question, I don’t actually know exactly what’s going to happen. Maybe I’ll get 10 heads, like the question says. But maybe I’ll get three heads. That’s the key thing: in probability theory, the <em>model</em> is known, but the <em>data</em> are not.</p>
+<p>So that’s probability. What about statistics? Statistical questions work the other way around. In statistics, we <em>do not</em> know the truth about the world. All we have is the data, and it is from the data that we want to <em>learn</em> the truth about the world. Statistical questions tend to look more like these:</p>
+<ul>
+<li>If my friend flips a coin 10 times and gets 10 heads, are they playing a trick on me?</li>
+<li>If five cards off the top of the deck are all hearts, how likely is it that the deck was shuffled?</li>
+<li>If the lottery commissioner’s spouse wins the lottery, how likely is it that the lottery was rigged?</li>
+</ul>
+<p>This time around, the only thing we have are data. What I <em>know</em> is that I saw my friend flip the coin 10 times and it came up heads every time. And what I want to <strong><em>infer</em></strong> is whether or not I should conclude that what I just saw was actually a fair coin being flipped 10 times in a row, or whether I should suspect that my friend is playing a trick on me. The data I have look like this:</p>
+<pre><code>H H H H H H H H H H H</code></pre>
+<p>and what I’m trying to do is work out which “model of the world” I should put my trust in. If the coin is fair, then the model I should adopt is one that says that the probability of heads is 0.5; that is, <span class="math inline">\(P(\text{heads}) = 0.5\)</span>. If the coin is not fair, then I should conclude that the probability of heads is <em>not</em> 0.5, which we would write as <span class="math inline">\(P(\text{heads}) \neq 0.5\)</span>. In other words, the statistical inference problem is to figure out which of these probability models is right. Clearly, the statistical question isn’t the same as the probability question, but they’re deeply connected to one another. Because of this, a good introduction to statistical theory will start with a discussion of what probability is and how it works.</p>
+</section>
+<section id="sec-probmeaning" class="level2 page-columns page-full" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="sec-probmeaning"><span class="header-section-number">9.2</span> What does probability mean?</h2>
+<p>Let’s start with the first of these questions. What is “probability”? It might seem surprising to you, but while statisticians and mathematicians (mostly) agree on what the <em>rules</em> of probability are, there’s much less of a consensus on what the word really <em>means</em>. It seems weird because we’re all very comfortable using words like “chance”, “likely”, “possible” and “probable”, and it doesn’t seem like it should be a very difficult question to answer. If you had to explain “probability” to a five year old, you could do a pretty good job. But if you’ve ever had that experience in real life, you might walk away from the conversation feeling like you didn’t quite get it right, and that (like many everyday concepts) it turns out that you don’t <em>really</em> know what it’s all about.</p>
+<p>So I’ll have a go at it. Let’s suppose I want to bet on a soccer game between two teams of robots, <em>Arduino Arsenal</em> and <em>C Milan</em>. After thinking about it, I decide that there is an 80% probability that <em>Arduino Arsenal</em> winning. What do I mean by that? Here are three possibilities…</p>
+<ul>
+<li>They’re robot teams, so I can make them play over and over again, and if I did that, <em>Arduino Arsenal</em> would win 8 out of every 10 games on average.</li>
+<li>For any given game, I would only agree that betting on this game is only “fair” if a $1 bet on <em>C Milan</em> gives a $5 payoff (i.e.&nbsp;I get my $1 back plus a $4 reward for being correct), as would a $4 bet on <em>Arduino Arsenal</em> (i.e., my $4 bet plus a $1 reward).</li>
+<li>My subjective “belief” or “confidence” in an <em>Arduino Arsenal</em> victory is four times as strong as my belief in a <em>C Milan</em> victory.</li>
+</ul>
+<p>Each of these seems sensible. However they’re not identical, and not every statistician would endorse all of them. The reason is that there are different statistical ideologies (yes, really!) and depending on which one you subscribe to, you might say that some of those statements are meaningless or irrelevant. In this section, I give a brief introduction to the two main approaches that exist in the literature. These are by no means the only approaches, but they’re the two big ones.</p>
+<section id="the-frequentist-view" class="level3 page-columns page-full" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="the-frequentist-view"><span class="header-section-number">9.2.1</span> The frequentist view</h3>
+<p>The first of the two major approaches to probability, and the more dominant one in statistics, is referred to as the <strong><em>frequentist view</em></strong>, and it defines probability as a <strong><em>long-run frequency</em></strong>. Suppose we were to try flipping a fair coin, over and over again. By definition, this is a coin that has <span class="math inline">\(P(H) = 0.5\)</span>. What might we observe? One possibility is that the first 20 flips might look like this:</p>
+<pre><code>T,H,H,H,H,T,T,H,H,H,H,T,H,H,T,T,T,T,T,H</code></pre>
+<p>In this case 11 of these 20 coin flips (55%) came up heads. Now suppose that I’d been keeping a running tally of the number of heads (which I’ll call <span class="math inline">\(N_H\)</span>) that I’ve seen, across the first <span class="math inline">\(N\)</span> flips, and calculate the proportion of heads <span class="math inline">\(N_H / N\)</span> every time. Here’s what I’d get (I did literally flip coins to produce this!):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>number of flips</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>number of heads</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>proportion</td>
+<td>.00</td>
+<td>.50</td>
+<td>.67</td>
+<td>.75</td>
+<td>.80</td>
+<td>.67</td>
+<td>.57</td>
+<td>.63</td>
+<td>.67</td>
+<td>.70</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>number of flips</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>number of heads</td>
+<td>8</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>proportion</td>
+<td>.73</td>
+<td>.67</td>
+<td>.69</td>
+<td>.71</td>
+<td>.67</td>
+<td>.63</td>
+<td>.59</td>
+<td>.56</td>
+<td>.53</td>
+<td>.55</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that at the start of the sequence, the <em>proportion</em> of heads fluctuates wildly, starting at .00 and rising as high as .80. Later on, one gets the impression that it dampens out a bit, with more and more of the values actually being pretty close to the “right” answer of .50. This is the frequentist definition of probability in a nutshell: flip a fair coin over and over again, and as <span class="math inline">\(N\)</span> grows large (approaches infinity, denoted <span class="math inline">\(N\rightarrow \infty\)</span>), the proportion of heads will converge to 50%. There are some subtle technicalities that the mathematicians care about, but qualitatively speaking, that’s how the frequentists define probability. Unfortunately, I don’t have an infinite number of coins, or the infinite patience required to flip a coin an infinite number of times. However, I do have a computer, and computers excel at mindless repetitive tasks. So I asked my computer to simulate flipping a coin 1000 times, and then drew a picture of what happens to the proportion <span class="math inline">\(N_H / N\)</span> as <span class="math inline">\(N\)</span> increases. Actually, I did it four times, just to make sure it wasn’t a fluke. The results are shown in <a href="#fig-frequentistprobability" class="quarto-xref">Figure&nbsp;<span>9.1</span></a>. As you can see, the <em>proportion of observed heads</em> eventually stops fluctuating, and settles down; when it does, the number at which it finally settles is the true probability of heads.</p>
+<div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-frequentistprobability" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-frequentistprobability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-frequentistprobability-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-frequentistprobability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: An illustration of how frequentist probability works. If you flip a fair coin over and over again, the proportion of heads that you’ve seen eventually settles down, and converges to the true probability of 0.5. Each panel shows four different simulated experiments: in each case, we pretend we flipped a coin 1000 times, and kept track of the proportion of flips that were heads as we went along. Although none of these sequences actually ended up with an exact value of .5, if we’d extended the experiment for an infinite number of coin flips they would have.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The frequentist definition of probability has some desirable characteristics. Firstly, it is objective: the probability of an event is <em>necessarily</em> grounded in the world. The only way that probability statements can make sense is if they refer to (a sequence of) events that occur in the physical universe.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Secondly, it is unambiguous: any two people watching the same sequence of events unfold, trying to calculate the probability of an event, must inevitably come up with the same answer. However, it also has undesirable characteristics. Firstly, infinite sequences don’t exist in the physical world. Suppose you picked up a coin from your pocket and started to flip it. Every time it lands, it impacts on the ground. Each impact wears the coin down a bit; eventually, the coin will be destroyed. So, one might ask whether it really makes sense to pretend that an “infinite” sequence of coin flips is even a meaningful concept, or an objective one. We can’t say that an “infinite sequence” of events is a real thing in the physical universe, because the physical universe doesn’t allow infinite anything. More seriously, the frequentist definition has a narrow scope. There are lots of things out there that human beings are happy to assign probability to in everyday language, but cannot (even in theory) be mapped onto a hypothetical sequence of events. For instance, if a meteorologist comes on TV and says, “the probability of rain in Adelaide on 2 November 2048 is 60%” we humans are happy to accept this. But it’s not clear how to define this in frequentist terms. There’s only one city of Adelaide, and only 2 November 2048 will only happen once. Under the strict frequentist definition, you can’t say anything about the probability that a unique, non-repeatable event will occur. And so, in order to talk about probability in this context, we’re going to need a somewhat different theory of probability. Something else is needed, and that’s where the Bayesian view of probability comes in.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This doesn’t mean that frequentists can’t make hypothetical statements, of course; it’s just that if you want to make a statement about probability, then it must be possible to redescribe that statement in terms of a sequence of potentially observable events, and the relative frequencies of different outcomes that appear within that sequence.</p></div></div></section>
+<section id="the-bayesian-view" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="the-bayesian-view"><span class="header-section-number">9.2.2</span> The Bayesian view</h3>
+<p>The <strong><em>Bayesian view</em></strong> of probability is often called the subjectivist view, and it is a minority view among statisticians, but one that has been steadily gaining traction for the last several decades. There are many flavours of Bayesianism, making it hard to say exactly what “the” Bayesian view is. The most common way of thinking about subjective probability is to define the probability of an event as the <strong><em>degree of belief</em></strong> that an intelligent and rational agent assigns to the truth of that event. From that perspective, probabilities don’t exist in the world, but rather in the thoughts and assumptions of people and other intelligent beings. However, in order for this approach to work, we need some way of operationalising “degree of belief”. One way that you can do this is to formalise it in terms of “rational gambling”, though there are many other ways. Suppose that I believe that there’s a 60% probability of rain tomorrow. If someone offers me a bet: if it rains tomorrow, then I win $5, but if it doesn’t rain then I lose $5. Clearly, from my perspective, this is a pretty good bet. On the other hand, if I think that the probability of rain is only 40%, then it’s a bad bet to take. Thus, we can operationalise the notion of a “subjective probability” in terms of what bets I’m willing to accept.</p>
+<p>What are the advantages and disadvantages to the Bayesian approach? The main advantage is that it allows you to assign probabilities to any event you want to. You don’t need to be limited to those events that are repeatable. The main disadvantage (to many people) is that we can’t be purely objective – specifying a probability requires us to specify an entity that has the relevant degree of belief. This entity might be a human, an alien, a robot, or even a statistician, but there has to be an intelligent agent out there that believes in things. To many people this is uncomfortable: it seems to make probability arbitrary. While the Bayesian approach does require that the agent in question be rational (i.e., obey the rules of probability), it does allow everyone to have their own beliefs; I can believe the coin is fair and you don’t have to, even though we’re both rational. The frequentist view doesn’t allow any two observers to attribute different probabilities to the same event: when that happens, then at least one of them must be wrong. The Bayesian view does not prevent this from occurring. Two observers with different background knowledge can legitimately hold different beliefs about the same event. In short, where the frequentist view is sometimes considered to be too narrow (forbids lots of things that we want to assign probabilities to), the Bayesian view is sometimes thought to be too broad (allows too many differences between observers).</p>
+</section>
+<section id="whats-the-difference-and-who-is-right" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="whats-the-difference-and-who-is-right"><span class="header-section-number">9.2.3</span> What’s the difference? And who is right?</h3>
+<p>Now that you’ve seen each of these two views independently, it’s useful to make sure you can compare the two. Go back to the hypothetical robot soccer game at the start of the section. What do you think a frequentist and a Bayesian would say about these three statements? Which statement would a frequentist say is the correct definition of probability? Which one would a Bayesian do? Would some of these statements be meaningless to a frequentist or a Bayesian? If you’ve understood the two perspectives, you should have some sense of how to answer those questions.</p>
+<p>Okay, assuming you understand the difference, you might be wondering which of them is <em>right</em>? Honestly, I don’t know that there is a right answer. As far as I can tell there’s nothing mathematically incorrect about the way frequentists think about sequences of events, and there’s nothing mathematically incorrect about the way that Bayesians define the beliefs of a rational agent. In fact, when you dig down into the details, Bayesians and frequentists actually agree about a lot of things. Many frequentist methods lead to decisions that Bayesians agree a rational agent would make. Many Bayesian methods have very good frequentist properties.</p>
+<p>For the most part, I’m a pragmatist so I’ll use any statistical method that I trust. As it turns out, that makes me prefer Bayesian methods, for reasons I’ll explain towards the end of the book, but I’m not fundamentally opposed to frequentist methods. Not everyone is quite so relaxed. For instance, consider Sir Ronald Fisher, one of the towering figures of 20th century statistics and a vehement opponent to all things Bayesian, whose paper on the mathematical foundations of statistics referred to Bayesian probability as “an impenetrable jungle [that] arrests progress towards precision of statistical concepts” <span class="citation" data-cites="Fisher1922b">(<a href="references.html#ref-Fisher1922b" role="doc-biblioref">Fisher, 1922, p. 311</a>)</span>. Or the psychologist Paul Meehl, who suggests that relying on frequentist methods could turn you into “a potent but sterile intellectual rake who leaves in his merry path a long train of ravished maidens but no viable scientific offspring” <span class="citation" data-cites="Meehl1967">(<a href="references.html#ref-Meehl1967" role="doc-biblioref">Meehl, 1967, p. 114</a>)</span>. The history of statistics, as you might gather, is not devoid of entertainment.</p>
+<p>In any case, while I personally prefer the Bayesian view, the majority of statistical analyses are based on the frequentist approach. My reasoning is pragmatic: the goal of this book is to cover roughly the same territory as a typical undergraduate stats class in psychology, and if you want to understand the statistical tools used by most psychologists, you’ll need a good grasp of frequentist methods. I promise you that this isn’t wasted effort. Even if you end up wanting to switch to the Bayesian perspective, you really should read through at least one book on the “orthodox” frequentist view. And since R is the most widely used statistical language for Bayesians, you might as well read a book that uses R. Besides, I won’t completely ignore the Bayesian perspective. Every now and then I’ll add some commentary from a Bayesian point of view, and I’ll revisit the topic in more depth in <a href="17-bayes.html" class="quarto-xref"><span>Chapter 17</span></a>.</p>
+</section>
+</section>
+<section id="sec-basicprobability" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="sec-basicprobability"><span class="header-section-number">9.3</span> Basic probability theory</h2>
+<p>Ideological arguments between Bayesians and frequentists notwithstanding, it turns out that people mostly agree on the rules that probabilities should obey. There are lots of different ways of arriving at these rules. The most commonly used approach is based on the work of Andrey Kolmogorov, one of the great Soviet mathematicians of the 20th century. I won’t go into a lot of detail, but I’ll try to give you a bit of a sense of how it works. And in order to do so, I’m going to have to talk about my pants.</p>
+<section id="introducing-probability-distributions" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="introducing-probability-distributions"><span class="header-section-number">9.3.1</span> Introducing probability distributions</h3>
+<p>One of the disturbing truths about my life is that I only own 5 pairs of pants: three pairs of jeans, the bottom half of a suit, and a pair of tracksuit pants. Even sadder, I’ve given them names: I call them <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_3\)</span>, <span class="math inline">\(X_4\)</span> and <span class="math inline">\(X_5\)</span>. I really do: that’s why they call me Mister Imaginative. Now, on any given day, I pick out exactly one pair of pants to wear. Not even I’m so stupid as to try to wear two pairs of pants, and thanks to years of training I never go outside without wearing pants anymore. If I were to describe this situation using the language of probability theory, I would refer to each pair of pants (i.e., each <span class="math inline">\(X\)</span>) as an <strong><em>elementary event</em></strong>. The key characteristic of elementary events is that every time we make an observation (e.g., every time I put on a pair of pants), then the outcome will be one and only one of these events. Like I said, these days I always wear exactly one pair of pants, so my pants satisfy this constraint. Similarly, the set of all possible events is called a <strong><em>sample space</em></strong>. Granted, some people would call it a “wardrobe”, but that’s because they’re refusing to think about my pants in probabilistic terms. Sad.</p>
+<p>Okay, now that we have a sample space (a wardrobe), which is built from lots of possible elementary events (pants), what we want to do is assign a <strong><em>probability</em></strong> of one of these elementary events. For an event <span class="math inline">\(X\)</span>, the probability of that event <span class="math inline">\(P(X)\)</span> is a number that lies between 0 and 1. The bigger the value of <span class="math inline">\(P(X)\)</span>, the more likely the event is to occur. So, for example, if <span class="math inline">\(P(X) = 0\)</span>, it means the event <span class="math inline">\(X\)</span> is impossible (i.e., I never wear those pants). On the other hand, if <span class="math inline">\(P(X) = 1\)</span> it means that event <span class="math inline">\(X\)</span> is certain to occur (i.e., I always wear those pants). For probability values in the middle, it means that I sometimes wear those pants. For instance, if <span class="math inline">\(P(X) = 0.5\)</span> it means that I wear those pants half of the time.</p>
+<p>At this point, we’re almost done. The last thing we need to recognise is that “something always happens”. Every time I put on pants, I really do end up wearing pants (crazy, right?). What this somewhat trite statement means, in probabilistic terms, is that the probabilities of the elementary events need to add up to 1. This is known as the <strong><em>law of total probability</em></strong>, not that any of us really care. More importantly, if these requirements are satisfied, then what we have is a <strong><em>probability distribution</em></strong>. For example, this is an example of a probability distribution:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Which pants?</th>
+<th>Label</th>
+<th>Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Blue jeans</td>
+<td><span class="math inline">\(X_1\)</span></td>
+<td><span class="math inline">\(P(X_1) = .5\)</span></td>
+</tr>
+<tr class="even">
+<td>Grey jeans</td>
+<td><span class="math inline">\(X_2\)</span></td>
+<td><span class="math inline">\(P(X_2) = .3\)</span></td>
+</tr>
+<tr class="odd">
+<td>Black jeans</td>
+<td><span class="math inline">\(X_3\)</span></td>
+<td><span class="math inline">\(P(X_3) = .1\)</span></td>
+</tr>
+<tr class="even">
+<td>Black suit</td>
+<td><span class="math inline">\(X_4\)</span></td>
+<td><span class="math inline">\(P(X_4) = 0\)</span></td>
+</tr>
+<tr class="odd">
+<td>Blue tracksuit</td>
+<td><span class="math inline">\(X_5\)</span></td>
+<td><span class="math inline">\(P(X_5) = .1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Each of the events has a probability that lies between 0 and 1, and if we add up the probability of all events, they sum to 1. Awesome. We can even draw a nice bar graph (see <a href="06-graphics.html#sec-bargraph" class="quarto-xref"><span>Section 6.7</span></a>) to visualise this distribution, as shown in <a href="#fig-pantsprob" class="quarto-xref">Figure&nbsp;<span>9.2</span></a>. And at this point, we’ve all achieved something. You’ve learned what a probability distribution is, and I’ve finally managed to find a way to create a graph that focuses entirely on my pants. Everyone wins!</p>
+<div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-pantsprob" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pantsprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-pantsprob-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pantsprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: A visual depiction of the “pants” probability distribution. There are five “elementary events”, corresponding to the five pairs of pants that I own. Each event has some probability of occurring: this probability is a number between 0 to 1. The sum of these probabilities is 1.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The only other thing that I need to point out is that probability theory allows you to talk about <strong><em>non elementary events</em></strong> as well as elementary ones. The easiest way to illustrate the concept is with an example. In the pants example, it’s perfectly legitimate to refer to the probability that I wear jeans. In this scenario, the “Danielle wears jeans” event is said to have happened as long as the elementary event that actually did occur is one of the appropriate ones; in this case “blue jeans”, “black jeans” or “grey jeans”. In mathematical terms, we defined the “jeans” event <span class="math inline">\(E\)</span> to correspond to the set of elementary events <span class="math inline">\((X_1, X_2, X_3)\)</span>. If any of these elementary events occurs, then <span class="math inline">\(E\)</span> is also said to have occurred. Having decided to write down the definition of the <span class="math inline">\(E\)</span> this way, it’s pretty straightforward to state what the probability <span class="math inline">\(P(E)\)</span> is: we just add everything up. In this particular case <span class="math display">\[
+P(E) = P(X_1) + P(X_2) + P(X_3)
+\]</span> and, since the probabilities of blue, grey and black jeans respectively are .5, .3 and .1, the probability that I wear jeans is equal to .9.</p>
+<p>At this point you might be thinking that this is all terribly obvious and simple and you’d be right. All we’ve really done is wrap some basic mathematics around a few common sense intuitions. However, from these simple beginnings it’s possible to construct some extremely powerful mathematical tools. I’m definitely not going to go into the details in this book, but what I will do is list – in <a href="#tbl-probrules" class="quarto-xref">Table&nbsp;<span>9.1</span></a> – some of the other rules that probabilities satisfy. These rules can be derived from the simple assumptions that I’ve outlined above, but since we don’t actually use these rules for anything in this book, I won’t do so here.</p>
+<div id="tbl-probrules" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-probrules-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.1: Some basic rules that probabilities must satisfy. You don’t really need to know these rules in order to understand the analyses that we’ll talk about later in the book, but they are important if you want to understand probability theory a bit more deeply.
+</figcaption>
+<div aria-describedby="tbl-probrules-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>English</th>
+<th>Notation</th>
+<th></th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>not <span class="math inline">\(A\)</span></td>
+<td><span class="math inline">\(P(\neg A)\)</span></td>
+<td><span class="math inline">\(=\)</span></td>
+<td><span class="math inline">\(1-P(A)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span></td>
+<td><span class="math inline">\(P(A \cup B)\)</span></td>
+<td><span class="math inline">\(=\)</span></td>
+<td><span class="math inline">\(P(A) + P(B) - P(A \cap B)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></td>
+<td><span class="math inline">\(P(A \cap B)\)</span></td>
+<td><span class="math inline">\(=\)</span></td>
+<td><span class="math inline">\(P(A \mid B) P(B)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="sec-binomial" class="level2 page-columns page-full" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sec-binomial"><span class="header-section-number">9.4</span> The binomial distribution</h2>
+<p>As you might imagine, probability distributions vary enormously, and there’s an enormous range of distributions out there. However, they aren’t all equally important. In fact, the vast majority of the content in this book relies on one of five distributions: the binomial distribution, the normal distribution, the <span class="math inline">\(t\)</span> distribution, the <span class="math inline">\(\chi^2\)</span> (“chi-square”) distribution and the <span class="math inline">\(F\)</span> distribution. Given this, what I’ll do over the next few sections is provide a brief introduction to all five of these, paying special attention to the binomial and the normal. I’ll start with the binomial distribution, since it’s the simplest of the five.</p>
+<section id="introducing-the-binomial" class="level3 page-columns page-full" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="introducing-the-binomial"><span class="header-section-number">9.4.1</span> Introducing the binomial</h3>
+<p>The theory of probability originated in the attempt to describe how games of chance work, so it seems fitting that our discussion of the <strong><em>binomial distribution</em></strong> should involve a discussion of rolling dice and flipping coins. Let’s imagine a simple “experiment”: in my hot little hand I’m holding 20 identical six-sided dice. On one face of each die there’s a picture of a skull; the other five faces are all blank. If I proceed to roll all 20 dice, what’s the probability that I’ll get exactly 4 skulls? Assuming that the dice are fair, we know that the chance of any one die coming up skulls is 1 in 6; to say this another way, the skull probability for a single die is approximately <span class="math inline">\(.167\)</span>. This is enough information to answer our question, so let’s have a look at how it’s done.</p>
+<p>As usual, we’ll want to introduce some names and some notation. We’ll let <span class="math inline">\(N\)</span> denote the number of dice rolls in our experiment; which is often referred to as the <strong><em>size parameter</em></strong> of our binomial distribution. We’ll also use <span class="math inline">\(\theta\)</span> to refer to the probability that a single die comes up skulls, a quantity that is usually called the <strong><em>success probability</em></strong> of the binomial.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Finally, we’ll use <span class="math inline">\(X\)</span> to refer to the results of our experiment, namely the number of skulls I get when I roll the dice. Since the actual value of <span class="math inline">\(X\)</span> is due to chance, we refer to it as a <strong><em>random variable</em></strong>. In any case, now that we have all this terminology and notation, we can use it to state the problem a little more precisely. The quantity that we want to calculate is the probability that <span class="math inline">\(X = 4\)</span> given that we know that <span class="math inline">\(\theta = .167\)</span> and <span class="math inline">\(N=20\)</span>. The general “form” of the thing I’m interested in calculating could be written as <span class="math display">\[
+P(X \mid \theta, N)
+\]</span> and we’re interested in the special case where <span class="math inline">\(X=4\)</span>, <span class="math inline">\(\theta = .167\)</span> and <span class="math inline">\(N=20\)</span>. There’s only one more piece of notation I want to refer to before moving on to discuss the solution to the problem. If I want to say that <span class="math inline">\(X\)</span> is generated randomly from a binomial distribution with parameters <span class="math inline">\(\theta\)</span> and <span class="math inline">\(N\)</span>, the notation I would use is as follows: <span class="math display">\[
+X \sim \text{Binomial}(\theta, N)
+\]</span></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Note that the term “success” is pretty arbitrary, and doesn’t actually imply that the outcome is something to be desired. If <span class="math inline">\(\theta\)</span> referred to the probability that any one passenger gets injured in a bus crash, I’d still call it the success probability, but that doesn’t mean I want people to get hurt in bus crashes!</p></div></div><p>Yeah, yeah. I know what you’re thinking: notation, notation, notation. Really, who cares? Very few readers of this book are here for the notation, so I should probably move on and talk about how to use the binomial distribution. I’ve included the formula for the binomial distribution in <a href="#tbl-distformulas" class="quarto-xref">Table&nbsp;<span>9.3</span></a>, since some readers may want to play with it themselves, but since most people probably don’t care that much and because we don’t need the formula in this book, I won’t talk about it in any detail. Instead, I just want to show you what the binomial distribution looks like. To that end, <a href="#fig-binomial1" class="quarto-xref">Figure&nbsp;<span>9.3</span></a> plots the binomial probabilities for all possible values of <span class="math inline">\(X\)</span> for our dice rolling experiment, from <span class="math inline">\(X=0\)</span> (no skulls) all the way up to <span class="math inline">\(X=20\)</span> (all skulls). Note that this is basically a bar chart, and is no different to the “pants probability” plot I drew in <a href="#fig-pantsprob" class="quarto-xref">Figure&nbsp;<span>9.2</span></a>. On the horizontal axis we have all the possible events, and on the vertical axis we can read off the probability of each of those events. So, the probability of rolling 4 skulls out of 20 times is about 0.20 (the actual answer is 0.2022036, as we’ll see in a moment). In other words, you’d expect that to happen about 20% of the times you repeated this experiment.</p>
+<div class="cell" data-scratch="start">
+<div class="cell-output-display">
+<div id="fig-binomial1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binomial1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-binomial1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: The binomial distribution with size parameter of <span class="math inline">\(N=20\)</span> and an underlying success probability of <span class="math inline">\(\theta = 1/6\)</span>. Each vertical bar depicts the probability of one specific outcome (i.e., one possible value of <span class="math inline">\(X\)</span>). Because this is a probability distribution, each of the probabilities must be a number between 0 and 1, and the heights of the bars must sum to 1 as well.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="working-with-the-binomial-distribution-in-r" class="level3 page-columns page-full" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="working-with-the-binomial-distribution-in-r"><span class="header-section-number">9.4.2</span> Working with the binomial distribution in R</h3>
+<p>Although some people find it handy to know the formulas in <a href="#tbl-distformulas" class="quarto-xref">Table&nbsp;<span>9.3</span></a>, most people just want to know how to use the distributions without worrying too much about the maths. To that end, R has a function called <code>dbinom()</code> that calculates binomial probabilities for us. The main arguments to the function are</p>
+<ul>
+<li><code>x</code>. This is a number, or vector of numbers, specifying the outcomes whose probability you’re trying to calculate.</li>
+<li><code>size</code>. This is a number telling R the size of the experiment.</li>
+<li><code>prob</code>. This is the success probability for any one trial in the experiment.</li>
+</ul>
+<p>So, in order to calculate the probability of getting <code>x = 4</code> skulls, from an experiment of <code>size = 20</code> trials, in which the probability of getting a skull on any one trial is <code>prob = 1/6</code> … well, the command I would use is simply this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2022036</code></pre>
+</div>
+</div>
+<p>To give you a feel for how the binomial distribution changes when we alter the values of <span class="math inline">\(\theta\)</span> and <span class="math inline">\(N\)</span>, let’s suppose that instead of rolling dice, I’m actually flipping coins. This time around, my experiment involves flipping a fair coin repeatedly, and the outcome that I’m interested in is the number of heads that I observe. In this scenario, the success probability is now <span class="math inline">\(\theta = 1/2\)</span>. Suppose I were to flip the coin <span class="math inline">\(N=20\)</span> times. In this example, I’ve changed the success probability, but kept the size of the experiment the same. What does this do to our binomial distribution? Well, as <a href="#fig-binomial2" class="quarto-xref">Figure&nbsp;<span>9.4</span></a> (a) shows, the main effect of this is to shift the whole distribution, as you’d expect. Okay, what if we flipped a coin <span class="math inline">\(N=100\)</span> times? Well, in that case, we get <a href="#fig-binomial2" class="quarto-xref">Figure&nbsp;<span>9.4</span></a> (b). The distribution stays roughly in the middle, but there’s a bit more variability in the possible outcomes.</p>
+<div id="fig-binomial2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binomial2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binomial2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-binomial2-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binomial2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-binomial2-1.png" id="fig-binomial2-1" class="img-fluid figure-img" data-ref-parent="fig-binomial2" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binomial2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binomial2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-binomial2-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binomial2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-binomial2-2.png" id="fig-binomial2-2" class="img-fluid figure-img" data-ref-parent="fig-binomial2" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binomial2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.4: Two binomial distributions, involving a scenario in which I’m flipping a fair coin, so the underlying success probability is <span class="math inline">\(\theta = 1/2\)</span>. In panel (a), we assume I’m flipping the coin <span class="math inline">\(N=20\)</span> times. In panel (b) we assume that the coin is flipped <span class="math inline">\(N=100\)</span> times.
+</figcaption>
+</figure>
+</div>
+<p>At this point, I should probably explain the name of the <code>dbinom()</code> function. Obviously, the “binom” part comes from the fact that we’re working with the binomial distribution, but the “d” prefix is probably a bit of a mystery. In this section I’ll give a partial explanation: specifically, I’ll explain why there is a prefix. As for why it’s a “d” specifically, you’ll have to wait until the next section. What’s going on here is that R actually provides <em>four</em> functions in relation to the binomial distribution. These four functions are <code>dbinom()</code>, <code>pbinom()</code>, <code>rbinom()</code> and <code>qbinom()</code>, and each one calculates a different quantity of interest. Not only that, R does the same thing for <em>every</em> probability distribution that it implements. No matter what distribution you’re talking about, there’s a <code>d</code> function, a <code>p</code> function, a <code>q</code> function and a <code>r</code> function. This is illustrated in <a href="#tbl-pdistnames" class="quarto-xref">Table&nbsp;<span>9.2</span></a>, using the binomial distribution and the normal distribution as examples.</p>
+<div id="tbl-pdistnames" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pdistnames-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.2: The naming system for R probability distribution functions. Every probability distribution implemented in R is actually associated with four separate functions, and there is a pretty standardised way for naming these functions.
+</figcaption>
+<div aria-describedby="tbl-pdistnames-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>what it does</th>
+<th>prefix</th>
+<th><strong>norm</strong>al distribution</th>
+<th><strong>binom</strong>ial distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>probability (<strong>d</strong>ensity) of</td>
+<td><code>d</code></td>
+<td><code>dnorm()</code></td>
+<td><code>dbinom()</code></td>
+</tr>
+<tr class="even">
+<td>cumulative <strong>p</strong>robability of</td>
+<td><code>p</code></td>
+<td><code>pnorm()</code></td>
+<td><code>pbinom()</code></td>
+</tr>
+<tr class="odd">
+<td>generate <strong>r</strong>andom number from</td>
+<td><code>r</code></td>
+<td><code>rnorm()</code></td>
+<td><code>rbinom()</code></td>
+</tr>
+<tr class="even">
+<td><strong>q</strong>uantile of</td>
+<td><code>q</code></td>
+<td><code>qnorm()</code></td>
+<td><code>qbinom()</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Let’s have a look at what all four functions do. Firstly, all four versions of the function require you to specify the <code>size</code> and <code>prob</code> arguments: no matter what you’re trying to get R to calculate, it needs to know what the parameters are. However, they differ in terms of what the other argument is, and what the output is. So let’s look at them one at a time.</p>
+<ul>
+<li>The <code>d</code> form we’ve already seen: you specify a particular outcome <code>x</code>, and the output is the probability of obtaining exactly that outcome. (the “d” is short for <strong><em>density</em></strong>, but ignore that for now).</li>
+<li>The <code>p</code> form calculates the <strong><em>cumulative probability</em></strong>. You specify a particular quantile <code>q</code>, and it tells you the probability of obtaining an outcome <em>smaller than or equal to</em> <code>q</code>.</li>
+<li>The <code>q</code> form calculates the <strong><em>quantiles</em></strong> of the distribution. You specify a probability value <code>p</code>, and gives you the corresponding percentile. That is, the value of the variable for which there’s a probability <code>p</code> of obtaining an outcome lower than that value.</li>
+<li>The <code>r</code> form is a <strong><em>random number generator</em></strong>: specifically, it generates <code>n</code> random outcomes from the distribution.</li>
+</ul>
+<p>This is a little abstract, so let’s look at some concrete examples. Again, we’ve already covered <code>dbinom()</code> so let’s focus on the other three versions. We’ll start with <code>pbinom()</code>, and we’ll go back to the skull-dice example. Again, I’m rolling 20 dice, and each die has a 1 in 6 chance of coming up skulls. Suppose, however, that I want to know the probability of rolling 4 <em>or fewer</em> skulls. If I wanted to, I could use the <code>dbinom()</code> function to calculate the exact probability of rolling 0 skulls, 1 skull, 2 skulls, 3 skulls and 4 skulls and then add these up, but there’s a faster way. Instead, I can calculate this using the <code>pbinom()</code> function. Here’s the command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="at">q =</span> <span class="dv">4</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7687492</code></pre>
+</div>
+</div>
+<p>In other words, there is a 76.9% chance that I will roll 4 or fewer skulls. Or, to put it another way, R is telling us that a value of 4 is actually the 76.9th percentile of this binomial distribution.</p>
+<p>Next, let’s consider the <code>qbinom()</code> function. Let’s say I want to calculate the 75th percentile of the binomial distribution. If we’re sticking with our skulls example, I would use the following command to do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(<span class="at">p =</span> <span class="fl">0.75</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>Hm. There’s something odd going on here. Let’s think this through. What the <code>qbinom()</code> function appears to be telling us is that the 75th percentile of the binomial distribution is 4, even though we saw from the <code>pbinom()</code> function that 4 is <em>actually</em> the 76.9th percentile. And it’s definitely the <code>pbinom()</code> function that is correct. I promise. The weirdness here comes from the fact that our binomial distribution doesn’t really <em>have</em> a 75th percentile. Not really. Why not? Well, there’s a 56.7% chance of rolling 3 or fewer skulls (you can type <code>pbinom(3, 20, 1/6)</code> to confirm this if you want), and a 76.9% chance of rolling 4 or fewer skulls. So there’s a sense in which the 75th percentile should lie “in between” 3 and 4 skulls. But that makes no sense at all! You can’t roll 20 dice and get 3.9 of them come up skulls. This issue can be handled in different ways: you could report an in between value (or <em>interpolated</em> value, to use the technical name) like 3.9, you could round down (to 3) or you could round up (to 4). The <code>qbinom()</code> function rounds upwards: if you ask for a percentile that doesn’t actually exist (like the 75th in this example), R finds the smallest value for which the percentile rank is <em>at least</em> what you asked for. In this case, since the “true” 75th percentile (whatever that would mean) lies somewhere between 3 and 4 skulls, R rounds up and gives you an answer of 4. This subtlety is tedious, I admit, but thankfully it’s only an issue for discrete distributions like the binomial (see <a href="02-studydesign.html#sec-continuousdiscrete" class="quarto-xref"><span>Section 2.2.5</span></a> for a discussion of continuous versus discrete). The other distributions that I’ll talk about (normal, <span class="math inline">\(t\)</span>, <span class="math inline">\(\chi^2\)</span> and <span class="math inline">\(F\)</span>) are all continuous, and so R can always return an exact quantile whenever you ask for it.</p>
+<p>Finally, we have the random number generator. To use the <code>rbinom()</code> function, you specify how many times R should “simulate” the experiment using the <code>n</code> argument, and it will generate random outcomes from the binomial distribution. So, for instance, suppose I were to repeat my die rolling experiment 100 times. I could get R to simulate the results of these experiments by using the following command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 3 4 5 4 1 1 3 3 1 2 1 2 3 5 3 4 1 2 4 3 6 3 3 2 4 4 2 5 3 3 2 3 4 5 2 4 3
+ [38] 5 2 5 3 4 4 5 3 2 5 2 2 3 3 3 3 3 3 2 5 5 3 2 2 3 5 3 5 1 1 3 5 2 3 3 0 3
+ [75] 6 3 3 4 3 4 6 3 3 4 2 2 3 5 3 2 4 4 6 4 2 2 2 5 1 3</code></pre>
+</div>
+</div>
+<p>As you can see, these numbers are pretty much what you’d expect given the distribution shown in <a href="#fig-binomial1" class="quarto-xref">Figure&nbsp;<span>9.3</span></a>. Most of the time I roll somewhere between 1 to 5 skulls. There are a lot of subtleties associated with random number generation using a computer,<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> but for the purposes of this book we don’t need to worry too much about them.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Since computers are deterministic machines, they can’t actually produce truly random behaviour. Instead, what they do is take advantage of various mathematical functions that share a lot of similarities with true randomness. What this means is that any random numbers generated on a computer are <em>pseudorandom</em>, and the quality of those numbers depends on the specific method used. By default R uses the “Mersenne twister” method. In any case, you can find out more by typing <code>?Random</code>, but as usual the R help files are fairly dense.</p></div></div></section>
+</section>
+<section id="sec-normal" class="level2 page-columns page-full" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="sec-normal"><span class="header-section-number">9.5</span> The normal distribution</h2>
+<p>While the binomial distribution is conceptually the simplest distribution to understand, it’s not the most important one. That particular honour goes to the <strong><em>normal distribution</em></strong>, which is also referred to as “the bell curve” or a “Gaussian distribution”. A normal distribution is described using two parameters, the mean of the distribution <span class="math inline">\(\mu\)</span> and the standard deviation of the distribution <span class="math inline">\(\sigma\)</span>. The notation that we sometimes use to say that a variable <span class="math inline">\(X\)</span> is normally distributed is as follows: <span class="math display">\[
+X \sim \text{Normal}(\mu,\sigma)
+\]</span> Of course, that’s just notation. It doesn’t tell us anything interesting about the normal distribution itself. As was the case with the binomial distribution, I have included the formula for the normal distribution in this book, because I think it’s important enough that everyone who learns statistics should at least look at it, but since this is an introductory text I don’t want to focus on it, so I’ve tucked it away in <a href="#tbl-distformulas" class="quarto-xref">Table&nbsp;<span>9.3</span></a>. Similarly, the R functions for the normal distribution are <code>dnorm()</code>, <code>pnorm()</code>, <code>qnorm()</code> and <code>rnorm()</code>. However, they behave in pretty much exactly the same way as the corresponding functions for the binomial distribution, so there’s not a lot that you need to know. The only thing that I should point out is that the argument names for the parameters are <code>mean</code> and <code>sd</code>. In pretty much every other respect, there’s nothing else to add.</p>
+<div id="tbl-distformulas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-distformulas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9.3: Formulas for the binomial and normal distributions. We don’t really use these formulas for anything in this book, but they’re pretty important for more advanced work, so I thought it might be best to put them here in a table, where they can’t get in the way of the text. In the equation for the binomial, <span class="math inline">\(X!\)</span> is the factorial function (i.e., multiply all whole numbers from 1 to <span class="math inline">\(X\)</span>), and for the normal distribution “exp” refers to the exponential function, which we discussed in <a href="07-datahandling.html" class="quarto-xref"><span>Chapter 7</span></a>. If these equations don’t make a lot of sense to you, don’t worry too much about them.
+</figcaption>
+<div aria-describedby="tbl-distformulas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Binomial</th>
+<th>Normal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(P(X \mid \theta, N) = \dfrac{N!}{X! (N-X)!} \theta^X (1-\theta)^{N-X}\)</span></td>
+<td><span class="math inline">\(p(X \mid \mu, \sigma) = \dfrac{1}{\sqrt{2\pi}\sigma} \exp \left( -\dfrac{(X - \mu)^2}{2\sigma^2} \right)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Instead of focusing on the maths, let’s try to get a sense for what it means for a variable to be normally distributed. To that end, have a look at <a href="#fig-normdist" class="quarto-xref">Figure&nbsp;<span>9.5</span></a>, which plots a normal distribution with mean <span class="math inline">\(\mu = 0\)</span> and standard deviation <span class="math inline">\(\sigma = 1\)</span>. You can see where the name “bell curve” comes from: it looks a bit like a bell. Notice that, unlike the plots that I drew to illustrate the binomial distribution, the picture of the normal distribution in <a href="#fig-normdist" class="quarto-xref">Figure&nbsp;<span>9.5</span></a> shows a smooth curve instead of “histogram-like” bars. This isn’t an arbitrary choice: the normal distribution is continuous, whereas the binomial is discrete. For instance, in the die rolling example from the last section, it was possible to get 3 skulls or 4 skulls, but impossible to get 3.9 skulls. The figures that I drew in the previous section reflected this fact: in <a href="#fig-binomial1" class="quarto-xref">Figure&nbsp;<span>9.3</span></a>, for instance, there’s a bar located at <span class="math inline">\(X=3\)</span> and another one at <span class="math inline">\(X=4\)</span>, but there’s nothing in between. Continuous quantities don’t have this constraint. For instance, suppose we’re talking about the weather. The temperature on a pleasant Spring day could be 23 degrees, 24 degrees, 23.9 degrees, or anything in between since temperature is a continuous variable, and so a normal distribution might be quite appropriate for describing Spring temperatures.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;In practice, the normal distribution is so handy that people tend to use it even when the variable isn’t actually continuous. As long as there are enough categories (e.g., Likert scale responses to a questionnaire), it’s pretty standard practice to use the normal distribution as an approximation. This works out much better in practice than you’d think.</p></div></div><div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-normdist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-normdist-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.5: The normal distribution with mean <span class="math inline">\(\mu = 0\)</span> and standard deviation <span class="math inline">\(\sigma = 1\)</span>. The <span class="math inline">\(x\)</span>-axis corresponds to the value of some variable, and the <span class="math inline">\(y\)</span>-axis tells us something about how likely we are to observe that value. However, notice that the <span class="math inline">\(y\)</span>-axis is labelled “Probability Density” and not “Probability”. There is a subtle and somewhat frustrating characteristic of continuous distributions that makes the <span class="math inline">\(y\)</span> axis behave a bit oddly: the height of the curve here isn’t actually the probability of observing a particular <span class="math inline">\(x\)</span> value. On the other hand, it <em>is</em> true that the heights of the curve tells you which <span class="math inline">\(x\)</span> values are more likely (the higher ones!). (see <a href="#sec-density" class="quarto-xref"><span>Section 9.5.1</span></a> for all the annoying details)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>With this in mind, let’s see if we can’t get an intuition for how the normal distribution works. Firstly, let’s have a look at what happens when we play around with the parameters of the distribution. To that end, <a href="#fig-normmean" class="quarto-xref">Figure&nbsp;<span>9.6</span></a> plots normal distributions that have different means, but have the same standard deviation. As you might expect, all of these distributions have the same “width”. The only difference between them is that they’ve been shifted to the left or to the right. In every other respect they’re identical. In contrast, if we increase the standard deviation while keeping the mean constant, the peak of the distribution stays in the same place, but the distribution gets wider, as you can see in <a href="#fig-normsd" class="quarto-xref">Figure&nbsp;<span>9.7</span></a>. Notice, though, that when we widen the distribution, the height of the peak shrinks. This has to happen: in the same way that the heights of the bars that we used to draw a discrete binomial distribution have to <em>sum</em> to 1, the total <em>area under the curve</em> for the normal distribution must equal 1. Before moving on, I want to point out one important characteristic of the normal distribution. Irrespective of what the actual mean and standard deviation are, 68.3% of the area falls within 1 standard deviation of the mean. Similarly, 95.4% of the distribution falls within 2 standard deviations of the mean, and 99.7% of the distribution is within 3 standard deviations. This idea is illustrated in <a href="#fig-sdnorm1" class="quarto-xref">Figure&nbsp;<span>9.8</span></a> and <a href="#fig-sdnorm2" class="quarto-xref">Figure&nbsp;<span>9.9</span></a>.</p>
+<div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-normmean" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normmean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-normmean-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normmean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.6: An illustration of what happens when you change the mean of a normal distribution. The solid line depicts a normal distribution with a mean of <span class="math inline">\(\mu=4\)</span>. The dashed line shows a normal distribution with a mean of <span class="math inline">\(\mu=7\)</span>. In both cases, the standard deviation is <span class="math inline">\(\sigma=1\)</span>. Not surprisingly, the two distributions have the same shape, but the dashed line is shifted to the right.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-normsd" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normsd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-normsd-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normsd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.7: An illustration of what happens when you change the standard deviation of a normal distribution. Both distributions plotted in this figure have a mean of <span class="math inline">\(\mu = 5\)</span>, but they have different standard deviations. The solid line plots a distribution with standard deviation <span class="math inline">\(\sigma=1\)</span>, and the dashed line shows a distribution with standard deviation <span class="math inline">\(\sigma = 2\)</span>. As a consequence, both distributions are “centred” on the same spot, but the dashed line is wider than the solid one.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="fig-sdnorm1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sdnorm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sdnorm1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sdnorm1-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sdnorm1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-sdnorm1-1.png" id="fig-sdnorm1-1" class="img-fluid figure-img" data-ref-parent="fig-sdnorm1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sdnorm1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sdnorm1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sdnorm1-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sdnorm1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-sdnorm1-2.png" id="fig-sdnorm1-2" class="img-fluid figure-img" data-ref-parent="fig-sdnorm1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sdnorm1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sdnorm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.8: The area under the curve tells you the probability that an observation falls within a particular range. The solid lines plot normal distributions with mean <span class="math inline">\(\mu=0\)</span> and standard deviation <span class="math inline">\(\sigma=1\)</span>. The shaded areas illustrate “areas under the curve” for two important cases. In panel a, we can see that there is a 68.3% chance that an observation will fall within one standard deviation of the mean. In panel b, we see that there is a 95.4% chance that an observation will fall within two standard deviations of the mean.
+</figcaption>
+</figure>
+</div>
+<div id="fig-sdnorm2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sdnorm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sdnorm2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sdnorm2-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sdnorm2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-sdnorm2-1.png" id="fig-sdnorm2-1" class="img-fluid figure-img" data-ref-parent="fig-sdnorm2" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sdnorm2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sdnorm2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-sdnorm2-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="672">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sdnorm2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-sdnorm2-2.png" id="fig-sdnorm2-2" class="img-fluid figure-img" data-ref-parent="fig-sdnorm2" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sdnorm2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sdnorm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.9: Two more examples of the “area under the curve idea”. There is a 15.9% chance that an observation is one standard deviation below the mean or smaller (panel a), and a 34.1% chance that the observation is greater than one standard deviation below the mean but still below the mean (panel b). Notice that if you add these two numbers together you get <span class="math inline">\(15.9\% + 34.1\% = 50\%\)</span>. For normally distributed data, there is a 50% chance that an observation falls below the mean. And of course that also implies that there is a 50% chance that it falls above the mean.
+</figcaption>
+</figure>
+</div>
+<section id="sec-density" class="level3 page-columns page-full" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="sec-density"><span class="header-section-number">9.5.1</span> Probability density (advanced)</h3>
+<p>There’s something I’ve been trying to hide throughout my discussion of the normal distribution, something that some introductory textbooks omit completely. They might be right to do so: this “thing” that I’m hiding is weird and counterintuitive even by the admittedly distorted standards that apply in statistics. Fortunately, it’s not something that you need to understand at a deep level in order to do basic statistics: rather, it’s something that starts to become important later on when you move beyond the basics. So, if it doesn’t make complete sense, don’t worry: try to make sure that you follow the gist of it.</p>
+<p>Throughout my discussion of the normal distribution, there’s been one or two things that don’t quite make sense. Perhaps you noticed that the <span class="math inline">\(y\)</span>-axis in these figures is labelled “Probability Density” rather than density. Maybe you noticed that I used <span class="math inline">\(p(X)\)</span> instead of <span class="math inline">\(P(X)\)</span> when giving the formula for the normal distribution. Maybe you’re wondering why R uses the “d” prefix for functions like <code>dnorm()</code>. And maybe, just maybe, you’ve been playing around with the <code>dnorm()</code> function, and you accidentally typed in a command like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.989423</code></pre>
+</div>
+</div>
+<p>And if you’ve done the last part, you’re probably very confused. I’ve asked R to calculate the probability that <code>x = 1</code>, for a normally distributed variable with <code>mean = 1</code> and standard deviation <code>sd = 0.1</code>; and it tells me that the probability is 3.99. But, as we discussed earlier, probabilities <em>can’t</em> be larger than 1. So either I’ve made a mistake, or that’s not a probability.</p>
+<p>As it turns out, the second answer is correct. What we’ve calculated here isn’t actually a probability: it’s something else. To understand what that something is, you have to spend a little time thinking about what it really <em>means</em> to say that <span class="math inline">\(X\)</span> is a continuous variable. Let’s say we’re talking about the temperature outside. The thermometer tells me it’s 23 degrees, but I know that’s not really true. It’s not <em>exactly</em> 23 degrees. Maybe it’s 23.1 degrees, I think to myself. But I know that that’s not really true either, because it might actually be 23.09 degrees. But, I know that… well, you get the idea. The tricky thing with genuinely continuous quantities is that you never really know exactly what they are.</p>
+<p>Now think about what this implies when we talk about probabilities. Suppose that tomorrow’s maximum temperature is sampled from a normal distribution with mean 23 and standard deviation 1. What’s the probability that the temperature will be <em>exactly</em> 23 degrees? The answer is “zero”, or possibly, “a number so close to zero that it might as well be zero”. Why is this? It’s like trying to throw a dart at an infinitely small dart board: no matter how good your aim, you’ll never hit it. In real life you’ll never get a value of exactly 23. It’ll always be something like 23.1 or 22.99998 or something. In other words, it’s completely meaningless to talk about the probability that the temperature is exactly 23 degrees. However, in everyday language, if I told you that it was 23 degrees outside and it turned out to be 22.9998 degrees, you probably wouldn’t call me a liar. Because in everyday language, “23 degrees” usually means something like “somewhere between 22.5 and 23.5 degrees”. And while it doesn’t feel very meaningful to ask about the probability that the temperature is exactly 23 degrees, it does seem sensible to ask about the probability that the temperature lies between 22.5 and 23.5, or between 20 and 30, or any other range of temperatures.</p>
+<p>The point of this discussion is to make clear that, when we’re talking about continuous distributions, it’s not meaningful to talk about the probability of a specific value. However, what we <em>can</em> talk about is the probability that the value lies within a particular range of values. To find out the probability associated with a particular range, what you need to do is calculate the “area under the curve”. We’ve seen this concept already: in <a href="#fig-sdnorm1" class="quarto-xref">Figure&nbsp;<span>9.8</span></a>, the shaded areas shown depict genuine probabilities (e.g., in panel (a) it shows the probability of observing a value that falls within 1 standard deviation of the mean).</p>
+<p>Okay, so that explains part of the story. I’ve explained a little bit about how continuous probability distributions should be interpreted (i.e., area under the curve is the key thing), but I haven’t actually explained what the <code>dnorm()</code> function actually calculates. Equivalently, what does the formula for <span class="math inline">\(p(x)\)</span> that I described earlier actually mean? Obviously, <span class="math inline">\(p(x)\)</span> doesn’t describe a probability, but what is it? The name for this quantity <span class="math inline">\(p(x)\)</span> is a <strong><em>probability density</em></strong>, and in terms of the plots we’ve been drawing, it corresponds to the <em>height</em> of the curve. The densities themselves aren’t meaningful in and of themselves: but they’re “rigged” to ensure that the <em>area</em> under the curve is always interpretable as genuine probabilities. To be honest, that’s about as much as you really need to know for now.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;For those readers who know a little calculus, I’ll give a slightly more precise explanation. In the same way that probabilities are non-negative numbers that must sum to 1, probability densities are non-negative numbers that must integrate to 1 (where the integral is taken across all possible values of <span class="math inline">\(X\)</span>). To calculate the probability that <span class="math inline">\(X\)</span> falls between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> we calculate the definite integral of the density function over the corresponding range, <span class="math inline">\(\int_a^b p(x) \ dx\)</span>. If you don’t remember or never learned calculus, don’t worry about this. It’s not needed for this book.</p></div></div></section>
+</section>
+<section id="sec-otherdists" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="sec-otherdists"><span class="header-section-number">9.6</span> Other useful distributions</h2>
+<p>The normal distribution is the distribution that statistics makes most use of (for reasons to be discussed shortly), and the binomial distribution is a very useful one for lots of purposes. But the world of statistics is filled with probability distributions, some of which we’ll run into in passing. In particular, the three that will appear in this book are the <span class="math inline">\(t\)</span> distribution, the <span class="math inline">\(\chi^2\)</span> distribution and the <span class="math inline">\(F\)</span> distribution. I won’t give formulas for any of these, or talk about them in too much detail, but I will show you some pictures.</p>
+<p>The <strong><em><span class="math inline">\(t\)</span> distribution</em></strong> is a continuous distribution that looks very similar to a normal distribution, but has heavier tails: see <a href="#fig-tdist" class="quarto-xref">Figure&nbsp;<span>9.10</span></a>. This distribution tends to arise in situations where you think that the data actually follow a normal distribution, but you don’t know the mean or standard deviation. As you might expect, the relevant R functions are <code>dt()</code>, <code>pt()</code>, <code>qt()</code> and <code>rt()</code>, and we’ll run into this distribution again in <a href="./13-ttest.html">The <span class="math inline">\(t\)</span>-test</a>.</p>
+<div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-tdist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-tdist-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.10: A <span class="math inline">\(t\)</span> distribution with 3 degrees of freedom (solid line). It looks similar to a normal distribution, but it’s not quite the same. For comparison purposes, I’ve plotted a standard normal distribution as the dashed line. Note that the “tails” of the <span class="math inline">\(t\)</span> distribution are “heavier” (i.e., extend further outwards) than the tails of the normal distribution? That’s the important difference between the two.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong><em><span class="math inline">\(\chi^2\)</span> distribution</em></strong> is another distribution that turns up in lots of different places. The situation in which we’ll see it is when doing categorical data analysis (<a href="./12-chisquare.html">Categorical data analysis</a>), but it’s one of those things that actually pops up all over the place. When you dig into the maths (and who doesn’t love doing that?), it turns out that the main reason why the <span class="math inline">\(\chi^2\)</span> distribution turns up all over the place is that, if you have a bunch of variables that are normally distributed, square their values and then add them up (a procedure referred to as taking a “sum of squares”), this sum has a <span class="math inline">\(\chi^2\)</span> distribution. You’d be amazed how often this fact turns out to be useful. Anyway, here’s what a <span class="math inline">\(\chi^2\)</span> distribution looks like: <a href="#fig-chisqdist" class="quarto-xref">Figure&nbsp;<span>9.11</span></a>. Once again, the R commands for this one are pretty predictable: <code>dchisq()</code>, <code>pchisq()</code>, <code>qchisq()</code>, <code>rchisq()</code>.</p>
+<div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-chisqdist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chisqdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-chisqdist-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chisqdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.11: A <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom. Notice that the observed values must always be greater than zero, and that the distribution is pretty skewed. These are the key features of a chi-square distribution.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong><em><span class="math inline">\(F\)</span> distribution</em></strong> looks a bit like a <span class="math inline">\(\chi^2\)</span> distribution, and it arises whenever you need to compare two <span class="math inline">\(\chi^2\)</span> distributions to one another. Admittedly, this doesn’t exactly sound like something that any sane person would want to do, but it turns out to be very important in real world data analysis. Remember when I said that <span class="math inline">\(\chi^2\)</span> turns out to be the key distribution when we’re taking a “sum of squares”? Well, what that means is if you want to compare two different “sums of squares”, you’re probably talking about something that has an <span class="math inline">\(F\)</span> distribution. Of course, as yet I still haven’t given you an example of anything that involves a sum of squares, but I will… in <a href="14-anova.html#sec-anovaintro" class="quarto-xref"><span>Section 14.2</span></a>. And that’s where we’ll run into the <span class="math inline">\(F\)</span> distribution. Oh, and here’s a picture: <a href="#fig-Fdist" class="quarto-xref">Figure&nbsp;<span>9.12</span></a>. And of course we can get R to do things with <span class="math inline">\(F\)</span> distributions just by using the commands <code>df()</code>, <code>pf()</code>, <code>qf()</code> and <code>rf()</code>.</p>
+<div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-Fdist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Fdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-Fdist-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Fdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.12: An <span class="math inline">\(F\)</span> distribution with 3 and 5 degrees of freedom. Qualitatively speaking, it looks pretty similar to a chi-square distribution, but they’re not quite the same in general.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Because these distributions are all tightly related to the normal distribution and to each other, and because they will turn out to be the important distributions when doing inferential statistics later in this book, I think it’s useful to do a little demonstration using R, just to “convince ourselves” that these distributions really are related to each other in the way that they’re supposed to be. First, we’ll use the <code>rnorm()</code> function to generate 1000 normally-distributed observations:</p>
+<div class="cell" data-trunc-head="3">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>normal_a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(normal_a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [1]  0.100869244  2.363144163  0.593078896 -0.093278718 -0.144428097
+   [6] -0.087911488 -1.864084642  0.413033327 -0.417353917  0.025875243
+  [11] -1.317115990 -0.290188438 -0.419154029  1.583886845  0.397013518
+
+BLAH BLAH BLAH</code></pre>
+</div>
+</div>
+<p>So the <code>normal_a</code> variable contains 1000 numbers that are normally distributed, and have mean 0 and standard deviation 1, and the actual print out of these numbers goes on for rather a long time. Note that, because the default parameters of the <code>rnorm()</code> function are <code>mean=0</code> and <code>sd=1</code>, I could have shortened the command to <code>rnorm( n=1000 )</code>. In any case, what we can do is use the <code>hist()</code> function to draw a histogram of the data, like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(normal_a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you do this, you should see something similar to <a href="#fig-variaterelations" class="quarto-xref">Figure&nbsp;<span>9.13</span></a> (a). Your plot won’t look quite as pretty as the one in the figure, of course, because I’ve played around with all the formatting (see <a href="06-graphics.html" class="quarto-xref"><span>Chapter 6</span></a>), and I’ve also plotted the true distribution of the data as a solid black line (i.e., a normal distribution with mean 0 and standard deviation 1) so that you can compare the data that we just generated to the true distribution.</p>
+<p>In the previous example all I did was generate lots of normally distributed observations using <code>rnorm()</code> and then compared those to the true probability distribution in the figure (using <code>dnorm()</code> to generate the black line in the figure, but I didn’t show the commands for that). Now let’s try something trickier. We’ll try to generate some observations that follow a chi-square distribution with 3 degrees of freedom, but instead of using <code>rchisq()</code>, we’ll start with variables that are normally distributed, and see if we can exploit the known relationships between normal and chi-square distributions to do the work. As I mentioned earlier, a chi-square distribution with <span class="math inline">\(k\)</span> degrees of freedom is what you get when you take <span class="math inline">\(k\)</span> normally-distributed variables (with mean 0 and standard deviation 1), square them, and add them up. Since we want a chi-square distribution with 3 degrees of freedom, we’ll need to supplement our <code>normal_a</code> data with two more sets of normally-distributed observations, imaginatively named <code>normal_b</code> and <code>normal_c</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>normal_b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>) <span class="co"># another set of normally distributed data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>normal_c <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>) <span class="co"># and another!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we’ve done that, the theory says we should square these and add them together, like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>chi_sq_3 <span class="ot">&lt;-</span> (normal_a)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (normal_b)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (normal_c)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and the resulting <code>chi_sq_3</code> variable should contain 1000 observations that follow a chi-square distribution with 3 degrees of freedom. You can use the <code>hist()</code> function to have a look at these observations yourself, using a command like this,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(chi_sq_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and you should obtain a result that looks pretty similar to the plot in <a href="#fig-variaterelations" class="quarto-xref">Figure&nbsp;<span>9.13</span></a> (b). Once again, the plot that I’ve drawn is a little fancier: in addition to the histogram of <code>chi_sq_3</code>, I’ve also plotted a chi-square distribution with 3 degrees of freedom. It’s pretty clear that – even though I used <code>rnorm()</code> to do all the work rather than <code>rchisq()</code> – the observations stored in the <code>chi_sq_3</code> variable really do follow a chi-square distribution. Admittedly, this probably doesn’t seem all that interesting right now, but later on when we start encountering the chi-square distribution in <a href="./12-chisquare.html">Categorical data analysis</a>, it will be useful to understand the fact that these distributions are related to one another.</p>
+<p>We can extend this demonstration to the <span class="math inline">\(t\)</span> distribution and the <span class="math inline">\(F\)</span> distribution. Earlier, I implied that the <span class="math inline">\(t\)</span> distribution is related to the normal distribution when the standard deviation is unknown. That’s certainly true, and that’s what we’ll see later on in <a href="./13-ttest.html">The <span class="math inline">\(t\)</span>-test</a>, but there’s a somewhat more precise relationship between the normal, chi-square and <span class="math inline">\(t\)</span> distributions. Suppose we “scale” our chi-square data by dividing it by the degrees of freedom, like so</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>scaled_chi_sq_3 <span class="ot">&lt;-</span> chi_sq_3 <span class="sc">/</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then take a set of normally distributed variables and divide them by (the square root of) our scaled chi-square variable which had <span class="math inline">\(df=3\)</span>, and the result is a <span class="math inline">\(t\)</span> distribution with 3 degrees of freedom:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>normal_d <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>) <span class="co"># yet another set of normally distributed data</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>t_3 <span class="ot">&lt;-</span> normal_d <span class="sc">/</span> <span class="fu">sqrt</span>(scaled_chi_sq_3) <span class="co"># divide by square root of scaled chi-square to get t</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we plot the histogram of <code>t_3</code>, we end up with something that looks very similar to <a href="#fig-variaterelations" class="quarto-xref">Figure&nbsp;<span>9.13</span></a> (c). Similarly, we can obtain an <span class="math inline">\(F\)</span> distribution by taking the ratio between two scaled chi-square distributions. Suppose, for instance, we wanted to generate data from an <span class="math inline">\(F\)</span> distribution with 3 and 20 degrees of freedom. We could do this using <code>df()</code>, but we could also do the same thing by generating two chi-square variables, one with 3 degrees of freedom, and the other with 20 degrees of freedom. As the example with <code>chi_sq_3</code> illustrates, we can actually do this using <code>rnorm()</code> if we really want to, but this time I’ll take a short cut:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>chi_sq_20 <span class="ot">&lt;-</span> <span class="fu">rchisq</span>(<span class="dv">1000</span>, <span class="dv">20</span>) <span class="co"># generate chi square data with df = 20...</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>scaled_chi_sq_20 <span class="ot">&lt;-</span> chi_sq_20 <span class="sc">/</span> <span class="dv">20</span> <span class="co"># scale the chi square variable...</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>f_3_20 <span class="ot">&lt;-</span> scaled_chi_sq_3 <span class="sc">/</span> scaled_chi_sq_20 <span class="co"># take the ratio of the two chi squares...</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(f_3_20) <span class="co"># ... and draw a picture</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09-probability_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The resulting <code>f_3_20</code> variable does in fact store variables that follow an <span class="math inline">\(F\)</span> distribution with 3 and 20 degrees of freedom. This is illustrated in <a href="#fig-variaterelations" class="quarto-xref">Figure&nbsp;<span>9.13</span></a> (d), which plots the histogram of the observations stored in <code>f_3_20</code> against the true <span class="math inline">\(F\)</span> distribution with <span class="math inline">\(df_1 = 3\)</span> and <span class="math inline">\(df_2 = 20\)</span>. Again, they match.</p>
+<div class="cell" data-scratch="true">
+<div class="cell-output-display">
+<div id="fig-variaterelations" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-variaterelations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="09-probability_files/figure-html/fig-variaterelations-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-variaterelations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.13: Data sampled from different distributions, and compared against their true probability density (solid black lines): (a) <code>normal_a</code>, against a normal distribution; (b) <code>chi_sq_3</code>, against a <span class="math inline">\(\chi^2\)</span> distribution with 3 degrees of freedom; (c) <code>t_3</code>, against a <span class="math inline">\(t\)</span> distribution with 3 degrees of freedom; (d) <code>f_3_20</code>, against an <span class="math inline">\(F\)</span> distribution with 3 and 20 degrees of freedom.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Okay, time to wrap this section up. We’ve seen three new distributions: <span class="math inline">\(\chi^2\)</span>, <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span>. They’re all continuous distributions, and they’re all closely related to the normal distribution. I’ve talked a little bit about the precise nature of this relationship, and shown you some R commands that illustrate this relationship. The key thing for our purposes, however, is not that you have a deep understanding of all these different distributions, nor that you remember the precise relationships between them. The main thing is that you grasp the basic idea that these distributions are all deeply related to one another, and to the normal distribution. Later on in this book, we’re going to run into data that are normally distributed, or at least assumed to be normally distributed. What I want you to understand right now is that, if you make the assumption that your data are normally distributed, you shouldn’t be surprised to see <span class="math inline">\(\chi^2\)</span>, <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span> distributions popping up all over the place when you start trying to do your data analysis.</p>
+</section>
+<section id="summary" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">9.7</span> Summary</h2>
+<p>In this chapter we’ve talked about probability. We’ve talked about what probability means, and why statisticians can’t agree on what it means. We talked about the rules that probabilities have to obey. And we introduced the idea of a probability distribution, and spent a good chunk of the chapter talking about some of the more important probability distributions that statisticians work with. The section by section breakdown looks like this:</p>
+<ul>
+<li>Probability theory versus statistics (<a href="#sec-probstats" class="quarto-xref"><span>Section 9.1</span></a>)</li>
+<li>Frequentist versus Bayesian views of probability (<a href="#sec-probmeaning" class="quarto-xref"><span>Section 9.2</span></a>)</li>
+<li>Basics of probability theory (<a href="#sec-basicprobability" class="quarto-xref"><span>Section 9.3</span></a>)</li>
+<li>Binomial distribution (<a href="#sec-binomial" class="quarto-xref"><span>Section 9.4</span></a>), normal distribution (<a href="#sec-normal" class="quarto-xref"><span>Section 9.5</span></a>), and others (<a href="#sec-otherdists" class="quarto-xref"><span>Section 9.6</span></a>)</li>
+</ul>
+<p>As you’d expect, my coverage is by no means exhaustive. Probability theory is a large branch of mathematics in its own right, entirely separate from its application to statistics and data analysis. As such, there are thousands of books written on the subject and universities generally offer multiple classes devoted entirely to probability theory. Even the “simpler” task of documenting standard probability distributions is a big topic. I’ve described five standard probability distributions in this chapter, but sitting on my bookshelf I have a 45-chapter book called “Statistical Distributions” <span class="citation" data-cites="Evans2000">(<a href="references.html#ref-Evans2000" role="doc-biblioref">Evans et al., 2011</a>)</span> that lists a <em>lot</em> more than that. Fortunately for you, very little of this is necessary. You’re unlikely to need to know dozens of statistical distributions when you go out and do real world data analysis, and you definitely won’t need them for this book, but it never hurts to know that there’s other possibilities out there.</p>
+<p>Picking up on that last point, there’s a sense in which this whole chapter is something of a digression. Many undergraduate psychology classes on statistics skim over this content very quickly (I know mine did), and even the more advanced classes will often “forget” to revisit the basic foundations of the field. Most academic psychologists would not know the difference between probability and density, and until recently very few would have been aware of the difference between Bayesian and frequentist probability. However, I think it’s important to understand these things before moving onto the applications. For example, there are a lot of rules about what you’re “allowed” to say when doing statistical inference, and many of these can seem arbitrary and weird. However, they start to make sense if you understand that there is this Bayesian/frequentist distinction. Similarly, in <a href="./13-ttest.html">The <span class="math inline">\(t\)</span>-test</a> we’re going to talk about something called the <span class="math inline">\(t\)</span>-test, and if you really want to have a grasp of the mechanics of the <span class="math inline">\(t\)</span>-test it really helps to have a sense of what a <span class="math inline">\(t\)</span>-distribution actually looks like. You get the idea, I hope.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-Evans2000" class="csl-entry" role="listitem">
+Evans, M., Hastings, N., &amp; Peacock, B. (2011). <em>Statistical distributions (3rd ed)</em>. Wiley.
+</div>
+<div id="ref-Fisher1922b" class="csl-entry" role="listitem">
+Fisher, R. A. (1922). On the mathematical foundation of theoretical statistics. <em>Philosophical Transactions of the Royal Society A</em>, <em>222</em>, 309–368.
+</div>
+<div id="ref-Meehl1967" class="csl-entry" role="listitem">
+Meehl, P. H. (1967). Theory testing in psychology and physics: A methodological paradox. <em>Philosophy of Science</em>, <em>34</em>, 103–115.
+</div>
+</div>
+</section>
+
+
+</main> <!-- /main -->
+<!-- plausible -->
+<script async="" defer="" data-domain="learningstatisticswithr.com" src="https://plausible.io/js/plausible.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dev\.learningstatisticswithr\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./theory-preamble.html" class="pagination-link" aria-label="Preamble">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preamble</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./10-estimation.html" class="pagination-link" aria-label="Estimating unknown quantities from a sample">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Estimating unknown quantities from a sample</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
