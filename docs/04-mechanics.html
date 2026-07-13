@@ -153,13 +153,14 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="4&nbsp; R mechanics – Learning Statistics with R">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta property="og:image" content="https://learningstatisticswithr.com/cover/cover-social.jpg">
 <meta property="og:site_name" content="Learning Statistics with R">
 <meta name="twitter:title" content="4&nbsp; R mechanics – Learning Statistics with R">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta name="twitter:image" content="https://learningstatisticswithr.com/cover/cover-social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -212,6 +213,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./background-preamble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A word on statistics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-whystats.html" class="sidebar-item-text sidebar-link">
@@ -296,7 +303,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./theory-preamble.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preamble</span></a>
+ <span class="menu-text">A chat about inference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,6 +396,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./changelog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changelog</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -454,11 +467,7 @@ window.Quarto = {
   <li><a href="#sec-lists" id="toc-sec-lists" class="nav-link" data-scroll-target="#sec-lists"><span class="header-section-number">4.9</span> Lists</a></li>
   <li><a href="#sec-formulas" id="toc-sec-formulas" class="nav-link" data-scroll-target="#sec-formulas"><span class="header-section-number">4.10</span> Formulas</a></li>
   <li><a href="#sec-generics" id="toc-sec-generics" class="nav-link" data-scroll-target="#sec-generics"><span class="header-section-number">4.11</span> Generic functions</a></li>
-  <li><a href="#sec-help" id="toc-sec-help" class="nav-link" data-scroll-target="#sec-help"><span class="header-section-number">4.12</span> Getting help</a>
-  <ul class="collapse">
-  <li><a href="#how-to-read-the-help-documentation" id="toc-how-to-read-the-help-documentation" class="nav-link" data-scroll-target="#how-to-read-the-help-documentation"><span class="header-section-number">4.12.1</span> How to read the help documentation</a></li>
-  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources"><span class="header-section-number">4.12.2</span> Other resources</a></li>
-  </ul></li>
+  <li><a href="#sec-help" id="toc-sec-help" class="nav-link" data-scroll-target="#sec-help"><span class="header-section-number">4.12</span> The help documentation</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.13</span> Summary</a></li>
   </ul>
 </nav>
@@ -1351,11 +1360,11 @@ attr(,".Environment")
 <p>At this stage, this is about as much as we need to know about generic functions and their methods. In fact, you can get through the entire book without learning any more about them than this, so it’s probably a good idea to end this discussion here.</p>
 </section>
 <section id="sec-help" class="level2 page-columns page-full" data-number="4.12">
-<h2 data-number="4.12" class="anchored" data-anchor-id="sec-help"><span class="header-section-number">4.12</span> Getting help</h2>
+<h2 data-number="4.12" class="anchored" data-anchor-id="sec-help"><span class="header-section-number">4.12</span> The help documentation</h2>
 <p>The very last topic I want to mention in this chapter is where to go to find help. Obviously, I’ve tried to make this book as helpful as possible, but it’s not even close to being a comprehensive guide, and there’s thousands of things it doesn’t cover. So where should you go for help?</p>
-<section id="how-to-read-the-help-documentation" class="level3 page-columns page-full" data-number="4.12.1">
-<h3 data-number="4.12.1" class="anchored" data-anchor-id="how-to-read-the-help-documentation"><span class="header-section-number">4.12.1</span> How to read the help documentation</h3>
-<p>I have somewhat mixed feelings about the help documentation in R. On the plus side, there’s a lot of it, and it’s very thorough. On the minus side, there’s a lot of it, and it’s very thorough. There’s so much help documentation that it sometimes doesn’t help, and most of it is written with an advanced user in mind. Often it feels like most of the help files work on the assumption that the reader already understands everything about R except for the specific topic that it’s providing help for. What that means is that, once you’ve been using R for a long time and are beginning to get a feel for how to use it, the help documentation is <em>awesome</em>. These days, I find myself really liking the help files (most of them anyway). But when I first started using R I found it very dense.</p>
+<p>In practice, your first port of call is usually going to be the internet. When I first started writing this book it was quite hard to find good online resources on using R, but that has changed remarkably since then. These days you can just google the name of the package, or the problem you’re having, and something relevant will probably show up. You don’t really need this book for that.</p>
+<p>That being said, there’s something we should still talk about. Even today, most of what you find on the internet will show up as “R help documentation”. It might appear inside RStudio or Positron or it might show up on a very pretty website, but it will always have an eerily similar look and feel. This is because under the hood, most of what you will find when you search online hooks into the help files that come bundled with every R package. So we should talk a little about how those files are organised, because it makes your life a little easier when you run into them in the wild.</p>
+<p>Now, I should say something important in advance: I have somewhat mixed feelings about the help documentation in R. On the plus side, there’s a lot of it, and it’s very thorough. On the minus side, there’s a lot of it, and it’s very thorough. There’s so much help documentation that it sometimes doesn’t help, and most of it is written with an advanced user in mind. Often it feels like most of the help files work on the assumption that the reader already understands everything about R except for the specific topic that it’s providing help for. What that means is that, once you’ve been using R for a long time and are beginning to get a feel for how to use it, the help documentation is <em>awesome</em>. These days, I find myself really liking the help files (most of them anyway). But when I first started using R I found it very dense.</p>
 <p>To some extent, there’s not much I can do to help you with this. You just have to work at it yourself; once you’re moving away from being a pure beginner and are becoming a skilled user, you’ll start finding the help documentation more and more helpful. In the meantime, I’ll help as much as I can by trying to explain to you what you’re looking at when you open a help file. To that end, let’s look at the help documentation for the <code>load()</code> function. To do so, I type either of the following:</p>
 <pre><code>?load
 help("load")</code></pre>
@@ -1470,14 +1479,6 @@ Description:
      ## clean up (the example):
      unlink("all.rda")</code></pre>
 <p>As you can see, they’re pretty dense, and not at all obvious to the novice user. However, they do provide good examples of the various different things that you can do with the <code>load()</code> function, so it’s not a bad idea to have a look at them, and to try not to find them too intimidating.</p>
-</section>
-<section id="other-resources" class="level3" data-number="4.12.2">
-<h3 data-number="4.12.2" class="anchored" data-anchor-id="other-resources"><span class="header-section-number">4.12.2</span> Other resources</h3>
-<ul>
-<li>The Rseek website (<a href="https://rseek.org" class="uri">https://rseek.org</a>). One thing that I really find annoying about the R help documentation is that it’s hard to search properly. When coupled with the fact that the documentation is dense and highly technical, it’s often a better idea to search or ask online for answers to your questions. With that in mind, the Rseek website is great: it’s an R specific search engine. I find it really useful, and it’s almost always my first port of call when I’m looking around.</li>
-<li>The R-help mailing list (see <a href="https://www.r-project.org/mail.html" class="uri">https://www.r-project.org/mail.html</a> for details). This is the official R help mailing list. It can be very helpful, but it’s <em>very</em> important that you do your homework before posting a question. The list gets a lot of traffic. While the people on the list try as hard as they can to answer questions, they do so for free, and you <em>really</em> don’t want to know how much money they could charge on an hourly rate if they wanted to apply market rates. In short, they are doing you a favour, so be polite. Don’t waste their time asking questions that can be easily answered by a quick search on Rseek (it’s rude), make sure your question is clear, and all of the relevant information is included. In short, read the posting guidelines carefully (<a href="https://www.r-project.org/posting-guide.html" class="uri">https://www.r-project.org/posting-guide.html</a>), and make use of the <code>help.request()</code> function that R provides to check that you’re actually doing what you’re expected.</li>
-</ul>
-</section>
 </section>
 <section id="summary" class="level2" data-number="4.13">
 <h2 data-number="4.13" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.13</span> Summary</h2>
@@ -1597,7 +1598,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/dev\.learningstatisticswithr\.com");
+      var filterRegex = new RegExp("https:\/\/learningstatisticswithr\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -153,13 +153,14 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="14&nbsp; Comparing several means (one-way ANOVA) – Learning Statistics with R">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta property="og:image" content="https://learningstatisticswithr.com/cover/cover-social.jpg">
 <meta property="og:site_name" content="Learning Statistics with R">
 <meta name="twitter:title" content="14&nbsp; Comparing several means (one-way ANOVA) – Learning Statistics with R">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta name="twitter:image" content="https://learningstatisticswithr.com/cover/cover-social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -212,6 +213,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./background-preamble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A word on statistics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-whystats.html" class="sidebar-item-text sidebar-link">
@@ -296,7 +303,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./theory-preamble.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preamble</span></a>
+ <span class="menu-text">A chat about inference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,6 +396,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./changelog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changelog</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -1891,7 +1904,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/dev\.learningstatisticswithr\.com");
+      var filterRegex = new RegExp("https:\/\/learningstatisticswithr\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

@@ -1,0 +1,52 @@
+/* Custom callout-style block for chapter epigraphs and pull quotes.
+   Deliberately not named `callout-*` so Quarto's callout Lua filter
+   doesn't try to attach title/collapse machinery to it.
+
+   Citation/source info is written as a third plain paragraph inside the
+   div rather than as a footnote - a footnote reference here would make
+   Quarto tag this div `page-columns page-full` so the note can escape to
+   the margin, and that promotion drags in a viewport-relative internal
+   grid that fights any attempt to size/align this box to the body-text
+   column (see PLAN.md notes on this if revisiting). Keeping citations
+   inline avoids that fight entirely. */
+
+.pullquote {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem 1rem 3rem;
+  border-left: 4px solid #7d5a68;
+  background-color: rgba(125, 90, 104, 0.06);
+  font-style: italic;
+}
+
+.pullquote::before {
+  content: "\201C";
+  position: absolute;
+  left: 0.35rem;
+  top: -0.1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: normal;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: rgba(125, 90, 104, 0.45);
+}
+
+/* Attribution line, e.g. "--- W.H. Auden" */
+.pullquote p:nth-of-type(2) {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-style: normal;
+  font-size: 0.9rem;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* Source/citation line, e.g. "Presidential Address to the..." */
+.pullquote p:nth-of-type(3) {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-style: normal;
+  font-size: 0.8rem;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.5);
+}

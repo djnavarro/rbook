@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Preamble – Learning Statistics with R</title>
+<title>A chat about inference – Learning Statistics with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,13 +99,14 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Preamble – Learning Statistics with R">
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="A chat about inference – Learning Statistics with R">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta property="og:image" content="https://learningstatisticswithr.com/cover/cover-social.jpg">
 <meta property="og:site_name" content="Learning Statistics with R">
-<meta name="twitter:title" content="Preamble – Learning Statistics with R">
+<meta name="twitter:title" content="A chat about inference – Learning Statistics with R">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta name="twitter:image" content="https://learningstatisticswithr.com/cover/cover-social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -118,7 +119,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./theory-preamble.html">Statistical theory</a></li><li class="breadcrumb-item"><a href="./theory-preamble.html">Preamble</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./theory-preamble.html">Statistical theory</a></li><li class="breadcrumb-item"><a href="./theory-preamble.html">A chat about inference</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,6 +159,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./background-preamble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A word on statistics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-whystats.html" class="sidebar-item-text sidebar-link">
@@ -242,7 +249,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./theory-preamble.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Preamble</span></a>
+ <span class="menu-text">A chat about inference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -335,6 +342,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./changelog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changelog</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -353,9 +366,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./theory-preamble.html">Statistical theory</a></li><li class="breadcrumb-item"><a href="./theory-preamble.html">Preamble</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./theory-preamble.html">Statistical theory</a></li><li class="breadcrumb-item"><a href="./theory-preamble.html">A chat about inference</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Preamble</h1>
+<h1 class="title">A chat about inference</h1>
 </div>
 
 
@@ -375,10 +388,10 @@ window.Quarto = {
 <p>Part IV of the book is by far the most theoretical one, focusing as it does on the theory of statistical inference. Over the next three chapters my goal is to give you an introduction to probability theory (<a href="09-probability.html" class="quarto-xref"><span>9&nbsp; Introduction to probability</span></a>), sampling and estimation (<a href="./10-estimation.html">Estimating unknown quantities from a sample</a>) and statistical hypothesis testing (<a href="./11-hypothesistesting.html">Hypothesis testing</a>). Before we get started though, I want to say something about the big picture. Statistical inference is primarily about <em>learning from data</em>. The goal is no longer merely to describe our data, but to use the data to draw conclusions about the world. To motivate the discussion, I want to spend a bit of time talking about a philosophical puzzle known as the <em>riddle of induction</em>, because it speaks to an issue that will pop up over and over again throughout the book: statistical inference relies on <em>assumptions</em>. This sounds like a bad thing. In everyday life people say things like “you should never make assumptions”, and psychology classes often talk about assumptions and biases as bad things that we should try to avoid. From bitter personal experience I have learned never to say such things around philosophers.</p>
 <section id="on-the-limits-of-logical-reasoning" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="on-the-limits-of-logical-reasoning">On the limits of logical reasoning</h2>
-<blockquote class="blockquote">
+<div class="pullquote">
 <p><em>The whole art of war consists in getting at what is on the other side of the hill, or, in other words, in learning what we do not know from what we do.</em></p>
 <p>— Arthur Wellesley, 1st Duke of Wellington</p>
-</blockquote>
+</div>
 <p>I am told that quote above came about as a consequence of a carriage ride across the countryside.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> He and his companion, J. W. Croker, were playing a guessing game, each trying to predict what would be on the other side of each hill. In every case it turned out that Wellesley was right and Croker was wrong. Many years later when Wellesley was asked about the game, he explained that “the whole art of war consists in getting at what is on the other side of the hill”. Indeed, war is not special in this respect. All of life is a guessing game of one form or another, and getting by on a day to day basis requires us to make good guesses. So let’s play a guessing game of our own.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Source: <a href="http://www.bartleby.com/344/400.html" class="uri">http://www.bartleby.com/344/400.html</a>.</p></div></div><p>Suppose you and I are observing the Wellesley-Croker competition, and after every three hills you and I have to predict who will win the next one, Wellesley or Croker. Let’s say that <code>W</code> refers to a Wellesley victory and <code>C</code> refers to a Croker victory. After three hills, our data set looks like this:</p>
 <pre><code>WWW</code></pre>
@@ -525,7 +538,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/dev\.learningstatisticswithr\.com");
+      var filterRegex = new RegExp("https:\/\/learningstatisticswithr\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

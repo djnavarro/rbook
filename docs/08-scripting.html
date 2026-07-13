@@ -153,13 +153,14 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="8&nbsp; Basic programming – Learning Statistics with R">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta property="og:image" content="https://learningstatisticswithr.com/cover/cover-social.jpg">
 <meta property="og:site_name" content="Learning Statistics with R">
 <meta name="twitter:title" content="8&nbsp; Basic programming – Learning Statistics with R">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://dev.learningstatisticswithr.com/cover/cover-social.jpg">
+<meta name="twitter:image" content="https://learningstatisticswithr.com/cover/cover-social.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -212,6 +213,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./background-preamble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A word on statistics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-whystats.html" class="sidebar-item-text sidebar-link">
@@ -296,7 +303,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./theory-preamble.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preamble</span></a>
+ <span class="menu-text">A chat about inference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -389,6 +396,12 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./changelog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changelog</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -447,10 +460,10 @@ window.Quarto = {
 </header>
 
 
-<blockquote class="blockquote">
+<div class="pullquote">
 <p><em>Machine dreams hold a special vertigo.</em></p>
 <p>— William Gibson</p>
-</blockquote>
+</div>
 <p>Up to this point in the book I’ve tried hard to avoid using the word “programming” too much because – at least in my experience – it’s a word that can cause a lot of fear. For one reason or another, programming (like mathematics and statistics) is often perceived by people on the “outside” as a black art, a magical skill that can be learned only by some kind of super-nerd. I think this is a shame. It’s certainly true that advanced programming is a very specialised skill: several different skills actually, since there’s quite a lot of different kinds of programming out there. However, the <em>basics</em> of programming aren’t all that hard, and you can accomplish a lot of very impressive things just using those basics.</p>
 <p>With that in mind, the goal of this chapter is to discuss a few basic programming concepts and how to apply them in R. However, before I do, I want to make one further attempt to point out just how non-magical programming really is, via one very simple observation: <em>you already know how to do it</em>. Stripped to its essentials, programming is nothing more (and nothing less) than the process of writing out a bunch of instructions that a computer can understand. To phrase this slightly differently, when you write a computer program, you need to write it in a <strong><em>programming language</em></strong> that the computer knows how to interpret. R is one such language. Although I’ve been having you type all your commands at the command prompt, and all the commands in this book so far have been shown as if that’s what I were doing, it’s also quite possible (and as you’ll see shortly, shockingly easy) to write a program using these R commands. In other words, if this is the first time reading this book, then you’re only one short chapter away from being able to legitimately claim that you can program in R, albeit at a beginner’s level.</p>
 <section id="sec-scripts" class="level2 page-columns page-full" data-number="8.1">
@@ -1015,7 +1028,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/dev\.learningstatisticswithr\.com");
+      var filterRegex = new RegExp("https:\/\/learningstatisticswithr\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1350,8 +1363,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./theory-preamble.html" class="pagination-link" aria-label="Preamble">
-        <span class="nav-page-text">Preamble</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./theory-preamble.html" class="pagination-link" aria-label="A chat about inference">
+        <span class="nav-page-text">A chat about inference</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
