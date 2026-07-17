@@ -189,6 +189,9 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Learning-Statistics-with-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -608,7 +611,7 @@ Figure&nbsp;10.4: The population distribution of IQ scores (panel a) and two sam
 </figcaption>
 </figure>
 </div>
-<p>When I calculate the mean of my sample of 100, I get a number that is fairly close to the population mean 100 but not identical: in this particular sample, the mean IQ is 100.2 and the standard deviation is 14.3. These <strong><em>sample statistics</em></strong> are properties of my data set, and although they are fairly similar to the true population values, they are not the same. In general, sample statistics are the things you can calculate from your data set, and the population parameters are the things you want to learn about. Later on in this chapter I’ll talk about how you can estimate population parameters using your sample statistics (<a href="#sec-pointestimates" class="quarto-xref"><span>Section 10.4</span></a>) and how to work out how confident you are in your estimates (<a href="#sec-ci" class="quarto-xref"><span>Section 10.5</span></a>) but before we get to that there’s a few more ideas in sampling theory that you need to know about.</p>
+<p>When I calculate the mean of my sample of 100, I get a number that is fairly close to the population mean 100 but not identical: in this particular sample, the mean IQ is 98 and the standard deviation is 16.4. These <strong><em>sample statistics</em></strong> are properties of my data set, and although they are fairly similar to the true population values, they are not the same. In general, sample statistics are the things you can calculate from your data set, and the population parameters are the things you want to learn about. Later on in this chapter I’ll talk about how you can estimate population parameters using your sample statistics (<a href="#sec-pointestimates" class="quarto-xref"><span>Section 10.4</span></a>) and how to work out how confident you are in your estimates (<a href="#sec-ci" class="quarto-xref"><span>Section 10.5</span></a>) but before we get to that there’s a few more ideas in sampling theory that you need to know about.</p>
 </section>
 </section>
 <section id="sec-lawlargenumbers" class="level2 page-columns page-full" data-number="10.2">
@@ -620,43 +623,45 @@ Figure&nbsp;10.4: The population distribution of IQ scores (panel a) and two sam
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">round</span>(IQ) <span class="co"># IQs are whole numbers!</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    [1]  82  97 118  93 114 125 126  78 113  90  88 108  87  98  91 114 114  92
-   [19]  79 107  83 111 112  75 129 102 124  98 109 105  84  72  97 110 123 101
-   [37]  83 102  95  84 121 119  97 115  81 120  98 107 113 102  95  95  84  91
-   [55]  70  99 119 109 101 111  97  90  95 118  88 111 116  97  79 100  93 107
+<pre><code>    [1]  70  96  97  80  63  77 111 104 104  96  89 108  94  77  82 105  78 105
+   [19] 115  81 119 101 101 127 131 112  99  89  87  89 103  99  93 131 106 102
+   [37]  98 106 123 120  99  96  85  97  92 119  87 112 104  89 105 130 104  83
+   [55]  78  80 107  97  94  93  71  82 116 103  96 130 105 104  70 114  93 107
 
 BLAH BLAH BLAH
 
- [9955] 112 112 106 100  94 105 114 111  98  66 110 107  99 104 126  79  99  84
- [9973] 115 116  98 109  93  79 130 127 103  89 114 113  90 125  85  90  94  92
- [9991] 114 100 110  82 102  74  83  94 100  91</code></pre>
+ [9955] 110 110 122 102  90 111  95 100 100  76  98 104  84 120  60 105 116  99
+ [9973] 103  90  53  87  88 113  65  93 114  89 117  97 102  88  92 126 123  74
+ [9991] 106  88  81 133 122 106  95 102 102 113</code></pre>
 </div>
 </div>
 <p>I can compute the mean IQ using the command <code>mean(IQ)</code> and the standard deviation using the command <code>sd(IQ)</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 100.1565</code></pre>
+<pre><code>[1] 99.8979</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15.06762</code></pre>
+<pre><code>[1] 15.08558</code></pre>
 </div>
 </div>
 <p>and I can draw a histogram using <code>hist()</code> – this is exactly what produced panel c of <a href="#fig-IQdist" class="quarto-xref">Figure&nbsp;<span>10.4</span></a> above. Even a moment’s inspection makes clear that the larger sample is a much better approximation to the true population distribution than the smaller one, and the sample statistics bear this out: both the mean and standard deviation are now very close to the true population values.</p>
 <p>I feel a bit silly saying this, but the thing I want you to take away from this is that large samples generally give you better information. I feel silly saying it because it’s so bloody obvious that it shouldn’t need to be said. In fact, it’s such an obvious point that when Jacob Bernoulli – one of the founders of probability theory – formalised this idea back in 1713, he was kind of a jerk about it. Here’s how he described the fact that we all share this intuition:</p>
-<blockquote class="blockquote">
-<p><em>For even the most stupid of men, by some instinct of nature, by himself and without any instruction (which is a remarkable thing), is convinced that the more observations have been made, the less danger there is of wandering from one’s goal.</em> <span class="citation" data-cites="Stigler1986">(see <a href="references.html#ref-Stigler1986" role="doc-biblioref">Stigler, 1986, p. 65</a>)</span></p>
-</blockquote>
+<div class="pullquote">
+<p><em>For even the most stupid of men, by some instinct of nature, by himself and without any instruction (which is a remarkable thing), is convinced that the more observations have been made, the less danger there is of wandering from one’s goal.</em></p>
+<p>— Jacob Bernoulli <span class="citation" data-cites="Stigler1986">(see <a href="references.html#ref-Stigler1986" role="doc-biblioref">Stigler, 1986, p. 65</a>)</span></p>
+</div>
 <p>Okay, so the passage comes across as a bit condescending (not to mention sexist), but his main point is correct: it really does feel obvious that more data will give you better answers. The question is, why is this so? Not surprisingly, this intuition that we all share turns out to be correct, and statisticians refer to it as the <strong><em>law of large numbers</em></strong>. The law of large numbers is a mathematical law that applies to many different sample statistics, but the simplest way to think about it is as a law about averages. The sample mean is the most obvious example of a statistic that relies on averaging (because that’s what the mean is… an average), so let’s look at that. When applied to the sample mean, what the law of large numbers states is that as the sample gets larger, the sample mean tends to get closer to the true population mean. Or, to say it a little bit more precisely, as the sample size “approaches” infinity (written as <span class="math inline">\(N \rightarrow \infty\)</span>) the sample mean approaches the population mean (<span class="math inline">\(\bar{X} \rightarrow \mu\)</span>).<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Technically, the law of large numbers pertains to any sample statistic that can be described as an average of independent quantities. That’s certainly true for the sample mean. However, it’s also possible to write many other sample statistics as averages of one form or another. The variance of a sample, for instance, can be rewritten as a kind of average and so is subject to the law of large numbers. The minimum value of a sample, however, cannot be written as an average of anything and is therefore not governed by the law of large numbers.</p></div></div><p>I don’t intend to subject you to a proof that the law of large numbers is true, but it’s one of the most important tools for statistical theory. The law of large numbers is the thing we can use to justify our belief that collecting more and more data will eventually lead us to the truth. For any particular data set, the sample statistics that we calculate from it will be wrong, but the law of large numbers tells us that if we keep collecting more data those sample statistics will tend to get closer and closer to the true population parameters.</p>
 </section>
 <section id="sec-samplesandclt" class="level2 page-columns page-full" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="sec-samplesandclt"><span class="header-section-number">10.3</span> Sampling distributions and the central limit theorem</h2>
 <p>The law of large numbers is a very powerful tool, but it’s not going to be good enough to answer all our questions. Among other things, all it gives us is a “long run guarantee”. In the long run, if we were somehow able to collect an infinite amount of data, then the law of large numbers guarantees that our sample statistics will be correct. But as John Maynard Keynes famously argued in economics, a long run guarantee is of little use in real life:</p>
-<blockquote class="blockquote">
-<p><em>[The] long run is a misleading guide to current affairs. In the long run we are all dead. Economists set themselves too easy, too useless a task, if in tempestuous seasons they can only tell us, that when the storm is long past, the ocean is flat again.</em> <span class="citation" data-cites="Keynes1923">(<a href="references.html#ref-Keynes1923" role="doc-biblioref">Keynes, 1923, p. 80</a>)</span></p>
-</blockquote>
+<div class="pullquote">
+<p><em>[The] long run is a misleading guide to current affairs. In the long run we are all dead. Economists set themselves too easy, too useless a task, if in tempestuous seasons they can only tell us, that when the storm is long past, the ocean is flat again.</em></p>
+<p>— John Maynard Keynes <span class="citation" data-cites="Keynes1923">(<a href="references.html#ref-Keynes1923" role="doc-biblioref">Keynes, 1923, p. 80</a>)</span></p>
+</div>
 <p>As in economics, so too in psychology and statistics. It is not enough to know that we will <em>eventually</em> arrive at the right answer when calculating the sample mean. Knowing that an infinitely large data set will tell me the exact value of the population mean is cold comfort when my <em>actual</em> data set has a sample size of <span class="math inline">\(N=100\)</span>. In real life, then, we must know something about the behaviour of the sample mean when it is calculated from a more modest data set!</p>
 <section id="sec-samplingdists" class="level3" data-number="10.3.1">
 <h3 data-number="10.3.1" class="anchored" data-anchor-id="sec-samplingdists"><span class="header-section-number">10.3.1</span> Sampling distribution of the mean</h3>
@@ -665,18 +670,18 @@ BLAH BLAH BLAH
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>iq_1 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>iq_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 104 124 101 101 124</code></pre>
+<pre><code>[1] 107  76  85  98  90</code></pre>
 </div>
 </div>
-<p>The mean IQ in this sample turns out to be 110.8. Not surprisingly, this is much less accurate than the previous experiment. Now imagine that I decided to <strong><em>replicate</em></strong> the experiment. That is, I repeat the procedure as closely as possible: I randomly sample 5 new people and measure their IQ. Again, R allows me to simulate the results of this procedure:</p>
+<p>The mean IQ in this sample turns out to be 91.2. Not surprisingly, this is much less accurate than the previous experiment. Now imagine that I decided to <strong><em>replicate</em></strong> the experiment. That is, I repeat the procedure as closely as possible: I randomly sample 5 new people and measure their IQ. Again, R allows me to simulate the results of this procedure:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>iq_2 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>iq_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 105  97  80 116 119</code></pre>
+<pre><code>[1] 131 125 109 107 112</code></pre>
 </div>
 </div>
-<p>This time around, the mean IQ in my sample is 103.4. If I repeat the experiment 10 times I obtain the results shown in <a href="#tbl-replications" class="quarto-xref">Table&nbsp;<span>10.1</span></a>, and as you can see the sample mean varies from one replication to the next.</p>
+<p>This time around, the mean IQ in my sample is 116.8. If I repeat the experiment 10 times I obtain the results shown in <a href="#tbl-replications" class="quarto-xref">Table&nbsp;<span>10.1</span></a>, and as you can see the sample mean varies from one replication to the next.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>replications <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">100</span>, <span class="dv">15</span>))))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sample_means <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rowMeans</span>(replications), <span class="dv">1</span>)</span>
@@ -714,93 +719,93 @@ Table&nbsp;10.1: Ten replications of the IQ experiment, each with a sample size 
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Replication 1</td>
-<td style="text-align: right;">95</td>
+<td style="text-align: right;">111</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">98</td>
 <td style="text-align: right;">114</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">105</td>
-<td style="text-align: right;">108</td>
-<td style="text-align: right;">106.4</td>
+<td style="text-align: right;">111.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 2</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">93</td>
 <td style="text-align: right;">110</td>
-<td style="text-align: right;">95</td>
-<td style="text-align: right;">79</td>
-<td style="text-align: right;">94</td>
-<td style="text-align: right;">117</td>
-<td style="text-align: right;">99.0</td>
+<td style="text-align: right;">110.4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 3</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">112</td>
-<td style="text-align: right;">85</td>
+<td style="text-align: right;">132</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">97</td>
 <td style="text-align: right;">86</td>
-<td style="text-align: right;">81</td>
-<td style="text-align: right;">94.8</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">104.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 4</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">98</td>
-<td style="text-align: right;">115</td>
-<td style="text-align: right;">73</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">97.2</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">100.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 5</td>
-<td style="text-align: right;">98</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">97</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: right;">100.4</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">116</td>
+<td style="text-align: right;">99.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 6</td>
-<td style="text-align: right;">112</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">106</td>
-<td style="text-align: right;">79</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: right;">98.0</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">88.4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 7</td>
-<td style="text-align: right;">119</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">98</td>
-<td style="text-align: right;">112</td>
-<td style="text-align: right;">89</td>
-<td style="text-align: right;">98.0</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">97.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 8</td>
-<td style="text-align: right;">106</td>
-<td style="text-align: right;">122</td>
-<td style="text-align: right;">65</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: right;">91.6</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">91.4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 9</td>
-<td style="text-align: right;">94</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">94</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">125</td>
-<td style="text-align: right;">100.6</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">89.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 10</td>
-<td style="text-align: right;">79</td>
-<td style="text-align: right;">119</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right;">82.4</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">125</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">96.8</td>
 </tr>
 </tbody>
 </table>
@@ -824,7 +829,7 @@ Figure&nbsp;10.5: The sampling distribution of the mean for the “five IQ score
 </div>
 </div>
 </div>
-<p>Sampling distributions are another important theoretical idea in statistics, and they’re crucial for understanding the behaviour of small samples. For instance, when I ran the very first “five IQ scores” experiment above, the sample mean turned out to be 110.8. What the sampling distribution in <a href="#fig-sampdistmean" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> tells us, though, is that the “five IQ scores” experiment is not very accurate. If I repeat the experiment, the sampling distribution tells me that I can expect to see a sample mean anywhere between 80 and 120.</p>
+<p>Sampling distributions are another important theoretical idea in statistics, and they’re crucial for understanding the behaviour of small samples. For instance, when I ran the very first “five IQ scores” experiment above, the sample mean turned out to be 91.2. What the sampling distribution in <a href="#fig-sampdistmean" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> tells us, though, is that the “five IQ scores” experiment is not very accurate. If I repeat the experiment, the sampling distribution tells me that I can expect to see a sample mean anywhere between 80 and 120.</p>
 </section>
 <section id="sampling-distributions-exist-for-any-sample-statistic" class="level3" data-number="10.3.2">
 <h3 data-number="10.3.2" class="anchored" data-anchor-id="sampling-distributions-exist-for-any-sample-statistic"><span class="header-section-number">10.3.2</span> Sampling distributions exist for any sample statistic!</h3>
@@ -1145,10 +1150,10 @@ s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 </section>
 <section id="sec-ci" class="level2 page-columns page-full" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="sec-ci"><span class="header-section-number">10.5</span> Estimating a confidence interval</h2>
-<div class="page-columns page-full"><blockquote class="blockquote">
+<div class="pullquote">
 <p><em>Statistics means never having to say you’re certain</em></p>
-<p>— Unknown origin<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
-</blockquote><div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;This quote appears on a great many t-shirts and websites, and even gets a mention in a few academic papers (e.g., see <a href="http://www.amstat.org/publications/jse/v10n3/friedman.html" class="uri">http://www.amstat.org/publications/jse/v10n3/friedman.html</a>) but I’ve never found the original source.</p></div></div></div>
+<p>— Unknown origin</p>
+</div>
 <p>Up to this point in this chapter, I’ve outlined the basics of sampling theory which statisticians rely on to make guesses about population parameters on the basis of a sample of data. As this discussion illustrates, one of the reasons we need all this sampling theory is that every data set leaves us with some uncertainty, so our estimates are never going to be perfectly accurate. The thing that has been missing from this discussion is an attempt to <em>quantify</em> the amount of uncertainty that attaches to our estimate. It’s not enough to be able to guess that, say, the mean IQ of undergraduate psychology students is 115 (yes, I just made that number up). We also want to be able to say something that expresses the degree of certainty that we have in our guess. For example, it would be nice to be able to say that there is a 95% chance that the true mean lies between 109 and 121. The name for this is a <strong><em>confidence interval</em></strong> for the mean.</p>
 <p>Armed with an understanding of sampling distributions, constructing a confidence interval for the mean is actually pretty easy. Here’s how it works. Suppose the true population mean is <span class="math inline">\(\mu\)</span> and the standard deviation is <span class="math inline">\(\sigma\)</span>. I’ve just finished running my study that has <span class="math inline">\(N\)</span> participants, and the mean IQ among those participants is <span class="math inline">\(\bar{X}\)</span>. We know from our discussion of the central limit theorem (<a href="#sec-clt" class="quarto-xref"><span>Section 10.3.3</span></a>) that the sampling distribution of the mean is approximately normal. We also know from our discussion of the normal distribution (<a href="09-probability.html#sec-normal" class="quarto-xref"><span>Section 9.5</span></a>) that there is a 95% chance that a normally-distributed quantity will fall within two standard deviations of the true mean. To be more precise, we can use the <code>qnorm()</code> function to compute the 2.5th and 97.5th percentiles of the normal distribution:</p>
 <div class="cell">
@@ -1236,14 +1241,14 @@ Figure&nbsp;10.11: 95% confidence intervals. The top panel (a) shows 50 simulate
 </figcaption>
 </figure>
 </div>
-<p>In this particular run of the simulation, 5 of the 100 confidence intervals shown in <a href="#fig-cirep" class="quarto-xref">Figure&nbsp;<span>10.11</span></a> failed to contain the true mean – close to, but not necessarily exactly, the 5 we’d expect on average in the long run.</p>
+<p>In this particular run of the simulation, 10 of the 100 confidence intervals shown in <a href="#fig-cirep" class="quarto-xref">Figure&nbsp;<span>10.11</span></a> failed to contain the true mean – close to, but not necessarily exactly, the 5 we’d expect on average in the long run.</p>
 <p>The critical difference here is that the Bayesian claim makes a probability statement about the population mean (i.e., it refers to our uncertainty about the population mean), which is not allowed under the frequentist interpretation of probability because you can’t “replicate” a population! In the frequentist claim, the population mean is fixed and no probabilistic claims can be made about it. Confidence intervals, however, are repeatable so we can replicate experiments. Therefore a frequentist is allowed to talk about the probability that the <em>confidence interval</em> (a random variable) contains the true mean; but is not allowed to talk about the probability that the <em>true population mean</em> (not a repeatable event) falls within the confidence interval.</p>
 <p>I know that this seems a little pedantic, but it does matter. It matters because the difference in interpretation leads to a difference in the mathematics. There is a Bayesian alternative to confidence intervals, known as <em>credible intervals</em>. In most situations credible intervals are quite similar to confidence intervals, but in other cases they are drastically different. As promised, though, I’ll talk more about the Bayesian perspective in <a href="17-bayes.html" class="quarto-xref"><span>Chapter 17</span></a>.</p>
 </section>
 <section id="calculating-confidence-intervals-in-r" class="level3 page-columns page-full" data-number="10.5.3">
 <h3 data-number="10.5.3" class="anchored" data-anchor-id="calculating-confidence-intervals-in-r"><span class="header-section-number">10.5.3</span> Calculating confidence intervals in R</h3>
-<p>As far as I can tell, the core packages in R don’t include a simple function for calculating confidence intervals for the mean. They <em>do</em> include a lot of complicated, extremely powerful functions that can be used to calculate confidence intervals associated with lots of different things, such as the <code>confint()</code> function that we’ll use in <a href="./15-regression.html">Linear regression</a>. But I figure that when you’re first learning statistics, it might be useful to start with something simpler. As a consequence, the <code>lsr</code> package includes a function called <code>ciMean()</code> which you can use to calculate your confidence intervals. There are two arguments that you might want to specify:<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
-<div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;These are the only arguments to the function, and <code>ciMean()</code> is deliberately kept simple – it’s meant as a stepping stone before you move on to more general tools like <code>confint()</code>.</p></div></div><ul>
+<p>As far as I can tell, the core packages in R don’t include a simple function for calculating confidence intervals for the mean. They <em>do</em> include a lot of complicated, extremely powerful functions that can be used to calculate confidence intervals associated with lots of different things, such as the <code>confint()</code> function that we’ll use in <a href="./15-regression.html">Linear regression</a>. But I figure that when you’re first learning statistics, it might be useful to start with something simpler. As a consequence, the <code>lsr</code> package includes a function called <code>ciMean()</code> which you can use to calculate your confidence intervals. There are two arguments that you might want to specify:<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;These are the only arguments to the function, and <code>ciMean()</code> is deliberately kept simple – it’s meant as a stepping stone before you move on to more general tools like <code>confint()</code>.</p></div></div><ul>
 <li><code>x</code>. This should be a numeric vector containing the data.</li>
 <li><code>conf</code>. This should be a number, specifying the confidence level. By default, <code>conf = .95</code>, since 95% confidence intervals are the de facto standard in psychology.</li>
 </ul>

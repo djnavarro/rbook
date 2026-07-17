@@ -189,6 +189,9 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Learning-Statistics-with-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -835,10 +838,10 @@ Test results:
 </section>
 <section id="a-comment-on-statistical-notation" class="level3 page-columns page-full" data-number="12.1.10">
 <h3 data-number="12.1.10" class="anchored" data-anchor-id="a-comment-on-statistical-notation"><span class="header-section-number">12.1.10</span> A comment on statistical notation</h3>
-<blockquote class="blockquote">
+<div class="pullquote">
 <p><em>Satan delights equally in statistics and in quoting scripture</em></p>
 <p>— H.G. Wells</p>
-</blockquote>
+</div>
 <p>If you’ve been reading very closely, and are as much of a mathematical pedant as I am, there is one thing about the way I wrote up the chi-square test in the last section that might be bugging you a little bit. There’s something that feels a bit wrong with writing “<span class="math inline">\(\chi^2(3) = 8.44\)</span>”, you might be thinking. After all, it’s the goodness of fit statistic that is equal to 8.44, so shouldn’t I have written <span class="math inline">\(X^2 = 8.44\)</span> or maybe GOF<span class="math inline">\(=8.44\)</span>? This seems to be conflating the <em>sampling distribution</em> (i.e., <span class="math inline">\(\chi^2\)</span> with <span class="math inline">\(df = 3\)</span>) with the <em>test statistic</em> (i.e., <span class="math inline">\(X^2\)</span>). Odds are you figured it was a typo, since <span class="math inline">\(\chi\)</span> and <span class="math inline">\(X\)</span> look pretty similar. Oddly, it’s not. Writing <span class="math inline">\(\chi^2(3) = 8.44\)</span> is essentially a highly condensed way of writing “the sampling distribution of the test statistic is <span class="math inline">\(\chi^2(3)\)</span>, and the value of the test statistic is 8.44”.</p>
 <p>In one sense, this is kind of stupid. There are <em>lots</em> of different test statistics out there that turn out to have a chi-square sampling distribution: the <span class="math inline">\(X^2\)</span> statistic that we’ve used for our goodness of fit test is only one of many (albeit one of the most commonly encountered ones). In a sensible, perfectly organised world, we’d <em>always</em> have a separate name for the test statistic and the sampling distribution: that way, the stat block itself would tell you exactly what it was that the researcher had calculated. Sometimes this happens. For instance, the test statistic used in the Pearson goodness of fit test is written <span class="math inline">\(X^2\)</span>; but there’s a closely related test known as the <span class="math inline">\(G\)</span>-test<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> <span class="citation" data-cites="Sokal1994">(<a href="references.html#ref-Sokal1994" role="doc-biblioref">Sokal &amp; Rohlf, 1994</a>)</span>, in which the test statistic is written as <span class="math inline">\(G\)</span>. As it happens, the Pearson goodness of fit test and the <span class="math inline">\(G\)</span>-test both test the same null hypothesis; and the sampling distribution is exactly the same (i.e., chi-square with <span class="math inline">\(k-1\)</span> degrees of freedom). If I’d done a <span class="math inline">\(G\)</span>-test for the cards data rather than a goodness of fit test, then I’d have ended up with a test statistic of <span class="math inline">\(G = 8.65\)</span>, which is slightly different from the <span class="math inline">\(X^2 = 8.44\)</span> value that I got earlier; and produces a slightly smaller <span class="math inline">\(p\)</span>-value of <span class="math inline">\(p = .034\)</span>. Suppose that the convention was to report the test statistic, then the sampling distribution, and then the <span class="math inline">\(p\)</span>-value. If that were true, then these two situations would produce different stat blocks: my original result would be written <span class="math inline">\(X^2 = 8.44, \chi^2(3), p = .038\)</span>, whereas the new version using the <span class="math inline">\(G\)</span>-test would be written as <span class="math inline">\(G = 8.65, \chi^2(3), p = .034\)</span>. However, using the condensed reporting standard, the original result is written <span class="math inline">\(\chi^2(3) = 8.44, p = .038\)</span>, and the new one is written <span class="math inline">\(\chi^2(3) = 8.65, p = .034\)</span>, and it’s actually unclear whether these both refer to the same test or not.</p>
 <div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;Complicating matters, the <span class="math inline">\(G\)</span>-test is a special case of a whole class of tests that are known as <em>likelihood ratio tests</em>. I don’t cover LRTs in this book, but they are quite handy things to know about.</p></div></div><p>So why don’t we live in a world in which the contents of the stat block uniquely specifies what tests were run? The deep reason is that life is messy. We (as users of statistical tools) want it to be nice and neat and organised… we want it to be <em>designed</em>, as if it were a product. But that’s not how life works: statistics is an intellectual discipline just as much as any other one, and as such it’s a massively distributed, partly-collaborative and partly-competitive project that no-one really understands completely. The things that you and I use as data analysis tools weren’t created by an Act of the Gods of Statistics; they were invented by lots of different people, published as papers in academic journals, implemented, corrected and modified by lots of other people, and then explained to students in textbooks by someone else. As a consequence, there’s a <em>lot</em> of test statistics that don’t even have names; and as a consequence they’re just given the same name as the corresponding sampling distribution. As we’ll see later, any test statistic that follows a <span class="math inline">\(\chi^2\)</span> distribution is commonly called a “chi-square statistic”; anything that follows a <span class="math inline">\(t\)</span>-distribution is called a “<span class="math inline">\(t\)</span>-statistic” and so on. But, as the <span class="math inline">\(X^2\)</span> versus <span class="math inline">\(G\)</span> example illustrates, two different things with the same sampling distribution are still, well, different.</p>
@@ -847,34 +850,25 @@ Test results:
 </section>
 <section id="sec-chisqindependence" class="level2 page-columns page-full" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="sec-chisqindependence"><span class="header-section-number">12.2</span> The <span class="math inline">\(\chi^2\)</span> test of independence (or association)</h2>
-<blockquote class="blockquote">
-<p>GUARDBOT 1: Halt!</p>
-<p>GUARDBOT 2: Be you robot or human?</p>
-<p>LEELA: Robot… we be.</p>
-<p>FRY: Uh, yup! Just two robots out roboting it up! Eh?</p>
-<p>GUARDBOT 1: Administer the test.</p>
-<p>GUARDBOT 2: Which of the following would you most prefer? A: A puppy, B: A pretty flower from your sweetie, or C: A large properly-formatted data file?</p>
-<p>GUARDBOT 1: Choose!</p>
+<div class="pullquote">
+<p>GUARDBOT 1: Halt!<br>
+GUARDBOT 2: Be you robot or human?<br>
+LEELA (nervously): Robot… we be.<br>
+FRY (nervously): Uh, yup! Just two robots out roboting it up! Eh?<br>
+GUARDBOT 1 (suspiciously): Administer the test.<br>
+GUARDBOT 2: Which of the following would you most prefer? A: A puppy, B: A pretty flower from your sweetie, or C: A large properly-formatted data file?<br>
+GUARDBOT 1: Choose!</p>
 <p>— Futurama, “Fear of a Bot Planet”</p>
-</blockquote>
+</div>
 <p>The other day I was watching an animated documentary examining the quaint customs of the natives of the planet <em>Chapek 9</em>. Apparently, in order to gain access to their capital city, a visitor must prove that they’re a robot, not a human. In order to determine whether or not a visitor is human, they ask whether the visitor prefers puppies, flowers or large, properly formatted data files. “Pretty clever,” I thought to myself “but what if humans and robots have the same preferences? That probably wouldn’t be a very good test then, would it?” As it happens, I got my hands on the testing data that the civil authorities of <em>Chapek 9</em> used to check this. It turns out that what they did was very simple… they found a bunch of robots and a bunch of humans and asked them what they preferred. I saved their data in a file called <code>chapek9.Rdata</code>, which I can now load and have a quick look at:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/chapek9.Rdata"</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --      -- Class --   -- Size --
-   cards           data.frame    200 x 3   
-    $id            factor        200       
-    $choice_1      factor        200       
-    $choice_2      factor        200       
-   chapek9         data.frame    180 x 2   
-    $species       factor        180       
-    $choice        factor        180       
-   expected        numeric       4         
-   N               numeric       1         
-   null_probs      numeric       4         
-   observed        table         4         
-   probabilities   numeric       4         </code></pre>
+<pre><code>   -- Name --   -- Class --   -- Size --
+   chapek9      data.frame    180 x 2   
+    $species    factor        180       
+    $choice     factor        180       </code></pre>
 </div>
 </div>
 <p>Okay, so we have a single data frame called <code>chapek9</code>, which contains two factors, <code>species</code> and <code>choice</code>. As always, it’s nice to have a quick look at the data,</p>
@@ -1187,23 +1181,10 @@ X-squared = 10.722, df = 2, p-value = 0.004697</code></pre>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/salem.Rdata"</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --           -- Class --   -- Size --
-   cards                data.frame    200 x 3   
-    $id                 factor        200       
-    $choice_1           factor        200       
-    $choice_2           factor        200       
-   chapek_frequencies   xtabs         3 x 2     
-   chapek9              data.frame    180 x 2   
-    $species            factor        180       
-    $choice             factor        180       
-   expected             numeric       4         
-   N                    numeric       1         
-   null_probs           numeric       4         
-   observed             table         4         
-   probabilities        numeric       4         
-   trial                data.frame    16 x 2    
-    $happy              logical       16        
-    $on_fire            logical       16        </code></pre>
+<pre><code>   -- Name --   -- Class --   -- Size --
+   trial        data.frame    16 x 2    
+    $happy      logical       16        
+    $on_fire    logical       16        </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1392,28 +1373,12 @@ X^2 = \frac{(|O_{12}-O_{21}| - 0.5)^2}{O_{12} + O_{21}}
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/agpp.Rdata"</span>)</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --           -- Class --   -- Size --
-   agpp                 data.frame    100 x 3   
-    $id                 factor        100       
-    $response_before    factor        100       
-    $response_after     factor        100       
-   cards                data.frame    200 x 3   
-    $id                 factor        200       
-    $choice_1           factor        200       
-    $choice_2           factor        200       
-   chapek_frequencies   xtabs         3 x 2     
-   chapek9              data.frame    180 x 2   
-    $species            factor        180       
-    $choice             factor        180       
-   expected             numeric       4         
-   N                    numeric       1         
-   null_probs           numeric       4         
-   observed             table         4         
-   probabilities        numeric       4         
-   salem_tabs           table         2 x 2     
-   trial                data.frame    16 x 2    
-    $happy              logical       16        
-    $on_fire            logical       16        </code></pre>
+<pre><code>   -- Name --          -- Class --   -- Size --
+   agpp                data.frame    100 x 3   
+    $id                factor        100       
+    $response_before   factor        100       
+    $response_after    factor        100       
+   salem_tabs          table         2 x 2     </code></pre>
 </div>
 </div>
 <p>The <code>agpp</code> data frame contains three variables, an <code>id</code> variable that labels each participant in the data set (we’ll see why that’s useful in a moment), a <code>response_before</code> variable that records the person’s answer when they were asked the question the first time, and a <code>response_after</code> variable that shows the answer that they gave when asked the same question a second time. As usual, here’s the first 6 entries:</p>

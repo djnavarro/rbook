@@ -189,6 +189,9 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Learning-Statistics-with-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -913,9 +916,9 @@ Table&nbsp;9.2: The naming system for R probability distribution functions. Ever
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 3 3 4 4 3 6 2 2 5 1 4 0 4 7 4 1 5 2 2 4 6 2 4 5 4 2 1 2 2 3 5 3 3 3 2 4 3
- [38] 4 2 5 1 3 4 3 4 3 5 3 3 4 0 2 4 6 3 4 5 5 2 1 4 2 2 4 3 3 4 3 2 2 2 5 3 6
- [75] 6 5 8 5 4 3 1 3 4 3 3 5 8 2 2 1 3 2 4 2 1 2 4 2 4 3</code></pre>
+<pre><code>  [1] 2 4 1 6 4 6 5 1 3 5 2 5 3 2 3 4 5 4 3 4 4 0 6 4 2 3 4 2 2 3 4 5 5 6 3 4 3
+ [38] 3 6 0 1 4 2 5 4 4 4 1 0 2 6 4 3 6 2 5 4 4 3 2 2 4 4 4 3 3 4 2 2 2 2 3 4 5
+ [75] 3 7 1 5 3 3 3 2 3 6 1 0 2 4 3 3 2 2 1 7 4 4 4 3 4 1</code></pre>
 </div>
 </div>
 <p>As you can see, these numbers are pretty much what you’d expect given the distribution shown in <a href="#fig-binomial1" class="quarto-xref">Figure&nbsp;<span>9.3</span></a>. Most of the time I roll somewhere between 1 to 5 skulls. There are a lot of subtleties associated with random number generation using a computer,<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> but for the purposes of this book we don’t need to worry too much about them.</p>
@@ -1133,9 +1136,9 @@ Figure&nbsp;9.12: An <span class="math inline">\(F\)</span> distribution with 3 
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>normal_a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(normal_a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   [1]  1.029289607 -0.764633939 -0.833777688  0.348830454  0.188781311
-   [6] -0.357316586 -0.984216733 -1.945968074  0.549638453  1.859822068
-  [11]  0.104888043  0.359062622 -1.044934763  1.536788272 -0.330777684
+<pre><code>   [1]  1.0915676272 -1.4067288330  0.0704628966 -0.0336651450 -0.7322868820
+   [6]  0.4921206281 -1.8330163898  0.5318859216  1.6882545796  0.3944587515
+  [11]  0.8456076044  0.2135932886  0.5334136314  0.2779051634 -0.6007244608
 
 BLAH BLAH BLAH</code></pre>
 </div>

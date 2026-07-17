@@ -189,6 +189,9 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Learning-Statistics-with-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -1638,7 +1641,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p>Obviously, there’s no surprises here. That’s the exact same ANOVA that we ran earlier, except for the fact that I’ve arbitrarily decided to rename the output variable as <code>drug_anova</code> for some stupid reason.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> Next, let’s run a regression, using <code>druganxifree</code>, <code>drugjoyzepam</code> and <code>therapyCBT</code> as the predictors. Here’s what we get:</p>
-<div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;Future versions of this book will try to be a bit more consistent with the naming scheme for variables. One of the many problems with having to write a lengthy text very quickly to meet a teaching deadline is that you lose some internal consistency.</p></div></div><div class="cell">
+<div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;In retrospect, I should have tried to be a bit more consistent with the naming scheme for variables. One of the many problems with having to write a lengthy text very quickly to meet a teaching deadline is that you lose some internal consistency.</p></div></div><div class="cell">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>drug_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(mood_gain <span class="sc">~</span> druganxifree <span class="sc">+</span> drugjoyzepam <span class="sc">+</span> therapyCBT, clin_trial_2)</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(drug_regression))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2009,16 +2012,16 @@ joyzepam:CBT-anxifree:CBT               0.2139229</code></pre>
 <span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">some</span>(coffee)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   milk sugar babble
-2    no  fake    4.4
+1   yes  real    4.6
 4   yes  real    5.6
+5   yes  real    5.1
 6    no  real    5.5
-7   yes  none    3.9
 8   yes  none    3.5
-11   no  fake    4.7
 12  yes  fake    5.9
-13   no  real    6.0
 14   no  real    5.4
-16   no  none    5.8</code></pre>
+15   no  real    6.6
+17   no  none    5.3
+18  yes  fake    5.7</code></pre>
 </div>
 </div>
 <p>If we use the <code>aggregate()</code> function to quickly produce a table of means, we get a strong impression that there are differences between the groups:</p>
@@ -2308,9 +2311,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a>random_contrasts  <span class="co"># print it to check that we really have an arbitrary contrast matrix...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           [,1]       [,2]
-[1,] -1.5641134  1.0714329
-[2,]  0.8646005 -0.5014931
-[3,]  0.6995129 -0.5699398</code></pre>
+[1,] -0.3811318  0.8562124
+[2,] -0.9075111 -0.4921289
+[3,]  1.2886429 -0.3640836</code></pre>
 </div>
 </div>
 <div class="cell">

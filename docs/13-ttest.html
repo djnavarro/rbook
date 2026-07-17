@@ -189,6 +189,9 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Learning-Statistics-with-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -849,20 +852,10 @@ Other information:
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/harpo.Rdata"</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --    -- Class --   -- Size --
-   grades        numeric       20        
-   harpo         data.frame    33 x 2    
-    $grade       numeric       33        
-    $tutor       factor        33        
-   lower_area    numeric       1         
-   mu_null       numeric       1         
-   N             integer       1         
-   p_value       numeric       1         
-   sample_mean   numeric       1         
-   sd_true       numeric       1         
-   sem_true      numeric       1         
-   upper_area    numeric       1         
-   z_score       numeric       1         </code></pre>
+<pre><code>   -- Name --   -- Class --   -- Size --
+   harpo        data.frame    33 x 2    
+    $grade      numeric       33        
+    $tutor      factor        33        </code></pre>
 </div>
 </div>
 <p>As we can see, there’s a single data frame with two variables, <code>grade</code> and <code>tutor</code>. The <code>grade</code> variable is a numeric vector, containing the grades for all <span class="math inline">\(N = 33\)</span> students taking Dr Harpo’s class; the <code>tutor</code> variable is a factor that indicates who each student’s tutor was. The first six observations in this data set are shown below:</p>
@@ -1177,20 +1170,7 @@ Other information:
    chico           data.frame    20 x 3    
     $id            factor        20        
     $grade_test1   numeric       20        
-    $grade_test2   numeric       20        
-   grades          numeric       20        
-   harpo           data.frame    33 x 2    
-    $grade         numeric       33        
-    $tutor         factor        33        
-   lower_area      numeric       1         
-   mu_null         numeric       1         
-   N               integer       1         
-   p_value         numeric       1         
-   sample_mean     numeric       1         
-   sd_true         numeric       1         
-   sem_true        numeric       1         
-   upper_area      numeric       1         
-   z_score         numeric       1         </code></pre>
+    $grade_test2   numeric       20        </code></pre>
 </div>
 </div>
 <p>The data frame <code>chico</code> contains three variables: an <code>id</code> variable that identifies each student in the class, the <code>grade_test1</code> variable that records the student grade for the first test, and the <code>grade_test2</code> variable that has the grades for the second test. Here’s the first six students:</p>

@@ -189,6 +189,9 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Learning-Statistics-with-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -1112,7 +1115,7 @@ Figure&nbsp;15.9: Residuals versus leverage. This is one of the standard regress
 </div>
 </div>
 <p>An obvious question to ask next is, if you do have large values of Cook’s distance, what should you do? As always, there’s no hard and fast rules. Probably the first thing to do is to try running the regression with that point excluded and see what happens to the model performance and to the regression coefficients. If they really are substantially different, it’s time to start digging into your data set and your notes that you no doubt were scribbling as you ran your study; try to figure out <em>why</em> the point is so different. If you start to become convinced that this one data point is badly distorting your results, you might consider excluding it, but that’s less than ideal unless you have a solid explanation for why this particular case is qualitatively different from the others and therefore deserves to be handled separately.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> To give an example, let’s delete the observation from day 64, the observation with the largest Cook’s distance for the <code>regression_2</code> model. We can do this using the <code>subset</code> argument:</p>
-<div class="no-row-height column-margin column-container"><div id="fn12"><p><sup>12</sup>&nbsp;An alternative is to run a “robust regression”; I’ll discuss robust regression in a later version of this book.</p></div></div><div class="cell">
+<div class="no-row-height column-margin column-container"><div id="fn12"><p><sup>12</sup>&nbsp;An alternative is to run a “robust regression”. I had at one stage wanted to discuss robust regression in a later version of this book, but it seems unlikely that will happen.</p></div></div><div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> danielle_grump <span class="sc">~</span> danielle_sleep <span class="sc">+</span> baby_sleep, <span class="co"># same formula</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> parenthood, <span class="co"># same data frame...</span></span>

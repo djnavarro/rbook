@@ -189,6 +189,9 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Learning-Statistics-with-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -502,7 +505,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>seeker <span class="ot">&lt;-</span> <span class="fl">3.1415</span>           <span class="co"># create the first variable</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lover <span class="ot">&lt;-</span> <span class="fl">2.7183</span>            <span class="co"># create the second variable</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>keeper <span class="ot">&lt;-</span> seeker <span class="sc">*</span> lover   <span class="co"># now multiply them to create a third one</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( keeper )            <span class="co"># print out the value of 'keeper'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(keeper)            <span class="co"># print out the value of 'keeper'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.539539</code></pre>
 </div>
@@ -512,7 +515,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>seeker <span class="ot">&lt;-</span> <span class="fl">3.1415</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lover <span class="ot">&lt;-</span> <span class="fl">2.7183</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>keeper <span class="ot">&lt;-</span> seeker <span class="sc">*</span> lover</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( keeper )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(keeper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.539539</code></pre>
 </div>
@@ -545,7 +548,7 @@ window.Quarto = {
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="sec-packageload"><span class="header-section-number">4.2.2</span> Loading a package</h3>
 <p>That seems straightforward enough, so let’s try loading and unloading packages. For this example, I’ll use the <code>foreign</code> package. The <code>foreign</code> package is a collection of tools that are very handy when R needs to interact with files that are produced by other software packages (e.g., SPSS). It comes bundled with R, so it’s one of the ones that you have installed already, but it won’t be one of the ones loaded. Inside the <code>foreign</code> package is a function called <code>read.spss()</code>. It’s a handy little function that you can use to import an SPSS data file into R, so let’s pretend we want to use it. Currently, the <code>foreign</code> package isn’t loaded, so if I ask R to tell me if it knows about a function called <code>read.spss()</code> it tells me that there’s no such thing…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>( <span class="st">"read.spss"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">"read.spss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -560,7 +563,7 @@ window.Quarto = {
 </div>
 <p>Throughout this book, you’ll often see me typing in <code>library()</code> commands. You don’t actually have to type them in yourself: you can use the Packages panel to do all your package loading for you. The only reason I include the <code>library()</code> commands sometimes is as a reminder to you to make sure that you have the relevant package loaded. Oh, and I suppose we should check to see if our attempt to load the package actually worked. Let’s see if R now knows about the existence of the <code>read.spss()</code> function…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>( <span class="st">"read.spss"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">"read.spss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -571,11 +574,11 @@ window.Quarto = {
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="sec-packageunload"><span class="header-section-number">4.2.3</span> Unloading a package</h3>
 <p>Sometimes, especially after a long session of working with R, you find yourself wanting to get rid of some of those packages that you’ve loaded. The Packages panel makes this exactly as easy as loading the package in the first place. Find the entry corresponding to the package you want to unload, and uncheck the box. When you do that for the <code>foreign</code> package, you’ll see this command appear on screen:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(<span class="st">"package:foreign"</span>, <span class="at">unload=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(<span class="st">"package:foreign"</span>, <span class="at">unload =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And the package is unloaded. We can verify this by seeing if the <code>read.spss()</code> function still <code>exists()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>( <span class="st">"read.spss"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">"read.spss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -655,7 +658,7 @@ The downloaded binary packages are in
 <section id="listing-the-contents-of-the-workspace" class="level3 page-columns page-full" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="listing-the-contents-of-the-workspace"><span class="header-section-number">4.3.1</span> Listing the contents of the workspace</h3>
 <p><a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
-<div class="no-row-height column-margin column-container"><div id="fn15"><p><sup>15</sup>&nbsp;The book includes two screenshots of the RStudio “Environment” panel here (a “list” view and a “grid” view), omitted for the same reason as the earlier screenshots. Positron’s own variables pane offers an equivalent view.</p></div></div><p>The first thing that you need to know how to do is examine the contents of the workspace. If you’re using RStudio (or Positron), you will probably find that the easiest way to do this is to use the “Environment” (or “Variables”) panel in the top right hand corner. Click on that, and you’ll see a list of your variables. If you’re using the command line, then the <code>objects()</code> function may come in handy:</p>
+<div class="no-row-height column-margin column-container"><div id="fn15"><p><sup>15</sup>&nbsp;The original book included two screenshots of the RStudio “Environment” panel here (a “list” view and a “grid” view), omitted for the same reason as the earlier screenshots. Positron’s own variables pane offers an equivalent view.</p></div></div><p>The first thing that you need to know how to do is examine the contents of the workspace. If you’re using RStudio (or Positron), you will probably find that the easiest way to do this is to use the “Environment” (or “Variables”) panel in the top right hand corner. Click on that, and you’ll see a list of your variables. If you’re using the command line, then the <code>objects()</code> function may come in handy:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">objects</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -684,7 +687,7 @@ The downloaded binary packages are in
 <p>In RStudio, the easiest way to remove variables is to use the Environment panel. Assuming that you’re in grid view, check the boxes next to the variables that you want to delete, then click on the “Clear” button at the top of the panel. When you do this, RStudio will show a dialog box asking you to confirm that you really do want to delete the variables. It’s always worth checking that you really do, because as RStudio is at pains to point out, you can’t undo this. Once a variable is deleted, it’s gone.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> In any case, if you click “yes”, that variable will disappear from the workspace: it will no longer appear in the Environment panel, and it won’t show up when you use the <code>who()</code> command. Positron’s Variables pane has a “Delete All Variables” action that works the same way for clearing everything at once; at the time of writing it doesn’t yet offer RStudio’s checkbox-and-clear approach for removing a <em>specific subset</em> of variables through the panel itself, so for that you’re better off using <code>rm()</code> directly, which works identically regardless of which IDE (or none at all) you’re using.</p>
 <div class="no-row-height column-margin column-container"><div id="fn17"><p><sup>17</sup>&nbsp;Mind you, all that means is that it’s been removed from the workspace. If you’ve got the data saved to file somewhere, then that <em>file</em> is perfectly safe.</p></div></div><p>Suppose you don’t have access to a Variables/Environment panel, and you still want to remove variables. This is where the <strong><em>remove</em></strong> function <code>rm()</code> comes in handy. The simplest way to use <code>rm()</code> is just to type in a (comma separated) list of all the variables you want to remove. Let’s say I want to get rid of <code>seeker</code> and <code>lover</code>, but I would like to keep <code>keeper</code>. To do this, all I have to do is type:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>( seeker, lover )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(seeker, lover)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There’s no visible output, but if I now inspect the workspace</p>
 <div class="cell">
@@ -704,15 +707,15 @@ The downloaded binary packages are in
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="sec-filesystem"><span class="header-section-number">4.4.1</span> The file system itself</h3>
 <p>In this section I describe the basic idea behind file locations and file paths. Regardless of whether you’re using Windows, Mac OS or Linux, every file on the computer is assigned a (fairly) human readable address, and every address has the same basic structure: it describes a <em>path</em> that starts from a <em>root</em> location, through a series of <em>folders</em> (or if you’re an old-school computer user, <em>directories</em>), and finally ends up at the file.</p>
 <p>On a Windows computer the root is the physical drive<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> on which the file is stored, and for most home computers the name of the hard drive that stores all your files is <code>C:</code> and therefore most file names on Windows begin with <code>C:</code>. After that comes the folders, and on Windows the folder names are separated by a <code>\</code> symbol. So, the complete path to this book on my Windows computer might be something like this:</p>
-<div class="no-row-height column-margin column-container"><div id="fn18"><p><sup>18</sup>&nbsp;Well, the partition, technically.</p></div></div><pre><code>C:\Users\dan\Rbook\LSR.pdf</code></pre>
-<p>and what that <em>means</em> is that the book is called <code>LSR.pdf</code>, and it’s in a folder called <code>Rbook</code> which itself is in a folder called <code>dan</code> which itself is … well, you get the idea. On Linux, Unix and Mac OS systems, the addresses look a little different, but they’re more or less identical in spirit. Instead of using the backslash, folders are separated using a forward slash, and unlike Windows, they don’t treat the physical drive as being the root of the file system. So, the path to this book on my Mac might be something like this:</p>
-<pre><code>/Users/dan/Rbook/LSR.pdf</code></pre>
-<p>So that’s what we mean by the “path” to a file. The next concept to grasp is the idea of a <strong><em>working directory</em></strong> and how to change it. For those of you who have used command line interfaces previously, this should be obvious already. But if not, here’s what I mean. The working directory is just “whatever folder I’m currently looking at”. Suppose that I’m currently looking for files in Explorer (if you’re using Windows) or using Finder (on a Mac). The folder I currently have open is my user directory (i.e., <code>C:\Users\dan</code> or <code>/Users/dan</code>). That’s my current working directory.</p>
-<p>The fact that we can imagine that the program is “in” a particular directory means that we can talk about moving <em>from</em> our current location <em>to</em> a new one. What that means is that we might want to specify a new location in relation to our current location. To do so, we need to introduce two new conventions. Regardless of what operating system you’re using, we use <code>.</code> to refer to the current working directory, and <code>..</code> to refer to the directory above it. This allows us to specify a path to a new location in relation to our current location, as the following example illustrates. Let’s assume that I’m using my Windows computer, and my working directory is <code>C:\Users\dan\Rbook</code>. <a href="#tbl-paths" class="quarto-xref">Table&nbsp;<span>4.1</span></a> shows several addresses in relation to my current one:</p>
+<div class="no-row-height column-margin column-container"><div id="fn18"><p><sup>18</sup>&nbsp;Well, the partition, technically.</p></div></div><pre><code>C:\Users\danielle\Rbook\LSR.pdf</code></pre>
+<p>and what that <em>means</em> is that the book is called <code>LSR.pdf</code>, and it’s in a folder called <code>Rbook</code> which itself is in a folder called <code>danielle</code> which itself is … well, you get the idea. On Linux, Unix and Mac OS systems, the addresses look a little different, but they’re more or less identical in spirit. Instead of using the backslash, folders are separated using a forward slash, and unlike Windows, they don’t treat the physical drive as being the root of the file system. So, the path to this book on my Mac might be something like this:</p>
+<pre><code>/Users/danielle/Rbook/LSR.pdf</code></pre>
+<p>So that’s what we mean by the “path” to a file. The next concept to grasp is the idea of a <strong><em>working directory</em></strong> and how to change it. For those of you who have used command line interfaces previously, this should be obvious already. But if not, here’s what I mean. The working directory is just “whatever folder I’m currently looking at”. Suppose that I’m currently looking for files in Explorer (if you’re using Windows) or using Finder (on a Mac). The folder I currently have open is my user directory (i.e., <code>C:\Users\danielle</code> or <code>/Users/danielle</code>). That’s my current working directory.</p>
+<p>The fact that we can imagine that the program is “in” a particular directory means that we can talk about moving <em>from</em> our current location <em>to</em> a new one. What that means is that we might want to specify a new location in relation to our current location. To do so, we need to introduce two new conventions. Regardless of what operating system you’re using, we use <code>.</code> to refer to the current working directory, and <code>..</code> to refer to the directory above it. This allows us to specify a path to a new location in relation to our current location, as the following example illustrates. Let’s assume that I’m using my Windows computer, and my working directory is <code>C:\Users\danielle\Rbook</code>. <a href="#tbl-paths" class="quarto-xref">Table&nbsp;<span>4.1</span></a> shows several addresses in relation to my current one:</p>
 <div id="tbl-paths" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-paths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.1: Absolute and relative paths, relative to a working directory of <code>C:\Users\dan\Rbook</code>.
+Table&nbsp;4.1: Absolute and relative paths, relative to a working directory of <code>C:\Users\danielle\Rbook</code>.
 </figcaption>
 <div aria-describedby="tbl-paths-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -723,12 +726,12 @@ Table&nbsp;4.1: Absolute and relative paths, relative to a working directory of 
 <thead>
 <tr class="header">
 <th style="text-align: left;">absolute path (i.e., from root)</th>
-<th style="text-align: left;">relative path (i.e., from <code>C:\Users\dan\Rbook</code>)</th>
+<th style="text-align: left;">relative path (i.e., from <code>C:\Users\danielle\Rbook</code>)</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><code>C:\Users\dan</code></td>
+<td style="text-align: left;"><code>C:\Users\danielle</code></td>
 <td style="text-align: left;"><code>..</code></td>
 </tr>
 <tr class="even">
@@ -736,11 +739,11 @@ Table&nbsp;4.1: Absolute and relative paths, relative to a working directory of 
 <td style="text-align: left;"><code>..\..</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>C:\Users\dan\Rbook\source</code></td>
+<td style="text-align: left;"><code>C:\Users\danielle\Rbook\source</code></td>
 <td style="text-align: left;"><code>.\source</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>C:\Users\dan\nerdstuff</code></td>
+<td style="text-align: left;"><code>C:\Users\danielle\nerdstuff</code></td>
 <td style="text-align: left;"><code>..\nerdstuff</code></td>
 </tr>
 </tbody>
@@ -748,7 +751,7 @@ Table&nbsp;4.1: Absolute and relative paths, relative to a working directory of 
 </div>
 </figure>
 </div>
-<p>There’s one last thing I want to call attention to: the <code>~</code> directory. I normally wouldn’t bother, but R makes reference to this concept sometimes. It’s quite common on computers that have multiple users to define <code>~</code> to be the user’s home directory. On my Mac, for instance, the home directory <code>~</code> for the “dan” user is <code>/Users/dan/</code>. And so, not surprisingly, it is possible to define other directories in terms of their relationship to the home directory. For example, an alternative way to describe the location of the <code>LSR.pdf</code> file on my Mac would be</p>
+<p>There’s one last thing I want to call attention to: the <code>~</code> directory. I normally wouldn’t bother, but R makes reference to this concept sometimes. It’s quite common on computers that have multiple users to define <code>~</code> to be the user’s home directory. On my Mac, for instance, the home directory <code>~</code> for the “danielle” user is <code>/Users/danielle/</code>. And so, not surprisingly, it is possible to define other directories in terms of their relationship to the home directory. For example, an alternative way to describe the location of the <code>LSR.pdf</code> file on my Mac would be</p>
 <pre><code>~/Rbook/LSR.pdf</code></pre>
 <p>That’s about all you really need to know about file paths. And since this section already feels too long, it’s time to look at how to navigate the file system in R.</p>
 </section>
@@ -762,8 +765,8 @@ Table&nbsp;4.1: Absolute and relative paths, relative to a working directory of 
 <pre><code>[1] "/home/danielle/GitHub/djnavarro/rbook-dev/dev"</code></pre>
 </div>
 </div>
-<p>We can change the working directory quite easily using <code>setwd()</code>. The <code>setwd()</code> function has only the one argument, <code>dir</code>, which is a character string specifying a path to a directory, or a path relative to the working directory. For instance, if my working directory were <code>/Users/dan</code>, the following two commands would be equivalent:</p>
-<pre><code>setwd("/Users/dan/Rbook/data")
+<p>We can change the working directory quite easily using <code>setwd()</code>. The <code>setwd()</code> function has only the one argument, <code>dir</code>, which is a character string specifying a path to a directory, or a path relative to the working directory. For instance, if my working directory were <code>/Users/danielle</code>, the following two commands would be equivalent:</p>
+<pre><code>setwd("/Users/danielle/Rbook/data")
 setwd("./Rbook/data")</code></pre>
 <p>Now that we’re there, we could type the <code>list.files()</code> command to get a listing of all the files in that directory. This book keeps its own data files in a <code>data/</code> folder off the project root rather than the working directory itself,<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a> so let’s list what’s in there instead:</p>
 <div class="no-row-height column-margin column-container"><div id="fn19"><p><sup>19</sup>&nbsp;Throughout this book, whenever you see a <code>load()</code> or <code>read.csv()</code> call, it will refer to a path like <code>data/whatever.Rdata</code>, rather than changing the working directory first and loading a bare filename the way the original text does here. Both approaches work equally well; this is just a matter of this translation’s own convention, chosen so that every chapter can load its data from the same relative path regardless of which chapter you’re rendering.</p></div></div><div class="cell">
@@ -794,20 +797,20 @@ setwd("./Rbook/data")</code></pre>
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="why-do-the-windows-paths-use-the-wrong-slash"><span class="header-section-number">4.4.3</span> Why do the Windows paths use the wrong slash?</h3>
 <p>Let’s suppose I’m on Windows. As before, I can find out what my current working directory is like this:</p>
 <pre><code>getwd()
-[1] "C:/Users/dan/"</code></pre>
+[1] "C:/Users/danielle/"</code></pre>
 <p>This seems about right, but you might be wondering why R is displaying a Windows path using the wrong type of slash. The answer is slightly complicated, and has to do with the fact that R treats the <code>\</code> character as “special” (see <a href="07-datahandling.html#sec-escapechars" class="quarto-xref"><span>Section 7.8.7</span></a>). If you’re deeply wedded to the idea of specifying a path using the Windows style slashes, then what you need to do is to type <code>\\</code> whenever you mean <code>\</code>. In other words, if you want to specify the working directory on a Windows computer, you need to use one of the following commands:</p>
-<pre><code>setwd( "C:/Users/dan" )
-setwd( "C:\\Users\\dan" )</code></pre>
+<pre><code>setwd( "C:/Users/danielle" )
+setwd( "C:\\Users\\danielle" )</code></pre>
 <p>It’s kind of annoying to have to do it this way, but as you’ll see later on in <a href="07-datahandling.html#sec-escapechars" class="quarto-xref"><span>Section 7.8.7</span></a> it’s a necessary evil. Fortunately, as we’ll see in the next section, RStudio and Positron both provide a much simpler way of changing directories…</p>
 </section>
 <section id="sec-nav3" class="level3 page-columns page-full" data-number="4.4.4">
 <h3 data-number="4.4.4" class="anchored" data-anchor-id="sec-nav3"><span class="header-section-number">4.4.4</span> Navigating the file system using the Files/Explorer panel</h3>
 <p>Although I think it’s important to understand how all this command line stuff works, in many (maybe even most) situations there’s an easier way. For our purposes, the easiest way to navigate the file system is to make use of the file-browser panel built into your IDE. In RStudio this is the “Files” panel, typically in the lower right hand area; in Positron it’s the “Explorer” panel, usually on the left hand side. Either way, it’s a pretty decent file browser.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> I’ll walk through RStudio’s version below, since it involves a couple of extra clicks worth spelling out; Positron’s Explorer supports the same core moves (setting the working directory, opening, renaming, and deleting files) through its own right-click context menu or the command palette, just organised a little differently. Either way, not only can you just point and click on the names to move around the file system, you can also use it to set the working directory, and even load files.</p>
 <div class="no-row-height column-margin column-container"><div id="fn21"><p><sup>21</sup>&nbsp;The book includes a screenshot of the RStudio file panel here, omitted for the same reason as the earlier screenshots.</p></div></div><p>Here’s what you need to do to change the working directory using RStudio’s file panel. Suppose the panel shows some text at the top that says “Home &gt; Rbook &gt; data”. What that means is that it’s <em>displaying</em> the files that are stored in the</p>
-<pre><code>/Users/dan/Rbook/data</code></pre>
+<pre><code>/Users/danielle/Rbook/data</code></pre>
 <p>directory on my computer. It does <em>not</em> mean that this is the R working directory. If you want to change the R working directory using the file panel, you need to click on the button that reads “More”. This will bring up a little menu, and one of the options will be “Set as Working Directory”. If you select that option, then R really will change the working directory. You can tell that it has done so because this command appears in the console:</p>
 <pre><code>setwd("~/Rbook/data")</code></pre>
-<p>In other words, RStudio sends a command to the R console, exactly as if you’d typed it yourself. Positron does the same thing from its Explorer panel’s right-click menu (or via the “Interpreter: Set as Working Directory in Active Console” command in the command palette) – you’ll see the same <code>setwd()</code> command appear in the console either way. The file panel can be used to do other things too. If you want to move “up” to the parent folder (e.g., from <code>/Users/dan/Rbook/data</code> to <code>/Users/dan/Rbook</code>) click on the “..” link in the file panel. To move to a subfolder, click on the name of the folder that you want to open. You can open some types of file by clicking on them. You can delete files from your computer using the “delete” button, rename them with the “rename” button, and so on.</p>
+<p>In other words, RStudio sends a command to the R console, exactly as if you’d typed it yourself. Positron does the same thing from its Explorer panel’s right-click menu (or via the “Interpreter: Set as Working Directory in Active Console” command in the command palette) – you’ll see the same <code>setwd()</code> command appear in the console either way. The file panel can be used to do other things too. If you want to move “up” to the parent folder (e.g., from <code>/Users/danielle/Rbook/data</code> to <code>/Users/danielle/Rbook</code>) click on the “..” link in the file panel. To move to a subfolder, click on the name of the folder that you want to open. You can open some types of file by clicking on them. You can delete files from your computer using the “delete” button, rename them with the “rename” button, and so on.</p>
 <p>As you can tell, the file panel is a very handy little tool for navigating the file system. But it can do more than just navigate. As we’ll see later, it can be used to open files. And if you look at the buttons and menu options that it presents, you can even use it to rename, delete, copy or move files, and create new folders. However, since most of that functionality isn’t critical to the basic goals of this book, I’ll let you discover those on your own.</p>
 </section>
 </section>
@@ -827,10 +830,10 @@ setwd( "C:\\Users\\dan" )</code></pre>
 <li><code>file</code>. This should be a character string that specifies a path to the file that needs to be loaded. You can use an absolute path or a relative path to do so.</li>
 </ul>
 <p>Using an absolute file path, the command might look like this:</p>
-<pre><code>load( file = "/Users/dan/Rbook/data/booksales.Rdata" )</code></pre>
+<pre><code>load(file = "/Users/danielle/Rbook/data/booksales.Rdata")</code></pre>
 <p>but this is pretty lengthy, and machine-specific besides. Given that this book’s data files live in a <code>data/</code> folder relative to the project root (see the footnote in <a href="#sec-navigationR" class="quarto-xref"><span>Section 4.4.2</span></a>), I’ll load it using a relative path instead:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>( <span class="at">file =</span> <span class="st">"data/booksales.Rdata"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">"data/booksales.Rdata"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If I were then to type <code>who()</code> I’d see that there are several new variables in my workspace now:</p>
 <div class="cell">
@@ -873,11 +876,11 @@ setwd( "C:\\Users\\dan" )</code></pre>
 </ul>
 <p>Therefore, to import the CSV file, the command I need is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>books <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="at">file =</span> <span class="st">"data/booksales.csv"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>books <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/booksales.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There are two very important points to notice here. Firstly, notice that I <em>didn’t</em> try to use the <code>load()</code> function, because that function is only meant to be used for <code>.Rdata</code> files. If you try to use <code>load()</code> on other types of data, you get an error. Secondly, notice that when I imported the CSV file I assigned the result to a variable, which I imaginatively called <code>books</code>.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a> Let’s have a look at what we’ve got:</p>
 <div class="no-row-height column-margin column-container"><div id="fn26"><p><sup>26</sup>&nbsp;Note that I didn’t do this in my earlier example when loading the <code>.Rdata</code> file. There’s a reason for this. The idea behind an <code>.Rdata</code> file is that it stores a whole workspace. So, if you had the ability to look inside the file yourself you’d see that the data file keeps track of all the variables and their names. So when you <code>load()</code> the file, R restores all those original names. CSV files are treated differently: as far as R is concerned, the CSV only stores <em>one</em> variable, but that variable is a big table. So when you import that table into the workspace, R expects <em>you</em> to give it a name.</p></div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( books )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(books)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Month Days Sales Stock.Levels
 1    January   31     0         high
@@ -914,7 +917,7 @@ View(booksales)</code></pre>
 <section id="sec-save" class="level3 page-columns page-full" data-number="4.5.5">
 <h3 data-number="4.5.5" class="anchored" data-anchor-id="sec-save"><span class="header-section-number">4.5.5</span> Saving a workspace file using R</h3>
 <p>Not surprisingly, saving data is very similar to loading data. Although RStudio and Positron both provide simple ways to save files (see below), it’s worth understanding the actual commands involved. There are two commands you can use to do this, <code>save()</code> and <code>save.image()</code>. If you’re happy to save <em>all</em> of the variables in your workspace into the data file, then you should use <code>save.image()</code>. And if you’re happy for R to save the file into the current working directory, all you have to do is this:</p>
-<pre><code>save.image( file = "myfile.Rdata" )</code></pre>
+<pre><code>save.image(file = "myfile.Rdata")</code></pre>
 <p>Since <code>file</code> is the first argument, you can shorten this to <code>save.image("myfile.Rdata")</code>; and if you want to save to a different directory, then (as always) you need to be more explicit about specifying the path to the file, just as we discussed in <a href="#sec-navigation" class="quarto-xref"><span>Section 4.4</span></a>. Suppose, however, I have several variables in my workspace, and I only want to save some of them. For instance, I might have this as my workspace:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1207,7 +1210,7 @@ Levels: male female</code></pre>
 <p>However, R <em>doesn’t</em> know this! As far as it’s concerned, there’s no reason why the <code>age</code> variable has to be the same length as the <code>gender</code> variable; and there’s no particular reason to think that <code>age[1]</code> has any special relationship to <code>gender[1]</code> any more than it has a special relationship to <code>gender[4]</code>. In other words, when we store everything in separate variables like this, R doesn’t know anything about the relationships between things. It doesn’t even really know that these variables actually refer to a proper data set. The data frame fixes this: if we store our variables inside a data frame, we’re telling R to treat these variables as a single, fairly coherent data set.</p>
 <p>To see how they do this, let’s create one. So how do we create a data frame? One way we’ve already seen: if we import our data from a CSV file, R will store it as a data frame. A second way is to create it directly from some existing variables using the <code>data.frame()</code> function. All you have to do is type a list of variables that you want to include in the data frame. The output of a <code>data.frame()</code> command is, well, a data frame. So, if I want to store all four variables from my experiment in a data frame called <code>expt</code> I can do so like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>expt <span class="ot">&lt;-</span> <span class="fu">data.frame</span> ( age, gender, group, score )</span>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>expt <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(age, gender, group, score)</span>
 <span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>expt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  age gender   group score
@@ -1275,14 +1278,15 @@ Levels: male female</code></pre>
 <h2 data-number="4.9" class="anchored" data-anchor-id="sec-lists"><span class="header-section-number">4.9</span> Lists</h2>
 <p>The next kind of data I want to mention are <strong><em>lists</em></strong>. Lists are an extremely fundamental data structure in R, and as you start making the transition from a novice to a savvy R user you will use lists all the time. I don’t use lists very often in this book – not directly – but most of the advanced data structures in R are built from lists (e.g., data frames are actually a specific type of list). Because lists are so important to how R stores things, it’s useful to have a basic understanding of them. Okay, so what is a list, exactly? Like data frames, lists are just “collections of variables.” However, unlike data frames – which are basically supposed to look like a nice “rectangular” table of data – there are no constraints on what kinds of variables we include, and no requirement that the variables have any particular relationship to one another. In order to understand what this actually <em>means</em>, the best thing to do is create a list, which we can do using the <code>list()</code> function. If I type this as my command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>Danielle <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="at">age =</span> <span class="dv">34</span>,</span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">nerd =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">parents =</span> <span class="fu">c</span>(<span class="st">"Joe"</span>,<span class="st">"Liz"</span>)</span>
-<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>Danielle <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="dv">34</span>,</span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nerd =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">parents =</span> <span class="fu">c</span>(<span class="st">"Joe"</span>,<span class="st">"Liz"</span>)</span>
+<span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>R creates a new list variable called <code>Danielle</code>, which is a bundle of three different variables: <code>age</code>, <code>nerd</code> and <code>parents</code>. Notice, that the <code>parents</code> variable is longer than the others. This is perfectly acceptable for a list, but it wouldn’t be for a data frame. If we now print out the variable, you can see the way that R stores the list:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( Danielle )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Danielle)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$age
 [1] 34
@@ -1331,7 +1335,7 @@ $parents
 <p>There’s one really important thing that I omitted when I discussed functions earlier on in <a href="03-introR.html#sec-usingfunctions" class="quarto-xref"><span>Section 3.7</span></a>, and that’s the concept of a <strong><em>generic function</em></strong>. The two most notable examples that you’ll see in the next few chapters are <code>summary()</code> and <code>plot()</code>, although you’ve already seen an example of one working behind the scenes, and that’s the <code>print()</code> function. The thing that makes generics different from the other functions is that their behaviour changes, often quite dramatically, depending on the <code>class()</code> of the input you give it. The easiest way to explain the concept is with an example. With that in mind, lets take a closer look at what the <code>print()</code> function actually does. I’ll do this by creating a formula, and printing it out in a few different ways. First, let’s stick with what we know:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>my_formula <span class="ot">&lt;-</span> blah <span class="sc">~</span> blah.blah   <span class="co"># create a variable of class "formula"</span></span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( my_formula )              <span class="co"># print it out using the generic print() function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_formula)              <span class="co"># print it out using the generic print() function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>blah ~ blah.blah</code></pre>
 </div>
@@ -1339,7 +1343,7 @@ $parents
 <p>So far, there’s nothing very surprising here. But there’s actually a lot going on behind the scenes here. When I type <code>print( my_formula )</code>, what actually happens is the <code>print()</code> function checks the class of the <code>my_formula</code> variable. When the function discovers that the variable it’s been given is a formula, it goes looking for a function called <code>print.formula()</code>, and then delegates the whole business of printing out the variable to the <code>print.formula()</code> function.<a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a> For what it’s worth, the name for a “dedicated” function like <code>print.formula()</code> that exists only to be a special case of a generic function like <code>print()</code> is a <strong><em>method</em></strong>, and the name for the process in which the generic function passes off all the hard work onto a method is called <strong><em>method dispatch</em></strong>. You won’t need to understand the details at all for this book, but you do need to know the gist of it; if only because a lot of the functions we’ll use are actually generics.</p>
 <div class="no-row-height column-margin column-container"><div id="fn38"><p><sup>38</sup>&nbsp;For readers with a programming background: what I’m describing is the very basics of how S3 methods work. However, you should be aware that R has two entirely distinct systems for doing object oriented programming, known as S3 and S4. Of the two, S3 is simpler and more informal, whereas S4 supports all the stuff that you might expect of a fully object oriented language. Most of the generics we’ll run into in this book use the S3 system.</p></div><div id="fn39"><p><sup>39</sup>&nbsp;R’s namespace mechanism has tightened up since this book was first written: S3 methods like <code>print.formula()</code> still exist and still do the work behind the scenes, but many of them – this one included – are no longer directly callable by name unless you ask for them explicitly via <code>:::</code>, precisely so that users don’t come to rely on internal implementation details like this one. Trying to call it directly now just produces an error, which nicely (if accidentally) illustrates the point that ordinary users are supposed to go through <code>print()</code> and let method dispatch do its job.</p></div></div><p>Anyway, to help expose a little more of the workings to you, the original edition of this book bypasses the <code>print()</code> function entirely and calls the formula method directly, via <code>print.formula(my_formula)</code>, to show that it produces exactly the same output as <code>print(my_formula)</code> did. That specific method is no longer exported for direct use,<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a> as this live demonstration shows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print.formula</span>( my_formula )   <span class="co"># print it out using the print.formula() method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print.formula</span>(my_formula)   <span class="co"># print it out using the print.formula() method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `print.formula()`:
 ! could not find function "print.formula"</code></pre>
@@ -1347,7 +1351,7 @@ $parents
 </div>
 <p>Okay, fair enough, but you might be wondering what would have happened if <code>print.formula()</code> didn’t exist at all? That is, what happens if there isn’t a specific method defined for the class of variable that you’re using? In that case, the generic function passes off the hard work to a “default” method, whose name in this case would be <code>print.default()</code>. Let’s see what happens if we bypass the <code>print()</code> formula, and try to print out <code>my_formula</code> using the <code>print.default()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print.default</span>( my_formula )   <span class="co"># print it out using the print.default() method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print.default</span>(my_formula)   <span class="co"># print it out using the print.default() method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>blah ~ blah.blah
 attr(,"class")

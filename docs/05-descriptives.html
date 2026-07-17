@@ -189,6 +189,9 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Learning Statistics with R</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Learning-Statistics-with-R.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -696,7 +699,7 @@ Figure&nbsp;5.2: An illustration of the difference between how the mean and the 
 <section id="sec-housingpriceexample" class="level3 page-columns page-full" data-number="5.1.5">
 <h3 data-number="5.1.5" class="anchored" data-anchor-id="sec-housingpriceexample"><span class="header-section-number">5.1.5</span> A real life example</h3>
 <p>To try to get a sense of why you need to pay attention to the differences between the mean and the median, let’s consider a real life example. Since I tend to mock journalists for their poor scientific and statistical knowledge, I should give credit where credit is due. This is from an excellent article on the ABC news website<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 24 September, 2010:</p>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;<a href="https://www.abc.net.au/news/stories/2010/09/24/3021480.htm" class="uri">https://www.abc.net.au/news/stories/2010/09/24/3021480.htm</a></p></div></div><blockquote class="blockquote">
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;I originally included a link to the article here, but sadly after 16 years it has succumbed to the curse of online linkrot and is now gone.</p></div></div><blockquote class="blockquote">
 <p>Senior Commonwealth Bank executives have travelled the world in the past couple of weeks with a presentation showing how Australian house prices, and the key price to income ratios, compare favourably with similar countries. “Housing affordability has actually been going sideways for the last five to six years,” said Craig James, the chief economist of the bank’s trading arm, CommSec.</p>
 </blockquote>
 <p>This probably comes as a huge surprise to anyone with a mortgage, or who wants a mortgage, or pays rent, or isn’t completely oblivious to what’s been going on in the Australian housing market over the last several years. Back to the article:</p>
@@ -1154,7 +1157,7 @@ Figure&nbsp;5.3: The AFL margins histogram again, this time with the bins that f
 </section>
 <section id="sec-skew" class="level2 page-columns page-full" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="sec-skew"><span class="header-section-number">5.3</span> Skew and kurtosis</h2>
-<p>There are two more descriptive statistics that you will sometimes see reported in the psychological literature, known as skew and kurtosis. In practice, neither one is used anywhere near as frequently as the measures of central tendency and variability that we’ve been talking about. Skew is pretty important, so you do see it mentioned a fair bit; but I’ve actually never seen kurtosis reported in a scientific article to date.</p>
+<p>There are two more descriptive statistics that you will sometimes see reported in the psychological literature, known as skew and kurtosis. In practice, neither one is used anywhere near as frequently as the measures of central tendency and variability that we’ve been talking about. Skew is pretty important, so you do see it mentioned a fair bit; but I’ve very rarely seen kurtosis reported in a scientific article.</p>
 <div id="fig-skewness" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-skewness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1215,45 +1218,7 @@ Figure&nbsp;5.4: An illustration of skewness. On the left we have a negatively s
 </div>
 </div>
 <p>Not surprisingly, it turns out that the AFL winning margins data is fairly skewed.</p>
-<p>The final measure that is sometimes referred to, though very rarely in practice, is the <strong><em>kurtosis</em></strong> of a data set. Put simply, kurtosis is a measure of the “pointiness” of a data set, as illustrated in <a href="#fig-kurtosis" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>. By convention, we say that the “normal curve” (black line) has zero kurtosis, so the pointiness of a data set is assessed relative to this curve. Data that are not pointy enough have negative kurtosis and are called <em>platykurtic</em>. Data that are too pointy have positive kurtosis and are called <em>leptokurtic</em>. Data that are just pointy enough are called <em>mesokurtic</em> and have kurtosis zero. This is summarised in the table below:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">informal term</th>
-<th style="text-align: center;">technical name</th>
-<th style="text-align: center;">kurtosis value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">“too flat”</td>
-<td style="text-align: center;">platykurtic</td>
-<td style="text-align: center;">negative</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">“just pointy enough”</td>
-<td style="text-align: center;">mesokurtic</td>
-<td style="text-align: center;">zero</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">“too pointy”</td>
-<td style="text-align: center;">leptokurtic</td>
-<td style="text-align: center;">positive</td>
-</tr>
-</tbody>
-</table>
-<p>The equation for kurtosis is pretty similar in spirit to the formulas we’ve seen already for the variance and the skewness; except that where the variance involved squared deviations and the skewness involved cubed deviations, the kurtosis involves raising the deviations to the fourth power:<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
-<div class="no-row-height column-margin column-container"><div id="fn12"><p><sup>12</sup>&nbsp;The “<span class="math inline">\(-3\)</span>” part is something that statisticians tack on to ensure that the normal curve has kurtosis zero. It looks a bit stupid, just sticking a “-3” at the end of the formula, but there are good mathematical reasons for doing this.</p></div></div><p><span class="math display">\[
-\text{kurtosis}(X) = \frac{1}{N \hat\sigma^4} \sum_{i=1}^N \left( X_i - \bar{X} \right)^4  - 3
-\]</span></p>
-<p>I know, it’s not terribly interesting to me either. More to the point, the <code>psych</code> package has a function called <code>kurtosi()</code> that you can use to calculate the kurtosis of your data. For instance, if we were to do this for the AFL margins,</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosi</span>(<span class="at">x =</span> afl_margins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02962633</code></pre>
-</div>
-</div>
-<p>we discover that the AFL winning margins data are just pointy enough.</p>
+<p>The final measure that is sometimes referred to, though very rarely in practice, is the <strong><em>kurtosis</em></strong> of a data set. Kurtosis is a little difficult to define, but it is essentially a measure of how wide (or how “heavy”) the tails of a distribution are. This is illustrated in <a href="#fig-kurtosis" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>.</p>
 <div id="fig-kurtosis" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-kurtosis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1298,6 +1263,45 @@ Figure&nbsp;5.5: An illustration of kurtosis. On the left, we have a “platykur
 </figcaption>
 </figure>
 </div>
+<p>By convention, we say that the “normal curve” (black line) has zero kurtosis: the extreme parts of the distribution sit nicely on the curve. When the tails of the distribution lie underneath the normal curve, we have a light-tailed distribution with negative kurtosis: these are called <em>platykurtic</em> distributions. When the tails sit above the black line, the kData thurtosis is positive, and we say that these heavy-tailed distributions are <em>leptokurtic</em>. This is summarised in the table below:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">informal term</th>
+<th style="text-align: center;">technical name</th>
+<th style="text-align: center;">kurtosis value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">“light tailed”</td>
+<td style="text-align: center;">platykurtic</td>
+<td style="text-align: center;">negative</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">“normal tails”</td>
+<td style="text-align: center;">mesokurtic</td>
+<td style="text-align: center;">zero</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">“heavy tailed”</td>
+<td style="text-align: center;">leptokurtic</td>
+<td style="text-align: center;">positive</td>
+</tr>
+</tbody>
+</table>
+<p>The equation for kurtosis is pretty similar in spirit to the formulas we’ve seen already for the variance and the skewness; except that where the variance involved squared deviations and the skewness involved cubed deviations, the kurtosis involves raising the deviations to the fourth power:<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn12"><p><sup>12</sup>&nbsp;The “<span class="math inline">\(-3\)</span>” part is something that statisticians tack on to ensure that the normal curve has kurtosis zero. It looks a bit stupid, just sticking a “-3” at the end of the formula, but there are good mathematical reasons for doing this.</p></div></div><p><span class="math display">\[
+\text{kurtosis}(X) = \frac{1}{N \hat\sigma^4} \sum_{i=1}^N \left( X_i - \bar{X} \right)^4  - 3
+\]</span></p>
+<p>I know, it’s not terribly interesting to me either. More to the point, the <code>psych</code> package has a function called <code>kurtosi()</code> that you can use to calculate the kurtosis of your data. For instance, if we were to do this for the AFL margins,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosi</span>(<span class="at">x =</span> afl_margins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02962633</code></pre>
+</div>
+</div>
+<p>we discover that the AFL winning margins data are neither heavy-tailed or light-tailed.</p>
 </section>
 <section id="sec-summary" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="sec-summary"><span class="header-section-number">5.4</span> Getting an overall summary of a variable</h2>
@@ -1368,20 +1372,11 @@ Western Bulldogs
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/clinicaltrial.Rdata"</span>)</span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --      -- Class --   -- Size --
-   AAD             numeric       1         
-   AD              numeric       5         
-   afl_finalists   factor        400       
-   afl_margins     numeric       176       
-   blowouts        logical       176       
-   clin_trial      data.frame    18 x 3    
-    $drug          factor        18        
-    $therapy       factor        18        
-    $mood_gain     numeric       18        
-   dataset         numeric       10        
-   f2              character     400       
-   X               numeric       5         
-   x_bar           numeric       1         </code></pre>
+<pre><code>   -- Name --    -- Class --   -- Size --
+   clin_trial    data.frame    18 x 3    
+    $drug        factor        18        
+    $therapy     factor        18        
+    $mood_gain   numeric       18        </code></pre>
 </div>
 </div>
 <p>There’s a single data frame called <code>clin_trial</code> which contains three variables, <code>drug</code>, <code>therapy</code> and <code>mood_gain</code>. Presumably then, this data is from a clinical trial of some kind, in which people were administered different drugs; and the researchers looked to see what the drugs did to their mood. Let’s see if the <code>summary()</code> function sheds a little more light on this situation:</p>
@@ -1561,24 +1556,11 @@ z = \frac{35 - 17}{5} = 3.6
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   -- Name --         -- Class --   -- Size --
-   AAD                numeric       1         
-   AD                 numeric       5         
-   afl_finalists      factor        400       
-   afl_margins        numeric       176       
-   blowouts           logical       176       
-   clin_trial         data.frame    18 x 3    
-    $drug             factor        18        
-    $therapy          factor        18        
-    $mood_gain        numeric       18        
-   dataset            numeric       10        
-   f2                 character     400       
    parenthood         data.frame    100 x 4   
     $danielle_sleep   numeric       100       
     $baby_sleep       numeric       100       
     $danielle_grump   numeric       100       
-    $day              integer       100       
-   X                  numeric       5         
-   x_bar              numeric       1         </code></pre>
+    $day              integer       100       </code></pre>
 </div>
 </div>
 <p>… we see that the file contains a single data frame called <code>parenthood</code>, which contains four variables <code>danielle_sleep</code>, <code>baby_sleep</code>, <code>danielle_grump</code> and <code>day</code>. If we print out the data, here’s what we get:</p>
@@ -1995,36 +1977,10 @@ Figure&nbsp;5.9: Anscombe’s quartet. All four of these data sets have a Pearso
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/effort.Rdata"</span>)</span>
 <span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --         -- Class --   -- Size --
-   AAD                numeric       1         
-   AD                 numeric       5         
-   afl_finalists      factor        400       
-   afl_margins        numeric       176       
-   blowouts           logical       176       
-   clin_trial         data.frame    18 x 3    
-    $drug             factor        18        
-    $therapy          factor        18        
-    $mood_gain        numeric       18        
-   dataset            numeric       10        
-   effort             data.frame    10 x 2    
-    $hours            numeric       10        
-    $grade            numeric       10        
-   f2                 character     400       
-   parenthood         data.frame    100 x 4   
-    $danielle_sleep   numeric       100       
-    $baby_sleep       numeric       100       
-    $danielle_grump   numeric       100       
-    $day              integer       100       
-   X                  numeric       5         
-   x_bar              numeric       1         
-   x1                 numeric       11        
-   x2                 numeric       11        
-   x3                 numeric       11        
-   x4                 numeric       11        
-   y1                 numeric       11        
-   y2                 numeric       11        
-   y3                 numeric       11        
-   y4                 numeric       11        </code></pre>
+<pre><code>   -- Name --   -- Class --   -- Size --
+   effort       data.frame    10 x 2    
+    $hours      numeric       10        
+    $grade      numeric       10        </code></pre>
 </div>
 </div>
 <p>The raw data look like this:</p>
@@ -2097,46 +2053,15 @@ Figure&nbsp;5.10: The relationship between hours worked and grade received, for 
 <div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/work.Rdata"</span>)</span>
 <span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   -- Name --         -- Class --   -- Size --
-   AAD                numeric       1         
-   AD                 numeric       5         
-   afl_finalists      factor        400       
-   afl_margins        numeric       176       
-   blowouts           logical       176       
-   clin_trial         data.frame    18 x 3    
-    $drug             factor        18        
-    $therapy          factor        18        
-    $mood_gain        numeric       18        
-   dataset            numeric       10        
-   effort             data.frame    10 x 2    
-    $hours            numeric       10        
-    $grade            numeric       10        
-   f2                 character     400       
-   grade_rank         numeric       10        
-   hours_rank         numeric       10        
-   parenthood         data.frame    100 x 4   
-    $danielle_sleep   numeric       100       
-    $baby_sleep       numeric       100       
-    $danielle_grump   numeric       100       
-    $day              integer       100       
-   work               data.frame    49 x 7    
-    $hours            numeric       49        
-    $tasks            numeric       49        
-    $pay              numeric       49        
-    $day              integer       49        
-    $weekday          factor        49        
-    $week             numeric       49        
-    $day_type         factor        49        
-   X                  numeric       5         
-   x_bar              numeric       1         
-   x1                 numeric       11        
-   x2                 numeric       11        
-   x3                 numeric       11        
-   x4                 numeric       11        
-   y1                 numeric       11        
-   y2                 numeric       11        
-   y3                 numeric       11        
-   y4                 numeric       11        </code></pre>
+<pre><code>   -- Name --   -- Class --   -- Size --
+   work         data.frame    49 x 7    
+    $hours      numeric       49        
+    $tasks      numeric       49        
+    $pay        numeric       49        
+    $day        integer       49        
+    $weekday    factor        49        
+    $week       numeric       49        
+    $day_type   factor        49        </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(work)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
