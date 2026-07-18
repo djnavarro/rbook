@@ -360,8 +360,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#in-progress" id="toc-in-progress" class="nav-link active" data-scroll-target="#in-progress">0.7 (in progress)</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">0.6.2 (2026-07-12)</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">0.7.0 (2026-07-18)</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">0.6.2 (2026-07-12)</a></li>
   <li><a href="#previous-releases" id="toc-previous-releases" class="nav-link" data-scroll-target="#previous-releases">Previous releases</a></li>
   </ul>
 </nav>
@@ -390,9 +390,9 @@ window.Quarto = {
 
 <p>This page is aimed at <strong>instructors</strong> reusing this book across semesters, not at students working through it. It tracks <em>substantive</em> changes between releases – things that could affect how you teach from a specific edition, such as corrected statistical explanations, renamed variables/datasets that assignments might reference, or reworked sections – rather than every typo fix or copyedit. If you’re a student: nothing here is required reading, and most of it is more historical trivia than anything else.</p>
 <p>Occasional in-text footnotes flag specific corrections where it’s pedagogically useful for a reader to know something changed (e.g.&nbsp;a common mistake worth calling out). This page is the fuller, instructor-facing record; it isn’t meant to duplicate those footnotes, only to complement them.</p>
-<section id="in-progress" class="level2">
-<h2 class="anchored" data-anchor-id="in-progress">0.7 (in progress)</h2>
-<p>Deliberately non-conservative revision, in progress. Notable changes so far:</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">0.7.0 (2026-07-18)</h2>
+<p>Deliberately non-conservative revision. Notable changes:</p>
 <ul>
 <li>The author is now referred to throughout as Danielle, with downstream impact on the parenthood dataset, which now has columns <code>danielle_sleep</code>/<code>danielle_grump</code>.</li>
 <li>Variable and column names across the book’s code and datasets have been standardized to <code>snake_case</code> (previously a mix of <code>dotted.case</code> and <code>camelCase</code>). If you have assignments or slides referencing old variable/column names from 0.6.2 or earlier, they will need updating.</li>
@@ -403,8 +403,8 @@ window.Quarto = {
 <li>Several chapters gained a short “Epilogue” section, added immediately before the chapter Summary, commenting on how the relevant literature or common practice has moved on since the chapter was originally written – without rewriting the original text itself. Topics covered: the replication crisis and methodological reform (Chapter 2), the post-2016 debate over <span class="math inline">\(p\)</span>-values and statistical significance (Chapter 11), the “new statistics” estimation-vs-testing debate (Chapter 10), power analysis for ANOVA designs (Chapter 14), the mainstreaming of Bayesian methods and Stan-based tooling (Chapter 17), the rise of <code>ggplot2</code> (Chapter 6) and the tidyverse more broadly (Chapter 7), and the shift away from stepwise regression toward cross-validation and regularization (Chapter 15). If you’ve built slides or assignments around where a chapter used to end, note that the Summary section itself hasn’t moved, just gained a new subsection immediately before it. Chapter 16 also gained two new citations for its Type I/II/III sum-of-squares discussion, which previously had none, but no epilogue.</li>
 </ul>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">0.6.2 (2026-07-12)</h2>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">0.6.2 (2026-07-12)</h2>
 <p>First Quarto edition. A conservative “patch” release, continuing the version lineage of the original LaTeX book (v0.6) and an unofficial, incomplete, but fabulous bookdown port (v0.6.1) courtesy of Emily Kothe, rather than starting over as v1.0. <strong>0.6.2 itself never went live as its own public release</strong> – work moved straight from it to 0.7 before it was ever published at the book’s live URL, so no instructor ever actually taught from it. It’s included here purely to document how this Quarto book came to exist: a deliberately faithful port of the original content – known errors were logged rather than fixed – with changes limited to what was needed to make the book self-contained and executable:</p>
 <ul>
 <li>All R code and figures are now live-executed at render time (via Quarto/knitr), rather than hand-typed output or pre-rendered images.</li>
