@@ -465,7 +465,8 @@ window.Quarto = {
   <li><a href="#a-caveat" id="toc-a-caveat" class="nav-link" data-scroll-target="#a-caveat"><span class="header-section-number">15.10.3</span> A caveat</a></li>
   <li><a href="#comparing-two-regression-models" id="toc-comparing-two-regression-models" class="nav-link" data-scroll-target="#comparing-two-regression-models"><span class="header-section-number">15.10.4</span> Comparing two regression models</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">15.11</span> Summary</a></li>
+  <li><a href="#epilogue-model-selection-after-stepwise-regression" id="toc-epilogue-model-selection-after-stepwise-regression" class="nav-link" data-scroll-target="#epilogue-model-selection-after-stepwise-regression"><span class="header-section-number">15.11</span> Epilogue: model selection after stepwise regression</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">15.12</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -1491,8 +1492,13 @@ Model 2: danielle_grump ~ danielle_sleep + day + baby_sleep
 <p>Note that, just like we saw with the output from the <code>step()</code> function, R has used the acronym <code>RSS</code> to refer to the residual sum of squares from each model. That is, RSS in this output corresponds to SS<span class="math inline">\(_{res}\)</span> in the formula above. Since we have <span class="math inline">\(p&gt;.05\)</span> we retain the null hypothesis (<code>M0</code>). This approach to regression, in which we add all of our covariates into a null model, and then <em>add</em> the variables of interest into an alternative model, and then compare the two models in hypothesis testing framework, is often referred to as <strong><em>hierarchical regression</em></strong>.</p>
 </section>
 </section>
-<section id="summary" class="level2" data-number="15.11">
-<h2 data-number="15.11" class="anchored" data-anchor-id="summary"><span class="header-section-number">15.11</span> Summary</h2>
+<section id="epilogue-model-selection-after-stepwise-regression" class="level2" data-number="15.11">
+<h2 data-number="15.11" class="anchored" data-anchor-id="epilogue-model-selection-after-stepwise-regression"><span class="header-section-number">15.11</span> Epilogue: model selection after stepwise regression</h2>
+<p>The <a href="#sec-modelselreg">model selection</a> section above walks through backward elimination and forward selection using <code>step()</code> and AIC, and even at the time I flagged some discomfort with it: the sidebar a few paragraphs back already admits that “I’m not particularly impressed with either AIC or BIC as model selection methods.” That discomfort has, if anything, hardened into something closer to consensus advice against the whole <em>stepwise</em> strategy, rather than just a preference between AIC and BIC. The specific worry is that repeatedly adding or dropping predictors based on the same data used to fit the model turns model selection into an extra, hidden multiple-comparisons problem: the <span class="math inline">\(p\)</span>-values and confidence intervals you get out the other end of a stepwise procedure describe the model you <em>ended up with</em>, not the uncertainty involved in <em>choosing</em> it, so they tend to be overconfident, sometimes substantially so. <span class="citation" data-cites="Whittingham2006">Whittingham et al. (<a href="references.html#ref-Whittingham2006" role="doc-biblioref">2006</a>)</span> make this case in detail (from ecology and behavioural research, but the argument generalises well beyond that literature), and it’s a big part of why stepwise selection has fallen out of favour as a default recommendation in applied statistics teaching since this chapter was written.</p>
+<p>The practical alternatives that have taken its place fall into two broad families, both covered well by <span class="citation" data-cites="Hastie2009">Hastie et al. (<a href="references.html#ref-Hastie2009" role="doc-biblioref">2009</a>)</span> if you want the full technical treatment. The first is <strong><em>cross-validation</em></strong>: instead of picking a model based on how well it fits the data used to build it, you fit candidate models on one subset of the data and evaluate them on a held-out subset they never saw, which at least directly measures the thing you actually care about (how well the model generalises) rather than a proxy for it like AIC. The second is <strong><em>regularisation</em></strong> – methods like ridge regression and the lasso <span class="citation" data-cites="Hastie2009">(<a href="references.html#ref-Hastie2009" role="doc-biblioref">Hastie et al., 2009</a>)</span> that don’t select a subset of predictors at all, but instead fit <em>all</em> of them simultaneously while shrinking their coefficients toward zero (the lasso, unlike ridge regression, can shrink some coefficients all the way to exactly zero, which gives it a variable-selection flavour without the stepwise search). Both approaches are a genuinely different way of thinking about the problem than anything in this chapter, and both would need considerably more machinery than an introductory regression chapter can fairly introduce – which is exactly why I’ve kept the original stepwise-AIC material here rather than trying to shoehorn a proper treatment of either one in. If you find yourself doing model selection for real, though, treat this section as a description of a historically important approach rather than a recommendation for current practice.</p>
+</section>
+<section id="summary" class="level2" data-number="15.12">
+<h2 data-number="15.12" class="anchored" data-anchor-id="summary"><span class="header-section-number">15.12</span> Summary</h2>
 <ul>
 <li>Basic ideas in linear regression and how regression models are estimated (<a href="#sec-introregression" class="quarto-xref"><span>Section 15.1</span></a> and <a href="#sec-regressionestimation" class="quarto-xref"><span>Section 15.2</span></a>).</li>
 <li>Multiple linear regression (<a href="#sec-multipleregression" class="quarto-xref"><span>Section 15.3</span></a>).</li>
@@ -1514,11 +1520,17 @@ Cook, R. D., &amp; Weisberg, S. (1983). Diagnostics for heteroscedasticity in re
 <div id="ref-Fox2011" class="csl-entry" role="listitem">
 Fox, J., &amp; Weisberg, S. (2011). <em>An <span>R</span> companion to applied regression</em> (2nd ed.). Sage.
 </div>
+<div id="ref-Hastie2009" class="csl-entry" role="listitem">
+Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). <em>The elements of statistical learning: Data mining, inference and prediction (2nd ed)</em>. Springer.
+</div>
 <div id="ref-Long2000" class="csl-entry" role="listitem">
 Long, J. S., &amp; Ervin, L. H. (2000). Using heteroscedasticity consistent standard errors in thee linear regression model. <em>The American Statistician</em>, <em>54</em>, 217–224.
 </div>
 <div id="ref-White1980" class="csl-entry" role="listitem">
 White, H. (1980). A heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity. <em>Econometrika</em>, <em>48</em>, 817–838.
+</div>
+<div id="ref-Whittingham2006" class="csl-entry" role="listitem">
+Whittingham, M. J., Stephens, P. A., Bradbury, R. B., &amp; Freckleton, R. P. (2006). Why do we still use stepwise modelling in ecology and behaviour? <em>Journal of Animal Ecology</em>, <em>75</em>(5), 1182–1189. <a href="https://doi.org/10.1111/j.1365-2656.2006.01141.x">https://doi.org/10.1111/j.1365-2656.2006.01141.x</a>
 </div>
 </div>
 </section>

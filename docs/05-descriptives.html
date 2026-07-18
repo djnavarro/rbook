@@ -1068,7 +1068,7 @@ Western Bulldogs
 </section>
 <section id="sec-sd" class="level3 page-columns page-full" data-number="5.2.5">
 <h3 data-number="5.2.5" class="anchored" data-anchor-id="sec-sd"><span class="header-section-number">5.2.5</span> Standard deviation</h3>
-<p>Okay, suppose that you like the idea of using the variance because of those nice mathematical properties that I haven’t talked about, but – since you’re a human and not a robot – you’d like to have a measure that is expressed in the same units as the data itself (i.e., points, not points-squared). What should you do? The solution to the problem is obvious: take the square root of the variance, known as the <strong><em>standard deviation</em></strong>, also called the “root mean squared deviation”, or RMSD. This solves our problem fairly neatly: while nobody has a clue what “a variance of 324.68 points-squared” really means, it’s much easier to understand “a standard deviation of 18.01 points”, since it’s expressed in the original units. It is traditional to refer to the standard deviation of a sample of data as <span class="math inline">\(s\)</span>, though “sd” and “std dev.” are also used at times. Because the standard deviation is equal to the square root of the variance, you probably won’t be surprised to see that the formula is:</p>
+<p>Okay, suppose that you like the idea of using the variance because of those nice mathematical properties that I haven’t talked about, but – since you’re a human and not a robot – you’d like to have a measure that is expressed in the same units as the data itself (i.e., points, not points-squared). What should you do? The solution to the problem is obvious: take the square root of the variance, known as the <strong><em>standard deviation</em></strong>, also called the “root mean squared deviation”, or RMSD. This solves our problem fairly neatly: while nobody has a clue what “a variance of 324.68 points-squared” really means, it’s much easier to understand “a standard deviation of 18.02 points”, since it’s expressed in the original units. It is traditional to refer to the standard deviation of a sample of data as <span class="math inline">\(s\)</span>, though “sd” and “std dev.” are also used at times. Because the standard deviation is equal to the square root of the variance, you probably won’t be surprised to see that the formula is:</p>
 <p><span class="math display">\[
 s = \sqrt{ \frac{1}{N} \sum_{i=1}^N \left( X_i - \bar{X} \right)^2 }
 \]</span></p>
@@ -1263,7 +1263,7 @@ Figure&nbsp;5.5: An illustration of kurtosis. On the left, we have a “platykur
 </figcaption>
 </figure>
 </div>
-<p>By convention, we say that the “normal curve” (black line) has zero kurtosis: the extreme parts of the distribution sit nicely on the curve. When the tails of the distribution lie underneath the normal curve, we have a light-tailed distribution with negative kurtosis: these are called <em>platykurtic</em> distributions. When the tails sit above the black line, the kData thurtosis is positive, and we say that these heavy-tailed distributions are <em>leptokurtic</em>. This is summarised in the table below:</p>
+<p>By convention, we say that the “normal curve” (black line) has zero kurtosis: the extreme parts of the distribution sit nicely on the curve. When the tails of the distribution lie underneath the normal curve, we have a light-tailed distribution with negative kurtosis: these are called <em>platykurtic</em> distributions. When the tails sit above the black line, the kurtosis is positive, and we say that these heavy-tailed distributions are <em>leptokurtic</em>. This is summarised in the table below:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1301,7 +1301,7 @@ Figure&nbsp;5.5: An illustration of kurtosis. On the left, we have a “platykur
 <pre><code>[1] 0.02962633</code></pre>
 </div>
 </div>
-<p>we discover that the AFL winning margins data are neither heavy-tailed or light-tailed.</p>
+<p>we discover that the AFL winning margins data are neither heavy-tailed nor light-tailed.</p>
 </section>
 <section id="sec-summary" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="sec-summary"><span class="header-section-number">5.4</span> Getting an overall summary of a variable</h2>
@@ -2177,8 +2177,8 @@ day_type      .      .     .      .       .      .        .</code></pre>
 BLAH BLAH BLAH</code></pre>
 </div>
 </div>
-<p>If I calculate my descriptive statistics using the <code>describe()</code> function</p>
-<div class="cell">
+<p>If I calculate my descriptive statistics using the <code>describe()</code> function<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn22"><p><sup>22</sup>&nbsp;The original book truncated this table’s <em>columns</em> (appending a trailing <code>BLAH</code> to each row) rather than its rows, purely because of the printed page’s fixed width. Since a Quarto book has no such constraint, the live output below is shown in full rather than reproducing that particular truncation.</p></div></div><div class="cell">
 <div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(parenthood2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               vars   n  mean    sd median trimmed   mad   min    max range
@@ -2193,21 +2193,8 @@ danielle_grump  0.38    -0.31 1.03
 day             0.00    -1.24 2.90</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The original book truncated this table’s <em>columns</em> (appending a trailing <code>BLAH</code> to each row) rather than its rows, purely because of the printed page’s fixed width. Since a Quarto book has no such constraint, the live output above is shown in full rather than reproducing that particular truncation.</p>
-</div>
-</div>
-<p>we can see from the <code>n</code> column that there are 9 missing values for <code>danielle_sleep</code>, 11 missing values for <code>baby_sleep</code> and 8 missing values for <code>danielle_grump</code>.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a> Suppose what I would like is a correlation matrix. And let’s also suppose that I don’t bother to tell R how to handle those missing values. Here’s what happens:</p>
-<div class="no-row-height column-margin column-container"><div id="fn22"><p><sup>22</sup>&nbsp;It’s worth noting that, even though we have missing data for each of these variables, the output doesn’t contain any <code>NA</code> values. This is because, while <code>describe()</code> also has an <code>na.rm</code> argument, the default value for this function is <code>na.rm = TRUE</code>.</p></div></div><div class="cell">
+<p>we can see from the <code>n</code> column that there are 9 missing values for <code>danielle_sleep</code>, 11 missing values for <code>baby_sleep</code> and 8 missing values for <code>danielle_grump</code>.<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a> Suppose what I would like is a correlation matrix. And let’s also suppose that I don’t bother to tell R how to handle those missing values. Here’s what happens:</p>
+<div class="no-row-height column-margin column-container"><div id="fn23"><p><sup>23</sup>&nbsp;It’s worth noting that, even though we have missing data for each of these variables, the output doesn’t contain any <code>NA</code> values. This is because, while <code>describe()</code> also has an <code>na.rm</code> argument, the default value for this function is <code>na.rm = TRUE</code>.</p></div></div><div class="cell">
 <div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(parenthood2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               danielle_sleep baby_sleep danielle_grump day
@@ -2258,8 +2245,8 @@ day                    -0.077      0.058          0.006      .</code></pre>
 </div>
 </div>
 <p>The two approaches have different strengths and weaknesses. The “pairwise complete” approach has the advantage that it keeps more observations, so you’re making use of more of your data and (as we’ll discuss in tedious detail in <a href="10-estimation.html" class="quarto-xref"><span>Chapter 10</span></a>) it improves the reliability of your estimated correlation. On the other hand, it means that every correlation in your correlation matrix is being computed from a slightly different set of observations, which can be awkward when you want to compare the different correlations that you’ve got.</p>
-<p>So which method should you use? It depends a lot on <em>why</em> you think your values are missing, and probably depends a little on how paranoid you are. For instance, if you think that the missing values were “chosen” completely randomly<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a> then you’ll probably want to use the pairwise method. If you think that missing data are a cue to thinking that the whole observation might be rubbish (e.g., someone just selecting arbitrary responses in your questionnaire), but that there’s no pattern to which observations are “rubbish” then it’s probably safer to keep only those observations that are complete. If you think there’s something systematic going on, in that some observations are more likely to be missing than others, then you have a much trickier problem to solve, and one that is beyond the scope of this book.</p>
-<div class="no-row-height column-margin column-container"><div id="fn23"><p><sup>23</sup>&nbsp;The technical term here is “missing completely at random” (often written MCAR for short). Makes sense, I suppose, but it does sound ungrammatical to me.</p></div></div></section>
+<p>So which method should you use? It depends a lot on <em>why</em> you think your values are missing, and probably depends a little on how paranoid you are. For instance, if you think that the missing values were “chosen” completely randomly<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a> then you’ll probably want to use the pairwise method. If you think that missing data are a cue to thinking that the whole observation might be rubbish (e.g., someone just selecting arbitrary responses in your questionnaire), but that there’s no pattern to which observations are “rubbish” then it’s probably safer to keep only those observations that are complete. If you think there’s something systematic going on, in that some observations are more likely to be missing than others, then you have a much trickier problem to solve, and one that is beyond the scope of this book.</p>
+<div class="no-row-height column-margin column-container"><div id="fn24"><p><sup>24</sup>&nbsp;The technical term here is “missing completely at random” (often written MCAR for short). Makes sense, I suppose, but it does sound ungrammatical to me.</p></div></div></section>
 </section>
 <section id="summary" class="level2" data-number="5.9">
 <h2 data-number="5.9" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.9</span> Summary</h2>

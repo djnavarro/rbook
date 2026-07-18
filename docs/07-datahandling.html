@@ -500,7 +500,8 @@ window.Quarto = {
   <li><a href="#sec-environments" id="toc-sec-environments" class="nav-link" data-scroll-target="#sec-environments"><span class="header-section-number">7.12.3</span> An introduction to environments</a></li>
   <li><a href="#attaching-a-data-frame" id="toc-attaching-a-data-frame" class="nav-link" data-scroll-target="#attaching-a-data-frame"><span class="header-section-number">7.12.4</span> Attaching a data frame</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7.13</span> Summary</a></li>
+  <li><a href="#epilogue-enter-the-tidyverse" id="toc-epilogue-enter-the-tidyverse" class="nav-link" data-scroll-target="#epilogue-enter-the-tidyverse"><span class="header-section-number">7.13</span> Epilogue: enter the tidyverse</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7.14</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -2690,28 +2691,28 @@ Levels: 7 &lt; 6 &lt; 5 &lt; 4 &lt; 3 &lt; 2 &lt; 1</code></pre>
 <div class="sourceCode cell-code" id="cb326"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb326-1"><a href="#cb326-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>() <span class="co"># ask the operating system for the date</span></span>
 <span id="cb326-2"><a href="#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(today) <span class="co"># display the date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-07-17"</code></pre>
+<pre><code>[1] "2026-07-18"</code></pre>
 </div>
 </div>
 <p>Okay, that seems straightforward. But, it does rather look like <code>today</code> is just a character string, doesn’t it? That would be a problem, because dates really do have a numeric character to them, and it would be nice to be able to do basic addition and subtraction to them. Well, fear not. If you type in <code>class(today)</code>, R will tell you that the class of the <code>today</code> variable is <code>"Date"</code>. What this means is that, hidden underneath this text string that prints out an actual date, R actually has a numeric representation.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a> What that means is that you actually can add and subtract days. For instance, if we add 1 to <code>today</code>, R will print out the date for tomorrow:</p>
 <div class="no-row-height column-margin column-container"><div id="fn26"><p><sup>26</sup>&nbsp;Date objects are coded as the number of days that have passed since January 1, 1970.</p></div></div><div class="cell">
 <div class="sourceCode cell-code" id="cb328"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb328-1"><a href="#cb328-1" aria-hidden="true" tabindex="-1"></a>today <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-07-18"</code></pre>
+<pre><code>[1] "2026-07-19"</code></pre>
 </div>
 </div>
 <p>Let’s see what happens when we add 365 days:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb330"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb330-1"><a href="#cb330-1" aria-hidden="true" tabindex="-1"></a>today <span class="sc">+</span> <span class="dv">365</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2027-07-17"</code></pre>
+<pre><code>[1] "2027-07-18"</code></pre>
 </div>
 </div>
 <p>This is particularly handy if you forget that a year is a leap year, since in that case you’d probably get it wrong doing this in your head. R provides a number of functions for working with dates, but I don’t want to talk about them in any detail. I will, however, make passing mention of the <code>weekdays()</code> function which will tell you what day of the week a particular date corresponded to, which is extremely convenient in some situations:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb332"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb332-1"><a href="#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weekdays</span>(today)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Friday"</code></pre>
+<pre><code>[1] "Saturday"</code></pre>
 </div>
 </div>
 <p>I’ll also point out that you can use the <code>as.Date()</code> to convert various different kinds of data into dates. If the data happen to be strings formatted exactly according to the international standard notation (i.e., <code>yyyy-mm-dd</code>) then the conversion is straightforward, because that’s the format that R expects to see by default. You can convert dates from other formats too, but it’s slightly trickier, and beyond the scope of this book.</p>
@@ -2810,8 +2811,14 @@ length</code></pre>
 <p>To be fair to the writers of the <code>attach()</code> function, the help documentation does actually state all this quite explicitly, and they even give some examples of how this can cause confusion at the bottom of the help page. And I can actually see how it can be very useful to create copies of your data in a separate location (e.g., it lets you make all kinds of modifications and deletions to the data without having to touch the original data frame). However, I don’t think it’s helpful for new users, since it means you have to be very careful to keep track of which copy you’re talking about. As a consequence of all this, for the purpose of this book I’ve decided not to use the <code>attach()</code> function. It’s something that you can investigate yourself once you’re feeling a little more confident with R, but I won’t do it here.</p>
 </section>
 </section>
-<section id="summary" class="level2" data-number="7.13">
-<h2 data-number="7.13" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.13</span> Summary</h2>
+<section id="epilogue-enter-the-tidyverse" class="level2" data-number="7.13">
+<h2 data-number="7.13" class="anchored" data-anchor-id="epilogue-enter-the-tidyverse"><span class="header-section-number">7.13</span> Epilogue: enter the tidyverse</h2>
+<p>In the years since I wrote this chapter, a lot has changed in the R ecosystem. For instance, the 2010s era advice on data-wrangling – tabulating, subsetting, sorting, and especially reshaping data with <code>reshape()</code>, <code>stack()</code>, <code>unstack()</code>, or the <code>reshape</code> package’s <code>melt()</code>/<code>cast()</code> functions <span class="citation" data-cites="Wickham2007">(<a href="references.html#ref-Wickham2007" role="doc-biblioref">Wickham, 2007</a>)</span> – is probably not the best approach to take in 2026. Those tools were genuinely the state of the art for this kind of work at the time, but that’s changed.</p>
+<p>Hadley Wickham — the same author who wrote the <code>reshape</code> package — and his colleagues went on to build <code>dplyr</code> (for filtering, selecting, mutating, and summarising data frames) and <code>tidyr</code> (for reshaping them), and packaged these together with <code>ggplot2</code> and several other packages into what’s now called the “tidyverse” <span class="citation" data-cites="Wickham2019tidyverse">(<a href="references.html#ref-Wickham2019tidyverse" role="doc-biblioref">Wickham et al., 2019</a>)</span> – a family of packages designed to share a common philosophy of “tidy data” <span class="citation" data-cites="Wickham2014tidydata">(<a href="references.html#ref-Wickham2014tidydata" role="doc-biblioref">Wickham, 2014</a>)</span>, in which every variable is a column, every observation is a row, and every kind of data has one, consistent shape. <code>dplyr</code>’s verbs (<code>filter()</code>, <code>select()</code>, <code>mutate()</code>, <code>summarise()</code>, <code>arrange()</code>, <code>group_by()</code>) and the <code>|&gt;</code> pipe operator this book already uses (see <a href="04-mechanics.html" class="quarto-xref"><span>Chapter 4</span></a>) have become the way most people now write everyday data-wrangling code in R, and <code>tidyr</code>’s <code>pivot_longer()</code>/<code>pivot_wider()</code> functions are the current go-to replacement for the reshaping problem discussed in 7 – more verbose to set up than <code>melt()</code>/<code>cast()</code> for the simplest cases, but considerably easier to reason about once your reshaping needs get more complicated than a single row and column ID.</p>
+<p>None of this makes the base-R tools in this chapter wrong. They still work exactly as described, they ship with R by default so there’s nothing extra to install, and understanding what a data frame <em>is</em> and how R stores and indexes one – which is really what this chapter is about – is a prerequisite for using <code>dplyr</code> and <code>tidyr</code> sensibly, not an alternative to it. But if you’re wondering where to look next once you’ve got the basics from this chapter down, <span class="citation" data-cites="WickhamGrolemund2017">Wickham &amp; Grolemund (<a href="references.html#ref-WickhamGrolemund2017" role="doc-biblioref">2017</a>)</span>’s <em>R for Data Science</em> is the natural next step: it covers the same ground as this chapter (and the next few) but from a thoroughly tidyverse-first perspective, and it’s become something close to the standard introductory text for applied data analysis in R.</p>
+</section>
+<section id="summary" class="level2" data-number="7.14">
+<h2 data-number="7.14" class="anchored" data-anchor-id="summary"><span class="header-section-number">7.14</span> Summary</h2>
 <p>Obviously, there’s no real coherence to this chapter. It’s just a grab bag of topics and tricks that can be handy to know about, so the best wrap up I can give here is just to repeat this list:</p>
 <ul>
 <li><ol class="example" type="1">
@@ -2863,6 +2870,15 @@ Teetor, P. (2011). <em>R cookbook</em>. O’Reilly.
 </div>
 <div id="ref-Wickham2007" class="csl-entry" role="listitem">
 Wickham, H. (2007). Reshaping data with the reshape package. <em>Journal of Statistical Software</em>, <em>21</em>.
+</div>
+<div id="ref-Wickham2014tidydata" class="csl-entry" role="listitem">
+Wickham, H. (2014). Tidy data. <em>Journal of Statistical Software</em>, <em>59</em>(10), 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>
+</div>
+<div id="ref-Wickham2019tidyverse" class="csl-entry" role="listitem">
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019). Welcome to the tidyverse. <em>Journal of Open Source Software</em>, <em>4</em>(43), 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>
+</div>
+<div id="ref-WickhamGrolemund2017" class="csl-entry" role="listitem">
+Wickham, H., &amp; Grolemund, G. (2017). <em>R for data science: Import, tidy, transform, visualize, and model data</em>. O’Reilly Media.
 </div>
 </div>
 </section>

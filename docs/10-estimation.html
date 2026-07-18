@@ -442,7 +442,8 @@ window.Quarto = {
   <li><a href="#calculating-confidence-intervals-in-r" id="toc-calculating-confidence-intervals-in-r" class="nav-link" data-scroll-target="#calculating-confidence-intervals-in-r"><span class="header-section-number">10.5.3</span> Calculating confidence intervals in R</a></li>
   <li><a href="#sec-ciplots" id="toc-sec-ciplots" class="nav-link" data-scroll-target="#sec-ciplots"><span class="header-section-number">10.5.4</span> Plotting confidence intervals in R</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">10.6</span> Summary</a></li>
+  <li><a href="#sec-estimationvstesting" id="toc-sec-estimationvstesting" class="nav-link" data-scroll-target="#sec-estimationvstesting"><span class="header-section-number">10.6</span> Epilogue: estimation over testing?</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">10.7</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -611,7 +612,7 @@ Figure&nbsp;10.4: The population distribution of IQ scores (panel a) and two sam
 </figcaption>
 </figure>
 </div>
-<p>When I calculate the mean of my sample of 100, I get a number that is fairly close to the population mean 100 but not identical: in this particular sample, the mean IQ is 98 and the standard deviation is 16.4. These <strong><em>sample statistics</em></strong> are properties of my data set, and although they are fairly similar to the true population values, they are not the same. In general, sample statistics are the things you can calculate from your data set, and the population parameters are the things you want to learn about. Later on in this chapter I’ll talk about how you can estimate population parameters using your sample statistics (<a href="#sec-pointestimates" class="quarto-xref"><span>Section 10.4</span></a>) and how to work out how confident you are in your estimates (<a href="#sec-ci" class="quarto-xref"><span>Section 10.5</span></a>) but before we get to that there’s a few more ideas in sampling theory that you need to know about.</p>
+<p>When I calculate the mean of my sample of 100, I get a number that is fairly close to the population mean 100 but not identical: in this particular sample, the mean IQ is 100.7 and the standard deviation is 15.8. These <strong><em>sample statistics</em></strong> are properties of my data set, and although they are fairly similar to the true population values, they are not the same. In general, sample statistics are the things you can calculate from your data set, and the population parameters are the things you want to learn about. Later on in this chapter I’ll talk about how you can estimate population parameters using your sample statistics (<a href="#sec-pointestimates" class="quarto-xref"><span>Section 10.4</span></a>) and how to work out how confident you are in your estimates (<a href="#sec-ci" class="quarto-xref"><span>Section 10.5</span></a>) but before we get to that there’s a few more ideas in sampling theory that you need to know about.</p>
 </section>
 </section>
 <section id="sec-lawlargenumbers" class="level2 page-columns page-full" data-number="10.2">
@@ -623,27 +624,27 @@ Figure&nbsp;10.4: The population distribution of IQ scores (panel a) and two sam
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">round</span>(IQ) <span class="co"># IQs are whole numbers!</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    [1]  70  96  97  80  63  77 111 104 104  96  89 108  94  77  82 105  78 105
-   [19] 115  81 119 101 101 127 131 112  99  89  87  89 103  99  93 131 106 102
-   [37]  98 106 123 120  99  96  85  97  92 119  87 112 104  89 105 130 104  83
-   [55]  78  80 107  97  94  93  71  82 116 103  96 130 105 104  70 114  93 107
+<pre><code>    [1]  90  93 103 123  84 121 117  60 103 107  93  94  80  89  80 128 125  93
+   [19] 113 115 125 111  79  73 101  94  76  97 102 119 117 101  98 100  97  80
+   [37] 103  82 101  74 114  95 112  99  87 114 115 105 114  80 138 112  84 101
+   [55]  92 118  90  85  88  85  72  90 100 129  98 134  90 101 115 110 125 123
 
 BLAH BLAH BLAH
 
- [9955] 110 110 122 102  90 111  95 100 100  76  98 104  84 120  60 105 116  99
- [9973] 103  90  53  87  88 113  65  93 114  89 117  97 102  88  92 126 123  74
- [9991] 106  88  81 133 122 106  95 102 102 113</code></pre>
+ [9955]  90  72 113 117  87 118 118  93  83 108 100 106  84 101  94  90  80 117
+ [9973]  77 110 114 102  97 129 101 123  81  79  80  97  86 100 121 112 126  97
+ [9991]  99  79  97 105 111 113 114  76  87  98</code></pre>
 </div>
 </div>
 <p>I can compute the mean IQ using the command <code>mean(IQ)</code> and the standard deviation using the command <code>sd(IQ)</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 99.8979</code></pre>
+<pre><code>[1] 99.9785</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15.08558</code></pre>
+<pre><code>[1] 15.11656</code></pre>
 </div>
 </div>
 <p>and I can draw a histogram using <code>hist()</code> – this is exactly what produced panel c of <a href="#fig-IQdist" class="quarto-xref">Figure&nbsp;<span>10.4</span></a> above. Even a moment’s inspection makes clear that the larger sample is a much better approximation to the true population distribution than the smaller one, and the sample statistics bear this out: both the mean and standard deviation are now very close to the true population values.</p>
@@ -670,18 +671,18 @@ BLAH BLAH BLAH
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>iq_1 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>iq_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 107  76  85  98  90</code></pre>
+<pre><code>[1]  93 107 105 101  79</code></pre>
 </div>
 </div>
-<p>The mean IQ in this sample turns out to be 91.2. Not surprisingly, this is much less accurate than the previous experiment. Now imagine that I decided to <strong><em>replicate</em></strong> the experiment. That is, I repeat the procedure as closely as possible: I randomly sample 5 new people and measure their IQ. Again, R allows me to simulate the results of this procedure:</p>
+<p>The mean IQ in this sample turns out to be 97. Not surprisingly, this is much less accurate than the previous experiment. Now imagine that I decided to <strong><em>replicate</em></strong> the experiment. That is, I repeat the procedure as closely as possible: I randomly sample 5 new people and measure their IQ. Again, R allows me to simulate the results of this procedure:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>iq_2 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>iq_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 131 125 109 107 112</code></pre>
+<pre><code>[1]  73  86 117 111 114</code></pre>
 </div>
 </div>
-<p>This time around, the mean IQ in my sample is 116.8. If I repeat the experiment 10 times I obtain the results shown in <a href="#tbl-replications" class="quarto-xref">Table&nbsp;<span>10.1</span></a>, and as you can see the sample mean varies from one replication to the next.</p>
+<p>This time around, the mean IQ in my sample is 100.2. If I repeat the experiment 10 times I obtain the results shown in <a href="#tbl-replications" class="quarto-xref">Table&nbsp;<span>10.1</span></a>, and as you can see the sample mean varies from one replication to the next.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>replications <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">100</span>, <span class="dv">15</span>))))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sample_means <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rowMeans</span>(replications), <span class="dv">1</span>)</span>
@@ -719,93 +720,93 @@ Table&nbsp;10.1: Ten replications of the IQ experiment, each with a sample size 
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Replication 1</td>
-<td style="text-align: right;">111</td>
-<td style="text-align: right;">109</td>
-<td style="text-align: right;">123</td>
-<td style="text-align: right;">98</td>
-<td style="text-align: right;">114</td>
-<td style="text-align: right;">111.0</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">100.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 2</td>
-<td style="text-align: right;">115</td>
-<td style="text-align: right;">112</td>
-<td style="text-align: right;">122</td>
-<td style="text-align: right;">93</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">110.4</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">105.6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 3</td>
-<td style="text-align: right;">132</td>
-<td style="text-align: right;">94</td>
-<td style="text-align: right;">97</td>
-<td style="text-align: right;">86</td>
-<td style="text-align: right;">114</td>
-<td style="text-align: right;">104.6</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">106.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 4</td>
-<td style="text-align: right;">89</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">108</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">112</td>
 <td style="text-align: right;">94</td>
-<td style="text-align: right;">118</td>
-<td style="text-align: right;">100.2</td>
+<td style="text-align: right;">100.8</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 5</td>
-<td style="text-align: right;">78</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">128</td>
-<td style="text-align: right;">89</td>
-<td style="text-align: right;">116</td>
-<td style="text-align: right;">99.8</td>
+<td style="text-align: right;">87</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;">138</td>
+<td style="text-align: right;">106.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 6</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">78</td>
-<td style="text-align: right;">84</td>
-<td style="text-align: right;">84</td>
-<td style="text-align: right;">94</td>
-<td style="text-align: right;">88.4</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">97.4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 7</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">122</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: right;">128</td>
-<td style="text-align: right;">69</td>
-<td style="text-align: right;">97.6</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">93.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 8</td>
-<td style="text-align: right;">76</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">78</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">110</td>
 <td style="text-align: right;">108</td>
-<td style="text-align: right;">91.4</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">97.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 9</td>
-<td style="text-align: right;">93</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">105</td>
-<td style="text-align: right;">84</td>
-<td style="text-align: right;">99</td>
-<td style="text-align: right;">89.6</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">114</td>
+<td style="text-align: right;">105.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 10</td>
-<td style="text-align: right;">86</td>
-<td style="text-align: right;">125</td>
-<td style="text-align: right;">93</td>
 <td style="text-align: right;">105</td>
-<td style="text-align: right;">75</td>
-<td style="text-align: right;">96.8</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">95.6</td>
 </tr>
 </tbody>
 </table>
@@ -829,7 +830,7 @@ Figure&nbsp;10.5: The sampling distribution of the mean for the “five IQ score
 </div>
 </div>
 </div>
-<p>Sampling distributions are another important theoretical idea in statistics, and they’re crucial for understanding the behaviour of small samples. For instance, when I ran the very first “five IQ scores” experiment above, the sample mean turned out to be 91.2. What the sampling distribution in <a href="#fig-sampdistmean" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> tells us, though, is that the “five IQ scores” experiment is not very accurate. If I repeat the experiment, the sampling distribution tells me that I can expect to see a sample mean anywhere between 80 and 120.</p>
+<p>Sampling distributions are another important theoretical idea in statistics, and they’re crucial for understanding the behaviour of small samples. For instance, when I ran the very first “five IQ scores” experiment above, the sample mean turned out to be 97. What the sampling distribution in <a href="#fig-sampdistmean" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> tells us, though, is that the “five IQ scores” experiment is not very accurate. If I repeat the experiment, the sampling distribution tells me that I can expect to see a sample mean anywhere between 80 and 120.</p>
 </section>
 <section id="sampling-distributions-exist-for-any-sample-statistic" class="level3" data-number="10.3.2">
 <h3 data-number="10.3.2" class="anchored" data-anchor-id="sampling-distributions-exist-for-any-sample-statistic"><span class="header-section-number">10.3.2</span> Sampling distributions exist for any sample statistic!</h3>
@@ -1241,7 +1242,7 @@ Figure&nbsp;10.11: 95% confidence intervals. The top panel (a) shows 50 simulate
 </figcaption>
 </figure>
 </div>
-<p>In this particular run of the simulation, 10 of the 100 confidence intervals shown in <a href="#fig-cirep" class="quarto-xref">Figure&nbsp;<span>10.11</span></a> failed to contain the true mean – close to, but not necessarily exactly, the 5 we’d expect on average in the long run.</p>
+<p>In this particular run of the simulation, 5 of the 100 confidence intervals shown in <a href="#fig-cirep" class="quarto-xref">Figure&nbsp;<span>10.11</span></a> failed to contain the true mean – close to, but not necessarily exactly, the 5 we’d expect on average in the long run.</p>
 <p>The critical difference here is that the Bayesian claim makes a probability statement about the population mean (i.e., it refers to our uncertainty about the population mean), which is not allowed under the frequentist interpretation of probability because you can’t “replicate” a population! In the frequentist claim, the population mean is fixed and no probabilistic claims can be made about it. Confidence intervals, however, are repeatable so we can replicate experiments. Therefore a frequentist is allowed to talk about the probability that the <em>confidence interval</em> (a random variable) contains the true mean; but is not allowed to talk about the probability that the <em>true population mean</em> (not a repeatable event) falls within the confidence interval.</p>
 <p>I know that this seems a little pedantic, but it does matter. It matters because the difference in interpretation leads to a difference in the mathematics. There is a Bayesian alternative to confidence intervals, known as <em>credible intervals</em>. In most situations credible intervals are quite similar to confidence intervals, but in other cases they are drastically different. As promised, though, I’ll talk more about the Bayesian perspective in <a href="17-bayes.html" class="quarto-xref"><span>Chapter 17</span></a>.</p>
 </section>
@@ -1340,8 +1341,14 @@ Figure&nbsp;10.14: Means and 95% confidence intervals for AFL <code>attendance</
 <p>This is shown in <a href="#fig-plotmeans" class="quarto-xref">Figure&nbsp;<span>10.14</span></a>.</p>
 </section>
 </section>
-<section id="summary" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">10.6</span> Summary</h2>
+<section id="sec-estimationvstesting" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="sec-estimationvstesting"><span class="header-section-number">10.6</span> Epilogue: estimation over testing?</h2>
+<p>The confidence interval this chapter builds towards is not just a historical curiosity: it’s the centrepiece of an argument, still very much alive, about how psychologists should report their results at all. In an influential 2014 paper unambiguously titled “The New Statistics: Why and How,” <span class="citation" data-cites="Cumming2014">Cumming (<a href="references.html#ref-Cumming2014" role="doc-biblioref">2014</a>)</span> argued that psychology should shift away from null hypothesis significance testing and towards routinely reporting effect sizes, confidence intervals, and meta-analytic thinking instead – treating estimation, not testing, as the primary goal of data analysis. It’s a proposal that dovetails neatly with <a href="11-hypothesistesting.html" class="quarto-xref"><span>Chapter 11</span></a>’s own epilogue: if <span class="math inline">\(p &lt; .05\)</span> dichotomies are the problem, reporting “how big, and how uncertain” instead of “significant or not” looks like an obvious fix.</p>
+<p>The trouble is that confidence intervals don’t automatically deliver on what “the new statistics” wants them to do. <span class="citation" data-cites="Hoekstra2014">Hoekstra et al. (<a href="references.html#ref-Hoekstra2014" role="doc-biblioref">2014</a>)</span> found that a large majority of researchers and students – and even some methods instructors – misread confidence intervals in exactly the way <a href="#sec-ci" class="quarto-xref"><span>Section 10.5</span></a> warned you not to, treating them as a statement about the probability that the population parameter lies in the interval, which is the Bayesian reading, not the frequentist one this chapter actually derives. More pointedly, <span class="citation" data-cites="Morey2016">Morey et al. (<a href="references.html#ref-Morey2016" role="doc-biblioref">2016</a>)</span> argued that this isn’t merely a widespread misunderstanding to be fixed with better teaching: several of the properties casually claimed for confidence intervals – that a narrower CI means a more precise estimate, that values inside the interval are somehow “more plausible” than values outside it – don’t actually follow from the frequentist theory of confidence intervals at all, and can be shown to fail in perfectly ordinary examples. On their reading, getting a confidence interval to behave the way researchers <em>want</em> it to behave requires quietly importing the same kind of Bayesian assumptions that confidence intervals were invented to avoid in the first place.</p>
+<p>None of this means confidence intervals are useless, and it doesn’t retract anything said earlier in this chapter about how to construct or correctly interpret one. But it’s a useful corrective to the idea that switching from <span class="math inline">\(p\)</span>-values to confidence intervals is a free lunch: the “estimation, not testing” recommendation trades one well-known set of interpretive traps for a different, less widely appreciated one, and a good deal of the applied literature still writes about confidence intervals as though the traps aren’t there.</p>
+</section>
+<section id="summary" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">10.7</span> Summary</h2>
 <p>In this chapter I’ve covered two main topics. The first half of the chapter talks about sampling theory, and the second half talks about how we can use sampling theory to construct estimates of the population parameters. The section breakdown looks like this:</p>
 <ul>
 <li>Basic ideas about samples, sampling and populations (<a href="#sec-srs" class="quarto-xref"><span>Section 10.1</span></a>)</li>
@@ -1353,8 +1360,17 @@ Figure&nbsp;10.14: Means and 95% confidence intervals for AFL <code>attendance</
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-Cumming2014" class="csl-entry" role="listitem">
+Cumming, G. (2014). The new statistics: Why and how. <em>Psychological Science</em>, <em>25</em>(1), 7–29. <a href="https://doi.org/10.1177/0956797613504966">https://doi.org/10.1177/0956797613504966</a>
+</div>
+<div id="ref-Hoekstra2014" class="csl-entry" role="listitem">
+Hoekstra, R., Morey, R. D., Rouder, J. N., &amp; Wagenmakers, E.-J. (2014). Robust misinterpretation of confidence intervals. <em>Psychonomic Bulletin &amp; Review</em>, <em>21</em>(5), 1157–1164. <a href="https://doi.org/10.3758/s13423-013-0572-3">https://doi.org/10.3758/s13423-013-0572-3</a>
+</div>
 <div id="ref-Keynes1923" class="csl-entry" role="listitem">
 Keynes, J. M. (1923). <em>A tract on monetary reform</em>. Macmillan; Company.
+</div>
+<div id="ref-Morey2016" class="csl-entry" role="listitem">
+Morey, R. D., Hoekstra, R., Rouder, J. N., Lee, M. D., &amp; Wagenmakers, E.-J. (2016). The fallacy of placing confidence in confidence intervals. <em>Psychonomic Bulletin &amp; Review</em>, <em>23</em>(1), 103–123. <a href="https://doi.org/10.3758/s13423-015-0947-8">https://doi.org/10.3758/s13423-015-0947-8</a>
 </div>
 <div id="ref-Stigler1986" class="csl-entry" role="listitem">
 Stigler, S. M. (1986). <em>The history of statistics</em>. Harvard University Press.

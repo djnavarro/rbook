@@ -459,7 +459,8 @@ window.Quarto = {
   <li><a href="#the-bayesian-version-1" id="toc-the-bayesian-version-1" class="nav-link" data-scroll-target="#the-bayesian-version-1"><span class="header-section-number">17.7.2</span> The Bayesian version</a></li>
   <li><a href="#constructing-bayesian-type-ii-tests" id="toc-constructing-bayesian-type-ii-tests" class="nav-link" data-scroll-target="#constructing-bayesian-type-ii-tests"><span class="header-section-number">17.7.3</span> Constructing Bayesian Type II tests</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">17.8</span> Summary</a></li>
+  <li><a href="#epilogue-bayes-goes-mainstream" id="toc-epilogue-bayes-goes-mainstream" class="nav-link" data-scroll-target="#epilogue-bayes-goes-mainstream"><span class="header-section-number">17.8</span> Epilogue: Bayes goes mainstream</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">17.9</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -1410,8 +1411,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 --------------
 [1] drug                          : 245.9026  ±0%
 [2] therapy                       : 0.7316007 ±0%
-[3] drug + therapy                : 697.5554  ±0.87%
-[4] drug + therapy + drug:therapy : 695.8299  ±1.14%
+[3] drug + therapy                : 740.3289  ±3.79%
+[4] drug + therapy + drug:therapy : 698.3163  ±1.33%
 
 Against denominator:
   Intercept only 
@@ -1425,10 +1426,10 @@ Bayes factor type: BFlinearModel, JZS</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
 --------------
-[1] drug                          : 0.3525205   ±0.87%
-[2] therapy                       : 0.001048807 ±0.87%
-[3] drug + therapy                : 1           ±0%
-[4] drug + therapy + drug:therapy : 0.9975263   ±1.43%
+[1] drug                          : 0.3321531    ±3.79%
+[2] therapy                       : 0.0009882104 ±3.79%
+[3] drug + therapy                : 1            ±0%
+[4] drug + therapy + drug:therapy : 0.9432514    ±4.01%
 
 Against denominator:
   mood_gain ~ drug + therapy 
@@ -1473,8 +1474,8 @@ Bayes factor type: BFlinearModel, JZS</code></pre>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(models) <span class="sc">/</span> models</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                denominator
-numerator            drug  therapy drug + therapy drug + therapy + drug:therapy
-  drug + therapy 2.836715 953.4647              1                       1.00248</code></pre>
+numerator           drug therapy drug + therapy drug + therapy + drug:therapy
+  drug + therapy 3.01066 1011.93              1                      1.060163</code></pre>
 </div>
 </div>
 <p>The output isn’t quite so pretty as the last one, but the nice thing is that you can read off everything you need. The best model is <code>drug + therapy</code>, so all the other models are being compared to that. What’s the Bayes factor <em>for</em> the main effect of <code>drug</code>? The relevant null hypothesis is the one that contains only <code>therapy</code>, and that’s the Bayes factor to read off from the <code>therapy</code> column. The main effect of <code>therapy</code> is weaker, and the evidence here is read off from the <code>drug</code> column. Finally, the evidence for or against an interaction is read off from the <code>drug + therapy</code> column.</p>
@@ -1485,14 +1486,24 @@ numerator            drug  therapy drug + therapy drug + therapy + drug:therapy
 </blockquote>
 </section>
 </section>
-<section id="summary" class="level2" data-number="17.8">
-<h2 data-number="17.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">17.8</span> Summary</h2>
+<section id="epilogue-bayes-goes-mainstream" class="level2 page-columns page-full" data-number="17.8">
+<h2 data-number="17.8" class="anchored" data-anchor-id="epilogue-bayes-goes-mainstream"><span class="header-section-number">17.8</span> Epilogue: Bayes goes mainstream</h2>
+<p>I wrote most of this chapter in the early-to-mid 2010s, and during that era being a card-carrying Bayesian in psychology still felt a little like belonging to a slightly eccentric minority sect.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a> That’s part of why the “Why be a Bayesian?” section above reads the way it does: it’s an argument, pitched at a reader I assumed would need convincing, from someone who felt they’d need to do some convincing. Looking back at it now, I don’t think the arguments themselves have aged badly – I still believe everything I said about <span class="math inline">\(p\)</span>-values, data peeking, and what it actually means to say “there’s an 80% chance the hypothesis is true” – but the <em>social</em> situation the chapter describes has moved on a fair distance, and it’s worth saying a little about how.</p>
+<div class="no-row-height column-margin column-container"><div id="fn20"><p><sup>20</sup>&nbsp;Possibly a cult.</p></div><div id="fn21"><p><sup>21</sup>&nbsp;That said, I’ve grown a bit more circumspect about how much to trust the numbers that it produces; see <span class="citation" data-cites="Navarro2019">Navarro (<a href="references.html#ref-Navarro2019" role="doc-biblioref">2019</a>)</span> for the extended, more self-critical version of this footnote.</p></div></div><p>The most obvious change is software. When I wrote this chapter, doing a “real” Bayesian analysis (as opposed to a default Bayes-factor comparison of the kind <code>BayesFactor</code> gives you) meant hand-writing a model in BUGS or JAGS and hoping the MCMC sampler behaved itself. Since then, Stan (a much more robust sampler based on Hamiltonian Monte Carlo) has become the default computational engine behind most applied Bayesian work, and – more importantly for people in my discipline – packages like <code>brms</code> <span class="citation" data-cites="Burkner2017">(<a href="references.html#ref-Burkner2017" role="doc-biblioref">Bürkner, 2017</a>)</span> and <code>rstanarm</code> let you fit essentially arbitrary Bayesian regression and multilevel models using ordinary R formula syntax, without writing a line of Stan code yourself. On top of that, JASP (a free, point-and-click statistics package explicitly designed for psychologists) wraps a lot of the <code>BayesFactor</code>-style default Bayes factor tests I’ve described in this chapter into a GUI, which has done a lot to put Bayesian <span class="math inline">\(t\)</span>-tests and ANOVAs in front of researchers who would never have touched R. None of this makes the underlying logic in this chapter obsolete – the Bayes factor is still the Bayes factor<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> – but it does mean that “doing a full Bayesian analysis” is a much less specialised undertaking than it was.</p>
+<p>The other change is that Bayesian methods have simply become a much more ordinary part of the applied statistics landscape, across the sciences generally and not only in psychology; <span class="citation" data-cites="vandeSchoot2021">Schoot et al. (<a href="references.html#ref-vandeSchoot2021" role="doc-biblioref">2021</a>)</span> is a reasonable, fairly recent overview of the field aimed at exactly this “it’s normal now” audience, and it’s a good place to start if you want a broader view than the one I’ve given here (they cover things like model checking and prior specification in more depth than I have room for). I don’t think this happened purely because people read persuasive essays like the one above and changed their minds philosophically – if anything, I suspect the causal arrow mostly runs the other way, from better and more accessible software to wider adoption, rather than from philosophical conversion to a demand for better software. But whatever the mechanism, the practical upshot is that if you go looking for Bayesian analyses in the psychological literature today, you will find a great many more of them than you would have in the early 2010s, and you’re now about as likely to encounter one via <code>brms</code> or JASP as via the <code>BayesFactor</code> package I’ve centred this chapter on.</p>
+<p>I’ll also flag, in the spirit of practising what this book preaches, that the further-reading recommendation at the end of this chapter used to point to the first edition of Kruschke’s book, subtitled “a tutorial with R and BUGS”; I’ve updated the citation to the second edition, which replaced BUGS with JAGS and Stan, since that’s the edition you’re actually likely to find and use today.</p>
+</section>
+<section id="summary" class="level2" data-number="17.9">
+<h2 data-number="17.9" class="anchored" data-anchor-id="summary"><span class="header-section-number">17.9</span> Summary</h2>
 <p>The first half of this chapter was focused primarily on the theoretical underpinnings of Bayesian statistics. I introduced the mathematics for how Bayesian inference works (<a href="#sec-basicbayes" class="quarto-xref"><span>Section 17.1</span></a>), and gave a very basic overview of how Bayesian hypothesis testing is typically done (<a href="#sec-bayesianhypothesistests" class="quarto-xref"><span>Section 17.2</span></a>). Finally, I devoted some space to talking about why I think Bayesian methods are worth using (<a href="#sec-whybayes" class="quarto-xref"><span>Section 17.3</span></a>).</p>
 <p>The second half of the chapter was a lot more practical, and focused on tools provided by the <code>BayesFactor</code> package. Specifically, I talked about using the <code>contingencyTableBF()</code> function to do Bayesian analogs of chi-square tests (<a href="#sec-bayescontingency" class="quarto-xref"><span>Section 17.4</span></a>), the <code>ttestBF()</code> function to do Bayesian <span class="math inline">\(t\)</span>-tests (<a href="#sec-ttestbf" class="quarto-xref"><span>Section 17.5</span></a>), the <code>regressionBF()</code> function to do Bayesian regressions, and finally the <code>anovaBF()</code> function for Bayesian ANOVA (<a href="#sec-bayesregression" class="quarto-xref"><span>Section 17.6</span></a>, <a href="#sec-bayesanova" class="quarto-xref"><span>Section 17.7</span></a>).</p>
-<p>If you’re interested in learning more about the Bayesian approach, there are many good books you could look into. John Kruschke’s book <em>Doing Bayesian Data Analysis</em> is a pretty good place to start <span class="citation" data-cites="Kruschke2011">(<a href="references.html#ref-Kruschke2011" role="doc-biblioref">Kruschke, 2011</a>)</span>, and is a nice mix of theory and practice. His approach is a little different to the “Bayes factor” approach that I’ve discussed here, so you won’t be covering the same ground. If you’re a cognitive psychologist, you might want to check out Michael Lee and E.J. Wagenmakers’ book <em>Bayesian Cognitive Modeling</em> <span class="citation" data-cites="Lee2014">(<a href="references.html#ref-Lee2014" role="doc-biblioref">Lee &amp; Wagenmakers, 2014</a>)</span>. I picked these two because I think they’re especially useful for people in my discipline, but there’s a lot of good books out there, so look around!</p>
+<p>If you’re interested in learning more about the Bayesian approach, there are many good books you could look into. John Kruschke’s book <em>Doing Bayesian Data Analysis</em> is a pretty good place to start <span class="citation" data-cites="Kruschke2011">(<a href="references.html#ref-Kruschke2011" role="doc-biblioref">Kruschke, 2015</a>)</span>, and is a nice mix of theory and practice. His approach is a little different to the “Bayes factor” approach that I’ve discussed here, so you won’t be covering the same ground. If you’re a cognitive psychologist, you might want to check out Michael Lee and E.J. Wagenmakers’ book <em>Bayesian Cognitive Modeling</em> <span class="citation" data-cites="Lee2014">(<a href="references.html#ref-Lee2014" role="doc-biblioref">Lee &amp; Wagenmakers, 2014</a>)</span>. I picked these two because I think they’re especially useful for people in my discipline, but there’s a lot of good books out there, so look around!</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-Burkner2017" class="csl-entry" role="listitem">
+Bürkner, P.-C. (2017). Brms: An <span>R</span> package for <span>B</span>ayesian multilevel models using <span>S</span>tan. <em>Journal of Statistical Software</em>, <em>80</em>(1), 1–28.
+</div>
 <div id="ref-Fisher1925" class="csl-entry" role="listitem">
 Fisher, R. A. (1925). <em>Statistical methods for research workers</em>. Oliver; Boyd.
 </div>
@@ -1509,7 +1520,7 @@ Johnson, V. E. (2013). Revised standards for statistical evidence. <em>Proceedin
 Kass, R. E., &amp; Raftery, A. E. (1995). Bayes factors. <em>Journal of the American Statistical Association</em>, <em>90</em>, 773–795.
 </div>
 <div id="ref-Kruschke2011" class="csl-entry" role="listitem">
-Kruschke, J. K. (2011). <em>Doing <span>B</span>ayesian data analysis: A tutorial with <span>R</span> and <span>BUGS</span></em>. Academic Press.
+Kruschke, J. K. (2015). <em>Doing <span>B</span>ayesian data analysis: A tutorial with <span>R</span>, <span>JAGS</span>, and <span>S</span>tan</em> (2nd ed.). Academic Press.
 </div>
 <div id="ref-Lee2014" class="csl-entry" role="listitem">
 Lee, M. D., &amp; Wagenmakers, E.-J. (2014). <em>Bayesian cognitive modeling: A practical course</em>. Cambridge University Press.
@@ -1517,8 +1528,14 @@ Lee, M. D., &amp; Wagenmakers, E.-J. (2014). <em>Bayesian cognitive modeling: A 
 <div id="ref-Morey2015" class="csl-entry" role="listitem">
 Morey, R. D., &amp; Rouder, J. N. (2015). <em>BayesFactor: Computation of bayes factors for common designs</em>. <a href="http://CRAN.R-project.org/package=BayesFactor">http://CRAN.R-project.org/package=BayesFactor</a>
 </div>
+<div id="ref-Navarro2019" class="csl-entry" role="listitem">
+Navarro, D. J. (2019). Between the devil and the deep blue sea: Tensions between scientific judgement and statistical model selection. <em>Computational Brain &amp; Behavior</em>, <em>2</em>, 28–34.
+</div>
 <div id="ref-Rouder2009" class="csl-entry" role="listitem">
 Rouder, J. N., Speckman, P. L., Sun, D., Morey, R. D., &amp; Iverson, G. (2009). Bayesian t-tests for accepting and rejecting the null hypothesis. <em>Psychonomic Bulletin &amp; Review</em>, <em>16</em>, 225–237.
+</div>
+<div id="ref-vandeSchoot2021" class="csl-entry" role="listitem">
+Schoot, R. van de, Depaoli, S., King, R., Kramer, B., Märtens, K., Tadesse, M. G., Vannucci, M., Gelman, A., Veen, D., Willemsen, J., &amp; Yau, C. (2021). Bayesian statistics and modelling. <em>Nature Reviews Methods Primers</em>, <em>1</em>, 1.
 </div>
 </div>
 </section>
