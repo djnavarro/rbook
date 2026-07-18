@@ -1411,8 +1411,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 --------------
 [1] drug                          : 245.9026  ±0%
 [2] therapy                       : 0.7316007 ±0%
-[3] drug + therapy                : 694.3008  ±0.8%
-[4] drug + therapy + drug:therapy : 691.7075  ±1.15%
+[3] drug + therapy                : 706.8884  ±1.59%
+[4] drug + therapy + drug:therapy : 734.7688  ±4.61%
 
 Against denominator:
   Intercept only 
@@ -1426,13 +1426,13 @@ Bayes factor type: BFlinearModel, JZS</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
 --------------
-[1] drug                          : 0.3541729   ±0.8%
-[2] therapy                       : 0.001053723 ±0.8%
-[3] drug + therapy                : 1           ±0%
-[4] drug + therapy + drug:therapy : 0.9962649   ±1.4%
+[1] drug                          : 0.3346666    ±4.61%
+[2] therapy                       : 0.0009956883 ±4.61%
+[3] drug + therapy                : 0.9620556    ±4.88%
+[4] drug + therapy + drug:therapy : 1            ±0%
 
 Against denominator:
-  mood_gain ~ drug + therapy 
+  mood_gain ~ drug + therapy + drug:therapy 
 ---
 Bayes factor type: BFlinearModel, JZS</code></pre>
 </div>
@@ -1473,9 +1473,12 @@ Bayes factor type: BFlinearModel, JZS</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(models) <span class="sc">/</span> models</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                denominator
-numerator            drug  therapy drug + therapy drug + therapy + drug:therapy
-  drug + therapy 2.823479 949.0161              1                      1.003749</code></pre>
+<pre><code>                               denominator
+numerator                           drug therapy drug + therapy
+  drug + therapy + drug:therapy 2.988049 1004.33       1.039441
+                               denominator
+numerator                       drug + therapy + drug:therapy
+  drug + therapy + drug:therapy                             1</code></pre>
 </div>
 </div>
 <p>The output isn’t quite so pretty as the last one, but the nice thing is that you can read off everything you need. The best model is <code>drug + therapy</code>, so all the other models are being compared to that. What’s the Bayes factor <em>for</em> the main effect of <code>drug</code>? The relevant null hypothesis is the one that contains only <code>therapy</code>, and that’s the Bayes factor to read off from the <code>therapy</code> column. The main effect of <code>therapy</code> is weaker, and the evidence here is read off from the <code>drug</code> column. Finally, the evidence for or against an interaction is read off from the <code>drug + therapy</code> column.</p>

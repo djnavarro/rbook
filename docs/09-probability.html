@@ -916,9 +916,9 @@ Table&nbsp;9.2: The naming system for R probability distribution functions. Ever
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 3 4 5 3 3 3 1 4 5 2 5 4 3 3 8 3 3 3 1 7 3 5 4 2 2 2 3 5 2 3 5 4 4 2 2 3 7
- [38] 7 2 3 4 5 2 6 3 6 4 3 3 5 3 3 5 2 2 4 5 1 4 3 2 4 2 5 3 4 1 3 1 5 7 4 3 2
- [75] 2 7 6 7 3 4 5 3 3 1 5 7 2 3 5 6 2 3 2 1 4 3 4 1 6 3</code></pre>
+<pre><code>  [1] 3 2 3 4 3 5 6 2 6 6 0 9 3 5 1 4 2 5 4 2 4 2 2 2 3 1 5 4 4 3 3 2 5 5 1 3 5
+ [38] 4 4 4 2 3 4 2 3 4 3 3 3 3 4 8 3 5 2 3 3 3 2 2 3 4 3 0 5 2 4 3 2 0 5 5 5 5
+ [75] 3 3 5 2 2 2 7 6 5 6 5 3 3 3 5 2 0 3 3 4 2 3 4 3 3 2</code></pre>
 </div>
 </div>
 <p>As you can see, these numbers are pretty much what you’d expect given the distribution shown in <a href="#fig-binomial1" class="quarto-xref">Figure&nbsp;<span>9.3</span></a>. Most of the time I roll somewhere between 1 to 5 skulls. There are a lot of subtleties associated with random number generation using a computer,<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> but for the purposes of this book we don’t need to worry too much about them.</p>
@@ -1136,9 +1136,9 @@ Figure&nbsp;9.12: An <span class="math inline">\(F\)</span> distribution with 3 
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>normal_a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(normal_a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   [1] -0.065367558 -1.556241043 -1.037241079  1.382267288 -0.117220923
-   [6] -0.413072830 -0.196137808  0.772827504 -1.951923163  0.581065625
-  [11]  1.200787060  0.280034429 -0.881532245  1.793752788 -0.138074698
+<pre><code>   [1] -0.9450140694 -0.1573617817 -1.2169742023 -0.2842384416 -1.4280091979
+   [6] -0.0062778134  0.7145119211 -0.0879804474  0.5549633978  0.2840021720
+  [11] -2.9360844346 -2.0752365741 -0.8717409882 -0.7586637656  1.5760040592
 
 BLAH BLAH BLAH</code></pre>
 </div>

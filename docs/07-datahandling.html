@@ -577,7 +577,7 @@ window.Quarto = {
 <p>A very common task when analysing data is the construction of frequency tables, or cross-tabulation of one variable against another. There are several functions that you can use in R for that purpose. In this section I’ll illustrate the use of three functions – <code>table()</code>, <code>xtabs()</code> and <code>tabulate()</code> – though there are other options (e.g., <code>ftable()</code>) available.</p>
 <section id="creating-tables-from-vectors" class="level3 page-columns page-full" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="creating-tables-from-vectors"><span class="header-section-number">7.1.1</span> Creating tables from vectors</h3>
-<p>Let’s start with a simple example. As the father of a small child, I naturally spend a lot of time watching TV shows like <em>In the Night Garden</em>. In the <code>nightgarden.Rdata</code> file, I’ve transcribed a short section of the dialogue. The file contains two variables, <code>speaker</code> and <code>utterance</code>, and when we take a look at the data,</p>
+<p>Let’s start with a simple example. As the parent of a small child, I naturally spend a lot of time watching TV shows like <em>In the Night Garden</em>. In the <code>nightgarden.Rdata</code> file, I’ve transcribed a short section of the dialogue. The file contains two variables, <code>speaker</code> and <code>utterance</code>, and when we take a look at the data,</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/nightgarden.Rdata"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2501,7 +2501,7 @@ Hello there. I am a very weird CSV file, because...
 </section>
 <section id="loading-excel-files" class="level3" data-number="7.9.3">
 <h3 data-number="7.9.3" class="anchored" data-anchor-id="loading-excel-files"><span class="header-section-number">7.9.3</span> Loading Excel files</h3>
-<p>A different problem is posed by Excel files. Despite years of yelling at people for sending data to me encoded in a proprietary data format, I get sent a lot of Excel files. In general R does a pretty good job of opening them, but it’s bit finicky because Microsoft don’t seem to be terribly fond of people using non-Microsoft products, and go to some lengths to make it tricky. If you get an Excel file, my suggestion would be to open it up in Excel (or better yet, OpenOffice, since that’s free software) and then save the spreadsheet as a CSV file. Once you’ve got the data in that format, you can open it using <code>read.csv()</code>. However, if for some reason you’re desperate to open the <code>.xls</code> or <code>.xlsx</code> file directly, then you can use the <code>read.xls()</code> function in the <code>gdata</code> package:</p>
+<p>A different problem is posed by Excel files. Despite years of yelling at people for sending data to me encoded in a proprietary data format, I get sent a lot of Excel files. In general R does a pretty good job of opening them, but it’s bit finicky because Microsoft don’t seem to be terribly fond of people using non-Microsoft products, and go to some lengths to make it tricky. If you get an Excel file, my suggestion would be to open it up in Excel (or better yet, LibreOffice, since that’s free software) and then save the spreadsheet as a CSV file. Once you’ve got the data in that format, you can open it using <code>read.csv()</code>. However, if for some reason you’re desperate to open the <code>.xls</code> or <code>.xlsx</code> file directly, then you can use the <code>read.xls()</code> function in the <code>gdata</code> package:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb296"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb296-1"><a href="#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gdata) <span class="co"># load the package</span></span>
 <span id="cb296-2"><a href="#cb296-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">read.xls</span>(<span class="st">"datafile.xlsx"</span>) <span class="co"># create a data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2691,28 +2691,28 @@ Levels: 7 &lt; 6 &lt; 5 &lt; 4 &lt; 3 &lt; 2 &lt; 1</code></pre>
 <div class="sourceCode cell-code" id="cb326"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb326-1"><a href="#cb326-1" aria-hidden="true" tabindex="-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>() <span class="co"># ask the operating system for the date</span></span>
 <span id="cb326-2"><a href="#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(today) <span class="co"># display the date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-07-18"</code></pre>
+<pre><code>[1] "2026-07-19"</code></pre>
 </div>
 </div>
 <p>Okay, that seems straightforward. But, it does rather look like <code>today</code> is just a character string, doesn’t it? That would be a problem, because dates really do have a numeric character to them, and it would be nice to be able to do basic addition and subtraction to them. Well, fear not. If you type in <code>class(today)</code>, R will tell you that the class of the <code>today</code> variable is <code>"Date"</code>. What this means is that, hidden underneath this text string that prints out an actual date, R actually has a numeric representation.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a> What that means is that you actually can add and subtract days. For instance, if we add 1 to <code>today</code>, R will print out the date for tomorrow:</p>
 <div class="no-row-height column-margin column-container"><div id="fn26"><p><sup>26</sup>&nbsp;Date objects are coded as the number of days that have passed since January 1, 1970.</p></div></div><div class="cell">
 <div class="sourceCode cell-code" id="cb328"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb328-1"><a href="#cb328-1" aria-hidden="true" tabindex="-1"></a>today <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-07-19"</code></pre>
+<pre><code>[1] "2026-07-20"</code></pre>
 </div>
 </div>
 <p>Let’s see what happens when we add 365 days:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb330"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb330-1"><a href="#cb330-1" aria-hidden="true" tabindex="-1"></a>today <span class="sc">+</span> <span class="dv">365</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2027-07-18"</code></pre>
+<pre><code>[1] "2027-07-19"</code></pre>
 </div>
 </div>
 <p>This is particularly handy if you forget that a year is a leap year, since in that case you’d probably get it wrong doing this in your head. R provides a number of functions for working with dates, but I don’t want to talk about them in any detail. I will, however, make passing mention of the <code>weekdays()</code> function which will tell you what day of the week a particular date corresponded to, which is extremely convenient in some situations:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb332"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb332-1"><a href="#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weekdays</span>(today)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Saturday"</code></pre>
+<pre><code>[1] "Sunday"</code></pre>
 </div>
 </div>
 <p>I’ll also point out that you can use the <code>as.Date()</code> to convert various different kinds of data into dates. If the data happen to be strings formatted exactly according to the international standard notation (i.e., <code>yyyy-mm-dd</code>) then the conversion is straightforward, because that’s the format that R expects to see by default. You can convert dates from other formats too, but it’s slightly trickier, and beyond the scope of this book.</p>
