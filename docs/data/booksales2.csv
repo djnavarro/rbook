@@ -1,0 +1,20 @@
+--------- for human eyes only ---------
+Hello there. I am a very weird CSV file, because...
+1. I use * as the quoting character not "
+2. I use TAB ("\t") as the separating character not ,
+3. I don't have a header at all
+4. The first 8 lines of the file need to be skipped
+5. Missing data are specified using the string NFI.
+----------------------------------------
+*January*	31	0	*high*
+*February* 	28	100	*high*
+*March* 	31	200	*low*
+*April* 	30	50	*out*
+*May*   	31	*NFI*	*out*
+*June*  	30	0	*high*
+*July*  	31	0	*high*
+*August*	31	0	*high*
+*September*	30	0	*high*
+*October*	31	0	*high*
+*November*	30	0	*high*
+*December*	31	0	*high*

@@ -2,98 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://learningstatisticswithr.com/index.html</loc>
-    <lastmod>2026-07-18T13:45:15.225Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.469Z</lastmod>
+  </url>
+  <url>
+    <loc>https://learningstatisticswithr.com/datasets.html</loc>
+    <lastmod>2026-10-06T21:07:54.255Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/background-preamble.html</loc>
-    <lastmod>2026-07-18T13:45:15.220Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.142Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/01-whystats.html</loc>
-    <lastmod>2026-07-18T13:45:15.220Z</lastmod>
+    <lastmod>2026-10-06T21:06:42.942Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/02-studydesign.html</loc>
-    <lastmod>2026-07-18T13:45:15.220Z</lastmod>
+    <lastmod>2026-10-06T21:06:42.951Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/03-introR.html</loc>
-    <lastmod>2026-07-18T13:45:15.220Z</lastmod>
+    <lastmod>2026-10-06T21:06:42.961Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/04-mechanics.html</loc>
-    <lastmod>2026-07-18T15:47:13.690Z</lastmod>
+    <lastmod>2026-10-06T21:06:42.971Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/05-descriptives.html</loc>
-    <lastmod>2026-07-18T13:45:15.226Z</lastmod>
+    <lastmod>2026-10-06T21:06:42.979Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/06-graphics.html</loc>
-    <lastmod>2026-07-18T13:45:15.220Z</lastmod>
+    <lastmod>2026-10-06T21:06:42.989Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/07-datahandling.html</loc>
-    <lastmod>2026-07-18T15:47:13.563Z</lastmod>
+    <lastmod>2026-10-06T21:06:42.998Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/08-scripting.html</loc>
-    <lastmod>2026-07-18T13:45:15.220Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.007Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/theory-preamble.html</loc>
-    <lastmod>2026-07-18T13:45:15.225Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.784Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/09-probability.html</loc>
-    <lastmod>2026-07-18T13:45:15.220Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.016Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/10-estimation.html</loc>
-    <lastmod>2026-07-18T13:45:15.221Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.025Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/11-hypothesistesting.html</loc>
-    <lastmod>2026-07-18T15:47:13.598Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.034Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/12-chisquare.html</loc>
-    <lastmod>2026-07-18T13:45:15.220Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.043Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/13-ttest.html</loc>
-    <lastmod>2026-07-18T13:45:15.221Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.051Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/14-anova.html</loc>
-    <lastmod>2026-07-18T13:45:15.221Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.060Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/15-regression.html</loc>
-    <lastmod>2026-07-18T13:45:15.221Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.069Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/16-anova2.html</loc>
-    <lastmod>2026-07-18T13:45:15.221Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.078Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/17-bayes.html</loc>
-    <lastmod>2026-07-18T13:45:15.221Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.087Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/epilogue.html</loc>
-    <lastmod>2026-07-18T13:45:15.225Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.461Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/references.html</loc>
-    <lastmod>2026-07-18T13:45:15.225Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.524Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/changelog.html</loc>
-    <lastmod>2026-07-18T13:45:15.226Z</lastmod>
+    <lastmod>2026-10-06T21:06:43.151Z</lastmod>
   </url>
   <url>
     <loc>https://learningstatisticswithr.com/Learning-Statistics-with-R.pdf</loc>
-    <lastmod>2026-07-18T15:50:51.420Z</lastmod>
+    <lastmod>2026-10-06T21:19:54.955Z</lastmod>
   </url>
 </urlset>

@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.52">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>13&nbsp; The t-test – Learning Statistics with R</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -21,8 +27,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +40,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,15 +93,16 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./14-anova.html" rel="next">
 <link href="./12-chisquare.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7245ae1d8f5b1c8e9ac8f6417b8d2b04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -124,7 +132,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -137,7 +145,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -164,7 +172,7 @@ window.Quarto = {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating slimcontent">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -205,6 +213,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data sets</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -505,15 +519,15 @@ window.Quarto = {
 <h3 data-number="13.1.1" class="anchored" data-anchor-id="the-inference-problem-that-the-test-addresses"><span class="header-section-number">13.1.1</span> The inference problem that the test addresses</h3>
 <p>To introduce the idea behind the <span class="math inline">\(z\)</span>-test, let’s use a simple example. A friend of mine, Dr Zeppo, grades his introductory statistics class on a curve. Let’s suppose that the average grade in his class is 67.5, and the standard deviation is 9.5. Of his many hundreds of students, it turns out that 20 of them also take psychology classes. Out of curiosity, I find myself wondering: do the psychology students tend to get the same grades as everyone else (i.e., mean 67.5) or do they tend to score higher or lower? He emails me the <code>zeppo.Rdata</code> file, which I use to pull up the <code>grades</code> of those students,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/zeppo.Rdata"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/zeppo.Rdata"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 50 60 60 64 66 66 67 69 70 74 76 76 77 79 79 79 81 82 82 89</code></pre>
 </div>
 </div>
 <p>and calculate the mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(grades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 72.3</code></pre>
 </div>
@@ -624,6 +638,7 @@ z_{\bar{X}} \sim \mbox{Normal}(0,1)
 <img src="13-ttest_files/figure-html/fig-ztest-1.png" id="fig-ztest-1" class="img-fluid figure-img" data-ref-parent="fig-ztest" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ztest-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -635,6 +650,7 @@ z_{\bar{X}} \sim \mbox{Normal}(0,1)
 <img src="13-ttest_files/figure-html/fig-ztest-2.png" id="fig-ztest-2" class="img-fluid figure-img" data-ref-parent="fig-ztest" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ztest-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -651,37 +667,37 @@ Figure&nbsp;13.3: Rejection regions for the two-sided <span class="math inline">
 <h3 data-number="13.1.3" class="anchored" data-anchor-id="a-worked-example-using-r"><span class="header-section-number">13.1.3</span> A worked example using R</h3>
 <p>Now, as I mentioned earlier, the <span class="math inline">\(z\)</span>-test is almost never used in practice. It’s so rarely used in real life that the basic installation of R doesn’t have a built in function for it. However, the test is so incredibly simple that it’s really easy to do one manually. Let’s go back to the data from Dr Zeppo’s class. Having loaded the <code>grades</code> data, the first thing I need to do is calculate the sample mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(grades)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sample_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(grades)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sample_mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 72.3</code></pre>
 </div>
 </div>
 <p>Then, I create variables corresponding to known population standard deviation (<span class="math inline">\(\sigma = 9.5\)</span>), and the value of the population mean that the null hypothesis specifies (<span class="math inline">\(\mu_0 = 67.5\)</span>):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mu_null <span class="ot">&lt;-</span> <span class="fl">67.5</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sd_true <span class="ot">&lt;-</span> <span class="fl">9.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mu_null <span class="ot">&lt;-</span> <span class="fl">67.5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sd_true <span class="ot">&lt;-</span> <span class="fl">9.5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s also create a variable for the sample size. We could count up the number of observations ourselves, and type <code>N &lt;- 20</code> at the command prompt, but counting is tedious and repetitive. Let’s get R to do the tedious repetitive bit by using the <code>length()</code> function, which tells us how many elements there are in a vector:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">length</span>(grades)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">length</span>(grades)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(N)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20</code></pre>
 </div>
 </div>
 <p>Next, let’s calculate the (true) standard error of the mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sem_true <span class="ot">&lt;-</span> sd_true <span class="sc">/</span> <span class="fu">sqrt</span>(N)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sem_true)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sem_true <span class="ot">&lt;-</span> sd_true <span class="sc">/</span> <span class="fu">sqrt</span>(N)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sem_true)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.124265</code></pre>
 </div>
 </div>
 <p>And finally, we calculate our <span class="math inline">\(z\)</span>-score:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>z_score <span class="ot">&lt;-</span> (sample_mean <span class="sc">-</span> mu_null) <span class="sc">/</span> sem_true</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>z_score <span class="ot">&lt;-</span> (sample_mean <span class="sc">-</span> mu_null) <span class="sc">/</span> sem_true</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.259606</code></pre>
 </div>
@@ -692,24 +708,24 @@ Figure&nbsp;13.3: Rejection regions for the two-sided <span class="math inline">
 </blockquote>
 <p>However, what if we want an exact <span class="math inline">\(p\)</span>-value? Well, back in the day, the tables of critical values were huge, and so you could look up your actual <span class="math inline">\(z\)</span>-value, and find the smallest value of <span class="math inline">\(\alpha\)</span> for which your data would be significant (which, as discussed earlier, is the very definition of a <span class="math inline">\(p\)</span>-value). However, looking things up in books is tedious, and typing things into computers is awesome. So let’s do it using R instead. Now, notice that the <span class="math inline">\(\alpha\)</span> level of a <span class="math inline">\(z\)</span>-test (or any other test, for that matter) defines the total area “under the curve” for the critical region, right? That is, if we set <span class="math inline">\(\alpha = .05\)</span> for a two-sided test, then the critical region is set up such that the area under the curve for the critical region is <span class="math inline">\(.05\)</span>. And, for the <span class="math inline">\(z\)</span>-test, the critical value of 1.96 is chosen that way because the area in the lower tail (i.e., below <span class="math inline">\(-1.96\)</span>) is exactly <span class="math inline">\(.025\)</span> and the area under the upper tail (i.e., above <span class="math inline">\(1.96\)</span>) is exactly <span class="math inline">\(.025\)</span>. So, since our observed <span class="math inline">\(z\)</span>-statistic is <span class="math inline">\(2.26\)</span>, why not calculate the area under the curve below <span class="math inline">\(-2.26\)</span> or above <span class="math inline">\(2.26\)</span>? In R we can calculate this using the <code>pnorm()</code> function. For the upper tail:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>upper_area <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="at">q =</span> z_score, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(upper_area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>upper_area <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="at">q =</span> z_score, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(upper_area)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.01192287</code></pre>
 </div>
 </div>
 <p>The <code>lower.tail = FALSE</code> is me telling R to calculate the area under the curve from 2.26 <em>and upwards</em>. If I’d told it that <code>lower.tail = TRUE</code>, then R would calculate the area from 2.26 <em>and below</em>, and it would give me an answer 0.9880771. Alternatively, to calculate the area from <span class="math inline">\(-2.26\)</span> and below, we get</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lower_area <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="sc">-</span>z_score, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lower_area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lower_area <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="at">q =</span> <span class="sc">-</span>z_score, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lower_area)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.01192287</code></pre>
 </div>
 </div>
 <p>Thus we get our <span class="math inline">\(p\)</span>-value:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> lower_area <span class="sc">+</span> upper_area</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> lower_area <span class="sc">+</span> upper_area</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02384574</code></pre>
 </div>
@@ -730,7 +746,7 @@ Figure&nbsp;13.3: Rejection regions for the two-sided <span class="math inline">
 <h2 data-number="13.2" class="anchored" data-anchor-id="sec-onesamplettest"><span class="header-section-number">13.2</span> The one-sample <span class="math inline">\(t\)</span>-test</h2>
 <p>After some thought, I decided that it might not be safe to assume that the psychology student grades necessarily have the same standard deviation as the other students in Dr Zeppo’s class. After all, if I’m entertaining the hypothesis that they don’t have the same mean, then why should I believe that they absolutely have the same standard deviation? In view of this, I should really stop assuming that I know the true value of <span class="math inline">\(\sigma\)</span>. This violates the assumptions of my <span class="math inline">\(z\)</span>-test, so in one sense I’m back to square one. However, it’s not like I’m completely bereft of options. After all, I’ve still got my raw data, and those raw data give me an <em>estimate</em> of the population standard deviation:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(grades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.520615</code></pre>
 </div>
@@ -767,6 +783,7 @@ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{N} }
 <img src="13-ttest_files/figure-html/fig-ttestdist-1.png" id="fig-ttestdist-1" class="img-fluid figure-img" data-ref-parent="fig-ttestdist" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ttestdist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -778,6 +795,7 @@ t = \frac{\bar{X} - \mu}{\hat{\sigma}/\sqrt{N} }
 <img src="13-ttest_files/figure-html/fig-ttestdist-2.png" id="fig-ttestdist-2" class="img-fluid figure-img" data-ref-parent="fig-ttestdist" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ttestdist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -795,7 +813,7 @@ Figure&nbsp;13.5: The <span class="math inline">\(t\)</span> distribution with 2
 <p>As you might expect, the mechanics of the <span class="math inline">\(t\)</span>-test are almost identical to the mechanics of the <span class="math inline">\(z\)</span>-test. So there’s not much point in going through the tedious exercise of showing you how to do the calculations using low level commands: it’s pretty much identical to the calculations that we did earlier, except that we use the estimated standard deviation (i.e., something like <code>se_est &lt;- sd(grades)</code>), and then we test our hypothesis using the <span class="math inline">\(t\)</span> distribution rather than the normal distribution (i.e.&nbsp;we use <code>pt()</code> rather than <code>pnorm()</code>. And so instead of going through the calculations in tedious detail for a second time, I’ll jump straight to showing you how <span class="math inline">\(t\)</span>-tests are actually done in practice.</p>
 <p>The situation with <span class="math inline">\(t\)</span>-tests is very similar to the one we encountered with chi-squared tests in <a href="./12-chisquare.html">Categorical data analysis</a>. R comes with one function called <code>t.test()</code> that is very flexible (it can run lots of different kinds of <span class="math inline">\(t\)</span>-tests) and is somewhat terse (the output is quite compressed). Later on in the chapter I’ll show you how to use the <code>t.test()</code> function (<a href="#sec-ttestfunction" class="quarto-xref"><span>Section 13.7</span></a>), but to start out with I’m going to rely on some simpler functions in the <code>lsr</code> package. Just like last time, what I’ve done is written a few simpler functions, each of which does only one thing. So, if you want to run a one-sample <span class="math inline">\(t\)</span>-test, use the <code>oneSampleTTest()</code> function! It’s pretty straightforward to use: all you need to do is specify <code>x</code>, the variable containing the data, and <code>mu</code>, the true population mean according to the null hypothesis. Assuming that you’ve already loaded the <code>lsr</code> package, all you need to type is this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneSampleTTest</span>(<span class="at">x =</span> grades, <span class="at">mu =</span> <span class="fl">67.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneSampleTTest</span>(<span class="at">x =</span> grades, <span class="at">mu =</span> <span class="fl">67.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    One sample t-test 
@@ -849,8 +867,8 @@ Other information:
 <h3 data-number="13.3.1" class="anchored" data-anchor-id="the-data"><span class="header-section-number">13.3.1</span> The data</h3>
 <p>Suppose we have 33 students taking Dr Harpo’s statistics lectures, and Dr Harpo doesn’t grade to a curve. Actually, Dr Harpo’s grading is a bit of a mystery, so we don’t really know anything about what the average grade is for the class as a whole. There are two tutors for the class, Anastasia and Bernadette. There are <span class="math inline">\(N_1 = 15\)</span> students in Anastasia’s tutorials, and <span class="math inline">\(N_2 = 18\)</span> in Bernadette’s tutorials. The research question I’m interested in is whether Anastasia or Bernadette is a better tutor, or if it doesn’t make much of a difference. Dr Harpo emails me the course grades, in the <code>harpo.Rdata</code> file. As usual, I’ll load the file and have a look at what variables it contains:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/harpo.Rdata"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/harpo.Rdata"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   -- Name --   -- Class --   -- Size --
    harpo        data.frame    33 x 2    
@@ -860,7 +878,7 @@ Other information:
 </div>
 <p>As we can see, there’s a single data frame with two variables, <code>grade</code> and <code>tutor</code>. The <code>grade</code> variable is a numeric vector, containing the grades for all <span class="math inline">\(N = 33\)</span> students taking Dr Harpo’s class; the <code>tutor</code> variable is a factor that indicates who each student’s tutor was. The first six observations in this data set are shown below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(harpo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(harpo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  grade      tutor
 1    65  Anastasia
@@ -1009,7 +1027,7 @@ t = \frac{\bar{X}_1 - \bar{X}_2}{\mbox{SE}(\bar{X}_1 - \bar{X}_2)}
 <h3 data-number="13.3.6" class="anchored" data-anchor-id="doing-the-test-in-r-1"><span class="header-section-number">13.3.6</span> Doing the test in R</h3>
 <p>Not surprisingly, you can run an independent samples <span class="math inline">\(t\)</span>-test using the <code>t.test()</code> function (<a href="#sec-ttestfunction" class="quarto-xref"><span>Section 13.7</span></a>), but once again I’m going to start with a somewhat simpler function in the <code>lsr</code> package. That function is unimaginatively called <code>independentSamplesTTest()</code>. First, recall that our data look like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(harpo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(harpo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  grade      tutor
 1    65  Anastasia
@@ -1022,11 +1040,11 @@ t = \frac{\bar{X}_1 - \bar{X}_2}{\mbox{SE}(\bar{X}_1 - \bar{X}_2)}
 </div>
 <p>The outcome variable for our test is the student <code>grade</code>, and the groups are defined in terms of the <code>tutor</code> for each class. So you probably won’t be too surprised to see that we’re going to describe the test that we want in terms of an R formula that reads like this <code>grade ~ tutor</code>. The specific command that we need is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">independentSamplesTTest</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">independentSamplesTTest</span>(</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> tutor, <span class="co"># formula specifying outcome and group variables</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> harpo, <span class="co"># data frame that contains the variables</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">var.equal =</span> <span class="cn">TRUE</span> <span class="co"># assume that the two groups have the same variance</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Student's independent samples t-test 
@@ -1118,10 +1136,10 @@ Figure&nbsp;13.9: Graphical illustration of the null and alternative hypotheses 
 <h3 data-number="13.4.1" class="anchored" data-anchor-id="doing-the-test-in-r-2"><span class="header-section-number">13.4.1</span> Doing the test in R</h3>
 <p>To run a Welch test in R is pretty easy. All you have to do is not bother telling R to assume equal variances. That is, you take the command we used to run a Student’s <span class="math inline">\(t\)</span>-test and drop the <code>var.equal = TRUE</code> bit. So the command for a Welch test becomes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">independentSamplesTTest</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">independentSamplesTTest</span>(</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> tutor, <span class="co"># formula specifying outcome and group variables</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> harpo <span class="co"># data frame that contains the variables</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Welch's independent samples t-test 
@@ -1163,8 +1181,8 @@ Other information:
 <h3 data-number="13.5.1" class="anchored" data-anchor-id="the-data-1"><span class="header-section-number">13.5.1</span> The data</h3>
 <p>The data set that we’ll use this time comes from Dr Chico’s class.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> In her class, students take two major tests, one early in the semester and one later in the semester. To hear her tell it, she runs a very hard class, one that most students find very challenging; but she argues that by setting hard assessments, students are encouraged to work harder. Her theory is that the first test is a bit of a “wake up call” for students: when they realise how hard her class really is, they’ll work harder for the second test and get a better mark. Is she right? To test this, let’s have a look at the <code>chico.Rdata</code> file:</p>
 <div class="no-row-height column-margin column-container"><div id="fn13"><p><sup>13</sup>&nbsp;At this point we have Drs Harpo, Chico and Zeppo. No prizes for guessing who Dr Groucho is.</p></div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/chico.Rdata"</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/chico.Rdata"</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">who</span>(<span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   -- Name --      -- Class --   -- Size --
    chico           data.frame    20 x 3    
@@ -1175,7 +1193,7 @@ Other information:
 </div>
 <p>The data frame <code>chico</code> contains three variables: an <code>id</code> variable that identifies each student in the class, the <code>grade_test1</code> variable that records the student grade for the first test, and the <code>grade_test2</code> variable that has the grades for the second test. Here’s the first six students:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chico)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chico)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        id grade_test1 grade_test2
 1 student1        42.9        44.6
@@ -1188,7 +1206,7 @@ Other information:
 </div>
 <p>At a glance, it does seem like the class is a hard one (most grades are between 50% and 60%), but it does look like there’s an improvement from the first test to the second one. If we take a quick look at the descriptive statistics</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(chico)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(chico)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            vars  n  mean   sd median trimmed  mad  min  max range  skew
 id*            1 20 10.50 5.92   10.5   10.50 7.41  1.0 20.0  19.0  0.00
@@ -1203,11 +1221,11 @@ grade_test2    -0.39 1.43</code></pre>
 <p>we see that this impression seems to be supported. Across all 20 students<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> the mean grade for the first test is 57%, but this rises to 58% for the second test. Although, given that the standard deviations are 6.6% and 6.4% respectively, it’s starting to feel like maybe the improvement is just illusory; maybe just random variation. This impression is reinforced when you see the means and confidence intervals plotted in <a href="#fig-pairedt-1" class="quarto-xref">Figure&nbsp;<span>13.10 (a)</span></a>. If we were to rely on this plot alone, we’d come to the same conclusion that we got from looking at the descriptive statistics that the <code>describe()</code> function produced. Looking at how wide those confidence intervals are, we’d be tempted to think that the apparent improvement in student performance is pure chance.</p>
 <div class="no-row-height column-margin column-container"><div id="fn14"><p><sup>14</sup>&nbsp;This is obviously a class being taught at a very small or very expensive university, or else is a postgraduate class. <em>I’ve</em> never taught an intro stats class with less than 350 students.</p></div></div><p>Nevertheless, this impression is wrong. To see why, take a look at the scatterplot of the grades for test 1 against the grades for test 2, shown in <a href="#fig-pairedt-2" class="quarto-xref">Figure&nbsp;<span>13.10 (b)</span></a>. In this plot, each dot corresponds to the two grades for a given student: if their grade for test 1 (<span class="math inline">\(x\)</span> co-ordinate) equals their grade for test 2 (<span class="math inline">\(y\)</span> co-ordinate), then the dot falls on the line. Points falling above the line are the students that performed better on the second test. Critically, almost all of the data points fall above the diagonal line: almost all of the students <em>do</em> seem to have improved their grade, if only by a small amount. This suggests that we should be looking at the <em>improvement</em> made by each student from one test to the next, and treating that as our raw data. To do this, we’ll need to create a new variable for the <code>improvement</code> that each student makes, and add it to the <code>chico</code> data frame. The easiest way to do this is as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>chico<span class="sc">$</span>improvement <span class="ot">&lt;-</span> chico<span class="sc">$</span>grade_test2 <span class="sc">-</span> chico<span class="sc">$</span>grade_test1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>chico<span class="sc">$</span>improvement <span class="ot">&lt;-</span> chico<span class="sc">$</span>grade_test2 <span class="sc">-</span> chico<span class="sc">$</span>grade_test1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Notice that I assigned the output to a variable called <code>chico$improvement</code>. That has the effect of creating a new variable called <code>improvement</code> inside the <code>chico</code> data frame. So now when I look at the <code>chico</code> data frame, I get an output that looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chico)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chico)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        id grade_test1 grade_test2 improvement
 1 student1        42.9        44.6         1.7
@@ -1220,7 +1238,7 @@ grade_test2    -0.39 1.43</code></pre>
 </div>
 <p>Now that we’ve created and stored this <code>improvement</code> variable, we can draw a histogram showing the distribution of these improvement scores (using the <code>hist()</code> function), shown in <a href="#fig-pairedt-3" class="quarto-xref">Figure&nbsp;<span>13.10 (c)</span></a>. When we look at the histogram, it’s very clear that there <em>is</em> a real improvement here. The vast majority of the students scored higher on test 2 than on test 1, reflected in the fact that almost the entire histogram is above zero. In fact, if we use <code>ciMean()</code> to compute a confidence interval for the population mean of this new variable,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ciMean</span>(<span class="at">x =</span> chico<span class="sc">$</span>improvement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ciMean</span>(<span class="at">x =</span> chico<span class="sc">$</span>improvement)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          2.5%    97.5%
 [1,] 0.9508686 1.859131</code></pre>
@@ -1238,6 +1256,7 @@ grade_test2    -0.39 1.43</code></pre>
 <img src="13-ttest_files/figure-html/fig-pairedt-1.png" id="fig-pairedt-1" class="img-fluid figure-img" data-ref-parent="fig-pairedt" width="384">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-pairedt-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -1249,6 +1268,7 @@ grade_test2    -0.39 1.43</code></pre>
 <img src="13-ttest_files/figure-html/fig-pairedt-2.png" id="fig-pairedt-2" class="img-fluid figure-img" data-ref-parent="fig-pairedt" width="384">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-pairedt-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -1260,6 +1280,7 @@ grade_test2    -0.39 1.43</code></pre>
 <img src="13-ttest_files/figure-html/fig-pairedt-3.png" id="fig-pairedt-3" class="img-fluid figure-img" data-ref-parent="fig-pairedt" width="384">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-pairedt-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
 </figcaption>
 </figure>
 </div>
@@ -1292,7 +1313,7 @@ t = \frac{\bar{D}}{\hat\sigma_D / \sqrt{N}}
 <h3 data-number="13.5.3" class="anchored" data-anchor-id="doing-the-test-in-r-part-1"><span class="header-section-number">13.5.3</span> Doing the test in R, part 1</h3>
 <p>How do you do a paired samples <span class="math inline">\(t\)</span>-test in R? One possibility is to follow the process I outlined above: create a “difference” variable and then run a one sample <span class="math inline">\(t\)</span>-test on that. Since we’ve already created a variable called <code>chico$improvement</code>, let’s do that:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneSampleTTest</span>(chico<span class="sc">$</span>improvement, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneSampleTTest</span>(chico<span class="sc">$</span>improvement, <span class="at">mu =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    One sample t-test 
@@ -1321,10 +1342,10 @@ Other information:
 <p>The output here is (obviously) formatted exactly the same way as it was the last time we used the <code>oneSampleTTest()</code> function (<a href="#sec-onesamplettest" class="quarto-xref"><span>Section 13.2</span></a>), and it confirms our intuition. There’s an average improvement of 1.4% from test 1 to test 2, and this is significantly different from 0 (<span class="math inline">\(t(19)=6.48, p&lt;.001\)</span>).</p>
 <p>However, suppose you’re lazy and you don’t want to go to all the effort of creating a new variable. Or perhaps you just want to keep the difference between one-sample and paired-samples tests clear in your head. If so, you can use the <code>pairedSamplesTTest()</code> function, also in the <code>lsr</code> package. Let’s assume that your data are organised like they are in the <code>chico</code> data frame, where there are two separate variables, one for each measurement. The way to run the test is to input a <em>one-sided</em> formula, just like you did when running a test of association using the <code>associationTest()</code> function in <a href="./12-chisquare.html">Categorical data analysis</a>. For the <code>chico</code> data frame, the formula that you need would be <code>~ grade_test2 + grade_test1</code>. As usual, you’ll also need to input the name of the data frame too. So the command just looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="sc">~</span> grade_test2 <span class="sc">+</span> grade_test1, <span class="co"># one-sided formula listing the two variables</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> chico <span class="co"># data frame containing the two variables</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Paired samples t-test 
@@ -1357,8 +1378,8 @@ Other information:
 <p>The paired samples <span class="math inline">\(t\)</span>-test is a little different from the other <span class="math inline">\(t\)</span>-tests, because it is used in repeated measures designs. For the <code>chico</code> data, every student is “measured” twice, once for the first test, and again for the second test. Back in <a href="./07-datahandling.html#sec-reshape">Reshaping a data frame</a> I talked about the fact that repeated measures data can be expressed in two standard ways, known as <em>wide form</em> and <em>long form</em>. The <code>chico</code> data frame is in wide form: every row corresponds to a unique <em>person</em>. I’ve shown you the data in that form first because that’s the form that you’re most used to seeing, and it’s also the format that you’re most likely to receive data in. However, the majority of tools in R for dealing with repeated measures data expect to receive data in long form. The paired samples <span class="math inline">\(t\)</span>-test is a bit of an exception that way.</p>
 <p>As you make the transition from a novice user to an advanced one, you’re going to have to get comfortable with long form data, and switching between the two forms. To that end, I want to show you how to apply the <code>pairedSamplesTTest()</code> function to long form data. First, let’s use the <code>wideToLong()</code> function to create a long form version of the <code>chico</code> data frame. If you’ve forgotten how the <code>wideToLong()</code> function works, it might be worth your while quickly re-reading <a href="./07-datahandling.html#sec-reshape">Reshaping a data frame</a>. Assuming that you’ve done so, or that you’re already comfortable with data reshaping, I’ll use it to create a new data frame called <code>chico2</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>chico2 <span class="ot">&lt;-</span> <span class="fu">wideToLong</span>(chico[, <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"grade_test1"</span>, <span class="st">"grade_test2"</span>)], <span class="at">within =</span> <span class="st">"time"</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chico2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>chico2 <span class="ot">&lt;-</span> <span class="fu">wideToLong</span>(chico[, <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"grade_test1"</span>, <span class="st">"grade_test2"</span>)], <span class="at">within =</span> <span class="st">"time"</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chico2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        id  time grade
 1 student1 test1  42.9
@@ -1371,8 +1392,8 @@ Other information:
 </div>
 <p>As you can see, this has created a new data frame containing three variables: an <code>id</code> variable indicating which person provided the data, a <code>time</code> variable indicating which test the data refers to (i.e., test 1 or test 2), and a <code>grade</code> variable that records what score the person got on that test. Notice that this data frame is in long form: every row corresponds to a unique <em>measurement</em>. Because every person provides two observations (test 1 and test 2), there are two rows for every person. To see this a little more clearly, I’ll use the <code>sortFrame()</code> function to sort the rows of <code>chico2</code> by <code>id</code> variable (see <a href="./07-datahandling.html#sec-sortframe">Sorting a data frame</a>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>chico2 <span class="ot">&lt;-</span> <span class="fu">sortFrame</span>(chico2, id)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chico2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>chico2 <span class="ot">&lt;-</span> <span class="fu">sortFrame</span>(chico2, id)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chico2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          id  time grade
 1   student1 test1  42.9
@@ -1386,11 +1407,11 @@ Other information:
 <p>As you can see, there are two rows for “student1”: one showing their grade on the first test, the other showing their grade on the second test.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
 <div class="no-row-height column-margin column-container"><div id="fn15"><p><sup>15</sup>&nbsp;The <code>sortFrame()</code> function sorts factor variables like <code>id</code> in alphabetical order, which is why it jumps from “student1” to “student10”.</p></div></div><p>Okay, suppose that we were given the <code>chico2</code> data frame to analyse. How would we run our paired samples <span class="math inline">\(t\)</span>-test now? One possibility would be to use the <code>longToWide()</code> function (<a href="./07-datahandling.html#sec-reshape">Reshaping a data frame</a>) to force the data back into wide form, and do the same thing that we did previously. But that’s sort of defeating the point, and besides, there’s an easier way. Let’s think about how the <code>chico2</code> data frame is structured: there are three variables here, and they all matter. The outcome measure is stored as the <code>grade</code>, and we effectively have two “groups” of measurements (test 1 and test 2) that are defined by the <code>time</code> points at which a test is given. Finally, because we want to keep track of which measurements should be paired together, we need to know which student obtained each grade, which is what the <code>id</code> variable gives us. So, when your data are presented to you in long form, we would want to specify a <em>two-sided</em> formula and a data frame, in the same way that we do for an independent samples <span class="math inline">\(t\)</span>-test: the formula specifies the outcome variable and the groups, so in this case it would be <code>grade ~ time</code>, and the data frame is <code>chico2</code>. However, we also need to tell it the id variable, which in this case is boringly called <code>id</code>. So our command is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> time, <span class="co"># two sided formula: outcome ~ group</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> chico2, <span class="co"># data frame</span></span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"id"</span> <span class="co"># name of the id variable</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Paired samples t-test 
@@ -1423,14 +1444,14 @@ Other information:
 <pre><code>grade ~ time + (id)</code></pre>
 <p>This formula tells R everything it needs to know: the variable on the left (<code>grade</code>) is the outcome variable, the bracketed term on the right (<code>id</code>) is the id variable, and the other term on the right is the grouping variable (<code>time</code>). If you specify your formula that way, then you only need to specify the <code>formula</code> and the <code>data</code> frame, and so you can get away with using a command as simple as this one:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> time <span class="sc">+</span> (id),</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> chico2</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>or you can drop the argument names and just do this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(grade <span class="sc">~</span> time <span class="sc">+</span> (id), chico2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(grade <span class="sc">~</span> time <span class="sc">+</span> (id), chico2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>These commands will produce the same output as the last one, and I personally find this format a lot more elegant. That being said, the main reason for allowing you to write your formulas that way is that they’re quite similar to the way that mixed models (fancy pants repeated measures analyses) are specified in the <code>lme4</code> package. This book doesn’t talk about mixed models (yet!), but if you go on to learn more statistics you’ll find them pretty hard to avoid, so I’ve tried to lay a little bit of the groundwork here.</p>
 </section>
@@ -1439,7 +1460,7 @@ Other information:
 <h2 data-number="13.6" class="anchored" data-anchor-id="one-sided-tests"><span class="header-section-number">13.6</span> One sided tests</h2>
 <p>When introducing the theory of null hypothesis tests, I mentioned that there are some situations when it’s appropriate to specify a <em>one-sided</em> test (see <a href="11-hypothesistesting.html#sec-onesidedtests" class="quarto-xref"><span>Section 11.4.3</span></a>). So far, all of the <span class="math inline">\(t\)</span>-tests have been two-sided tests. For instance, when we specified a one sample <span class="math inline">\(t\)</span>-test for the grades in Dr Zeppo’s class, the null hypothesis was that the true mean was 67.5%. The alternative hypothesis was that the true mean was greater than <em>or</em> less than 67.5%. Suppose we were only interested in finding out if the true mean is greater than 67.5%, and have no interest whatsoever in testing to find out if the true mean is lower than 67.5%. If so, our null hypothesis would be that the true mean is 67.5% or less, and the alternative hypothesis would be that the true mean is greater than 67.5%. The <code>oneSampleTTest()</code> function lets you do this, by specifying the <code>one.sided</code> argument. If you set <code>one.sided="greater"</code>, it means that you’re testing to see if the true mean is larger than <code>mu</code>. If you set <code>one.sided="less"</code>, then you’re testing to see if the true mean is smaller than <code>mu</code>. Here’s how it would work for Dr Zeppo’s class:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneSampleTTest</span>(<span class="at">x =</span> grades, <span class="at">mu =</span> <span class="fl">67.5</span>, <span class="at">one.sided =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">oneSampleTTest</span>(<span class="at">x =</span> grades, <span class="at">mu =</span> <span class="fl">67.5</span>, <span class="at">one.sided =</span> <span class="st">"greater"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    One sample t-test 
@@ -1468,11 +1489,11 @@ Other information:
 <p>Notice that there are a few changes from the output that we saw last time. Most important is the fact that the null and alternative hypotheses have changed, to reflect the different test. The second thing to note is that, although the <span class="math inline">\(t\)</span>-statistic and degrees of freedom have not changed, the <span class="math inline">\(p\)</span>-value has. This is because the one-sided test has a different rejection region from the two-sided test. If you’ve forgotten why this is and what it means, you may find it helpful to read back over <a href="./11-hypothesistesting.html">Hypothesis testing</a>, and <a href="11-hypothesistesting.html#sec-onesidedtests" class="quarto-xref"><span>Section 11.4.3</span></a> in particular. The third thing to note is that the confidence interval is different too: it now reports a “one-sided” confidence interval rather than a two-sided one. In a two-sided confidence interval, we’re trying to find numbers <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> such that we’re 95% confident that the true mean lies <em>between</em> <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. In a one-sided confidence interval, we’re trying to find a single number <span class="math inline">\(a\)</span> such that we’re 95% confident that the true mean is <em>greater than</em> <span class="math inline">\(a\)</span> (or less than <span class="math inline">\(a\)</span> if you set <code>one.sided="less"</code>).</p>
 <p>So that’s how to do a one-sided one sample <span class="math inline">\(t\)</span>-test. However, all versions of the <span class="math inline">\(t\)</span>-test can be one-sided. For an independent samples <span class="math inline">\(t\)</span>-test, you could have a one-sided test if you’re only interested in testing to see if group A has <em>higher</em> scores than group B, but have no interest in finding out if group B has higher scores than group A. Let’s suppose that, for Dr Harpo’s class, you wanted to see if Anastasia’s students had higher grades than Bernadette’s. The <code>independentSamplesTTest()</code> function lets you do this, again by specifying the <code>one.sided</code> argument. However, this time around you need to specify the name of the group that you’re expecting to have the higher score. In our case, we’d write <code>one.sided = "Anastasia"</code>. So the command would be:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">independentSamplesTTest</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">independentSamplesTTest</span>(</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> tutor,</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> harpo,</span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">one.sided =</span> <span class="st">"Anastasia"</span></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Welch's independent samples t-test 
@@ -1502,11 +1523,11 @@ Other information:
 <p>Again, the output changes in a predictable way. The definition of the null and alternative hypotheses has changed, the <span class="math inline">\(p\)</span>-value has changed, and it now reports a one-sided confidence interval rather than a two-sided one.</p>
 <p>What about the paired samples <span class="math inline">\(t\)</span>-test? Suppose we wanted to test the hypothesis that grades go <em>up</em> from test 1 to test 2 in Dr Chico’s class, and are not prepared to consider the idea that the grades go down. Again, we can use the <code>one.sided</code> argument to specify the one-sided test, and it works the same way it does for the independent samples <span class="math inline">\(t\)</span>-test. You need to specify the name of the group whose scores are expected to be larger under the alternative hypothesis. If your data are in wide form, as they are in the <code>chico</code> data frame, you’d use this command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> <span class="sc">~</span> grade_test2 <span class="sc">+</span> grade_test1,</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> chico,</span>
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">one.sided =</span> <span class="st">"grade_test2"</span></span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Paired samples t-test 
@@ -1534,7 +1555,7 @@ Other information:
 </div>
 <p>Yet again, the output changes in a predictable way. The hypotheses have changed, the <span class="math inline">\(p\)</span>-value has changed, and the confidence interval is now one-sided. If your data are in long form, as they are in the <code>chico2</code> data frame, it still works the same way. Either of the following commands would work,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairedSamplesTTest</span>(</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> time,</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> chico2,</span>
 <span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"id"</span>,</span>
@@ -1545,7 +1566,7 @@ Other information:
 <span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> time <span class="sc">+</span> (id),</span>
 <span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> chico2,</span>
 <span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">one.sided =</span> <span class="st">"test2"</span></span>
-<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>and would produce the same answer as the output shown above.</p>
 </section>
@@ -1554,7 +1575,7 @@ Other information:
 <p>In this chapter, we’ve talked about three different kinds of <span class="math inline">\(t\)</span>-test: the one sample test, the independent samples test (Student’s and Welch’s), and the paired samples test. In order to run these different tests, I’ve shown you three different functions: <code>oneSampleTTest()</code>, <code>independentSamplesTTest()</code> and <code>pairedSamplesTTest()</code>. I wrote these as three different functions for two reasons. Firstly, I thought it made sense to have separate functions for each test, in order to help make it clear to beginners that there <em>are</em> different tests. Secondly, I wanted to show you some functions that produced “verbose” output, to help you see what hypotheses are being tested and so on.</p>
 <p>However, once you’ve started to become familiar with <span class="math inline">\(t\)</span>-tests and with using R, you might find it easier to use the <code>t.test()</code> function. It’s one function, but it can run all four of the different <span class="math inline">\(t\)</span>-tests that we’ve talked about. Here’s how it works. Firstly, suppose you want to run a one sample <span class="math inline">\(t\)</span>-test. To run the test on the <code>grades</code> data from Dr Zeppo’s class (<a href="#sec-onesamplettest" class="quarto-xref"><span>Section 13.2</span></a>), we’d use a command like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> grades, <span class="at">mu =</span> <span class="fl">67.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> grades, <span class="at">mu =</span> <span class="fl">67.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -1572,7 +1593,7 @@ mean of x
 <p>The input is the same as for the <code>oneSampleTTest()</code>: we specify the sample data using the argument <code>x</code>, and the value against which it is to be tested using the argument <code>mu</code>. The output is a lot more compressed than the one we saw earlier, but as you can see, it still has all the information you need. It tells you what type of test it ran and the data it tested it on. It gives you the <span class="math inline">\(t\)</span>-statistic, the degrees of freedom and the <span class="math inline">\(p\)</span>-value. And so on. There’s nothing wrong with this output, but in my experience it can be a little confusing when you’re just starting to learn statistics, because it’s a little disorganised. Once you know what you’re looking at though, it’s pretty easy to read off the relevant information.</p>
 <p>What about independent samples <span class="math inline">\(t\)</span>-tests? As it happens, the <code>t.test()</code> function can be used in much the same way as the <code>independentSamplesTTest()</code> function, by specifying a formula, a data frame, and using <code>var.equal</code> to indicate whether you want a Student test or a Welch test. If you want to run the Welch test from <a href="#sec-welchttest" class="quarto-xref"><span>Section 13.4</span></a>, then you’d use this command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> grade <span class="sc">~</span> tutor, <span class="at">data =</span> harpo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> grade <span class="sc">~</span> tutor, <span class="at">data =</span> harpo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1590,11 +1611,11 @@ sample estimates:
 <p>If you want to do the Student test, it’s exactly the same except that you need to add an additional argument indicating that <code>var.equal = TRUE</code>. This is no different to how it worked in the <code>independentSamplesTTest()</code> function.</p>
 <p>Finally, we come to the paired samples <span class="math inline">\(t\)</span>-test. Somewhat surprisingly, given that most R functions for dealing with repeated measures data require data to be in long form, the <code>t.test()</code> function isn’t really set up to handle data in long form. Instead it expects to be given two separate variables, <code>x</code> and <code>y</code>, and you need to specify <code>paired=TRUE</code>. And on top of that, you’d better make sure that the first element of <code>x</code> and the first element of <code>y</code> actually correspond to the same person! Because it doesn’t ask for an “id” variable. I don’t know why. So, in order to run the paired samples <span class="math inline">\(t\)</span> test on the data from Dr Chico’s class, we’d use this command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> chico<span class="sc">$</span>grade_test2, <span class="co"># variable 1 is the "test2" scores</span></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> chico<span class="sc">$</span>grade_test1, <span class="co"># variable 2 is the "test1" scores</span></span>
 <span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">paired =</span> <span class="cn">TRUE</span> <span class="co"># paired test</span></span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -1659,17 +1680,17 @@ d = \frac{\bar{X} - \mu_0}{\hat{\sigma}}
 </ul>
 <p>We don’t need to specify what <code>method</code> to use, because there’s only one version of <span class="math inline">\(d\)</span> that makes sense in this context. So, in order to compute an effect size for the data from Dr Zeppo’s class (<a href="#sec-onesamplettest" class="quarto-xref"><span>Section 13.2</span></a>), we’d type something like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> grades, <span class="co"># data are stored in the grades vector</span></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fl">67.5</span> <span class="co"># compare students to a mean of 67.5</span></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5041691</code></pre>
 </div>
 </div>
 <p>and, just so that you can see that there’s nothing fancy going on, the command below shows you how to calculate it if there wasn’t a fancypants <code>cohensD()</code> function available:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(grades) <span class="sc">-</span> <span class="fl">67.5</span>) <span class="sc">/</span> <span class="fu">sd</span>(grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(grades) <span class="sc">-</span> <span class="fl">67.5</span>) <span class="sc">/</span> <span class="fu">sd</span>(grades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5041691</code></pre>
 </div>
@@ -1686,11 +1707,11 @@ d = \frac{\bar{X}_1 - \bar{X}_2}{\hat{\sigma}_p}
 <p>However, there are other possibilities, which I’ll briefly describe. Firstly, you may have reason to want to use only one of the two groups as the basis for calculating the standard deviation. This approach (often called Glass’ <span class="math inline">\(\Delta\)</span>) only makes most sense when you have good reason to treat one of the two groups as a purer reflection of “natural variation” than the other. This can happen if, for instance, one of the two groups is a control group. If that’s what you want, then use <code>method = "x.sd"</code> or <code>method = "y.sd"</code> when using <code>cohensD()</code>. Secondly, recall that in the usual calculation of the pooled standard deviation we divide by <span class="math inline">\(N-2\)</span> to correct for the bias in the sample variance; in one version of Cohen’s <span class="math inline">\(d\)</span> this correction is omitted. Instead, we divide by <span class="math inline">\(N\)</span>. This version (<code>method = "raw"</code>) makes sense primarily when you’re trying to calculate the effect size in the sample; rather than estimating an effect size in the population. Finally, there is a version based on <span class="citation" data-cites="Hedges1985">Hedges &amp; Olkin (<a href="references.html#ref-Hedges1985" role="doc-biblioref">1985</a>)</span>, who point out there is a small bias in the usual (pooled) estimation for Cohen’s <span class="math inline">\(d\)</span>. Thus they introduce a small correction (<code>method = "corrected"</code>), by multiplying the usual value of <span class="math inline">\(d\)</span> by <span class="math inline">\((N-3)/(N-2.25)\)</span>.</p>
 <p>In any case, ignoring all those variations that you could make use of if you wanted, let’s have a look at how to calculate the default version. In particular, suppose we look at the data from Dr Harpo’s class (the <code>harpo</code> data frame). The command that we want to use is very similar to the relevant <code>t.test()</code> command, but also specifies a <code>method</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> tutor, <span class="co"># outcome ~ group</span></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> harpo, <span class="co"># data frame</span></span>
 <span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"pooled"</span> <span class="co"># which version to calculate?</span></span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7395614</code></pre>
 </div>
@@ -1707,11 +1728,11 @@ d = \frac{\bar{X}_1 - \bar{X}_2}{\hat{\sigma}_p}
 d = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\displaystyle{\frac{ {\hat\sigma_1}^2 + {\hat\sigma_2}^2}{2}}}}
 \]</span> as our estimate of the effect size. There’s nothing particularly difficult about calculating this version in R, since all we have to do is change the <code>method</code> argument:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> grade <span class="sc">~</span> tutor,</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> harpo,</span>
 <span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"unequal"</span></span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7244995</code></pre>
 </div>
@@ -1724,22 +1745,22 @@ d = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\displaystyle{\frac{ {\hat\sigma_1}^2 + {
 d = \frac{\bar{D}}{\hat{\sigma}_D}
 \]</span> where <span class="math inline">\(\hat{\sigma}_D\)</span> is the estimate of the standard deviation of the differences. The calculation here is pretty straightforward</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> chico<span class="sc">$</span>grade_test2,</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> chico<span class="sc">$</span>grade_test1,</span>
 <span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"paired"</span></span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.447952</code></pre>
 </div>
 </div>
 <p>This is the version of Cohen’s <span class="math inline">\(d\)</span> that gets reported by the <code>pairedSamplesTTest()</code> function. The only wrinkle is figuring out whether this is the measure you want or not. To the extent that you care about the practical consequences of your research, you often want to measure the effect size relative to the <em>original</em> variables, not the <em>difference</em> scores (e.g., the 1% improvement in Dr Chico’s class is pretty small when measured against the amount of between-student variation in grades), in which case you use the same versions of Cohen’s <span class="math inline">\(d\)</span> that you would use for a Student or Welch test. For instance, when we do that for Dr Chico’s class,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> chico<span class="sc">$</span>grade_test2,</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> chico<span class="sc">$</span>grade_test1,</span>
 <span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"pooled"</span></span>
-<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2157646</code></pre>
 </div>
@@ -1754,10 +1775,10 @@ d = \frac{\bar{D}}{\hat{\sigma}_D}
 <h3 data-number="13.9.1" class="anchored" data-anchor-id="qq-plots"><span class="header-section-number">13.9.1</span> QQ plots</h3>
 <p>One way to check whether a sample violates the normality assumption is to draw a <strong><em>“quantile-quantile” plot</em></strong> (QQ plot). This allows you to visually check whether you’re seeing any systematic violations. In a QQ plot, each observation is plotted as a single dot. The x co-ordinate is the theoretical quantile that the observation should fall in, if the data were normally distributed (with mean and variance estimated from the sample) and on the y co-ordinate is the actual quantile of the data within the sample. If the data are normal, the dots should form a straight line. For instance, lets see what happens if we generate data by sampling from a normal distribution, and then drawing a QQ plot using the R function <code>qqnorm()</code>. The <code>qqnorm()</code> function has a few arguments, but the only one we really need to care about here is <code>y</code>, a vector specifying the data whose normality we’re interested in checking. Here’s the R commands:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>normal_data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>) <span class="co"># generate N = 100 normally distributed numbers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>normal_data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>) <span class="co"># generate N = 100 normally distributed numbers</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> normal_data, <span class="at">xlab =</span> <span class="st">"Value"</span>, <span class="at">main =</span> <span class="st">""</span>, <span class="at">border =</span> <span class="st">"white"</span>, <span class="at">col =</span> <span class="fu">rgb</span>(.<span class="dv">5</span>, .<span class="dv">5</span>, <span class="dv">1</span>))</span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="at">y =</span> normal_data, <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> normal_data, <span class="at">xlab =</span> <span class="st">"Value"</span>, <span class="at">main =</span> <span class="st">""</span>, <span class="at">border =</span> <span class="st">"white"</span>, <span class="at">col =</span> <span class="fu">rgb</span>(.<span class="dv">5</span>, .<span class="dv">5</span>, <span class="dv">1</span>))</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="at">y =</span> normal_data, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="fig-qq1" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qq1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1769,6 +1790,7 @@ d = \frac{\bar{D}}{\hat{\sigma}_D}
 <img src="13-ttest_files/figure-html/fig-qq1-1.png" id="fig-qq1-1" class="img-fluid figure-img" data-ref-parent="fig-qq1" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -1780,6 +1802,7 @@ d = \frac{\bar{D}}{\hat{\sigma}_D}
 <img src="13-ttest_files/figure-html/fig-qq1-2.png" id="fig-qq1-2" class="img-fluid figure-img" data-ref-parent="fig-qq1" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -1803,6 +1826,7 @@ Figure&nbsp;13.11: Histogram (panel a) and normal QQ plot (panel b) of <code>nor
 <img src="13-ttest_files/figure-html/fig-qq2-1.png" id="fig-qq2-1" class="img-fluid figure-img" data-ref-parent="fig-qq2" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -1814,6 +1838,7 @@ Figure&nbsp;13.11: Histogram (panel a) and normal QQ plot (panel b) of <code>nor
 <img src="13-ttest_files/figure-html/fig-qq2-2.png" id="fig-qq2-2" class="img-fluid figure-img" data-ref-parent="fig-qq2" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -1827,6 +1852,7 @@ Figure&nbsp;13.11: Histogram (panel a) and normal QQ plot (panel b) of <code>nor
 <img src="13-ttest_files/figure-html/fig-qq2-3.png" id="fig-qq2-3" class="img-fluid figure-img" data-ref-parent="fig-qq2" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq2-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
 </figcaption>
 </figure>
 </div>
@@ -1838,6 +1864,7 @@ Figure&nbsp;13.11: Histogram (panel a) and normal QQ plot (panel b) of <code>nor
 <img src="13-ttest_files/figure-html/fig-qq2-4.png" id="fig-qq2-4" class="img-fluid figure-img" data-ref-parent="fig-qq2" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-qq2-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d)
 </figcaption>
 </figure>
 </div>
@@ -1872,7 +1899,7 @@ Figure&nbsp;13.13: Sampling distribution of the Shapiro-Wilk <span class="math i
 </div>
 <p>To run the test in R, we use the <code>shapiro.test()</code> function. It has only a single argument <code>x</code>, which is a numeric vector containing the data whose normality needs to be tested. For example, when we apply this function to our <code>normal_data</code>, we get the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="at">x =</span> normal_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="at">x =</span> normal_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
@@ -1892,8 +1919,8 @@ W = 0.99108, p-value = 0.7515</code></pre>
 <h3 data-number="13.10.1" class="anchored" data-anchor-id="two-sample-wilcoxon-test"><span class="header-section-number">13.10.1</span> Two sample Wilcoxon test</h3>
 <p>I’ll start by describing the <strong><em>two sample Wilcoxon test</em></strong> (also known as the Mann-Whitney test), since it’s actually simpler than the one sample version. Suppose we’re looking at the scores of 10 people on some test. Since my imagination has now failed me completely, let’s pretend it’s a “test of awesomeness”, and there are two groups of people, “A” and “B”. I’m curious to know which group is more awesome. The data are included in the file <code>awesome.Rdata</code>, and like many of the data sets I’ve been using, it contains only a single data frame, in this case called <code>awesome</code>. Here’s the data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/awesome.Rdata"</span>)</span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(awesome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/awesome.Rdata"</span>)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(awesome)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   scores group
 1     6.4     A
@@ -1911,7 +1938,7 @@ W = 0.99108, p-value = 0.7515</code></pre>
 <p>As long as there are no ties (i.e., people with the exact same awesomeness score), then the test that we want to do is surprisingly simple. All we have to do is construct a table that compares every observation in group <span class="math inline">\(A\)</span> against every observation in group <span class="math inline">\(B\)</span>. Whenever the group <span class="math inline">\(A\)</span> datum is larger, we place a check mark in the table. We then count up the number of checkmarks. This is our test statistic, <span class="math inline">\(W\)</span>.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> The actual sampling distribution for <span class="math inline">\(W\)</span> is somewhat complicated, and I’ll skip the details. For our purposes, it’s sufficient to note that the interpretation of <span class="math inline">\(W\)</span> is qualitatively the same as the interpretation of <span class="math inline">\(t\)</span> or <span class="math inline">\(z\)</span>. That is, if we want a two-sided test, then we reject the null hypothesis when <span class="math inline">\(W\)</span> is very large or very small; but if we have a directional (i.e., one-sided) hypothesis, then we only use one or the other.</p>
 <div class="no-row-height column-margin column-container"><div id="fn18"><p><sup>18</sup>&nbsp;Actually, there are two different versions of the test statistic; they differ from each other by a constant value. The version that I’ve described is the one that R calculates.</p></div></div><p>The structure of the <code>wilcox.test()</code> function should feel very familiar to you by now. When you have your data organised in terms of an outcome variable and a grouping variable, then you use the <code>formula</code> and <code>data</code> arguments, so your command looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">formula =</span> scores <span class="sc">~</span> group, <span class="at">data =</span> awesome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">formula =</span> scores <span class="sc">~</span> group, <span class="at">data =</span> awesome)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum exact test
@@ -1923,19 +1950,19 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 <p>Just like we saw with the <code>t.test()</code> function, there is an <code>alternative</code> argument that you can use to switch between two-sided tests and one-sided tests, plus a few other arguments that we don’t need to worry too much about at an introductory level. Similarly, the <code>wilcox.test()</code> function allows you to use the <code>x</code> and <code>y</code> arguments when you have your data stored separately for each group. For instance, suppose we use the data from the <code>awesome2.Rdata</code> file:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/awesome2.Rdata"</span>)</span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>score_a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/awesome2.Rdata"</span>)</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>score_a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  6.4 10.7 11.9  7.3 10.0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>score_b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>score_b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.5 10.4 12.9 11.7 13.0</code></pre>
 </div>
 </div>
 <p>When your data are organised like this, then you would use a command like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">x =</span> score_a, <span class="at">y =</span> score_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="at">x =</span> score_a, <span class="at">y =</span> score_b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The output that R produces is pretty much the same as last time.</p>
 </section>
@@ -1943,8 +1970,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h3 data-number="13.10.2" class="anchored" data-anchor-id="one-sample-wilcoxon-test"><span class="header-section-number">13.10.2</span> One sample Wilcoxon test</h3>
 <p>What about the <strong><em>one sample Wilcoxon test</em></strong> (or equivalently, the paired samples Wilcoxon test)? Suppose I’m interested in finding out whether taking a statistics class has any effect on the happiness of students. Here’s my data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/happy.Rdata"</span>)</span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(happiness)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/happy.Rdata"</span>)</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(happiness)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   before after change
 1      30     6    -24
@@ -1961,10 +1988,10 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 <p>What I’ve measured here is the happiness of each student <code>before</code> taking the class and <code>after</code> taking the class; the <code>change</code> score is the difference between the two. Just like we saw with the <span class="math inline">\(t\)</span>-test, there’s no fundamental difference between doing a paired-samples test using <code>before</code> and <code>after</code>, versus doing a one-sample test using the <code>change</code> scores. As before, the simplest way to think about the test is to construct a tabulation. The way to do it this time is to take those change scores that are positive valued, and tabulate them against all the complete sample. Counting up the tick marks this time, we get a test statistic of <span class="math inline">\(V = 7\)</span>. As before, if our test is two sided, then we reject the null hypothesis when <span class="math inline">\(V\)</span> is very large or very small. As far as running it in R goes, it’s pretty much what you’d expect. For the one-sample version, the command you would use is</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(</span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> happiness<span class="sc">$</span>change,</span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="dv">0</span></span>
-<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank exact test
@@ -1976,11 +2003,11 @@ alternative hypothesis: true location is not equal to 0</code></pre>
 </div>
 <p>As this shows, we have a significant effect. Evidently, taking a statistics class does have an effect on your happiness. Switching to a paired samples version of the test won’t give us different answers, of course; but here’s the command to do it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(</span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> happiness<span class="sc">$</span>after,</span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> happiness<span class="sc">$</span>before,</span>
 <span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">paired =</span> <span class="cn">TRUE</span></span>
-<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -2029,239 +2056,243 @@ Welch, B. L. (1947). The generalization of <span>“<span>S</span>tudent’s”<
 <!-- plausible -->
 <script async="" defer="" data-domain="learningstatisticswithr.com" src="https://plausible.io/js/plausible.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/learningstatisticswithr\.com");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/learningstatisticswithr\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2269,185 +2300,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./12-chisquare.html" class="pagination-link" aria-label="Categorical data analysis">

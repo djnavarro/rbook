@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.52">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>10&nbsp; Estimating unknown quantities from a sample – Learning Statistics with R</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -21,8 +27,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +40,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,15 +93,16 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./11-hypothesistesting.html" rel="next">
 <link href="./09-probability.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7245ae1d8f5b1c8e9ac8f6417b8d2b04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -124,7 +132,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -137,7 +145,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -164,7 +172,7 @@ window.Quarto = {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating slimcontent">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -205,6 +213,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data sets</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -579,6 +593,7 @@ Figure&nbsp;10.3: Simple random sampling <em>with</em> replacement from a finite
 <img src="10-estimation_files/figure-html/fig-IQdist-1.png" id="fig-IQdist-1" class="img-fluid figure-img" data-ref-parent="fig-IQdist" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-IQdist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -590,6 +605,7 @@ Figure&nbsp;10.3: Simple random sampling <em>with</em> replacement from a finite
 <img src="10-estimation_files/figure-html/fig-IQdist-2.png" id="fig-IQdist-2" class="img-fluid figure-img" data-ref-parent="fig-IQdist" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-IQdist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -601,6 +617,7 @@ Figure&nbsp;10.3: Simple random sampling <em>with</em> replacement from a finite
 <img src="10-estimation_files/figure-html/fig-IQdist-3.png" id="fig-IQdist-3" class="img-fluid figure-img" data-ref-parent="fig-IQdist" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-IQdist-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
 </figcaption>
 </figure>
 </div>
@@ -612,7 +629,7 @@ Figure&nbsp;10.4: The population distribution of IQ scores (panel a) and two sam
 </figcaption>
 </figure>
 </div>
-<p>When I calculate the mean of my sample of 100, I get a number that is fairly close to the population mean 100 but not identical: in this particular sample, the mean IQ is 101.1 and the standard deviation is 15.7. These <strong><em>sample statistics</em></strong> are properties of my data set, and although they are fairly similar to the true population values, they are not the same. In general, sample statistics are the things you can calculate from your data set, and the population parameters are the things you want to learn about. Later on in this chapter I’ll talk about how you can estimate population parameters using your sample statistics (<a href="#sec-pointestimates" class="quarto-xref"><span>Section 10.4</span></a>) and how to work out how confident you are in your estimates (<a href="#sec-ci" class="quarto-xref"><span>Section 10.5</span></a>) but before we get to that there’s a few more ideas in sampling theory that you need to know about.</p>
+<p>When I calculate the mean of my sample of 100, I get a number that is fairly close to the population mean 100 but not identical: in this particular sample, the mean IQ is 102.3 and the standard deviation is 14.4. These <strong><em>sample statistics</em></strong> are properties of my data set, and although they are fairly similar to the true population values, they are not the same. In general, sample statistics are the things you can calculate from your data set, and the population parameters are the things you want to learn about. Later on in this chapter I’ll talk about how you can estimate population parameters using your sample statistics (<a href="#sec-pointestimates" class="quarto-xref"><span>Section 10.4</span></a>) and how to work out how confident you are in your estimates (<a href="#sec-ci" class="quarto-xref"><span>Section 10.5</span></a>) but before we get to that there’s a few more ideas in sampling theory that you need to know about.</p>
 </section>
 </section>
 <section id="sec-lawlargenumbers" class="level2 page-columns page-full" data-number="10.2">
@@ -620,31 +637,31 @@ Figure&nbsp;10.4: The population distribution of IQ scores (panel a) and two sam
 <p>In the previous section I showed you the results of one fictitious IQ experiment with a sample size of <span class="math inline">\(N=100\)</span>. The results were somewhat encouraging: the true population mean is 100, and the sample mean we obtained is a pretty reasonable approximation to it. In many scientific studies that level of precision is perfectly acceptable, but in other situations you need to be a lot more precise. If we want our sample statistics to be much closer to the population parameters, what can we do about it?</p>
 <p>The obvious answer is to collect more data. Suppose that we ran a much larger experiment, this time measuring the IQs of 10,000 people. We can simulate the results of this experiment using R. In <a href="09-probability.html#sec-normal" class="quarto-xref"><span>Section 9.5</span></a> I introduced the <code>rnorm()</code> function, which generates random numbers sampled from a normal distribution. For an experiment with a sample size of <code>n = 10000</code>, and a population with <code>mean = 100</code> and <code>sd = 15</code>, R produces our fake IQ data using these commands:</p>
 <div class="cell" data-trunc-head="4" data-trunc-tail="3">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>) <span class="co"># generate IQ scores</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>) <span class="co"># generate IQ scores</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">round</span>(IQ) <span class="co"># IQs are whole numbers!</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(IQ)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    [1]  97 112  76 110  87 101 120  93 115 105  84 116 113  84  93 105  91 100
-   [19]  98 109  94 114 108 106  89  96 112  64 126 117 121  99 101 114  92 102
-   [37]  87 103  87 103  98 106  98 110  85 111  94 102 106  78  73 109 110  99
-   [55] 107  94 130  93  89 123  90  89  79 102 111 111 115 119  97  86  90 122
+<pre><code>    [1]  87  76  91 116  76  97  91 107  87  82 109 122 109  87  83  94  70  78
+   [19] 118  91  99 110  97 106  85 113 105 118  99 116  95  78  98  87  93  70
+   [37]  89  95  91 109 110  92 110  96  86 100 108 103 124  90 102 105  85  88
+   [55] 100  48 134 103 119 100  78 104  70 108  69  94 105  75  85 105  99 101
 
 BLAH BLAH BLAH
 
- [9955]  55 106 114 126  81  92  85  80 104 111  96 102  76  83  98  98 100 103
- [9973]  95  90 100 114 113 105  80 110  90  89 121 129 124 111 122  95 119  93
- [9991] 111 117 110  80 103  92 118 111 108 119</code></pre>
+ [9955]  80  89 120 105  88  75 127 106 119  95  99  94 100  90  96  74 110  96
+ [9973] 117  95  89  69 102 108  77  96 123 106 112 132 102  79  84 110  96  79
+ [9991] 109 105  88 119 116 105 106 110  84 137</code></pre>
 </div>
 </div>
 <p>I can compute the mean IQ using the command <code>mean(IQ)</code> and the standard deviation using the command <code>sd(IQ)</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(IQ)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 100.2329</code></pre>
+<pre><code>[1] 99.8102</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(IQ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(IQ)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15.00699</code></pre>
+<pre><code>[1] 14.98665</code></pre>
 </div>
 </div>
 <p>and I can draw a histogram using <code>hist()</code> – this is exactly what produced panel c of <a href="#fig-IQdist" class="quarto-xref">Figure&nbsp;<span>10.4</span></a> above. Even a moment’s inspection makes clear that the larger sample is a much better approximation to the true population distribution than the smaller one, and the sample statistics bear this out: both the mean and standard deviation are now very close to the true population values.</p>
@@ -668,27 +685,27 @@ BLAH BLAH BLAH
 <h3 data-number="10.3.1" class="anchored" data-anchor-id="sec-samplingdists"><span class="header-section-number">10.3.1</span> Sampling distribution of the mean</h3>
 <p>With this in mind, let’s abandon the idea that our studies will have sample sizes of 10000, and consider a very modest experiment indeed. This time around we’ll sample <span class="math inline">\(N=5\)</span> people and measure their IQ scores. As before, I can simulate this experiment in R using the <code>rnorm()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>iq_1 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>iq_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>iq_1 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>iq_1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 100 107  85  99  92</code></pre>
+<pre><code>[1]  92 101  95  93  91</code></pre>
 </div>
 </div>
-<p>The mean IQ in this sample turns out to be 96.6. Not surprisingly, this is much less accurate than the previous experiment. Now imagine that I decided to <strong><em>replicate</em></strong> the experiment. That is, I repeat the procedure as closely as possible: I randomly sample 5 new people and measure their IQ. Again, R allows me to simulate the results of this procedure:</p>
+<p>The mean IQ in this sample turns out to be 94.4. Not surprisingly, this is much less accurate than the previous experiment. Now imagine that I decided to <strong><em>replicate</em></strong> the experiment. That is, I repeat the procedure as closely as possible: I randomly sample 5 new people and measure their IQ. Again, R allows me to simulate the results of this procedure:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>iq_2 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>iq_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>iq_2 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>iq_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  78  89 108 106 102</code></pre>
+<pre><code>[1]  90  89 102  89 116</code></pre>
 </div>
 </div>
-<p>This time around, the mean IQ in my sample is 96.6. If I repeat the experiment 10 times I obtain the results shown in <a href="#tbl-replications" class="quarto-xref">Table&nbsp;<span>10.1</span></a>, and as you can see the sample mean varies from one replication to the next.</p>
+<p>This time around, the mean IQ in my sample is 97.2. If I repeat the experiment 10 times I obtain the results shown in <a href="#tbl-replications" class="quarto-xref">Table&nbsp;<span>10.1</span></a>, and as you can see the sample mean varies from one replication to the next.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>replications <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">100</span>, <span class="dv">15</span>))))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>replications <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">100</span>, <span class="dv">15</span>))))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sample_means <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rowMeans</span>(replications), <span class="dv">1</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>replication_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(replications, <span class="st">"Sample Mean"</span> <span class="ot">=</span> sample_means, <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(replication_table) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Replication"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(replication_table, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">"Person"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="st">"Sample Mean"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(replication_table, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">"Person"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="st">"Sample Mean"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-replications" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-replications-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -696,7 +713,7 @@ Table&nbsp;10.1: Ten replications of the IQ experiment, each with a sample size 
 </figcaption>
 <div aria-describedby="tbl-replications-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<table class="cell caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 20%">
 <col style="width: 12%">
@@ -720,93 +737,93 @@ Table&nbsp;10.1: Ten replications of the IQ experiment, each with a sample size 
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Replication 1</td>
-<td style="text-align: right;">93</td>
-<td style="text-align: right;">109</td>
-<td style="text-align: right;">119</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: right;">111</td>
-<td style="text-align: right;">107.2</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">100.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 2</td>
-<td style="text-align: right;">114</td>
-<td style="text-align: right;">91</td>
+<td style="text-align: right;">83</td>
 <td style="text-align: right;">111</td>
-<td style="text-align: right;">87</td>
-<td style="text-align: right;">87</td>
-<td style="text-align: right;">98.0</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">90.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 3</td>
-<td style="text-align: right;">135</td>
-<td style="text-align: right;">93</td>
-<td style="text-align: right;">129</td>
-<td style="text-align: right;">94</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">110.2</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">92.6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 4</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">87</td>
-<td style="text-align: right;">87</td>
-<td style="text-align: right;">107</td>
-<td style="text-align: right;">99</td>
-<td style="text-align: right;">94.4</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">97.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 5</td>
-<td style="text-align: right;">112</td>
-<td style="text-align: right;">106</td>
-<td style="text-align: right;">119</td>
-<td style="text-align: right;">125</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">114.4</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">94.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 6</td>
-<td style="text-align: right;">83</td>
-<td style="text-align: right;">75</td>
-<td style="text-align: right;">117</td>
-<td style="text-align: right;">97</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">92.0</td>
+<td style="text-align: right;">131</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">91.6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 7</td>
-<td style="text-align: right;">98</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">113</td>
-<td style="text-align: right;">127</td>
-<td style="text-align: right;">107.8</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">105.2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 8</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">109</td>
-<td style="text-align: right;">124</td>
-<td style="text-align: right;">111</td>
-<td style="text-align: right;">95</td>
-<td style="text-align: right;">101.2</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">99.6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Replication 9</td>
-<td style="text-align: right;">88</td>
-<td style="text-align: right;">111</td>
-<td style="text-align: right;">111</td>
-<td style="text-align: right;">118</td>
+<td style="text-align: right;">91</td>
 <td style="text-align: right;">99</td>
-<td style="text-align: right;">105.4</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: right;">108</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">106.8</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Replication 10</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: right;">122</td>
-<td style="text-align: right;">97</td>
-<td style="text-align: right;">125</td>
+<td style="text-align: right;">96</td>
 <td style="text-align: right;">98</td>
-<td style="text-align: right;">108.6</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">107.0</td>
 </tr>
 </tbody>
 </table>
@@ -830,7 +847,7 @@ Figure&nbsp;10.5: The sampling distribution of the mean for the “five IQ score
 </div>
 </div>
 </div>
-<p>Sampling distributions are another important theoretical idea in statistics, and they’re crucial for understanding the behaviour of small samples. For instance, when I ran the very first “five IQ scores” experiment above, the sample mean turned out to be 96.6. What the sampling distribution in <a href="#fig-sampdistmean" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> tells us, though, is that the “five IQ scores” experiment is not very accurate. If I repeat the experiment, the sampling distribution tells me that I can expect to see a sample mean anywhere between 80 and 120.</p>
+<p>Sampling distributions are another important theoretical idea in statistics, and they’re crucial for understanding the behaviour of small samples. For instance, when I ran the very first “five IQ scores” experiment above, the sample mean turned out to be 94.4. What the sampling distribution in <a href="#fig-sampdistmean" class="quarto-xref">Figure&nbsp;<span>10.5</span></a> tells us, though, is that the “five IQ scores” experiment is not very accurate. If I repeat the experiment, the sampling distribution tells me that I can expect to see a sample mean anywhere between 80 and 120.</p>
 </section>
 <section id="sampling-distributions-exist-for-any-sample-statistic" class="level3" data-number="10.3.2">
 <h3 data-number="10.3.2" class="anchored" data-anchor-id="sampling-distributions-exist-for-any-sample-statistic"><span class="header-section-number">10.3.2</span> Sampling distributions exist for any sample statistic!</h3>
@@ -864,6 +881,7 @@ Figure&nbsp;10.6: The sampling distribution of the <em>maximum</em> for the “f
 <img src="10-estimation_files/figure-html/fig-IQsamp-1.png" id="fig-IQsamp-1" class="img-fluid figure-img" data-ref-parent="fig-IQsamp" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-IQsamp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -875,6 +893,7 @@ Figure&nbsp;10.6: The sampling distribution of the <em>maximum</em> for the “f
 <img src="10-estimation_files/figure-html/fig-IQsamp-2.png" id="fig-IQsamp-2" class="img-fluid figure-img" data-ref-parent="fig-IQsamp" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-IQsamp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -886,6 +905,7 @@ Figure&nbsp;10.6: The sampling distribution of the <em>maximum</em> for the “f
 <img src="10-estimation_files/figure-html/fig-IQsamp-3.png" id="fig-IQsamp-3" class="img-fluid figure-img" data-ref-parent="fig-IQsamp" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-IQsamp-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
 </figcaption>
 </figure>
 </div>
@@ -910,6 +930,7 @@ Figure&nbsp;10.7: An illustration of how the sampling distribution of the mean d
 <img src="10-estimation_files/figure-html/fig-cltdemo-1.png" id="fig-cltdemo-1" class="img-fluid figure-img" data-ref-parent="fig-cltdemo" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cltdemo-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -921,6 +942,7 @@ Figure&nbsp;10.7: An illustration of how the sampling distribution of the mean d
 <img src="10-estimation_files/figure-html/fig-cltdemo-2.png" id="fig-cltdemo-2" class="img-fluid figure-img" data-ref-parent="fig-cltdemo" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cltdemo-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -934,6 +956,7 @@ Figure&nbsp;10.7: An illustration of how the sampling distribution of the mean d
 <img src="10-estimation_files/figure-html/fig-cltdemo-3.png" id="fig-cltdemo-3" class="img-fluid figure-img" data-ref-parent="fig-cltdemo" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cltdemo-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
 </figcaption>
 </figure>
 </div>
@@ -945,6 +968,7 @@ Figure&nbsp;10.7: An illustration of how the sampling distribution of the mean d
 <img src="10-estimation_files/figure-html/fig-cltdemo-4.png" id="fig-cltdemo-4" class="img-fluid figure-img" data-ref-parent="fig-cltdemo" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cltdemo-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d)
 </figcaption>
 </figure>
 </div>
@@ -1035,7 +1059,7 @@ Figure&nbsp;10.9: The sampling distribution of the sample standard deviation for
 </div>
 </div>
 </div>
-<p>Even though the true population standard deviation is 15, the average of the <em>sample</em> standard deviations across these 100,000 replications is only 8.4. Notice that this is a very different result to what we found when we plotted the sampling distribution of the mean in <a href="#fig-IQsamp" class="quarto-xref">Figure&nbsp;<span>10.7</span></a>: there, the population mean is 100, and the average of the sample means is also 100.</p>
+<p>Even though the true population standard deviation is 15, the average of the <em>sample</em> standard deviations across these 100,000 replications is only 8.5. Notice that this is a very different result to what we found when we plotted the sampling distribution of the mean in <a href="#fig-IQsamp" class="quarto-xref">Figure&nbsp;<span>10.7</span></a>: there, the population mean is 100, and the average of the sample means is also 100.</p>
 <p>Now let’s extend the simulation. Instead of restricting ourselves to the situation where we have a sample size of <span class="math inline">\(N=2\)</span>, let’s repeat the exercise for sample sizes from 1 to 10. If we plot the average sample mean and average sample standard deviation as a function of sample size, we get the results shown in <a href="#fig-estimatorbias" class="quarto-xref">Figure&nbsp;<span>10.10</span></a>. On the left hand side (panel a), I’ve plotted the average sample mean and on the right hand side (panel b), I’ve plotted the average standard deviation. The two plots are quite different: <em>on average</em>, the average sample mean is equal to the population mean. It is an <strong><em>unbiased estimator</em></strong>, which is essentially the reason why your best estimate for the population mean is the sample mean.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> The plot on the right is quite different: on average, the sample standard deviation <span class="math inline">\(s\)</span> is <em>smaller</em> than the population standard deviation <span class="math inline">\(\sigma\)</span>. It is a <strong><em>biased estimator</em></strong>. In other words, if we want to make a “best guess” <span class="math inline">\(\hat\sigma\)</span> about the value of the population standard deviation <span class="math inline">\(\sigma\)</span>, we should make sure our guess is a little bit larger than the sample standard deviation <span class="math inline">\(s\)</span>.</p>
 <div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;I should note that I’m hiding something here. Unbiasedness is a desirable characteristic for an estimator, but there are other things that matter besides bias. However, it’s beyond the scope of this book to discuss this in any detail. I just want to draw your attention to the fact that there’s some hidden complexity here.</p></div></div><div id="fig-estimatorbias" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1048,6 +1072,7 @@ Figure&nbsp;10.9: The sampling distribution of the sample standard deviation for
 <img src="10-estimation_files/figure-html/fig-estimatorbias-1.png" id="fig-estimatorbias-1" class="img-fluid figure-img" data-ref-parent="fig-estimatorbias" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-estimatorbias-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -1059,6 +1084,7 @@ Figure&nbsp;10.9: The sampling distribution of the sample standard deviation for
 <img src="10-estimation_files/figure-html/fig-estimatorbias-2.png" id="fig-estimatorbias-2" class="img-fluid figure-img" data-ref-parent="fig-estimatorbias" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-estimatorbias-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -1158,7 +1184,7 @@ s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 <p>Up to this point in this chapter, I’ve outlined the basics of sampling theory which statisticians rely on to make guesses about population parameters on the basis of a sample of data. As this discussion illustrates, one of the reasons we need all this sampling theory is that every data set leaves us with some uncertainty, so our estimates are never going to be perfectly accurate. The thing that has been missing from this discussion is an attempt to <em>quantify</em> the amount of uncertainty that attaches to our estimate. It’s not enough to be able to guess that, say, the mean IQ of undergraduate psychology students is 115 (yes, I just made that number up). We also want to be able to say something that expresses the degree of certainty that we have in our guess. For example, it would be nice to be able to say that there is a 95% chance that the true mean lies between 109 and 121. The name for this is a <strong><em>confidence interval</em></strong> for the mean.</p>
 <p>Armed with an understanding of sampling distributions, constructing a confidence interval for the mean is actually pretty easy. Here’s how it works. Suppose the true population mean is <span class="math inline">\(\mu\)</span> and the standard deviation is <span class="math inline">\(\sigma\)</span>. I’ve just finished running my study that has <span class="math inline">\(N\)</span> participants, and the mean IQ among those participants is <span class="math inline">\(\bar{X}\)</span>. We know from our discussion of the central limit theorem (<a href="#sec-clt" class="quarto-xref"><span>Section 10.3.3</span></a>) that the sampling distribution of the mean is approximately normal. We also know from our discussion of the normal distribution (<a href="09-probability.html#sec-normal" class="quarto-xref"><span>Section 9.5</span></a>) that there is a 95% chance that a normally-distributed quantity will fall within two standard deviations of the true mean. To be more precise, we can use the <code>qnorm()</code> function to compute the 2.5th and 97.5th percentiles of the normal distribution:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.959964  1.959964</code></pre>
 </div>
@@ -1177,7 +1203,7 @@ s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 \]</span></p>
 <p>Of course, there’s nothing special about the number 1.96: it just happens to be the multiplier you need to use if you want a 95% confidence interval. If I’d wanted a 70% confidence interval, I could have used the <code>qnorm()</code> function to calculate the 15th and 85th quantiles:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">15</span>, .<span class="dv">85</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fu">c</span>(.<span class="dv">15</span>, .<span class="dv">85</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.036433  1.036433</code></pre>
 </div>
@@ -1187,16 +1213,16 @@ s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 <h3 data-number="10.5.1" class="anchored" data-anchor-id="a-slight-mistake-in-the-formula"><span class="header-section-number">10.5.1</span> A slight mistake in the formula</h3>
 <p>As usual, I lied. The formula that I’ve given above for the 95% confidence interval is approximately correct, but I glossed over an important detail in the discussion. Notice my formula requires you to use the standard error of the mean, SEM, which in turn requires you to use the true population standard deviation <span class="math inline">\(\sigma\)</span>. Yet, in <a href="#sec-pointestimates" class="quarto-xref"><span>Section 10.4</span></a> I stressed the fact that we don’t actually <em>know</em> the true population parameters. Because we don’t know the true value of <span class="math inline">\(\sigma\)</span>, we have to use an estimate of the population standard deviation <span class="math inline">\(\hat{\sigma}\)</span> instead. This is pretty straightforward to do, but this has the consequence that we need to use the quantiles of the <span class="math inline">\(t\)</span>-distribution rather than the normal distribution to calculate our magic number; and the answer depends on the sample size. When <span class="math inline">\(N\)</span> is very large, we get pretty much the same value using <code>qt()</code> that we would if we used <code>qnorm()</code>…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># suppose our sample size is 10,000</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">975</span>, <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># calculate the 97.5th quantile of the t-dist</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># suppose our sample size is 10,000</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">975</span>, <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># calculate the 97.5th quantile of the t-dist</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.960201</code></pre>
 </div>
 </div>
 <p>But when <span class="math inline">\(N\)</span> is small, we get a much bigger number when we use the <span class="math inline">\(t\)</span> distribution:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># suppose our sample size is 10</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">975</span>, <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># calculate the 97.5th quantile of the t-dist</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># suppose our sample size is 10</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> .<span class="dv">975</span>, <span class="at">df =</span> N <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># calculate the 97.5th quantile of the t-dist</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.262157</code></pre>
 </div>
@@ -1218,6 +1244,7 @@ s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 <img src="10-estimation_files/figure-html/fig-cirep-1.png" id="fig-cirep-1" class="img-fluid figure-img" data-ref-parent="fig-cirep" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cirep-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
 </figcaption>
 </figure>
 </div>
@@ -1231,6 +1258,7 @@ s^2 = \frac{1}{N} \sum_{i=1}^N (X_i - \bar{X})^2
 <img src="10-estimation_files/figure-html/fig-cirep-2.png" id="fig-cirep-2" class="img-fluid figure-img" data-ref-parent="fig-cirep" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cirep-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
 </figcaption>
 </figure>
 </div>
@@ -1242,7 +1270,7 @@ Figure&nbsp;10.11: 95% confidence intervals. The top panel (a) shows 50 simulate
 </figcaption>
 </figure>
 </div>
-<p>In this particular run of the simulation, 1 of the 100 confidence intervals shown in <a href="#fig-cirep" class="quarto-xref">Figure&nbsp;<span>10.11</span></a> failed to contain the true mean – close to, but not necessarily exactly, the 5 we’d expect on average in the long run.</p>
+<p>In this particular run of the simulation, 8 of the 100 confidence intervals shown in <a href="#fig-cirep" class="quarto-xref">Figure&nbsp;<span>10.11</span></a> failed to contain the true mean – close to, but not necessarily exactly, the 5 we’d expect on average in the long run.</p>
 <p>The critical difference here is that the Bayesian claim makes a probability statement about the population mean (i.e., it refers to our uncertainty about the population mean), which is not allowed under the frequentist interpretation of probability because you can’t “replicate” a population! In the frequentist claim, the population mean is fixed and no probabilistic claims can be made about it. Confidence intervals, however, are repeatable so we can replicate experiments. Therefore a frequentist is allowed to talk about the probability that the <em>confidence interval</em> (a random variable) contains the true mean; but is not allowed to talk about the probability that the <em>true population mean</em> (not a repeatable event) falls within the confidence interval.</p>
 <p>I know that this seems a little pedantic, but it does matter. It matters because the difference in interpretation leads to a difference in the mathematics. There is a Bayesian alternative to confidence intervals, known as <em>credible intervals</em>. In most situations credible intervals are quite similar to confidence intervals, but in other cases they are drastically different. As promised, though, I’ll talk more about the Bayesian perspective in <a href="17-bayes.html" class="quarto-xref"><span>Chapter 17</span></a>.</p>
 </section>
@@ -1255,8 +1283,8 @@ Figure&nbsp;10.11: 95% confidence intervals. The top panel (a) shows 50 simulate
 </ul>
 <p>So, for example, if I load the <code>afl24.Rdata</code> file, I can calculate the confidence interval associated with the mean attendance:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/afl24.Rdata"</span>) <span class="co"># contains the "afl" data frame</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ciMean</span>(<span class="at">x =</span> afl<span class="sc">$</span>attendance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/afl24.Rdata"</span>) <span class="co"># contains the "afl" data frame</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ciMean</span>(<span class="at">x =</span> afl<span class="sc">$</span>attendance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         2.5%    97.5%
 [1,] 31597.32 32593.12</code></pre>
@@ -1268,20 +1296,20 @@ Figure&nbsp;10.11: 95% confidence intervals. The top panel (a) shows 50 simulate
 <h3 data-number="10.5.4" class="anchored" data-anchor-id="sec-ciplots"><span class="header-section-number">10.5.4</span> Plotting confidence intervals in R</h3>
 <p>There’s several different ways you can draw graphs that show confidence intervals as error bars. I’ll show three versions here, but this certainly doesn’t exhaust the possibilities. In doing so, what I’m assuming is that you want to draw a plot showing the means and confidence intervals for one variable, broken down by different levels of a second variable. For instance, in our <code>afl</code> data that we discussed earlier, we might be interested in plotting the average <code>attendance</code> by <code>year</code>. I’ll do this using three different functions, <code>bargraph.CI()</code> and <code>lineplot.CI()</code> (both of which are in the <code>sciplot</code> package), and <code>plotmeans()</code> (which is in the <code>gplots</code> package). Assuming that you’ve installed these packages on your system (see <a href="04-mechanics.html#sec-packageinstall" class="quarto-xref"><span>Section 4.2</span></a> if you’ve forgotten how to do this), you’ll need to load them. You’ll also need to load the <code>lsr</code> package, because we’ll make use of the <code>ciMean()</code> function to actually calculate the confidence intervals:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sciplot) <span class="co"># bargraph.CI() and lineplot.CI() functions</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sciplot) <span class="co"># bargraph.CI() and lineplot.CI() functions</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots) <span class="co"># plotmeans() function</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr) <span class="co"># ciMean() function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr) <span class="co"># ciMean() function</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here’s how to plot the means and confidence intervals drawn using <code>bargraph.CI()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bargraph.CI</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bargraph.CI</span>(</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x.factor =</span> year, <span class="co"># grouping variable</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">response =</span> attendance, <span class="co"># outcome variable</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> afl, <span class="co"># data frame with the variables</span></span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci.fun =</span> ciMean, <span class="co"># name of the function to calculate CIs</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Year"</span>, <span class="co"># x-axis label</span></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Average Attendance"</span> <span class="co"># y-axis label</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-bargraphCI" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1297,14 +1325,14 @@ Figure&nbsp;10.12: Means and 95% confidence intervals for AFL <code>attendance</
 </div>
 <p>This produces the output shown in <a href="#fig-bargraphCI" class="quarto-xref">Figure&nbsp;<span>10.12</span></a>. We can use the same arguments when calling the <code>lineplot.CI()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lineplot.CI</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lineplot.CI</span>(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x.factor =</span> year, <span class="co"># grouping variable</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">response =</span> attendance, <span class="co"># outcome variable</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> afl, <span class="co"># data frame with the variables</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci.fun =</span> ciMean, <span class="co"># name of the function to calculate CIs</span></span>
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Year"</span>, <span class="co"># x-axis label</span></span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Average Attendance"</span> <span class="co"># y-axis label</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-lineplotCI" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1320,11 +1348,11 @@ Figure&nbsp;10.13: Means and 95% confidence intervals for AFL <code>attendance</
 </div>
 <p>And the output for this command is shown in <a href="#fig-lineplotCI" class="quarto-xref">Figure&nbsp;<span>10.13</span></a>. Finally, here’s how you would do it using <code>plotmeans()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> attendance <span class="sc">~</span> year, <span class="co"># outcome ~ group</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> afl, <span class="co"># data frame with the variables</span></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n.label =</span> <span class="cn">FALSE</span> <span class="co"># don't show the sample sizes</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-plotmeans" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1383,239 +1411,243 @@ Stigler, S. M. (1986). <em>The history of statistics</em>. Harvard University Pr
 <!-- plausible -->
 <script async="" defer="" data-domain="learningstatisticswithr.com" src="https://plausible.io/js/plausible.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/learningstatisticswithr\.com");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/learningstatisticswithr\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1623,185 +1655,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./09-probability.html" class="pagination-link" aria-label="Introduction to probability">
